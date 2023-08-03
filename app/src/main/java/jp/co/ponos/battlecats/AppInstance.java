@@ -8101,7 +8101,7 @@ public class AppInstance extends Game {
                                                         if (this.battleData[0] != 48) {
                                                             this.battleData[14] = 1;
                                                             int i142 = (((this.battleData[0] * 300) + 1000) * ((this.eQ * 0) + 10)) / 10;
-                                                            this.battleData[17] = i142 - (((this.br[this.eQ][this.battleData[0]] > 7 ? 7 : this.br[this.eQ][this.battleData[0]]) * i142) / 8);
+                                                            this.battleData[17] = i142 - (((Math.min(this.br[this.eQ][this.battleData[0]], 7)) * i142) / 8);
                                                             int i143 = 0;
                                                             for (int i144 = 0; i144 < 10; i144++) {
                                                                 i143 += (cB[3] * this.bO[i144][3]) / 100;
@@ -8291,11 +8291,8 @@ public class AppInstance extends Game {
                                     this.cj[1] = 0;
                                     this.cj[2] = 0;
                                     this.cj[3] = -1;
-                                } else if (((this.cj[2] - this.cj[1]) * 100) / this.cj[2] <= 0) {
-                                    aSound.getInstance().setVolume(0);
-                                } else {
-                                    aSound.getInstance().setVolume(((this.cj[2] - this.cj[1]) * 100) / this.cj[2]);
-                                }
+                                } else
+                                    aSound.getInstance().setVolume(Math.max(((this.cj[2] - this.cj[1]) * 100) / this.cj[2], 0));
                             }
                             float[] fArr4 = this.hb;
                             fArr4[0] = fArr4[0] + 0.5f;
@@ -20089,7 +20086,7 @@ public class AppInstance extends Game {
                         i2 += (cB[10] * this.bO[i3][10]) / 100;
                     }
                     if (this.br[this.eQ][this.currentStageBox[2]] >= 1) {
-                        if (ad[10] + (this.bx[10] * 10) + i2 >= ((((((this.br[this.eQ][this.currentStageBox[2]] + 1 > 8 ? 8 : this.br[this.eQ][this.currentStageBox[2]] + 1) + 6) * (X[this.eQ] + this.stageEoCStats[this.currentStageBox[2]])) * 10) / ((this.br[this.eQ][this.currentStageBox[2]] + 1 > 8 ? 8 : this.br[this.eQ][this.currentStageBox[2]] + 1) * 6)) + 5) / 10) {
+                        if (ad[10] + (this.bx[10] * 10) + i2 >= ((((((Math.min(this.br[this.eQ][this.currentStageBox[2]] + 1, 8)) + 6) * (X[this.eQ] + this.stageEoCStats[this.currentStageBox[2]])) * 10) / ((Math.min(this.br[this.eQ][this.currentStageBox[2]] + 1, 8)) * 6)) + 5) / 10) {
                             if (this.fx[0] > getLength(dv) - 1) {
                                 this.fx[0] = 0;
                                 f();
