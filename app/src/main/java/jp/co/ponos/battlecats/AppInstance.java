@@ -12513,7 +12513,7 @@ public class AppInstance extends Game {
         int i3;
         float f = 0;
         float boxXOffset = 0;
-        int i4 = 0;
+        int dotIndex1 = 0;
         atexturerenderer.setColor(220, 223, 209);
         atexturerenderer.c(0, 0, getWidth(), getHeight());
         atexturerenderer.drawScaledImage(this.uiTextures[6], this.dJ[0] + 3156, this.dK[0] + 12, 258, 412, 10);
@@ -12534,44 +12534,46 @@ public class AppInstance extends Game {
         atexturerenderer.drawScaledImage(this.uiTextures[11], this.dJ[0] + 238, this.dK[0] + 2785, 280, 147, 1);
         atexturerenderer.drawScaledImage(this.uiTextures[11], this.dJ[0] + 183, this.dK[0] + 2945, 236, 147, 2);
         atexturerenderer.drawScaledImage(this.uiTextures[11], this.dJ[0] + 163, this.dK[0] + 2912, 30, 27, 3);
-        int i5 = 0;
-        while (true) {
-            int i6 = i5;
-            if (i6 >= 45) {
+        int stageIndex = 0;
+        while (true) { // draw dotted line between stages
+            int stageIndex1 = stageIndex;
+            if (stageIndex1 >= 45) {
                 break;
             }
-            if (this.br[this.eQ][i6] >= 1) {
-                int i7 = cm[i6];
-                int i8 = cm[i6 + 1];
+            if (this.br[this.eQ][stageIndex1] >= 1) {
+                int i7 = cm[stageIndex1];
+                int i8 = cm[stageIndex1 + 1];
                 float atan2 = aMath.atan2(ck[i8][1] - ck[i7][1], ck[i8][0] - ck[i7][0]);
                 while (true) {
-                    int i9 = i4;
-                    if (i9 >= 200) {
+                    int dotIndex = dotIndex1;
+                    if (dotIndex >= 200) {
                         break;
                     }
-                    atexturerenderer.drawScaledImage(this.uiTextures[9], (int) (((ck[i7][0] + this.dJ[0]) + (((i9 * 20) + 24) * aMath.cos(atan2))) - 8.0f), (int) (((ck[i7][1] + this.dK[0]) + (((i9 * 20) + 24) * aMath.sin(atan2))) - 8.0f), 16, 16, 1);
-                    i4 = d((int) (((float) (ck[i7][0] + this.dJ[0])) + (((float) ((i9 * 20) + 24)) * aMath.cos(atan2))), (int) (((float) (ck[i7][1] + this.dK[0])) + (((float) ((i9 * 20) + 24)) * aMath.sin(atan2))), 8, this.dJ[0] + ck[i8][0], this.dK[0] + ck[i8][1], 20) ? 0 : i9 + 1;
-                    i4 = i9 + 1;
+                    atexturerenderer.drawScaledImage(this.uiTextures[9], (int) (((ck[i7][0] + this.dJ[0]) + (((dotIndex * 20) + 24) * aMath.cos(atan2))) - 8.0f), (int) (((ck[i7][1] + this.dK[0]) + (((dotIndex * 20) + 24) * aMath.sin(atan2))) - 8.0f), 16, 16, 1);
+                    dotIndex1 = d((int) (((float) (ck[i7][0] + this.dJ[0])) + (((float) ((dotIndex * 20) + 24)) * aMath.cos(atan2))), (int) (((float) (ck[i7][1] + this.dK[0])) + (((float) ((dotIndex * 20) + 24)) * aMath.sin(atan2))), 8, this.dJ[0] + ck[i8][0], this.dK[0] + ck[i8][1], 20) ? 0 : dotIndex + 1;
+                    if (dotIndex1 == 0) {
+                        break;
+                    }
                 }
             }
-            i5 = i6 + 1;
+            stageIndex = stageIndex1 + 1;
         }
-        int i10 = 0;
-        while (true) {
-            int i11 = i10;
-            if (i11 >= 48) {
+        int stageIndex1 = 0;
+        while (true) { // draw map dots
+            int stageIndex2 = stageIndex1;
+            if (stageIndex2 >= 48) {
                 break;
             }
-            int i12 = cm[i11];
+            int i12 = cm[stageIndex2];
             atexturerenderer.setImageAlpha(255);
             atexturerenderer.d(0);
-            if (i11 == this.bq[this.eQ]) {
+            if (stageIndex2 == this.bq[this.eQ]) {
                 atexturerenderer.drawScaledImage(this.uiTextures[9], (ck[i12][0] + this.dJ[0]) - 23, (ck[i12][1] + this.dK[0]) - 23, 47, 47, 4);
-            } else if (this.br[this.eQ][i11] >= 1) {
+            } else if (this.br[this.eQ][stageIndex2] >= 1) {
                 atexturerenderer.drawScaledImage(this.uiTextures[9], (ck[i12][0] + this.dJ[0]) - 20, (ck[i12][1] + this.dK[0]) - 20, 41, 41, 2);
                 atexturerenderer.d(0);
             }
-            i10 = i11 + 1;
+            stageIndex1 = stageIndex2 + 1;
         }
         atexturerenderer.setImageAlpha(63);
         atexturerenderer.drawScaledImage(this.uiTextures[1], (this.dM[this.dS] + this.dJ[0]) - 1, this.dN[this.dS] + this.dK[0] + 40, 59, 26, 6);
@@ -12596,7 +12598,7 @@ public class AppInstance extends Game {
         if (!this.eE[2] && this.dY == 0) {
             atexturerenderer.drawScaledImage(this.uiTextures[9], this.w + (640 - (dv[this.fx[0]] / 2)), 411 - (dv[this.fx[0]] / 2), dv[this.fx[0]] + 304, dv[this.fx[0]] + 74, 10);
             atexturerenderer.drawScaledImage(this.uiTextures[9], this.w + (678 - (dv[this.fx[0]] / 2)), 417 - (dv[this.fx[0]] / 2), dv[this.fx[0]] + 231, dv[this.fx[0]] + 62, 11);
-            if (this.aZ == 0 && this.currentEnergy < this.stageStats[this.dI[2]] + X[this.eQ]) {
+            if (this.aZ == 0 && this.currentEnergy < this.stageStats[this.currentStageBox[2]] + X[this.eQ]) {
                 atexturerenderer.setImageColor(0, 0, 0);
                 atexturerenderer.setImageAlpha(127);
                 atexturerenderer.drawScaledImage(this.uiTextures[9], this.w + (640 - (dv[this.fx[0]] / 2)), 411 - (dv[this.fx[0]] / 2), dv[this.fx[0]] + 304, dv[this.fx[0]] + 74, 10);
@@ -12618,68 +12620,68 @@ public class AppInstance extends Game {
             } else {
                 atexturerenderer.setImageColor(255, 255, 255);
             }
-            int i16 = 0;
+            int totalDigits = 0;
             while (true) {
                 currentEnergy1 /= 10;
                 if (currentEnergy1 <= 0) {
                     break;
                 }
-                i16--;
+                totalDigits--;
             }
             int currentEnergy2 = this.currentEnergy;
             do {
                 int currentEnergy21 = currentEnergy2;
-                atexturerenderer.drawScaledImage(this.uiTextures[9], this.w + (((861 - (i16 * 8)) - 9) - (dv[this.fx[16]] / 2)), 371 - (dv[this.fx[16]] / 2), dv[this.fx[16]] + 18, dv[this.fx[16]] + 27, (currentEnergy21 % 10) + 14);
+                atexturerenderer.drawScaledImage(this.uiTextures[9], this.w + (((861 - (totalDigits * 8)) - 9) - (dv[this.fx[16]] / 2)), 371 - (dv[this.fx[16]] / 2), dv[this.fx[16]] + 18, dv[this.fx[16]] + 27, (currentEnergy21 % 10) + 14);
                 currentEnergy2 = currentEnergy21 / 10;
-                i16 += 2;
+                totalDigits += 2;
             } while (currentEnergy2 > 0);
         }
         atexturerenderer.setImageColor(255, 255, 255);
-        int i19 = 2;
-        while (true) {
-            int i20 = i19;
-            if (i20 >= this.boxCounts[0] + this.boxCounts[1]) {
+        int boxIndex = 2;
+        while (true) { // draw stage boxes
+            int boxIndex2 = boxIndex;
+            if (boxIndex2 >= this.boxCounts[0] + this.boxCounts[1]) {
                 break;
             }
-            if (this.dI[0] == i20) {
-                boxXOffset = -(243 - this.boxSize[i20][0]);
-            } else if (this.dI[0] + 1 == i20) {
-                boxXOffset = 243 - this.boxSize[i20][0];
-            } else if (this.dI[0] + 2 == i20) {
-                boxXOffset = (243 - this.boxSize[i20][0]) + ((243 - this.boxSize[i20 - 1][0]) / 2.0f);
-            } else if (this.dI[0] + 3 == i20) {
-                boxXOffset = (243 - this.boxSize[i20][0]) + ((243 - this.boxSize[i20 - 1][0]) / 2.0f) + ((243 - this.boxSize[i20 - 2][0]) / 2.0f);
-            } else if (this.dI[0] - 1 == i20) {
-                boxXOffset = -((243 - this.boxSize[i20][0]) + ((243 - this.boxSize[i20 + 1][0]) / 2.0f));
-            } else if (this.dI[0] - 2 == i20) {
-                boxXOffset = -((243 - this.boxSize[i20][0]) + ((243 - this.boxSize[i20 + 1][0]) / 2.0f));
+            if (this.currentStageBox[0] == boxIndex2) {
+                boxXOffset = -(243 - this.boxSize[boxIndex2][0]);
+            } else if (this.currentStageBox[0] + 1 == boxIndex2) {
+                boxXOffset = 243 - this.boxSize[boxIndex2][0];
+            } else if (this.currentStageBox[0] + 2 == boxIndex2) {
+                boxXOffset = (243 - this.boxSize[boxIndex2][0]) + ((243 - this.boxSize[boxIndex2 - 1][0]) / 2.0f);
+            } else if (this.currentStageBox[0] + 3 == boxIndex2) {
+                boxXOffset = (243 - this.boxSize[boxIndex2][0]) + ((243 - this.boxSize[boxIndex2 - 1][0]) / 2.0f) + ((243 - this.boxSize[boxIndex2 - 2][0]) / 2.0f);
+            } else if (this.currentStageBox[0] - 1 == boxIndex2) {
+                boxXOffset = -((243 - this.boxSize[boxIndex2][0]) + ((243 - this.boxSize[boxIndex2 + 1][0]) / 2.0f));
+            } else if (this.currentStageBox[0] - 2 == boxIndex2) {
+                boxXOffset = -((243 - this.boxSize[boxIndex2][0]) + ((243 - this.boxSize[boxIndex2 + 1][0]) / 2.0f));
             } else {
-                i19 = i20 + 1;
+                boxIndex = boxIndex2 + 1;
             }
-            atexturerenderer.setImageAlpha(255 - ((255 - ((((this.boxSize[i20][0] * 100) / 243) * 255) / 100)) * 2));
-            atexturerenderer.drawScaledImagef(this.uiTextures[9], ((getWidth() / 2.0f) - (this.boxSize[i20][0] / 2.0f)) + (this.boxScale * i20) + this.gameStats1[0] + boxXOffset, 66.0f, this.boxSize[i20][0], this.boxSize[i20][1], 0);
-            atexturerenderer.drawScaledImagef(this.uiTextures[7], ((10.0f * ((this.boxSize[i20][0] * 100.0f) / 243.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[i20][0] / 2.0f)) + (this.boxScale * i20) + this.gameStats1[0] + boxXOffset, ((19.0f * ((this.boxSize[i20][1] * 100.0f) / 81.0f)) / 100.0f) + 66.0f, (224.0f * ((this.boxSize[i20][0] * 100.0f) / 243.0f)) / 100.0f, (45.0f * ((this.boxSize[i20][1] * 100.0f) / 81.0f)) / 100.0f, cm[i20 - 2]);
+            atexturerenderer.setImageAlpha(255 - ((255 - ((((this.boxSize[boxIndex2][0] * 100) / 243) * 255) / 100)) * 2));
+            atexturerenderer.drawScaledImagef(this.uiTextures[9], ((getWidth() / 2.0f) - (this.boxSize[boxIndex2][0] / 2.0f)) + (this.boxScale * boxIndex2) + this.gameStats1[0] + boxXOffset, 66.0f, this.boxSize[boxIndex2][0], this.boxSize[boxIndex2][1], 0);
+            atexturerenderer.drawScaledImagef(this.uiTextures[7], ((10.0f * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[boxIndex2][0] / 2.0f)) + (this.boxScale * boxIndex2) + this.gameStats1[0] + boxXOffset, ((19.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f) + 66.0f, (224.0f * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f, (45.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f, cm[boxIndex2 - 2]);
             atexturerenderer.setImageAlpha(255);
-            atexturerenderer.drawScaledImagef(this.uiTextures[9], ((37.0f * ((this.boxSize[i20][0] * 100.0f) / 243.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[i20][0] / 2.0f)) + (this.boxScale * i20) + this.gameStats1[0] + boxXOffset, ((84.0f * ((this.boxSize[i20][1] * 100.0f) / 81.0f)) / 100.0f) + 66.0f, (73.0f * ((this.boxSize[i20][0] * 100.0f) / 243.0f)) / 100.0f, (30.0f * ((this.boxSize[i20][1] * 100.0f) / 81.0f)) / 100.0f, 27);
-            int i21 = X[this.eQ] + this.stageStats[i20 - 2];
+            atexturerenderer.drawScaledImagef(this.uiTextures[9], ((37.0f * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[boxIndex2][0] / 2.0f)) + (this.boxScale * boxIndex2) + this.gameStats1[0] + boxXOffset, ((84.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f) + 66.0f, (73.0f * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f, (30.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f, 27);
+            int i21 = X[this.eQ] + this.stageStats[boxIndex2 - 2];
             int i22 = 0;
             do {
                 int i23 = i21;
-                atexturerenderer.drawScaledImagef(this.uiTextures[9], (((182 - (i22 * 17)) * ((this.boxSize[i20][0] * 100.0f) / 243.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[i20][0] / 2.0f)) + (this.boxScale * i20) + this.gameStats1[0] + boxXOffset, ((84.0f * ((this.boxSize[i20][1] * 100.0f) / 81.0f)) / 100.0f) + 66.0f, (18.0f * ((this.boxSize[i20][0] * 100.0f) / 243.0f)) / 100.0f, (27.0f * ((this.boxSize[i20][1] * 100.0f) / 81.0f)) / 100.0f, (i23 % 10) + 29);
+                atexturerenderer.drawScaledImagef(this.uiTextures[9], (((182 - (i22 * 17)) * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[boxIndex2][0] / 2.0f)) + (this.boxScale * boxIndex2) + this.gameStats1[0] + boxXOffset, ((84.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f) + 66.0f, (18.0f * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f, (27.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f, (i23 % 10) + 29);
                 i21 = i23 / 10;
                 i22++;
             } while (i21 > 0);
-            atexturerenderer.drawScaledImagef(this.uiTextures[9], ((getWidth() / 2.0f) - (this.boxSize[i20][0] / 2.0f)) + (this.boxScale * i20) + this.gameStats1[0] + boxXOffset + (((182 - (i22 * 17)) * ((this.boxSize[i20][0] * 100.0f) / 243.0f)) / 100.0f), ((84.0f * ((this.boxSize[i20][1] * 100.0f) / 81.0f)) / 100.0f) + 66.0f, (18.0f * ((this.boxSize[i20][0] * 100.0f) / 243.0f)) / 100.0f, (27.0f * ((this.boxSize[i20][1] * 100.0f) / 81.0f)) / 100.0f, 28);
+            atexturerenderer.drawScaledImagef(this.uiTextures[9], ((getWidth() / 2.0f) - (this.boxSize[boxIndex2][0] / 2.0f)) + (this.boxScale * boxIndex2) + this.gameStats1[0] + boxXOffset + (((182 - (i22 * 17)) * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f), ((84.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f) + 66.0f, (18.0f * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f, (27.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f, 28);
             if (!this.eE[2] && this.dY == 0) {
-                int i24 = this.br[this.eQ][i20 - 2];
-                if (i20 - 2 == this.dI[2] && !this.eE[9] && i24 >= 1) {
+                int i24 = this.br[this.eQ][boxIndex2 - 2];
+                if (boxIndex2 - 2 == this.currentStageBox[2] && !this.eE[9] && i24 >= 1) {
                     if (this.regionState == 0) {
-                        atexturerenderer.drawScaledImagef(this.uiTextures[9], ((42.0f * ((this.boxSize[i20][0] * 100.0f) / 243.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[i20][0] / 2.0f)) + (this.boxScale * i20) + this.gameStats1[0] + boxXOffset, ((116.0f * ((this.boxSize[i20][1] * 100.0f) / 81.0f)) / 100.0f) + 66.0f, (64.0f * ((this.boxSize[i20][0] * 100.0f) / 243.0f)) / 100.0f, (29.0f * ((this.boxSize[i20][1] * 100.0f) / 81.0f)) / 100.0f, 12);
-                        atexturerenderer.drawScaledImagef(this.uiTextures[9], ((168.0f * ((this.boxSize[i20][0] * 100.0f) / 243.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[i20][0] / 2.0f)) + (this.boxScale * i20) + this.gameStats1[0] + boxXOffset, ((116.0f * ((this.boxSize[i20][1] * 100.0f) / 81.0f)) / 100.0f) + 66.0f, (28.0f * ((this.boxSize[i20][0] * 100.0f) / 243.0f)) / 100.0f, (29.0f * ((this.boxSize[i20][1] * 100.0f) / 81.0f)) / 100.0f, 13);
+                        atexturerenderer.drawScaledImagef(this.uiTextures[9], ((42.0f * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[boxIndex2][0] / 2.0f)) + (this.boxScale * boxIndex2) + this.gameStats1[0] + boxXOffset, ((116.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f) + 66.0f, (64.0f * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f, (29.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f, 12);
+                        atexturerenderer.drawScaledImagef(this.uiTextures[9], ((168.0f * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[boxIndex2][0] / 2.0f)) + (this.boxScale * boxIndex2) + this.gameStats1[0] + boxXOffset, ((116.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f) + 66.0f, (28.0f * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f, (29.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f, 13);
                         int i25 = i24;
                         int i26 = 0;
                         while (true) {
-                            atexturerenderer.drawScaledImagef(this.uiTextures[9], (((148 - (i26 * 17)) * ((this.boxSize[i20][0] * 100.0f) / 243.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[i20][0] / 2.0f)) + (this.boxScale * i20) + this.gameStats1[0] + boxXOffset, ((116.0f * ((this.boxSize[i20][1] * 100.0f) / 81.0f)) / 100.0f) + 66.0f, (18.0f * ((this.boxSize[i20][0] * 100.0f) / 243.0f)) / 100.0f, (27.0f * ((this.boxSize[i20][1] * 100.0f) / 81.0f)) / 100.0f, (i25 % 10) + 14);
+                            atexturerenderer.drawScaledImagef(this.uiTextures[9], (((148 - (i26 * 17)) * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[boxIndex2][0] / 2.0f)) + (this.boxScale * boxIndex2) + this.gameStats1[0] + boxXOffset, ((116.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f) + 66.0f, (18.0f * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f, (27.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f, (i25 % 10) + 14);
                             int i27 = i25 / 10;
                             int i28 = i26 + 1;
                             if (i27 <= 0) {
@@ -12689,12 +12691,12 @@ public class AppInstance extends Game {
                             i25 = i27;
                         }
                     } else if (this.regionState == 1) {
-                        atexturerenderer.drawScaledImagef(this.uiTextures[9], ((45.0f * ((this.boxSize[i20][0] * 100.0f) / 243.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[i20][0] / 2.0f)) + (this.boxScale * i20) + this.gameStats1[0] + boxXOffset, ((116.0f * ((this.boxSize[i20][1] * 100.0f) / 81.0f)) / 100.0f) + 66.0f, (64.0f * ((this.boxSize[i20][0] * 100.0f) / 243.0f)) / 100.0f, (29.0f * ((this.boxSize[i20][1] * 100.0f) / 81.0f)) / 100.0f, 12);
-                        atexturerenderer.drawScaledImagef(this.uiTextures[9], ((168.0f * ((this.boxSize[i20][0] * 100.0f) / 243.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[i20][0] / 2.0f)) + (this.boxScale * i20) + this.gameStats1[0] + boxXOffset, ((116.0f * ((this.boxSize[i20][1] * 100.0f) / 81.0f)) / 100.0f) + 66.0f, (28.0f * ((this.boxSize[i20][0] * 100.0f) / 243.0f)) / 100.0f, (29.0f * ((this.boxSize[i20][1] * 100.0f) / 81.0f)) / 100.0f, 13);
+                        atexturerenderer.drawScaledImagef(this.uiTextures[9], ((45.0f * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[boxIndex2][0] / 2.0f)) + (this.boxScale * boxIndex2) + this.gameStats1[0] + boxXOffset, ((116.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f) + 66.0f, (64.0f * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f, (29.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f, 12);
+                        atexturerenderer.drawScaledImagef(this.uiTextures[9], ((168.0f * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[boxIndex2][0] / 2.0f)) + (this.boxScale * boxIndex2) + this.gameStats1[0] + boxXOffset, ((116.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f) + 66.0f, (28.0f * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f, (29.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f, 13);
                         int i29 = i24;
                         int i30 = 0;
                         while (true) {
-                            atexturerenderer.drawScaledImagef(this.uiTextures[9], (((182 - (i30 * 17)) * ((this.boxSize[i20][0] * 100.0f) / 243.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[i20][0] / 2.0f)) + (this.boxScale * i20) + this.gameStats1[0] + boxXOffset, ((116.0f * ((this.boxSize[i20][1] * 100.0f) / 81.0f)) / 100.0f) + 66.0f, (18.0f * ((this.boxSize[i20][0] * 100.0f) / 243.0f)) / 100.0f, (27.0f * ((this.boxSize[i20][1] * 100.0f) / 81.0f)) / 100.0f, (i29 % 10) + 14);
+                            atexturerenderer.drawScaledImagef(this.uiTextures[9], (((182 - (i30 * 17)) * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[boxIndex2][0] / 2.0f)) + (this.boxScale * boxIndex2) + this.gameStats1[0] + boxXOffset, ((116.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f) + 66.0f, (18.0f * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f, (27.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f, (i29 % 10) + 14);
                             int i31 = i29 / 10;
                             int i32 = i30 + 1;
                             if (i31 <= 0) {
@@ -12706,7 +12708,7 @@ public class AppInstance extends Game {
                     }
                 }
             }
-            i19 = i20 + 1;
+            boxIndex = boxIndex2 + 1;
         }
         int i33 = 2;
         while (true) {
@@ -12714,17 +12716,17 @@ public class AppInstance extends Game {
             if (i34 >= this.boxCounts[0] + this.boxCounts[1]) {
                 break;
             }
-            if (this.dI[0] == i34) {
+            if (this.currentStageBox[0] == i34) {
                 f = -(243 - this.boxSize[i34][0]);
-            } else if (this.dI[0] + 1 == i34) {
+            } else if (this.currentStageBox[0] + 1 == i34) {
                 f = 243 - this.boxSize[i34][0];
-            } else if (this.dI[0] + 2 == i34) {
+            } else if (this.currentStageBox[0] + 2 == i34) {
                 f = (243 - this.boxSize[i34][0]) + ((243 - this.boxSize[i34 - 1][0]) / 2.0f);
-            } else if (this.dI[0] + 3 == i34) {
+            } else if (this.currentStageBox[0] + 3 == i34) {
                 f = (243 - this.boxSize[i34][0]) + ((243 - this.boxSize[i34 - 1][0]) / 2.0f) + ((243 - this.boxSize[i34 - 2][0]) / 2.0f);
-            } else if (this.dI[0] - 1 == i34) {
+            } else if (this.currentStageBox[0] - 1 == i34) {
                 f = -((243 - this.boxSize[i34][0]) + ((243 - this.boxSize[i34 + 1][0]) / 2.0f));
-            } else if (this.dI[0] - 2 == i34) {
+            } else if (this.currentStageBox[0] - 2 == i34) {
                 f = -((243 - this.boxSize[i34][0]) + ((243 - this.boxSize[i34 + 1][0]) / 2.0f));
             } else {
                 i33 = i34 + 1;
@@ -12743,10 +12745,10 @@ public class AppInstance extends Game {
         }
         atexturerenderer.setImageAlpha(127);
         if (!this.gN) {
-            if (this.dI[2] >= 1) {
+            if (this.currentStageBox[2] >= 1) {
                 atexturerenderer.drawScaledImage(this.uiTextures[10], (int) (49.0f + (10.0f * aMath.sin(this.fQ[3] * 30))), 58, 0);
             }
-            if (this.dI[2] <= this.boxCounts[1] - 2) {
+            if (this.currentStageBox[2] <= this.boxCounts[1] - 2) {
                 atexturerenderer.d(1);
                 atexturerenderer.drawScaledImage(this.uiTextures[10], ((int) (849.0f - (10.0f * aMath.sin(this.fQ[3] * 30)))) + this.w, 58, 0);
             }
@@ -19766,9 +19768,9 @@ public class AppInstance extends Game {
                 if (this.dH == this.bq[this.eQ] - 1 || this.dH >= 48) {
                     this.boxCounts[1] = 48;
                     this.gameStats1[0] = -((this.boxScale * this.boxCounts[0]) + (this.boxScale * 47));
-                    this.dI[0] = this.boxCounts[0];
-                    this.dI[2] = this.bp[this.eQ];
-                    this.dI[1] = (this.boxScale * 100) + (this.gameStats1[0] / this.boxScale);
+                    this.currentStageBox[0] = this.boxCounts[0];
+                    this.currentStageBox[2] = this.bp[this.eQ];
+                    this.currentStageBox[1] = (this.boxScale * 100) + (this.gameStats1[0] / this.boxScale);
                 } else {
                     if (this.bq[this.eQ] + 1 >= 49) {
                         this.boxCounts[1] = 48;
@@ -19776,23 +19778,23 @@ public class AppInstance extends Game {
                         this.boxCounts[1] = this.bq[this.eQ] + 1;
                     }
                     this.gameStats1[0] = -((this.boxScale * this.boxCounts[0]) + (this.boxScale * this.dH));
-                    this.dI[0] = this.boxCounts[0];
-                    this.dI[2] = this.bp[this.eQ];
-                    this.dI[1] = (this.boxScale * 100) + (this.gameStats1[0] / this.boxScale);
+                    this.currentStageBox[0] = this.boxCounts[0];
+                    this.currentStageBox[2] = this.bp[this.eQ];
+                    this.currentStageBox[1] = (this.boxScale * 100) + (this.gameStats1[0] / this.boxScale);
                 }
             } else if ((this.dH == this.bq[this.eQ] - 1 && this.bI == -1) || this.dH == this.bq[this.eQ]) {
                 this.boxCounts[1] = this.bq[this.eQ] + 1;
                 this.gameStats1[0] = -((this.boxScale * this.boxCounts[0]) + (this.boxScale * this.bq[this.eQ]));
-                this.dI[0] = this.boxCounts[0];
-                this.dI[2] = this.bp[this.eQ];
-                this.dI[1] = (this.boxScale * 100) + (this.gameStats1[0] / this.boxScale);
+                this.currentStageBox[0] = this.boxCounts[0];
+                this.currentStageBox[2] = this.bp[this.eQ];
+                this.currentStageBox[1] = (this.boxScale * 100) + (this.gameStats1[0] / this.boxScale);
                 this.dH = this.bq[this.eQ];
             } else {
                 this.boxCounts[1] = this.bq[this.eQ] + 1;
                 this.gameStats1[0] = -((this.boxScale * this.boxCounts[0]) + (this.boxScale * this.dH));
-                this.dI[0] = this.boxCounts[0];
-                this.dI[2] = this.bp[this.eQ];
-                this.dI[1] = (this.boxScale * 100) + (this.gameStats1[0] / this.boxScale);
+                this.currentStageBox[0] = this.boxCounts[0];
+                this.currentStageBox[2] = this.bp[this.eQ];
+                this.currentStageBox[1] = (this.boxScale * 100) + (this.gameStats1[0] / this.boxScale);
             }
             for (int i27 = 0; i27 < getLength(this.boxSize); i27++) {
                 for (int i28 = 0; i28 < getLength(this.boxSize[i27]); i28++) {
@@ -19815,8 +19817,8 @@ public class AppInstance extends Game {
             this.boxScale = 200;
             this.boxCounts[0] = 2;
             int i31 = 0;
-            for (int i32 = 0; i32 < getLength(this.dI); i32++) {
-                this.dI[i32] = this.gT[i32];
+            for (int i32 = 0; i32 < getLength(this.currentStageBox); i32++) {
+                this.currentStageBox[i32] = this.gT[i32];
                 i31 = i32 + 1;
             }
             this.gameStats1[0] = this.gT[i31];
@@ -19831,23 +19833,23 @@ public class AppInstance extends Game {
         this.bI = 0;
         int rand = aMath.rand(4);
         if (rand == 0) {
-            this.dJ[0] = (-ck[cm[this.dI[2]]][0]) + (((getWidth() / 2) - 80) - 200);
-            this.dK[0] = (-ck[cm[this.dI[2]]][1]) + 200;
+            this.dJ[0] = (-ck[cm[this.currentStageBox[2]]][0]) + (((getWidth() / 2) - 80) - 200);
+            this.dK[0] = (-ck[cm[this.currentStageBox[2]]][1]) + 200;
             this.dJ[1] = -200;
             this.dK[1] = -200;
         } else if (rand == 1) {
-            this.dJ[0] = (-ck[cm[this.dI[2]]][0]) + ((getWidth() / 2) - 80) + 200;
-            this.dK[0] = (-ck[cm[this.dI[2]]][1]) + 600;
+            this.dJ[0] = (-ck[cm[this.currentStageBox[2]]][0]) + ((getWidth() / 2) - 80) + 200;
+            this.dK[0] = (-ck[cm[this.currentStageBox[2]]][1]) + 600;
             this.dJ[1] = 200;
             this.dK[1] = 200;
         } else if (rand == 2) {
-            this.dJ[0] = (-ck[cm[this.dI[2]]][0]) + (((getWidth() / 2) - 80) - 200);
-            this.dK[0] = (-ck[cm[this.dI[2]]][1]) + 600;
+            this.dJ[0] = (-ck[cm[this.currentStageBox[2]]][0]) + (((getWidth() / 2) - 80) - 200);
+            this.dK[0] = (-ck[cm[this.currentStageBox[2]]][1]) + 600;
             this.dJ[1] = -200;
             this.dK[1] = 200;
         } else if (rand == 3) {
-            this.dJ[0] = (-ck[cm[this.dI[2]]][0]) + ((getWidth() / 2) - 80) + 200;
-            this.dK[0] = (-ck[cm[this.dI[2]]][1]) + 200;
+            this.dJ[0] = (-ck[cm[this.currentStageBox[2]]][0]) + ((getWidth() / 2) - 80) + 200;
+            this.dK[0] = (-ck[cm[this.currentStageBox[2]]][1]) + 200;
             this.dJ[1] = 200;
             this.dK[1] = -200;
         }
@@ -19872,7 +19874,7 @@ public class AppInstance extends Game {
         this.gN = false;
         this.dY = 0;
         this.dS = 0;
-        this.dR = this.dI[2];
+        this.dR = this.currentStageBox[2];
         this.ct = 0;
         int i38 = 0;
         for (int i39 = 0; i39 < 10; i39++) {
@@ -19884,12 +19886,12 @@ public class AppInstance extends Game {
         for (int i40 = 0; i40 < getLength(this.boxSize); i40++) {
             for (int i41 = 0; i41 < getLength(this.boxSize[i40]); i41++) {
                 if (i41 == 0) {
-                    if (i40 == this.dI[0]) {
+                    if (i40 == this.currentStageBox[0]) {
                         this.boxSize[i40][i41] = (((((this.gameStats1[0] % this.boxScale) * 100) / this.boxScale) * 49) / 100) + 243;
                         if (this.gameStats1[0] > 0) {
                             this.boxSize[i40][i41] = 243 - (((((this.gameStats1[0] % this.boxScale) * 100) / this.boxScale) * 49) / 100);
                         }
-                    } else if (i40 == this.dI[0] + 1) {
+                    } else if (i40 == this.currentStageBox[0] + 1) {
                         this.boxSize[i40][i41] = 194 - (((((this.gameStats1[0] % this.boxScale) * 100) / this.boxScale) * 49) / 100);
                     } else {
                         this.boxSize[i40][i41] = 194;
@@ -19900,12 +19902,12 @@ public class AppInstance extends Game {
                         this.boxSize[i40][i41] = 194;
                     }
                 } else if (i41 == 1) {
-                    if (i40 == this.dI[0]) {
+                    if (i40 == this.currentStageBox[0]) {
                         this.boxSize[i40][i41] = (((((this.gameStats1[0] % this.boxScale) * 100) / this.boxScale) * 17) / 100) + 81;
                         if (this.gameStats1[0] > 0) {
                             this.boxSize[i40][i41] = 81 - (((((this.gameStats1[0] % this.boxScale) * 100) / this.boxScale) * 17) / 100);
                         }
-                    } else if (i40 == this.dI[0] + 1) {
+                    } else if (i40 == this.currentStageBox[0] + 1) {
                         this.boxSize[i40][i41] = 64 - (((((this.gameStats1[0] % this.boxScale) * 100) / this.boxScale) * 17) / 100);
                     } else {
                         this.boxSize[i40][i41] = 64;
@@ -19982,12 +19984,12 @@ public class AppInstance extends Game {
             }
         }
         if (this.ek[0] < 0) {
-            if (this.dI[0] != (-(this.gameStats1[0] / this.boxScale))) {
+            if (this.currentStageBox[0] != (-(this.gameStats1[0] / this.boxScale))) {
                 aSound.getInstance().play(10);
             }
             this.gp[6] = false;
         } else if (this.ek[0] > 0) {
-            if (this.dI[1] != ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale) {
+            if (this.currentStageBox[1] != ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale) {
                 aSound.getInstance().play(10);
             }
             this.gp[6] = false;
@@ -19995,24 +19997,24 @@ public class AppInstance extends Game {
             aSound.getInstance().play(10);
             this.gp[6] = true;
         }
-        if (this.dI[0] != (-(this.gameStats1[0] / this.boxScale))) {
-            this.dI[0] = -(this.gameStats1[0] / this.boxScale);
+        if (this.currentStageBox[0] != (-(this.gameStats1[0] / this.boxScale))) {
+            this.currentStageBox[0] = -(this.gameStats1[0] / this.boxScale);
         }
-        if (this.dI[1] != ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale) {
-            this.dI[1] = ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale;
+        if (this.currentStageBox[1] != ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale) {
+            this.currentStageBox[1] = ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale;
         }
         if ((-this.gameStats1[0]) % this.boxScale >= this.boxScale / 2) {
-            if ((this.dI[0] + 1) - this.boxCounts[0] != this.dI[2]) {
-                this.dI[2] = (this.dI[0] + 1) - this.boxCounts[0];
-                this.gameStats1[0] = ((-ck[cm[this.dI[2]]][0]) + (getWidth() / 2)) - 80;
-                this.gameStats1[1] = (-ck[cm[this.dI[2]]][1]) + 320 + 80;
+            if ((this.currentStageBox[0] + 1) - this.boxCounts[0] != this.currentStageBox[2]) {
+                this.currentStageBox[2] = (this.currentStageBox[0] + 1) - this.boxCounts[0];
+                this.gameStats1[0] = ((-ck[cm[this.currentStageBox[2]]][0]) + (getWidth() / 2)) - 80;
+                this.gameStats1[1] = (-ck[cm[this.currentStageBox[2]]][1]) + 320 + 80;
                 this.dJ[1] = this.dJ[0] - this.gameStats1[0];
                 this.dK[1] = this.dK[0] - this.gameStats1[1];
             }
-        } else if (this.dI[0] - this.boxCounts[0] != this.dI[2]) {
-            this.dI[2] = this.dI[0] - this.boxCounts[0];
-            this.gameStats1[0] = ((-ck[cm[this.dI[2]]][0]) + (getWidth() / 2)) - 80;
-            this.gameStats1[1] = (-ck[cm[this.dI[2]]][1]) + 320 + 80;
+        } else if (this.currentStageBox[0] - this.boxCounts[0] != this.currentStageBox[2]) {
+            this.currentStageBox[2] = this.currentStageBox[0] - this.boxCounts[0];
+            this.gameStats1[0] = ((-ck[cm[this.currentStageBox[2]]][0]) + (getWidth() / 2)) - 80;
+            this.gameStats1[1] = (-ck[cm[this.currentStageBox[2]]][1]) + 320 + 80;
             this.dJ[1] = this.dJ[0] - this.gameStats1[0];
             this.dK[1] = this.dK[0] - this.gameStats1[1];
         }
@@ -20040,46 +20042,46 @@ public class AppInstance extends Game {
                 int[] iArr11 = this.fx;
                 iArr11[0] = iArr11[0] + 1;
                 if (this.aZ == 0) {
-                    if (this.currentEnergy >= this.stageStats[this.dI[2]] + X[this.eQ]) {
+                    if (this.currentEnergy >= this.stageStats[this.currentStageBox[2]] + X[this.eQ]) {
                         if (this.fx[0] > getLength(dv) - 2) {
                             this.gN = true;
                         }
                         if (this.fx[0] > getLength(dv) - 1) {
                             this.fx[0] = 0;
-                            this.dH = this.dI[2];
+                            this.dH = this.currentStageBox[2];
                             this.eE[2] = true;
                             this.gameStats1[2] = 0;
                             this.gameStats1[3] = 960;
                             aSound.getInstance().play(7);
                             this.gA[0] = 0;
                             this.ct = 0;
-                            this.currentEnergy -= this.stageStats[this.dI[2]] + X[this.eQ];
+                            this.currentEnergy -= this.stageStats[this.currentStageBox[2]] + X[this.eQ];
                         }
                     } else if (this.fx[0] > getLength(dv) - 1) {
                         this.fx[0] = 0;
                     }
-                } else if (this.currentEnergy >= this.stageStats[this.dI[2]] + X[this.eQ]) {
+                } else if (this.currentEnergy >= this.stageStats[this.currentStageBox[2]] + X[this.eQ]) {
                     if (this.fx[0] > getLength(dv) - 2) {
                         this.gN = true;
                     }
                     if (this.fx[0] > getLength(dv) - 1) {
                         this.fx[0] = 0;
-                        this.dH = this.dI[2];
+                        this.dH = this.currentStageBox[2];
                         this.eE[2] = true;
                         this.gameStats1[2] = 0;
                         this.gameStats1[3] = 960;
                         aSound.getInstance().play(7);
                         this.gA[0] = 0;
                         this.ct = 0;
-                        this.currentEnergy -= this.stageStats[this.dI[2]] + X[this.eQ];
+                        this.currentEnergy -= this.stageStats[this.currentStageBox[2]] + X[this.eQ];
                     }
                 } else {
                     int i2 = 0;
                     for (int i3 = 0; i3 < 10; i3++) {
                         i2 += (cB[10] * this.bO[i3][10]) / 100;
                     }
-                    if (this.br[this.eQ][this.dI[2]] >= 1) {
-                        if (ad[10] + (this.bx[10] * 10) + i2 >= ((((((this.br[this.eQ][this.dI[2]] + 1 > 8 ? 8 : this.br[this.eQ][this.dI[2]] + 1) + 6) * (X[this.eQ] + this.stageStats[this.dI[2]])) * 10) / ((this.br[this.eQ][this.dI[2]] + 1 > 8 ? 8 : this.br[this.eQ][this.dI[2]] + 1) * 6)) + 5) / 10) {
+                    if (this.br[this.eQ][this.currentStageBox[2]] >= 1) {
+                        if (ad[10] + (this.bx[10] * 10) + i2 >= ((((((this.br[this.eQ][this.currentStageBox[2]] + 1 > 8 ? 8 : this.br[this.eQ][this.currentStageBox[2]] + 1) + 6) * (X[this.eQ] + this.stageStats[this.currentStageBox[2]])) * 10) / ((this.br[this.eQ][this.currentStageBox[2]] + 1 > 8 ? 8 : this.br[this.eQ][this.currentStageBox[2]] + 1) * 6)) + 5) / 10) {
                             if (this.fx[0] > getLength(dv) - 1) {
                                 this.fx[0] = 0;
                                 f();
@@ -20094,7 +20096,7 @@ public class AppInstance extends Game {
                             this.gw = 5;
                             return false;
                         }
-                    } else if (i2 + ad[10] + (this.bx[10] * 10) >= this.stageStats[this.dI[2]] + X[this.eQ]) {
+                    } else if (i2 + ad[10] + (this.bx[10] * 10) >= this.stageStats[this.currentStageBox[2]] + X[this.eQ]) {
                         if (this.fx[0] > getLength(dv) - 1) {
                             this.fx[0] = 0;
                             f();
@@ -20332,7 +20334,7 @@ public class AppInstance extends Game {
                     if (this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0) {
                         if (this.aZ != 0) {
                             aSound.getInstance().play(11);
-                        } else if (this.currentEnergy < this.stageStats[this.dI[2]] + X[this.eQ]) {
+                        } else if (this.currentEnergy < this.stageStats[this.currentStageBox[2]] + X[this.eQ]) {
                             aSound.getInstance().play(15);
                         } else {
                             aSound.getInstance().play(11);
@@ -20577,8 +20579,8 @@ public class AppInstance extends Game {
                 this.fQ[2] = 0;
                 f();
                 int i16 = 0;
-                for (int i17 = 0; i17 < getLength(this.dI); i17++) {
-                    this.gT[i17] = this.dI[i17];
+                for (int i17 = 0; i17 < getLength(this.currentStageBox); i17++) {
+                    this.gT[i17] = this.currentStageBox[i17];
                     i16 = i17 + 1;
                 }
                 this.gT[i16] = this.gameStats1[0];
@@ -20595,12 +20597,12 @@ public class AppInstance extends Game {
         for (int i19 = 0; i19 < getLength(this.boxSize); i19++) {
             for (int i20 = 0; i20 < getLength(this.boxSize[i19]); i20++) {
                 if (i20 == 0) {
-                    if (i19 == this.dI[0]) {
+                    if (i19 == this.currentStageBox[0]) {
                         this.boxSize[i19][i20] = (((((this.gameStats1[0] % this.boxScale) * 100) / this.boxScale) * 49) / 100) + 243;
                         if (this.gameStats1[0] > 0) {
                             this.boxSize[i19][i20] = 243 - (((((this.gameStats1[0] % this.boxScale) * 100) / this.boxScale) * 49) / 100);
                         }
-                    } else if (i19 == this.dI[0] + 1) {
+                    } else if (i19 == this.currentStageBox[0] + 1) {
                         this.boxSize[i19][i20] = 194 - (((((this.gameStats1[0] % this.boxScale) * 100) / this.boxScale) * 49) / 100);
                     } else {
                         this.boxSize[i19][i20] = 194;
@@ -20611,12 +20613,12 @@ public class AppInstance extends Game {
                         this.boxSize[i19][i20] = 194;
                     }
                 } else if (i20 == 1) {
-                    if (i19 == this.dI[0]) {
+                    if (i19 == this.currentStageBox[0]) {
                         this.boxSize[i19][i20] = (((((this.gameStats1[0] % this.boxScale) * 100) / this.boxScale) * 17) / 100) + 81;
                         if (this.gameStats1[0] > 0) {
                             this.boxSize[i19][i20] = 81 - (((((this.gameStats1[0] % this.boxScale) * 100) / this.boxScale) * 17) / 100);
                         }
-                    } else if (i19 == this.dI[0] + 1) {
+                    } else if (i19 == this.currentStageBox[0] + 1) {
                         this.boxSize[i19][i20] = 64 - (((((this.gameStats1[0] % this.boxScale) * 100) / this.boxScale) * 17) / 100);
                     } else {
                         this.boxSize[i19][i20] = 64;
@@ -20639,14 +20641,14 @@ public class AppInstance extends Game {
         this.ea += 2;
         int[] iArr42 = this.fQ;
         iArr42[3] = iArr42[3] + 1;
-        if (this.dR == this.dI[2] && this.dS == 0) {
+        if (this.dR == this.currentStageBox[2] && this.dS == 0) {
             this.dU = 0;
             this.dS = 0;
-            this.dM[0] = ck[cm[this.dI[2]]][0] - 28;
-            this.dN[0] = ck[cm[this.dI[2]]][1] - 28;
+            this.dM[0] = ck[cm[this.currentStageBox[2]]][0] - 28;
+            this.dN[0] = ck[cm[this.currentStageBox[2]]][1] - 28;
         } else {
             if (this.dS == 0) {
-                if (this.dR >= this.dI[2]) {
+                if (this.dR >= this.currentStageBox[2]) {
                     this.dP[0] = cm[this.dR];
                     this.dP[1] = cm[this.dR - 1];
                     this.dQ = 0;
