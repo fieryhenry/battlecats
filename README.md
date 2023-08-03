@@ -9,8 +9,8 @@ with the game. Some issues are in the original APK (e.g no screen transitions, b
 lots aren't.
 
 I started with version 1.0.0 because it has the least amount of code and so it is easier to get a
-compiling a functional app. Once this version is fully working we can move on to adding later
-versions.
+compiling a functional app. Once this version is fully working we can move on to adding code for 
+later versions.
 
 I have also removed all of the advertising and tracking code for now.
 
@@ -26,7 +26,7 @@ it is a 999999 cat food APK, but I have removed all of that code in the new APK.
 5. Go to the `Build` tab in the main toolbar and click `Build Bundle(s) / APK(s)` -> `Build APK(s)`
 6. It might need to download more stuff so just wait
 7. When done, click `locate` in the notification or go to the
-`battlecats/app/build/outputs/apk/debug` folder
+`battlecats/app/build/outputs/apk/debug` folder for the final APK.
 
 ## Contributing
 
@@ -34,13 +34,16 @@ If you want to contribute, then I recommend that you decompile the original APK 
 you can use stuff like the smali view or the cfg graphs in the gui to help fix issues with the
 decompilation.
 
-If you want to view the java code for large functions in jadx but jadx skips it because the cfg
-modification limit has been reached, then you will need to modify the jadx source code and compile
-it yourself to remove the limit. Just search for `CFG modification limit reached` in the code and
-comment out the if block. The file containing that code is here:
+If you get a message that the cfg modification limit has been reached and you want to read the java
+code for that function, then you will need to modify the jadx source code and compile it yourself
+to remove the limit. Search for `CFG modification limit reached` in the code and comment out the
+if block. The file containing that code is here:
 `jadx-core/src/main/java/jadx/core/dex/visitors/blocks/BlockProcessor.java`
 
 Most of the issues are probably around jadx incorrectly decompiling control flow stuff like loops
 and if statements. Jadx creates lots of `while(true)` loops with no way for them to stop. I have
 fixed some of those from looping infinitely, although I'm not confident I did that correctly.
-So if you are looking for sources of error check for those loops first.
+So if you are looking for sources of error check for those first.
+
+When debugging the app, make sure that you are viewing the `GLThread` thread instead of the `main`
+thread if you want to debug the main game code.
