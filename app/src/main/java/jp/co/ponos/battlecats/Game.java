@@ -170,7 +170,7 @@ public class Game extends MyApplicationBase {
     int hF;
     int hG;
     int hH;
-    boolean hI;
+    boolean isScrolling;
     int hl;
     int hp;
     boolean hr;
@@ -364,8 +364,8 @@ public class Game extends MyApplicationBase {
     int[] dC = new int[4];
     int[] dD = new int[4];
     int[] currentStageBox = new int[4];
-    int[] dJ = new int[3];
-    int[] dK = new int[3];
+    int[] mapOffsetX = new int[3];
+    int[] mapOffsetY = new int[3];
     int[] dL = new int[2];
     int[] dM = new int[200];
     int[] dN = new int[200];
@@ -374,7 +374,7 @@ public class Game extends MyApplicationBase {
     int[] eh = new int[5];
     int[] ei = new int[3];
     int[] ej = new int[1];
-    int[] ek = new int[3];
+    int[] scrollAmount = new int[3];
     int[] el = new int[1];
     int[] em = new int[4];
     int[] en = new int[4];
@@ -529,7 +529,7 @@ public class Game extends MyApplicationBase {
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
-    public int K() {
+    public int getCurrentXTouch() {
         return this.currentXTouch;
     }
 
@@ -549,7 +549,7 @@ public class Game extends MyApplicationBase {
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
-    public int O() {
+    public int getPreviousXTouch() {
         return this.prevXTouch;
     }
 
@@ -1119,8 +1119,8 @@ public class Game extends MyApplicationBase {
         for (int i72 = 0; i72 < getLength(this.gg); i72++) {
             this.gg[i72] = 0;
         }
-        for (int i73 = 0; i73 < getLength(this.ek); i73++) {
-            this.ek[i73] = 0;
+        for (int i73 = 0; i73 < getLength(this.scrollAmount); i73++) {
+            this.scrollAmount[i73] = 0;
         }
         for (int i74 = 0; i74 < getLength(this.eE); i74++) {
             this.eE[i74] = false;
@@ -2121,7 +2121,7 @@ public class Game extends MyApplicationBase {
 
     /* JADX INFO: Access modifiers changed from: package-private */
     public boolean b(int i, int i2, int i3, int i4) {
-        return K() >= i && K() <= i3 + i && L() >= i2 && L() <= i4 + i2;
+        return getCurrentXTouch() >= i && getCurrentXTouch() <= i3 + i && L() >= i2 && L() <= i4 + i2;
     }
 
     public void onResume() {

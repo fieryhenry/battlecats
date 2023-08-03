@@ -105,7 +105,7 @@ public class AppInstance extends Game {
             this.eE[0] = false;
         }
         this.gameStats1[2] = getWidth() / 2;
-        this.hI = false;
+        this.isScrolling = false;
     }
 
     boolean B() {
@@ -129,23 +129,23 @@ public class AppInstance extends Game {
                 this.fQ[1] = this.stampAnims[1].a();
                 this.gameStats1[2] = (int) (this.gameStats1[2] * 0.8d);
                 int[] iArr4 = this.gameStats1;
-                iArr4[0] = iArr4[0] + this.ek[0];
+                iArr4[0] = iArr4[0] + this.scrollAmount[0];
                 int[] iArr5 = this.gameStats1;
-                iArr5[1] = iArr5[1] - this.ek[0];
-                this.ek[0] = (int) (this.ek[0] * 0.9d);
+                iArr5[1] = iArr5[1] - this.scrollAmount[0];
+                this.scrollAmount[0] = (int) (this.scrollAmount[0] * 0.9d);
                 if (this.gameStats1[0] >= (this.boxScale / 2) - 20) {
                     this.gameStats1[0] = (this.boxScale / 2) - 20;
                     this.gameStats1[1] = this.boxScale * 100;
-                    this.ek[0] = 0;
+                    this.scrollAmount[0] = 0;
                 } else if (this.gameStats1[0] < (-((this.boxScale * 30) - 20)) + (this.boxScale / 2)) {
                     this.gameStats1[0] = (-((this.boxScale * 30) - 20)) + (this.boxScale / 2);
-                    this.ek[0] = 0;
+                    this.scrollAmount[0] = 0;
                     this.gameStats1[1] = this.boxScale * 100;
                 }
                 if (!R() || this.eb) {
-                    this.hI = false;
-                    if ((this.ek[0] >= 0 && this.ek[0] < 8) || (this.ek[0] > -8 && this.ek[0] <= 0)) {
-                        this.ek[0] = 0;
+                    this.isScrolling = false;
+                    if ((this.scrollAmount[0] >= 0 && this.scrollAmount[0] < 8) || (this.scrollAmount[0] > -8 && this.scrollAmount[0] <= 0)) {
+                        this.scrollAmount[0] = 0;
                         if (this.gameStats1[0] % this.boxScale != 0) {
                             if ((-this.gameStats1[0]) >= 0) {
                                 if ((-this.gameStats1[0]) % this.boxScale >= this.boxScale / 2) {
@@ -176,29 +176,29 @@ public class AppInstance extends Game {
                         }
                     }
                 } else {
-                    if (K() - O() <= -10 || K() - O() >= 10 || this.hI) {
-                        this.hI = true;
+                    if (getCurrentXTouch() - getPreviousXTouch() <= -10 || getCurrentXTouch() - getPreviousXTouch() >= 10 || this.isScrolling) {
+                        this.isScrolling = true;
                     } else {
-                        this.ek[0] = 0;
+                        this.scrollAmount[0] = 0;
                     }
-                    if (this.hI) {
-                        this.ek[0] = K() - O();
-                        if (this.ek[0] != 0 && !this.eE[9]) {
+                    if (this.isScrolling) {
+                        this.scrollAmount[0] = getCurrentXTouch() - getPreviousXTouch();
+                        if (this.scrollAmount[0] != 0 && !this.eE[9]) {
                             this.eE[9] = true;
                         }
                     }
                 }
-                if (this.ek[0] < 0) {
+                if (this.scrollAmount[0] < 0) {
                     if (this.hq[0] != (-(this.gameStats1[0] / this.boxScale))) {
                         aSound.getInstance().play(10);
                     }
                     this.gp[3] = false;
-                } else if (this.ek[0] > 0) {
+                } else if (this.scrollAmount[0] > 0) {
                     if (this.hq[1] != ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale) {
                         aSound.getInstance().play(10);
                     }
                     this.gp[3] = false;
-                } else if (this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && !this.gp[3]) {
+                } else if (this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gp[3]) {
                     aSound.getInstance().play(10);
                     this.gp[3] = true;
                 }
@@ -344,8 +344,8 @@ public class AppInstance extends Game {
         for (int i19 = 0; i19 < getLength(this.gZ); i19++) {
             this.gZ[i19] = 0;
         }
-        for (int i20 = 0; i20 < getLength(this.ek); i20++) {
-            this.ek[i20] = 0;
+        for (int i20 = 0; i20 < getLength(this.scrollAmount); i20++) {
+            this.scrollAmount[i20] = 0;
         }
         for (int i21 = 0; i21 < getLength(this.fR); i21++) {
             this.fR[i21] = 0;
@@ -485,7 +485,7 @@ public class AppInstance extends Game {
         } else {
             this.bi = 10;
         }
-        this.hI = false;
+        this.isScrolling = false;
     }
 
     boolean D() {
@@ -563,33 +563,33 @@ public class AppInstance extends Game {
                     }
                 } else if (this.fG[0] == 1) {
                     int[] iArr7 = this.gameStats1;
-                    iArr7[2] = iArr7[2] + this.ek[0];
-                    this.ek[0] = (int) (this.ek[0] * 0.9d);
+                    iArr7[2] = iArr7[2] + this.scrollAmount[0];
+                    this.scrollAmount[0] = (int) (this.scrollAmount[0] * 0.9d);
                     if (this.gameStats1[2] > ((this.boxScale / 2) - (this.boxScale * this.boxCounts[0])) - 20) {
                         this.gameStats1[2] = ((this.boxScale / 2) - (this.boxScale * this.boxCounts[0])) - 20;
                         this.gameStats1[3] = this.boxScale * 100;
-                        this.ek[0] = 0;
+                        this.scrollAmount[0] = 0;
                     } else if (this.gameStats1[2] < (-((((this.boxScale * (this.boxCounts[0] - 1)) + (this.boxScale * this.boxCounts[1])) + (this.boxScale / 2)) - 20))) {
                         this.gameStats1[2] = -((((this.boxScale * (this.boxCounts[0] - 1)) + (this.boxScale * this.boxCounts[1])) + (this.boxScale / 2)) - 20);
-                        this.ek[0] = 0;
+                        this.scrollAmount[0] = 0;
                         this.gameStats1[3] = this.boxScale * 100;
                     }
                     if (this.fx[3] == 0 && this.fx[5] == 0 && R()) {
-                        if (K() - O() <= -10 || K() - O() >= 10 || this.hI) {
-                            this.hI = true;
+                        if (getCurrentXTouch() - getPreviousXTouch() <= -10 || getCurrentXTouch() - getPreviousXTouch() >= 10 || this.isScrolling) {
+                            this.isScrolling = true;
                         } else {
-                            this.ek[0] = 0;
+                            this.scrollAmount[0] = 0;
                         }
-                        if (this.hI) {
-                            this.ek[0] = K() - O();
-                            if (this.ek[0] != 0 && !this.eE[9]) {
+                        if (this.isScrolling) {
+                            this.scrollAmount[0] = getCurrentXTouch() - getPreviousXTouch();
+                            if (this.scrollAmount[0] != 0 && !this.eE[9]) {
                                 this.eE[9] = true;
                             }
                         }
                     } else {
-                        this.hI = false;
-                        if ((this.ek[0] >= 0 && this.ek[0] < 8) || (this.ek[0] > -8 && this.ek[0] <= 0)) {
-                            this.ek[0] = 0;
+                        this.isScrolling = false;
+                        if ((this.scrollAmount[0] >= 0 && this.scrollAmount[0] < 8) || (this.scrollAmount[0] > -8 && this.scrollAmount[0] <= 0)) {
+                            this.scrollAmount[0] = 0;
                             if (this.gameStats1[2] % this.boxScale != 0) {
                                 if ((-this.gameStats1[2]) % this.boxScale >= this.boxScale / 2) {
                                     this.gameStats1[2] = this.gameStats1[2] - ((((this.gameStats1[2] % this.boxScale) + this.boxScale) + 4) / 4);
@@ -608,17 +608,17 @@ public class AppInstance extends Game {
                             this.eE[9] = false;
                         }
                     }
-                    if (this.ek[0] < 0) {
+                    if (this.scrollAmount[0] < 0) {
                         if (this.fG[1] != (-(this.gameStats1[2] / this.boxScale))) {
                             aSound.getInstance().play(10);
                         }
                         this.gp[6] = false;
-                    } else if (this.ek[0] > 0) {
+                    } else if (this.scrollAmount[0] > 0) {
                         if (this.fG[2] != ((this.boxScale * 100) + this.gameStats1[2]) / this.boxScale) {
                             aSound.getInstance().play(10);
                         }
                         this.gp[6] = false;
-                    } else if (this.gameStats1[2] % this.boxScale == 0 && this.ek[0] == 0 && !this.gp[6]) {
+                    } else if (this.gameStats1[2] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gp[6]) {
                         aSound.getInstance().play(10);
                         this.gp[6] = true;
                     }
@@ -682,7 +682,7 @@ public class AppInstance extends Game {
                                 }
                             }
                         } else {
-                            if (this.gameStats1[2] % this.boxScale != 0 || this.ek[0] != 0 || !S() || !b((getWidth() / 2) - 164, 257, 328, 263)) {
+                            if (this.gameStats1[2] % this.boxScale != 0 || this.scrollAmount[0] != 0 || !S() || !b((getWidth() / 2) - 164, 257, 328, 263)) {
                                 this.gp[3] = false;
                             } else if (!this.gp[3]) {
                                 aSound.getInstance().play(10);
@@ -694,12 +694,12 @@ public class AppInstance extends Game {
                                 aSound.getInstance().play(10);
                                 this.gp[5] = true;
                             }
-                            if (this.fG[3] - this.gB[0] >= 1 && this.gameStats1[2] % this.boxScale == 0 && this.ek[0] == 0 && S() && b((((getWidth() / 2) - 164) + 271) - 40, 428, 68, 68)) {
+                            if (this.fG[3] - this.gB[0] >= 1 && this.gameStats1[2] % this.boxScale == 0 && this.scrollAmount[0] == 0 && S() && b((((getWidth() / 2) - 164) + 271) - 40, 428, 68, 68)) {
                                 int[] iArr11 = this.fx;
                                 iArr11[4] = iArr11[4] + 1;
                             }
                             if (this.fx[4] == 0) {
-                                if (this.gameStats1[2] % this.boxScale == 0 && this.ek[0] == 0 && S() && b((getWidth() / 2) - 164, 257, 328, 263)) {
+                                if (this.gameStats1[2] % this.boxScale == 0 && this.scrollAmount[0] == 0 && S() && b((getWidth() / 2) - 164, 257, 328, 263)) {
                                     int[] iArr12 = this.fx;
                                     iArr12[3] = iArr12[3] + 1;
                                     aSound.getInstance().play(11);
@@ -1203,8 +1203,8 @@ public class AppInstance extends Game {
         for (int i9 = 0; i9 < getLength(this.boxCounts); i9++) {
             this.boxCounts[i9] = 0;
         }
-        for (int i10 = 0; i10 < getLength(this.ek); i10++) {
-            this.ek[i10] = 0;
+        for (int i10 = 0; i10 < getLength(this.scrollAmount); i10++) {
+            this.scrollAmount[i10] = 0;
         }
         this.boxCounts[0] = 0;
         this.boxCounts[1] = 11;
@@ -1270,7 +1270,7 @@ public class AppInstance extends Game {
             this.eE[i19] = false;
         }
         this.eE[0] = true;
-        this.hI = false;
+        this.isScrolling = false;
     }
 
     boolean F() {
@@ -1278,23 +1278,23 @@ public class AppInstance extends Game {
         iArr[3] = iArr[3] + 1;
         if (!this.eE[0] && !this.eE[1] && !this.eb && !this.eE[13]) {
             int[] iArr2 = this.gameStats1;
-            iArr2[0] = iArr2[0] + this.ek[0];
+            iArr2[0] = iArr2[0] + this.scrollAmount[0];
             int[] iArr3 = this.gameStats1;
-            iArr3[1] = iArr3[1] - this.ek[0];
-            this.ek[0] = (int) (this.ek[0] * 0.9d);
+            iArr3[1] = iArr3[1] - this.scrollAmount[0];
+            this.scrollAmount[0] = (int) (this.scrollAmount[0] * 0.9d);
             if (this.gameStats1[0] >= (this.boxScale / 2) - 20) {
                 this.gameStats1[0] = (this.boxScale / 2) - 20;
                 this.gameStats1[1] = this.boxScale * 100;
-                this.ek[0] = 0;
+                this.scrollAmount[0] = 0;
             } else if (this.gameStats1[0] < (-((((this.boxScale * ((this.boxCounts[0] + this.boxCounts[1]) + this.boxCounts[2])) - this.boxScale) + (this.boxScale / 2)) - 20))) {
                 this.gameStats1[0] = -((((this.boxScale * ((this.boxCounts[0] + this.boxCounts[1]) + this.boxCounts[2])) - this.boxScale) + (this.boxScale / 2)) - 20);
-                this.ek[0] = 0;
+                this.scrollAmount[0] = 0;
                 this.gameStats1[1] = this.boxScale * 100;
             }
             if (!R() || this.eE[5]) {
-                this.hI = false;
-                if ((this.ek[0] >= 0 && this.ek[0] < 8) || (this.ek[0] > -8 && this.ek[0] <= 0)) {
-                    this.ek[0] = 0;
+                this.isScrolling = false;
+                if ((this.scrollAmount[0] >= 0 && this.scrollAmount[0] < 8) || (this.scrollAmount[0] > -8 && this.scrollAmount[0] <= 0)) {
+                    this.scrollAmount[0] = 0;
                     if (this.gameStats1[0] % this.boxScale != 0) {
                         if ((-this.gameStats1[0]) >= 0) {
                             if ((-this.gameStats1[0]) % this.boxScale >= this.boxScale / 2) {
@@ -1325,29 +1325,29 @@ public class AppInstance extends Game {
                     }
                 }
             } else {
-                if (K() - O() <= -10 || K() - O() >= 10 || this.hI) {
-                    this.hI = true;
+                if (getCurrentXTouch() - getPreviousXTouch() <= -10 || getCurrentXTouch() - getPreviousXTouch() >= 10 || this.isScrolling) {
+                    this.isScrolling = true;
                 } else {
-                    this.ek[0] = 0;
+                    this.scrollAmount[0] = 0;
                 }
-                if (this.hI) {
-                    this.ek[0] = K() - O();
-                    if (this.ek[0] != 0 && !this.eE[9]) {
+                if (this.isScrolling) {
+                    this.scrollAmount[0] = getCurrentXTouch() - getPreviousXTouch();
+                    if (this.scrollAmount[0] != 0 && !this.eE[9]) {
                         this.eE[9] = true;
                     }
                 }
             }
-            if (this.ek[0] < 0) {
+            if (this.scrollAmount[0] < 0) {
                 if (this.fq[0] != (-(this.gameStats1[0] / this.boxScale))) {
                     aSound.getInstance().play(10);
                 }
                 this.gp[3] = false;
-            } else if (this.ek[0] > 0) {
+            } else if (this.scrollAmount[0] > 0) {
                 if (this.fq[1] != ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale) {
                     aSound.getInstance().play(10);
                 }
                 this.gp[3] = false;
-            } else if (this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && !this.gp[3]) {
+            } else if (this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gp[3]) {
                 aSound.getInstance().play(10);
                 this.gp[3] = true;
             }
@@ -1552,7 +1552,7 @@ public class AppInstance extends Game {
                         } else if (this.el[0] == -1 && this.eD[6] == 1) {
                             this.el[0] = 1;
                         }
-                        this.ek[0] = 0;
+                        this.scrollAmount[0] = 0;
                         this.eE[0] = true;
                         this.eE[2] = true;
                     }
@@ -1564,10 +1564,10 @@ public class AppInstance extends Game {
                     this.eE[4] = false;
                 } else if (!this.eE[2] && !this.eE[3]) {
                     this.ei[0] = L() - N();
-                    this.ej[0] = (int) aMath.atan2(L() - N(), K() - M());
+                    this.ej[0] = (int) aMath.atan2(L() - N(), getCurrentXTouch() - M());
                     if (this.gO && !this.eE[4]) {
                         if (this.ei[0] <= -60 && this.ej[0] >= 225 && this.ej[0] <= 315) {
-                            this.ek[0] = 0;
+                            this.scrollAmount[0] = 0;
                             if (!this.eE[0]) {
                                 this.el[0] = 1;
                                 this.eD[6] = 0;
@@ -1591,7 +1591,7 @@ public class AppInstance extends Game {
                             } else if (this.el[0] == -1 && this.eD[6] == 1) {
                                 this.el[0] = 1;
                             }
-                            this.ek[0] = 0;
+                            this.scrollAmount[0] = 0;
                             this.eE[0] = true;
                             this.eE[2] = true;
                         }
@@ -1903,8 +1903,8 @@ public class AppInstance extends Game {
         }
         this.boxSize[0][0] = 328;
         this.boxSize[0][1] = 263;
-        for (int i7 = 0; i7 < getLength(this.ek); i7++) {
-            this.ek[i7] = 0;
+        for (int i7 = 0; i7 < getLength(this.scrollAmount); i7++) {
+            this.scrollAmount[i7] = 0;
         }
         for (int i8 = 0; i8 < getLength(this.gameStats1); i8++) {
             this.gameStats1[i8] = 0;
@@ -2229,20 +2229,20 @@ public class AppInstance extends Game {
         this.gJ = false;
         this.gK = 0;
         this.gF[0] = false;
-        this.hI = false;
+        this.isScrolling = false;
     }
 
     boolean I() {
         int[] iArr = this.gameStats1;
-        iArr[0] = iArr[0] + this.ek[0];
-        this.ek[0] = (int) (this.ek[0] * 0.9d);
+        iArr[0] = iArr[0] + this.scrollAmount[0];
+        this.scrollAmount[0] = (int) (this.scrollAmount[0] * 0.9d);
         if (this.gameStats1[0] >= ((this.boxScale / 2) - this.boxScale) - 20) {
             this.gameStats1[0] = ((this.boxScale / 2) - this.boxScale) - 20;
             this.gameStats1[1] = this.boxScale * 100;
-            this.ek[0] = 0;
+            this.scrollAmount[0] = 0;
         } else if (this.gameStats1[0] < (-(((this.boxScale * ((this.boxCounts[0] + this.boxCounts[1]) + this.boxCounts[2])) + (this.boxScale / 2)) - 20))) {
             this.gameStats1[0] = -(((this.boxScale * ((this.boxCounts[0] + this.boxCounts[1]) + this.boxCounts[2])) + (this.boxScale / 2)) - 20);
-            this.ek[0] = 0;
+            this.scrollAmount[0] = 0;
             this.gameStats1[1] = this.boxScale * 100;
         }
         if (!this.eE[0] && this.bB[6] == 0) {
@@ -2255,9 +2255,9 @@ public class AppInstance extends Game {
             return false;
         }
         if (!R() || this.fh != 0 || this.fn || this.eE[6] || this.eE[11] || this.fx[10] != 0 || this.fx[11] != 0 || this.fx[12] != 0 || this.gI || this.eE[0] || this.eE[1] || this.eE[13] || this.eb || this.gJ || this.gF[0] || this.gF[1]) {
-            this.hI = false;
-            if ((this.ek[0] >= 0 && this.ek[0] < 8) || (this.ek[0] > -8 && this.ek[0] <= 0)) {
-                this.ek[0] = 0;
+            this.isScrolling = false;
+            if ((this.scrollAmount[0] >= 0 && this.scrollAmount[0] < 8) || (this.scrollAmount[0] > -8 && this.scrollAmount[0] <= 0)) {
+                this.scrollAmount[0] = 0;
                 if (this.gameStats1[0] % this.boxScale != 0) {
                     if ((-this.gameStats1[0]) % this.boxScale >= this.boxScale / 2) {
                         this.gameStats1[0] = this.gameStats1[0] - ((((this.gameStats1[0] % this.boxScale) + this.boxScale) + 4) / 4);
@@ -2276,30 +2276,30 @@ public class AppInstance extends Game {
                 this.eE[5] = false;
             }
         } else {
-            if (K() - O() <= -10 || K() - O() >= 10 || this.hI) {
-                this.hI = true;
+            if (getCurrentXTouch() - getPreviousXTouch() <= -10 || getCurrentXTouch() - getPreviousXTouch() >= 10 || this.isScrolling) {
+                this.isScrolling = true;
             } else {
-                this.ek[0] = 0;
+                this.scrollAmount[0] = 0;
             }
-            if (this.hI) {
-                this.ek[0] = K() - O();
-                if (this.ek[0] != 0 && !this.eE[5]) {
+            if (this.isScrolling) {
+                this.scrollAmount[0] = getCurrentXTouch() - getPreviousXTouch();
+                if (this.scrollAmount[0] != 0 && !this.eE[5]) {
                     this.eE[5] = true;
                 }
             }
         }
         if (!this.eE[0] && !this.eE[1] && !this.eE[13] && !this.eb) {
-            if (this.ek[0] < 0) {
+            if (this.scrollAmount[0] < 0) {
                 if (this.ff[0] != (-(this.gameStats1[0] / this.boxScale))) {
                     aSound.getInstance().play(10);
                 }
                 this.gp[0] = false;
-            } else if (this.ek[0] > 0) {
+            } else if (this.scrollAmount[0] > 0) {
                 if (this.ff[1] != ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale) {
                     aSound.getInstance().play(10);
                 }
                 this.gp[0] = false;
-            } else if (this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && !this.gp[0]) {
+            } else if (this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gp[0]) {
                 aSound.getInstance().play(10);
                 this.gp[0] = true;
             }
@@ -2438,7 +2438,7 @@ public class AppInstance extends Game {
                         }
                         aSound.getInstance().setVolume(50);
                         return false;
-                    } else if (!this.eE[5] && this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0) {
+                    } else if (!this.eE[5] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0) {
                         boolean z3 = false;
                         for (int i11 = 0; i11 < getLength(this.slotCatIDs); i11++) {
                             if (this.slotCatIDs[i11] >= 2) {
@@ -2464,7 +2464,7 @@ public class AppInstance extends Game {
                     }
                 }
             } else {
-                if ((this.ff[2] > -1 && this.ff[2] < this.boxCounts[1] + 1) || this.eE[5] || this.gameStats1[0] % this.boxScale != 0 || this.ek[0] != 0 || !R() || !b(((((getWidth() / 2) - (this.boxSize[this.ff[0]][0] / 2)) + (this.boxScale * this.ff[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.ff[0]][0]), 559 - this.boxSize[this.ff[0]][1], this.boxSize[this.ff[0]][0], this.boxSize[this.ff[0]][1])) {
+                if ((this.ff[2] > -1 && this.ff[2] < this.boxCounts[1] + 1) || this.eE[5] || this.gameStats1[0] % this.boxScale != 0 || this.scrollAmount[0] != 0 || !R() || !b(((((getWidth() / 2) - (this.boxSize[this.ff[0]][0] / 2)) + (this.boxScale * this.ff[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.ff[0]][0]), 559 - this.boxSize[this.ff[0]][1], this.boxSize[this.ff[0]][0], this.boxSize[this.ff[0]][1])) {
                     this.gp[2] = false;
                 } else if (!this.gp[2]) {
                     aSound.getInstance().play(10);
@@ -2473,14 +2473,14 @@ public class AppInstance extends Game {
                 if (!this.gJ && !this.gI && !this.fn && !this.eE[6] && this.fh == 0) {
                     if (!R() || !b(this.fw[11][0], this.fw[11][1], this.fw[11][2], this.fw[11][3])) {
                         this.gp[11] = false;
-                    } else if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1] && !this.eE[5] && this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && !this.gp[11]) {
+                    } else if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1] && !this.eE[5] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gp[11]) {
                         aSound.getInstance().play(10);
                         this.gp[11] = true;
                     }
                     if (this.bq[0] >= 48) {
                         if (!R() || !b(this.fw[12][0], this.fw[12][1], this.fw[12][2], this.fw[12][3])) {
                             this.gp[12] = false;
-                        } else if (!this.gp[12] && !this.eE[5] && this.bv[this.ff[2]] + 1 >= 10 && this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0) {
+                        } else if (!this.gp[12] && !this.eE[5] && this.bv[this.ff[2]] + 1 >= 10 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0) {
                             aSound.getInstance().play(10);
                             this.gp[12] = true;
                         }
@@ -2491,34 +2491,34 @@ public class AppInstance extends Game {
                         aSound.getInstance().play(10);
                         this.gp[10] = true;
                     }
-                    if (this.fx[2] == 0 && this.ff[0] - 2 >= 0 && this.ff[2] <= 0 && this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && !this.eE[9] && S() && b(((((getWidth() / 2) - (this.boxSize[this.ff[0] - 1][0] / 2)) + (this.boxScale * (this.ff[0] - 1))) + this.gameStats1[0]) - ((328 - this.boxSize[this.ff[0] - 1][0]) + ((328 - this.boxSize[(this.ff[0] - 1) + 1][0]) / 2)), 559 - this.boxSize[this.ff[0] - 1][1], this.boxSize[this.ff[0] - 1][0], this.boxSize[this.ff[0] - 1][1])) {
+                    if (this.fx[2] == 0 && this.ff[0] - 2 >= 0 && this.ff[2] <= 0 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && S() && b(((((getWidth() / 2) - (this.boxSize[this.ff[0] - 1][0] / 2)) + (this.boxScale * (this.ff[0] - 1))) + this.gameStats1[0]) - ((328 - this.boxSize[this.ff[0] - 1][0]) + ((328 - this.boxSize[(this.ff[0] - 1) + 1][0]) / 2)), 559 - this.boxSize[this.ff[0] - 1][1], this.boxSize[this.ff[0] - 1][0], this.boxSize[this.ff[0] - 1][1])) {
                         int[] iArr8 = this.fx;
                         iArr8[2] = iArr8[2] + 1;
                         this.ff[5] = -1;
                         aSound.getInstance().play(11);
                         this.eE[11] = true;
                     }
-                    if (this.fx[2] == 0 && this.ff[0] - 2 <= this.boxCounts[1] && this.ff[2] >= this.boxCounts[1] && this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && !this.eE[9] && S() && b(((getWidth() / 2) - (this.boxSize[this.ff[0] + 1][0] / 2)) + (this.boxScale * (this.ff[0] + 1)) + this.gameStats1[0] + (328 - this.boxSize[this.ff[0] + 1][0]), 559 - this.boxSize[this.ff[0] + 1][1], this.boxSize[this.ff[0] + 1][0], this.boxSize[this.ff[0] + 1][1])) {
+                    if (this.fx[2] == 0 && this.ff[0] - 2 <= this.boxCounts[1] && this.ff[2] >= this.boxCounts[1] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && S() && b(((getWidth() / 2) - (this.boxSize[this.ff[0] + 1][0] / 2)) + (this.boxScale * (this.ff[0] + 1)) + this.gameStats1[0] + (328 - this.boxSize[this.ff[0] + 1][0]), 559 - this.boxSize[this.ff[0] + 1][1], this.boxSize[this.ff[0] + 1][0], this.boxSize[this.ff[0] + 1][1])) {
                         int[] iArr9 = this.fx;
                         iArr9[2] = iArr9[2] + 1;
                         this.ff[5] = 1;
                         aSound.getInstance().play(11);
                         this.eE[11] = true;
                     }
-                    if (this.fx[2] == 0 && ((this.ff[2] <= -1 || this.ff[2] >= this.boxCounts[1] + 1) && !this.eE[5] && this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && S() && b(((((getWidth() / 2) - (this.boxSize[this.ff[0]][0] / 2)) + (this.boxScale * this.ff[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.ff[0]][0]), 559 - this.boxSize[this.ff[0]][1], this.boxSize[this.ff[0]][0], this.boxSize[this.ff[0]][1]))) {
+                    if (this.fx[2] == 0 && ((this.ff[2] <= -1 || this.ff[2] >= this.boxCounts[1] + 1) && !this.eE[5] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && S() && b(((((getWidth() / 2) - (this.boxSize[this.ff[0]][0] / 2)) + (this.boxScale * this.ff[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.ff[0]][0]), 559 - this.boxSize[this.ff[0]][1], this.boxSize[this.ff[0]][0], this.boxSize[this.ff[0]][1]))) {
                         int[] iArr10 = this.fx;
                         iArr10[2] = iArr10[2] + 1;
                         aSound.getInstance().play(11);
                         this.ff[5] = 0;
                         this.eE[11] = true;
                     } else if (!this.eE[11] && S() && b(this.fw[11][0], this.fw[11][1], this.fw[11][2], this.fw[11][3])) {
-                        if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1] && !this.eE[5] && this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && !this.gJ) {
+                        if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1] && !this.eE[5] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gJ) {
                             aSound.getInstance().play(11);
                             int[] iArr11 = this.fx;
                             iArr11[11] = iArr11[11] + 1;
                         }
                     } else if (!this.eE[11] && S() && b(this.fw[12][0], this.fw[12][1], this.fw[12][2], this.fw[12][3])) {
-                        if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1] && !this.eE[5] && this.bv[this.boxCatIDs[this.ff[2]]] + 1 >= 10 && this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && this.bq[0] >= 48) {
+                        if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1] && !this.eE[5] && this.bv[this.boxCatIDs[this.ff[2]]] + 1 >= 10 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && this.bq[0] >= 48) {
                             aSound.getInstance().play(11);
                             int[] iArr12 = this.fx;
                             iArr12[12] = iArr12[12] + 1;
@@ -2596,7 +2596,7 @@ public class AppInstance extends Game {
         if (z5 || this.gJ || this.gI || !R() || this.eE[4] || !b(((getWidth() / 2) - (this.boxSize[this.ff[0] + this.gameStats1[0]][0] / 2)) + (this.boxScale * (this.ff[0] + this.gameStats1[0])) + this.gameStats1[0] + this.gameStats1[1], 559 - this.boxSize[this.ff[0] + this.gameStats1[0]][1], this.boxSize[this.ff[0] + this.gameStats1[0]][0], this.boxSize[this.ff[0] + this.gameStats1[0]][1])) {
             this.fk[10] = 0;
         } else {
-            if (this.ek[0] == 0) {
+            if (this.scrollAmount[0] == 0) {
                 int[] iArr16 = this.fk;
                 iArr16[10] = iArr16[10] + 1;
             } else {
@@ -2674,7 +2674,7 @@ public class AppInstance extends Game {
                 this.fn = true;
             }
             this.ei[1] = L();
-            this.gameStats1[1] = K();
+            this.gameStats1[1] = getCurrentXTouch();
             if (this.fn && !this.eE[3] && b(0, 80, getWidth(), 200)) {
                 int i15 = 0;
                 while (true) {
@@ -2774,7 +2774,7 @@ public class AppInstance extends Game {
                 iArr18[i17] = iArr18[i17] + 1;
                 if (this.fk[i17] >= 3 && this.fh == 0) {
                     this.fh = i17 + 1;
-                    this.fl = K() - this.fg[this.fh - 1][0];
+                    this.fl = getCurrentXTouch() - this.fg[this.fh - 1][0];
                     this.fm = L() - this.fg[this.fh - 1][1];
                     this.eE[3] = true;
                 }
@@ -2782,7 +2782,7 @@ public class AppInstance extends Game {
         }
         if (this.gJ || this.gI || !R() || this.fh < 1 || !this.eE[3] || this.eE[8]) {
             if (this.eE[3]) {
-                this.fj[this.fh - 1][0] = (K() - this.fl) - this.fg[this.fh - 1][0];
+                this.fj[this.fh - 1][0] = (getCurrentXTouch() - this.fl) - this.fg[this.fh - 1][0];
                 this.fj[this.fh - 1][1] = (L() - this.fm) - this.fg[this.fh - 1][1];
             }
             this.eE[3] = false;
@@ -2834,7 +2834,7 @@ public class AppInstance extends Game {
                             this.fj[(this.fh - 1) + 1 + i18][3] = this.fj[(this.fh - 1) + i18][3];
                             this.fj[(this.fh - 1) + i18][2] = 0;
                             this.fj[(this.fh - 1) + i18][3] = 0;
-                            this.fj[(this.fh - 1) + 1 + i18][0] = this.fg[((this.fh - 1) + 1) + i18][0] - (K() - this.fl);
+                            this.fj[(this.fh - 1) + 1 + i18][0] = this.fg[((this.fh - 1) + 1) + i18][0] - (getCurrentXTouch() - this.fl);
                             this.fj[(this.fh - 1) + 1 + i18][1] = this.fg[((this.fh - 1) + 1) + i18][1] - (L() + this.fm);
                             this.fj[(this.fh - 1) + i18][0] = this.fg[((this.fh - 1) + 1) + i18][0] - this.fg[(this.fh - 1) + i18][0];
                             this.fj[(this.fh - 1) + i18][1] = this.fg[((this.fh - 1) + 1) + i18][1] - this.fg[(this.fh - 1) + i18][1];
@@ -2852,7 +2852,7 @@ public class AppInstance extends Game {
                             this.fj[((this.fh - 1) - 1) + i18][3] = this.fj[(this.fh - 1) + i18][3];
                             this.fj[(this.fh - 1) + i18][2] = 0;
                             this.fj[(this.fh - 1) + i18][3] = 0;
-                            this.fj[((this.fh - 1) - 1) + i18][0] = this.fg[((this.fh - 1) - 1) + i18][0] - (K() - this.fl);
+                            this.fj[((this.fh - 1) - 1) + i18][0] = this.fg[((this.fh - 1) - 1) + i18][0] - (getCurrentXTouch() - this.fl);
                             this.fj[((this.fh - 1) - 1) + i18][1] = this.fg[((this.fh - 1) - 1) + i18][1] - (L() + this.fm);
                             this.fj[(this.fh - 1) + i18][0] = this.fg[((this.fh - 1) - 1) + i18][0] - this.fg[(this.fh - 1) + i18][0];
                             this.fj[(this.fh - 1) + i18][1] = this.fg[((this.fh - 1) - 1) + i18][1] - this.fg[(this.fh - 1) + i18][1];
@@ -2892,7 +2892,7 @@ public class AppInstance extends Game {
                 this.fj[this.fh - 1][3] = 40;
             }
             int[] iArr26 = this.fj[this.fh - 1];
-            iArr26[0] = iArr26[0] + (K() - O());
+            iArr26[0] = iArr26[0] + (getCurrentXTouch() - getPreviousXTouch());
             int[] iArr27 = this.fj[this.fh - 1];
             iArr27[1] = iArr27[1] + (L() - P());
             for (int i20 = 0; i20 < 10; i20++) {
@@ -2907,7 +2907,7 @@ public class AppInstance extends Game {
                                 this.fj[(this.fh - 1) + 1 + i21][3] = this.fj[(this.fh - 1) + i21][3];
                                 this.fj[(this.fh - 1) + i21][2] = 0;
                                 this.fj[(this.fh - 1) + i21][3] = 0;
-                                this.fj[(this.fh - 1) + 1 + i21][0] = this.fg[((this.fh - 1) + 1) + i21][0] - (K() - this.fl);
+                                this.fj[(this.fh - 1) + 1 + i21][0] = this.fg[((this.fh - 1) + 1) + i21][0] - (getCurrentXTouch() - this.fl);
                                 this.fj[(this.fh - 1) + 1 + i21][1] = this.fg[((this.fh - 1) + 1) + i21][1] - (L() + this.fm);
                                 this.fj[(this.fh - 1) + i21][0] = this.fg[((this.fh - 1) + 1) + i21][0] - this.fg[(this.fh - 1) + i21][0];
                                 this.fj[(this.fh - 1) + i21][1] = this.fg[((this.fh - 1) + 1) + i21][1] - this.fg[(this.fh - 1) + i21][1];
@@ -2925,7 +2925,7 @@ public class AppInstance extends Game {
                                 this.fj[((this.fh - 1) - 1) + i21][3] = this.fj[(this.fh - 1) + i21][3];
                                 this.fj[(this.fh - 1) + i21][2] = 0;
                                 this.fj[(this.fh - 1) + i21][3] = 0;
-                                this.fj[((this.fh - 1) - 1) + i21][0] = this.fg[((this.fh - 1) - 1) + i21][0] - (K() - this.fl);
+                                this.fj[((this.fh - 1) - 1) + i21][0] = this.fg[((this.fh - 1) - 1) + i21][0] - (getCurrentXTouch() - this.fl);
                                 this.fj[((this.fh - 1) - 1) + i21][1] = this.fg[((this.fh - 1) - 1) + i21][1] - (L() + this.fm);
                                 this.fj[(this.fh - 1) + i21][0] = this.fg[((this.fh - 1) - 1) + i21][0] - this.fg[(this.fh - 1) + i21][0];
                                 this.fj[(this.fh - 1) + i21][1] = this.fg[((this.fh - 1) - 1) + i21][1] - this.fg[(this.fh - 1) + i21][1];
@@ -3966,7 +3966,7 @@ public class AppInstance extends Game {
             }
             //aAd.b().a(a(this.ht[0], this.hu[0], this.hv, this.hw[0], this.hy, this.hz, i127, this.hB, this.hC[0], this.hC[1], this.hC[2], this.hC[3], this.hx, this.hG, this.hF, i125, this.hD, this.hE));
             ae();
-            this.hI = false;
+            this.isScrolling = false;
             aScoreUploader.getInstance().setScoreInstance(this.c2);
             aScoreUploader.getInstance().c();
 
@@ -6966,7 +6966,7 @@ public class AppInstance extends Game {
                                     } else if (!S()) {
                                         this.eE[1] = false;
                                     }
-                                    if ((this.ek[0] == 0 && !this.eE[3]) || (this.fT && !this.eE[3] && !this.eE[4] && this.ek[0] == 0)) {
+                                    if ((this.scrollAmount[0] == 0 && !this.eE[3]) || (this.fT && !this.eE[3] && !this.eE[4] && this.scrollAmount[0] == 0)) {
                                         for (int i71 = 0; i71 < 6; i71++) {
                                             if (R() && b(this.eJ[i71][0], this.eJ[i71][1], this.eJ[i71][2], this.eJ[i71][3]) && this.eM[i71]) {
                                                 if (this.dW != i71 || !this.dV) {
@@ -6983,7 +6983,7 @@ public class AppInstance extends Game {
                                             this.gA[1] = 5;
                                         }
                                     }
-                                    if (this.ek[0] == 0 && !this.eE[3]) {
+                                    if (this.scrollAmount[0] == 0 && !this.eE[3]) {
                                         if (!this.fT) {
                                             if (!R() || !b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                                                 this.gp[0] = false;
@@ -7100,7 +7100,7 @@ public class AppInstance extends Game {
                                                     iArr67[5] = iArr67[5] + 1;
                                                     aSound.getInstance().play(11);
                                                 } else if (!S() || !b(this.hj[0][0], this.hj[0][1], this.hj[0][2], this.hj[0][3]) || this.dH > 47 || this.dV) {
-                                                    if (!this.eE[0] && this.ek[0] == 0 && !this.eE[1] && !this.eE[2]) {
+                                                    if (!this.eE[0] && this.scrollAmount[0] == 0 && !this.eE[1] && !this.eE[2]) {
                                                         if (this.eD[0] == 0) {
                                                             this.gameStats1[0] = 0;
                                                         } else if (this.eD[0] == 1) {
@@ -7229,13 +7229,13 @@ public class AppInstance extends Game {
                                 if (this.battleData[14] == 0) {
                                     this.battleData[12] = 0;
                                 }
-                                this.ek[0] = 0;
+                                this.scrollAmount[0] = 0;
                             } else if (this.battleData[5] > ((int) (((this.bV[0] * f2) - 9600) / f2))) {
                                 this.battleData[5] = (int) (((this.bV[0] * f2) - 9600) / f2);
                                 if (this.battleData[14] == 0) {
                                     this.battleData[12] = 0;
                                 }
-                                this.ek[0] = 0;
+                                this.scrollAmount[0] = 0;
                             }
                             int i79 = 1;
                             while (true) {
@@ -9440,7 +9440,7 @@ public class AppInstance extends Game {
                                                 texRenderer.drawScaledImage(this.uiTextures[4], (809 - (dv[this.fx[11]] / 2)) + this.w, ((640 - this.eI[1]) - (dv[this.fx[11]] / 2)) + this.eZ, dv[this.fx[11]] + 68, dv[this.fx[11]] + 68, 100);
                                             }
                                         }
-                                        if ((this.battleData[14] == 1 || this.battleData[14] == 4) && this.battleData[15] == 7 && !this.eE[0] && this.ek[0] == 0 && !this.eE[1] && !this.eE[2] && !this.eE[3] && !this.eb && R() && b(this.fw[4][0], this.fw[4][1], this.fw[4][2], this.fw[4][3])) {
+                                        if ((this.battleData[14] == 1 || this.battleData[14] == 4) && this.battleData[15] == 7 && !this.eE[0] && this.scrollAmount[0] == 0 && !this.eE[1] && !this.eE[2] && !this.eE[3] && !this.eb && R() && b(this.fw[4][0], this.fw[4][1], this.fw[4][2], this.fw[4][3])) {
                                             texRenderer.drawScaledImage(this.settingsMenuTexture[2], (getWidth() / 2) - 190, (640 - this.eI[1]) + this.eZ, 381, 72, ((this.fQ[5] % 4) / 2) + 4);
                                         }
                                         if (this.ct > 0 && this.battleData[14] == 0) {
@@ -10477,8 +10477,8 @@ public class AppInstance extends Game {
                                 for (int i29 = 0; i29 < getLength(this.eM); i29++) {
                                     this.eM[i29] = false;
                                 }
-                                for (int i30 = 0; i30 < getLength(this.ek); i30++) {
-                                    this.ek[i30] = 0;
+                                for (int i30 = 0; i30 < getLength(this.scrollAmount); i30++) {
+                                    this.scrollAmount[i30] = 0;
                                 }
                                 setScene(100);
                                 this.fP = 0;
@@ -10548,8 +10548,8 @@ public class AppInstance extends Game {
                                 return false;
                             }
                         } else if (this.battleData[14] == 1) {
-                            for (int i35 = 0; i35 < getLength(this.ek); i35++) {
-                                this.ek[i35] = 0;
+                            for (int i35 = 0; i35 < getLength(this.scrollAmount); i35++) {
+                                this.scrollAmount[i35] = 0;
                             }
                             if (this.battleData[21] == 0) {
                                 if (!this.gu) {
@@ -10587,8 +10587,8 @@ public class AppInstance extends Game {
                                     for (int i45 = 0; i45 < getLength(this.fz); i45++) {
                                         this.fz[i45] = 0;
                                     }
-                                    for (int i46 = 0; i46 < getLength(this.ek); i46++) {
-                                        this.ek[i46] = 0;
+                                    for (int i46 = 0; i46 < getLength(this.scrollAmount); i46++) {
+                                        this.scrollAmount[i46] = 0;
                                     }
                                     for (int i47 = 0; i47 < getLength(this.uiTextures); i47++) {
                                         this.uiTextures[i47].reset();
@@ -10677,8 +10677,8 @@ public class AppInstance extends Game {
                                 for (int i54 = 0; i54 < getLength(this.fz); i54++) {
                                     this.fz[i54] = 0;
                                 }
-                                for (int i55 = 0; i55 < getLength(this.ek); i55++) {
-                                    this.ek[i55] = 0;
+                                for (int i55 = 0; i55 < getLength(this.scrollAmount); i55++) {
+                                    this.scrollAmount[i55] = 0;
                                 }
                                 if (this.aZ == 0) {
                                     for (int i56 = 0; i56 < getLength(this.eM); i56++) {
@@ -10894,8 +10894,8 @@ public class AppInstance extends Game {
                                         }
                                     }
                                 }
-                                for (int i92 = 0; i92 < getLength(this.ek); i92++) {
-                                    this.ek[i92] = 0;
+                                for (int i92 = 0; i92 < getLength(this.scrollAmount); i92++) {
+                                    this.scrollAmount[i92] = 0;
                                 }
                                 for (int i93 = 0; i93 < getLength(this.fx); i93++) {
                                     this.fx[i93] = 0;
@@ -10993,8 +10993,8 @@ public class AppInstance extends Game {
                             for (int i118 = 0; i118 < getLength(this.fz); i118++) {
                                 this.fz[i118] = 0;
                             }
-                            for (int i119 = 0; i119 < getLength(this.ek); i119++) {
-                                this.ek[i119] = 0;
+                            for (int i119 = 0; i119 < getLength(this.scrollAmount); i119++) {
+                                this.scrollAmount[i119] = 0;
                             }
                             this.fD = 0;
                             this.fF = -1;
@@ -11405,7 +11405,7 @@ public class AppInstance extends Game {
         if (this.battleData[15] != 0) {
             handleBattleZoom();
         } else {
-            this.ek[0] = 0;
+            this.scrollAmount[0] = 0;
         }
         int[] iArr = this.battleData;
         iArr[16] = iArr[16] + 1;
@@ -11641,7 +11641,7 @@ public class AppInstance extends Game {
                         this.zoom.reset();
                     }
                 } else {
-                    if (!this.eE[0] && this.ek[0] == 0 && !this.eE[1] && !this.eE[2] && !this.eE[3]) {
+                    if (!this.eE[0] && this.scrollAmount[0] == 0 && !this.eE[1] && !this.eE[2] && !this.eE[3]) {
                         if (!R() || !b(this.fw[4][0], this.fw[4][1], this.fw[4][2], this.fw[4][3])) {
                             this.gp[4] = false;
                         } else if (!this.gp[4]) {
@@ -11663,7 +11663,7 @@ public class AppInstance extends Game {
                             }
                         }
                     }
-                    if (!this.eE[0] && this.ek[0] == 0 && !this.eE[1] && !this.eE[2] && !this.eE[3]) {
+                    if (!this.eE[0] && this.scrollAmount[0] == 0 && !this.eE[1] && !this.eE[2] && !this.eE[3]) {
                         if (S() && b(this.fw[4][0], this.fw[4][1], this.fw[4][2], this.fw[4][3])) {
                             int[] iArr10 = this.fx;
                             iArr10[0] = iArr10[0] + 1;
@@ -12394,7 +12394,7 @@ public class AppInstance extends Game {
         if (this.battleData[15] != 0) {
             handleBattleZoom();
         } else {
-            this.ek[0] = 0;
+            this.scrollAmount[0] = 0;
         }
         int[] iArr = this.battleData;
         iArr[16] = iArr[16] + 1;
@@ -12460,7 +12460,7 @@ public class AppInstance extends Game {
                             MyUtility.getInstance().addButton(MyUtility.getString("network_unavailable"));
                         }
                     }
-                } else if (!this.eE[0] && this.ek[0] == 0 && !this.eE[1] && !this.eE[2] && !this.eE[3]) {
+                } else if (!this.eE[0] && this.scrollAmount[0] == 0 && !this.eE[1] && !this.eE[2] && !this.eE[3]) {
                     if (!R() || !b(this.fw[4][0], this.fw[4][1], this.fw[4][2], this.fw[4][3])) {
                         this.gp[4] = false;
                     } else if (!this.gp[4]) {
@@ -12513,24 +12513,24 @@ public class AppInstance extends Game {
         int dotIndex1 = 0;
         atexturerenderer.setColor(220, 223, 209);
         atexturerenderer.c(0, 0, getWidth(), getHeight());
-        atexturerenderer.drawScaledImage(this.uiTextures[6], this.dJ[0] + 3156, this.dK[0] + 12, 258, 412, 10);
-        atexturerenderer.drawScaledImage(this.uiTextures[6], this.dJ[0] + 2782, this.dK[0] + 986, 153, 153, 8);
-        atexturerenderer.drawScaledImage(this.uiTextures[6], this.dJ[0] + 2680, this.dK[0] + 1023, 86, 86, 7);
-        atexturerenderer.drawScaledImage(this.uiTextures[6], this.dJ[0] + 2271, this.dK[0] + 1068, 664, 464, 0);
-        atexturerenderer.drawScaledImage(this.uiTextures[6], this.dJ[0] + 1363, this.dK[0] + 1485, 1572, 1155, 1);
-        atexturerenderer.drawScaledImage(this.uiTextures[6], this.dJ[0] + 1010, this.dK[0] + 1852, 135, 95, 9);
-        atexturerenderer.drawScaledImage(this.uiTextures[6], this.dJ[0] + 11, this.dK[0] + 1000, 292, 135, 3);
-        atexturerenderer.drawScaledImage(this.uiTextures[6], this.dJ[0] + 360, this.dK[0] + 1043, 89, 83, 5);
-        atexturerenderer.drawScaledImage(this.uiTextures[6], this.dJ[0] + 873, this.dK[0] + 785, 316, 230, 2);
-        atexturerenderer.drawScaledImage(this.uiTextures[6], this.dJ[0] + 1197, this.dK[0] + 741, 76, 55, 6);
-        atexturerenderer.drawScaledImage(this.uiTextures[6], this.dJ[0] + 1280, this.dK[0] + 581, 323, 153, 4);
-        atexturerenderer.drawScaledImage(this.uiTextures[7], this.dJ[0] + 3082, this.dK[0] + 0, 70, 113, 48);
-        atexturerenderer.drawScaledImage(this.uiTextures[7], this.dJ[0] + 2321, this.dK[0] + 308, 1569, 701, 49);
-        atexturerenderer.drawScaledImage(this.uiTextures[11], this.dJ[0] + 90, this.dK[0] + 2018, 1289, 781, 0);
-        atexturerenderer.drawScaledImage(this.uiTextures[11], this.dJ[0] + 12, this.dK[0] + 2336, 172, 172, 4);
-        atexturerenderer.drawScaledImage(this.uiTextures[11], this.dJ[0] + 238, this.dK[0] + 2785, 280, 147, 1);
-        atexturerenderer.drawScaledImage(this.uiTextures[11], this.dJ[0] + 183, this.dK[0] + 2945, 236, 147, 2);
-        atexturerenderer.drawScaledImage(this.uiTextures[11], this.dJ[0] + 163, this.dK[0] + 2912, 30, 27, 3);
+        atexturerenderer.drawScaledImage(this.uiTextures[6], this.mapOffsetX[0] + 3156, this.mapOffsetY[0] + 12, 258, 412, 10);
+        atexturerenderer.drawScaledImage(this.uiTextures[6], this.mapOffsetX[0] + 2782, this.mapOffsetY[0] + 986, 153, 153, 8);
+        atexturerenderer.drawScaledImage(this.uiTextures[6], this.mapOffsetX[0] + 2680, this.mapOffsetY[0] + 1023, 86, 86, 7);
+        atexturerenderer.drawScaledImage(this.uiTextures[6], this.mapOffsetX[0] + 2271, this.mapOffsetY[0] + 1068, 664, 464, 0);
+        atexturerenderer.drawScaledImage(this.uiTextures[6], this.mapOffsetX[0] + 1363, this.mapOffsetY[0] + 1485, 1572, 1155, 1);
+        atexturerenderer.drawScaledImage(this.uiTextures[6], this.mapOffsetX[0] + 1010, this.mapOffsetY[0] + 1852, 135, 95, 9);
+        atexturerenderer.drawScaledImage(this.uiTextures[6], this.mapOffsetX[0] + 11, this.mapOffsetY[0] + 1000, 292, 135, 3);
+        atexturerenderer.drawScaledImage(this.uiTextures[6], this.mapOffsetX[0] + 360, this.mapOffsetY[0] + 1043, 89, 83, 5);
+        atexturerenderer.drawScaledImage(this.uiTextures[6], this.mapOffsetX[0] + 873, this.mapOffsetY[0] + 785, 316, 230, 2);
+        atexturerenderer.drawScaledImage(this.uiTextures[6], this.mapOffsetX[0] + 1197, this.mapOffsetY[0] + 741, 76, 55, 6);
+        atexturerenderer.drawScaledImage(this.uiTextures[6], this.mapOffsetX[0] + 1280, this.mapOffsetY[0] + 581, 323, 153, 4);
+        atexturerenderer.drawScaledImage(this.uiTextures[7], this.mapOffsetX[0] + 3082, this.mapOffsetY[0] + 0, 70, 113, 48);
+        atexturerenderer.drawScaledImage(this.uiTextures[7], this.mapOffsetX[0] + 2321, this.mapOffsetY[0] + 308, 1569, 701, 49);
+        atexturerenderer.drawScaledImage(this.uiTextures[11], this.mapOffsetX[0] + 90, this.mapOffsetY[0] + 2018, 1289, 781, 0);
+        atexturerenderer.drawScaledImage(this.uiTextures[11], this.mapOffsetX[0] + 12, this.mapOffsetY[0] + 2336, 172, 172, 4);
+        atexturerenderer.drawScaledImage(this.uiTextures[11], this.mapOffsetX[0] + 238, this.mapOffsetY[0] + 2785, 280, 147, 1);
+        atexturerenderer.drawScaledImage(this.uiTextures[11], this.mapOffsetX[0] + 183, this.mapOffsetY[0] + 2945, 236, 147, 2);
+        atexturerenderer.drawScaledImage(this.uiTextures[11], this.mapOffsetX[0] + 163, this.mapOffsetY[0] + 2912, 30, 27, 3);
         int stageIndex = 0;
         while (true) { // draw dotted line between stages
             int stageIndex1 = stageIndex;
@@ -12546,8 +12546,8 @@ public class AppInstance extends Game {
                     if (dotIndex >= 200) {
                         break;
                     }
-                    atexturerenderer.drawScaledImage(this.uiTextures[9], (int) (((ck[i7][0] + this.dJ[0]) + (((dotIndex * 20) + 24) * aMath.cos(atan2))) - 8.0f), (int) (((ck[i7][1] + this.dK[0]) + (((dotIndex * 20) + 24) * aMath.sin(atan2))) - 8.0f), 16, 16, 1);
-                    dotIndex1 = isInsideCircle((int) (((float) (ck[i7][0] + this.dJ[0])) + (((float) ((dotIndex * 20) + 24)) * aMath.cos(atan2))), (int) (((float) (ck[i7][1] + this.dK[0])) + (((float) ((dotIndex * 20) + 24)) * aMath.sin(atan2))), 8, this.dJ[0] + ck[i8][0], this.dK[0] + ck[i8][1], 20) ? 0 : dotIndex + 1;
+                    atexturerenderer.drawScaledImage(this.uiTextures[9], (int) (((ck[i7][0] + this.mapOffsetX[0]) + (((dotIndex * 20) + 24) * aMath.cos(atan2))) - 8.0f), (int) (((ck[i7][1] + this.mapOffsetY[0]) + (((dotIndex * 20) + 24) * aMath.sin(atan2))) - 8.0f), 16, 16, 1);
+                    dotIndex1 = isInsideCircle((int) (((float) (ck[i7][0] + this.mapOffsetX[0])) + (((float) ((dotIndex * 20) + 24)) * aMath.cos(atan2))), (int) (((float) (ck[i7][1] + this.mapOffsetY[0])) + (((float) ((dotIndex * 20) + 24)) * aMath.sin(atan2))), 8, this.mapOffsetX[0] + ck[i8][0], this.mapOffsetY[0] + ck[i8][1], 20) ? 0 : dotIndex + 1;
                     if (dotIndex1 == 0) {
                         break;
                     }
@@ -12566,9 +12566,9 @@ public class AppInstance extends Game {
             atexturerenderer.setImageAlpha(255);
             atexturerenderer.d(0);
             if (stageIndex2 == this.bq[this.eQ]) {
-                atexturerenderer.drawScaledImage(this.uiTextures[9], (ck[i12][0] + this.dJ[0]) - 23, (ck[i12][1] + this.dK[0]) - 23, 47, 47, 4);
+                atexturerenderer.drawScaledImage(this.uiTextures[9], (ck[i12][0] + this.mapOffsetX[0]) - 23, (ck[i12][1] + this.mapOffsetY[0]) - 23, 47, 47, 4);
             } else if (this.br[this.eQ][stageIndex2] >= 1) {
-                atexturerenderer.drawScaledImage(this.uiTextures[9], (ck[i12][0] + this.dJ[0]) - 20, (ck[i12][1] + this.dK[0]) - 20, 41, 41, 2);
+                atexturerenderer.drawScaledImage(this.uiTextures[9], (ck[i12][0] + this.mapOffsetX[0]) - 20, (ck[i12][1] + this.mapOffsetY[0]) - 20, 41, 41, 2);
                 atexturerenderer.d(0);
             }
             stageIndex1 = stageIndex2 + 1;
@@ -12576,7 +12576,7 @@ public class AppInstance extends Game {
 
         // draw cat shadow
         atexturerenderer.setImageAlpha(63);
-        atexturerenderer.drawScaledImage(this.uiTextures[1], (this.dM[this.mapCatPosition] + this.dJ[0]) - 1, this.dN[this.mapCatPosition] + this.dK[0] + 40, 59, 26, 6);
+        atexturerenderer.drawScaledImage(this.uiTextures[1], (this.dM[this.mapCatPosition] + this.mapOffsetX[0]) - 1, this.dN[this.mapCatPosition] + this.mapOffsetY[0] + 40, 59, 26, 6);
         atexturerenderer.setImageAlpha(255);
 
         if (this.dT == 0) {
@@ -12585,15 +12585,15 @@ public class AppInstance extends Game {
             atexturerenderer.d(1);
         }
         if ((this.fQ[3] % 16) / 4 == 0) { // draw map cat
-            atexturerenderer.drawScaledImage(this.uiTextures[1], this.dJ[0] + this.dM[this.mapCatPosition], this.dK[0] + this.dN[this.mapCatPosition], 57, 57, 3);
+            atexturerenderer.drawScaledImage(this.uiTextures[1], this.mapOffsetX[0] + this.dM[this.mapCatPosition], this.mapOffsetY[0] + this.dN[this.mapCatPosition], 57, 57, 3);
         } else if ((this.fQ[3] % 16) / 4 == 1) {
-            atexturerenderer.drawScaledImage(this.uiTextures[1], this.dJ[0] + this.dM[this.mapCatPosition], this.dK[0] + this.dN[this.mapCatPosition], 57, 57, 4);
+            atexturerenderer.drawScaledImage(this.uiTextures[1], this.mapOffsetX[0] + this.dM[this.mapCatPosition], this.mapOffsetY[0] + this.dN[this.mapCatPosition], 57, 57, 4);
         } else if ((this.fQ[3] % 16) / 4 == 2) {
-            atexturerenderer.drawScaledImage(this.uiTextures[1], this.dJ[0] + this.dM[this.mapCatPosition], this.dK[0] + this.dN[this.mapCatPosition], 57, 57, 3);
+            atexturerenderer.drawScaledImage(this.uiTextures[1], this.mapOffsetX[0] + this.dM[this.mapCatPosition], this.mapOffsetY[0] + this.dN[this.mapCatPosition], 57, 57, 3);
         } else if ((this.fQ[3] % 16) / 4 == 3) {
-            atexturerenderer.drawScaledImage(this.uiTextures[1], this.dJ[0] + this.dM[this.mapCatPosition], this.dK[0] + this.dN[this.mapCatPosition], 57, 57, 5);
+            atexturerenderer.drawScaledImage(this.uiTextures[1], this.mapOffsetX[0] + this.dM[this.mapCatPosition], this.mapOffsetY[0] + this.dN[this.mapCatPosition], 57, 57, 5);
         } else if ((this.fQ[3] % 16) / 4 == 3) {
-            atexturerenderer.drawScaledImage(this.uiTextures[1], this.dJ[0] + this.dM[this.mapCatPosition], this.dK[0] + this.dN[this.mapCatPosition], 57, 57, 3);
+            atexturerenderer.drawScaledImage(this.uiTextures[1], this.mapOffsetX[0] + this.dM[this.mapCatPosition], this.mapOffsetY[0] + this.dN[this.mapCatPosition], 57, 57, 3);
         }
 
         atexturerenderer.d(0);
@@ -13079,7 +13079,7 @@ public class AppInstance extends Game {
     void handleBattleZoom() {
         if (!this.eE[4]) {
             if (this.zoom.isZooming()) {
-                this.ek[0] = 0;
+                this.scrollAmount[0] = 0;
                 this.gameStats1[0] = this.zoomLevel / 100;
                 this.gameStats1[1] = this.zoomLevel / 100;
                 float f = this.gameStats1[0] / 100.0f;
@@ -13123,13 +13123,13 @@ public class AppInstance extends Game {
         if (!R()) {
             this.eE[2] = false;
             this.eE[4] = false;
-            this.hI = false;
+            this.isScrolling = false;
         } else if (!this.eE[2] && !this.eE[3]) {
             this.ei[0] = L() - N();
-            this.ej[0] = (int) aMath.atan2(L() - N(), K() - M());
+            this.ej[0] = (int) aMath.atan2(L() - N(), getCurrentXTouch() - M());
             if (this.gO && !this.eE[4]) {
                 if (this.ei[0] <= -25 && this.ej[0] >= 225 && this.ej[0] <= 315) {
-                    this.ek[0] = 0;
+                    this.scrollAmount[0] = 0;
                     if (!this.eE[0]) {
                         this.el[0] = 1;
                         this.eD[6] = 0;
@@ -13153,24 +13153,24 @@ public class AppInstance extends Game {
                     } else if (this.el[0] == -1 && this.eD[6] == 1) {
                         this.el[0] = 1;
                     }
-                    this.ek[0] = 0;
+                    this.scrollAmount[0] = 0;
                     this.eE[0] = true;
                     this.eE[2] = true;
                 }
             }
             if (this.eE[4] || ((!this.eE[0] || this.fT) && ((this.ej[0] >= 135 && this.ej[0] <= 225) || this.ej[0] >= 315 || this.ej[0] <= 45))) {
-                if (K() - O() <= -10 || K() - O() >= 10 || this.hI) {
-                    this.hI = true;
+                if (getCurrentXTouch() - getPreviousXTouch() <= -10 || getCurrentXTouch() - getPreviousXTouch() >= 10 || this.isScrolling) {
+                    this.isScrolling = true;
                 } else {
-                    this.ek[0] = 0;
+                    this.scrollAmount[0] = 0;
                 }
-                if (this.hI) {
-                    this.ek[0] = K() - O();
+                if (this.isScrolling) {
+                    this.scrollAmount[0] = getCurrentXTouch() - getPreviousXTouch();
                     if (this.zoomLevel / 100 > this.battleData[28]) {
                         int[] iArr2 = this.battleData;
-                        iArr2[5] = iArr2[5] - ((K() - O()) * 10);
+                        iArr2[5] = iArr2[5] - ((getCurrentXTouch() - getPreviousXTouch()) * 10);
                     }
-                    if (this.ek[0] != 0) {
+                    if (this.scrollAmount[0] != 0) {
                         this.eE[4] = true;
                     }
                 }
@@ -13180,7 +13180,7 @@ public class AppInstance extends Game {
             return;
         }
         int[] iArr3 = this.battleData;
-        iArr3[5] = iArr3[5] - (this.ek[0] * 5);
+        iArr3[5] = iArr3[5] - (this.scrollAmount[0] * 5);
     }
 
     /* JADX WARN: Removed duplicated region for block: B:292:0x0c99  */
@@ -14030,8 +14030,8 @@ public class AppInstance extends Game {
         for (int i9 = 0; i9 < getLength(this.boxCounts); i9++) {
             this.boxCounts[i9] = 0;
         }
-        for (int i10 = 0; i10 < getLength(this.ek); i10++) {
-            this.ek[i10] = 0;
+        for (int i10 = 0; i10 < getLength(this.scrollAmount); i10++) {
+            this.scrollAmount[i10] = 0;
         }
         this.fw[5][0] = 4;
         this.fw[5][1] = 541;
@@ -14117,7 +14117,7 @@ public class AppInstance extends Game {
             this.eE[i20] = false;
         }
         this.eE[0] = true;
-        this.hI = false;
+        this.isScrolling = false;
     }
 
     /* JADX WARN: Removed duplicated region for block: B:302:0x18e9  */
@@ -14659,7 +14659,7 @@ public class AppInstance extends Game {
             }
             i9 = boxIndex + 1;
         }
-        if ((this.currentBox[2] <= -1 || this.currentBox[2] >= this.boxCounts[1] + 1) && this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && !this.eE[9]) {
+        if ((this.currentBox[2] <= -1 || this.currentBox[2] >= this.boxCounts[1] + 1) && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9]) {
             if (this.fQ[3] % 4 == 0 || this.fQ[3] % 4 == 1) {
                 atexturerenderer.drawScaledImage(this.uiTextures[8], (this.w / 2) + 316, 83, 324, 260, 31);
             } else {
@@ -14726,7 +14726,7 @@ public class AppInstance extends Game {
             }
             i21 = i22 + 1;
         }
-        if (this.bq[0] >= 48 && this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && this.currentBox[2] >= 0 && this.currentBox[2] <= this.boxCounts[1] && this.currentBox[2] >= this.gB[1] && this.currentBox[2] < this.gB[0] && this.bv[this.boxCatIDs[this.currentBox[2] - this.gB[1]]] + 1 >= 10) {
+        if (this.bq[0] >= 48 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && this.currentBox[2] >= 0 && this.currentBox[2] <= this.boxCounts[1] && this.currentBox[2] >= this.gB[1] && this.currentBox[2] < this.gB[0] && this.bv[this.boxCatIDs[this.currentBox[2] - this.gB[1]]] + 1 >= 10) {
             atexturerenderer.drawScaledImage(this.uiTextures[8], (((getWidth() / 2) - 164) + 285) - (dv[this.fx[1]] / 2), 304 - (dv[this.fx[1]] / 2), dv[this.fx[1]] + 69, dv[this.fx[1]] + 69, 46);
         }
         atexturerenderer.setImageAlpha(127);
@@ -14995,23 +14995,23 @@ public class AppInstance extends Game {
     boolean n() {
         if (!this.eE[0] && !this.eE[1] && !this.eE[13] && !this.eb) {
             int[] iArr = this.gameStats1;
-            iArr[0] = iArr[0] + this.ek[0];
+            iArr[0] = iArr[0] + this.scrollAmount[0];
             int[] iArr2 = this.gameStats1;
-            iArr2[1] = iArr2[1] - this.ek[0];
-            this.ek[0] = (int) (this.ek[0] * 0.9d);
+            iArr2[1] = iArr2[1] - this.scrollAmount[0];
+            this.scrollAmount[0] = (int) (this.scrollAmount[0] * 0.9d);
             if (this.gameStats1[0] >= (this.boxScale / 2) - 20) {
                 this.gameStats1[0] = (this.boxScale / 2) - 20;
                 this.gameStats1[1] = this.boxScale * 100;
-                this.ek[0] = 0;
+                this.scrollAmount[0] = 0;
             } else if (this.gameStats1[0] < (-((((this.boxScale * ((this.boxCounts[0] + this.boxCounts[1]) + this.boxCounts[2])) - this.boxScale) + (this.boxScale / 2)) - 20))) {
                 this.gameStats1[0] = -((((this.boxScale * ((this.boxCounts[0] + this.boxCounts[1]) + this.boxCounts[2])) - this.boxScale) + (this.boxScale / 2)) - 20);
-                this.ek[0] = 0;
+                this.scrollAmount[0] = 0;
                 this.gameStats1[1] = this.boxScale * 100;
             }
             if (!R() || this.eb) {
-                this.hI = false;
-                if ((this.ek[0] >= 0 && this.ek[0] < 8) || (this.ek[0] > -8 && this.ek[0] <= 0)) {
-                    this.ek[0] = 0;
+                this.isScrolling = false;
+                if ((this.scrollAmount[0] >= 0 && this.scrollAmount[0] < 8) || (this.scrollAmount[0] > -8 && this.scrollAmount[0] <= 0)) {
+                    this.scrollAmount[0] = 0;
                     if (this.gameStats1[0] % this.boxScale != 0) {
                         if ((-this.gameStats1[0]) >= 0) {
                             if ((-this.gameStats1[0]) % this.boxScale >= this.boxScale / 2) {
@@ -15042,29 +15042,29 @@ public class AppInstance extends Game {
                     }
                 }
             } else {
-                if (K() - O() <= -10 || K() - O() >= 10 || this.hI) {
-                    this.hI = true;
+                if (getCurrentXTouch() - getPreviousXTouch() <= -10 || getCurrentXTouch() - getPreviousXTouch() >= 10 || this.isScrolling) {
+                    this.isScrolling = true;
                 } else {
-                    this.ek[0] = 0;
+                    this.scrollAmount[0] = 0;
                 }
-                if (this.hI) {
-                    this.ek[0] = K() - O();
-                    if (this.ek[0] != 0 && !this.eE[9]) {
+                if (this.isScrolling) {
+                    this.scrollAmount[0] = getCurrentXTouch() - getPreviousXTouch();
+                    if (this.scrollAmount[0] != 0 && !this.eE[9]) {
                         this.eE[9] = true;
                     }
                 }
             }
-            if (this.ek[0] < 0) {
+            if (this.scrollAmount[0] < 0) {
                 if (this.fs[0] != (-(this.gameStats1[0] / this.boxScale))) {
                     aSound.getInstance().play(10);
                 }
                 this.gp[3] = false;
-            } else if (this.ek[0] > 0) {
+            } else if (this.scrollAmount[0] > 0) {
                 if (this.fs[1] != ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale) {
                     aSound.getInstance().play(10);
                 }
                 this.gp[3] = false;
-            } else if (this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && !this.gp[3]) {
+            } else if (this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gp[3]) {
                 aSound.getInstance().play(10);
                 this.gp[3] = true;
             }
@@ -17942,8 +17942,8 @@ public class AppInstance extends Game {
         for (int i16 = 0; i16 < getLength(this.fy); i16++) {
             this.fy[i16] = 0;
         }
-        for (int i17 = 0; i17 < getLength(this.ek); i17++) {
-            this.ek[i17] = 0;
+        for (int i17 = 0; i17 < getLength(this.scrollAmount); i17++) {
+            this.scrollAmount[i17] = 0;
         }
         for (int i18 = 0; i18 < getLength(this.fR); i18++) {
             this.fR[i18] = 0;
@@ -18050,7 +18050,7 @@ public class AppInstance extends Game {
         for (int i26 = 0; i26 < getLength(this.gF); i26++) {
             this.gF[i26] = false;
         }
-        this.hI = false;
+        this.isScrolling = false;
     }
 
     void r(aTextureRenderer atexturerenderer) {
@@ -18249,14 +18249,14 @@ public class AppInstance extends Game {
             i14++;
         }
         if (this.ff[2] < 0 || this.ff[2] > this.boxCounts[1]) {
-            if ((this.ff[2] <= -1 || this.ff[2] >= this.boxCounts[1] + 1) && this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && !this.eE[5]) {
+            if ((this.ff[2] <= -1 || this.ff[2] >= this.boxCounts[1] + 1) && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[5]) {
                 if (this.fQ[3] % 4 == 0 || this.fQ[3] % 4 == 1) {
                     atexturerenderer.drawScaledImage(this.uiTextures[8], (this.w / 2) + 316, 297, 324, 260, 31);
                 } else {
                     atexturerenderer.drawScaledImage(this.uiTextures[8], (this.w / 2) + 316, 297, 324, 260, 32);
                 }
             }
-        } else if (!z && this.bu[this.boxCatIDs[this.ff[2]]] >= 1 && this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && !this.eE[5]) {
+        } else if (!z && this.bu[this.boxCatIDs[this.ff[2]]] >= 1 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[5]) {
             if (this.fQ[3] % 4 == 0 || this.fQ[3] % 4 == 1) {
                 atexturerenderer.drawScaledImage(this.uiTextures[8], (this.w / 2) + 316, 297, 324, 260, 31);
             } else {
@@ -18328,7 +18328,7 @@ public class AppInstance extends Game {
             atexturerenderer.setImageAlpha(255 - this.fi);
             if (!this.fn) {
                 if (this.eE[3]) {
-                    atexturerenderer.drawScaledImage(this.uniTextures[this.fh - 1], (K() - this.fl) - (((this.fj[this.fh - 1][2] * 110) / 100) / 2), (L() - this.fm) - (((this.fj[this.fh - 1][3] * 85) / 100) / 2), ((this.fj[this.fh - 1][2] * 110) / 100) + 110, ((this.fj[this.fh - 1][3] * 85) / 100) + 85, 0);
+                    atexturerenderer.drawScaledImage(this.uniTextures[this.fh - 1], (getCurrentXTouch() - this.fl) - (((this.fj[this.fh - 1][2] * 110) / 100) / 2), (L() - this.fm) - (((this.fj[this.fh - 1][3] * 85) / 100) / 2), ((this.fj[this.fh - 1][2] * 110) / 100) + 110, ((this.fj[this.fh - 1][3] * 85) / 100) + 85, 0);
                 } else {
                     atexturerenderer.drawScaledImage(this.uniTextures[this.fh - 1], (this.fg[this.fh - 1][0] + this.fj[this.fh - 1][0]) - (((this.fj[this.fh - 1][2] * 110) / 100) / 2), (this.fg[this.fh - 1][1] + this.fj[this.fh - 1][1]) - (((this.fj[this.fh - 1][3] * 85) / 100) / 2), ((this.fj[this.fh - 1][2] * 110) / 100) + 110, ((this.fj[this.fh - 1][3] * 85) / 100) + 85, 0);
                 }
@@ -18375,7 +18375,7 @@ public class AppInstance extends Game {
                 }
             }
         }
-        if (this.bq[0] >= 48 && this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1] && this.bv[this.boxCatIDs[this.ff[2]]] + 1 >= 10) {
+        if (this.bq[0] >= 48 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1] && this.bv[this.boxCatIDs[this.ff[2]]] + 1 >= 10) {
             atexturerenderer.drawScaledImage(this.uiTextures[8], (((getWidth() / 2) - 164) + 285) - (dv[this.fx[12]] / 2), 516 - (dv[this.fx[12]] / 2), dv[this.fx[12]] + 69, dv[this.fx[12]] + 69, 46);
         }
         if ((-this.gameStats1[0]) % this.boxScale == 0) {
@@ -18488,13 +18488,13 @@ public class AppInstance extends Game {
         atexturerenderer.drawScaledImage(this.uiTextures[0], this.fw[10][0] - (dv[this.fx[10]] / 2), this.fw[10][1] - (dv[this.fx[10]] / 2), dv[this.fx[10]] + this.fw[10][2], dv[this.fx[10]] + this.fw[10][3], 9);
         atexturerenderer.drawScaledImage(this.uiTextures[0], (this.fw[10][0] + 4) - (dv[this.fx[10]] / 2), (this.fw[10][1] + 17) - (dv[this.fx[10]] / 2), dv[this.fx[10]] + 84, dv[this.fx[10]] + 60, 3);
         boolean z2 = false;
-        if (this.fx[2] == 0 && this.ff[0] - 1 >= 0 && this.ff[2] <= 0 && this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && !this.eE[9] && ((R() || S()) && b((int) (((((getWidth() / 2) - (this.boxSize[this.ff[0] - 1][0] / 2)) + (this.boxScale * (this.ff[0] - 1))) + this.gameStats1[0]) - ((328 - this.boxSize[this.ff[0] - 1][0]) + ((328 - this.boxSize[(this.ff[0] - 1) + 1][0]) / 2.0f))), 559 - this.boxSize[this.ff[0] - 1][1], this.boxSize[this.ff[0] - 1][0], this.boxSize[this.ff[0] - 1][1]))) {
+        if (this.fx[2] == 0 && this.ff[0] - 1 >= 0 && this.ff[2] <= 0 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && ((R() || S()) && b((int) (((((getWidth() / 2) - (this.boxSize[this.ff[0] - 1][0] / 2)) + (this.boxScale * (this.ff[0] - 1))) + this.gameStats1[0]) - ((328 - this.boxSize[this.ff[0] - 1][0]) + ((328 - this.boxSize[(this.ff[0] - 1) + 1][0]) / 2.0f))), 559 - this.boxSize[this.ff[0] - 1][1], this.boxSize[this.ff[0] - 1][0], this.boxSize[this.ff[0] - 1][1]))) {
             z2 = true;
         }
-        if (this.fx[2] == 0 && this.ff[2] >= this.boxCounts[1] && this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && !this.eE[9] && ((R() || S()) && b(((getWidth() / 2) - (this.boxSize[this.ff[0] + 1][0] / 2)) + (this.boxScale * (this.ff[0] + 1)) + this.gameStats1[0] + (328 - this.boxSize[this.ff[0] + 1][0]), 559 - this.boxSize[this.ff[0] + 1][1], this.boxSize[this.ff[0] + 1][0], this.boxSize[this.ff[0] + 1][1]))) {
+        if (this.fx[2] == 0 && this.ff[2] >= this.boxCounts[1] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && ((R() || S()) && b(((getWidth() / 2) - (this.boxSize[this.ff[0] + 1][0] / 2)) + (this.boxScale * (this.ff[0] + 1)) + this.gameStats1[0] + (328 - this.boxSize[this.ff[0] + 1][0]), 559 - this.boxSize[this.ff[0] + 1][1], this.boxSize[this.ff[0] + 1][0], this.boxSize[this.ff[0] + 1][1]))) {
             z2 = true;
         }
-        if ((this.fx[2] != 0 || ((this.ff[2] > -1 && this.ff[2] < this.boxCounts[1] + 1) || this.eE[5] || this.gameStats1[0] % this.boxScale != 0 || this.ek[0] != 0 || ((!R() && !S()) || !b(((((getWidth() / 2) - (this.boxSize[this.ff[0]][0] / 2)) + (this.boxScale * this.ff[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.ff[0]][0]), 559 - this.boxSize[this.ff[0]][1], this.boxSize[this.ff[0]][0], this.boxSize[this.ff[0]][1])))) && !this.eE[5] && this.fx[2] == 0 && !z2 && !this.eE[0] && !this.eE[1] && !this.eE[2] && !this.eb && this.eE[10] && !this.gJ) {
+        if ((this.fx[2] != 0 || ((this.ff[2] > -1 && this.ff[2] < this.boxCounts[1] + 1) || this.eE[5] || this.gameStats1[0] % this.boxScale != 0 || this.scrollAmount[0] != 0 || ((!R() && !S()) || !b(((((getWidth() / 2) - (this.boxSize[this.ff[0]][0] / 2)) + (this.boxScale * this.ff[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.ff[0]][0]), 559 - this.boxSize[this.ff[0]][1], this.boxSize[this.ff[0]][0], this.boxSize[this.ff[0]][1])))) && !this.eE[5] && this.fx[2] == 0 && !z2 && !this.eE[0] && !this.eE[1] && !this.eE[2] && !this.eb && this.eE[10] && !this.gJ) {
             atexturerenderer.drawScaledImage(this.uiTextures[0], 3, 540, 96, 96, ((this.fQ[3] % 4) / 2) + 12);
         }
         atexturerenderer.drawScaledImage(this.uiTextures[5], this.w + 670, 0, 11);
@@ -18538,23 +18538,23 @@ public class AppInstance extends Game {
         boolean z;
         loadTextures2();
         int[] iArr = this.gameStats1;
-        iArr[0] = iArr[0] + this.ek[0];
+        iArr[0] = iArr[0] + this.scrollAmount[0];
         int[] iArr2 = this.gameStats1;
-        iArr2[1] = iArr2[1] - this.ek[0];
-        this.ek[0] = (int) (this.ek[0] * 0.9d);
+        iArr2[1] = iArr2[1] - this.scrollAmount[0];
+        this.scrollAmount[0] = (int) (this.scrollAmount[0] * 0.9d);
         if (this.gameStats1[0] >= ((this.boxScale / 2) - this.boxScale) - 20) {
             this.gameStats1[0] = ((this.boxScale / 2) - this.boxScale) - 20;
             this.gameStats1[1] = this.boxScale * 100;
-            this.ek[0] = 0;
+            this.scrollAmount[0] = 0;
         } else if (this.gameStats1[0] < (-(((this.boxScale * ((this.boxCounts[0] + this.boxCounts[1]) + this.boxCounts[2])) + (this.boxScale / 2)) - 20))) {
             this.gameStats1[0] = -(((this.boxScale * ((this.boxCounts[0] + this.boxCounts[1]) + this.boxCounts[2])) + (this.boxScale / 2)) - 20);
-            this.ek[0] = 0;
+            this.scrollAmount[0] = 0;
             this.gameStats1[1] = this.boxScale * 100;
         }
         if (!R() || this.eE[0] || this.eE[1] || this.eE[13] || this.gF[0] || this.gF[1] || this.fx[1] != 0 || this.eb || this.fx[0] != 0) {
-            this.hI = false;
-            if ((this.ek[0] >= 0 && this.ek[0] < 8) || (this.ek[0] > -8 && this.ek[0] <= 0)) {
-                this.ek[0] = 0;
+            this.isScrolling = false;
+            if ((this.scrollAmount[0] >= 0 && this.scrollAmount[0] < 8) || (this.scrollAmount[0] > -8 && this.scrollAmount[0] <= 0)) {
+                this.scrollAmount[0] = 0;
                 if (this.gameStats1[0] % this.boxScale != 0) {
                     if ((-this.gameStats1[0]) % this.boxScale >= this.boxScale / 2) {
                         this.gameStats1[0] = this.gameStats1[0] - ((((this.gameStats1[0] % this.boxScale) + this.boxScale) + 4) / 4);
@@ -18573,31 +18573,31 @@ public class AppInstance extends Game {
                 this.eE[9] = false;
             }
         } else {
-            if (K() - O() <= -10 || K() - O() >= 10 || this.hI) {
-                this.hI = true;
+            if (getCurrentXTouch() - getPreviousXTouch() <= -10 || getCurrentXTouch() - getPreviousXTouch() >= 10 || this.isScrolling) {
+                this.isScrolling = true;
             } else {
-                this.ek[0] = 0;
+                this.scrollAmount[0] = 0;
             }
-            if (this.hI) {
-                this.ek[0] = K() - O();
-                if (this.ek[0] != 0 && !this.eE[9]) {
+            if (this.isScrolling) {
+                this.scrollAmount[0] = getCurrentXTouch() - getPreviousXTouch();
+                if (this.scrollAmount[0] != 0 && !this.eE[9]) {
                     this.eE[9] = true;
                     this.ct = 0;
                 }
             }
         }
         if (!this.eE[0] && !this.eE[1] && !this.gF[0] && !this.gF[1] && !this.eb) {
-            if (this.ek[0] < 0) {
+            if (this.scrollAmount[0] < 0) {
                 if (this.gP[0] != (-(this.gameStats1[0] / this.boxScale))) {
                     aSound.getInstance().play(10);
                 }
                 this.gp[3] = false;
-            } else if (this.ek[0] > 0) {
+            } else if (this.scrollAmount[0] > 0) {
                 if (this.gP[1] != ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale) {
                     aSound.getInstance().play(10);
                 }
                 this.gp[3] = false;
-            } else if (this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && !this.gp[3]) {
+            } else if (this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gp[3]) {
                 aSound.getInstance().play(10);
                 this.gp[3] = true;
             }
@@ -19171,8 +19171,8 @@ public class AppInstance extends Game {
                 this.uiTextures[i29].reset();
             }
         }
-        for (int i30 = 0; i30 < getLength(this.ek); i30++) {
-            this.ek[i30] = 0;
+        for (int i30 = 0; i30 < getLength(this.scrollAmount); i30++) {
+            this.scrollAmount[i30] = 0;
         }
         loadTextures2();
         for (int i31 = 0; i31 < getLength(this.gp); i31++) {
@@ -19566,7 +19566,7 @@ public class AppInstance extends Game {
                 this.fQ[2] = 0;
             }
             if (R() && b(this.fw[6][0], this.fw[6][1], this.fw[6][2], this.fw[6][3]) && !this.eE[3] && !this.eE[5]) {
-                this.gameStats1[1] = K() - M();
+                this.gameStats1[1] = getCurrentXTouch() - M();
             } else if (R()) {
                 this.gameStats1[1] = 0;
                 this.eE[5] = true;
@@ -19575,7 +19575,7 @@ public class AppInstance extends Game {
                 this.eE[5] = false;
             }
             if (R() && b(this.fw[6][0] + this.gameStats1[1], this.fw[6][1], this.fw[6][2], this.fw[6][3]) && !this.eE[3] && !this.eE[4]) {
-                this.gameStats1[0] = K() - M();
+                this.gameStats1[0] = getCurrentXTouch() - M();
                 if (this.gameStats1[0] <= 0) {
                     this.gameStats1[0] = 0;
                 }
@@ -19597,8 +19597,8 @@ public class AppInstance extends Game {
         this.gI = false;
         //aAd.b().f();
         this.zoomLevel = 10000;
-        for (int i = 0; i < getLength(this.ek); i++) {
-            this.ek[i] = 0;
+        for (int i = 0; i < getLength(this.scrollAmount); i++) {
+            this.scrollAmount[i] = 0;
         }
         for (int i2 = 0; i2 < getLength(this.gp); i2++) {
             this.gp[i2] = false;
@@ -19812,11 +19812,11 @@ public class AppInstance extends Game {
             }
             this.dZ = 0;
             this.ea = 0;
-            for (int i29 = 0; i29 < getLength(this.dJ); i29++) {
-                this.dJ[i29] = 0;
+            for (int i29 = 0; i29 < getLength(this.mapOffsetX); i29++) {
+                this.mapOffsetX[i29] = 0;
             }
-            for (int i30 = 0; i30 < getLength(this.dK); i30++) {
-                this.dK[i30] = 0;
+            for (int i30 = 0; i30 < getLength(this.mapOffsetY); i30++) {
+                this.mapOffsetY[i30] = 0;
             }
         } else {
             this.boxScale = 200;
@@ -19838,25 +19838,25 @@ public class AppInstance extends Game {
         this.bI = 0;
         int rand = aMath.rand(4);
         if (rand == 0) {
-            this.dJ[0] = (-ck[cm[this.currentStageBox[2]]][0]) + (((getWidth() / 2) - 80) - 200);
-            this.dK[0] = (-ck[cm[this.currentStageBox[2]]][1]) + 200;
-            this.dJ[1] = -200;
-            this.dK[1] = -200;
+            this.mapOffsetX[0] = (-ck[cm[this.currentStageBox[2]]][0]) + (((getWidth() / 2) - 80) - 200);
+            this.mapOffsetY[0] = (-ck[cm[this.currentStageBox[2]]][1]) + 200;
+            this.mapOffsetX[1] = -200;
+            this.mapOffsetY[1] = -200;
         } else if (rand == 1) {
-            this.dJ[0] = (-ck[cm[this.currentStageBox[2]]][0]) + ((getWidth() / 2) - 80) + 200;
-            this.dK[0] = (-ck[cm[this.currentStageBox[2]]][1]) + 600;
-            this.dJ[1] = 200;
-            this.dK[1] = 200;
+            this.mapOffsetX[0] = (-ck[cm[this.currentStageBox[2]]][0]) + ((getWidth() / 2) - 80) + 200;
+            this.mapOffsetY[0] = (-ck[cm[this.currentStageBox[2]]][1]) + 600;
+            this.mapOffsetX[1] = 200;
+            this.mapOffsetY[1] = 200;
         } else if (rand == 2) {
-            this.dJ[0] = (-ck[cm[this.currentStageBox[2]]][0]) + (((getWidth() / 2) - 80) - 200);
-            this.dK[0] = (-ck[cm[this.currentStageBox[2]]][1]) + 600;
-            this.dJ[1] = -200;
-            this.dK[1] = 200;
+            this.mapOffsetX[0] = (-ck[cm[this.currentStageBox[2]]][0]) + (((getWidth() / 2) - 80) - 200);
+            this.mapOffsetY[0] = (-ck[cm[this.currentStageBox[2]]][1]) + 600;
+            this.mapOffsetX[1] = -200;
+            this.mapOffsetY[1] = 200;
         } else if (rand == 3) {
-            this.dJ[0] = (-ck[cm[this.currentStageBox[2]]][0]) + ((getWidth() / 2) - 80) + 200;
-            this.dK[0] = (-ck[cm[this.currentStageBox[2]]][1]) + 200;
-            this.dJ[1] = 200;
-            this.dK[1] = -200;
+            this.mapOffsetX[0] = (-ck[cm[this.currentStageBox[2]]][0]) + ((getWidth() / 2) - 80) + 200;
+            this.mapOffsetY[0] = (-ck[cm[this.currentStageBox[2]]][1]) + 200;
+            this.mapOffsetX[1] = 200;
+            this.mapOffsetY[1] = -200;
         }
         if (this.gM == 1) {
             this.gM = 0;
@@ -19925,7 +19925,7 @@ public class AppInstance extends Game {
                 }
             }
         }
-        this.hI = false;
+        this.isScrolling = false;
     }
 
     boolean w() {
@@ -19939,23 +19939,23 @@ public class AppInstance extends Game {
             return false;
         }
         int[] iArr = this.gameStats1;
-        iArr[0] = iArr[0] + this.ek[0];
+        iArr[0] = iArr[0] + this.scrollAmount[0];
         int[] iArr2 = this.gameStats1;
-        iArr2[1] = iArr2[1] - this.ek[0];
-        this.ek[0] = (int) (this.ek[0] * 0.9d);
+        iArr2[1] = iArr2[1] - this.scrollAmount[0];
+        this.scrollAmount[0] = (int) (this.scrollAmount[0] * 0.9d);
         if (this.gameStats1[0] > ((this.boxScale / 2) - (this.boxScale * this.boxCounts[0])) - 20) {
             this.gameStats1[0] = ((this.boxScale / 2) - (this.boxScale * this.boxCounts[0])) - 20;
             this.gameStats1[1] = this.boxScale * 100;
-            this.ek[0] = 0;
+            this.scrollAmount[0] = 0;
         } else if (this.gameStats1[0] < (-((((this.boxScale * (this.boxCounts[0] - 1)) + (this.boxScale * this.boxCounts[1])) + (this.boxScale / 2)) - 20))) {
             this.gameStats1[0] = -((((this.boxScale * (this.boxCounts[0] - 1)) + (this.boxScale * this.boxCounts[1])) + (this.boxScale / 2)) - 20);
-            this.ek[0] = 0;
+            this.scrollAmount[0] = 0;
             this.gameStats1[1] = this.boxScale * 100;
         }
         if (!R() || this.eE[0] || this.eE[1] || this.eE[2] || this.eE[3] || this.eE[13] || this.dY != 0 || this.eb || this.dV || this.fx[0] != 0) {
-            this.hI = false;
-            if ((this.ek[0] >= 0 && this.ek[0] < 8) || (this.ek[0] > -8 && this.ek[0] <= 0)) {
-                this.ek[0] = 0;
+            this.isScrolling = false;
+            if ((this.scrollAmount[0] >= 0 && this.scrollAmount[0] < 8) || (this.scrollAmount[0] > -8 && this.scrollAmount[0] <= 0)) {
+                this.scrollAmount[0] = 0;
                 if (this.gameStats1[0] % this.boxScale != 0) {
                     if ((-this.gameStats1[0]) % this.boxScale >= this.boxScale / 2) {
                         this.gameStats1[0] = this.gameStats1[0] - ((((this.gameStats1[0] % this.boxScale) + this.boxScale) + 4) / 4);
@@ -19974,31 +19974,31 @@ public class AppInstance extends Game {
                 this.eE[9] = false;
             }
         } else {
-            if (K() - O() <= -10 || K() - O() >= 10 || this.hI) {
-                this.hI = true;
+            if (getCurrentXTouch() - getPreviousXTouch() <= -10 || getCurrentXTouch() - getPreviousXTouch() >= 10 || this.isScrolling) {
+                this.isScrolling = true;
             } else {
-                this.ek[0] = 0;
+                this.scrollAmount[0] = 0;
             }
-            if (this.hI) {
-                this.ek[0] = K() - O();
-                if (this.ek[0] != 0 && !this.eE[9]) {
+            if (this.isScrolling) {
+                this.scrollAmount[0] = getCurrentXTouch() - getPreviousXTouch();
+                if (this.scrollAmount[0] != 0 && !this.eE[9]) {
                     this.ct = 0;
                     this.gA[0] = 0;
                     this.eE[9] = true;
                 }
             }
         }
-        if (this.ek[0] < 0) {
+        if (this.scrollAmount[0] < 0) {
             if (this.currentStageBox[0] != (-(this.gameStats1[0] / this.boxScale))) {
                 aSound.getInstance().play(10);
             }
             this.gp[6] = false;
-        } else if (this.ek[0] > 0) {
+        } else if (this.scrollAmount[0] > 0) {
             if (this.currentStageBox[1] != ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale) {
                 aSound.getInstance().play(10);
             }
             this.gp[6] = false;
-        } else if (this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && !this.gp[6]) {
+        } else if (this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gp[6]) {
             aSound.getInstance().play(10);
             this.gp[6] = true;
         }
@@ -20011,40 +20011,40 @@ public class AppInstance extends Game {
         if ((-this.gameStats1[0]) % this.boxScale >= this.boxScale / 2) {
             if ((this.currentStageBox[0] + 1) - this.boxCounts[0] != this.currentStageBox[2]) {
                 this.currentStageBox[2] = (this.currentStageBox[0] + 1) - this.boxCounts[0];
-                // TODO: check that the map scorlling fix is good
+                // TODO: check that the map scrolling fix is good
                 int mapOffsetX = ((-ck[cm[this.currentStageBox[2]]][0]) + (getWidth() / 2)) - 80;
                 //this.gameStats1[0] = ((-ck[cm[this.currentStageBox[2]]][0]) + (getWidth() / 2)) - 80;
                 this.gameStats1[1] = (-ck[cm[this.currentStageBox[2]]][1]) + 320 + 80;
-                this.dJ[1] = this.dJ[0] - mapOffsetX;
-                this.dK[1] = this.dK[0] - this.gameStats1[1];
+                this.mapOffsetX[1] = this.mapOffsetX[0] - mapOffsetX;
+                this.mapOffsetY[1] = this.mapOffsetY[0] - this.gameStats1[1];
             }
         } else if (this.currentStageBox[0] - this.boxCounts[0] != this.currentStageBox[2]) {
             this.currentStageBox[2] = this.currentStageBox[0] - this.boxCounts[0];
-            // TODO: check that the map scorlling fix is good
+            // TODO: check that the map scrolling fix is good
             int mapOffsetX = ((-ck[cm[this.currentStageBox[2]]][0]) + (getWidth() / 2)) - 80;
             //this.gameStats1[0] = ((-ck[cm[this.currentStageBox[2]]][0]) + (getWidth() / 2)) - 80;
             this.gameStats1[1] = (-ck[cm[this.currentStageBox[2]]][1]) + 320 + 80;
-            this.dJ[1] = this.dJ[0] - mapOffsetX;
-            this.dK[1] = this.dK[0] - this.gameStats1[1];
+            this.mapOffsetX[1] = this.mapOffsetX[0] - mapOffsetX;
+            this.mapOffsetY[1] = this.mapOffsetY[0] - this.gameStats1[1];
         }
-        if (this.dJ[1] > 0) {
-            int[] iArr3 = this.dJ;
-            iArr3[0] = iArr3[0] - (this.dJ[1] / 6);
-            int[] iArr4 = this.dK;
-            iArr4[0] = iArr4[0] - (this.dK[1] / 6);
-            int[] iArr5 = this.dJ;
-            iArr5[1] = iArr5[1] - (this.dJ[1] / 6);
-            int[] iArr6 = this.dK;
-            iArr6[1] = iArr6[1] - (this.dK[1] / 6);
+        if (this.mapOffsetX[1] > 0) {
+            int[] iArr3 = this.mapOffsetX;
+            iArr3[0] = iArr3[0] - (this.mapOffsetX[1] / 6);
+            int[] iArr4 = this.mapOffsetY;
+            iArr4[0] = iArr4[0] - (this.mapOffsetY[1] / 6);
+            int[] iArr5 = this.mapOffsetX;
+            iArr5[1] = iArr5[1] - (this.mapOffsetX[1] / 6);
+            int[] iArr6 = this.mapOffsetY;
+            iArr6[1] = iArr6[1] - (this.mapOffsetY[1] / 6);
         } else {
-            int[] iArr7 = this.dJ;
-            iArr7[0] = iArr7[0] - (this.dJ[1] / 6);
-            int[] iArr8 = this.dK;
-            iArr8[0] = iArr8[0] - (this.dK[1] / 6);
-            int[] iArr9 = this.dJ;
-            iArr9[1] = iArr9[1] - (this.dJ[1] / 6);
-            int[] iArr10 = this.dK;
-            iArr10[1] = iArr10[1] - (this.dK[1] / 6);
+            int[] iArr7 = this.mapOffsetX;
+            iArr7[0] = iArr7[0] - (this.mapOffsetX[1] / 6);
+            int[] iArr8 = this.mapOffsetY;
+            iArr8[0] = iArr8[0] - (this.mapOffsetY[1] / 6);
+            int[] iArr9 = this.mapOffsetX;
+            iArr9[1] = iArr9[1] - (this.mapOffsetX[1] / 6);
+            int[] iArr10 = this.mapOffsetY;
+            iArr10[1] = iArr10[1] - (this.mapOffsetY[1] / 6);
         }
         if (!this.eE[0] && !this.eE[1] && !this.eE[2] && !this.eE[3] && !this.eE[13] && this.dY == 0 && !this.eE[9] && !this.eb) {
             if (this.fx[0] >= 1) {
@@ -20340,7 +20340,7 @@ public class AppInstance extends Game {
                     this.gA[0] = 5;
                 }
                 if (S() && b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3]) && !this.dV) {
-                    if (this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0) {
+                    if (this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0) {
                         if (this.aZ != 0) {
                             aSound.getInstance().play(11);
                         } else if (this.currentEnergy < this.stageEoCStats[this.currentStageBox[2]] + X[this.eQ]) {
@@ -21972,8 +21972,8 @@ public class AppInstance extends Game {
             this.textTextures[this.gA[5]].drawText(this.warning1Text[6], "FONT_SYSTEM_BOLD", 30, 1);
         }
         this.ct = 0;
-        for (int i45 = 0; i45 < getLength(this.ek); i45++) {
-            this.ek[i45] = 0;
+        for (int i45 = 0; i45 < getLength(this.scrollAmount); i45++) {
+            this.scrollAmount[i45] = 0;
         }
         for (int i46 = 0; i46 < getLength(this.fx); i46++) {
             this.fx[i46] = 0;
@@ -22098,28 +22098,32 @@ public class AppInstance extends Game {
         }
         this.gz = 0;
         this.gF[0] = false;
-        this.hI = false;
+        this.isScrolling = false;
     }
 
     boolean z() {
         int[] iArr = this.gameStats1;
-        iArr[0] = iArr[0] + this.ek[0];
+        iArr[0] = iArr[0] + this.scrollAmount[0];
         int[] iArr2 = this.gameStats1;
-        iArr2[1] = iArr2[1] - this.ek[0];
-        this.ek[0] = (int) (this.ek[0] * 0.9d);
+        iArr2[1] = iArr2[1] - this.scrollAmount[0];
+        if (this.scrollAmount[0] != 0) {
+            this.scrollAmount = this.scrollAmount;
+        }
+        this.scrollAmount[0] = (int) (this.scrollAmount[0] * 0.9d);
         if (this.gameStats1[0] >= ((this.boxScale / 2) - this.boxScale) - 20) {
             this.gameStats1[0] = ((this.boxScale / 2) - this.boxScale) - 20;
             this.gameStats1[1] = this.boxScale * 100;
-            this.ek[0] = 0;
+            this.scrollAmount[0] = 0;
         } else if (this.gameStats1[0] < (-(((this.boxScale * ((this.boxCounts[0] + this.boxCounts[1]) + this.boxCounts[2])) + (this.boxScale / 2)) - 20))) {
             this.gameStats1[0] = -(((this.boxScale * ((this.boxCounts[0] + this.boxCounts[1]) + this.boxCounts[2])) + (this.boxScale / 2)) - 20);
-            this.ek[0] = 0;
+            this.scrollAmount[0] = 0;
             this.gameStats1[1] = this.boxScale * 100;
         }
+
         if (!R() || this.eE[0] || this.eE[1] || this.eE[11] || this.eE[13] || this.gF[0] || this.gF[1] || this.gI || this.fx[1] != 0 || this.eb || this.fx[0] != 0) {
-            this.hI = false;
-            if ((this.ek[0] >= 0 && this.ek[0] < 8) || (this.ek[0] > -8 && this.ek[0] <= 0)) {
-                this.ek[0] = 0;
+            this.isScrolling = false;
+            if ((this.scrollAmount[0] >= 0 && this.scrollAmount[0] < 8) || (this.scrollAmount[0] > -8 && this.scrollAmount[0] <= 0)) {
+                this.scrollAmount[0] = 0;
                 if (this.gameStats1[0] % this.boxScale != 0) {
                     if ((-this.gameStats1[0]) % this.boxScale >= this.boxScale / 2) {
                         this.gameStats1[0] = this.gameStats1[0] - ((((this.gameStats1[0] % this.boxScale) + this.boxScale) + 4) / 4);
@@ -22138,31 +22142,31 @@ public class AppInstance extends Game {
                 this.eE[9] = false;
             }
         } else {
-            if (K() - O() <= -10 || K() - O() >= 10 || this.hI) {
-                this.hI = true;
+            if (getCurrentXTouch() - getPreviousXTouch() <= -10 || getCurrentXTouch() - getPreviousXTouch() >= 10 || this.isScrolling) {
+                this.isScrolling = true;
             } else {
-                this.ek[0] = 0;
+                this.scrollAmount[0] = 0;
             }
-            if (this.hI) {
-                this.ek[0] = K() - O();
-                if (this.ek[0] != 0 && !this.eE[9]) {
+            if (this.isScrolling) {
+                this.scrollAmount[0] = getCurrentXTouch() - getPreviousXTouch();
+                if (this.scrollAmount[0] != 0 && !this.eE[9]) {
                     this.eE[9] = true;
                     this.ct = 0;
                 }
             }
         }
         if (!this.eE[0] && !this.eE[1] && !this.eE[13] && !this.gF[0] && !this.gF[1] && !this.eb && this.fx[0] == 0) {
-            if (this.ek[0] < 0) {
+            if (this.scrollAmount[0] < 0) {
                 if (this.currentBox[0] != (-(this.gameStats1[0] / this.boxScale))) {
                     aSound.getInstance().play(10);
                 }
                 this.gp[3] = false;
-            } else if (this.ek[0] > 0) {
+            } else if (this.scrollAmount[0] > 0) {
                 if (this.currentBox[1] != ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale) {
                     aSound.getInstance().play(10);
                 }
                 this.gp[3] = false;
-            } else if (this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && !this.gp[3]) {
+            } else if (this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gp[3]) {
                 aSound.getInstance().play(10);
                 this.gp[3] = true;
             }
@@ -22640,7 +22644,7 @@ public class AppInstance extends Game {
                 if (this.bq[0] >= 48) {
                     if (!R() || !b(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
                         this.gp[1] = false;
-                    } else if (!this.gp[1] && this.currentBox[2] >= this.gB[1] && this.currentBox[2] < this.gB[0] && this.currentBox[2] >= 0 && this.currentBox[2] <= this.boxCounts[1] && this.bv[this.boxCatIDs[this.currentBox[2] - this.gB[1]]] + 1 >= 10 && this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0) {
+                    } else if (!this.gp[1] && this.currentBox[2] >= this.gB[1] && this.currentBox[2] < this.gB[0] && this.currentBox[2] >= 0 && this.currentBox[2] <= this.boxCounts[1] && this.bv[this.boxCatIDs[this.currentBox[2] - this.gB[1]]] + 1 >= 10 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0) {
                         aSound.getInstance().play(10);
                         this.gp[1] = true;
                     }
@@ -22651,28 +22655,28 @@ public class AppInstance extends Game {
                     aSound.getInstance().play(10);
                     this.gp[5] = true;
                 }
-                if (this.fx[2] == 0 && this.currentBox[0] - 2 >= 0 && this.currentBox[2] <= 0 && this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && !this.eE[9] && S() && b(((((getWidth() / 2) - (this.boxSize[this.currentBox[0] - 1][0] / 2)) + (this.boxScale * (this.currentBox[0] - 1))) + this.gameStats1[0]) - ((328 - this.boxSize[this.currentBox[0] - 1][0]) + ((328 - this.boxSize[(this.currentBox[0] - 1) + 1][0]) / 2)), 347 - this.boxSize[this.currentBox[0] - 1][1], this.boxSize[this.currentBox[0] - 1][0], this.boxSize[this.currentBox[0] - 1][1])) {
+                if (this.fx[2] == 0 && this.currentBox[0] - 2 >= 0 && this.currentBox[2] <= 0 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && S() && b(((((getWidth() / 2) - (this.boxSize[this.currentBox[0] - 1][0] / 2)) + (this.boxScale * (this.currentBox[0] - 1))) + this.gameStats1[0]) - ((328 - this.boxSize[this.currentBox[0] - 1][0]) + ((328 - this.boxSize[(this.currentBox[0] - 1) + 1][0]) / 2)), 347 - this.boxSize[this.currentBox[0] - 1][1], this.boxSize[this.currentBox[0] - 1][0], this.boxSize[this.currentBox[0] - 1][1])) {
                     int[] iArr15 = this.fx;
                     iArr15[2] = iArr15[2] + 1;
                     this.currentBox[5] = -1;
                     this.eE[11] = true;
                     aSound.getInstance().play(11);
                 }
-                if (this.fx[2] == 0 && this.currentBox[0] - 2 <= this.boxCounts[1] && this.currentBox[2] >= this.boxCounts[1] && this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && !this.eE[9] && S() && b(((getWidth() / 2) - (this.boxSize[this.currentBox[0] + 1][0] / 2)) + (this.boxScale * (this.currentBox[0] + 1)) + this.gameStats1[0] + (328 - this.boxSize[this.currentBox[0] + 1][0]), 347 - this.boxSize[this.currentBox[0] + 1][1], this.boxSize[this.currentBox[0] + 1][0], this.boxSize[this.currentBox[0] + 1][1])) {
+                if (this.fx[2] == 0 && this.currentBox[0] - 2 <= this.boxCounts[1] && this.currentBox[2] >= this.boxCounts[1] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && S() && b(((getWidth() / 2) - (this.boxSize[this.currentBox[0] + 1][0] / 2)) + (this.boxScale * (this.currentBox[0] + 1)) + this.gameStats1[0] + (328 - this.boxSize[this.currentBox[0] + 1][0]), 347 - this.boxSize[this.currentBox[0] + 1][1], this.boxSize[this.currentBox[0] + 1][0], this.boxSize[this.currentBox[0] + 1][1])) {
                     int[] iArr16 = this.fx;
                     iArr16[2] = iArr16[2] + 1;
                     this.currentBox[5] = 1;
                     aSound.getInstance().play(11);
                     this.eE[11] = true;
                 }
-                if (this.fx[2] == 0 && ((this.currentBox[2] <= -1 || this.currentBox[2] >= this.boxCounts[1] + 1) && this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && !this.eE[9] && S() && b(((((getWidth() / 2) - (this.boxSize[this.currentBox[0]][0] / 2)) + (this.boxScale * this.currentBox[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.currentBox[0]][0]), 347 - this.boxSize[this.currentBox[0]][1], this.boxSize[this.currentBox[0]][0], this.boxSize[this.currentBox[0]][1]))) {
+                if (this.fx[2] == 0 && ((this.currentBox[2] <= -1 || this.currentBox[2] >= this.boxCounts[1] + 1) && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && S() && b(((((getWidth() / 2) - (this.boxSize[this.currentBox[0]][0] / 2)) + (this.boxScale * this.currentBox[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.currentBox[0]][0]), 347 - this.boxSize[this.currentBox[0]][1], this.boxSize[this.currentBox[0]][0], this.boxSize[this.currentBox[0]][1]))) {
                     int[] iArr17 = this.fx;
                     iArr17[2] = iArr17[2] + 1;
                     this.currentBox[5] = 0;
                     aSound.getInstance().play(11);
                     this.eE[11] = true;
                 } else if (!this.eE[11] && S() && b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
-                    if (this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && !this.eE[9] && this.currentBox[2] > -1 && this.currentBox[2] < this.boxCounts[1] + 1) {
+                    if (this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && this.currentBox[2] > -1 && this.currentBox[2] < this.boxCounts[1] + 1) {
                         if (this.currentBox[2] < this.gB[1]) {
                             if (this.bd == 0) {
                                 if (this.aY >= hn) {
@@ -22757,7 +22761,7 @@ public class AppInstance extends Game {
                         }
                     }
                 } else if (S() && b(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
-                    if (this.bq[0] >= 48 && this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0 && !this.eE[9] && this.currentBox[2] >= 0 && this.currentBox[2] <= this.boxCounts[1] && this.currentBox[2] >= this.gB[1] && this.currentBox[2] < this.gB[0] && this.bv[this.boxCatIDs[this.currentBox[2] - this.gB[1]]] + 1 >= 10) {
+                    if (this.bq[0] >= 48 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && this.currentBox[2] >= 0 && this.currentBox[2] <= this.boxCounts[1] && this.currentBox[2] >= this.gB[1] && this.currentBox[2] < this.gB[0] && this.bv[this.boxCatIDs[this.currentBox[2] - this.gB[1]]] + 1 >= 10) {
                         aSound.getInstance().play(11);
                         int[] iArr24 = this.fx;
                         iArr24[1] = iArr24[1] + 1;
