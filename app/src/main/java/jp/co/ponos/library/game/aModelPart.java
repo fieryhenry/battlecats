@@ -38,9 +38,9 @@ public class aModelPart {
     aAnimTransformer G = new aAnimTransformer();
     aAnimTransformer H = new aAnimTransformer();
 
-    public void a(int i, int i2) {
-        this.xScale = i;
-        this.yScale = i2;
+    public void setScale(int xScale, int yScale) {
+        this.xScale = xScale;
+        this.yScale = yScale;
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
