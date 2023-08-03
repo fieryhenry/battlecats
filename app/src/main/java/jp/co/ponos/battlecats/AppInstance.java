@@ -1563,8 +1563,8 @@ public class AppInstance extends Game {
                     this.eE[2] = false;
                     this.eE[4] = false;
                 } else if (!this.eE[2] && !this.eE[3]) {
-                    this.ei[0] = L() - N();
-                    this.ej[0] = (int) aMath.atan2(L() - N(), getCurrentXTouch() - M());
+                    this.ei[0] = getCurrentYTouch() - N();
+                    this.ej[0] = (int) aMath.atan2(getCurrentYTouch() - N(), getCurrentXTouch() - M());
                     if (this.gO && !this.eE[4]) {
                         if (this.ei[0] <= -60 && this.ej[0] >= 225 && this.ej[0] <= 315) {
                             this.scrollAmount[0] = 0;
@@ -2673,7 +2673,7 @@ public class AppInstance extends Game {
             if (!this.eE[3] && b(((getWidth() / 2) - (this.boxSize[this.ff[0] + this.gameStats1[0]][0] / 2)) + (this.boxScale * (this.ff[0] + this.gameStats1[0])) + this.gameStats1[0] + this.gameStats1[1], 559 - this.boxSize[this.ff[0] + this.gameStats1[0]][1], this.boxSize[this.ff[0] + this.gameStats1[0]][0], this.boxSize[this.ff[0] + this.gameStats1[0]][1])) {
                 this.fn = true;
             }
-            this.ei[1] = L();
+            this.ei[1] = getCurrentYTouch();
             this.gameStats1[1] = getCurrentXTouch();
             if (this.fn && !this.eE[3] && b(0, 80, getWidth(), 200)) {
                 int i15 = 0;
@@ -2775,7 +2775,7 @@ public class AppInstance extends Game {
                 if (this.fk[i17] >= 3 && this.fh == 0) {
                     this.fh = i17 + 1;
                     this.fl = getCurrentXTouch() - this.fg[this.fh - 1][0];
-                    this.fm = L() - this.fg[this.fh - 1][1];
+                    this.fm = getCurrentYTouch() - this.fg[this.fh - 1][1];
                     this.eE[3] = true;
                 }
             }
@@ -2783,7 +2783,7 @@ public class AppInstance extends Game {
         if (this.gJ || this.gI || !R() || this.fh < 1 || !this.eE[3] || this.eE[8]) {
             if (this.eE[3]) {
                 this.fj[this.fh - 1][0] = (getCurrentXTouch() - this.fl) - this.fg[this.fh - 1][0];
-                this.fj[this.fh - 1][1] = (L() - this.fm) - this.fg[this.fh - 1][1];
+                this.fj[this.fh - 1][1] = (getCurrentYTouch() - this.fm) - this.fg[this.fh - 1][1];
             }
             this.eE[3] = false;
             if (this.fh >= 1) {
@@ -2835,7 +2835,7 @@ public class AppInstance extends Game {
                             this.fj[(this.fh - 1) + i18][2] = 0;
                             this.fj[(this.fh - 1) + i18][3] = 0;
                             this.fj[(this.fh - 1) + 1 + i18][0] = this.fg[((this.fh - 1) + 1) + i18][0] - (getCurrentXTouch() - this.fl);
-                            this.fj[(this.fh - 1) + 1 + i18][1] = this.fg[((this.fh - 1) + 1) + i18][1] - (L() + this.fm);
+                            this.fj[(this.fh - 1) + 1 + i18][1] = this.fg[((this.fh - 1) + 1) + i18][1] - (getCurrentYTouch() + this.fm);
                             this.fj[(this.fh - 1) + i18][0] = this.fg[((this.fh - 1) + 1) + i18][0] - this.fg[(this.fh - 1) + i18][0];
                             this.fj[(this.fh - 1) + i18][1] = this.fg[((this.fh - 1) + 1) + i18][1] - this.fg[(this.fh - 1) + i18][1];
                             this.uniTextures[10] = this.uniTextures[(this.fh - 1) + 1 + i18];
@@ -2853,7 +2853,7 @@ public class AppInstance extends Game {
                             this.fj[(this.fh - 1) + i18][2] = 0;
                             this.fj[(this.fh - 1) + i18][3] = 0;
                             this.fj[((this.fh - 1) - 1) + i18][0] = this.fg[((this.fh - 1) - 1) + i18][0] - (getCurrentXTouch() - this.fl);
-                            this.fj[((this.fh - 1) - 1) + i18][1] = this.fg[((this.fh - 1) - 1) + i18][1] - (L() + this.fm);
+                            this.fj[((this.fh - 1) - 1) + i18][1] = this.fg[((this.fh - 1) - 1) + i18][1] - (getCurrentYTouch() + this.fm);
                             this.fj[(this.fh - 1) + i18][0] = this.fg[((this.fh - 1) - 1) + i18][0] - this.fg[(this.fh - 1) + i18][0];
                             this.fj[(this.fh - 1) + i18][1] = this.fg[((this.fh - 1) - 1) + i18][1] - this.fg[(this.fh - 1) + i18][1];
                             this.uniTextures[10] = this.uniTextures[((this.fh - 1) - 1) + i18];
@@ -2894,7 +2894,7 @@ public class AppInstance extends Game {
             int[] iArr26 = this.fj[this.fh - 1];
             iArr26[0] = iArr26[0] + (getCurrentXTouch() - getPreviousXTouch());
             int[] iArr27 = this.fj[this.fh - 1];
-            iArr27[1] = iArr27[1] + (L() - P());
+            iArr27[1] = iArr27[1] + (getCurrentYTouch() - getPreviousYTouch());
             for (int i20 = 0; i20 < 10; i20++) {
                 if (this.fh - 1 != i20 && this.slotCatIDs[i20] != -1) {
                     if (b(this.fw[i20][0], this.fw[i20][1], this.fw[i20][2], this.fw[i20][3])) {
@@ -2908,7 +2908,7 @@ public class AppInstance extends Game {
                                 this.fj[(this.fh - 1) + i21][2] = 0;
                                 this.fj[(this.fh - 1) + i21][3] = 0;
                                 this.fj[(this.fh - 1) + 1 + i21][0] = this.fg[((this.fh - 1) + 1) + i21][0] - (getCurrentXTouch() - this.fl);
-                                this.fj[(this.fh - 1) + 1 + i21][1] = this.fg[((this.fh - 1) + 1) + i21][1] - (L() + this.fm);
+                                this.fj[(this.fh - 1) + 1 + i21][1] = this.fg[((this.fh - 1) + 1) + i21][1] - (getCurrentYTouch() + this.fm);
                                 this.fj[(this.fh - 1) + i21][0] = this.fg[((this.fh - 1) + 1) + i21][0] - this.fg[(this.fh - 1) + i21][0];
                                 this.fj[(this.fh - 1) + i21][1] = this.fg[((this.fh - 1) + 1) + i21][1] - this.fg[(this.fh - 1) + i21][1];
                                 this.uniTextures[10] = this.uniTextures[(this.fh - 1) + 1 + i21];
@@ -2926,7 +2926,7 @@ public class AppInstance extends Game {
                                 this.fj[(this.fh - 1) + i21][2] = 0;
                                 this.fj[(this.fh - 1) + i21][3] = 0;
                                 this.fj[((this.fh - 1) - 1) + i21][0] = this.fg[((this.fh - 1) - 1) + i21][0] - (getCurrentXTouch() - this.fl);
-                                this.fj[((this.fh - 1) - 1) + i21][1] = this.fg[((this.fh - 1) - 1) + i21][1] - (L() + this.fm);
+                                this.fj[((this.fh - 1) - 1) + i21][1] = this.fg[((this.fh - 1) - 1) + i21][1] - (getCurrentYTouch() + this.fm);
                                 this.fj[(this.fh - 1) + i21][0] = this.fg[((this.fh - 1) - 1) + i21][0] - this.fg[(this.fh - 1) + i21][0];
                                 this.fj[(this.fh - 1) + i21][1] = this.fg[((this.fh - 1) - 1) + i21][1] - this.fg[(this.fh - 1) + i21][1];
                                 this.uniTextures[10] = this.uniTextures[((this.fh - 1) - 1) + i21];
@@ -2946,7 +2946,7 @@ public class AppInstance extends Game {
                     iArr30[1] = iArr30[1] / 2;
                 }
             }
-            this.ei[0] = L();
+            this.ei[0] = getCurrentYTouch();
         }
         if (this.eE[0]) {
             int[] iArr31 = this.fQ;
@@ -3277,7 +3277,7 @@ public class AppInstance extends Game {
         return -1;
     }
 
-    int a(Date date) {
+    int getDateSeconds(Date date) {
         return (int) (date.getTime() / 1000);
     }
 
@@ -4490,7 +4490,7 @@ public class AppInstance extends Game {
     }
 
     int b(int i, int i2, int i3, int i4, int i5, int i6) throws ParseException {
-        return a(DateFormat.getDateTimeInstance().parse(this.hK.format(this.hJ.parse(String.format("%04d%02d%02d%02d%02d%02d", i, i2, i3, i4, i5, i6), new ParsePosition(0)))));
+        return getDateSeconds(DateFormat.getDateTimeInstance().parse(this.hK.format(this.hJ.parse(String.format("%04d%02d%02d%02d%02d%02d", i, i2, i3, i4, i5, i6), new ParsePosition(0)))));
     }
 
     @Override // jp.co.ponos.battlecats.Game
@@ -8637,7 +8637,7 @@ public class AppInstance extends Game {
                 texRenderer.setColor(0, 0, 0);
                 texRenderer.setImageAlpha(255);
                 this.openingModel[0].setAction(this.openingAnim[0], this.fQ[0]);
-                this.openingModel[0].getBasePart().a((this.openingModel[0].getScaleUnit() * getWidth()) / 960, (int) (this.openingModel[0].getScaleUnit() * (getWidth() / 960.0f)));
+                this.openingModel[0].getBasePart().setScale((this.openingModel[0].getScaleUnit() * getWidth()) / 960, (int) (this.openingModel[0].getScaleUnit() * (getWidth() / 960.0f)));
                 texRenderer.setTextures(this.openingModel[0], 0, (int) (-((((getWidth() / 960) * 720) - 640) / 2)));
                 int i2 = 0;
                 while (true) {
@@ -13125,8 +13125,8 @@ public class AppInstance extends Game {
             this.eE[4] = false;
             this.isScrolling = false;
         } else if (!this.eE[2] && !this.eE[3]) {
-            this.ei[0] = L() - N();
-            this.ej[0] = (int) aMath.atan2(L() - N(), getCurrentXTouch() - M());
+            this.ei[0] = getCurrentYTouch() - N();
+            this.ej[0] = (int) aMath.atan2(getCurrentYTouch() - N(), getCurrentXTouch() - M());
             if (this.gO && !this.eE[4]) {
                 if (this.ei[0] <= -25 && this.ej[0] >= 225 && this.ej[0] <= 315) {
                     this.scrollAmount[0] = 0;
@@ -18328,7 +18328,7 @@ public class AppInstance extends Game {
             atexturerenderer.setImageAlpha(255 - this.fi);
             if (!this.fn) {
                 if (this.eE[3]) {
-                    atexturerenderer.drawScaledImage(this.uniTextures[this.fh - 1], (getCurrentXTouch() - this.fl) - (((this.fj[this.fh - 1][2] * 110) / 100) / 2), (L() - this.fm) - (((this.fj[this.fh - 1][3] * 85) / 100) / 2), ((this.fj[this.fh - 1][2] * 110) / 100) + 110, ((this.fj[this.fh - 1][3] * 85) / 100) + 85, 0);
+                    atexturerenderer.drawScaledImage(this.uniTextures[this.fh - 1], (getCurrentXTouch() - this.fl) - (((this.fj[this.fh - 1][2] * 110) / 100) / 2), (getCurrentYTouch() - this.fm) - (((this.fj[this.fh - 1][3] * 85) / 100) / 2), ((this.fj[this.fh - 1][2] * 110) / 100) + 110, ((this.fj[this.fh - 1][3] * 85) / 100) + 85, 0);
                 } else {
                     atexturerenderer.drawScaledImage(this.uniTextures[this.fh - 1], (this.fg[this.fh - 1][0] + this.fj[this.fh - 1][0]) - (((this.fj[this.fh - 1][2] * 110) / 100) / 2), (this.fg[this.fh - 1][1] + this.fj[this.fh - 1][1]) - (((this.fj[this.fh - 1][3] * 85) / 100) / 2), ((this.fj[this.fh - 1][2] * 110) / 100) + 110, ((this.fj[this.fh - 1][3] * 85) / 100) + 85, 0);
                 }

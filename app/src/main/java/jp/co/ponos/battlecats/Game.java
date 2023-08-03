@@ -534,7 +534,7 @@ public class Game extends MyApplicationBase {
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
-    public int L() {
+    public int getCurrentYTouch() {
         return this.currentYTouch;
     }
 
@@ -554,7 +554,7 @@ public class Game extends MyApplicationBase {
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
-    public int P() {
+    public int getPreviousYTouch() {
         return this.prevYTouch;
     }
 
@@ -2121,7 +2121,7 @@ public class Game extends MyApplicationBase {
 
     /* JADX INFO: Access modifiers changed from: package-private */
     public boolean b(int i, int i2, int i3, int i4) {
-        return getCurrentXTouch() >= i && getCurrentXTouch() <= i3 + i && L() >= i2 && L() <= i4 + i2;
+        return getCurrentXTouch() >= i && getCurrentXTouch() <= i3 + i && getCurrentYTouch() >= i2 && getCurrentYTouch() <= i4 + i2;
     }
 
     public void onResume() {
