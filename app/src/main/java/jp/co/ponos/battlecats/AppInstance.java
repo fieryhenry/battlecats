@@ -4001,9 +4001,9 @@ public class AppInstance extends Game {
                 return;
             }
             if (aresourcefilestream2.openRead(String.format("stage.csv", new Object[0]))) {
-                for (int i128 = 0; i128 < getLength(this.stageStats); i128++) {
+                for (int i128 = 0; i128 < getLength(this.stageEoCStats); i128++) {
                     aresourcefilestream2.readLine();
-                    this.stageStats[i128] = aresourcefilestream2.getInt(0);
+                    this.stageEoCStats[i128] = aresourcefilestream2.getInt(0);
                 }
             }
             aresourcefilestream2.close();
@@ -7267,12 +7267,12 @@ public class AppInstance extends Game {
                                     }
                                     if (this.battleData[14] == 0) {
                                         this.bP--;
-                                        for (int i81 = 0; i81 < getLength(this.bW); i81++) {
-                                            if (this.bW[i81][0] != 0) {
-                                                this.gameStats1[0] = (this.unitBattleStats[1][0][7] * this.bW[i81][5]) / 100;
+                                        for (int i81 = 0; i81 < getLength(this.stageStats); i81++) {
+                                            if (this.stageStats[i81][0] != 0) {
+                                                this.gameStats1[0] = (this.unitBattleStats[1][0][7] * this.stageStats[i81][5]) / 100;
                                                 if (this.unitBattleStats[1][0][8] > this.gameStats1[0]) {
                                                     this.bQ[i81][0] = 1;
-                                                } else if (this.bW[i81][1] == 0 || this.bQ[i81][1] < this.bW[i81][1]) {
+                                                } else if (this.stageStats[i81][1] == 0 || this.bQ[i81][1] < this.stageStats[i81][1]) {
                                                     this.bQ[i81][0] -= 1;
                                                 }
                                             }
@@ -7285,18 +7285,18 @@ public class AppInstance extends Game {
                                                 }
                                             }
                                             if (i82 < this.bV[5]) {
-                                                int a2 = getLength(this.bW) - 1;
+                                                int a2 = getLength(this.stageStats) - 1;
                                                 while (true) {
                                                     if (a2 >= 0) {
-                                                        if (this.bW[a2][0] == 0 || this.bQ[a2][0] > 0) {
+                                                        if (this.stageStats[a2][0] == 0 || this.bQ[a2][0] > 0) {
                                                             a2--;
-                                                        } else if (a(1, this.bW[a2][0], 0, this.bW[a2][6], this.bW[a2][7], 0) >= 0) {
+                                                        } else if (a(1, this.stageStats[a2][0], 0, this.stageStats[a2][6], this.stageStats[a2][7], 0) >= 0) {
                                                             this.bP = aMath.rand((this.bV[3] - this.bV[2]) + 1) + this.bV[2];
-                                                            this.bQ[a2][0] = aMath.rand((this.bW[a2][4] - this.bW[a2][3]) + 1) + this.bW[a2][3];
+                                                            this.bQ[a2][0] = aMath.rand((this.stageStats[a2][4] - this.stageStats[a2][3]) + 1) + this.stageStats[a2][3];
                                                             int[] iArr76 = this.bQ[a2];
                                                             iArr76[1] = iArr76[1] + 1;
-                                                            if (this.bt[this.bW[a2][0] - 2] == 0) {
-                                                                this.bt[this.bW[a2][0] - 2] = 1;
+                                                            if (this.bt[this.stageStats[a2][0] - 2] == 0) {
+                                                                this.bt[this.stageStats[a2][0] - 2] = 1;
                                                             }
                                                         }
                                                     }
@@ -12550,7 +12550,7 @@ public class AppInstance extends Game {
                         break;
                     }
                     atexturerenderer.drawScaledImage(this.uiTextures[9], (int) (((ck[i7][0] + this.dJ[0]) + (((dotIndex * 20) + 24) * aMath.cos(atan2))) - 8.0f), (int) (((ck[i7][1] + this.dK[0]) + (((dotIndex * 20) + 24) * aMath.sin(atan2))) - 8.0f), 16, 16, 1);
-                    dotIndex1 = d((int) (((float) (ck[i7][0] + this.dJ[0])) + (((float) ((dotIndex * 20) + 24)) * aMath.cos(atan2))), (int) (((float) (ck[i7][1] + this.dK[0])) + (((float) ((dotIndex * 20) + 24)) * aMath.sin(atan2))), 8, this.dJ[0] + ck[i8][0], this.dK[0] + ck[i8][1], 20) ? 0 : dotIndex + 1;
+                    dotIndex1 = isInsideCircle((int) (((float) (ck[i7][0] + this.dJ[0])) + (((float) ((dotIndex * 20) + 24)) * aMath.cos(atan2))), (int) (((float) (ck[i7][1] + this.dK[0])) + (((float) ((dotIndex * 20) + 24)) * aMath.sin(atan2))), 8, this.dJ[0] + ck[i8][0], this.dK[0] + ck[i8][1], 20) ? 0 : dotIndex + 1;
                     if (dotIndex1 == 0) {
                         break;
                     }
@@ -12558,6 +12558,7 @@ public class AppInstance extends Game {
             }
             stageIndex = stageIndex1 + 1;
         }
+
         int stageIndex1 = 0;
         while (true) { // draw map dots
             int stageIndex2 = stageIndex1;
@@ -12575,30 +12576,34 @@ public class AppInstance extends Game {
             }
             stageIndex1 = stageIndex2 + 1;
         }
+
+        // draw cat shadow
         atexturerenderer.setImageAlpha(63);
-        atexturerenderer.drawScaledImage(this.uiTextures[1], (this.dM[this.dS] + this.dJ[0]) - 1, this.dN[this.dS] + this.dK[0] + 40, 59, 26, 6);
+        atexturerenderer.drawScaledImage(this.uiTextures[1], (this.dM[this.mapCatPosition] + this.dJ[0]) - 1, this.dN[this.mapCatPosition] + this.dK[0] + 40, 59, 26, 6);
         atexturerenderer.setImageAlpha(255);
+
         if (this.dT == 0) {
             atexturerenderer.d(0);
         } else {
             atexturerenderer.d(1);
         }
-        if ((this.fQ[3] % 16) / 4 == 0) {
-            atexturerenderer.drawScaledImage(this.uiTextures[1], this.dJ[0] + this.dM[this.dS], this.dK[0] + this.dN[this.dS], 57, 57, 3);
+        if ((this.fQ[3] % 16) / 4 == 0) { // draw map cat
+            atexturerenderer.drawScaledImage(this.uiTextures[1], this.dJ[0] + this.dM[this.mapCatPosition], this.dK[0] + this.dN[this.mapCatPosition], 57, 57, 3);
         } else if ((this.fQ[3] % 16) / 4 == 1) {
-            atexturerenderer.drawScaledImage(this.uiTextures[1], this.dJ[0] + this.dM[this.dS], this.dK[0] + this.dN[this.dS], 57, 57, 4);
+            atexturerenderer.drawScaledImage(this.uiTextures[1], this.dJ[0] + this.dM[this.mapCatPosition], this.dK[0] + this.dN[this.mapCatPosition], 57, 57, 4);
         } else if ((this.fQ[3] % 16) / 4 == 2) {
-            atexturerenderer.drawScaledImage(this.uiTextures[1], this.dJ[0] + this.dM[this.dS], this.dK[0] + this.dN[this.dS], 57, 57, 3);
+            atexturerenderer.drawScaledImage(this.uiTextures[1], this.dJ[0] + this.dM[this.mapCatPosition], this.dK[0] + this.dN[this.mapCatPosition], 57, 57, 3);
         } else if ((this.fQ[3] % 16) / 4 == 3) {
-            atexturerenderer.drawScaledImage(this.uiTextures[1], this.dJ[0] + this.dM[this.dS], this.dK[0] + this.dN[this.dS], 57, 57, 5);
+            atexturerenderer.drawScaledImage(this.uiTextures[1], this.dJ[0] + this.dM[this.mapCatPosition], this.dK[0] + this.dN[this.mapCatPosition], 57, 57, 5);
         } else if ((this.fQ[3] % 16) / 4 == 3) {
-            atexturerenderer.drawScaledImage(this.uiTextures[1], this.dJ[0] + this.dM[this.dS], this.dK[0] + this.dN[this.dS], 57, 57, 3);
+            atexturerenderer.drawScaledImage(this.uiTextures[1], this.dJ[0] + this.dM[this.mapCatPosition], this.dK[0] + this.dN[this.mapCatPosition], 57, 57, 3);
         }
+
         atexturerenderer.d(0);
         if (!this.eE[2] && this.dY == 0) {
             atexturerenderer.drawScaledImage(this.uiTextures[9], this.w + (640 - (dv[this.fx[0]] / 2)), 411 - (dv[this.fx[0]] / 2), dv[this.fx[0]] + 304, dv[this.fx[0]] + 74, 10);
             atexturerenderer.drawScaledImage(this.uiTextures[9], this.w + (678 - (dv[this.fx[0]] / 2)), 417 - (dv[this.fx[0]] / 2), dv[this.fx[0]] + 231, dv[this.fx[0]] + 62, 11);
-            if (this.aZ == 0 && this.currentEnergy < this.stageStats[this.currentStageBox[2]] + X[this.eQ]) {
+            if (this.aZ == 0 && this.currentEnergy < this.stageEoCStats[this.currentStageBox[2]] + X[this.eQ]) {
                 atexturerenderer.setImageColor(0, 0, 0);
                 atexturerenderer.setImageAlpha(127);
                 atexturerenderer.drawScaledImage(this.uiTextures[9], this.w + (640 - (dv[this.fx[0]] / 2)), 411 - (dv[this.fx[0]] / 2), dv[this.fx[0]] + 304, dv[this.fx[0]] + 74, 10);
@@ -12637,6 +12642,7 @@ public class AppInstance extends Game {
             } while (currentEnergy2 > 0);
         }
         atexturerenderer.setImageColor(255, 255, 255);
+
         int boxIndex = 2;
         while (true) { // draw stage boxes
             int boxIndex2 = boxIndex;
@@ -12663,7 +12669,7 @@ public class AppInstance extends Game {
             atexturerenderer.drawScaledImagef(this.uiTextures[7], ((10.0f * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[boxIndex2][0] / 2.0f)) + (this.boxScale * boxIndex2) + this.gameStats1[0] + boxXOffset, ((19.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f) + 66.0f, (224.0f * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f, (45.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f, cm[boxIndex2 - 2]);
             atexturerenderer.setImageAlpha(255);
             atexturerenderer.drawScaledImagef(this.uiTextures[9], ((37.0f * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[boxIndex2][0] / 2.0f)) + (this.boxScale * boxIndex2) + this.gameStats1[0] + boxXOffset, ((84.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f) + 66.0f, (73.0f * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f, (30.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f, 27);
-            int i21 = X[this.eQ] + this.stageStats[boxIndex2 - 2];
+            int i21 = X[this.eQ] + this.stageEoCStats[boxIndex2 - 2];
             int i22 = 0;
             do {
                 int i23 = i21;
@@ -12710,6 +12716,7 @@ public class AppInstance extends Game {
             }
             boxIndex = boxIndex2 + 1;
         }
+
         int i33 = 2;
         while (true) {
             int i34 = i33;
@@ -12743,6 +12750,7 @@ public class AppInstance extends Game {
             atexturerenderer.setImageAlpha(255);
             i33 = i34 + 1;
         }
+
         atexturerenderer.setImageAlpha(127);
         if (!this.gN) {
             if (this.currentStageBox[2] >= 1) {
@@ -19868,13 +19876,13 @@ public class AppInstance extends Game {
         for (int i37 = 0; i37 < getLength(this.dP); i37++) {
             this.dP[i37] = 0;
         }
-        this.dQ = 0;
+        this.mapScrollState = 0;
         this.dT = 0;
         this.dU = 0;
         this.gN = false;
         this.dY = 0;
-        this.dS = 0;
-        this.dR = this.currentStageBox[2];
+        this.mapCatPosition = 0;
+        this.selectedStage = this.currentStageBox[2];
         this.ct = 0;
         int i38 = 0;
         for (int i39 = 0; i39 < 10; i39++) {
@@ -20042,7 +20050,7 @@ public class AppInstance extends Game {
                 int[] iArr11 = this.fx;
                 iArr11[0] = iArr11[0] + 1;
                 if (this.aZ == 0) {
-                    if (this.currentEnergy >= this.stageStats[this.currentStageBox[2]] + X[this.eQ]) {
+                    if (this.currentEnergy >= this.stageEoCStats[this.currentStageBox[2]] + X[this.eQ]) {
                         if (this.fx[0] > getLength(dv) - 2) {
                             this.gN = true;
                         }
@@ -20055,12 +20063,12 @@ public class AppInstance extends Game {
                             aSound.getInstance().play(7);
                             this.gA[0] = 0;
                             this.ct = 0;
-                            this.currentEnergy -= this.stageStats[this.currentStageBox[2]] + X[this.eQ];
+                            this.currentEnergy -= this.stageEoCStats[this.currentStageBox[2]] + X[this.eQ];
                         }
                     } else if (this.fx[0] > getLength(dv) - 1) {
                         this.fx[0] = 0;
                     }
-                } else if (this.currentEnergy >= this.stageStats[this.currentStageBox[2]] + X[this.eQ]) {
+                } else if (this.currentEnergy >= this.stageEoCStats[this.currentStageBox[2]] + X[this.eQ]) {
                     if (this.fx[0] > getLength(dv) - 2) {
                         this.gN = true;
                     }
@@ -20073,7 +20081,7 @@ public class AppInstance extends Game {
                         aSound.getInstance().play(7);
                         this.gA[0] = 0;
                         this.ct = 0;
-                        this.currentEnergy -= this.stageStats[this.currentStageBox[2]] + X[this.eQ];
+                        this.currentEnergy -= this.stageEoCStats[this.currentStageBox[2]] + X[this.eQ];
                     }
                 } else {
                     int i2 = 0;
@@ -20081,7 +20089,7 @@ public class AppInstance extends Game {
                         i2 += (cB[10] * this.bO[i3][10]) / 100;
                     }
                     if (this.br[this.eQ][this.currentStageBox[2]] >= 1) {
-                        if (ad[10] + (this.bx[10] * 10) + i2 >= ((((((this.br[this.eQ][this.currentStageBox[2]] + 1 > 8 ? 8 : this.br[this.eQ][this.currentStageBox[2]] + 1) + 6) * (X[this.eQ] + this.stageStats[this.currentStageBox[2]])) * 10) / ((this.br[this.eQ][this.currentStageBox[2]] + 1 > 8 ? 8 : this.br[this.eQ][this.currentStageBox[2]] + 1) * 6)) + 5) / 10) {
+                        if (ad[10] + (this.bx[10] * 10) + i2 >= ((((((this.br[this.eQ][this.currentStageBox[2]] + 1 > 8 ? 8 : this.br[this.eQ][this.currentStageBox[2]] + 1) + 6) * (X[this.eQ] + this.stageEoCStats[this.currentStageBox[2]])) * 10) / ((this.br[this.eQ][this.currentStageBox[2]] + 1 > 8 ? 8 : this.br[this.eQ][this.currentStageBox[2]] + 1) * 6)) + 5) / 10) {
                             if (this.fx[0] > getLength(dv) - 1) {
                                 this.fx[0] = 0;
                                 f();
@@ -20096,7 +20104,7 @@ public class AppInstance extends Game {
                             this.gw = 5;
                             return false;
                         }
-                    } else if (i2 + ad[10] + (this.bx[10] * 10) >= this.stageStats[this.currentStageBox[2]] + X[this.eQ]) {
+                    } else if (i2 + ad[10] + (this.bx[10] * 10) >= this.stageEoCStats[this.currentStageBox[2]] + X[this.eQ]) {
                         if (this.fx[0] > getLength(dv) - 1) {
                             this.fx[0] = 0;
                             f();
@@ -20334,7 +20342,7 @@ public class AppInstance extends Game {
                     if (this.gameStats1[0] % this.boxScale == 0 && this.ek[0] == 0) {
                         if (this.aZ != 0) {
                             aSound.getInstance().play(11);
-                        } else if (this.currentEnergy < this.stageStats[this.currentStageBox[2]] + X[this.eQ]) {
+                        } else if (this.currentEnergy < this.stageEoCStats[this.currentStageBox[2]] + X[this.eQ]) {
                             aSound.getInstance().play(15);
                         } else {
                             aSound.getInstance().play(11);
@@ -20641,21 +20649,21 @@ public class AppInstance extends Game {
         this.ea += 2;
         int[] iArr42 = this.fQ;
         iArr42[3] = iArr42[3] + 1;
-        if (this.dR == this.currentStageBox[2] && this.dS == 0) {
+        if (this.selectedStage == this.currentStageBox[2] && this.mapCatPosition == 0) {
             this.dU = 0;
-            this.dS = 0;
+            this.mapCatPosition = 0;
             this.dM[0] = ck[cm[this.currentStageBox[2]]][0] - 28;
             this.dN[0] = ck[cm[this.currentStageBox[2]]][1] - 28;
         } else {
-            if (this.dS == 0) {
-                if (this.dR >= this.currentStageBox[2]) {
-                    this.dP[0] = cm[this.dR];
-                    this.dP[1] = cm[this.dR - 1];
-                    this.dQ = 0;
+            if (this.mapCatPosition == 0) {
+                if (this.selectedStage >= this.currentStageBox[2]) {
+                    this.dP[0] = cm[this.selectedStage];
+                    this.dP[1] = cm[this.selectedStage - 1];
+                    this.mapScrollState = 0; // backwards
                 } else {
-                    this.dP[0] = cm[this.dR];
-                    this.dP[1] = cm[this.dR + 1];
-                    this.dQ = 1;
+                    this.dP[0] = cm[this.selectedStage];
+                    this.dP[1] = cm[this.selectedStage + 1];
+                    this.mapScrollState = 1; // forwards
                 }
                 float atan2 = aMath.atan2(ck[this.dP[1]][1] - ck[this.dP[0]][1], ck[this.dP[1]][0] - ck[this.dP[0]][0]);
                 if (atan2 >= 270.0f || (atan2 >= 0.0f && atan2 <= 90.0f)) {
@@ -20674,7 +20682,7 @@ public class AppInstance extends Game {
                     if (this.dU >= 400) {
                         this.dU = 400;
                     }
-                    if (d((int) (ck[this.dP[0]][0] + (((this.dU * i21) / 2) * aMath.cos(atan2))), (int) (ck[this.dP[0]][1] + (((this.dU * i21) / 2) * aMath.sin(atan2))), (this.dU / 2) + 1, ck[this.dP[1]][0], ck[this.dP[1]][1], (this.dU / 2) + 1)) {
+                    if (isInsideCircle((int) (ck[this.dP[0]][0] + (((this.dU * i21) / 2) * aMath.cos(atan2))), (int) (ck[this.dP[0]][1] + (((this.dU * i21) / 2) * aMath.sin(atan2))), (this.dU / 2) + 1, ck[this.dP[1]][0], ck[this.dP[1]][1], (this.dU / 2) + 1)) {
                         this.dM[i21] = (int) ((ck[this.dP[0]][0] + (((this.dU * i21) / 2) * aMath.cos(atan2))) - 28.0f);
                         this.dN[i21] = (int) ((ck[this.dP[0]][1] + (((this.dU * i21) / 2) * aMath.sin(atan2))) - 28.0f);
                         this.dO[i21] = this.dU;
@@ -20686,17 +20694,17 @@ public class AppInstance extends Game {
                     i21++;
                 }
             }
-            if (d(this.dM[this.dS] + 28, this.dN[this.dS] + 28, (this.dO[this.dS] / 2) + 1, ck[this.dP[1]][0], ck[this.dP[1]][1], (this.dU / 2) + 1)) {
-                if (this.dQ == 0) {
-                    this.dR--;
+            if (isInsideCircle(this.dM[this.mapCatPosition] + 28, this.dN[this.mapCatPosition] + 28, (this.dO[this.mapCatPosition] / 2) + 1, ck[this.dP[1]][0], ck[this.dP[1]][1], (this.dU / 2) + 1)) {
+                if (this.mapScrollState == 0) {
+                    this.selectedStage--;
                 } else {
-                    this.dR++;
+                    this.selectedStage++;
                 }
-                this.dS = 0;
-                this.dM[0] = ck[cm[this.dR]][0] - 28;
-                this.dN[0] = ck[cm[this.dR]][1] - 28;
+                this.mapCatPosition = 0;
+                this.dM[0] = ck[cm[this.selectedStage]][0] - 28;
+                this.dN[0] = ck[cm[this.selectedStage]][1] - 28;
             } else {
-                this.dS++;
+                this.mapCatPosition++;
             }
         }
         if (this.eE[0] || this.eE[1] || this.eE[13] || this.gF[0] || this.gF[1] || this.eb || this.eE[9]) {

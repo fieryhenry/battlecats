@@ -82,9 +82,9 @@ public class Game extends MyApplicationBase {
     int dF;
     int dG;
     int dH;
-    int dQ;
-    int dR;
-    int dS;
+    int mapScrollState;
+    int selectedStage;
+    int mapCatPosition;
     int dT;
     int dU;
     boolean dV;
@@ -290,7 +290,7 @@ public class Game extends MyApplicationBase {
     int[] bD = new int[1];
     int[] bE = new int[1];
     boolean[] bF = new boolean[11];
-    int[] stageStats = new int[48];
+    int[] stageEoCStats = new int[48];
     int[][] bH = (int[][]) Array.newInstance(Integer.TYPE, 201, 3);
     int[][] unitBuyStats = (int[][]) Array.newInstance(Integer.TYPE, 26, 16);
     int[] boxCatIDs = new int[26];
@@ -304,7 +304,7 @@ public class Game extends MyApplicationBase {
     int[][] bT = (int[][]) Array.newInstance(Integer.TYPE, 6, 5);
     int[] bU = new int[2];
     int[] bV = new int[6];
-    int[][] bW = (int[][]) Array.newInstance(Integer.TYPE, 20, 8);
+    int[][] stageStats = (int[][]) Array.newInstance(Integer.TYPE, 20, 8);
     int[][][] unitStats = (int[][][]) Array.newInstance(Integer.TYPE, 28, 2, 14);
     int[][] enemyStats = (int[][]) Array.newInstance(Integer.TYPE, 32, 13);
     int[][] bZ = (int[][]) Array.newInstance(Integer.TYPE, 52, 2);
@@ -654,9 +654,9 @@ public class Game extends MyApplicationBase {
         for (int i11 = 0; i11 < getLength(this.bV); i11++) {
             this.bV[i11] = 0;
         }
-        for (int i12 = 0; i12 < getLength(this.bW); i12++) {
-            for (int i13 = 0; i13 < getLength(this.bW[i12]); i13++) {
-                this.bW[i12][i13] = 0;
+        for (int i12 = 0; i12 < getLength(this.stageStats); i12++) {
+            for (int i13 = 0; i13 < getLength(this.stageStats[i12]); i13++) {
+                this.stageStats[i12][i13] = 0;
             }
         }
         this.bP = 0;
@@ -701,7 +701,7 @@ public class Game extends MyApplicationBase {
             this.bp[this.eQ] = this.dH;
         }
         this.battleData[0] = this.dH;
-        i(((this.eQ == 1 && this.battleData[0] == 47) ? 2 : (this.eQ == 2 && this.battleData[0] == 47) ? 3 : 0) + this.battleData[0]);
+        loadStageStats(((this.eQ == 1 && this.battleData[0] == 47) ? 2 : (this.eQ == 2 && this.battleData[0] == 47) ? 3 : 0) + this.battleData[0]);
         this.battleData[20] = cm[this.battleData[0]];
         this.battleData[5] = this.bV[0] - 9600;
         this.battleData[15] = 0;
@@ -796,9 +796,9 @@ public class Game extends MyApplicationBase {
         this.unitBattleStats[1][0][14] = 0;
         this.unitBattleStats[1][0][15] = 1800;
         this.bP = aMath.rand((this.bV[3] - this.bV[2]) + 1) + this.bV[2];
-        for (int i37 = 0; i37 < getLength(this.bW); i37++) {
-            if (this.bW[i37][0] != 0) {
-                this.bQ[i37][0] = this.bW[i37][2];
+        for (int i37 = 0; i37 < getLength(this.stageStats); i37++) {
+            if (this.stageStats[i37][0] != 0) {
+                this.bQ[i37][0] = this.stageStats[i37][2];
             } else {
                 this.bQ[i37][0] = 0;
             }
@@ -1028,12 +1028,12 @@ public class Game extends MyApplicationBase {
         for (int i56 = 0; i56 < 10; i56++) {
             this.slotEnemyIDs[i56] = -1;
         }
-        for (int i57 = 0; i57 < getLength(this.bW); i57++) {
+        for (int i57 = 0; i57 < getLength(this.stageStats); i57++) {
             int i58 = 0;
             while (true) {
-                if (i58 < 10 && this.bW[i57][0] != 0 && this.bW[i57][0] != this.slotEnemyIDs[i58]) {
+                if (i58 < 10 && this.stageStats[i57][0] != 0 && this.stageStats[i57][0] != this.slotEnemyIDs[i58]) {
                     if (this.slotEnemyIDs[i58] == -1) {
-                        this.slotEnemyIDs[i58] = this.bW[i57][0];
+                        this.slotEnemyIDs[i58] = this.stageStats[i57][0];
                         break;
                     }
                     i58++;
@@ -2131,8 +2131,8 @@ public class Game extends MyApplicationBase {
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
-    public boolean d(int i, int i2, int i3, int i4, int i5, int i6) {
-        return ((i - i4) * (i - i4)) + ((i2 - i5) * (i2 - i5)) <= (i3 + i6) * (i3 + i6);
+    public boolean isInsideCircle(int x, int y, int radius, int centreX, int centreY, int tolerance) {
+        return ((x - centreX) * (x - centreX)) + ((y - centreY) * (y - centreY)) <= (radius + tolerance) * (radius + tolerance);
     }
 
     public void onProcess() {
@@ -2141,7 +2141,7 @@ public class Game extends MyApplicationBase {
     public void f() {
     }
 
-    void i(int i) {
+    void loadStageStats(int i) {
         if (!aString.isEqual(aAssetTextStream.d(String.format("stage%02d.csv", Integer.valueOf(i))), new String[]{"345b93370a81c18c3e1ca485064c8105", "7eeb12db6cf61e975062554f2c2d5c47", "fbae56844862035ecac67dd840b163fe", "94519b25bf5f93710325a5f8ab0f0ec4", "3d0ca160ebad6570d113a7885259daf4", "385e19a0e69d5f11fc54e768f3de1d59", "386921150764335e057e770852656c60", "f72af96ebba61a4b5bb95b93c55c797c", "7a3eab28e914ddb5c5a7f7340d766079", "b8f2d0edc156bbb3eb184fd14e5cce52", "d88a1db9e289697124393a5361b410ca", "adc6425e4106bff2184ad1942da28765", "1aeddcbb0d534bb231ffdf60862d17f4", "54993a929642e6382ab479a7e6f96c8c", "0756993b94f5dcc37b5addaf3b3ae71f", "312987a22171ab38999b36dda3e43b37", "fd4267af7dd24ca6e33fea3eaebf3a3f", "d9fabf55cea824cf5cce990b55de3be7", "845beeee5c9adbdc21339ca2e8f98281", "cd0000479b0b70c6027886745abb4fe0", "91a863f669ecd4be900532e9fe4cde0d", "e7b42c80357526613831951245fdafdb", "e89c4c39c161560737dd467a9cce9e5e", "3119fd83734e199eade1372402c6d4b5", "e0c58745696c32a8ec03932d38c0e10c", "8213572ce0b7f006155528589a075ca4", "69595179dbf85559b386b69b668340f9", "5a5f04742ef5406fa1282068dd146d42", "53df5ec4d09b4797efcbbcf68f5fcc55", "941e6851b52e48c2b19c96fcb567e55b", "08f0eb6b5a35035569037d5a34eec92f", "efd0471c05bb8c352b45653737a0342c", "d74ced49669c5c93cd1528daf373df6f", "bdae74443acdb58b3d213c19d1994279", "420469b948ad3134999ddba7d11d0f72", "c217325fb3c462ff500f35d5dba8d6dd", "1f923af4c242703437a78ae6fed900a2", "bab2c03bdff10ca11d29317ee08f35e2", "30a1e1225661123fcdcfd2c080618bab", "0e2afa9fea9646dbc070408535687932", "8bc82c0f20d610d0dcb3730d706944e3", "8233d1ede2ca26dfb53fa31feb6c9356", "3dffa6ddaaadd924152cd2c9a101ad73", "1e43ffe66844c8abf330e59c2e3c5351", "727678b0f67daf70c867feab8b6445a2", "a04cc9b171fe4edeac9377f5605d112d", "a440aa434573dd1479e2fbca9b7a4446", "4f1b17f0b6047839cea04800097db840", "3f2cb30ef9b6c82fa5c083febf35d110", "b16cf2453de33589d886e1b39de8635e", "aaa4e070b70806c33d01fe218426a0a3"}[i])) {
             this.D = 0;
             setScene(4);
@@ -2153,18 +2153,18 @@ public class Game extends MyApplicationBase {
         for (int i2 = 0; i2 < getLength(this.bV); i2++) {
             this.bV[i2] = aresourcefilestream.getInt(i2);
         }
-        for (int i3 = 0; i3 < getLength(this.bW); i3++) {
+        for (int i3 = 0; i3 < getLength(this.stageStats); i3++) {
             aresourcefilestream.readLine();
-            for (int i4 = 0; i4 < getLength(this.bW[i3]); i4++) {
-                this.bW[i3][i4] = aresourcefilestream.getInt(i4);
+            for (int i4 = 0; i4 < getLength(this.stageStats[i3]); i4++) {
+                this.stageStats[i3][i4] = aresourcefilestream.getInt(i4);
             }
         }
         aresourcefilestream.close();
         this.bV[0] = this.bV[0] * 4;
-        for (int i5 = 0; i5 < getLength(this.bW); i5++) {
-            for (int i6 = 0; i6 < getLength(this.bW[i5]); i6++) {
+        for (int i5 = 0; i5 < getLength(this.stageStats); i5++) {
+            for (int i6 = 0; i6 < getLength(this.stageStats[i5]); i6++) {
                 if (i6 == 2 || i6 == 3 || i6 == 4) {
-                    int[] iArr = this.bW[i5];
+                    int[] iArr = this.stageStats[i5];
                     iArr[i6] = iArr[i6] * 2;
                 }
             }
