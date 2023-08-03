@@ -12668,7 +12668,7 @@ public class AppInstance extends Game {
             atexturerenderer.drawScaledImagef(this.uiTextures[9], ((37.0f * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[boxIndex2][0] / 2.0f)) + (this.boxScale * boxIndex2) + this.gameStats1[0] + boxXOffset, ((84.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f) + 66.0f, (73.0f * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f, (30.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f, 27);
             int i21 = X[this.eQ] + this.stageEoCStats[boxIndex2 - 2];
             int i22 = 0;
-            do {
+            do { // draw energy
                 int i23 = i21;
                 atexturerenderer.drawScaledImagef(this.uiTextures[9], (((182 - (i22 * 17)) * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[boxIndex2][0] / 2.0f)) + (this.boxScale * boxIndex2) + this.gameStats1[0] + boxXOffset, ((84.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f) + 66.0f, (18.0f * ((this.boxSize[boxIndex2][0] * 100.0f) / 243.0f)) / 100.0f, (27.0f * ((this.boxSize[boxIndex2][1] * 100.0f) / 81.0f)) / 100.0f, (i23 % 10) + 29);
                 i21 = i23 / 10;
@@ -20011,16 +20011,20 @@ public class AppInstance extends Game {
         if ((-this.gameStats1[0]) % this.boxScale >= this.boxScale / 2) {
             if ((this.currentStageBox[0] + 1) - this.boxCounts[0] != this.currentStageBox[2]) {
                 this.currentStageBox[2] = (this.currentStageBox[0] + 1) - this.boxCounts[0];
-                this.gameStats1[0] = ((-ck[cm[this.currentStageBox[2]]][0]) + (getWidth() / 2)) - 80;
+                // TODO: check that the map scorlling fix is good
+                int mapOffsetX = ((-ck[cm[this.currentStageBox[2]]][0]) + (getWidth() / 2)) - 80;
+                //this.gameStats1[0] = ((-ck[cm[this.currentStageBox[2]]][0]) + (getWidth() / 2)) - 80;
                 this.gameStats1[1] = (-ck[cm[this.currentStageBox[2]]][1]) + 320 + 80;
-                this.dJ[1] = this.dJ[0] - this.gameStats1[0];
+                this.dJ[1] = this.dJ[0] - mapOffsetX;
                 this.dK[1] = this.dK[0] - this.gameStats1[1];
             }
         } else if (this.currentStageBox[0] - this.boxCounts[0] != this.currentStageBox[2]) {
             this.currentStageBox[2] = this.currentStageBox[0] - this.boxCounts[0];
-            this.gameStats1[0] = ((-ck[cm[this.currentStageBox[2]]][0]) + (getWidth() / 2)) - 80;
+            // TODO: check that the map scorlling fix is good
+            int mapOffsetX = ((-ck[cm[this.currentStageBox[2]]][0]) + (getWidth() / 2)) - 80;
+            //this.gameStats1[0] = ((-ck[cm[this.currentStageBox[2]]][0]) + (getWidth() / 2)) - 80;
             this.gameStats1[1] = (-ck[cm[this.currentStageBox[2]]][1]) + 320 + 80;
-            this.dJ[1] = this.dJ[0] - this.gameStats1[0];
+            this.dJ[1] = this.dJ[0] - mapOffsetX;
             this.dK[1] = this.dK[0] - this.gameStats1[1];
         }
         if (this.dJ[1] > 0) {
