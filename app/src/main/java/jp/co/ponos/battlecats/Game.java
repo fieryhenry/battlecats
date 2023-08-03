@@ -363,7 +363,7 @@ public class Game extends MyApplicationBase {
     int[] dB = new int[4];
     int[] dC = new int[4];
     int[] dD = new int[4];
-    int[] dI = new int[4];
+    int[] currentStageBox = new int[4];
     int[] dJ = new int[3];
     int[] dK = new int[3];
     int[] dL = new int[2];
