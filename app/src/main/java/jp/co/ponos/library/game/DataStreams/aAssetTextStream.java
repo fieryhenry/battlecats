@@ -8,7 +8,7 @@ import jp.co.ponos.library.game.aUtility;
 /* renamed from: jp.co.ponos.library.b.a.b */
 /* loaded from: classes.dex */
 public class aAssetTextStream extends aFileStream {
-    public static String d(String str) {
+    public static String getHash(String str) {
         try {
             DataInputStream dataInputStream = new DataInputStream(aGlobal.getInstance().getContext().getAssets().open(str));
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -16,10 +16,10 @@ public class aAssetTextStream extends aFileStream {
             while (true) {
                 int read = dataInputStream.read(bArr);
                 if (read == -1) {
-                    String decrypt = aUtility.decrypt(byteArrayOutputStream.toByteArray(), byteArrayOutputStream.toByteArray().length);
+                    String hash = aUtility.md5(byteArrayOutputStream.toByteArray(), byteArrayOutputStream.toByteArray().length);
                     byteArrayOutputStream.close();
                     dataInputStream.close();
-                    return decrypt;
+                    return hash;
                 }
                 byteArrayOutputStream.write(bArr, 0, read);
             }

@@ -128,7 +128,7 @@ public class aFileStream {
                 this.a.close();
                 this.e = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
                 this.a = new DataInputStream(this.e);
-                z = aUtility.decrypt(byteArray2, byteArray2.length).equals(new String(byteArray, byteArray.length - 32, 32));
+                z = aUtility.md5(byteArray2, byteArray2.length).equals(new String(byteArray, byteArray.length - 32, 32));
                 return z;
             }
             return false;
@@ -145,7 +145,7 @@ public class aFileStream {
             } else if (this.b != null) {
                 if (this.d != null) {
                     byte[] byteArray = this.c.toByteArray();
-                    this.b.write(aUtility.decrypt(byteArray, byteArray.length).getBytes());
+                    this.b.write(aUtility.md5(byteArray, byteArray.length).getBytes());
                 }
                 this.b.close();
                 this.b = null;

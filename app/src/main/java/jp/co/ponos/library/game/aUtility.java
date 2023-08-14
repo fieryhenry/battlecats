@@ -62,7 +62,7 @@ public abstract class aUtility {
     }
 
     /* renamed from: a */
-    public static String decrypt(byte[] bArr, int i) {
+    public static String md5(byte[] bArr, int i) {
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("MD5");
             messageDigest.update(bArr, 0, i);
