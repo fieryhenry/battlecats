@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 //import jp.co.ponos.library.ads.aAd;
 import jp.co.ponos.library.game.AnimTransformer;
-import jp.co.ponos.library.game.DataStreams.aAssetTextStream;
 import jp.co.ponos.library.game.DataStreams.aFileStream;
 import jp.co.ponos.library.game.DataStreams.aResourceFileStream;
 import jp.co.ponos.library.game.MyApplicationBase;
@@ -14,7 +13,6 @@ import jp.co.ponos.library.game.aModel;
 import jp.co.ponos.library.game.aModelAnimation;
 import jp.co.ponos.library.game.aPoint;
 import jp.co.ponos.library.game.aSound;
-import jp.co.ponos.library.game.aString;
 import jp.co.ponos.library.game.aTexture;
 import jp.co.ponos.library.game.aTextureRenderer;
 import jp.co.ponos.library.game.aUnknown2;
@@ -1697,23 +1695,23 @@ public class Game extends MyApplicationBase {
                         return false;
                     }
                 } else {
-                    if (!R() || !b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                    if (!R() || !isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                         this.gp[0] = false;
                     } else if (!this.gp[0]) {
                         aSound.getInstance().play(10);
                         this.gp[0] = true;
                     }
-                    if (!R() || !b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
+                    if (!R() || !isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                         this.gp[5] = false;
                     } else if (!this.gp[5]) {
                         aSound.getInstance().play(10);
                         this.gp[5] = true;
                     }
-                    if (S() && b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                    if (S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                         int[] iArr3 = this.fx;
                         iArr3[0] = iArr3[0] + 1;
                         aSound.getInstance().play(11);
-                    } else if (S() && b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
+                    } else if (S() && isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                         int[] iArr4 = this.fx;
                         iArr4[5] = iArr4[5] + 1;
                         aSound.getInstance().play(11);
@@ -2120,8 +2118,8 @@ public class Game extends MyApplicationBase {
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
-    public boolean b(int i, int i2, int i3, int i4) {
-        return getCurrentXTouch() >= i && getCurrentXTouch() <= i3 + i && getCurrentYTouch() >= i2 && getCurrentYTouch() <= i4 + i2;
+    public boolean isTouching(int x, int y, int width, int height) {
+        return getCurrentXTouch() >= x && getCurrentXTouch() <= width + x && getCurrentYTouch() >= y && getCurrentYTouch() <= height + y;
     }
 
     public void onResume() {

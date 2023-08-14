@@ -9,7 +9,6 @@ import java.util.Calendar;
 import java.util.Date;
 //import jp.co.ponos.library.ads.aAd;
 //import jp.co.ponos.library.facebook.aFacebook;
-import jp.co.ponos.library.game.DataStreams.aAssetTextStream;
 import jp.co.ponos.library.game.DataStreams.aResourceFileStream;
 import jp.co.ponos.library.game.aBrowserOption;
 import jp.co.ponos.library.game.aMath;
@@ -225,13 +224,13 @@ public class AppInstance extends Game {
                             return false;
                         }
                     } else {
-                        if (!R() || !b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                        if (!R() || !isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                             this.gp[0] = false;
                         } else if (!this.gp[0]) {
                             aSound.getInstance().play(10);
                             this.gp[0] = true;
                         }
-                        if (S() && b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                        if (S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                             aSound.getInstance().play(11);
                             int[] iArr7 = this.fx;
                             iArr7[0] = iArr7[0] + 1;
@@ -529,35 +528,35 @@ public class AppInstance extends Game {
                             return false;
                         }
                     } else {
-                        if (!R() || !b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                        if (!R() || !isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                             this.gp[0] = false;
                         } else if (!this.gp[0]) {
                             aSound.getInstance().play(10);
                             this.gp[0] = true;
                         }
-                        if (!R() || !b(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
+                        if (!R() || !isTouching(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
                             this.gp[1] = false;
                         } else if (!this.gp[1]) {
                             aSound.getInstance().play(10);
                             this.gp[1] = true;
                         }
                         if (this.bq[0] >= 7) {
-                            if (!R() || !b(this.fw[6][0], this.fw[6][1], this.fw[6][2], this.fw[6][3])) {
+                            if (!R() || !isTouching(this.fw[6][0], this.fw[6][1], this.fw[6][2], this.fw[6][3])) {
                                 this.gp[6] = false;
                             } else if (!this.gp[6]) {
                                 aSound.getInstance().play(10);
                                 this.gp[6] = true;
                             }
                         }
-                        if (S() && b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                        if (S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                             int[] iArr4 = this.fx;
                             iArr4[0] = iArr4[0] + 1;
                             aSound.getInstance().play(11);
-                        } else if (S() && b(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
+                        } else if (S() && isTouching(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
                             int[] iArr5 = this.fx;
                             iArr5[1] = iArr5[1] + 1;
                             aSound.getInstance().play(11);
-                        } else if (S() && b(this.fw[6][0], this.fw[6][1], this.fw[6][2], this.fw[6][3]) && this.bq[0] >= 7) {
+                        } else if (S() && isTouching(this.fw[6][0], this.fw[6][1], this.fw[6][2], this.fw[6][3]) && this.bq[0] >= 7) {
                             int[] iArr6 = this.fx;
                             iArr6[6] = iArr6[6] + 1;
                             aSound.getInstance().play(11);
@@ -684,28 +683,28 @@ public class AppInstance extends Game {
                                 }
                             }
                         } else {
-                            if (this.gameStats1[2] % this.boxScale != 0 || this.scrollAmount[0] != 0 || !S() || !b((getWidth() / 2) - 164, 257, 328, 263)) {
+                            if (this.gameStats1[2] % this.boxScale != 0 || this.scrollAmount[0] != 0 || !S() || !isTouching((getWidth() / 2) - 164, 257, 328, 263)) {
                                 this.gp[3] = false;
                             } else if (!this.gp[3]) {
                                 aSound.getInstance().play(10);
                                 this.gp[3] = true;
                             }
-                            if (!R() || !b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
+                            if (!R() || !isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                                 this.gp[5] = false;
                             } else if (!this.gp[5]) {
                                 aSound.getInstance().play(10);
                                 this.gp[5] = true;
                             }
-                            if (this.fG[3] - this.gB[0] >= 1 && this.gameStats1[2] % this.boxScale == 0 && this.scrollAmount[0] == 0 && S() && b((((getWidth() / 2) - 164) + 271) - 40, 428, 68, 68)) {
+                            if (this.fG[3] - this.gB[0] >= 1 && this.gameStats1[2] % this.boxScale == 0 && this.scrollAmount[0] == 0 && S() && isTouching((((getWidth() / 2) - 164) + 271) - 40, 428, 68, 68)) {
                                 int[] iArr11 = this.fx;
                                 iArr11[4] = iArr11[4] + 1;
                             }
                             if (this.fx[4] == 0) {
-                                if (this.gameStats1[2] % this.boxScale == 0 && this.scrollAmount[0] == 0 && S() && b((getWidth() / 2) - 164, 257, 328, 263)) {
+                                if (this.gameStats1[2] % this.boxScale == 0 && this.scrollAmount[0] == 0 && S() && isTouching((getWidth() / 2) - 164, 257, 328, 263)) {
                                     int[] iArr12 = this.fx;
                                     iArr12[3] = iArr12[3] + 1;
                                     aSound.getInstance().play(11);
-                                } else if (S() && b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
+                                } else if (S() && isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                                     int[] iArr13 = this.fx;
                                     iArr13[5] = iArr13[5] + 1;
                                     aSound.getInstance().play(11);
@@ -1049,13 +1048,13 @@ public class AppInstance extends Game {
                 }
             } else {
                 if (this.ef) {
-                    if (!R() || !b(this.fB[10][0], this.fB[10][1], this.fB[10][2], this.fB[10][3])) {
+                    if (!R() || !isTouching(this.fB[10][0], this.fB[10][1], this.fB[10][2], this.fB[10][3])) {
                         this.gp[10] = false;
                     } else if (!this.gp[10]) {
                         aSound.getInstance().play(10);
                         this.gp[10] = true;
                     }
-                    if (!R() || !b(this.fB[11][0], this.fB[11][1], this.fB[11][2], this.fB[11][3])) {
+                    if (!R() || !isTouching(this.fB[11][0], this.fB[11][1], this.fB[11][2], this.fB[11][3])) {
                         this.gp[11] = false;
                     } else if (!this.gp[11]) {
                         aSound.getInstance().play(10);
@@ -1064,7 +1063,7 @@ public class AppInstance extends Game {
                 } else {
                     for (int i9 = 0; i9 < getLength(this.fB); i9++) {
                         if (i9 != 0 && i9 != 1 && ((i9 != 2) && i9 != 5 && ((i9 != 9 || this.bj != 0) && i9 != 10 && i9 != 11))) {
-                            if (!R() || !b(this.fB[i9][0], this.fB[i9][1], this.fB[i9][2], this.fB[i9][3])) {
+                            if (!R() || !isTouching(this.fB[i9][0], this.fB[i9][1], this.fB[i9][2], this.fB[i9][3])) {
                                 this.gp[i9] = false;
                             } else if (!this.gp[i9]) {
                                 aSound.getInstance().play(10);
@@ -1073,22 +1072,22 @@ public class AppInstance extends Game {
                         }
                     }
                 }
-                if (!R() || !b(this.fB[5][0], this.fB[5][1], this.fB[5][2], this.fB[5][3])) {
+                if (!R() || !isTouching(this.fB[5][0], this.fB[5][1], this.fB[5][2], this.fB[5][3])) {
                     this.gp[5] = false;
                 } else if (!this.gp[5]) {
                     aSound.getInstance().play(10);
                     this.gp[5] = true;
                 }
                 if (this.ef) {
-                    if (S() && b(this.fB[10][0], this.fB[10][1], this.fB[10][2], this.fB[10][3])) {
+                    if (S() && isTouching(this.fB[10][0], this.fB[10][1], this.fB[10][2], this.fB[10][3])) {
                         int[] iArr36 = this.fC;
                         iArr36[10] = iArr36[10] + 1;
                         aSound.getInstance().play(11);
-                    } else if (S() && b(this.fB[11][0], this.fB[11][1], this.fB[11][2], this.fB[11][3])) {
+                    } else if (S() && isTouching(this.fB[11][0], this.fB[11][1], this.fB[11][2], this.fB[11][3])) {
                         int[] iArr37 = this.fC;
                         iArr37[11] = iArr37[11] + 1;
                         aSound.getInstance().play(11);
-                    } else if (S() && b(this.fB[5][0], this.fB[5][1], this.fB[5][2], this.fB[5][3])) {
+                    } else if (S() && isTouching(this.fB[5][0], this.fB[5][1], this.fB[5][2], this.fB[5][3])) {
                         int[] iArr38 = this.fC;
                         iArr38[5] = iArr38[5] + 1;
                         aSound.getInstance().play(11);
@@ -1102,41 +1101,41 @@ public class AppInstance extends Game {
                             aSound.getInstance().setVolume(100);
                         }
                     }
-                } else if ((!S() || !b(this.fB[0][0], this.fB[0][1], this.fB[0][2], this.fB[0][3])) && (!S() || !b(this.fB[1][0], this.fB[1][1], this.fB[1][2], this.fB[1][3]))) {
-                    if (S() && b(this.fB[2][0], this.fB[2][1], this.fB[2][2], this.fB[2][3])) {
+                } else if ((!S() || !isTouching(this.fB[0][0], this.fB[0][1], this.fB[0][2], this.fB[0][3])) && (!S() || !isTouching(this.fB[1][0], this.fB[1][1], this.fB[1][2], this.fB[1][3]))) {
+                    if (S() && isTouching(this.fB[2][0], this.fB[2][1], this.fB[2][2], this.fB[2][3])) {
                         int[] iArr39 = this.fC;
                         iArr39[2] = iArr39[2] + 1;
                         aSound.getInstance().play(11);
-                    } else if (S() && b(this.fB[3][0], this.fB[3][1], this.fB[3][2], this.fB[3][3])) {
+                    } else if (S() && isTouching(this.fB[3][0], this.fB[3][1], this.fB[3][2], this.fB[3][3])) {
                         int[] iArr40 = this.fC;
                         iArr40[3] = iArr40[3] + 1;
                         aSound.getInstance().play(11);
-                    } else if (S() && b(this.fB[4][0], this.fB[4][1], this.fB[4][2], this.fB[4][3])) {
+                    } else if (S() && isTouching(this.fB[4][0], this.fB[4][1], this.fB[4][2], this.fB[4][3])) {
                         int[] iArr41 = this.fC;
                         iArr41[4] = iArr41[4] + 1;
-                    } else if (S() && b(this.fB[6][0], this.fB[6][1], this.fB[6][2], this.fB[6][3])) {
+                    } else if (S() && isTouching(this.fB[6][0], this.fB[6][1], this.fB[6][2], this.fB[6][3])) {
                         int[] iArr42 = this.fC;
                         iArr42[6] = iArr42[6] + 1;
                         aSound.getInstance().play(11);
-                    } else if (S() && b(this.fB[7][0], this.fB[7][1], this.fB[7][2], this.fB[7][3])) {
+                    } else if (S() && isTouching(this.fB[7][0], this.fB[7][1], this.fB[7][2], this.fB[7][3])) {
                         int[] iArr43 = this.fC;
                         iArr43[7] = iArr43[7] + 1;
                         aSound.getInstance().play(11);
-                    } else if (S() && b(this.fB[8][0], this.fB[8][1], this.fB[8][2], this.fB[8][3])) {
+                    } else if (S() && isTouching(this.fB[8][0], this.fB[8][1], this.fB[8][2], this.fB[8][3])) {
                         int[] iArr44 = this.fC;
                         iArr44[8] = iArr44[8] + 1;
                         aSound.getInstance().play(11);
-                    } else if (S() && b(this.fB[9][0], this.fB[9][1], this.fB[9][2], this.fB[9][3]) && this.bj != 0) {
+                    } else if (S() && isTouching(this.fB[9][0], this.fB[9][1], this.fB[9][2], this.fB[9][3]) && this.bj != 0) {
                         if (this.bj != 0) {
                             int[] iArr45 = this.fC;
                             iArr45[9] = iArr45[9] + 1;
                             aSound.getInstance().play(11);
                         }
-                    } else if (S() && b(this.fB[12][0], this.fB[12][1], this.fB[12][2], this.fB[12][3])) {
+                    } else if (S() && isTouching(this.fB[12][0], this.fB[12][1], this.fB[12][2], this.fB[12][3])) {
                         int[] iArr46 = this.fC;
                         iArr46[12] = iArr46[12] + 1;
                         aSound.getInstance().play(11);
-                    } else if (S() && b(this.fB[5][0], this.fB[5][1], this.fB[5][2], this.fB[5][3])) {
+                    } else if (S() && isTouching(this.fB[5][0], this.fB[5][1], this.fB[5][2], this.fB[5][3])) {
                         int[] iArr47 = this.fC;
                         iArr47[5] = iArr47[5] + 1;
                         aSound.getInstance().play(11);
@@ -1408,19 +1407,19 @@ public class AppInstance extends Game {
                         }
                     }
                 } else {
-                    if (!R() || !b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
+                    if (!R() || !isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                         this.gp[5] = false;
                     } else if (!this.gp[5]) {
                         aSound.getInstance().play(10);
                         this.gp[5] = true;
                     }
-                    if (S() && b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
+                    if (S() && isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                         int[] iArr7 = this.fx;
                         iArr7[5] = iArr7[5] + 1;
                         aSound.getInstance().play(11);
                     } else if (T()) {
                         this.eE[1] = true;
-                    } else if (S() && b(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
+                    } else if (S() && isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
                         if (this.bf >= 1) {
                             aSound.getInstance().play(11);
                             int[] iArr8 = this.fx;
@@ -1430,14 +1429,14 @@ public class AppInstance extends Game {
                         this.eE[5] = false;
                     } else {
                         for (int i2 = 0; i2 < cy[this.fq[2]]; i2++) {
-                            if (b(((getWidth() / 2) - 254) + ((i2 % 4) * 127) + 8, (((i2 / 4) * 90) + 342) - 6, 112, 88) && this.fq[3] != i2) {
+                            if (isTouching(((getWidth() / 2) - 254) + ((i2 % 4) * 127) + 8, (((i2 / 4) * 90) + 342) - 6, 112, 88) && this.fq[3] != i2) {
                                 aSound.getInstance().play(10);
                                 this.fq[3] = i2;
                                 this.eE[5] = true;
                             }
                         }
                     }
-                    if (!R() || !b(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) || this.bf < 1) {
+                    if (!R() || !isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) || this.bf < 1) {
                         this.gp[14] = false;
                     } else if (!this.gp[14]) {
                         this.gp[14] = true;
@@ -1516,7 +1515,7 @@ public class AppInstance extends Game {
             if (this.fx[5] == 0 && !this.eE[1]) {
                 this.eE[10] = false;
             }
-        } else if ((R() || S()) && b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
+        } else if ((R() || S()) && isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
             this.eE[10] = true;
         } else if (this.fx[5] == 0 && !this.eE[1]) {
             this.eE[10] = false;
@@ -1733,13 +1732,13 @@ public class AppInstance extends Game {
         }
         if (this.gV[1] >= 20) {
             if (this.gZ[0] < 1) {
-                if (!R() || !b(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3])) {
+                if (!R() || !isTouching(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3])) {
                     this.gt[0] = false;
                 } else if (!this.gt[0]) {
                     this.gt[0] = true;
                     aSound.getInstance().play(10);
                 }
-                if (S() && b(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3])) {
+                if (S() && isTouching(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3])) {
                     int[] iArr6 = this.gZ;
                     iArr6[0] = iArr6[0] + 1;
                     aSound.getInstance().play(11);
@@ -2466,66 +2465,66 @@ public class AppInstance extends Game {
                     }
                 }
             } else {
-                if ((this.ff[2] > -1 && this.ff[2] < this.boxCounts[1] + 1) || this.eE[5] || this.gameStats1[0] % this.boxScale != 0 || this.scrollAmount[0] != 0 || !R() || !b(((((getWidth() / 2) - (this.boxSize[this.ff[0]][0] / 2)) + (this.boxScale * this.ff[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.ff[0]][0]), 559 - this.boxSize[this.ff[0]][1], this.boxSize[this.ff[0]][0], this.boxSize[this.ff[0]][1])) {
+                if ((this.ff[2] > -1 && this.ff[2] < this.boxCounts[1] + 1) || this.eE[5] || this.gameStats1[0] % this.boxScale != 0 || this.scrollAmount[0] != 0 || !R() || !isTouching(((((getWidth() / 2) - (this.boxSize[this.ff[0]][0] / 2)) + (this.boxScale * this.ff[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.ff[0]][0]), 559 - this.boxSize[this.ff[0]][1], this.boxSize[this.ff[0]][0], this.boxSize[this.ff[0]][1])) {
                     this.gp[2] = false;
                 } else if (!this.gp[2]) {
                     aSound.getInstance().play(10);
                     this.gp[2] = true;
                 }
                 if (!this.gJ && !this.gI && !this.fn && !this.eE[6] && this.fh == 0) {
-                    if (!R() || !b(this.fw[11][0], this.fw[11][1], this.fw[11][2], this.fw[11][3])) {
+                    if (!R() || !isTouching(this.fw[11][0], this.fw[11][1], this.fw[11][2], this.fw[11][3])) {
                         this.gp[11] = false;
                     } else if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1] && !this.eE[5] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gp[11]) {
                         aSound.getInstance().play(10);
                         this.gp[11] = true;
                     }
                     if (this.bq[0] >= 48) {
-                        if (!R() || !b(this.fw[12][0], this.fw[12][1], this.fw[12][2], this.fw[12][3])) {
+                        if (!R() || !isTouching(this.fw[12][0], this.fw[12][1], this.fw[12][2], this.fw[12][3])) {
                             this.gp[12] = false;
                         } else if (!this.gp[12] && !this.eE[5] && this.bv[this.ff[2]] + 1 >= 10 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0) {
                             aSound.getInstance().play(10);
                             this.gp[12] = true;
                         }
                     }
-                    if (!R() || !b(this.fw[10][0], this.fw[10][1], this.fw[10][2], this.fw[10][3])) {
+                    if (!R() || !isTouching(this.fw[10][0], this.fw[10][1], this.fw[10][2], this.fw[10][3])) {
                         this.gp[10] = false;
                     } else if (!this.eE[5] && !this.gp[10]) {
                         aSound.getInstance().play(10);
                         this.gp[10] = true;
                     }
-                    if (this.fx[2] == 0 && this.ff[0] - 2 >= 0 && this.ff[2] <= 0 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && S() && b(((((getWidth() / 2) - (this.boxSize[this.ff[0] - 1][0] / 2)) + (this.boxScale * (this.ff[0] - 1))) + this.gameStats1[0]) - ((328 - this.boxSize[this.ff[0] - 1][0]) + ((328 - this.boxSize[(this.ff[0] - 1) + 1][0]) / 2)), 559 - this.boxSize[this.ff[0] - 1][1], this.boxSize[this.ff[0] - 1][0], this.boxSize[this.ff[0] - 1][1])) {
+                    if (this.fx[2] == 0 && this.ff[0] - 2 >= 0 && this.ff[2] <= 0 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && S() && isTouching(((((getWidth() / 2) - (this.boxSize[this.ff[0] - 1][0] / 2)) + (this.boxScale * (this.ff[0] - 1))) + this.gameStats1[0]) - ((328 - this.boxSize[this.ff[0] - 1][0]) + ((328 - this.boxSize[(this.ff[0] - 1) + 1][0]) / 2)), 559 - this.boxSize[this.ff[0] - 1][1], this.boxSize[this.ff[0] - 1][0], this.boxSize[this.ff[0] - 1][1])) {
                         int[] iArr8 = this.fx;
                         iArr8[2] = iArr8[2] + 1;
                         this.ff[5] = -1;
                         aSound.getInstance().play(11);
                         this.eE[11] = true;
                     }
-                    if (this.fx[2] == 0 && this.ff[0] - 2 <= this.boxCounts[1] && this.ff[2] >= this.boxCounts[1] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && S() && b(((getWidth() / 2) - (this.boxSize[this.ff[0] + 1][0] / 2)) + (this.boxScale * (this.ff[0] + 1)) + this.gameStats1[0] + (328 - this.boxSize[this.ff[0] + 1][0]), 559 - this.boxSize[this.ff[0] + 1][1], this.boxSize[this.ff[0] + 1][0], this.boxSize[this.ff[0] + 1][1])) {
+                    if (this.fx[2] == 0 && this.ff[0] - 2 <= this.boxCounts[1] && this.ff[2] >= this.boxCounts[1] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && S() && isTouching(((getWidth() / 2) - (this.boxSize[this.ff[0] + 1][0] / 2)) + (this.boxScale * (this.ff[0] + 1)) + this.gameStats1[0] + (328 - this.boxSize[this.ff[0] + 1][0]), 559 - this.boxSize[this.ff[0] + 1][1], this.boxSize[this.ff[0] + 1][0], this.boxSize[this.ff[0] + 1][1])) {
                         int[] iArr9 = this.fx;
                         iArr9[2] = iArr9[2] + 1;
                         this.ff[5] = 1;
                         aSound.getInstance().play(11);
                         this.eE[11] = true;
                     }
-                    if (this.fx[2] == 0 && ((this.ff[2] <= -1 || this.ff[2] >= this.boxCounts[1] + 1) && !this.eE[5] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && S() && b(((((getWidth() / 2) - (this.boxSize[this.ff[0]][0] / 2)) + (this.boxScale * this.ff[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.ff[0]][0]), 559 - this.boxSize[this.ff[0]][1], this.boxSize[this.ff[0]][0], this.boxSize[this.ff[0]][1]))) {
+                    if (this.fx[2] == 0 && ((this.ff[2] <= -1 || this.ff[2] >= this.boxCounts[1] + 1) && !this.eE[5] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && S() && isTouching(((((getWidth() / 2) - (this.boxSize[this.ff[0]][0] / 2)) + (this.boxScale * this.ff[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.ff[0]][0]), 559 - this.boxSize[this.ff[0]][1], this.boxSize[this.ff[0]][0], this.boxSize[this.ff[0]][1]))) {
                         int[] iArr10 = this.fx;
                         iArr10[2] = iArr10[2] + 1;
                         aSound.getInstance().play(11);
                         this.ff[5] = 0;
                         this.eE[11] = true;
-                    } else if (!this.eE[11] && S() && b(this.fw[11][0], this.fw[11][1], this.fw[11][2], this.fw[11][3])) {
+                    } else if (!this.eE[11] && S() && isTouching(this.fw[11][0], this.fw[11][1], this.fw[11][2], this.fw[11][3])) {
                         if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1] && !this.eE[5] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gJ) {
                             aSound.getInstance().play(11);
                             int[] iArr11 = this.fx;
                             iArr11[11] = iArr11[11] + 1;
                         }
-                    } else if (!this.eE[11] && S() && b(this.fw[12][0], this.fw[12][1], this.fw[12][2], this.fw[12][3])) {
+                    } else if (!this.eE[11] && S() && isTouching(this.fw[12][0], this.fw[12][1], this.fw[12][2], this.fw[12][3])) {
                         if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1] && !this.eE[5] && this.bv[this.boxCatIDs[this.ff[2]]] + 1 >= 10 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && this.bq[0] >= 48) {
                             aSound.getInstance().play(11);
                             int[] iArr12 = this.fx;
                             iArr12[12] = iArr12[12] + 1;
                         }
-                    } else if (!this.eE[11] && S() && b(this.fw[10][0], this.fw[10][1], this.fw[10][2], this.fw[10][3])) {
+                    } else if (!this.eE[11] && S() && isTouching(this.fw[10][0], this.fw[10][1], this.fw[10][2], this.fw[10][3])) {
                         if (!this.eE[5]) {
                             aSound.getInstance().play(11);
                             int[] iArr13 = this.fx;
@@ -2548,12 +2547,12 @@ public class AppInstance extends Game {
                         } else if (z4) {
                             this.eE[1] = true;
                         }
-                    } else if (S() && b(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) && this.bf >= 1) {
+                    } else if (S() && isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) && this.bf >= 1) {
                         aSound.getInstance().play(11);
                         int[] iArr14 = this.fx;
                         iArr14[14] = iArr14[14] + 1;
                     }
-                    if (!R() || !b(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) || this.bf < 1) {
+                    if (!R() || !isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) || this.bf < 1) {
                         this.gp[14] = false;
                     } else if (!this.gp[14]) {
                         this.gp[14] = true;
@@ -2595,7 +2594,7 @@ public class AppInstance extends Game {
         if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1] && this.bu[this.boxCatIDs[this.ff[2]]] == 0) {
             z5 = true;
         }
-        if (z5 || this.gJ || this.gI || !R() || this.eE[4] || !b(((getWidth() / 2) - (this.boxSize[this.ff[0] + this.gameStats1[0]][0] / 2)) + (this.boxScale * (this.ff[0] + this.gameStats1[0])) + this.gameStats1[0] + this.gameStats1[1], 559 - this.boxSize[this.ff[0] + this.gameStats1[0]][1], this.boxSize[this.ff[0] + this.gameStats1[0]][0], this.boxSize[this.ff[0] + this.gameStats1[0]][1])) {
+        if (z5 || this.gJ || this.gI || !R() || this.eE[4] || !isTouching(((getWidth() / 2) - (this.boxSize[this.ff[0] + this.gameStats1[0]][0] / 2)) + (this.boxScale * (this.ff[0] + this.gameStats1[0])) + this.gameStats1[0] + this.gameStats1[1], 559 - this.boxSize[this.ff[0] + this.gameStats1[0]][1], this.boxSize[this.ff[0] + this.gameStats1[0]][0], this.boxSize[this.ff[0] + this.gameStats1[0]][1])) {
             this.fk[10] = 0;
         } else {
             if (this.scrollAmount[0] == 0) {
@@ -2612,7 +2611,7 @@ public class AppInstance extends Game {
         }
         if (this.gJ || this.gI || !R() || this.eE[4] || !this.eE[6]) {
             for (int i14 = 0; i14 < 10; i14++) {
-                if (b(this.fw[i14][0], this.fw[i14][1], this.fw[i14][2], this.fw[i14][3])) {
+                if (isTouching(this.fw[i14][0], this.fw[i14][1], this.fw[i14][2], this.fw[i14][3])) {
                     if (this.fp[i14] >= 15) {
                         if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1]) {
                             this.slotCatIDs[i14] = this.boxCatIDs[this.ff[2]] + 2;
@@ -2672,12 +2671,12 @@ public class AppInstance extends Game {
             }
             this.eE[6] = false;
         } else {
-            if (!this.eE[3] && b(((getWidth() / 2) - (this.boxSize[this.ff[0] + this.gameStats1[0]][0] / 2)) + (this.boxScale * (this.ff[0] + this.gameStats1[0])) + this.gameStats1[0] + this.gameStats1[1], 559 - this.boxSize[this.ff[0] + this.gameStats1[0]][1], this.boxSize[this.ff[0] + this.gameStats1[0]][0], this.boxSize[this.ff[0] + this.gameStats1[0]][1])) {
+            if (!this.eE[3] && isTouching(((getWidth() / 2) - (this.boxSize[this.ff[0] + this.gameStats1[0]][0] / 2)) + (this.boxScale * (this.ff[0] + this.gameStats1[0])) + this.gameStats1[0] + this.gameStats1[1], 559 - this.boxSize[this.ff[0] + this.gameStats1[0]][1], this.boxSize[this.ff[0] + this.gameStats1[0]][0], this.boxSize[this.ff[0] + this.gameStats1[0]][1])) {
                 this.fn = true;
             }
             this.ei[1] = getCurrentYTouch();
             this.gameStats1[1] = getCurrentXTouch();
-            if (this.fn && !this.eE[3] && b(0, 80, getWidth(), 200)) {
+            if (this.fn && !this.eE[3] && isTouching(0, 80, getWidth(), 200)) {
                 int i15 = 0;
                 while (true) {
                     if (i15 >= 10) {
@@ -2711,7 +2710,7 @@ public class AppInstance extends Game {
             if (!this.eE[3]) {
                 boolean z6 = false;
                 for (int i16 = 0; i16 < 10; i16++) {
-                    if (b(this.fw[i16][0], this.fw[i16][1], this.fw[i16][2], this.fw[i16][3])) {
+                    if (isTouching(this.fw[i16][0], this.fw[i16][1], this.fw[i16][2], this.fw[i16][3])) {
                         int[] iArr17 = this.fp;
                         iArr17[i16] = iArr17[i16] + 1;
                         if (this.fp[i16] >= 15) {
@@ -2742,7 +2741,7 @@ public class AppInstance extends Game {
                     }
                     this.eE[7] = true;
                 }
-            } else if (b(0, 80, getWidth(), 200)) {
+            } else if (isTouching(0, 80, getWidth(), 200)) {
                 if (this.fn) {
                     this.fo[0] = (int) (this.fo[0] * 0.6d);
                     this.fo[1] = (int) (this.fo[1] * 0.6d);
@@ -2769,7 +2768,7 @@ public class AppInstance extends Game {
         for (int i17 = 0; i17 < 10; i17++) {
             if (this.slotCatIDs[i17] == -1) {
                 this.fk[i17] = 0;
-            } else if (this.gJ || this.gI || !R() || !b(this.fw[i17][0], this.fw[i17][1], this.fw[i17][2], this.fw[i17][3]) || this.eE[5] || this.fn) {
+            } else if (this.gJ || this.gI || !R() || !isTouching(this.fw[i17][0], this.fw[i17][1], this.fw[i17][2], this.fw[i17][3]) || this.eE[5] || this.fn) {
                 this.fk[i17] = 0;
             } else {
                 int[] iArr18 = this.fk;
@@ -2899,7 +2898,7 @@ public class AppInstance extends Game {
             iArr27[1] = iArr27[1] + (getCurrentYTouch() - getPreviousYTouch());
             for (int i20 = 0; i20 < 10; i20++) {
                 if (this.fh - 1 != i20 && this.slotCatIDs[i20] != -1) {
-                    if (b(this.fw[i20][0], this.fw[i20][1], this.fw[i20][2], this.fw[i20][3])) {
+                    if (isTouching(this.fw[i20][0], this.fw[i20][1], this.fw[i20][2], this.fw[i20][3])) {
                         this.gameStats1[0] = i20 - (this.fh - 1);
                         int i21 = 0;
                         while (this.gameStats1[0] != 0) {
@@ -3172,7 +3171,7 @@ public class AppInstance extends Game {
             if (this.fx[10] == 0 && !this.eE[1]) {
                 this.eE[10] = false;
             }
-        } else if ((R() || S()) && b(this.fw[10][0], this.fw[10][1], this.fw[10][2], this.fw[10][3])) {
+        } else if ((R() || S()) && isTouching(this.fw[10][0], this.fw[10][1], this.fw[10][2], this.fw[10][3])) {
             this.eE[10] = true;
         } else if (this.fx[10] == 0 && !this.eE[1]) {
             this.eE[10] = false;
@@ -4332,7 +4331,7 @@ public class AppInstance extends Game {
             if (this.gameStats1[0] >= 117) {
                 atexturerenderer.drawScaledImagef(this.uiTextures[15], this.fw[0][0], this.fw[0][1] + 22 + 0 + this.eI[0], 19);
             }
-        } else if (this.fc[1] == 0) {
+        } else if (this.fc[1] == 0) { // cat cannon FIRE!! text dim
             atexturerenderer.drawScaledImagef(this.uiTextures[15], this.fw[0][0], this.fw[0][1] + 22 + 96 + this.eI[0], 11);
             atexturerenderer.drawScaledImagef(this.uiTextures[15], this.fw[0][0], this.fw[0][1] + 22 + 84 + this.eI[0], 12);
             atexturerenderer.drawScaledImagef(this.uiTextures[15], this.fw[0][0], this.fw[0][1] + 22 + 72 + this.eI[0], 13);
@@ -4344,7 +4343,7 @@ public class AppInstance extends Game {
             atexturerenderer.drawScaledImagef(this.uiTextures[15], this.fw[0][0], this.fw[0][1] + 22 + 0 + this.eI[0], 19);
             atexturerenderer.drawScaledImagef(this.uiTextures[15], this.fw[0][0], this.fw[0][1] + this.eI[0], 20);
             atexturerenderer.drawScaledImagef(this.uiTextures[15], (getWidth() - 125) - 4, this.eI[0] + 581 + this.eZ, 9);
-        } else {
+        } else { // lighter flash
             atexturerenderer.drawScaledImagef(this.uiTextures[15], this.fw[0][0], this.fw[0][1] + this.eI[0], 7);
             atexturerenderer.drawScaledImagef(this.uiTextures[15], (getWidth() - 125) - 4, this.eI[0] + 581 + this.eZ, 10);
         }
@@ -4762,7 +4761,7 @@ public class AppInstance extends Game {
                 atexturerenderer.drawScaledImage(this.uiTextures[21], (((getWidth() / 2) - 345) + 406) - (dv[this.fx[1]] / 2), 480 - (dv[this.fx[1]] / 2), dv[this.fx[1]] + 168, dv[this.fx[1]] + 72, 2);
                 atexturerenderer.drawScaledImage(this.uiTextures[21], (((getWidth() / 2) - 345) + 125) - (dv[this.fx[0]] / 2), 488 - (dv[this.fx[0]] / 2), dv[this.fx[0]] + 150, dv[this.fx[0]] + 55, 4);
                 atexturerenderer.drawScaledImage(this.uiTextures[21], (((getWidth() / 2) - 345) + 415) - (dv[this.fx[1]] / 2), 488 - (dv[this.fx[1]] / 2), dv[this.fx[1]] + 150, dv[this.fx[1]] + 55, 5);
-                if (this.fx[0] == 0 && this.fx[1] == 0 && !this.gu && !this.gU && R() && (b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3]) || b(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3]))) {
+                if (this.fx[0] == 0 && this.fx[1] == 0 && !this.gu && !this.gU && R() && (isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3]) || isTouching(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3]))) {
                     if (this.battleData[16] % 4 == 0 || this.battleData[16] % 4 == 1) {
                         if (this.fa == 0) {
                             atexturerenderer.drawScaledImage(this.uiTextures[21], ((getWidth() / 2) - 345) + 115, 479, 170, 75, 6);
@@ -5895,7 +5894,7 @@ public class AppInstance extends Game {
                             }
                         } else {
                             if (this.dz <= 1 && !this.eb) {
-                                if (!R() || !b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                                if (!R() || !isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                                     this.gp[0] = false;
                                 } else if (!this.gp[0] && !this.eb) {
                                     aSound.getInstance().play(10);
@@ -5903,7 +5902,7 @@ public class AppInstance extends Game {
                                 }
                             }
                             if (this.dz <= 1 && !this.eb) {
-                                if (S() && b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                                if (S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                                     aSound.getInstance().play(11);
                                     int[] iArr6 = this.fx;
                                     iArr6[0] = iArr6[0] + 1;
@@ -5946,13 +5945,13 @@ public class AppInstance extends Game {
                                     }
                                 }
                             } else {
-                                if (!R() || !b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                                if (!R() || !isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                                     this.gp[0] = false;
                                 } else if (!this.gp[0]) {
                                     aSound.getInstance().play(10);
                                     this.gp[0] = true;
                                 }
-                                if (S() && b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                                if (S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                                     aSound.getInstance().play(11);
                                     int[] iArr11 = this.fx;
                                     iArr11[0] = iArr11[0] + 1;
@@ -6970,7 +6969,7 @@ public class AppInstance extends Game {
                                     }
                                     if ((this.scrollAmount[0] == 0 && !this.eE[3]) || (this.fT && !this.eE[3] && !this.eE[4] && this.scrollAmount[0] == 0)) {
                                         for (int i71 = 0; i71 < 6; i71++) {
-                                            if (R() && b(this.eJ[i71][0], this.eJ[i71][1], this.eJ[i71][2], this.eJ[i71][3]) && this.eM[i71]) {
+                                            if (R() && isTouching(this.eJ[i71][0], this.eJ[i71][1], this.eJ[i71][2], this.eJ[i71][3]) && this.eM[i71]) {
                                                 if (this.dW != i71 || !this.dV) {
                                                     this.dW = i71;
                                                     this.textTextures[this.gA[0] + 0].drawText(this.itemNameText[this.dW], "FONT_SYSTEM_BOLD", 30, 1);
@@ -6987,26 +6986,26 @@ public class AppInstance extends Game {
                                     }
                                     if (this.scrollAmount[0] == 0 && !this.eE[3]) {
                                         if (!this.fT) {
-                                            if (!R() || !b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                                            if (!R() || !isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                                                 this.gp[0] = false;
                                             } else if (!this.gp[0]) {
                                                 aSound.getInstance().play(10);
                                                 this.gp[0] = true;
                                             }
-                                            if (!R() || !b(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
+                                            if (!R() || !isTouching(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
                                                 this.gp[1] = false;
                                             } else if (!this.gp[1]) {
                                                 aSound.getInstance().play(10);
                                                 this.gp[1] = true;
                                             }
                                         }
-                                        if (!R() || !b(this.fw[3][0], this.fw[3][1], this.fw[3][2], this.fw[3][3])) {
+                                        if (!R() || !isTouching(this.fw[3][0], this.fw[3][1], this.fw[3][2], this.fw[3][3])) {
                                             this.gp[3] = false;
                                         } else if (!this.gp[3]) {
                                             aSound.getInstance().play(10);
                                             this.gp[3] = true;
                                         }
-                                        if (S() && b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3]) && !this.dV) {
+                                        if (S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3]) && !this.dV) {
                                             if (this.unitBattleStats[0][0][12] == 0 && this.unitBattleStats[0][0][9] == 0) {
                                                 this.unitBattleStats[0][0][12] = this.unitBattleStats[0][0][11];
                                                 this.unitBattleStats[0][0][9] = 1;
@@ -7021,7 +7020,7 @@ public class AppInstance extends Game {
                                             } else {
                                                 aSound.getInstance().play(15);
                                             }
-                                        } else if (S() && b(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3]) && !this.dV) {
+                                        } else if (S() && isTouching(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3]) && !this.dV) {
                                             this.gA[1] = 0;
                                             this.dV = false;
                                             if (this.bN[0] == 7) {
@@ -7073,7 +7072,7 @@ public class AppInstance extends Game {
                                             } else {
                                                 aSound.getInstance().play(15);
                                             }
-                                        } else if (S() && b(this.fw[3][0], this.fw[3][1], this.fw[3][2], this.fw[3][3]) && !this.dV) {
+                                        } else if (S() && isTouching(this.fw[3][0], this.fw[3][1], this.fw[3][2], this.fw[3][3]) && !this.dV) {
                                             aSound.getInstance().play(11);
                                             this.gA[1] = 0;
                                             this.dV = false;
@@ -7087,82 +7086,82 @@ public class AppInstance extends Game {
                                                 return;
                                             }
                                             return;
-                                        } else if (S() && b(this.eJ[0][0], this.eJ[0][1], this.eJ[0][2], this.eJ[0][3]) && this.eM[0]) {
+                                        } else if (S() && isTouching(this.eJ[0][0], this.eJ[0][1], this.eJ[0][2], this.eJ[0][3]) && this.eM[0]) {
                                             int[] iArr65 = this.eK;
                                             iArr65[0] = iArr65[0] + 1;
                                             aSound.getInstance().play(11);
-                                        } else if ((!S() || !b(this.eJ[1][0], this.eJ[1][1], this.eJ[1][2], this.eJ[1][3]) || !this.eM[1]) && (!S() || !b(this.eJ[2][0], this.eJ[2][1], this.eJ[2][2], this.eJ[2][3]) || !this.eM[2])) {
-                                            if (S() && b(this.eJ[3][0], this.eJ[3][1], this.eJ[3][2], this.eJ[3][3]) && this.eM[3]) {
+                                        } else if ((!S() || !isTouching(this.eJ[1][0], this.eJ[1][1], this.eJ[1][2], this.eJ[1][3]) || !this.eM[1]) && (!S() || !isTouching(this.eJ[2][0], this.eJ[2][1], this.eJ[2][2], this.eJ[2][3]) || !this.eM[2])) {
+                                            if (S() && isTouching(this.eJ[3][0], this.eJ[3][1], this.eJ[3][2], this.eJ[3][3]) && this.eM[3]) {
                                                 int[] iArr66 = this.eK;
                                                 iArr66[3] = iArr66[3] + 1;
                                                 aSound.getInstance().play(11);
-                                            } else if (!S() || !b(this.eJ[4][0], this.eJ[4][1], this.eJ[4][2], this.eJ[4][3]) || !this.eM[4]) {
-                                                if (S() && b(this.eJ[5][0], this.eJ[5][1], this.eJ[5][2], this.eJ[5][3]) && this.eM[5]) {
+                                            } else if (!S() || !isTouching(this.eJ[4][0], this.eJ[4][1], this.eJ[4][2], this.eJ[4][3]) || !this.eM[4]) {
+                                                if (S() && isTouching(this.eJ[5][0], this.eJ[5][1], this.eJ[5][2], this.eJ[5][3]) && this.eM[5]) {
                                                     int[] iArr67 = this.eK;
                                                     iArr67[5] = iArr67[5] + 1;
                                                     aSound.getInstance().play(11);
-                                                } else if (!S() || !b(this.hj[0][0], this.hj[0][1], this.hj[0][2], this.hj[0][3]) || this.dH > 47 || this.dV) {
+                                                } else if (!S() || !isTouching(this.hj[0][0], this.hj[0][1], this.hj[0][2], this.hj[0][3]) || this.dH > 47 || this.dV) {
                                                     if (!this.eE[0] && this.scrollAmount[0] == 0 && !this.eE[1] && !this.eE[2]) {
                                                         if (this.eD[0] == 0) {
                                                             this.gameStats1[0] = 0;
                                                         } else if (this.eD[0] == 1) {
                                                             this.gameStats1[0] = 5;
                                                         }
-                                                        if (!R() || !b(fb[this.gameStats1[0] + 0] + (this.w / 2), this.eZ + 543, 110, 88)) {
+                                                        if (!R() || !isTouching(fb[this.gameStats1[0] + 0] + (this.w / 2), this.eZ + 543, 110, 88)) {
                                                             this.gp[4] = false;
                                                         } else if (!this.gp[4]) {
                                                             aSound.getInstance().play(10);
                                                             this.gp[4] = true;
                                                         }
-                                                        if (!R() || !b(fb[this.gameStats1[0] + 1] + (this.w / 2), this.eZ + 543, 110, 88)) {
+                                                        if (!R() || !isTouching(fb[this.gameStats1[0] + 1] + (this.w / 2), this.eZ + 543, 110, 88)) {
                                                             this.gp[5] = false;
                                                         } else if (!this.gp[5]) {
                                                             aSound.getInstance().play(10);
                                                             this.gp[5] = true;
                                                         }
-                                                        if (!R() || !b(fb[this.gameStats1[0] + 2] + (this.w / 2), this.eZ + 543, 110, 88)) {
+                                                        if (!R() || !isTouching(fb[this.gameStats1[0] + 2] + (this.w / 2), this.eZ + 543, 110, 88)) {
                                                             this.gp[6] = false;
                                                         } else if (!this.gp[6]) {
                                                             aSound.getInstance().play(10);
                                                             this.gp[6] = true;
                                                         }
-                                                        if (!R() || !b(fb[this.gameStats1[0] + 3] + (this.w / 2), this.eZ + 543, 110, 88)) {
+                                                        if (!R() || !isTouching(fb[this.gameStats1[0] + 3] + (this.w / 2), this.eZ + 543, 110, 88)) {
                                                             this.gp[7] = false;
                                                         } else if (!this.gp[7]) {
                                                             aSound.getInstance().play(10);
                                                             this.gp[7] = true;
                                                         }
-                                                        if (!R() || !b(fb[this.gameStats1[0] + 4] + (this.w / 2), this.eZ + 543, 110, 88)) {
+                                                        if (!R() || !isTouching(fb[this.gameStats1[0] + 4] + (this.w / 2), this.eZ + 543, 110, 88)) {
                                                             this.gp[8] = false;
                                                         } else if (!this.gp[8]) {
                                                             aSound.getInstance().play(10);
                                                             this.gp[8] = true;
                                                         }
-                                                        if (S() && b(fb[this.gameStats1[0] + 0] + (this.w / 2), this.eZ + 543, 110, 88) && !this.dV) {
+                                                        if (S() && isTouching(fb[this.gameStats1[0] + 0] + (this.w / 2), this.eZ + 543, 110, 88) && !this.dV) {
                                                             this.gA[1] = 0;
                                                             this.dV = false;
                                                             int[] iArr68 = this.fy;
                                                             iArr68[0] = iArr68[0] + 1;
                                                         }
-                                                        if (S() && b(fb[this.gameStats1[0] + 1] + (this.w / 2), this.eZ + 543, 110, 88) && !this.dV) {
+                                                        if (S() && isTouching(fb[this.gameStats1[0] + 1] + (this.w / 2), this.eZ + 543, 110, 88) && !this.dV) {
                                                             this.gA[1] = 0;
                                                             this.dV = false;
                                                             int[] iArr69 = this.fy;
                                                             iArr69[1] = iArr69[1] + 1;
                                                         }
-                                                        if (S() && b(fb[this.gameStats1[0] + 2] + (this.w / 2), this.eZ + 543, 110, 88) && !this.dV) {
+                                                        if (S() && isTouching(fb[this.gameStats1[0] + 2] + (this.w / 2), this.eZ + 543, 110, 88) && !this.dV) {
                                                             this.gA[1] = 0;
                                                             this.dV = false;
                                                             int[] iArr70 = this.fy;
                                                             iArr70[2] = iArr70[2] + 1;
                                                         }
-                                                        if (S() && b(fb[this.gameStats1[0] + 3] + (this.w / 2), this.eZ + 543, 110, 88) && !this.dV) {
+                                                        if (S() && isTouching(fb[this.gameStats1[0] + 3] + (this.w / 2), this.eZ + 543, 110, 88) && !this.dV) {
                                                             this.gA[1] = 0;
                                                             this.dV = false;
                                                             int[] iArr71 = this.fy;
                                                             iArr71[3] = iArr71[3] + 1;
                                                         }
-                                                        if (S() && b(fb[this.gameStats1[0] + 4] + (this.w / 2), this.eZ + 543, 110, 88) && !this.dV) {
+                                                        if (S() && isTouching(fb[this.gameStats1[0] + 4] + (this.w / 2), this.eZ + 543, 110, 88) && !this.dV) {
                                                             this.gA[1] = 0;
                                                             this.dV = false;
                                                             int[] iArr72 = this.fy;
@@ -8434,13 +8433,13 @@ public class AppInstance extends Game {
                                 }
                             } else {
                                 if (this.ef) {
-                                    if (!R() || !b(this.fB[10][0], this.fB[10][1], this.fB[10][2], this.fB[10][3])) {
+                                    if (!R() || !isTouching(this.fB[10][0], this.fB[10][1], this.fB[10][2], this.fB[10][3])) {
                                         this.gp[10] = false;
                                     } else if (!this.gp[10]) {
                                         aSound.getInstance().play(10);
                                         this.gp[10] = true;
                                     }
-                                    if (!R() || !b(this.fB[11][0], this.fB[11][1], this.fB[11][2], this.fB[11][3])) {
+                                    if (!R() || !isTouching(this.fB[11][0], this.fB[11][1], this.fB[11][2], this.fB[11][3])) {
                                         this.gp[11] = false;
                                     } else if (!this.gp[11]) {
                                         aSound.getInstance().play(10);
@@ -8449,7 +8448,7 @@ public class AppInstance extends Game {
                                 } else {
                                     for (int i158 = 0; i158 < 10; i158++) {
                                         if (i158 != 0 && i158 != 2 && i158 != 5 && ((i158 != 8 || (this.bd != 0 && this.dH < 48)) && i158 != 9)) {
-                                            if (!R() || !b(this.fB[i158][0], this.fB[i158][1], this.fB[i158][2], this.fB[i158][3])) {
+                                            if (!R() || !isTouching(this.fB[i158][0], this.fB[i158][1], this.fB[i158][2], this.fB[i158][3])) {
                                                 this.gp[i158] = false;
                                             } else if (!this.gp[i158]) {
                                                 aSound.getInstance().play(10);
@@ -8458,22 +8457,22 @@ public class AppInstance extends Game {
                                         }
                                     }
                                 }
-                                if (!R() || !b(this.fB[5][0], this.fB[5][1], this.fB[5][2], this.fB[5][3])) {
+                                if (!R() || !isTouching(this.fB[5][0], this.fB[5][1], this.fB[5][2], this.fB[5][3])) {
                                     this.gp[5] = false;
                                 } else if (!this.gp[5]) {
                                     aSound.getInstance().play(10);
                                     this.gp[5] = true;
                                 }
                                 if (this.ef) {
-                                    if (S() && b(this.fB[10][0], this.fB[10][1], this.fB[10][2], this.fB[10][3])) {
+                                    if (S() && isTouching(this.fB[10][0], this.fB[10][1], this.fB[10][2], this.fB[10][3])) {
                                         int[] iArr128 = this.fC;
                                         iArr128[10] = iArr128[10] + 1;
                                         aSound.getInstance().play(11);
-                                    } else if (S() && b(this.fB[11][0], this.fB[11][1], this.fB[11][2], this.fB[11][3])) {
+                                    } else if (S() && isTouching(this.fB[11][0], this.fB[11][1], this.fB[11][2], this.fB[11][3])) {
                                         int[] iArr129 = this.fC;
                                         iArr129[11] = iArr129[11] + 1;
                                         aSound.getInstance().play(11);
-                                    } else if (S() && b(this.fB[5][0], this.fB[5][1], this.fB[5][2], this.fB[5][3])) {
+                                    } else if (S() && isTouching(this.fB[5][0], this.fB[5][1], this.fB[5][2], this.fB[5][3])) {
                                         int[] iArr130 = this.fC;
                                         iArr130[5] = iArr130[5] + 1;
                                         aSound.getInstance().play(11);
@@ -8488,31 +8487,31 @@ public class AppInstance extends Game {
                                             }
                                         }
                                     }
-                                } else if ((!S() || !b(this.fB[0][0], this.fB[0][1], this.fB[0][2], this.fB[0][3])) && (!S() || !b(this.fB[1][0], this.fB[1][1], this.fB[1][2], this.fB[1][3]))) {
-                                    if (S() && b(this.fB[2][0], this.fB[2][1], this.fB[2][2], this.fB[2][3])) {
+                                } else if ((!S() || !isTouching(this.fB[0][0], this.fB[0][1], this.fB[0][2], this.fB[0][3])) && (!S() || !isTouching(this.fB[1][0], this.fB[1][1], this.fB[1][2], this.fB[1][3]))) {
+                                    if (S() && isTouching(this.fB[2][0], this.fB[2][1], this.fB[2][2], this.fB[2][3])) {
                                         int[] iArr131 = this.fC;
                                         iArr131[2] = iArr131[2] + 1;
                                         aSound.getInstance().play(11);
-                                    } else if (S() && b(this.fB[3][0], this.fB[3][1], this.fB[3][2], this.fB[3][3])) {
+                                    } else if (S() && isTouching(this.fB[3][0], this.fB[3][1], this.fB[3][2], this.fB[3][3])) {
                                         int[] iArr132 = this.fC;
                                         iArr132[3] = iArr132[3] + 1;
                                         aSound.getInstance().play(11);
-                                    } else if (S() && b(this.fB[4][0], this.fB[4][1], this.fB[4][2], this.fB[4][3])) {
+                                    } else if (S() && isTouching(this.fB[4][0], this.fB[4][1], this.fB[4][2], this.fB[4][3])) {
                                         int[] iArr133 = this.fC;
                                         iArr133[4] = iArr133[4] + 1;
-                                    } else if (S() && b(this.fB[6][0], this.fB[6][1], this.fB[6][2], this.fB[6][3])) {
+                                    } else if (S() && isTouching(this.fB[6][0], this.fB[6][1], this.fB[6][2], this.fB[6][3])) {
                                         int[] iArr134 = this.fC;
                                         iArr134[6] = iArr134[6] + 1;
                                         aSound.getInstance().play(11);
-                                    } else if (S() && b(this.fB[7][0], this.fB[7][1], this.fB[7][2], this.fB[7][3])) {
+                                    } else if (S() && isTouching(this.fB[7][0], this.fB[7][1], this.fB[7][2], this.fB[7][3])) {
                                         int[] iArr135 = this.fC;
                                         iArr135[7] = iArr135[7] + 1;
                                         aSound.getInstance().play(11);
-                                    } else if (S() && b(this.fB[12][0], this.fB[12][1], this.fB[12][2], this.fB[12][3])) {
+                                    } else if (S() && isTouching(this.fB[12][0], this.fB[12][1], this.fB[12][2], this.fB[12][3])) {
                                         int[] iArr136 = this.fC;
                                         iArr136[12] = iArr136[12] + 1;
                                         aSound.getInstance().play(11);
-                                    } else if (S() && b(this.fB[8][0], this.fB[8][1], this.fB[8][2], this.fB[8][3])) {
+                                    } else if (S() && isTouching(this.fB[8][0], this.fB[8][1], this.fB[8][2], this.fB[8][3])) {
                                         if (this.dH <= 47 && this.bd >= 1) {
                                             int[] iArr137 = this.fC;
                                             iArr137[8] = iArr137[8] + 1;
@@ -8520,7 +8519,7 @@ public class AppInstance extends Game {
                                             this.dV = false;
                                             aSound.getInstance().play(11);
                                         }
-                                    } else if (S() && b(this.fB[5][0], this.fB[5][1], this.fB[5][2], this.fB[5][3])) {
+                                    } else if (S() && isTouching(this.fB[5][0], this.fB[5][1], this.fB[5][2], this.fB[5][3])) {
                                         int[] iArr138 = this.fC;
                                         iArr138[5] = iArr138[5] + 1;
                                         aSound.getInstance().play(11);
@@ -8683,7 +8682,7 @@ public class AppInstance extends Game {
                         }
                         texRenderer.drawScaledImage(this.settingsMenuTexture[2], (788 - (dv[this.fx[0]] / 2)) + this.w, (564 - (dv[this.fx[0]] / 2)) + this.eZ, dv[this.fx[0]] + 168, dv[this.fx[0]] + 72, 0);
                         texRenderer.drawScaledImage(this.uiTextures[2], (797 - (dv[this.fx[0]] / 2)) + this.w, (572 - (dv[this.fx[0]] / 2)) + this.eZ, dv[this.fx[0]] + 150, dv[this.fx[0]] + 55, 10);
-                        if (R() && b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3]) && this.dz <= 1 && !this.eb) {
+                        if (R() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3]) && this.dz <= 1 && !this.eb) {
                             texRenderer.drawScaledImage(this.settingsMenuTexture[2], this.w + 788, this.eZ + 564, 168, 72, ((this.fQ[5] % 4) / 2) + 1);
                         }
                         if (this.dz == 2) {
@@ -8751,7 +8750,7 @@ public class AppInstance extends Game {
                         if (this.bj >= 1 || this.eg == 2) {
                             texRenderer.drawScaledImage(this.settingsMenuTexture[2], (788 - (dv[this.fx[0]] / 2)) + this.w, (564 - (dv[this.fx[0]] / 2)) + this.eZ, dv[this.fx[0]] + 168, dv[this.fx[0]] + 72, 0);
                             texRenderer.drawScaledImage(this.uiTextures[2], (797 - (dv[this.fx[0]] / 2)) + this.w, (572 - (dv[this.fx[0]] / 2)) + this.eZ, dv[this.fx[0]] + 150, dv[this.fx[0]] + 55, 10);
-                            if (this.dE <= 1 && !this.eE[0] && R() && b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3]) && !this.eb) {
+                            if (this.dE <= 1 && !this.eE[0] && R() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3]) && !this.eb) {
                                 texRenderer.drawScaledImage(this.settingsMenuTexture[2], this.w + 788, this.eZ + 564, 168, 72, ((this.fQ[5] % 4) / 2) + 1);
                             }
                         }
@@ -9442,7 +9441,7 @@ public class AppInstance extends Game {
                                                 texRenderer.drawScaledImage(this.uiTextures[4], (809 - (dv[this.fx[11]] / 2)) + this.w, ((640 - this.eI[1]) - (dv[this.fx[11]] / 2)) + this.eZ, dv[this.fx[11]] + 68, dv[this.fx[11]] + 68, 100);
                                             }
                                         }
-                                        if ((this.battleData[14] == 1 || this.battleData[14] == 4) && this.battleData[15] == 7 && !this.eE[0] && this.scrollAmount[0] == 0 && !this.eE[1] && !this.eE[2] && !this.eE[3] && !this.eb && R() && b(this.fw[4][0], this.fw[4][1], this.fw[4][2], this.fw[4][3])) {
+                                        if ((this.battleData[14] == 1 || this.battleData[14] == 4) && this.battleData[15] == 7 && !this.eE[0] && this.scrollAmount[0] == 0 && !this.eE[1] && !this.eE[2] && !this.eE[3] && !this.eb && R() && isTouching(this.fw[4][0], this.fw[4][1], this.fw[4][2], this.fw[4][3])) {
                                             texRenderer.drawScaledImage(this.settingsMenuTexture[2], (getWidth() / 2) - 190, (640 - this.eI[1]) + this.eZ, 381, 72, ((this.fQ[5] % 4) / 2) + 4);
                                         }
                                         if (this.ct > 0 && this.battleData[14] == 0) {
@@ -9522,9 +9521,9 @@ public class AppInstance extends Game {
                                                 texRenderer.drawScaledImage(this.uiTextures[15], (336 - (dv[this.fC[8]] / 2)) + (this.w / 2), (308 - (dv[this.fC[8]] / 2)) + 20, dv[this.fC[8]] + 76, dv[this.fC[8]] + 76, 41);
                                             }
                                             if (!this.ef) {
-                                                if (R() && b(this.fB[7][0], this.fB[7][1], this.fB[7][2], this.fB[7][3])) {
+                                                if (R() && isTouching(this.fB[7][0], this.fB[7][1], this.fB[7][2], this.fB[7][3])) {
                                                     texRenderer.drawScaledImage(this.settingsMenuTexture[1], (this.w / 2) + 288, 197, 170, 72, ((this.fQ[5] % 4) / 2) + 14);
-                                                } else if (R() && b(this.fB[6][0], this.fB[6][1], this.fB[6][2], this.fB[6][3])) {
+                                                } else if (R() && isTouching(this.fB[6][0], this.fB[6][1], this.fB[6][2], this.fB[6][3])) {
                                                     texRenderer.drawScaledImage(this.settingsMenuTexture[1], (this.w / 2) + 288, 464, 384, 72, ((this.fQ[5] % 4) / 2) + 17);
                                                 }
                                             }
@@ -9536,13 +9535,13 @@ public class AppInstance extends Game {
                                                 texRenderer.drawScaledImage(this.settingsMenuTexture[2], (541 - (dv[this.fC[11]] / 2)) + (this.w / 2), 382 - (dv[this.fC[11]] / 2), dv[this.fC[11]] + 168, dv[this.fC[11]] + 72, 0);
                                                 texRenderer.drawScaledImage(this.uiTextures[21], (260 - (dv[this.fC[10]] / 2)) + (this.w / 2), 390 - (dv[this.fC[10]] / 2), dv[this.fC[10]] + 150, dv[this.fC[10]] + 55, 4);
                                                 texRenderer.drawScaledImage(this.uiTextures[21], (550 - (dv[this.fC[11]] / 2)) + (this.w / 2), 390 - (dv[this.fC[11]] / 2), dv[this.fC[11]] + 150, dv[this.fC[11]] + 55, 5);
-                                                if (R() && b(this.fB[10][0], this.fB[10][1], this.fB[10][2], this.fB[10][3]) && !this.eb && !this.gu) {
+                                                if (R() && isTouching(this.fB[10][0], this.fB[10][1], this.fB[10][2], this.fB[10][3]) && !this.eb && !this.gu) {
                                                     texRenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 250, 381, 168, 72, ((this.fQ[5] % 4) / 2) + 1);
-                                                } else if (R() && b(this.fB[11][0], this.fB[11][1], this.fB[11][2], this.fB[11][3]) && !this.eb && !this.gu) {
+                                                } else if (R() && isTouching(this.fB[11][0], this.fB[11][1], this.fB[11][2], this.fB[11][3]) && !this.eb && !this.gu) {
                                                     texRenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 540, 381, 168, 72, ((this.fQ[5] % 4) / 2) + 1);
                                                 }
                                             }
-                                            if (R() && b(this.fB[5][0], this.fB[5][1], this.fB[5][2], this.fB[5][3])) {
+                                            if (R() && isTouching(this.fB[5][0], this.fB[5][1], this.fB[5][2], this.fB[5][3])) {
                                                 texRenderer.drawScaledImage(this.settingsMenuTexture[1], (this.w / 2) + 248 + 404, 48, 96, 96, ((this.fQ[5] % 4) / 2) + 22);
                                             }
                                         }
@@ -9699,7 +9698,7 @@ public class AppInstance extends Game {
                                     }
                                 }
                                 break;
-                            case 2:
+                            case 2: // after catcannon fire
                                 this.gameStats1[1] = ((this.unitBattleStats[1][i72][3] - 850) - this.battleData[5]) / 10;
                                 this.gameStats1[2] = ((this.unitBattleStats[1][i72][4] / 10) + (this.unitBattleStats[1][i72][5] * 4)) - 97;
                                 this.catBaseModel[1].setAction(this.catBaseAnim[1][0], this.unitBattleStats[1][i72][2]);
@@ -10126,7 +10125,7 @@ public class AppInstance extends Game {
         if (this.fQ[3] >= 10) {
             atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (657 - (dv[this.fx[0]] / 2)) + (this.w / 2), 360 - (dv[this.fx[0]] / 2), dv[this.fx[0]] + 168, dv[this.fx[0]] + 72, 0);
             atexturerenderer.drawScaledImage(this.uiTextures[1], (693 - (dv[this.fx[0]] / 2)) + (this.w / 2), 368 - (dv[this.fx[0]] / 2), dv[this.fx[0]] + 97, dv[this.fx[0]] + 55, 20);
-            if (!this.eb && R() && b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+            if (!this.eb && R() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                 atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 657, 360, 168, 72, ((this.fQ[4] % 4) / 2) + 1);
             }
         }
@@ -11233,7 +11232,7 @@ public class AppInstance extends Game {
             if (this.hc[1] <= 3) {
                 atexturerenderer.drawScaledImage(this.uiTextures[21], 4 - (dv[this.hk[5]] / 2), 541 - (dv[this.hk[5]] / 2), dv[this.hk[5]] + 95, dv[this.hk[5]] + 95, 9);
                 atexturerenderer.drawScaledImage(this.uiTextures[21], 8 - (dv[this.hk[5]] / 2), 558 - (dv[this.hk[5]] / 2), dv[this.hk[5]] + 84, dv[this.hk[5]] + 60, 3);
-                if (this.bB[9] >= 3 && R() && b(this.hj[5][0], this.hj[5][1], this.hj[5][2], this.hj[5][3]) && !this.gu && !this.eb) {
+                if (this.bB[9] >= 3 && R() && isTouching(this.hj[5][0], this.hj[5][1], this.hj[5][2], this.hj[5][3]) && !this.gu && !this.eb) {
                     atexturerenderer.drawScaledImage(this.uiTextures[21], 3, 540, 96, 96, ((this.hc[2] % 4) / 2) + 12);
                 }
                 atexturerenderer.drawScaledImage(this.uiTextures[21], this.w + (688 - (dv[this.fx[14]] / 2)), 593 - (dv[this.fx[14]] / 2), dv[this.fx[14]] + 55, dv[this.fx[14]] + 42, 21);
@@ -11252,7 +11251,7 @@ public class AppInstance extends Game {
             atexturerenderer.drawScaledImage(this.uiTextures[23], (this.w / 2) + 113, 197, 768, 384, 0);
             atexturerenderer.drawScaledImage(this.uiTextures[21], (this.w / 2) + (803 - (dv[this.hk[7]] / 2)), (173 - (dv[this.hk[7]] / 2)) - 16, dv[this.hk[7]] + 95, dv[this.hk[7]] + 95, 9);
             atexturerenderer.drawScaledImage(this.uiTextures[21], (this.w / 2) + (808 - (dv[this.hk[7]] / 2)), (190 - (dv[this.hk[7]] / 2)) - 16, dv[this.hk[7]] + 84, dv[this.hk[7]] + 60, 11);
-            if (this.bB[9] >= 3 && R() && b(this.hj[7][0], this.hj[7][1], this.hj[7][2], this.hj[7][3]) && !this.gu && !this.eb) {
+            if (this.bB[9] >= 3 && R() && isTouching(this.hj[7][0], this.hj[7][1], this.hj[7][2], this.hj[7][3]) && !this.gu && !this.eb) {
                 atexturerenderer.drawScaledImage(this.uiTextures[21], (this.w / 2) + 802, 156, 96, 96, ((this.hc[2] % 4) / 2) + 12);
             }
             atexturerenderer.drawScaledImage(this.uiTextures[25], (this.w / 2) + 220, 284, 96, 96, this.hl);
@@ -11266,7 +11265,7 @@ public class AppInstance extends Game {
                 atexturerenderer.setImageAlpha(255);
             }
             atexturerenderer.setColor(255, 255, 255);
-            if (R() && b(this.hj[6][0], this.hj[6][1], this.hj[6][2], this.hj[6][3]) && !this.gu && !this.eb) {
+            if (R() && isTouching(this.hj[6][0], this.hj[6][1], this.hj[6][2], this.hj[6][3]) && !this.gu && !this.eb) {
                 atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 422, 321, 381, 72, ((this.fQ[5] % 4) / 2) + 4);
             }
             int i20 = 10;
@@ -11644,20 +11643,20 @@ public class AppInstance extends Game {
                     }
                 } else {
                     if (!this.eE[0] && this.scrollAmount[0] == 0 && !this.eE[1] && !this.eE[2] && !this.eE[3]) {
-                        if (!R() || !b(this.fw[4][0], this.fw[4][1], this.fw[4][2], this.fw[4][3])) {
+                        if (!R() || !isTouching(this.fw[4][0], this.fw[4][1], this.fw[4][2], this.fw[4][3])) {
                             this.gp[4] = false;
                         } else if (!this.gp[4]) {
                             aSound.getInstance().play(10);
                             this.gp[4] = true;
                         }
-                        if (!R() || !b(this.fw[10][0], this.fw[10][1], this.fw[10][2], this.fw[10][3])) {
+                        if (!R() || !isTouching(this.fw[10][0], this.fw[10][1], this.fw[10][2], this.fw[10][3])) {
                             this.gp[10] = false;
                         } else if (!this.gp[10]) {
                             aSound.getInstance().play(10);
                             this.gp[10] = true;
                         }
                         if (aTwitter.getInstance().c()) {
-                            if (!R() || !b(this.fw[11][0], this.fw[11][1], this.fw[11][2], this.fw[11][3])) {
+                            if (!R() || !isTouching(this.fw[11][0], this.fw[11][1], this.fw[11][2], this.fw[11][3])) {
                                 this.gp[11] = false;
                             } else if (!this.gp[11]) {
                                 aSound.getInstance().play(10);
@@ -11666,15 +11665,15 @@ public class AppInstance extends Game {
                         }
                     }
                     if (!this.eE[0] && this.scrollAmount[0] == 0 && !this.eE[1] && !this.eE[2] && !this.eE[3]) {
-                        if (S() && b(this.fw[4][0], this.fw[4][1], this.fw[4][2], this.fw[4][3])) {
+                        if (S() && isTouching(this.fw[4][0], this.fw[4][1], this.fw[4][2], this.fw[4][3])) {
                             int[] iArr10 = this.fx;
                             iArr10[0] = iArr10[0] + 1;
                             aSound.getInstance().play(11);
-                        } else if (S() && b(this.fw[10][0], this.fw[10][1], this.fw[10][2], this.fw[10][3])) {
+                        } else if (S() && isTouching(this.fw[10][0], this.fw[10][1], this.fw[10][2], this.fw[10][3])) {
                             int[] iArr11 = this.fx;
                             iArr11[10] = iArr11[10] + 1;
                             aSound.getInstance().play(11);
-                        } else if (S() && b(this.fw[11][0], this.fw[11][1], this.fw[11][2], this.fw[11][3]) && aTwitter.getInstance().c()) {
+                        } else if (S() && isTouching(this.fw[11][0], this.fw[11][1], this.fw[11][2], this.fw[11][3]) && aTwitter.getInstance().c()) {
                             int[] iArr12 = this.fx;
                             iArr12[11] = iArr12[11] + 1;
                             aSound.getInstance().play(11);
@@ -12069,39 +12068,39 @@ public class AppInstance extends Game {
                         }
                     }
                 } else {
-                    if (R() && b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                    if (R() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                         this.fa = 0;
-                    } else if (R() && b(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
+                    } else if (R() && isTouching(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
                         this.fa = 1;
                     }
-                    if (!R() || !b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                    if (!R() || !isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                         this.gp[0] = false;
                     } else if (!this.gp[0]) {
                         aSound.getInstance().play(10);
                         this.gp[0] = true;
                     }
-                    if (!R() || !b(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
+                    if (!R() || !isTouching(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
                         this.gp[1] = false;
                     } else if (!this.gp[1]) {
                         aSound.getInstance().play(10);
                         this.gp[1] = true;
                     }
-                    if (S() && b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                    if (S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                         int[] iArr6 = this.fx;
                         iArr6[0] = iArr6[0] + 1;
                         aSound.getInstance().play(11);
-                    } else if (S() && b(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
+                    } else if (S() && isTouching(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
                         int[] iArr7 = this.fx;
                         iArr7[1] = iArr7[1] + 1;
                         aSound.getInstance().play(11);
                     }
-                    if (!R() || !b(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
+                    if (!R() || !isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
                         this.gp[14] = false;
                     } else if (!this.gp[14]) {
                         aSound.getInstance().play(10);
                         this.gp[14] = true;
                     }
-                    if (S() && b(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) && this.bf >= 1) {
+                    if (S() && isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) && this.bf >= 1) {
                         aSound.getInstance().play(11);
                         int[] iArr8 = this.fx;
                         iArr8[14] = iArr8[14] + 1;
@@ -12227,7 +12226,7 @@ public class AppInstance extends Game {
         atexturerenderer.setOrientation(0);
         atexturerenderer.drawScaledImage(this.uiTextures[0], 4 - (dv[this.fx[5]] / 2), 541 - (dv[this.fx[5]] / 2), dv[this.fx[5]] + 95, dv[this.fx[5]] + 95, 9);
         atexturerenderer.drawScaledImage(this.uiTextures[0], 8 - (dv[this.fx[5]] / 2), 558 - (dv[this.fx[5]] / 2), dv[this.fx[5]] + 84, dv[this.fx[5]] + 60, 3);
-        if (!this.eE[0] && !this.eE[1] && !this.eE[2] && !this.eb && this.fx[0] == 0 && this.fx[1] == 0 && this.fx[2] == 0 && this.fx[3] == 0 && this.fx[4] == 0 && this.fx[14] == 0 && this.fx[15] == 0 && !this.eb && !this.gu && ((R() || S()) && b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3]))) {
+        if (!this.eE[0] && !this.eE[1] && !this.eE[2] && !this.eb && this.fx[0] == 0 && this.fx[1] == 0 && this.fx[2] == 0 && this.fx[3] == 0 && this.fx[4] == 0 && this.fx[14] == 0 && this.fx[15] == 0 && !this.eb && !this.gu && ((R() || S()) && isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3]))) {
             atexturerenderer.drawScaledImage(this.uiTextures[0], 3, 540, 96, 96, ((this.fQ[3] % 4) / 2) + 12);
         }
         atexturerenderer.drawScaledImagef(this.uiTextures[2], 8, 3, 1);
@@ -12364,7 +12363,7 @@ public class AppInstance extends Game {
             if (this.by[i31] >= 1) {
                 atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (20 - this.gc[i30]) - (dv[this.fx[i31]] / 2), (((i30 * 72) + 75) + (i30 * 20)) - (dv[this.fx[i31]] / 2), dv[this.fx[i31]] + 381, dv[this.fx[i31]] + 72, 3);
                 atexturerenderer.drawScaledImage(this.uiTextures[4], ((20 - this.gc[i30]) + 63) - (dv[this.fx[i31]] / 2), ((((i30 * 72) + 75) + (i30 * 20)) + 8) - (dv[this.fx[i31]] / 2), dv[this.fx[i31]] + 254, dv[this.fx[i31]] + 55, i31 + 2);
-                if (!this.eE[0] && !this.eE[2] && !this.eb && this.fx[5] == 0 && !this.gu && R() && b(this.fw[i31][0], this.fw[i31][1], this.fw[i31][2], this.fw[i31][3]) && this.fI == i31) {
+                if (!this.eE[0] && !this.eE[2] && !this.eb && this.fx[5] == 0 && !this.gu && R() && isTouching(this.fw[i31][0], this.fw[i31][1], this.fw[i31][2], this.fw[i31][3]) && this.fI == i31) {
                     if (this.fQ[3] % 4 == 0 || this.fQ[3] % 4 == 1) {
                         if (this.fx[i31] == 0) {
                             atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], 20 - this.gc[i30], (i30 * 20) + (i30 * 72) + 75, 381, 72, 4);
@@ -12463,35 +12462,35 @@ public class AppInstance extends Game {
                         }
                     }
                 } else if (!this.eE[0] && this.scrollAmount[0] == 0 && !this.eE[1] && !this.eE[2] && !this.eE[3]) {
-                    if (!R() || !b(this.fw[4][0], this.fw[4][1], this.fw[4][2], this.fw[4][3])) {
+                    if (!R() || !isTouching(this.fw[4][0], this.fw[4][1], this.fw[4][2], this.fw[4][3])) {
                         this.gp[4] = false;
                     } else if (!this.gp[4]) {
                         aSound.getInstance().play(10);
                         this.gp[4] = true;
                     }
-                    if (!R() || !b(this.fw[10][0], this.fw[10][1], this.fw[10][2], this.fw[10][3])) {
+                    if (!R() || !isTouching(this.fw[10][0], this.fw[10][1], this.fw[10][2], this.fw[10][3])) {
                         this.gp[10] = false;
                     } else if (!this.gp[10]) {
                         aSound.getInstance().play(10);
                         this.gp[10] = true;
                     }
                     if (aTwitter.getInstance().c()) {
-                        if (!R() || !b(this.fw[11][0], this.fw[11][1], this.fw[11][2], this.fw[11][3])) {
+                        if (!R() || !isTouching(this.fw[11][0], this.fw[11][1], this.fw[11][2], this.fw[11][3])) {
                             this.gp[11] = false;
                         } else if (!this.gp[11]) {
                             aSound.getInstance().play(10);
                             this.gp[11] = true;
                         }
                     }
-                    if (S() && b(this.fw[4][0], this.fw[4][1], this.fw[4][2], this.fw[4][3])) {
+                    if (S() && isTouching(this.fw[4][0], this.fw[4][1], this.fw[4][2], this.fw[4][3])) {
                         int[] iArr7 = this.fx;
                         iArr7[0] = iArr7[0] + 1;
                         aSound.getInstance().play(11);
-                    } else if (S() && b(this.fw[10][0], this.fw[10][1], this.fw[10][2], this.fw[10][3])) {
+                    } else if (S() && isTouching(this.fw[10][0], this.fw[10][1], this.fw[10][2], this.fw[10][3])) {
                         int[] iArr8 = this.fx;
                         iArr8[10] = iArr8[10] + 1;
                         aSound.getInstance().play(11);
-                    } else if (S() && b(this.fw[11][0], this.fw[11][1], this.fw[11][2], this.fw[11][3]) && aTwitter.getInstance().c()) {
+                    } else if (S() && isTouching(this.fw[11][0], this.fw[11][1], this.fw[11][2], this.fw[11][3]) && aTwitter.getInstance().c()) {
                         int[] iArr9 = this.fx;
                         iArr9[11] = iArr9[11] + 1;
                         aSound.getInstance().play(11);
@@ -13532,9 +13531,9 @@ public class AppInstance extends Game {
                     atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + (541 - (dv[this.fz[1]] / 2)), 382 - (dv[this.fz[1]] / 2), dv[this.fz[1]] + 168, dv[this.fz[1]] + 72, 0);
                     atexturerenderer.drawScaledImage(this.uiTextures[0], (this.w / 2) + (260 - (dv[this.fz[0]] / 2)), 390 - (dv[this.fz[0]] / 2), dv[this.fz[0]] + 150, dv[this.fz[0]] + 55, 4);
                     atexturerenderer.drawScaledImage(this.uiTextures[0], (this.w / 2) + (550 - (dv[this.fz[1]] / 2)), 390 - (dv[this.fz[1]] / 2), dv[this.fz[1]] + 150, dv[this.fz[1]] + 55, 5);
-                    if (!this.gU && R() && b(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3]) && !this.eb) {
+                    if (!this.gU && R() && isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3]) && !this.eb) {
                         atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 251, 382, 168, 72, ((this.gv[2] % 4) / 2) + 1);
-                    } else if (!this.gU && R() && b(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3]) && !this.eb) {
+                    } else if (!this.gU && R() && isTouching(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3]) && !this.eb) {
                         atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 541, 382, 168, 72, ((this.gv[2] % 4) / 2) + 1);
                     }
                     if (this.fD != 0 && this.fD != 5) {
@@ -13594,9 +13593,9 @@ public class AppInstance extends Game {
                     atexturerenderer.drawScaledImage(this.uiTextures[21], (this.w / 2) + (541 - (dv[this.fz[1]] / 2)), 382 - (dv[this.fz[1]] / 2), dv[this.fz[1]] + 168, dv[this.fz[1]] + 72, 2);
                     atexturerenderer.drawScaledImage(this.uiTextures[21], (this.w / 2) + (260 - (dv[this.fz[0]] / 2)), 390 - (dv[this.fz[0]] / 2), dv[this.fz[0]] + 150, dv[this.fz[0]] + 55, 4);
                     atexturerenderer.drawScaledImage(this.uiTextures[21], (this.w / 2) + (550 - (dv[this.fz[1]] / 2)), 390 - (dv[this.fz[1]] / 2), dv[this.fz[1]] + 150, dv[this.fz[1]] + 55, 5);
-                    if (!this.gU && R() && b(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3]) && !this.eb) {
+                    if (!this.gU && R() && isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3]) && !this.eb) {
                         atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 251, 382, 168, 72, ((this.gv[2] % 4) / 2) + 1);
-                    } else if (!this.gU && R() && b(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3]) && !this.eb) {
+                    } else if (!this.gU && R() && isTouching(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3]) && !this.eb) {
                         atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 541, 382, 168, 72, ((this.gv[2] % 4) / 2) + 1);
                     }
                     int i45 = this.ha[0] ? ab[this.hl] : 30;
@@ -13632,9 +13631,9 @@ public class AppInstance extends Game {
                     atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + (541 - (dv[this.fz[1]] / 2)), 382 - (dv[this.fz[1]] / 2), dv[this.fz[1]] + 168, dv[this.fz[1]] + 72, 0);
                     atexturerenderer.drawScaledImage(this.uiTextures[0], (this.w / 2) + (260 - (dv[this.fz[0]] / 2)), 390 - (dv[this.fz[0]] / 2), dv[this.fz[0]] + 150, dv[this.fz[0]] + 55, 4);
                     atexturerenderer.drawScaledImage(this.uiTextures[0], (this.w / 2) + (550 - (dv[this.fz[1]] / 2)), 390 - (dv[this.fz[1]] / 2), dv[this.fz[1]] + 150, dv[this.fz[1]] + 55, 5);
-                    if (!this.gU && R() && b(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3]) && !this.eb) {
+                    if (!this.gU && R() && isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3]) && !this.eb) {
                         atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 251, 382, 168, 72, ((this.gv[2] % 4) / 2) + 1);
-                    } else if (!this.gU && R() && b(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3]) && !this.eb) {
+                    } else if (!this.gU && R() && isTouching(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3]) && !this.eb) {
                         atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 541, 382, 168, 72, ((this.gv[2] % 4) / 2) + 1);
                     }
                     if (this.fD != 0 && this.fD != 5 && this.fD != 9) {
@@ -13680,10 +13679,10 @@ public class AppInstance extends Game {
                     atexturerenderer.drawScaledImage(this.uiTextures[21], (this.w / 2) + (541 - (dv[this.fz[1]] / 2)), 382 - (dv[this.fz[1]] / 2), dv[this.fz[1]] + 168, dv[this.fz[1]] + 72, 2);
                     atexturerenderer.drawScaledImage(this.uiTextures[21], (this.w / 2) + (260 - (dv[this.fz[0]] / 2)), 390 - (dv[this.fz[0]] / 2), dv[this.fz[0]] + 150, dv[this.fz[0]] + 55, 4);
                     atexturerenderer.drawScaledImage(this.uiTextures[21], (this.w / 2) + (550 - (dv[this.fz[1]] / 2)), 390 - (dv[this.fz[1]] / 2), dv[this.fz[1]] + 150, dv[this.fz[1]] + 55, 5);
-                    if (!this.gU && R() && b(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3]) && !this.eb) {
+                    if (!this.gU && R() && isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3]) && !this.eb) {
                         atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 251, 382, 168, 72, ((this.gv[2] % 4) / 2) + 1);
                         return;
-                    } else if (this.gU || !R() || !b(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3]) || this.eb) {
+                    } else if (this.gU || !R() || !isTouching(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3]) || this.eb) {
                         return;
                     } else {
                         atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 541, 382, 168, 72, ((this.gv[2] % 4) / 2) + 1);
@@ -13769,10 +13768,10 @@ public class AppInstance extends Game {
                                     atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + (541 - (dv[this.fz[1]] / 2)), 382 - (dv[this.fz[1]] / 2), dv[this.fz[1]] + 168, dv[this.fz[1]] + 72, 0);
                                     atexturerenderer.drawScaledImage(this.uiTextures[0], (this.w / 2) + (260 - (dv[this.fz[0]] / 2)), 390 - (dv[this.fz[0]] / 2), dv[this.fz[0]] + 150, dv[this.fz[0]] + 55, 4);
                                     atexturerenderer.drawScaledImage(this.uiTextures[0], (this.w / 2) + (550 - (dv[this.fz[1]] / 2)), 390 - (dv[this.fz[1]] / 2), dv[this.fz[1]] + 150, dv[this.fz[1]] + 55, 5);
-                                    if (!this.gU && R() && b(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3]) && !this.eb) {
+                                    if (!this.gU && R() && isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3]) && !this.eb) {
                                         atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 251, 382, 168, 72, ((this.gv[2] % 4) / 2) + 1);
                                         return;
-                                    } else if (this.gU || !R() || !b(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3]) || this.eb) {
+                                    } else if (this.gU || !R() || !isTouching(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3]) || this.eb) {
                                         return;
                                     } else {
                                         atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 541, 382, 168, 72, ((this.gv[2] % 4) / 2) + 1);
@@ -13918,9 +13917,9 @@ public class AppInstance extends Game {
             atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + (541 - (dv[this.fz[1]] / 2)), 382 - (dv[this.fz[1]] / 2), dv[this.fz[1]] + 168, dv[this.fz[1]] + 72, 0);
             atexturerenderer.drawScaledImage(this.uiTextures[0], (this.w / 2) + (260 - (dv[this.fz[0]] / 2)), 390 - (dv[this.fz[0]] / 2), dv[this.fz[0]] + 150, dv[this.fz[0]] + 55, 4);
             atexturerenderer.drawScaledImage(this.uiTextures[0], (this.w / 2) + (550 - (dv[this.fz[1]] / 2)), 390 - (dv[this.fz[1]] / 2), dv[this.fz[1]] + 150, dv[this.fz[1]] + 55, 5);
-            if (!this.gU && R() && b(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3]) && !this.eb) {
+            if (!this.gU && R() && isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3]) && !this.eb) {
                 atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 251, 382, 168, 72, ((this.gv[2] % 4) / 2) + 1);
-            } else if (!this.gU && R() && b(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3]) && !this.eb) {
+            } else if (!this.gU && R() && isTouching(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3]) && !this.eb) {
                 atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 541, 382, 168, 72, ((this.gv[2] % 4) / 2) + 1);
             }
         } else if (this.gw != 9999) {
@@ -15154,7 +15153,7 @@ public class AppInstance extends Game {
             }
         }
         if (!this.eE[0] && !this.eE[1] && !this.eE[13] && !this.eE[9] && !this.eb) {
-            if (this.bt[dt[this.fs[0]] - 2] != 0 && S() && b(((getWidth() / 2) - 200) + (this.unitBattleStats[1][0][3] / 10), 100, 400, 280) && this.unitBattleStats[1][0][1] != 3 && this.unitBattleStats[1][0][1] != 4) {
+            if (this.bt[dt[this.fs[0]] - 2] != 0 && S() && isTouching(((getWidth() / 2) - 200) + (this.unitBattleStats[1][0][3] / 10), 100, 400, 280) && this.unitBattleStats[1][0][1] != 3 && this.unitBattleStats[1][0][1] != 4) {
                 this.unitBattleStats[1][0][1] = 3;
                 this.unitBattleStats[1][0][2] = 0;
             }
@@ -15200,25 +15199,25 @@ public class AppInstance extends Game {
                     }
                 }
             } else {
-                if (!R() || !b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
+                if (!R() || !isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                     this.gp[5] = false;
                 } else if (!this.gp[5]) {
                     aSound.getInstance().play(10);
                     this.gp[5] = true;
                 }
-                if (S() && b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
+                if (S() && isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                     aSound.getInstance().play(11);
                     int[] iArr12 = this.fx;
                     iArr12[5] = iArr12[5] + 1;
                 } else if (T()) {
                     this.fx[5] = 0;
                     this.eE[1] = true;
-                } else if (S() && b(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) && this.bf >= 1) {
+                } else if (S() && isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) && this.bf >= 1) {
                     aSound.getInstance().play(11);
                     int[] iArr13 = this.fx;
                     iArr13[14] = iArr13[14] + 1;
                 }
-                if (!R() || !b(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) || this.bf < 1) {
+                if (!R() || !isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) || this.bf < 1) {
                     this.gp[14] = false;
                 } else if (!this.gp[14]) {
                     this.gp[14] = true;
@@ -15307,7 +15306,7 @@ public class AppInstance extends Game {
             if (this.fx[5] == 0 && !this.eE[1]) {
                 this.eE[10] = false;
             }
-        } else if ((R() || S()) && b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
+        } else if ((R() || S()) && isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
             this.eE[10] = true;
         } else if (this.fx[5] == 0 && !this.eE[1]) {
             this.eE[10] = false;
@@ -15403,9 +15402,9 @@ public class AppInstance extends Game {
             atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + ((this.gameStats1[0] + 289) - (dv[this.fx[1]] / 2)), 441 - (dv[this.fx[1]] / 2), dv[this.fx[1]] + 381, dv[this.fx[1]] + 72, 3);
             atexturerenderer.drawScaledImage(this.uiTextures[0], (this.w / 2) + ((this.gameStats1[0] + 345) - (dv[this.fx[1]] / 2)), 450 - (dv[this.fx[1]] / 2), dv[this.fx[1]] + 254, dv[this.fx[1]] + 55, 3);
             if (!this.eE[0] && !this.eE[1] && !this.eE[2] && !this.eE[3] && !this.eE[4] && !this.eb && !this.gu) {
-                if (R() && b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                if (R() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                     atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + this.gameStats1[0] + 289, 349, 381, 72, ((this.fQ[5] % 4) / 2) + 4);
-                } else if (R() && b(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
+                } else if (R() && isTouching(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
                     atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + this.gameStats1[0] + 289, 441, 381, 72, ((this.fQ[5] % 4) / 2) + 4);
                 }
             }
@@ -15513,7 +15512,7 @@ public class AppInstance extends Game {
             if (!this.eE[1] && !this.eE[2]) {
                 atexturerenderer.drawScaledImage(this.uiTextures[2], this.w + (861 - (dv[this.fx[5]] / 2)), 194 - (dv[this.fx[5]] / 2), dv[this.fx[5]] + 95, dv[this.fx[5]] + 95, 9);
                 atexturerenderer.drawScaledImage(this.uiTextures[2], this.w + (866 - (dv[this.fx[5]] / 2)), 211 - (dv[this.fx[5]] / 2), dv[this.fx[5]] + 84, dv[this.fx[5]] + 60, 11);
-                if (!this.eE[9] && !this.gu && ((R() || S()) && b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3]))) {
+                if (!this.eE[9] && !this.gu && ((R() || S()) && isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3]))) {
                     atexturerenderer.drawScaledImage(this.uiTextures[2], this.w + 860, 193, 96, 96, ((this.fQ[5] % 4) / 2) + 12);
                 }
                 if (this.fQ[5] % 4 == 0 || this.fQ[5] % 4 == 1) {
@@ -15735,13 +15734,13 @@ public class AppInstance extends Game {
                 atexturerenderer.drawScaledImage(this.settingsMenuTexture[1], ((this.w / 2) + 298) - (dv[this.fC[9]] / 2), 379 - (dv[this.fC[9]] / 2), dv[this.fC[9]] + 150, dv[this.fC[9]] + 55, 12);
             }
             if (!this.ef) {
-                if (R() && b(this.fB[7][0], this.fB[7][1], this.fB[7][2], this.fB[7][3])) {
+                if (R() && isTouching(this.fB[7][0], this.fB[7][1], this.fB[7][2], this.fB[7][3])) {
                     atexturerenderer.drawScaledImage(this.settingsMenuTexture[1], (this.w / 2) + 288, 197, 170, 72, ((this.fQ[5] % 4) / 2) + 14);
-                } else if (R() && b(this.fB[8][0], this.fB[8][1], this.fB[8][2], this.fB[8][3])) {
+                } else if (R() && isTouching(this.fB[8][0], this.fB[8][1], this.fB[8][2], this.fB[8][3])) {
                     atexturerenderer.drawScaledImage(this.settingsMenuTexture[1], (this.w / 2) + 288, 284, 170, 72, ((this.fQ[5] % 4) / 2) + 14);
-                } else if (R() && b(this.fB[9][0], this.fB[9][1], this.fB[9][2], this.fB[9][3]) && this.bj != 0) {
+                } else if (R() && isTouching(this.fB[9][0], this.fB[9][1], this.fB[9][2], this.fB[9][3]) && this.bj != 0) {
                     atexturerenderer.drawScaledImage(this.settingsMenuTexture[1], (this.w / 2) + 288, 371, 170, 72, ((this.fQ[5] % 4) / 2) + 14);
-                } else if (R() && b(this.fB[6][0], this.fB[6][1], this.fB[6][2], this.fB[6][3])) {
+                } else if (R() && isTouching(this.fB[6][0], this.fB[6][1], this.fB[6][2], this.fB[6][3])) {
                     atexturerenderer.drawScaledImage(this.settingsMenuTexture[1], (this.w / 2) + 288, 464, 384, 72, ((this.fQ[5] % 4) / 2) + 17);
                 }
             }
@@ -15753,13 +15752,13 @@ public class AppInstance extends Game {
                 atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + (541 - (dv[this.fC[11]] / 2)), 382 - (dv[this.fC[11]] / 2), dv[this.fC[11]] + 168, dv[this.fC[11]] + 72, 0);
                 atexturerenderer.drawScaledImage(this.uiTextures[21], (this.w / 2) + (260 - (dv[this.fC[10]] / 2)), 390 - (dv[this.fC[10]] / 2), dv[this.fC[10]] + 150, dv[this.fC[10]] + 55, 4);
                 atexturerenderer.drawScaledImage(this.uiTextures[21], (this.w / 2) + (550 - (dv[this.fC[11]] / 2)), 390 - (dv[this.fC[11]] / 2), dv[this.fC[11]] + 150, dv[this.fC[11]] + 55, 5);
-                if (R() && b(this.fB[10][0], this.fB[10][1], this.fB[10][2], this.fB[10][3]) && !this.eb && !this.gu) {
+                if (R() && isTouching(this.fB[10][0], this.fB[10][1], this.fB[10][2], this.fB[10][3]) && !this.eb && !this.gu) {
                     atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 250, 381, 168, 72, ((this.fQ[5] % 4) / 2) + 1);
-                } else if (R() && b(this.fB[11][0], this.fB[11][1], this.fB[11][2], this.fB[11][3]) && !this.eb && !this.gu) {
+                } else if (R() && isTouching(this.fB[11][0], this.fB[11][1], this.fB[11][2], this.fB[11][3]) && !this.eb && !this.gu) {
                     atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 540, 381, 168, 72, ((this.fQ[5] % 4) / 2) + 1);
                 }
             }
-            if (R() && b(this.fB[5][0], this.fB[5][1], this.fB[5][2], this.fB[5][3])) {
+            if (R() && isTouching(this.fB[5][0], this.fB[5][1], this.fB[5][2], this.fB[5][3])) {
                 atexturerenderer.drawScaledImage(this.settingsMenuTexture[1], (this.w / 2) + 248 + 404, 48, 96, 96, ((this.fQ[5] % 4) / 2) + 22);
             }
         }
@@ -15998,13 +15997,13 @@ public class AppInstance extends Game {
                         return false;
                     }
                 } else {
-                    if (!R() || !b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                    if (!R() || !isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                         this.gp[0] = false;
                     } else if (!this.gp[0]) {
                         aSound.getInstance().play(10);
                         this.gp[0] = true;
                     }
-                    if (S() && b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                    if (S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                         aSound.getInstance().play(11);
                         int[] iArr6 = this.fx;
                         iArr6[0] = iArr6[0] + 1;
@@ -16029,7 +16028,7 @@ public class AppInstance extends Game {
                     if (this.gV[1] >= 10) {
                         atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + (615 - (dv[this.gZ[0]] / 2)), 388 - (dv[this.gZ[0]] / 2), dv[this.gZ[0]] + 168, dv[this.gZ[0]] + 72, 0);
                         atexturerenderer.drawScaledImage(this.uiTextures[0], (this.w / 2) + (651 - (dv[this.gZ[0]] / 2)), 396 - (dv[this.gZ[0]] / 2), dv[this.gZ[0]] + 97, dv[this.gZ[0]] + 55, 20);
-                        if (R() && b(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3]) && !this.eb) {
+                        if (R() && isTouching(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3]) && !this.eb) {
                             atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 614, 387, 168, 72, ((this.gV[2] % 4) / 2) + 1);
                         }
                     }
@@ -16083,7 +16082,7 @@ public class AppInstance extends Game {
                             atexturerenderer.drawScaledImage(this.arrowTexture, this.w + 667, (int) (470.0f + (10.0f * aMath.sin(this.gV[2] * 30))), 96, 96, 0);
                             atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + (615 - (dv[this.gZ[0]] / 2)), 388 - (dv[this.gZ[0]] / 2), dv[this.gZ[0]] + 168, dv[this.gZ[0]] + 72, 0);
                             atexturerenderer.drawScaledImage(this.uiTextures[0], (this.w / 2) + (651 - (dv[this.gZ[0]] / 2)), 396 - (dv[this.gZ[0]] / 2), dv[this.gZ[0]] + 97, dv[this.gZ[0]] + 55, 20);
-                            if (R() && b(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3]) && !this.eb) {
+                            if (R() && isTouching(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3]) && !this.eb) {
                                 atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 614, 387, 168, 72, ((this.gV[2] % 4) / 2) + 1);
                             }
                         }
@@ -16102,7 +16101,7 @@ public class AppInstance extends Game {
                         atexturerenderer.drawScaledImage(this.arrowTexture, getWidth() - 96, (int) (392.0f + (10.0f * aMath.sin(this.gV[2] * 30))), 96, 96, 0);
                         atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + (615 - (dv[this.gZ[0]] / 2)), 388 - (dv[this.gZ[0]] / 2), dv[this.gZ[0]] + 168, dv[this.gZ[0]] + 72, 0);
                         atexturerenderer.drawScaledImage(this.uiTextures[0], (this.w / 2) + (651 - (dv[this.gZ[0]] / 2)), 396 - (dv[this.gZ[0]] / 2), dv[this.gZ[0]] + 97, dv[this.gZ[0]] + 55, 20);
-                        if (R() && b(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3]) && !this.eb) {
+                        if (R() && isTouching(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3]) && !this.eb) {
                             atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 614, 387, 168, 72, ((this.gV[2] % 4) / 2) + 1);
                         }
                     }
@@ -16231,7 +16230,7 @@ public class AppInstance extends Game {
                         atexturerenderer.setOrientation(0);
                         atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + (615 - (dv[this.gZ[0]] / 2)), 388 - (dv[this.gZ[0]] / 2), dv[this.gZ[0]] + 168, dv[this.gZ[0]] + 72, 0);
                         atexturerenderer.drawScaledImage(this.uiTextures[21], (this.w / 2) + (651 - (dv[this.gZ[0]] / 2)), 396 - (dv[this.gZ[0]] / 2), dv[this.gZ[0]] + 97, dv[this.gZ[0]] + 55, 20);
-                        if (R() && b(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3]) && !this.eb) {
+                        if (R() && isTouching(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3]) && !this.eb) {
                             atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 614, 387, 168, 72, ((this.gV[2] % 4) / 2) + 1);
                         }
                     }
@@ -16327,7 +16326,7 @@ public class AppInstance extends Game {
                         atexturerenderer.setOrientation(0);
                         atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + (615 - (dv[this.gZ[0]] / 2)), 388 - (dv[this.gZ[0]] / 2), dv[this.gZ[0]] + 168, dv[this.gZ[0]] + 72, 0);
                         atexturerenderer.drawScaledImage(this.uiTextures[21], (this.w / 2) + (651 - (dv[this.gZ[0]] / 2)), 396 - (dv[this.gZ[0]] / 2), dv[this.gZ[0]] + 97, dv[this.gZ[0]] + 55, 20);
-                        if (R() && b(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3]) && !this.eb) {
+                        if (R() && isTouching(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3]) && !this.eb) {
                             atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 614, 387, 168, 72, ((this.gV[2] % 4) / 2) + 1);
                         }
                     }
@@ -16381,7 +16380,7 @@ public class AppInstance extends Game {
                         if (this.gV[1] >= 10) {
                             atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + (615 - (dv[this.gZ[0]] / 2)), 388 - (dv[this.gZ[0]] / 2), dv[this.gZ[0]] + 168, dv[this.gZ[0]] + 72, 0);
                             atexturerenderer.drawScaledImage(this.uiTextures[21], (this.w / 2) + (651 - (dv[this.gZ[0]] / 2)), 396 - (dv[this.gZ[0]] / 2), dv[this.gZ[0]] + 97, dv[this.gZ[0]] + 55, 20);
-                            if (R() && b(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3]) && !this.eb) {
+                            if (R() && isTouching(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3]) && !this.eb) {
                                 atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 614, 387, 168, 72, ((this.gV[2] % 4) / 2) + 1);
                             }
                         }
@@ -16419,7 +16418,7 @@ public class AppInstance extends Game {
                                 atexturerenderer.setOrientation(0);
                                 atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + (615 - (dv[this.gZ[0]] / 2)), 388 - (dv[this.gZ[0]] / 2), dv[this.gZ[0]] + 168, dv[this.gZ[0]] + 72, 0);
                                 atexturerenderer.drawScaledImage(this.uiTextures[21], (this.w / 2) + (651 - (dv[this.gZ[0]] / 2)), 396 - (dv[this.gZ[0]] / 2), dv[this.gZ[0]] + 97, dv[this.gZ[0]] + 55, 20);
-                                if (R() && b(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3]) && !this.eb) {
+                                if (R() && isTouching(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3]) && !this.eb) {
                                     atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 614, 387, 168, 72, ((this.gV[2] % 4) / 2) + 1);
                                 }
                             }
@@ -16459,7 +16458,7 @@ public class AppInstance extends Game {
                                         atexturerenderer.setOrientation(0);
                                         atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + (615 - (dv[this.gZ[0]] / 2)), 388 - (dv[this.gZ[0]] / 2), dv[this.gZ[0]] + 168, dv[this.gZ[0]] + 72, 0);
                                         atexturerenderer.drawScaledImage(this.uiTextures[21], (this.w / 2) + (651 - (dv[this.gZ[0]] / 2)), 396 - (dv[this.gZ[0]] / 2), dv[this.gZ[0]] + 97, dv[this.gZ[0]] + 55, 20);
-                                        if (R() && b(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3]) && !this.eb) {
+                                        if (R() && isTouching(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3]) && !this.eb) {
                                             atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 614, 387, 168, 72, ((this.gV[2] % 4) / 2) + 1);
                                         }
                                         break;
@@ -16533,7 +16532,7 @@ public class AppInstance extends Game {
                                 atexturerenderer.drawScaledImage(this.arrowTexture, 667, (int) (470.0f + (10.0f * aMath.sin(this.gV[2] * 30))), 96, 96, 0);
                                 atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + (615 - (dv[this.gZ[0]] / 2)), 388 - (dv[this.gZ[0]] / 2), dv[this.gZ[0]] + 168, dv[this.gZ[0]] + 72, 0);
                                 atexturerenderer.drawScaledImage(this.uiTextures[21], (this.w / 2) + (651 - (dv[this.gZ[0]] / 2)), 396 - (dv[this.gZ[0]] / 2), dv[this.gZ[0]] + 97, dv[this.gZ[0]] + 55, 20);
-                                if (R() && b(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3]) && !this.eb) {
+                                if (R() && isTouching(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3]) && !this.eb) {
                                     atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 614, 387, 168, 72, ((this.gV[2] % 4) / 2) + 1);
                                 }
                             }
@@ -16570,7 +16569,7 @@ public class AppInstance extends Game {
                             if (this.gV[1] >= 10) {
                                 atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + (615 - (dv[this.gZ[0]] / 2)), 388 - (dv[this.gZ[0]] / 2), dv[this.gZ[0]] + 168, dv[this.gZ[0]] + 72, 0);
                                 atexturerenderer.drawScaledImage(this.uiTextures[21], (this.w / 2) + (651 - (dv[this.gZ[0]] / 2)), 396 - (dv[this.gZ[0]] / 2), dv[this.gZ[0]] + 97, dv[this.gZ[0]] + 55, 20);
-                                if (R() && b(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3]) && !this.eb) {
+                                if (R() && isTouching(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3]) && !this.eb) {
                                     atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 614, 387, 168, 72, ((this.gV[2] % 4) / 2) + 1);
                                     return;
                                 }
@@ -16816,7 +16815,7 @@ public class AppInstance extends Game {
                         if (this.gV[1] >= 10) {
                             atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + (615 - (dv[this.gZ[0]] / 2)), 238 - (dv[this.gZ[0]] / 2), dv[this.gZ[0]] + 168, dv[this.gZ[0]] + 72, 0);
                             atexturerenderer.drawScaledImage(this.uiTextures[21], (this.w / 2) + (651 - (dv[this.gZ[0]] / 2)), 246 - (dv[this.gZ[0]] / 2), dv[this.gZ[0]] + 97, dv[this.gZ[0]] + 55, 20);
-                            if (R() && b(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3]) && !this.eb) {
+                            if (R() && isTouching(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3]) && !this.eb) {
                                 atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 614, 237, 168, 72, ((this.gV[3] % 4) / 2) + 1);
                             }
                         }
@@ -16881,7 +16880,7 @@ public class AppInstance extends Game {
                                 atexturerenderer.setOrientation(0);
                                 atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + (615 - (dv[this.gZ[0]] / 2)), 388 - (dv[this.gZ[0]] / 2), dv[this.gZ[0]] + 168, dv[this.gZ[0]] + 72, 0);
                                 atexturerenderer.drawScaledImage(this.uiTextures[21], (this.w / 2) + (651 - (dv[this.gZ[0]] / 2)), 396 - (dv[this.gZ[0]] / 2), dv[this.gZ[0]] + 97, dv[this.gZ[0]] + 55, 20);
-                                if (R() && b(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3]) && !this.eb) {
+                                if (R() && isTouching(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3]) && !this.eb) {
                                     atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + 614, 387, 168, 72, ((this.gV[2] % 4) / 2) + 1);
                                 }
                             }
@@ -17205,21 +17204,21 @@ public class AppInstance extends Game {
                     }
                 } else {
                     if (this.ha[1]) {
-                        if (!R() || !b(this.hj[6][0], this.hj[6][1], this.hj[6][2], this.hj[6][3])) {
+                        if (!R() || !isTouching(this.hj[6][0], this.hj[6][1], this.hj[6][2], this.hj[6][3])) {
                             this.gr[6] = false;
                         } else if (!this.gr[6]) {
                             aSound.getInstance().play(10);
                             this.gr[6] = true;
                         }
                         if (this.bB[9] >= 3) {
-                            if (!R() || !b(this.hj[7][0], this.hj[7][1], this.hj[7][2], this.hj[7][3])) {
+                            if (!R() || !isTouching(this.hj[7][0], this.hj[7][1], this.hj[7][2], this.hj[7][3])) {
                                 this.gr[7] = false;
                             } else if (!this.gr[7]) {
                                 aSound.getInstance().play(10);
                                 this.gr[7] = true;
                             }
                         }
-                        if (S() && b(this.hj[6][0], this.hj[6][1], this.hj[6][2], this.hj[6][3])) {
+                        if (S() && isTouching(this.hj[6][0], this.hj[6][1], this.hj[6][2], this.hj[6][3])) {
                             if (this.bB[9] < 3) {
                                 aSound.getInstance().play(14);
                             } else if (this.catfood >= ab[this.hl]) {
@@ -17229,26 +17228,26 @@ public class AppInstance extends Game {
                             }
                             int[] iArr16 = this.hk;
                             iArr16[6] = iArr16[6] + 1;
-                        } else if (S() && b(this.hj[7][0], this.hj[7][1], this.hj[7][2], this.hj[7][3]) && this.bB[9] >= 3) {
+                        } else if (S() && isTouching(this.hj[7][0], this.hj[7][1], this.hj[7][2], this.hj[7][3]) && this.bB[9] >= 3) {
                             aSound.getInstance().play(11);
                             int[] iArr17 = this.hk;
                             iArr17[7] = iArr17[7] + 1;
                         }
                     } else {
                         if (this.bB[9] >= 3) {
-                            if (!R() || !b(this.hj[1][0], this.hj[1][1], this.hj[1][2], this.hj[1][3])) {
+                            if (!R() || !isTouching(this.hj[1][0], this.hj[1][1], this.hj[1][2], this.hj[1][3])) {
                                 this.gr[1] = false;
                             } else if (!this.gr[1]) {
                                 aSound.getInstance().play(10);
                                 this.gr[1] = true;
                             }
-                            if (!R() || !b(this.hj[2][0], this.hj[2][1], this.hj[2][2], this.hj[2][3])) {
+                            if (!R() || !isTouching(this.hj[2][0], this.hj[2][1], this.hj[2][2], this.hj[2][3])) {
                                 this.gr[2] = false;
                             } else if (!this.gr[2]) {
                                 aSound.getInstance().play(10);
                                 this.gr[2] = true;
                             }
-                            if (!R() || !b(this.hj[3][0], this.hj[3][1], this.hj[3][2], this.hj[3][3])) {
+                            if (!R() || !isTouching(this.hj[3][0], this.hj[3][1], this.hj[3][2], this.hj[3][3])) {
                                 this.gr[3] = false;
                             } else if (!this.gr[3]) {
                                 aSound.getInstance().play(10);
@@ -17256,7 +17255,7 @@ public class AppInstance extends Game {
                             }
                         }
                         if (this.bB[9] >= 2) {
-                            if (!R() || !b(this.hj[4][0], this.hj[4][1], this.hj[4][2], this.hj[4][3])) {
+                            if (!R() || !isTouching(this.hj[4][0], this.hj[4][1], this.hj[4][2], this.hj[4][3])) {
                                 this.gr[4] = false;
                             } else if (!this.gr[4]) {
                                 aSound.getInstance().play(10);
@@ -17264,42 +17263,42 @@ public class AppInstance extends Game {
                             }
                         }
                         if (this.bB[9] >= 3) {
-                            if (S() && b(this.hj[1][0], this.hj[1][1], this.hj[1][2], this.hj[1][3])) {
+                            if (S() && isTouching(this.hj[1][0], this.hj[1][1], this.hj[1][2], this.hj[1][3])) {
                                 aSound.getInstance().play(11);
                                 int[] iArr18 = this.hk;
                                 iArr18[1] = iArr18[1] + 1;
                             }
-                            if (S() && b(this.hj[2][0], this.hj[2][1], this.hj[2][2], this.hj[2][3])) {
+                            if (S() && isTouching(this.hj[2][0], this.hj[2][1], this.hj[2][2], this.hj[2][3])) {
                                 aSound.getInstance().play(11);
                                 int[] iArr19 = this.hk;
                                 iArr19[2] = iArr19[2] + 1;
                             }
-                            if (S() && b(this.hj[3][0], this.hj[3][1], this.hj[3][2], this.hj[3][3])) {
+                            if (S() && isTouching(this.hj[3][0], this.hj[3][1], this.hj[3][2], this.hj[3][3])) {
                                 aSound.getInstance().play(11);
                                 int[] iArr20 = this.hk;
                                 iArr20[3] = iArr20[3] + 1;
                             }
                         }
-                        if (this.bB[9] >= 2 && S() && b(this.hj[4][0], this.hj[4][1], this.hj[4][2], this.hj[4][3])) {
+                        if (this.bB[9] >= 2 && S() && isTouching(this.hj[4][0], this.hj[4][1], this.hj[4][2], this.hj[4][3])) {
                             aSound.getInstance().play(11);
                             int[] iArr21 = this.hk;
                             iArr21[4] = iArr21[4] + 1;
                         }
                     }
                     if (this.bB[9] >= 3) {
-                        if (!R() || !b(this.hj[5][0], this.hj[5][1], this.hj[5][2], this.hj[5][3])) {
+                        if (!R() || !isTouching(this.hj[5][0], this.hj[5][1], this.hj[5][2], this.hj[5][3])) {
                             this.gr[5] = false;
                         } else if (!this.gr[5]) {
                             aSound.getInstance().play(10);
                             this.gr[5] = true;
                         }
-                        if (!R() || !b(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
+                        if (!R() || !isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
                             this.gp[14] = false;
                         } else if (!this.gp[14]) {
                             aSound.getInstance().play(10);
                             this.gp[14] = true;
                         }
-                        if (S() && b(this.hj[5][0], this.hj[5][1], this.hj[5][2], this.hj[5][3])) {
+                        if (S() && isTouching(this.hj[5][0], this.hj[5][1], this.hj[5][2], this.hj[5][3])) {
                             aSound.getInstance().play(11);
                             int[] iArr22 = this.hk;
                             iArr22[5] = iArr22[5] + 1;
@@ -17377,7 +17376,7 @@ public class AppInstance extends Game {
                                     this.textTextures[1].drawText(this.god2Text[rand2][1], "FONT_SYSTEM_BOLD", 30, 1);
                                 }
                             }
-                        } else if (S() && b(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
+                        } else if (S() && isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
                             aSound.getInstance().play(11);
                             int[] iArr24 = this.fx;
                             iArr24[14] = iArr24[14] + 1;
@@ -18071,7 +18070,7 @@ public class AppInstance extends Game {
         if (this.gJ) {
             atexturerenderer.drawScaledImage(this.settingsMenuTexture[3], this.w + (652 - (dv[this.fx[11]] / 2)), 287 - (dv[this.fx[11]] / 2), dv[this.fx[11]] + 304, dv[this.fx[11]] + 74, 0);
             atexturerenderer.drawScaledImage(this.uiTextures[7], this.w + (690 - (dv[this.fx[11]] / 2)), 293 - (dv[this.fx[11]] / 2), dv[this.fx[11]] + 231, dv[this.fx[11]] + 62, 4);
-            if (!this.eE[0] && !this.eE[1] && !this.gU && !this.gu && R() && b(this.fw[11][0], this.fw[11][1], this.fw[11][2], this.fw[11][3])) {
+            if (!this.eE[0] && !this.eE[1] && !this.gU && !this.gu && R() && isTouching(this.fw[11][0], this.fw[11][1], this.fw[11][2], this.fw[11][3])) {
                 int[] iArr = this.fQ;
                 iArr[10] = iArr[10] + 1;
                 atexturerenderer.drawScaledImage(this.settingsMenuTexture[3], this.w + 652, 287, 304, 74, ((this.fQ[10] % 4) / 2) + 1);
@@ -18079,7 +18078,7 @@ public class AppInstance extends Game {
         } else if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1]) {
             atexturerenderer.drawScaledImage(this.settingsMenuTexture[3], this.w + (652 - (dv[this.fx[11]] / 2)), 287 - (dv[this.fx[11]] / 2), dv[this.fx[11]] + 304, dv[this.fx[11]] + 74, 0);
             atexturerenderer.drawScaledImage(this.uiTextures[7], this.w + (690 - (dv[this.fx[11]] / 2)), 293 - (dv[this.fx[11]] / 2), dv[this.fx[11]] + 231, dv[this.fx[11]] + 62, 3);
-            if (!this.eE[5] && !this.eE[0] && !this.eE[1] && !this.gU && !this.gu && R() && b(this.fw[11][0], this.fw[11][1], this.fw[11][2], this.fw[11][3])) {
+            if (!this.eE[5] && !this.eE[0] && !this.eE[1] && !this.gU && !this.gu && R() && isTouching(this.fw[11][0], this.fw[11][1], this.fw[11][2], this.fw[11][3])) {
                 atexturerenderer.drawScaledImage(this.settingsMenuTexture[3], this.w + 652, 287, 304, 74, ((this.fQ[3] % 4) / 2) + 1);
             }
         }
@@ -18489,13 +18488,13 @@ public class AppInstance extends Game {
         atexturerenderer.drawScaledImage(this.uiTextures[0], this.fw[10][0] - (dv[this.fx[10]] / 2), this.fw[10][1] - (dv[this.fx[10]] / 2), dv[this.fx[10]] + this.fw[10][2], dv[this.fx[10]] + this.fw[10][3], 9);
         atexturerenderer.drawScaledImage(this.uiTextures[0], (this.fw[10][0] + 4) - (dv[this.fx[10]] / 2), (this.fw[10][1] + 17) - (dv[this.fx[10]] / 2), dv[this.fx[10]] + 84, dv[this.fx[10]] + 60, 3);
         boolean z2 = false;
-        if (this.fx[2] == 0 && this.ff[0] - 1 >= 0 && this.ff[2] <= 0 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && ((R() || S()) && b((int) (((((getWidth() / 2) - (this.boxSize[this.ff[0] - 1][0] / 2)) + (this.boxScale * (this.ff[0] - 1))) + this.gameStats1[0]) - ((328 - this.boxSize[this.ff[0] - 1][0]) + ((328 - this.boxSize[(this.ff[0] - 1) + 1][0]) / 2.0f))), 559 - this.boxSize[this.ff[0] - 1][1], this.boxSize[this.ff[0] - 1][0], this.boxSize[this.ff[0] - 1][1]))) {
+        if (this.fx[2] == 0 && this.ff[0] - 1 >= 0 && this.ff[2] <= 0 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && ((R() || S()) && isTouching((int) (((((getWidth() / 2) - (this.boxSize[this.ff[0] - 1][0] / 2)) + (this.boxScale * (this.ff[0] - 1))) + this.gameStats1[0]) - ((328 - this.boxSize[this.ff[0] - 1][0]) + ((328 - this.boxSize[(this.ff[0] - 1) + 1][0]) / 2.0f))), 559 - this.boxSize[this.ff[0] - 1][1], this.boxSize[this.ff[0] - 1][0], this.boxSize[this.ff[0] - 1][1]))) {
             z2 = true;
         }
-        if (this.fx[2] == 0 && this.ff[2] >= this.boxCounts[1] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && ((R() || S()) && b(((getWidth() / 2) - (this.boxSize[this.ff[0] + 1][0] / 2)) + (this.boxScale * (this.ff[0] + 1)) + this.gameStats1[0] + (328 - this.boxSize[this.ff[0] + 1][0]), 559 - this.boxSize[this.ff[0] + 1][1], this.boxSize[this.ff[0] + 1][0], this.boxSize[this.ff[0] + 1][1]))) {
+        if (this.fx[2] == 0 && this.ff[2] >= this.boxCounts[1] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && ((R() || S()) && isTouching(((getWidth() / 2) - (this.boxSize[this.ff[0] + 1][0] / 2)) + (this.boxScale * (this.ff[0] + 1)) + this.gameStats1[0] + (328 - this.boxSize[this.ff[0] + 1][0]), 559 - this.boxSize[this.ff[0] + 1][1], this.boxSize[this.ff[0] + 1][0], this.boxSize[this.ff[0] + 1][1]))) {
             z2 = true;
         }
-        if ((this.fx[2] != 0 || ((this.ff[2] > -1 && this.ff[2] < this.boxCounts[1] + 1) || this.eE[5] || this.gameStats1[0] % this.boxScale != 0 || this.scrollAmount[0] != 0 || ((!R() && !S()) || !b(((((getWidth() / 2) - (this.boxSize[this.ff[0]][0] / 2)) + (this.boxScale * this.ff[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.ff[0]][0]), 559 - this.boxSize[this.ff[0]][1], this.boxSize[this.ff[0]][0], this.boxSize[this.ff[0]][1])))) && !this.eE[5] && this.fx[2] == 0 && !z2 && !this.eE[0] && !this.eE[1] && !this.eE[2] && !this.eb && this.eE[10] && !this.gJ) {
+        if ((this.fx[2] != 0 || ((this.ff[2] > -1 && this.ff[2] < this.boxCounts[1] + 1) || this.eE[5] || this.gameStats1[0] % this.boxScale != 0 || this.scrollAmount[0] != 0 || ((!R() && !S()) || !isTouching(((((getWidth() / 2) - (this.boxSize[this.ff[0]][0] / 2)) + (this.boxScale * this.ff[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.ff[0]][0]), 559 - this.boxSize[this.ff[0]][1], this.boxSize[this.ff[0]][0], this.boxSize[this.ff[0]][1])))) && !this.eE[5] && this.fx[2] == 0 && !z2 && !this.eE[0] && !this.eE[1] && !this.eE[2] && !this.eb && this.eE[10] && !this.gJ) {
             atexturerenderer.drawScaledImage(this.uiTextures[0], 3, 540, 96, 96, ((this.fQ[3] % 4) / 2) + 12);
         }
         atexturerenderer.drawScaledImagef(this.uiTextures[5], this.w + 670, 0, 11);
@@ -18705,19 +18704,19 @@ public class AppInstance extends Game {
             } else if (this.gP[2] < this.gB[0]) {
                 if (this.bA[this.gP[2]] < 9000) {
                     z = true;
-                    if (z || !R() || !b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                    if (z || !R() || !isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                         this.gp[0] = false;
                     } else if (!this.gp[0]) {
                         aSound.getInstance().play(10);
                         this.gp[0] = true;
                     }
-                    if (R() || !b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
+                    if (R() || !isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                         this.gp[5] = false;
                     } else if (!this.gp[5]) {
                         aSound.getInstance().play(10);
                         this.gp[5] = true;
                     }
-                    if (!z && S() && b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                    if (!z && S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                         if (Z[this.gP[2]] + (Z[this.gP[2]] * this.gS[this.gP[2]]) <= 0) {
                             if (this.catfood >= 500) {
                                 aSound.getInstance().play(11);
@@ -18731,12 +18730,12 @@ public class AppInstance extends Game {
                         }
                         int[] iArr6 = this.fx;
                         iArr6[0] = iArr6[0] + 1;
-                    } else if (!S() && b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
+                    } else if (!S() && isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                         aSound.getInstance().play(11);
                         int[] iArr7 = this.fx;
                         iArr7[5] = iArr7[5] + 1;
                     } else if (T()) {
-                        if (S() && b(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) && this.bf >= 1) {
+                        if (S() && isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) && this.bf >= 1) {
                             int[] iArr8 = this.fx;
                             iArr8[14] = iArr8[14] + 1;
                             aSound.getInstance().play(11);
@@ -18746,7 +18745,7 @@ public class AppInstance extends Game {
                     } else if (this.gQ >= 1) {
                         this.eE[13] = true;
                     }
-                    if (R() || !b(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
+                    if (R() || !isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
                         this.gp[14] = false;
                     } else if (!this.gp[14]) {
                         this.gp[14] = true;
@@ -18951,7 +18950,7 @@ public class AppInstance extends Game {
             if (this.fx[10] == 0 && !this.eE[1]) {
                 this.eE[10] = false;
             }
-        } else if ((R() || S()) && b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
+        } else if ((R() || S()) && isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
             this.eE[10] = true;
         } else if (this.fx[10] == 0 && !this.eE[1]) {
             this.eE[10] = false;
@@ -19334,44 +19333,44 @@ public class AppInstance extends Game {
                 }
             } else {
                 for (int i2 = 0; i2 < this.fL; i2++) {
-                    if (R() && b(this.fw[i2][0], this.fw[i2][1], this.fw[i2][2], this.fw[i2][3]) && i2 != this.fI) {
+                    if (R() && isTouching(this.fw[i2][0], this.fw[i2][1], this.fw[i2][2], this.fw[i2][3]) && i2 != this.fI) {
                         aSound.getInstance().play(10);
                         if (this.by[i2] >= 1) {
                             this.fI = i2;
                         }
                     }
                 }
-                if (!R() || !b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
+                if (!R() || !isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                     this.gp[5] = false;
                 } else if (!this.gp[5]) {
                     aSound.getInstance().play(10);
                     this.gp[5] = true;
                 }
-                if (S() && b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3]) && this.fI == 0) {
+                if (S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3]) && this.fI == 0) {
                     int[] iArr17 = this.fx;
                     iArr17[0] = iArr17[0] + 1;
                     aSound.getInstance().play(11);
-                } else if (S() && b(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3]) && this.fI == 1) {
+                } else if (S() && isTouching(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3]) && this.fI == 1) {
                     int[] iArr18 = this.fx;
                     iArr18[1] = iArr18[1] + 1;
                     aSound.getInstance().play(11);
-                } else if (S() && b(this.fw[2][0], this.fw[2][1], this.fw[2][2], this.fw[2][3]) && this.fI == 2) {
+                } else if (S() && isTouching(this.fw[2][0], this.fw[2][1], this.fw[2][2], this.fw[2][3]) && this.fI == 2) {
                     int[] iArr19 = this.fx;
                     iArr19[2] = iArr19[2] + 1;
                     aSound.getInstance().play(11);
-                } else if (S() && b(this.fw[3][0], this.fw[3][1], this.fw[3][2], this.fw[3][3]) && this.fI == 3) {
+                } else if (S() && isTouching(this.fw[3][0], this.fw[3][1], this.fw[3][2], this.fw[3][3]) && this.fI == 3) {
                     int[] iArr20 = this.fx;
                     iArr20[3] = iArr20[3] + 1;
                     aSound.getInstance().play(11);
-                } else if (S() && b(this.fw[4][0], this.fw[4][1], this.fw[4][2], this.fw[4][3]) && this.fI == 4) {
+                } else if (S() && isTouching(this.fw[4][0], this.fw[4][1], this.fw[4][2], this.fw[4][3]) && this.fI == 4) {
                     int[] iArr21 = this.fx;
                     iArr21[4] = iArr21[4] + 1;
                     aSound.getInstance().play(11);
-                } else if (S() && b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
+                } else if (S() && isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                     int[] iArr22 = this.fx;
                     iArr22[5] = iArr22[5] + 1;
                     aSound.getInstance().play(11);
-                } else if (S() && b(this.fw[13][0], this.fw[13][1], this.fw[13][2], this.fw[13][3])) {
+                } else if (S() && isTouching(this.fw[13][0], this.fw[13][1], this.fw[13][2], this.fw[13][3])) {
                     if (this.be >= 1) {
                         int[] iArr23 = this.fx;
                         iArr23[13] = iArr23[13] + 1;
@@ -19379,13 +19378,13 @@ public class AppInstance extends Game {
                         aSound.getInstance().play(11);
                         this.gR = 0;
                     }
-                } else if (S() && b(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
+                } else if (S() && isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
                     if (this.bf >= 1) {
                         aSound.getInstance().play(11);
                         int[] iArr24 = this.fx;
                         iArr24[14] = iArr24[14] + 1;
                     }
-                } else if (S() && b(this.fw[15][0], this.fw[15][1], this.fw[15][2], this.fw[15][3])) {
+                } else if (S() && isTouching(this.fw[15][0], this.fw[15][1], this.fw[15][2], this.fw[15][3])) {
                     if (this.be >= 1) {
                         aSound.getInstance().play(11);
                         int[] iArr25 = this.fx;
@@ -19399,20 +19398,20 @@ public class AppInstance extends Game {
                     this.gw = 7;
                     return false;
                 }
-                if (!R() || !b(this.fw[13][0], this.fw[13][1], this.fw[13][2], this.fw[13][3]) || this.be < 1) {
+                if (!R() || !isTouching(this.fw[13][0], this.fw[13][1], this.fw[13][2], this.fw[13][3]) || this.be < 1) {
                     this.gp[13] = false;
                 } else if (!this.gp[13]) {
                     this.gp[13] = true;
                     aSound.getInstance().play(10);
                 }
-                if (!R() || !b(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) || this.bf < 1) {
+                if (!R() || !isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) || this.bf < 1) {
                     this.gp[14] = false;
                 } else if (!this.gp[14]) {
                     this.gp[14] = true;
                     aSound.getInstance().play(10);
                 }
                 if (this.be >= 1) {
-                    if (!R() || !b(this.fw[15][0], this.fw[15][1], this.fw[15][2], this.fw[15][3]) || this.bf < 1) {
+                    if (!R() || !isTouching(this.fw[15][0], this.fw[15][1], this.fw[15][2], this.fw[15][3]) || this.bf < 1) {
                         this.gp[15] = false;
                     } else if (!this.gp[15]) {
                         this.gp[15] = true;
@@ -19566,7 +19565,7 @@ public class AppInstance extends Game {
                 this.eE[3] = false;
                 this.fQ[2] = 0;
             }
-            if (R() && b(this.fw[6][0], this.fw[6][1], this.fw[6][2], this.fw[6][3]) && !this.eE[3] && !this.eE[5]) {
+            if (R() && isTouching(this.fw[6][0], this.fw[6][1], this.fw[6][2], this.fw[6][3]) && !this.eE[3] && !this.eE[5]) {
                 this.gameStats1[1] = getCurrentXTouch() - M();
             } else if (R()) {
                 this.gameStats1[1] = 0;
@@ -19575,7 +19574,7 @@ public class AppInstance extends Game {
                 this.gameStats1[1] = 0;
                 this.eE[5] = false;
             }
-            if (R() && b(this.fw[6][0] + this.gameStats1[1], this.fw[6][1], this.fw[6][2], this.fw[6][3]) && !this.eE[3] && !this.eE[4]) {
+            if (R() && isTouching(this.fw[6][0] + this.gameStats1[1], this.fw[6][1], this.fw[6][2], this.fw[6][3]) && !this.eE[3] && !this.eE[4]) {
                 this.gameStats1[0] = getCurrentXTouch() - M();
                 if (this.gameStats1[0] <= 0) {
                     this.gameStats1[0] = 0;
@@ -20285,35 +20284,35 @@ public class AppInstance extends Game {
                     aSound.getInstance().setVolume(100);
                 }
             } else {
-                if (!R() || !b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                if (!R() || !isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                     this.gp[0] = false;
                 } else if (!this.gp[0]) {
                     aSound.getInstance().play(10);
                     this.gp[0] = true;
                 }
-                if (!R() || !b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
+                if (!R() || !isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                     this.gp[5] = false;
                 } else if (!this.gp[5]) {
                     aSound.getInstance().play(10);
                     this.gp[5] = true;
                 }
                 if (this.be >= 1) {
-                    if (R() && b(this.eJ[0][0], this.eJ[0][1], this.eJ[0][2], this.eJ[0][3])) {
+                    if (R() && isTouching(this.eJ[0][0], this.eJ[0][1], this.eJ[0][2], this.eJ[0][3])) {
                         this.dX++;
                         this.dW = 0;
-                    } else if (R() && b(this.eJ[1][0], this.eJ[1][1], this.eJ[1][2], this.eJ[1][3])) {
+                    } else if (R() && isTouching(this.eJ[1][0], this.eJ[1][1], this.eJ[1][2], this.eJ[1][3])) {
                         this.dX++;
                         this.dW = 1;
-                    } else if (R() && b(this.eJ[2][0], this.eJ[2][1], this.eJ[2][2], this.eJ[2][3])) {
+                    } else if (R() && isTouching(this.eJ[2][0], this.eJ[2][1], this.eJ[2][2], this.eJ[2][3])) {
                         this.dX++;
                         this.dW = 2;
-                    } else if (R() && b(this.eJ[3][0], this.eJ[3][1], this.eJ[3][2], this.eJ[3][3])) {
+                    } else if (R() && isTouching(this.eJ[3][0], this.eJ[3][1], this.eJ[3][2], this.eJ[3][3])) {
                         this.dX++;
                         this.dW = 3;
-                    } else if (R() && b(this.eJ[4][0], this.eJ[4][1], this.eJ[4][2], this.eJ[4][3])) {
+                    } else if (R() && isTouching(this.eJ[4][0], this.eJ[4][1], this.eJ[4][2], this.eJ[4][3])) {
                         this.dX++;
                         this.dW = 4;
-                    } else if (R() && b(this.eJ[5][0], this.eJ[5][1], this.eJ[5][2], this.eJ[5][3])) {
+                    } else if (R() && isTouching(this.eJ[5][0], this.eJ[5][1], this.eJ[5][2], this.eJ[5][3])) {
                         this.dX++;
                         this.dW = 5;
                     } else {
@@ -20340,7 +20339,7 @@ public class AppInstance extends Game {
                     }
                     this.gA[0] = 5;
                 }
-                if (S() && b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3]) && !this.dV) {
+                if (S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3]) && !this.dV) {
                     if (this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0) {
                         if (this.aZ != 0) {
                             aSound.getInstance().play(11);
@@ -20354,13 +20353,13 @@ public class AppInstance extends Game {
                         this.gA[0] = 0;
                         this.ct = 0;
                     }
-                } else if (S() && b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3]) && !this.dV) {
+                } else if (S() && isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3]) && !this.dV) {
                     aSound.getInstance().play(11);
                     int[] iArr25 = this.fx;
                     iArr25[5] = iArr25[5] + 1;
                     this.gA[0] = 0;
                     this.ct = 0;
-                } else if (S() && b(this.fw[13][0], this.fw[13][1], this.fw[13][2], this.fw[13][3]) && !this.dV) {
+                } else if (S() && isTouching(this.fw[13][0], this.fw[13][1], this.fw[13][2], this.fw[13][3]) && !this.dV) {
                     if (this.be >= 1) {
                         aSound.getInstance().play(11);
                         int[] iArr26 = this.fx;
@@ -20369,7 +20368,7 @@ public class AppInstance extends Game {
                         this.ct = 0;
                         this.gR = 0;
                     }
-                } else if (S() && b(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) && !this.dV) {
+                } else if (S() && isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) && !this.dV) {
                     if (this.bf >= 1) {
                         aSound.getInstance().play(11);
                         int[] iArr27 = this.fx;
@@ -20377,7 +20376,7 @@ public class AppInstance extends Game {
                         this.gA[0] = 0;
                         this.ct = 0;
                     }
-                } else if (S() && b(this.fw[15][0], this.fw[15][1], this.fw[15][2], this.fw[15][3]) && !this.dV) {
+                } else if (S() && isTouching(this.fw[15][0], this.fw[15][1], this.fw[15][2], this.fw[15][3]) && !this.dV) {
                     if (this.be >= 1) {
                         aSound.getInstance().play(11);
                         int[] iArr28 = this.fx;
@@ -20386,13 +20385,13 @@ public class AppInstance extends Game {
                         this.ct = 0;
                         this.gR = 1;
                     }
-                } else if (S() && b(this.fw[16][0], this.fw[16][1], this.fw[16][2], this.fw[16][3]) && !this.dV) {
+                } else if (S() && isTouching(this.fw[16][0], this.fw[16][1], this.fw[16][2], this.fw[16][3]) && !this.dV) {
                     if (this.aZ != 0) {
                         aSound.getInstance().play(11);
                         int[] iArr29 = this.fx;
                         iArr29[16] = iArr29[16] + 1;
                     }
-                } else if (S() && b(this.eJ[0][0], this.eJ[0][1], this.eJ[0][2], this.eJ[0][3])) {
+                } else if (S() && isTouching(this.eJ[0][0], this.eJ[0][1], this.eJ[0][2], this.eJ[0][3])) {
                     if (this.be >= 1) {
                         if (this.bA[0] >= 1) {
                             aSound.getInstance().play(11);
@@ -20402,7 +20401,7 @@ public class AppInstance extends Game {
                         int[] iArr30 = this.eK;
                         iArr30[0] = iArr30[0] + 1;
                     }
-                } else if (S() && b(this.eJ[1][0], this.eJ[1][1], this.eJ[1][2], this.eJ[1][3])) {
+                } else if (S() && isTouching(this.eJ[1][0], this.eJ[1][1], this.eJ[1][2], this.eJ[1][3])) {
                     if (this.be >= 1) {
                         if (this.bA[1] < 1 || this.bb < 1) {
                             aSound.getInstance().play(15);
@@ -20412,7 +20411,7 @@ public class AppInstance extends Game {
                         int[] iArr31 = this.eK;
                         iArr31[1] = iArr31[1] + 1;
                     }
-                } else if (S() && b(this.eJ[2][0], this.eJ[2][1], this.eJ[2][2], this.eJ[2][3])) {
+                } else if (S() && isTouching(this.eJ[2][0], this.eJ[2][1], this.eJ[2][2], this.eJ[2][3])) {
                     if (this.be >= 1) {
                         if (this.bA[2] >= 1) {
                             aSound.getInstance().play(11);
@@ -20422,7 +20421,7 @@ public class AppInstance extends Game {
                         int[] iArr32 = this.eK;
                         iArr32[2] = iArr32[2] + 1;
                     }
-                } else if (S() && b(this.eJ[3][0], this.eJ[3][1], this.eJ[3][2], this.eJ[3][3])) {
+                } else if (S() && isTouching(this.eJ[3][0], this.eJ[3][1], this.eJ[3][2], this.eJ[3][3])) {
                     if (this.be >= 1) {
                         if (this.bA[3] >= 1) {
                             aSound.getInstance().play(11);
@@ -20432,7 +20431,7 @@ public class AppInstance extends Game {
                         int[] iArr33 = this.eK;
                         iArr33[3] = iArr33[3] + 1;
                     }
-                } else if (S() && b(this.eJ[4][0], this.eJ[4][1], this.eJ[4][2], this.eJ[4][3])) {
+                } else if (S() && isTouching(this.eJ[4][0], this.eJ[4][1], this.eJ[4][2], this.eJ[4][3])) {
                     if (this.be >= 1) {
                         if (this.bA[4] >= 1) {
                             aSound.getInstance().play(11);
@@ -20442,7 +20441,7 @@ public class AppInstance extends Game {
                         int[] iArr34 = this.eK;
                         iArr34[4] = iArr34[4] + 1;
                     }
-                } else if (S() && b(this.eJ[5][0], this.eJ[5][1], this.eJ[5][2], this.eJ[5][3])) {
+                } else if (S() && isTouching(this.eJ[5][0], this.eJ[5][1], this.eJ[5][2], this.eJ[5][3])) {
                     if (this.be >= 1) {
                         if (this.bA[5] >= 1) {
                             aSound.getInstance().play(11);
@@ -20463,13 +20462,13 @@ public class AppInstance extends Game {
                     this.gA[0] = 0;
                     this.ct = 0;
                 }
-                if (!R() || !b(this.fw[13][0], this.fw[13][1], this.fw[13][2], this.fw[13][3]) || this.be < 1) {
+                if (!R() || !isTouching(this.fw[13][0], this.fw[13][1], this.fw[13][2], this.fw[13][3]) || this.be < 1) {
                     this.gp[13] = false;
                 } else if (!this.gp[13]) {
                     this.gp[13] = true;
                     aSound.getInstance().play(10);
                 }
-                if (!R() || !b(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) || this.bf < 1) {
+                if (!R() || !isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) || this.bf < 1) {
                     this.gp[14] = false;
                 } else if (!this.gp[14]) {
                     this.gp[14] = true;
@@ -20479,7 +20478,7 @@ public class AppInstance extends Game {
         }
         if (this.be >= 1 && (this.dV || this.gA[0] >= 1)) {
             for (int i11 = 0; i11 < 6; i11++) {
-                if (R() && b(this.eJ[i11][0], this.eJ[i11][1], this.eJ[i11][2], this.eJ[i11][3]) && this.dW != i11) {
+                if (R() && isTouching(this.eJ[i11][0], this.eJ[i11][1], this.eJ[i11][2], this.eJ[i11][3]) && this.dW != i11) {
                     this.dW = i11;
                     for (int i12 = 0; i12 < getLength(this.textTextures); i12++) {
                         if (this.textTextures[i12].isLoaded()) {
@@ -20717,7 +20716,7 @@ public class AppInstance extends Game {
             } else if (this.fx[5] == 0 && !this.eE[1]) {
                 this.eE[10] = false;
             }
-        } else if ((R() || S()) && b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
+        } else if ((R() || S()) && isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
             this.eE[10] = true;
         } else if (this.aZ == 0) {
             if (!this.eb) {
@@ -21174,42 +21173,42 @@ public class AppInstance extends Game {
                         this.gu = false;
                     }
                 } else {
-                    if (!R() || !b(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
+                    if (!R() || !isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
                         this.gs[0] = false;
                     } else if (!this.gs[0]) {
                         aSound.getInstance().play(10);
                         this.gs[0] = true;
                     }
-                    if (!R() || !b(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3])) {
+                    if (!R() || !isTouching(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3])) {
                         this.gs[1] = false;
                     } else if (!this.gs[1]) {
                         aSound.getInstance().play(10);
                         this.gs[1] = true;
                     }
                     if (this.gw == 1) {
-                        if (!R() || !b(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) || this.bf < 1) {
+                        if (!R() || !isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) || this.bf < 1) {
                             this.gp[14] = false;
                         } else if (!this.gp[14]) {
                             this.gp[14] = true;
                             aSound.getInstance().play(10);
                         }
                     }
-                    if (S() && b(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
+                    if (S() && isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
                         aSound.getInstance().play(11);
                         int[] iArr8 = this.fz;
                         iArr8[0] = iArr8[0] + 1;
-                    } else if (S() && b(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3])) {
+                    } else if (S() && isTouching(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3])) {
                         aSound.getInstance().play(11);
                         int[] iArr9 = this.fz;
                         iArr9[1] = iArr9[1] + 1;
-                    } else if (S() && b(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
+                    } else if (S() && isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
                         if (this.gw != 1 || this.bf < 1) {
                             return;
                         }
                         aSound.getInstance().play(11);
                         int[] iArr10 = this.fx;
                         iArr10[14] = iArr10[14] + 1;
-                    } else if (!S() || !b(this.fw[15][0], this.fw[15][1], this.fw[15][2], this.fw[15][3]) || this.dV) {
+                    } else if (!S() || !isTouching(this.fw[15][0], this.fw[15][1], this.fw[15][2], this.fw[15][3]) || this.dV) {
                         if (T()) {
                             this.fz[1] = 0;
                             this.gu = false;
@@ -21263,29 +21262,29 @@ public class AppInstance extends Game {
                         }
                         return;
                     } else {
-                        if (!R() || !b(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
+                        if (!R() || !isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
                             this.gs[0] = false;
                         } else if (!this.gs[0]) {
                             aSound.getInstance().play(10);
                             this.gs[0] = true;
                         }
-                        if (!R() || !b(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3])) {
+                        if (!R() || !isTouching(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3])) {
                             this.gs[1] = false;
                         } else if (!this.gs[1]) {
                             aSound.getInstance().play(10);
                             this.gs[1] = true;
                         }
-                        if (S() && b(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
+                        if (S() && isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
                             aSound.getInstance().play(14);
                             int[] iArr14 = this.fz;
                             iArr14[0] = iArr14[0] + 1;
                             return;
-                        } else if (S() && b(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3])) {
+                        } else if (S() && isTouching(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3])) {
                             aSound.getInstance().play(11);
                             int[] iArr15 = this.fz;
                             iArr15[1] = iArr15[1] + 1;
                             return;
-                        } else if (!S() || !b(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
+                        } else if (!S() || !isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
                             if (T()) {
                                 this.fz[1] = 0;
                                 this.gu = false;
@@ -21478,27 +21477,27 @@ public class AppInstance extends Game {
                         }
                     }
                 } else {
-                    if (!R() || !b(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
+                    if (!R() || !isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
                         this.gs[0] = false;
                     } else if (!this.gs[0]) {
                         aSound.getInstance().play(10);
                         this.gs[0] = true;
                     }
-                    if (!R() || !b(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3])) {
+                    if (!R() || !isTouching(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3])) {
                         this.gs[1] = false;
                     } else if (!this.gs[1]) {
                         aSound.getInstance().play(10);
                         this.gs[1] = true;
                     }
-                    if (S() && b(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
+                    if (S() && isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
                         aSound.getInstance().play(11);
                         int[] iArr25 = this.fz;
                         iArr25[0] = iArr25[0] + 1;
-                    } else if (S() && b(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3])) {
+                    } else if (S() && isTouching(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3])) {
                         aSound.getInstance().play(11);
                         int[] iArr26 = this.fz;
                         iArr26[1] = iArr26[1] + 1;
-                    } else if (!S() || !b(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
+                    } else if (!S() || !isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
                         if (T()) {
                             this.fz[1] = 0;
                             this.gu = false;
@@ -21551,23 +21550,23 @@ public class AppInstance extends Game {
                         this.gu = false;
                     }
                 } else {
-                    if (!R() || !b(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
+                    if (!R() || !isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
                         this.gs[0] = false;
                     } else if (!this.gs[0]) {
                         aSound.getInstance().play(10);
                         this.gs[0] = true;
                     }
-                    if (!R() || !b(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3])) {
+                    if (!R() || !isTouching(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3])) {
                         this.gs[1] = false;
                     } else if (!this.gs[1]) {
                         aSound.getInstance().play(10);
                         this.gs[1] = true;
                     }
-                    if (S() && b(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
+                    if (S() && isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
                         aSound.getInstance().play(11);
                         int[] iArr30 = this.fz;
                         iArr30[0] = iArr30[0] + 1;
-                    } else if (S() && b(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3])) {
+                    } else if (S() && isTouching(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3])) {
                         aSound.getInstance().play(11);
                         int[] iArr31 = this.fz;
                         iArr31[1] = iArr31[1] + 1;
@@ -21601,13 +21600,13 @@ public class AppInstance extends Game {
             }
         } else if (this.gv[1] >= 1) {
             if (this.fz[0] < 1) {
-                if (!R() || !b(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
+                if (!R() || !isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
                     this.gs[0] = false;
                 } else if (!this.gs[0]) {
                     aSound.getInstance().play(10);
                     this.gs[0] = true;
                 }
-                if (S() && b(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
+                if (S() && isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
                     aSound.getInstance().play(11);
                     int[] iArr32 = this.fz;
                     iArr32[0] = iArr32[0] + 1;
@@ -22613,13 +22612,13 @@ public class AppInstance extends Game {
                     }
                 }
             } else {
-                if ((this.currentBox[2] > -1 && this.currentBox[2] < this.boxCounts[1] + 1) || !R() || !b(((((getWidth() / 2) - (this.boxSize[this.currentBox[0]][0] / 2)) + (this.boxScale * this.currentBox[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.currentBox[0]][0]), 347 - this.boxSize[this.currentBox[0]][1], this.boxSize[this.currentBox[0]][0], this.boxSize[this.currentBox[0]][1])) {
+                if ((this.currentBox[2] > -1 && this.currentBox[2] < this.boxCounts[1] + 1) || !R() || !isTouching(((((getWidth() / 2) - (this.boxSize[this.currentBox[0]][0] / 2)) + (this.boxScale * this.currentBox[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.currentBox[0]][0]), 347 - this.boxSize[this.currentBox[0]][1], this.boxSize[this.currentBox[0]][0], this.boxSize[this.currentBox[0]][1])) {
                     this.gp[2] = false;
                 } else if (!this.gp[2]) {
                     aSound.getInstance().play(10);
                     this.gp[2] = true;
                 }
-                if (!R() || !b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                if (!R() || !isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                     this.gp[0] = false;
                 } else if ((this.gp[0] || (this.currentBox[2] > -1 && this.currentBox[2] < this.boxCounts[1] + 1)) && !this.gp[0] && this.currentBox[2] >= 0 && this.currentBox[2] <= this.boxCounts[1] && this.currentBox[2] >= this.gB[1]) {
                     if (this.currentBox[2] < this.gB[0]) {
@@ -22643,40 +22642,40 @@ public class AppInstance extends Game {
                     }
                 }
                 if (this.bq[0] >= 48) {
-                    if (!R() || !b(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
+                    if (!R() || !isTouching(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
                         this.gp[1] = false;
                     } else if (!this.gp[1] && this.currentBox[2] >= this.gB[1] && this.currentBox[2] < this.gB[0] && this.currentBox[2] >= 0 && this.currentBox[2] <= this.boxCounts[1] && this.bv[this.boxCatIDs[this.currentBox[2] - this.gB[1]]] + 1 >= 10 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0) {
                         aSound.getInstance().play(10);
                         this.gp[1] = true;
                     }
                 }
-                if (!R() || !b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
+                if (!R() || !isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                     this.gp[5] = false;
                 } else if (!this.eE[9] && !this.gp[5]) {
                     aSound.getInstance().play(10);
                     this.gp[5] = true;
                 }
-                if (this.fx[2] == 0 && this.currentBox[0] - 2 >= 0 && this.currentBox[2] <= 0 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && S() && b(((((getWidth() / 2) - (this.boxSize[this.currentBox[0] - 1][0] / 2)) + (this.boxScale * (this.currentBox[0] - 1))) + this.gameStats1[0]) - ((328 - this.boxSize[this.currentBox[0] - 1][0]) + ((328 - this.boxSize[(this.currentBox[0] - 1) + 1][0]) / 2)), 347 - this.boxSize[this.currentBox[0] - 1][1], this.boxSize[this.currentBox[0] - 1][0], this.boxSize[this.currentBox[0] - 1][1])) {
+                if (this.fx[2] == 0 && this.currentBox[0] - 2 >= 0 && this.currentBox[2] <= 0 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && S() && isTouching(((((getWidth() / 2) - (this.boxSize[this.currentBox[0] - 1][0] / 2)) + (this.boxScale * (this.currentBox[0] - 1))) + this.gameStats1[0]) - ((328 - this.boxSize[this.currentBox[0] - 1][0]) + ((328 - this.boxSize[(this.currentBox[0] - 1) + 1][0]) / 2)), 347 - this.boxSize[this.currentBox[0] - 1][1], this.boxSize[this.currentBox[0] - 1][0], this.boxSize[this.currentBox[0] - 1][1])) {
                     int[] iArr15 = this.fx;
                     iArr15[2] = iArr15[2] + 1;
                     this.currentBox[5] = -1;
                     this.eE[11] = true;
                     aSound.getInstance().play(11);
                 }
-                if (this.fx[2] == 0 && this.currentBox[0] - 2 <= this.boxCounts[1] && this.currentBox[2] >= this.boxCounts[1] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && S() && b(((getWidth() / 2) - (this.boxSize[this.currentBox[0] + 1][0] / 2)) + (this.boxScale * (this.currentBox[0] + 1)) + this.gameStats1[0] + (328 - this.boxSize[this.currentBox[0] + 1][0]), 347 - this.boxSize[this.currentBox[0] + 1][1], this.boxSize[this.currentBox[0] + 1][0], this.boxSize[this.currentBox[0] + 1][1])) {
+                if (this.fx[2] == 0 && this.currentBox[0] - 2 <= this.boxCounts[1] && this.currentBox[2] >= this.boxCounts[1] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && S() && isTouching(((getWidth() / 2) - (this.boxSize[this.currentBox[0] + 1][0] / 2)) + (this.boxScale * (this.currentBox[0] + 1)) + this.gameStats1[0] + (328 - this.boxSize[this.currentBox[0] + 1][0]), 347 - this.boxSize[this.currentBox[0] + 1][1], this.boxSize[this.currentBox[0] + 1][0], this.boxSize[this.currentBox[0] + 1][1])) {
                     int[] iArr16 = this.fx;
                     iArr16[2] = iArr16[2] + 1;
                     this.currentBox[5] = 1;
                     aSound.getInstance().play(11);
                     this.eE[11] = true;
                 }
-                if (this.fx[2] == 0 && ((this.currentBox[2] <= -1 || this.currentBox[2] >= this.boxCounts[1] + 1) && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && S() && b(((((getWidth() / 2) - (this.boxSize[this.currentBox[0]][0] / 2)) + (this.boxScale * this.currentBox[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.currentBox[0]][0]), 347 - this.boxSize[this.currentBox[0]][1], this.boxSize[this.currentBox[0]][0], this.boxSize[this.currentBox[0]][1]))) {
+                if (this.fx[2] == 0 && ((this.currentBox[2] <= -1 || this.currentBox[2] >= this.boxCounts[1] + 1) && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && S() && isTouching(((((getWidth() / 2) - (this.boxSize[this.currentBox[0]][0] / 2)) + (this.boxScale * this.currentBox[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.currentBox[0]][0]), 347 - this.boxSize[this.currentBox[0]][1], this.boxSize[this.currentBox[0]][0], this.boxSize[this.currentBox[0]][1]))) {
                     int[] iArr17 = this.fx;
                     iArr17[2] = iArr17[2] + 1;
                     this.currentBox[5] = 0;
                     aSound.getInstance().play(11);
                     this.eE[11] = true;
-                } else if (!this.eE[11] && S() && b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                } else if (!this.eE[11] && S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                     if (this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && this.currentBox[2] > -1 && this.currentBox[2] < this.boxCounts[1] + 1) {
                         if (this.currentBox[2] < this.gB[1]) {
                             if (this.bd == 0) {
@@ -22761,20 +22760,20 @@ public class AppInstance extends Game {
                             }
                         }
                     }
-                } else if (S() && b(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
+                } else if (S() && isTouching(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
                     if (this.bq[0] >= 48 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && this.currentBox[2] >= 0 && this.currentBox[2] <= this.boxCounts[1] && this.currentBox[2] >= this.gB[1] && this.currentBox[2] < this.gB[0] && this.bv[this.boxCatIDs[this.currentBox[2] - this.gB[1]]] + 1 >= 10) {
                         aSound.getInstance().play(11);
                         int[] iArr24 = this.fx;
                         iArr24[1] = iArr24[1] + 1;
                     }
-                } else if (S() && b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
+                } else if (S() && isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                     if (!this.eE[9]) {
                         aSound.getInstance().play(11);
                         int[] iArr25 = this.fx;
                         iArr25[5] = iArr25[5] + 1;
                         this.eE[10] = true;
                     }
-                } else if (S() && b(this.fw[13][0], this.fw[13][1], this.fw[13][2], this.fw[13][3])) {
+                } else if (S() && isTouching(this.fw[13][0], this.fw[13][1], this.fw[13][2], this.fw[13][3])) {
                     if (this.be >= 1) {
                         int[] iArr26 = this.fx;
                         iArr26[13] = iArr26[13] + 1;
@@ -22782,13 +22781,13 @@ public class AppInstance extends Game {
                         this.gR = 0;
                         this.gA[0] = 0;
                     }
-                } else if (S() && b(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
+                } else if (S() && isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
                     if (this.bf >= 1) {
                         aSound.getInstance().play(11);
                         int[] iArr27 = this.fx;
                         iArr27[14] = iArr27[14] + 1;
                     }
-                } else if (S() && b(this.fw[15][0], this.fw[15][1], this.fw[15][2], this.fw[15][3]) && !this.dV) {
+                } else if (S() && isTouching(this.fw[15][0], this.fw[15][1], this.fw[15][2], this.fw[15][3]) && !this.dV) {
                     if (this.be >= 1) {
                         aSound.getInstance().play(11);
                         int[] iArr28 = this.fx;
@@ -22800,20 +22799,20 @@ public class AppInstance extends Game {
                     this.eE[10] = true;
                     this.eE[1] = true;
                 }
-                if (!R() || !b(this.fw[13][0], this.fw[13][1], this.fw[13][2], this.fw[13][3]) || this.be < 1) {
+                if (!R() || !isTouching(this.fw[13][0], this.fw[13][1], this.fw[13][2], this.fw[13][3]) || this.be < 1) {
                     this.gp[13] = false;
                 } else if (!this.gp[13]) {
                     this.gp[13] = true;
                     aSound.getInstance().play(10);
                 }
-                if (!R() || !b(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) || this.bf < 1) {
+                if (!R() || !isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) || this.bf < 1) {
                     this.gp[14] = false;
                 } else if (!this.gp[14]) {
                     this.gp[14] = true;
                     aSound.getInstance().play(10);
                 }
                 if (this.be >= 1) {
-                    if (!R() || !b(this.fw[15][0], this.fw[15][1], this.fw[15][2], this.fw[15][3]) || this.bf < 1) {
+                    if (!R() || !isTouching(this.fw[15][0], this.fw[15][1], this.fw[15][2], this.fw[15][3]) || this.bf < 1) {
                         this.gp[15] = false;
                     } else if (!this.gp[15]) {
                         this.gp[15] = true;
@@ -23035,7 +23034,7 @@ public class AppInstance extends Game {
             if (this.fx[5] == 0 && !this.eE[1]) {
                 this.eE[10] = false;
             }
-        } else if ((R() || S()) && b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
+        } else if ((R() || S()) && isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
             this.eE[10] = true;
         } else if (this.fx[5] == 0 && !this.eE[1]) {
             this.eE[10] = false;
