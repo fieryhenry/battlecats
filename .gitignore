@@ -1,8 +1,6 @@
 /local.properties
 /.gradle/
 /app/build/
-/gradlew
-/gradlew.bat
 /gradle/wrapper/gradle-wrapper.jar
 /app/src/main/META-INF/
 /app/src/main/classes.dex
