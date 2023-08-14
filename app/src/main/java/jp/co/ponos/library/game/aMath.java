@@ -19,8 +19,8 @@ public class aMath {
     }
 
     /* renamed from: a */
-    public static int rand(int i) {
-        return aGlobal.instance.b.nextInt(i);
+    public static int rand(int bound) {
+        return aGlobal.instance.b.nextInt(bound);
     }
 
     /* renamed from: b */
