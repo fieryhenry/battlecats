@@ -8008,13 +8008,13 @@ public class AppInstance extends Game {
                                                     if (this.unitBattleStats[unitType][0][1] == 0 || this.unitBattleStats[unitType][0][1] == 1) {
                                                         this.unitBattleStats[unitType][0][1] = 1;
                                                         this.unitBattleStats[unitType][0][2] = 4;
-                                                        isUnitHit = true;
+                                                        isUnitHit = true; // cat
                                                     } else {
-                                                        isUnitHit = true;
+                                                        isUnitHit = false; // enemy base
                                                     }
                                                 } else {
                                                     if (!isUnitHit) {
-                                                        isUnitHit = true;
+                                                        isUnitHit = true; // cannon
                                                     }
                                                     this.bS[unitType][unitID][1] = (this.unitBattleStats[unitType][unitID][3] - 687) - ((aMath.rand(46) - 25) * 10);
                                                     this.bS[unitType][unitID][2] = (this.unitBattleStats[unitType][unitID][4] - 1175) + ((aMath.rand(31) - 15) * 10);
@@ -8801,7 +8801,7 @@ public class AppInstance extends Game {
                     j(texRenderer);
                 }
                 if (this.fD == 9) {
-                    k(texRenderer);
+                    mapDraw(texRenderer);
                 }
                 if (this.fD == 7) {
                     powerUpDraw(texRenderer);
@@ -12512,7 +12512,7 @@ public class AppInstance extends Game {
         return true;
     }
 
-    void k(aTextureRenderer atexturerenderer) {
+    void mapDraw(aTextureRenderer atexturerenderer) {
         int i;
         int i2;
         int i3;
@@ -13704,8 +13704,8 @@ public class AppInstance extends Game {
                     if (this.gw == 4 && aString.isEqual(this.warning2Text[5][i52], "＠")) {
                         if (this.gw == 3) {
                         }
-                        while (i2 < 4) {
-                        }
+                        //while (i2 < 4) {
+                        //}
                         if (this.gw == 3) {
                         }
                         i3 = 30;
@@ -13811,8 +13811,8 @@ public class AppInstance extends Game {
             }
             if (this.gw == 3) {
             }
-            while (i2 < 4) {
-            }
+            //while (i2 < 4) {
+            //}
             if (this.gw == 3) {
             }
             i3 = 30;
