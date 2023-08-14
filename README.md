@@ -21,7 +21,7 @@ Here are some current problems with the app:
 List is not exhaustive, there are probably lots of other issues that I haven't noticed yet.
 
 Some things look like issues but are actually in the original APK (e.g no screen transitions,
-blue overlay) but lots aren't. You can install the original APK at the same time if you want to
+blurry icons) but lots aren't. You can install the original APK at the same time if you want to
 compare.
 
 ## Building the APK
