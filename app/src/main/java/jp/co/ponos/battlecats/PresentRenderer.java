@@ -1,6 +1,7 @@
 package jp.co.ponos.battlecats;
 
 //import jp.co.ponos.library.ads.aAd;
+import jp.co.ponos.library.game.SoundType;
 import jp.co.ponos.library.game.aPresentRenderer;
 import jp.co.ponos.library.game.aSound;
 import jp.co.ponos.library.game.aString;
@@ -40,14 +41,14 @@ public class PresentRenderer extends aPresentRenderer {
             A.a().i = 0;
             A.a().menuType = -1;
             if (z) {
-                aSound.getInstance().play(11);
+                aSound.getInstance().play(SoundType.BUTTON_PRESS);
             }
             MyUtility.getInstance().addWebClient();
         } else if (A.a().menuType == 0) {
             A.a().i = 0;
             A.a().menuType = -1;
             if (z) {
-                aSound.getInstance().play(11);
+                aSound.getInstance().play(SoundType.BUTTON_PRESS);
             }
             MyUtility.getInstance().addWebClient();
         } else if (A.a().menuType == 1) {
@@ -55,7 +56,7 @@ public class PresentRenderer extends aPresentRenderer {
                 String format = aString.format("type=top&pid=%s&lang=%s", A.a().e, MyUtility.getString("lang"));
                 MyUtility.getInstance().addAssetGetter(aString.format("%s/battlecats/friend.php?%s&check=%s", MyUtility.getAppli(), format, MyUtility.md5(aString.format("%s&check=adlmn", format))));
                 if (z) {
-                    aSound.getInstance().play(11);
+                    aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     return;
                 }
                 return;
@@ -73,7 +74,7 @@ public class PresentRenderer extends aPresentRenderer {
                 }
             }
             if (z) {
-                aSound.getInstance().play(11);
+                aSound.getInstance().play(SoundType.BUTTON_PRESS);
             }
         } else if (A.a().menuType == 2) {
             A.a().i = 0;
@@ -82,7 +83,7 @@ public class PresentRenderer extends aPresentRenderer {
                 //aAd.b().d();
             }
             if (z) {
-                aSound.getInstance().play(11);
+                aSound.getInstance().play(SoundType.BUTTON_PRESS);
             }
             MyUtility.getInstance().addWebClient();
         } else if (A.a().menuType == 3) {
@@ -92,7 +93,7 @@ public class PresentRenderer extends aPresentRenderer {
                 //aAd.b().d();
             }
             if (z) {
-                aSound.getInstance().play(11);
+                aSound.getInstance().play(SoundType.BUTTON_PRESS);
             }
             MyUtility.getInstance().addWebClient();
         } else if (A.a().menuType == 4) {
@@ -102,7 +103,7 @@ public class PresentRenderer extends aPresentRenderer {
                 //aAd.b().d();
             }
             if (z) {
-                aSound.getInstance().play(11);
+                aSound.getInstance().play(SoundType.BUTTON_PRESS);
             }
             MyUtility.getInstance().addWebClient();
         } else if (A.a().menuType == 5) {
@@ -112,7 +113,7 @@ public class PresentRenderer extends aPresentRenderer {
                 //aAd.b().d();
             }
             if (z) {
-                aSound.getInstance().play(11);
+                aSound.getInstance().play(SoundType.BUTTON_PRESS);
             }
             MyUtility.getInstance().addWebClient();
         } else if (A.a().menuType != 6) {
@@ -126,7 +127,7 @@ public class PresentRenderer extends aPresentRenderer {
                 //aAd.b().d();
             }
             if (z) {
-                aSound.getInstance().play(11);
+                aSound.getInstance().play(SoundType.BUTTON_PRESS);
             }
             MyUtility.getInstance().addWebClient();
         }

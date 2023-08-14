@@ -8,6 +8,7 @@ import jp.co.ponos.library.game.AnimTransformer;
 import jp.co.ponos.library.game.DataStreams.aFileStream;
 import jp.co.ponos.library.game.DataStreams.aResourceFileStream;
 import jp.co.ponos.library.game.MyApplicationBase;
+import jp.co.ponos.library.game.SoundType;
 import jp.co.ponos.library.game.aMath;
 import jp.co.ponos.library.game.aModel;
 import jp.co.ponos.library.game.aModelAnimation;
@@ -396,7 +397,7 @@ public class Game extends MyApplicationBase {
     boolean[] eM = new boolean[10];
     int[] slotEnemyIDs = new int[10];
     int[] slotFormIDs = new int[10];
-    int[] eW = new int[10];
+    int[] rechargeTimes = new int[10];
     int[] fc = new int[2];
     int[] fd = new int[2];
     int[] ff = new int[6];
@@ -716,8 +717,8 @@ public class Game extends MyApplicationBase {
         }
         this.zoomLevel = 10000;
         this.battleData[10] = 0;
-        for (int i27 = 0; i27 < getLength(this.eW); i27++) {
-            this.eW[i27] = 0;
+        for (int i27 = 0; i27 < getLength(this.rechargeTimes); i27++) {
+            this.rechargeTimes[i27] = 0;
         }
         this.battleData[14] = 3;
         this.battleData[11] = this.bx[4];
@@ -1572,7 +1573,7 @@ public class Game extends MyApplicationBase {
         if (this.gameStats1[2] <= 60) {
             this.gameStats1[2] = 60;
         }
-        this.gameStats1[3] = ((this.gameStats1[2] - this.eW[catID]) * 93) / this.gameStats1[2];
+        this.gameStats1[3] = ((this.gameStats1[2] - this.rechargeTimes[catID]) * 93) / this.gameStats1[2];
         if (this.gameStats1[3] > 93) {
             this.gameStats1[3] = 93;
         }
@@ -1679,7 +1680,7 @@ public class Game extends MyApplicationBase {
                         this.fx[0] = 0;
                         this.eE[2] = true;
                         this.eh[1] = 960;
-                        aSound.getInstance().play(7);
+                        aSound.getInstance().play(SoundType.BATTLE_START);
                     }
                 } else if (this.fx[5] >= 1) {
                     int[] iArr2 = this.fx;
@@ -1698,23 +1699,23 @@ public class Game extends MyApplicationBase {
                     if (!R() || !isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                         this.gp[0] = false;
                     } else if (!this.gp[0]) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gp[0] = true;
                     }
                     if (!R() || !isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                         this.gp[5] = false;
                     } else if (!this.gp[5]) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gp[5] = true;
                     }
                     if (S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                         int[] iArr3 = this.fx;
                         iArr3[0] = iArr3[0] + 1;
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     } else if (S() && isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                         int[] iArr4 = this.fx;
                         iArr4[5] = iArr4[5] + 1;
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     }
                 }
             }
@@ -2273,7 +2274,7 @@ public class Game extends MyApplicationBase {
                 }
                 this.zoomLevel = 10000;
                 aSound.getInstance().stop(-1);
-                aSound.getInstance().play(0);
+                aSound.getInstance().play(SoundType.OPENING);
                 return;
             case 99:
                 //aAd.b().f();
@@ -2355,7 +2356,7 @@ public class Game extends MyApplicationBase {
                 this.fw[0][3] = 88;
                 this.zoomLevel = 10000;
                 aSound.getInstance().stop(-1);
-                aSound.getInstance().play(5);
+                aSound.getInstance().play(SoundType.ENDING);
                 return;
             case 100:
                 for (int i24 = 0; i24 < getLength(this.gp); i24++) {

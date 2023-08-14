@@ -10,6 +10,7 @@ import java.util.Date;
 //import jp.co.ponos.library.ads.aAd;
 //import jp.co.ponos.library.facebook.aFacebook;
 import jp.co.ponos.library.game.DataStreams.aResourceFileStream;
+import jp.co.ponos.library.game.SoundType;
 import jp.co.ponos.library.game.aBrowserOption;
 import jp.co.ponos.library.game.aMath;
 import jp.co.ponos.library.game.aModel;
@@ -118,7 +119,7 @@ public class AppInstance extends Game {
             int[] iArr3 = this.fQ;
             iArr3[1] = iArr3[1] + 1;
             if (this.fQ[1] == 60) {
-                aSound.getInstance().play(41);
+                aSound.getInstance().play(SoundType.STAMP);
             }
             if (this.fQ[1] >= this.stampAnims[1].a() && this.bl <= 29 && this.bm[this.bl] == 1) {
                 screenTransition();
@@ -191,16 +192,16 @@ public class AppInstance extends Game {
                 }
                 if (this.scrollAmount[0] < 0) {
                     if (this.hq[0] != (-(this.gameStats1[0] / this.boxScale))) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                     }
                     this.gp[3] = false;
                 } else if (this.scrollAmount[0] > 0) {
                     if (this.hq[1] != ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                     }
                     this.gp[3] = false;
                 } else if (this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gp[3]) {
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                     this.gp[3] = true;
                 }
                 if (this.hq[0] != (-(this.gameStats1[0] / this.boxScale))) {
@@ -227,11 +228,11 @@ public class AppInstance extends Game {
                         if (!R() || !isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                             this.gp[0] = false;
                         } else if (!this.gp[0]) {
-                            aSound.getInstance().play(10);
+                            aSound.getInstance().play(SoundType.BUTTON_SELECT);
                             this.gp[0] = true;
                         }
                         if (S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                             int[] iArr7 = this.fx;
                             iArr7[0] = iArr7[0] + 1;
                         }
@@ -245,7 +246,7 @@ public class AppInstance extends Game {
     void C() {
         this.gI = false;
         aSound.getInstance().stop(-1);
-        aSound.getInstance().play(1);
+        aSound.getInstance().play(SoundType.TITLE);
         for (int i = 0; i < getLength(this.eM); i++) {
             this.eM[i] = false;
         }
@@ -531,35 +532,35 @@ public class AppInstance extends Game {
                         if (!R() || !isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                             this.gp[0] = false;
                         } else if (!this.gp[0]) {
-                            aSound.getInstance().play(10);
+                            aSound.getInstance().play(SoundType.BUTTON_SELECT);
                             this.gp[0] = true;
                         }
                         if (!R() || !isTouching(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
                             this.gp[1] = false;
                         } else if (!this.gp[1]) {
-                            aSound.getInstance().play(10);
+                            aSound.getInstance().play(SoundType.BUTTON_SELECT);
                             this.gp[1] = true;
                         }
                         if (this.bq[0] >= 7) {
                             if (!R() || !isTouching(this.fw[6][0], this.fw[6][1], this.fw[6][2], this.fw[6][3])) {
                                 this.gp[6] = false;
                             } else if (!this.gp[6]) {
-                                aSound.getInstance().play(10);
+                                aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                 this.gp[6] = true;
                             }
                         }
                         if (S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                             int[] iArr4 = this.fx;
                             iArr4[0] = iArr4[0] + 1;
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         } else if (S() && isTouching(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
                             int[] iArr5 = this.fx;
                             iArr5[1] = iArr5[1] + 1;
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         } else if (S() && isTouching(this.fw[6][0], this.fw[6][1], this.fw[6][2], this.fw[6][3]) && this.bq[0] >= 7) {
                             int[] iArr6 = this.fx;
                             iArr6[6] = iArr6[6] + 1;
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         }
                     }
                 } else if (this.fG[0] == 1) {
@@ -611,16 +612,16 @@ public class AppInstance extends Game {
                     }
                     if (this.scrollAmount[0] < 0) {
                         if (this.fG[1] != (-(this.gameStats1[2] / this.boxScale))) {
-                            aSound.getInstance().play(10);
+                            aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         }
                         this.gp[6] = false;
                     } else if (this.scrollAmount[0] > 0) {
                         if (this.fG[2] != ((this.boxScale * 100) + this.gameStats1[2]) / this.boxScale) {
-                            aSound.getInstance().play(10);
+                            aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         }
                         this.gp[6] = false;
                     } else if (this.gameStats1[2] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gp[6]) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gp[6] = true;
                     }
                     if (this.fG[1] != (-(this.gameStats1[2] / this.boxScale))) {
@@ -656,7 +657,7 @@ public class AppInstance extends Game {
                                     }
                                 } else if (this.fG[3] - this.gB[0] >= 1) {
                                     aSound.getInstance().stop(-1);
-                                    aSound.getInstance().play(7);
+                                    aSound.getInstance().play(SoundType.BATTLE_START);
                                     this.eE[3] = true;
                                 }
                             }
@@ -686,13 +687,13 @@ public class AppInstance extends Game {
                             if (this.gameStats1[2] % this.boxScale != 0 || this.scrollAmount[0] != 0 || !S() || !isTouching((getWidth() / 2) - 164, 257, 328, 263)) {
                                 this.gp[3] = false;
                             } else if (!this.gp[3]) {
-                                aSound.getInstance().play(10);
+                                aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                 this.gp[3] = true;
                             }
                             if (!R() || !isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                                 this.gp[5] = false;
                             } else if (!this.gp[5]) {
-                                aSound.getInstance().play(10);
+                                aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                 this.gp[5] = true;
                             }
                             if (this.fG[3] - this.gB[0] >= 1 && this.gameStats1[2] % this.boxScale == 0 && this.scrollAmount[0] == 0 && S() && isTouching((((getWidth() / 2) - 164) + 271) - 40, 428, 68, 68)) {
@@ -703,11 +704,11 @@ public class AppInstance extends Game {
                                 if (this.gameStats1[2] % this.boxScale == 0 && this.scrollAmount[0] == 0 && S() && isTouching((getWidth() / 2) - 164, 257, 328, 263)) {
                                     int[] iArr12 = this.fx;
                                     iArr12[3] = iArr12[3] + 1;
-                                    aSound.getInstance().play(11);
+                                    aSound.getInstance().play(SoundType.BUTTON_PRESS);
                                 } else if (S() && isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                                     int[] iArr13 = this.fx;
                                     iArr13[5] = iArr13[5] + 1;
-                                    aSound.getInstance().play(11);
+                                    aSound.getInstance().play(SoundType.BUTTON_PRESS);
                                 } else if (T()) {
                                     this.fx[5] = 0;
                                     this.ed = 0;
@@ -1051,13 +1052,13 @@ public class AppInstance extends Game {
                     if (!R() || !isTouching(this.fB[10][0], this.fB[10][1], this.fB[10][2], this.fB[10][3])) {
                         this.gp[10] = false;
                     } else if (!this.gp[10]) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gp[10] = true;
                     }
                     if (!R() || !isTouching(this.fB[11][0], this.fB[11][1], this.fB[11][2], this.fB[11][3])) {
                         this.gp[11] = false;
                     } else if (!this.gp[11]) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gp[11] = true;
                     }
                 } else {
@@ -1066,7 +1067,7 @@ public class AppInstance extends Game {
                             if (!R() || !isTouching(this.fB[i9][0], this.fB[i9][1], this.fB[i9][2], this.fB[i9][3])) {
                                 this.gp[i9] = false;
                             } else if (!this.gp[i9]) {
-                                aSound.getInstance().play(10);
+                                aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                 this.gp[i9] = true;
                             }
                         }
@@ -1075,22 +1076,22 @@ public class AppInstance extends Game {
                 if (!R() || !isTouching(this.fB[5][0], this.fB[5][1], this.fB[5][2], this.fB[5][3])) {
                     this.gp[5] = false;
                 } else if (!this.gp[5]) {
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                     this.gp[5] = true;
                 }
                 if (this.ef) {
                     if (S() && isTouching(this.fB[10][0], this.fB[10][1], this.fB[10][2], this.fB[10][3])) {
                         int[] iArr36 = this.fC;
                         iArr36[10] = iArr36[10] + 1;
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     } else if (S() && isTouching(this.fB[11][0], this.fB[11][1], this.fB[11][2], this.fB[11][3])) {
                         int[] iArr37 = this.fC;
                         iArr37[11] = iArr37[11] + 1;
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     } else if (S() && isTouching(this.fB[5][0], this.fB[5][1], this.fB[5][2], this.fB[5][3])) {
                         int[] iArr38 = this.fC;
                         iArr38[5] = iArr38[5] + 1;
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     } else if (T()) {
                         if (this.ef) {
                             this.fC[11] = 0;
@@ -1105,40 +1106,40 @@ public class AppInstance extends Game {
                     if (S() && isTouching(this.fB[2][0], this.fB[2][1], this.fB[2][2], this.fB[2][3])) {
                         int[] iArr39 = this.fC;
                         iArr39[2] = iArr39[2] + 1;
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     } else if (S() && isTouching(this.fB[3][0], this.fB[3][1], this.fB[3][2], this.fB[3][3])) {
                         int[] iArr40 = this.fC;
                         iArr40[3] = iArr40[3] + 1;
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     } else if (S() && isTouching(this.fB[4][0], this.fB[4][1], this.fB[4][2], this.fB[4][3])) {
                         int[] iArr41 = this.fC;
                         iArr41[4] = iArr41[4] + 1;
                     } else if (S() && isTouching(this.fB[6][0], this.fB[6][1], this.fB[6][2], this.fB[6][3])) {
                         int[] iArr42 = this.fC;
                         iArr42[6] = iArr42[6] + 1;
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     } else if (S() && isTouching(this.fB[7][0], this.fB[7][1], this.fB[7][2], this.fB[7][3])) {
                         int[] iArr43 = this.fC;
                         iArr43[7] = iArr43[7] + 1;
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     } else if (S() && isTouching(this.fB[8][0], this.fB[8][1], this.fB[8][2], this.fB[8][3])) {
                         int[] iArr44 = this.fC;
                         iArr44[8] = iArr44[8] + 1;
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     } else if (S() && isTouching(this.fB[9][0], this.fB[9][1], this.fB[9][2], this.fB[9][3]) && this.bj != 0) {
                         if (this.bj != 0) {
                             int[] iArr45 = this.fC;
                             iArr45[9] = iArr45[9] + 1;
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         }
                     } else if (S() && isTouching(this.fB[12][0], this.fB[12][1], this.fB[12][2], this.fB[12][3])) {
                         int[] iArr46 = this.fC;
                         iArr46[12] = iArr46[12] + 1;
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     } else if (S() && isTouching(this.fB[5][0], this.fB[5][1], this.fB[5][2], this.fB[5][3])) {
                         int[] iArr47 = this.fC;
                         iArr47[5] = iArr47[5] + 1;
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     } else if (T()) {
                         if (this.ef) {
                             this.fC[11] = 0;
@@ -1340,16 +1341,16 @@ public class AppInstance extends Game {
             }
             if (this.scrollAmount[0] < 0) {
                 if (this.fq[0] != (-(this.gameStats1[0] / this.boxScale))) {
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 }
                 this.gp[3] = false;
             } else if (this.scrollAmount[0] > 0) {
                 if (this.fq[1] != ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale) {
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 }
                 this.gp[3] = false;
             } else if (this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gp[3]) {
-                aSound.getInstance().play(10);
+                aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 this.gp[3] = true;
             }
             if (this.fq[0] != (-(this.gameStats1[0] / this.boxScale)) && (-(this.gameStats1[0] / this.boxScale)) >= 0) {
@@ -1410,18 +1411,18 @@ public class AppInstance extends Game {
                     if (!R() || !isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                         this.gp[5] = false;
                     } else if (!this.gp[5]) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gp[5] = true;
                     }
                     if (S() && isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                         int[] iArr7 = this.fx;
                         iArr7[5] = iArr7[5] + 1;
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     } else if (T()) {
                         this.eE[1] = true;
                     } else if (S() && isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
                         if (this.bf >= 1) {
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                             int[] iArr8 = this.fx;
                             iArr8[14] = iArr8[14] + 1;
                         }
@@ -1430,7 +1431,7 @@ public class AppInstance extends Game {
                     } else {
                         for (int i2 = 0; i2 < cy[this.fq[2]]; i2++) {
                             if (isTouching(((getWidth() / 2) - 254) + ((i2 % 4) * 127) + 8, (((i2 / 4) * 90) + 342) - 6, 112, 88) && this.fq[3] != i2) {
-                                aSound.getInstance().play(10);
+                                aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                 this.fq[3] = i2;
                                 this.eE[5] = true;
                             }
@@ -1440,7 +1441,7 @@ public class AppInstance extends Game {
                         this.gp[14] = false;
                     } else if (!this.gp[14]) {
                         this.gp[14] = true;
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                     }
                 }
             }
@@ -1528,7 +1529,7 @@ public class AppInstance extends Game {
         int[] iArr = this.gV;
         iArr[0] = iArr[0] + 1;
         if (this.gV[0] == 1) {
-            aSound.getInstance().play(42);
+            aSound.getInstance().play(SoundType.POPUP);
         }
         int[] iArr2 = this.gV;
         iArr2[3] = iArr2[3] + 1;
@@ -1736,12 +1737,12 @@ public class AppInstance extends Game {
                     this.gt[0] = false;
                 } else if (!this.gt[0]) {
                     this.gt[0] = true;
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 }
                 if (S() && isTouching(this.gX[0][0], this.gX[0][1], this.gX[0][2], this.gX[0][3])) {
                     int[] iArr6 = this.gZ;
                     iArr6[0] = iArr6[0] + 1;
-                    aSound.getInstance().play(11);
+                    aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     return;
                 }
                 return;
@@ -2292,16 +2293,16 @@ public class AppInstance extends Game {
         if (!this.eE[0] && !this.eE[1] && !this.eE[13] && !this.eb) {
             if (this.scrollAmount[0] < 0) {
                 if (this.ff[0] != (-(this.gameStats1[0] / this.boxScale))) {
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 }
                 this.gp[0] = false;
             } else if (this.scrollAmount[0] > 0) {
                 if (this.ff[1] != ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale) {
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 }
                 this.gp[0] = false;
             } else if (this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gp[0]) {
-                aSound.getInstance().play(10);
+                aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 this.gp[0] = true;
             }
         }
@@ -2372,7 +2373,7 @@ public class AppInstance extends Game {
                     } else {
                         this.gJ = true;
                         this.gK = 0;
-                        aSound.getInstance().play(42);
+                        aSound.getInstance().play(SoundType.POPUP);
                     }
                 }
             } else if (this.fx[12] >= 1) {
@@ -2468,65 +2469,65 @@ public class AppInstance extends Game {
                 if ((this.ff[2] > -1 && this.ff[2] < this.boxCounts[1] + 1) || this.eE[5] || this.gameStats1[0] % this.boxScale != 0 || this.scrollAmount[0] != 0 || !R() || !isTouching(((((getWidth() / 2) - (this.boxSize[this.ff[0]][0] / 2)) + (this.boxScale * this.ff[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.ff[0]][0]), 559 - this.boxSize[this.ff[0]][1], this.boxSize[this.ff[0]][0], this.boxSize[this.ff[0]][1])) {
                     this.gp[2] = false;
                 } else if (!this.gp[2]) {
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                     this.gp[2] = true;
                 }
                 if (!this.gJ && !this.gI && !this.fn && !this.eE[6] && this.fh == 0) {
                     if (!R() || !isTouching(this.fw[11][0], this.fw[11][1], this.fw[11][2], this.fw[11][3])) {
                         this.gp[11] = false;
                     } else if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1] && !this.eE[5] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gp[11]) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gp[11] = true;
                     }
                     if (this.bq[0] >= 48) {
                         if (!R() || !isTouching(this.fw[12][0], this.fw[12][1], this.fw[12][2], this.fw[12][3])) {
                             this.gp[12] = false;
                         } else if (!this.gp[12] && !this.eE[5] && this.bv[this.ff[2]] + 1 >= 10 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0) {
-                            aSound.getInstance().play(10);
+                            aSound.getInstance().play(SoundType.BUTTON_SELECT);
                             this.gp[12] = true;
                         }
                     }
                     if (!R() || !isTouching(this.fw[10][0], this.fw[10][1], this.fw[10][2], this.fw[10][3])) {
                         this.gp[10] = false;
                     } else if (!this.eE[5] && !this.gp[10]) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gp[10] = true;
                     }
                     if (this.fx[2] == 0 && this.ff[0] - 2 >= 0 && this.ff[2] <= 0 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && S() && isTouching(((((getWidth() / 2) - (this.boxSize[this.ff[0] - 1][0] / 2)) + (this.boxScale * (this.ff[0] - 1))) + this.gameStats1[0]) - ((328 - this.boxSize[this.ff[0] - 1][0]) + ((328 - this.boxSize[(this.ff[0] - 1) + 1][0]) / 2)), 559 - this.boxSize[this.ff[0] - 1][1], this.boxSize[this.ff[0] - 1][0], this.boxSize[this.ff[0] - 1][1])) {
                         int[] iArr8 = this.fx;
                         iArr8[2] = iArr8[2] + 1;
                         this.ff[5] = -1;
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         this.eE[11] = true;
                     }
                     if (this.fx[2] == 0 && this.ff[0] - 2 <= this.boxCounts[1] && this.ff[2] >= this.boxCounts[1] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && S() && isTouching(((getWidth() / 2) - (this.boxSize[this.ff[0] + 1][0] / 2)) + (this.boxScale * (this.ff[0] + 1)) + this.gameStats1[0] + (328 - this.boxSize[this.ff[0] + 1][0]), 559 - this.boxSize[this.ff[0] + 1][1], this.boxSize[this.ff[0] + 1][0], this.boxSize[this.ff[0] + 1][1])) {
                         int[] iArr9 = this.fx;
                         iArr9[2] = iArr9[2] + 1;
                         this.ff[5] = 1;
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         this.eE[11] = true;
                     }
                     if (this.fx[2] == 0 && ((this.ff[2] <= -1 || this.ff[2] >= this.boxCounts[1] + 1) && !this.eE[5] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && S() && isTouching(((((getWidth() / 2) - (this.boxSize[this.ff[0]][0] / 2)) + (this.boxScale * this.ff[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.ff[0]][0]), 559 - this.boxSize[this.ff[0]][1], this.boxSize[this.ff[0]][0], this.boxSize[this.ff[0]][1]))) {
                         int[] iArr10 = this.fx;
                         iArr10[2] = iArr10[2] + 1;
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         this.ff[5] = 0;
                         this.eE[11] = true;
                     } else if (!this.eE[11] && S() && isTouching(this.fw[11][0], this.fw[11][1], this.fw[11][2], this.fw[11][3])) {
                         if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1] && !this.eE[5] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gJ) {
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                             int[] iArr11 = this.fx;
                             iArr11[11] = iArr11[11] + 1;
                         }
                     } else if (!this.eE[11] && S() && isTouching(this.fw[12][0], this.fw[12][1], this.fw[12][2], this.fw[12][3])) {
                         if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1] && !this.eE[5] && this.bv[this.boxCatIDs[this.ff[2]]] + 1 >= 10 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && this.bq[0] >= 48) {
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                             int[] iArr12 = this.fx;
                             iArr12[12] = iArr12[12] + 1;
                         }
                     } else if (!this.eE[11] && S() && isTouching(this.fw[10][0], this.fw[10][1], this.fw[10][2], this.fw[10][3])) {
                         if (!this.eE[5]) {
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                             int[] iArr13 = this.fx;
                             iArr13[10] = iArr13[10] + 1;
                             this.eE[10] = true;
@@ -2548,7 +2549,7 @@ public class AppInstance extends Game {
                             this.eE[1] = true;
                         }
                     } else if (S() && isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) && this.bf >= 1) {
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         int[] iArr14 = this.fx;
                         iArr14[14] = iArr14[14] + 1;
                     }
@@ -2556,13 +2557,13 @@ public class AppInstance extends Game {
                         this.gp[14] = false;
                     } else if (!this.gp[14]) {
                         this.gp[14] = true;
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                     }
                 }
                 if (this.gJ) {
                     if (S()) {
                         if (this.gK >= getLength(eO) - 1) {
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                             int[] iArr15 = this.fx;
                             iArr15[11] = iArr15[11] + 1;
                         }
@@ -4260,13 +4261,13 @@ public class AppInstance extends Game {
                 atexturerenderer.drawScaledImage(this.uiTextures[i26 + 5], (this.w / 2) + (fb[i26] - (dv[this.fy[i26]] / 2)), ((this.eI[0] + 544) + this.eZ) - (dv[this.fy[i26]] / 2), dv[this.fy[i26]] + 110, dv[this.fy[i26]] + 85, 0);
                 if (this.slotCatIDs[i26] != -1) {
                     int i27 = this.battleData[10] >= this.unitStats[this.slotCatIDs[i26]][this.slotFormIDs[i26]][6] + (((this.unitStats[this.slotCatIDs[i26]][this.slotFormIDs[i26]][6] * this.eQ) * 50) / 100) ? 0 : 1;
-                    if (i27 == 1 || this.eW[i26] != 0) {
+                    if (i27 == 1 || this.rechargeTimes[i26] != 0) {
                         atexturerenderer.setColor(0, 0, 0);
                         atexturerenderer.setAlpha(100);
                         atexturerenderer.drawRectangle(fb[i26] + (this.w / 2), this.eI[0] + 544 + this.eZ, 110, 85);
                     }
                     atexturerenderer.setAlpha(255);
-                    if (this.eW[i26] != 0) {
+                    if (this.rechargeTimes[i26] != 0) {
                         a(atexturerenderer, i26, 0, 0);
                     } else if (this.slotCatIDs[i26] != -1) {
                         drawCost(atexturerenderer, (this.unitStats[this.slotCatIDs[i26]][this.slotFormIDs[i26]][6] / 100) + ((((this.unitStats[this.slotCatIDs[i26]][this.slotFormIDs[i26]][6] / 100) * this.eQ) * 50) / 100), fb[i26] + 90 + (this.w / 2), this.eI[0] + 544 + 50 + this.eZ, i27, 0, 0);
@@ -4285,13 +4286,13 @@ public class AppInstance extends Game {
                 atexturerenderer.drawScaledImage(this.uiTextures[i29 + 10], (this.w / 2) + (fb[i29 + 5] - (dv[this.fy[i29]] / 2)), ((this.eI[0] + 544) + this.eZ) - (dv[this.fy[i29]] / 2), dv[this.fy[i29]] + 110, dv[this.fy[i29]] + 85, 0);
                 if (this.slotCatIDs[i29 + 5] != -1) {
                     int i30 = this.battleData[10] >= this.unitStats[this.slotCatIDs[i29 + 5]][this.slotFormIDs[i29 + 5]][6] + (((this.unitStats[this.slotCatIDs[i29 + 5]][this.slotFormIDs[i29 + 5]][6] * this.eQ) * 50) / 100) ? 0 : 1;
-                    if (i30 == 1 || this.eW[i29 + 5] != 0) {
+                    if (i30 == 1 || this.rechargeTimes[i29 + 5] != 0) {
                         atexturerenderer.setColor(0, 0, 0);
                         atexturerenderer.setAlpha(100);
                         atexturerenderer.drawRectangle(fb[i29 + 5] + (this.w / 2), this.eI[0] + 544 + this.eZ, 110, 85);
                     }
                     atexturerenderer.setAlpha(255);
-                    if (this.eW[i29 + 5] != 0) {
+                    if (this.rechargeTimes[i29 + 5] != 0) {
                         a(atexturerenderer, i29 + 5, 0, 0);
                     } else if (this.slotCatIDs[i29 + 5] != -1) {
                         drawCost(atexturerenderer, (this.unitStats[this.slotCatIDs[i29 + 5]][this.slotFormIDs[i29 + 5]][6] / 100) + ((((this.unitStats[this.slotCatIDs[i29 + 5]][this.slotFormIDs[i29 + 5]][6] / 100) * this.eQ) * 50) / 100), fb[i29 + 5] + 90 + (this.w / 2), this.eI[0] + 544 + 50 + this.eZ, i30, 0, 0);
@@ -4670,31 +4671,31 @@ public class AppInstance extends Game {
 
     void c(int i) {
         if (this.slotCatIDs[i] == -1) {
-            aSound.getInstance().play(15);
-        } else if (this.eW[i] != 0) {
-            aSound.getInstance().play(15);
+            aSound.getInstance().play(SoundType.CANT_PRESS);
+        } else if (this.rechargeTimes[i] != 0) {
+            aSound.getInstance().play(SoundType.CANT_PRESS);
         } else if (this.battleData[10] < this.unitStats[this.slotCatIDs[i]][this.slotFormIDs[i]][6] + (((this.unitStats[this.slotCatIDs[i]][this.slotFormIDs[i]][6] * this.eQ) * 50) / 100)) {
-            aSound.getInstance().play(15);
+            aSound.getInstance().play(SoundType.CANT_PRESS);
         } else if (a(0, this.slotCatIDs[i], this.bv[this.slotCatIDs[i] - 2], 0, 9, this.slotFormIDs[i]) < 0) {
-            aSound.getInstance().play(15);
+            aSound.getInstance().play(SoundType.CANT_PRESS);
         } else {
             this.fU = 0;
             int[] iArr = this.battleData;
             iArr[10] = iArr[10] - (this.unitStats[this.slotCatIDs[i]][this.slotFormIDs[i]][6] + (((this.unitStats[this.slotCatIDs[i]][this.slotFormIDs[i]][6] * this.eQ) * 50) / 100));
-            this.eW[i] = this.unitStats[this.slotCatIDs[i]][this.slotFormIDs[i]][7];
-            int[] iArr2 = this.eW;
+            this.rechargeTimes[i] = this.unitStats[this.slotCatIDs[i]][this.slotFormIDs[i]][7];
+            int[] iArr2 = this.rechargeTimes;
             iArr2[i] = iArr2[i] - (ad[7] + (this.bx[7] * 6));
             for (int i2 = 0; i2 < 10; i2++) {
-                int[] iArr3 = this.eW;
+                int[] iArr3 = this.rechargeTimes;
                 iArr3[i] = iArr3[i] - ((cB[2] * this.bO[i2][2]) / 100);
             }
-            if (this.eW[i] <= 60) {
-                this.eW[i] = 60;
+            if (this.rechargeTimes[i] <= 60) {
+                this.rechargeTimes[i] = 60;
             }
             if (this.hm[3] == 1) {
-                this.eW[i] = 0;
+                this.rechargeTimes[i] = 0;
             }
-            aSound.getInstance().play(19);
+            aSound.getInstance().play(SoundType.BATTLE_ACTIVATE);
         }
     }
 
@@ -5897,13 +5898,13 @@ public class AppInstance extends Game {
                                 if (!R() || !isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                                     this.gp[0] = false;
                                 } else if (!this.gp[0] && !this.eb) {
-                                    aSound.getInstance().play(10);
+                                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                     this.gp[0] = true;
                                 }
                             }
                             if (this.dz <= 1 && !this.eb) {
                                 if (S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
-                                    aSound.getInstance().play(11);
+                                    aSound.getInstance().play(SoundType.BUTTON_PRESS);
                                     int[] iArr6 = this.fx;
                                     iArr6[0] = iArr6[0] + 1;
                                 } else if (T()) {
@@ -5948,11 +5949,11 @@ public class AppInstance extends Game {
                                 if (!R() || !isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                                     this.gp[0] = false;
                                 } else if (!this.gp[0]) {
-                                    aSound.getInstance().play(10);
+                                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                     this.gp[0] = true;
                                 }
                                 if (S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
-                                    aSound.getInstance().play(11);
+                                    aSound.getInstance().play(SoundType.BUTTON_PRESS);
                                     int[] iArr11 = this.fx;
                                     iArr11[0] = iArr11[0] + 1;
                                 } else if (T() && this.eg == 2) {
@@ -6299,7 +6300,7 @@ public class AppInstance extends Game {
                                     if (this.aZ == 0) {
                                         this.eP++;
                                         if (this.eP == 1) {
-                                            aSound.getInstance().play(42);
+                                            aSound.getInstance().play(SoundType.POPUP);
                                         }
                                         if (this.eP > getLength(eO) - 1) {
                                             this.eP = getLength(eO) - 1;
@@ -6555,7 +6556,7 @@ public class AppInstance extends Game {
                                         if (this.dH <= 47) {
                                             screenTransition();
                                             this.ha[0] = true;
-                                            aSound.getInstance().play(34);
+                                            aSound.getInstance().play(SoundType.BATTLE_34);
                                             int i51 = this.cj[0];
                                             return;
                                         }
@@ -6709,7 +6710,7 @@ public class AppInstance extends Game {
                                             for (int i53 = 0; i53 < 10; i53++) {
                                                 if (this.slotCatIDs[i53] == -1) {
                                                     this.fW[i53] = -1;
-                                                } else if (this.eW[i53] == 0) {
+                                                } else if (this.rechargeTimes[i53] == 0) {
                                                     this.fW[i53] = i53;
                                                 } else {
                                                     this.fW[i53] = -1;
@@ -6842,8 +6843,8 @@ public class AppInstance extends Game {
                                                 this.unitBattleStats[0][0][10] = 0;
                                                 int[] iArr46 = this.unitBattleStats[0][0];
                                                 iArr46[13] = iArr46[13] + 1;
-                                                aSound.getInstance().play(19);
-                                                aSound.getInstance().play(25);
+                                                aSound.getInstance().play(SoundType.BATTLE_ACTIVATE);
+                                                aSound.getInstance().play(SoundType.CANNON_BEAM);
                                                 this.fU = 0;
                                             }
                                         } else if (this.fU == 2) {
@@ -6892,7 +6893,7 @@ public class AppInstance extends Game {
                                                         iArr50[8] = iArr50[8] + ((cB[0] * this.bO[i65][0]) / 100);
                                                     }
                                                     this.battleData[25] = 14;
-                                                    aSound.getInstance().play(19);
+                                                    aSound.getInstance().play(SoundType.BATTLE_ACTIVATE);
                                                 }
                                             } else {
                                                 if (this.battleData[9] < ((this.battleData[11] + 1) * 1000) + 3000 + ((((this.battleData[11] + 1) * 1000) + 3000) * this.bN[0])) {
@@ -6937,7 +6938,7 @@ public class AppInstance extends Game {
                                                         iArr54[8] = iArr54[8] + ((cB[0] * this.bO[i70][0]) / 100);
                                                     }
                                                     this.battleData[25] = 14;
-                                                    aSound.getInstance().play(19);
+                                                    aSound.getInstance().play(SoundType.BATTLE_ACTIVATE);
                                                 }
                                             }
                                         } else if (this.fU >= 3 && this.battleData[10] >= this.unitStats[this.slotCatIDs[this.gb[this.fV]]][this.slotFormIDs[this.gb[this.fV]]][6] + (((this.unitStats[this.slotCatIDs[this.gb[this.fV]]][this.slotFormIDs[this.gb[this.fV]]][6] * this.eQ) * 50) / 100) && !this.eE[0]) {
@@ -6989,20 +6990,20 @@ public class AppInstance extends Game {
                                             if (!R() || !isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                                                 this.gp[0] = false;
                                             } else if (!this.gp[0]) {
-                                                aSound.getInstance().play(10);
+                                                aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                                 this.gp[0] = true;
                                             }
                                             if (!R() || !isTouching(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
                                                 this.gp[1] = false;
                                             } else if (!this.gp[1]) {
-                                                aSound.getInstance().play(10);
+                                                aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                                 this.gp[1] = true;
                                             }
                                         }
                                         if (!R() || !isTouching(this.fw[3][0], this.fw[3][1], this.fw[3][2], this.fw[3][3])) {
                                             this.gp[3] = false;
                                         } else if (!this.gp[3]) {
-                                            aSound.getInstance().play(10);
+                                            aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                             this.gp[3] = true;
                                         }
                                         if (S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3]) && !this.dV) {
@@ -7012,19 +7013,19 @@ public class AppInstance extends Game {
                                                 this.unitBattleStats[0][0][10] = 0;
                                                 int[] iArr55 = this.unitBattleStats[0][0];
                                                 iArr55[13] = iArr55[13] + 1;
-                                                aSound.getInstance().play(19);
-                                                aSound.getInstance().play(25);
+                                                aSound.getInstance().play(SoundType.BATTLE_ACTIVATE);
+                                                aSound.getInstance().play(SoundType.CANNON_BEAM); // cat cannon sound
                                                 this.gA[1] = 0;
                                                 this.dV = false;
                                                 this.fU = 0;
                                             } else {
-                                                aSound.getInstance().play(15);
+                                                aSound.getInstance().play(SoundType.CANT_PRESS);
                                             }
                                         } else if (S() && isTouching(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3]) && !this.dV) {
                                             this.gA[1] = 0;
                                             this.dV = false;
                                             if (this.bN[0] == 7) {
-                                                aSound.getInstance().play(15);
+                                                aSound.getInstance().play(SoundType.CANT_PRESS);
                                             } else if (this.battleData[11] + 1 >= 8) {
                                                 if (this.battleData[10] >= (((this.battleData[11] + 1) - 7) * 2000) + 10000 + (((((this.battleData[11] + 1) - 7) * 2000) + 10000) * this.bN[0])) {
                                                     this.fU = 0;
@@ -7045,9 +7046,9 @@ public class AppInstance extends Game {
                                                         iArr59[8] = iArr59[8] + ((cB[0] * this.bO[i74][0]) / 100);
                                                     }
                                                     this.battleData[25] = 14;
-                                                    aSound.getInstance().play(19);
+                                                    aSound.getInstance().play(SoundType.BATTLE_ACTIVATE);
                                                 } else {
-                                                    aSound.getInstance().play(15);
+                                                    aSound.getInstance().play(SoundType.CANT_PRESS);
                                                 }
                                             } else if (this.battleData[10] >= ((this.battleData[11] + 1) * 1000) + 3000 + ((((this.battleData[11] + 1) * 1000) + 3000) * this.bN[0])) {
                                                 this.fU = 0;
@@ -7068,12 +7069,12 @@ public class AppInstance extends Game {
                                                     iArr63[8] = iArr63[8] + ((cB[0] * this.bO[i76][0]) / 100);
                                                 }
                                                 this.battleData[25] = 14;
-                                                aSound.getInstance().play(19);
+                                                aSound.getInstance().play(SoundType.BATTLE_ACTIVATE);
                                             } else {
-                                                aSound.getInstance().play(15);
+                                                aSound.getInstance().play(SoundType.CANT_PRESS);
                                             }
                                         } else if (S() && isTouching(this.fw[3][0], this.fw[3][1], this.fw[3][2], this.fw[3][3]) && !this.dV) {
-                                            aSound.getInstance().play(11);
+                                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                                             this.gA[1] = 0;
                                             this.dV = false;
                                             int[] iArr64 = this.fx;
@@ -7089,17 +7090,17 @@ public class AppInstance extends Game {
                                         } else if (S() && isTouching(this.eJ[0][0], this.eJ[0][1], this.eJ[0][2], this.eJ[0][3]) && this.eM[0]) {
                                             int[] iArr65 = this.eK;
                                             iArr65[0] = iArr65[0] + 1;
-                                            aSound.getInstance().play(11);
+                                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                                         } else if ((!S() || !isTouching(this.eJ[1][0], this.eJ[1][1], this.eJ[1][2], this.eJ[1][3]) || !this.eM[1]) && (!S() || !isTouching(this.eJ[2][0], this.eJ[2][1], this.eJ[2][2], this.eJ[2][3]) || !this.eM[2])) {
                                             if (S() && isTouching(this.eJ[3][0], this.eJ[3][1], this.eJ[3][2], this.eJ[3][3]) && this.eM[3]) {
                                                 int[] iArr66 = this.eK;
                                                 iArr66[3] = iArr66[3] + 1;
-                                                aSound.getInstance().play(11);
+                                                aSound.getInstance().play(SoundType.BUTTON_PRESS);
                                             } else if (!S() || !isTouching(this.eJ[4][0], this.eJ[4][1], this.eJ[4][2], this.eJ[4][3]) || !this.eM[4]) {
                                                 if (S() && isTouching(this.eJ[5][0], this.eJ[5][1], this.eJ[5][2], this.eJ[5][3]) && this.eM[5]) {
                                                     int[] iArr67 = this.eK;
                                                     iArr67[5] = iArr67[5] + 1;
-                                                    aSound.getInstance().play(11);
+                                                    aSound.getInstance().play(SoundType.BUTTON_PRESS);
                                                 } else if (!S() || !isTouching(this.hj[0][0], this.hj[0][1], this.hj[0][2], this.hj[0][3]) || this.dH > 47 || this.dV) {
                                                     if (!this.eE[0] && this.scrollAmount[0] == 0 && !this.eE[1] && !this.eE[2]) {
                                                         if (this.eD[0] == 0) {
@@ -7110,31 +7111,31 @@ public class AppInstance extends Game {
                                                         if (!R() || !isTouching(fb[this.gameStats1[0] + 0] + (this.w / 2), this.eZ + 543, 110, 88)) {
                                                             this.gp[4] = false;
                                                         } else if (!this.gp[4]) {
-                                                            aSound.getInstance().play(10);
+                                                            aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                                             this.gp[4] = true;
                                                         }
                                                         if (!R() || !isTouching(fb[this.gameStats1[0] + 1] + (this.w / 2), this.eZ + 543, 110, 88)) {
                                                             this.gp[5] = false;
                                                         } else if (!this.gp[5]) {
-                                                            aSound.getInstance().play(10);
+                                                            aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                                             this.gp[5] = true;
                                                         }
                                                         if (!R() || !isTouching(fb[this.gameStats1[0] + 2] + (this.w / 2), this.eZ + 543, 110, 88)) {
                                                             this.gp[6] = false;
                                                         } else if (!this.gp[6]) {
-                                                            aSound.getInstance().play(10);
+                                                            aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                                             this.gp[6] = true;
                                                         }
                                                         if (!R() || !isTouching(fb[this.gameStats1[0] + 3] + (this.w / 2), this.eZ + 543, 110, 88)) {
                                                             this.gp[7] = false;
                                                         } else if (!this.gp[7]) {
-                                                            aSound.getInstance().play(10);
+                                                            aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                                             this.gp[7] = true;
                                                         }
                                                         if (!R() || !isTouching(fb[this.gameStats1[0] + 4] + (this.w / 2), this.eZ + 543, 110, 88)) {
                                                             this.gp[8] = false;
                                                         } else if (!this.gp[8]) {
-                                                            aSound.getInstance().play(10);
+                                                            aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                                             this.gp[8] = true;
                                                         }
                                                         if (S() && isTouching(fb[this.gameStats1[0] + 0] + (this.w / 2), this.eZ + 543, 110, 88) && !this.dV) {
@@ -7171,7 +7172,7 @@ public class AppInstance extends Game {
                                                 } else if (this.bd >= 1) {
                                                     this.gA[1] = 0;
                                                     this.dV = false;
-                                                    aSound.getInstance().play(11);
+                                                    aSound.getInstance().play(SoundType.BUTTON_PRESS);
                                                     int[] iArr73 = this.hk;
                                                     iArr73[0] = iArr73[0] + 1;
                                                 }
@@ -7203,8 +7204,8 @@ public class AppInstance extends Game {
                             }
                             if (this.hm[3] == 1) {
                                 this.eN++;
-                                for (int i78 = 0; i78 < getLength(this.eW); i78++) {
-                                    this.eW[i78] = 0;
+                                for (int i78 = 0; i78 < getLength(this.rechargeTimes); i78++) {
+                                    this.rechargeTimes[i78] = 0;
                                 }
                                 if (this.eN / 30 >= 60) {
                                     this.hm[3] = 0;
@@ -7329,7 +7330,7 @@ public class AppInstance extends Game {
                                                             if (i85 < getLength(this.bT)) {
                                                                 if (this.bT[i85][0] == 0) {
                                                                     if (this.battleData[14] == 0) {
-                                                                        aSound.getInstance().play(26);
+                                                                        aSound.getInstance().play(SoundType.CANNON_BLAST);
                                                                     }
                                                                     this.bT[i85][0] = getLength(cx);
                                                                     this.bT[i85][1] = (this.unitBattleStats[0][0][3] + 270) - (((this.unitBattleStats[0][0][10] / 4) * cw) * 10);
@@ -7392,7 +7393,7 @@ public class AppInstance extends Game {
                                                     if (this.unitBattleStats[0][i84][2] == 0) {
                                                         this.unitBattleStats[0][i84][1] = 0;
                                                         if (this.unitBattleStats[0][i84][8] == 0) {
-                                                            aSound.getInstance().play(24);
+                                                            aSound.getInstance().play(SoundType.UNIT_KILLED);
                                                             this.unitBattleStats[0][i84][1] = 4;
                                                             this.unitBattleStats[0][i84][2] = 0;
                                                             this.unitBattleStats[0][i84][10] = (aMath.rand(6) + 5) * 10 * 3;
@@ -7687,7 +7688,7 @@ public class AppInstance extends Game {
                                                     if (this.unitBattleStats[1][i95][2] == 0) {
                                                         this.unitBattleStats[1][i95][1] = 0;
                                                         if (this.unitBattleStats[1][i95][8] == 0) {
-                                                            aSound.getInstance().play(23);
+                                                            aSound.getInstance().play(SoundType.ENEMY_KILLED);
                                                             this.unitBattleStats[1][i95][1] = 4;
                                                             this.unitBattleStats[1][i95][2] = 0;
                                                             this.unitBattleStats[1][i95][10] = (aMath.rand(12) + 10) * 10;
@@ -7994,63 +7995,63 @@ public class AppInstance extends Game {
                                             }
                                         }
                                     }
-                                    boolean z5 = false;
-                                    for (int i134 = 0; i134 < 2; i134++) {
-                                        int i135 = 0;
-                                        while (i135 < getLength(this.unitBattleStats[i134])) {
-                                            if (this.unitBattleStats[i134][i135][0] != 0 && this.unitBattleStats[i134][i135][19] != 0) {
-                                                this.bS[i134][i135][0] = 12;
-                                                if (i135 == 0) {
-                                                    this.bS[i134][0][1] = (this.unitBattleStats[i134][0][3] - 687) + ((aMath.rand(46) - 25) * 10);
-                                                    this.bS[i134][0][2] = (this.unitBattleStats[i134][0][4] - 1175) - (aMath.rand(25) * 10);
-                                                    this.unitBattleStats[i134][0][5] = 1;
-                                                    if (this.unitBattleStats[i134][0][1] == 0 || this.unitBattleStats[i134][0][1] == 1) {
-                                                        this.unitBattleStats[i134][0][1] = 1;
-                                                        this.unitBattleStats[i134][0][2] = 4;
-                                                        z5 = true;
+                                    boolean isUnitHit = false;
+                                    for (int unitType = 0; unitType < 2; unitType++) {
+                                        int unitID = 0;
+                                        while (unitID < getLength(this.unitBattleStats[unitType])) {
+                                            if (this.unitBattleStats[unitType][unitID][0] != 0 && this.unitBattleStats[unitType][unitID][19] != 0) {
+                                                this.bS[unitType][unitID][0] = 12;
+                                                if (unitID == 0) {
+                                                    this.bS[unitType][0][1] = (this.unitBattleStats[unitType][0][3] - 687) + ((aMath.rand(46) - 25) * 10);
+                                                    this.bS[unitType][0][2] = (this.unitBattleStats[unitType][0][4] - 1175) - (aMath.rand(25) * 10);
+                                                    this.unitBattleStats[unitType][0][5] = 1;
+                                                    if (this.unitBattleStats[unitType][0][1] == 0 || this.unitBattleStats[unitType][0][1] == 1) {
+                                                        this.unitBattleStats[unitType][0][1] = 1;
+                                                        this.unitBattleStats[unitType][0][2] = 4;
+                                                        isUnitHit = true;
                                                     } else {
-                                                        z5 = true;
+                                                        isUnitHit = true;
                                                     }
                                                 } else {
-                                                    if (!z5) {
-                                                        z5 = true;
+                                                    if (!isUnitHit) {
+                                                        isUnitHit = true;
                                                     }
-                                                    this.bS[i134][i135][1] = (this.unitBattleStats[i134][i135][3] - 687) - ((aMath.rand(46) - 25) * 10);
-                                                    this.bS[i134][i135][2] = (this.unitBattleStats[i134][i135][4] - 1175) + ((aMath.rand(31) - 15) * 10);
+                                                    this.bS[unitType][unitID][1] = (this.unitBattleStats[unitType][unitID][3] - 687) - ((aMath.rand(46) - 25) * 10);
+                                                    this.bS[unitType][unitID][2] = (this.unitBattleStats[unitType][unitID][4] - 1175) + ((aMath.rand(31) - 15) * 10);
                                                 }
-                                                int i136 = this.unitBattleStats[i134][i135][8];
-                                                int[] iArr106 = this.unitBattleStats[i134][i135];
-                                                iArr106[8] = iArr106[8] - this.unitBattleStats[i134][i135][19];
-                                                if (this.unitBattleStats[i134][i135][8] <= 0) {
-                                                    this.unitBattleStats[i134][i135][8] = 0;
+                                                int i136 = this.unitBattleStats[unitType][unitID][8];
+                                                int[] iArr106 = this.unitBattleStats[unitType][unitID];
+                                                iArr106[8] = iArr106[8] - this.unitBattleStats[unitType][unitID][19];
+                                                if (this.unitBattleStats[unitType][unitID][8] <= 0) {
+                                                    this.unitBattleStats[unitType][unitID][8] = 0;
                                                 }
-                                                if (i135 >= 1) {
-                                                    int i137 = this.unitBattleStats[i134][i135][7] / this.unitBattleStats[i134][i135][9];
+                                                if (unitID >= 1) {
+                                                    int i137 = this.unitBattleStats[unitType][unitID][7] / this.unitBattleStats[unitType][unitID][9];
                                                     int i138 = 0;
-                                                    while (i138 < this.unitBattleStats[i134][i135][9] && this.unitBattleStats[i134][i135][8] > i137 * i138) {
+                                                    while (i138 < this.unitBattleStats[unitType][unitID][9] && this.unitBattleStats[unitType][unitID][8] > i137 * i138) {
                                                         i138++;
                                                     }
                                                     int i139 = 0;
-                                                    while (i139 < this.unitBattleStats[i134][i135][9] && i136 > i137 * i139) {
+                                                    while (i139 < this.unitBattleStats[unitType][unitID][9] && i136 > i137 * i139) {
                                                         i139++;
                                                     }
-                                                    if (i138 != this.unitBattleStats[i134][i135][9] && i138 != i139) {
-                                                        this.unitBattleStats[i134][i135][1] = 3;
-                                                        this.unitBattleStats[i134][i135][2] = 0;
-                                                    } else if (this.unitBattleStats[i134][i135][23] == 1) {
-                                                        this.unitBattleStats[i134][i135][1] = 5;
-                                                        this.unitBattleStats[i134][i135][2] = 0;
+                                                    if (i138 != this.unitBattleStats[unitType][unitID][9] && i138 != i139) {
+                                                        this.unitBattleStats[unitType][unitID][1] = 3;
+                                                        this.unitBattleStats[unitType][unitID][2] = 0;
+                                                    } else if (this.unitBattleStats[unitType][unitID][23] == 1) {
+                                                        this.unitBattleStats[unitType][unitID][1] = 5;
+                                                        this.unitBattleStats[unitType][unitID][2] = 0;
                                                     }
-                                                } else if (this.unitBattleStats[i134][i135][8] == 0 && this.battleData[14] == 0) {
+                                                } else if (this.unitBattleStats[unitType][unitID][8] == 0 && this.battleData[14] == 0) {
                                                     this.battleData[15] = 0;
                                                     this.battleData[16] = 0;
                                                     this.cj[0] = 0;
                                                     this.cj[1] = 0;
                                                     this.cj[2] = 0;
                                                     this.cj[3] = -1;
-                                                    if (i134 == 0) {
+                                                    if (unitType == 0) {
                                                         this.battleData[12] = 1;
-                                                        aSound.getInstance().play(9);
+                                                        aSound.getInstance().play(SoundType.BATTLE_LOSE);
                                                         for (int i140 = 1; i140 < getLength(this.unitBattleStats[0]); i140++) {
                                                             if (this.unitBattleStats[0][i140][0] != 0 && this.unitBattleStats[0][i140][1] != 4) {
                                                                 this.unitBattleStats[0][i140][1] = 4;
@@ -8081,10 +8082,10 @@ public class AppInstance extends Game {
                                                             }
                                                             aSave();
                                                         }
-                                                    } else if (i134 == 1) {
+                                                    } else if (unitType == 1) {
                                                         this.battleData[12] = 2;
                                                         aSound.getInstance().stop(-1);
-                                                        aSound.getInstance().play(8);
+                                                        aSound.getInstance().play(SoundType.BATTLE_VICTORY);
                                                         for (int i141 = 1; i141 < getLength(this.unitBattleStats[1]); i141++) {
                                                             if (this.unitBattleStats[1][i141][0] != 0 && this.unitBattleStats[1][i141][1] != 4) {
                                                                 this.unitBattleStats[1][i141][1] = 4;
@@ -8133,12 +8134,12 @@ public class AppInstance extends Game {
                                                                 if (this.bq[this.eQ] == 48) {
                                                                     this.battleData[21] = 1;
                                                                     this.bp[this.eQ] = 47;
-                                                                    i135 = 0;
-                                                                    while (i135 < getLength(this.unitBuyStats)) {
-                                                                        if (this.unitBuyStats[i135][15] == this.eQ && this.unitBuyStats[i135][0] == this.battleData[31] && this.unitBuyStats[i135][1] == 0) {
-                                                                            this.battleData[32] = i135;
+                                                                    unitID = 0;
+                                                                    while (unitID < getLength(this.unitBuyStats)) {
+                                                                        if (this.unitBuyStats[unitID][15] == this.eQ && this.unitBuyStats[unitID][0] == this.battleData[31] && this.unitBuyStats[unitID][1] == 0) {
+                                                                            this.battleData[32] = unitID;
                                                                         }
-                                                                        i135++;
+                                                                        unitID++;
                                                                     }
                                                                 }
                                                             } else {
@@ -8165,7 +8166,7 @@ public class AppInstance extends Game {
                                                             aSave();
                                                         }
                                                     }
-                                                } else if (i134 == 1) {
+                                                } else if (unitType == 1) {
                                                     this.gameStats1[0] = 0;
                                                     int i149 = 0;
                                                     while (true) {
@@ -8184,7 +8185,7 @@ public class AppInstance extends Game {
                                                         int[] iArr110 = this.gameStats1;
                                                         iArr110[0] = iArr110[0] + 1;
                                                     }
-                                                    if (cn[((this.battleData[0] + this.gameStats1[0]) * 3) + 1] > 0 && cn[((this.battleData[0] + this.gameStats1[0]) * 3) + 1] <= 99 && i136 > (i = (this.unitBattleStats[i134][i135][7] * cn[((this.battleData[0] + this.gameStats1[0]) * 3) + 1]) / 100) && this.unitBattleStats[i134][i135][8] <= i) {
+                                                    if (cn[((this.battleData[0] + this.gameStats1[0]) * 3) + 1] > 0 && cn[((this.battleData[0] + this.gameStats1[0]) * 3) + 1] <= 99 && i136 > (i = (this.unitBattleStats[unitType][unitID][7] * cn[((this.battleData[0] + this.gameStats1[0]) * 3) + 1]) / 100) && this.unitBattleStats[unitType][unitID][8] <= i) {
                                                         this.cj[0] = 1;
                                                         this.cj[1] = 0;
                                                         this.cj[2] = 45;
@@ -8193,20 +8194,26 @@ public class AppInstance extends Game {
                                                     }
                                                 }
                                             }
-                                            i135++;
+                                            unitID++;
                                         }
                                     }
                                     if (this.battleData[14] == 0) {
-                                        if (z5) {
-                                            aSound.getInstance().play(aMath.rand(2) + 20);
-                                        } else if (z5) {
-                                            aSound.getInstance().play(22);
+                                        if (isUnitHit) {
+                                            int randomHit = aMath.rand(2);
+                                            if (randomHit == 0) {
+                                                aSound.getInstance().play(SoundType.HIT_1);
+                                            }
+                                            else {
+                                                aSound.getInstance().play(SoundType.HIT_2);
+                                            }
+                                        } else if (isUnitHit) {
+                                            aSound.getInstance().play(SoundType.BASE_HIT);
                                         }
-                                        for (int i150 = 0; i150 < 10; i150++) {
-                                            if (this.eW[i150] > 0) {
-                                                this.eW[i150] -= 1;
-                                                if (this.eW[i150] == 0) {
-                                                    aSound.getInstance().play(27);
+                                        for (int slotID = 0; slotID < 10; slotID++) {
+                                            if (this.rechargeTimes[slotID] > 0) {
+                                                this.rechargeTimes[slotID] -= 1;
+                                                if (this.rechargeTimes[slotID] == 0) {
+                                                    aSound.getInstance().play(SoundType.CAT_RECHARGE);
                                                 }
                                             }
                                         }
@@ -8218,7 +8225,7 @@ public class AppInstance extends Game {
                                         if (this.unitBattleStats[0][0][12] > 0) {
                                             this.unitBattleStats[0][0][12] -= 1;
                                             if (this.unitBattleStats[0][0][12] == 0) {
-                                                aSound.getInstance().play(28);
+                                                aSound.getInstance().play(SoundType.CANNON_RECHARGE);
                                             }
                                         }
                                     }
@@ -8366,7 +8373,7 @@ public class AppInstance extends Game {
                                 if (this.fC[6] > getLength(dv) - 1) {
                                     this.fC[6] = 0;
                                     this.ef = true;
-                                    aSound.getInstance().play(42);
+                                    aSound.getInstance().play(SoundType.POPUP);
                                 }
                             } else if (this.fC[7] >= 1) {
                                 int[] iArr122 = this.fC;
@@ -8391,7 +8398,7 @@ public class AppInstance extends Game {
                                     if (this.dH <= 47) {
                                         screenTransition();
                                         this.ha[0] = true;
-                                        aSound.getInstance().play(34);
+                                        aSound.getInstance().play(SoundType.BATTLE_34);
                                         int i157 = this.cj[0];
                                         return;
                                     }
@@ -8436,13 +8443,13 @@ public class AppInstance extends Game {
                                     if (!R() || !isTouching(this.fB[10][0], this.fB[10][1], this.fB[10][2], this.fB[10][3])) {
                                         this.gp[10] = false;
                                     } else if (!this.gp[10]) {
-                                        aSound.getInstance().play(10);
+                                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                         this.gp[10] = true;
                                     }
                                     if (!R() || !isTouching(this.fB[11][0], this.fB[11][1], this.fB[11][2], this.fB[11][3])) {
                                         this.gp[11] = false;
                                     } else if (!this.gp[11]) {
-                                        aSound.getInstance().play(10);
+                                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                         this.gp[11] = true;
                                     }
                                 } else {
@@ -8451,7 +8458,7 @@ public class AppInstance extends Game {
                                             if (!R() || !isTouching(this.fB[i158][0], this.fB[i158][1], this.fB[i158][2], this.fB[i158][3])) {
                                                 this.gp[i158] = false;
                                             } else if (!this.gp[i158]) {
-                                                aSound.getInstance().play(10);
+                                                aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                                 this.gp[i158] = true;
                                             }
                                         }
@@ -8460,22 +8467,22 @@ public class AppInstance extends Game {
                                 if (!R() || !isTouching(this.fB[5][0], this.fB[5][1], this.fB[5][2], this.fB[5][3])) {
                                     this.gp[5] = false;
                                 } else if (!this.gp[5]) {
-                                    aSound.getInstance().play(10);
+                                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                     this.gp[5] = true;
                                 }
                                 if (this.ef) {
                                     if (S() && isTouching(this.fB[10][0], this.fB[10][1], this.fB[10][2], this.fB[10][3])) {
                                         int[] iArr128 = this.fC;
                                         iArr128[10] = iArr128[10] + 1;
-                                        aSound.getInstance().play(11);
+                                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                                     } else if (S() && isTouching(this.fB[11][0], this.fB[11][1], this.fB[11][2], this.fB[11][3])) {
                                         int[] iArr129 = this.fC;
                                         iArr129[11] = iArr129[11] + 1;
-                                        aSound.getInstance().play(11);
+                                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                                     } else if (S() && isTouching(this.fB[5][0], this.fB[5][1], this.fB[5][2], this.fB[5][3])) {
                                         int[] iArr130 = this.fC;
                                         iArr130[5] = iArr130[5] + 1;
-                                        aSound.getInstance().play(11);
+                                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                                     } else if (T()) {
                                         if (this.ef) {
                                             this.ef = false;
@@ -8491,38 +8498,38 @@ public class AppInstance extends Game {
                                     if (S() && isTouching(this.fB[2][0], this.fB[2][1], this.fB[2][2], this.fB[2][3])) {
                                         int[] iArr131 = this.fC;
                                         iArr131[2] = iArr131[2] + 1;
-                                        aSound.getInstance().play(11);
+                                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                                     } else if (S() && isTouching(this.fB[3][0], this.fB[3][1], this.fB[3][2], this.fB[3][3])) {
                                         int[] iArr132 = this.fC;
                                         iArr132[3] = iArr132[3] + 1;
-                                        aSound.getInstance().play(11);
+                                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                                     } else if (S() && isTouching(this.fB[4][0], this.fB[4][1], this.fB[4][2], this.fB[4][3])) {
                                         int[] iArr133 = this.fC;
                                         iArr133[4] = iArr133[4] + 1;
                                     } else if (S() && isTouching(this.fB[6][0], this.fB[6][1], this.fB[6][2], this.fB[6][3])) {
                                         int[] iArr134 = this.fC;
                                         iArr134[6] = iArr134[6] + 1;
-                                        aSound.getInstance().play(11);
+                                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                                     } else if (S() && isTouching(this.fB[7][0], this.fB[7][1], this.fB[7][2], this.fB[7][3])) {
                                         int[] iArr135 = this.fC;
                                         iArr135[7] = iArr135[7] + 1;
-                                        aSound.getInstance().play(11);
+                                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                                     } else if (S() && isTouching(this.fB[12][0], this.fB[12][1], this.fB[12][2], this.fB[12][3])) {
                                         int[] iArr136 = this.fC;
                                         iArr136[12] = iArr136[12] + 1;
-                                        aSound.getInstance().play(11);
+                                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                                     } else if (S() && isTouching(this.fB[8][0], this.fB[8][1], this.fB[8][2], this.fB[8][3])) {
                                         if (this.dH <= 47 && this.bd >= 1) {
                                             int[] iArr137 = this.fC;
                                             iArr137[8] = iArr137[8] + 1;
                                             this.gA[1] = 0;
                                             this.dV = false;
-                                            aSound.getInstance().play(11);
+                                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                                         }
                                     } else if (S() && isTouching(this.fB[5][0], this.fB[5][1], this.fB[5][2], this.fB[5][3])) {
                                         int[] iArr138 = this.fC;
                                         iArr138[5] = iArr138[5] + 1;
-                                        aSound.getInstance().play(11);
+                                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                                     } else if (T()) {
                                         if (this.ef) {
                                             this.ef = false;
@@ -10242,7 +10249,7 @@ public class AppInstance extends Game {
                                     this.settingsMenuTexture[0].load(MyUtility.getString(String.format("img%03d_%d.png", 9, this.eQ + 3)), MyUtility.getString(String.format("img%03d_%d.imgcut", 9, this.eQ + 3)));
                                 }
                                 aSound.getInstance().stop(-1);
-                                aSound.getInstance().play(2);
+                                aSound.getInstance().play(SoundType.CAT_BASE);
                                 for (int i10 = 0; i10 < getLength(this.eM); i10++) {
                                     this.eM[i10] = false;
                                 }
@@ -10359,7 +10366,7 @@ public class AppInstance extends Game {
                         this.fF = -1;
                         loadTextures2();
                         aSound.getInstance().stop(-1);
-                        aSound.getInstance().play(2);
+                        aSound.getInstance().play(SoundType.CAT_BASE);
                         if (this.fD != 5) {
                             aSave();
                             return false;
@@ -10541,7 +10548,7 @@ public class AppInstance extends Game {
                                 }
                                 loadTextures2();
                                 aSound.getInstance().stop(-1);
-                                aSound.getInstance().play(2);
+                                aSound.getInstance().play(SoundType.CAT_BASE);
                                 if (this.fD != 5) {
                                     aSave();
                                     return false;
@@ -10638,7 +10645,7 @@ public class AppInstance extends Game {
                                     }
                                     loadTextures2();
                                     aSound.getInstance().stop(-1);
-                                    aSound.getInstance().play(2);
+                                    aSound.getInstance().play(SoundType.CAT_BASE);
                                     if (this.aZ == 0) {
                                     }
                                     this.aZ = 1;
@@ -10753,7 +10760,7 @@ public class AppInstance extends Game {
                                 }
                                 loadTextures2();
                                 aSound.getInstance().stop(-1);
-                                aSound.getInstance().play(2);
+                                aSound.getInstance().play(SoundType.CAT_BASE);
                                 return false;
                             } else if (this.eR == 1) {
                                 for (int i62 = 0; i62 < getLength(this.gameStats1); i62++) {
@@ -10790,8 +10797,8 @@ public class AppInstance extends Game {
                                 for (int i67 = 0; i67 < getLength(this.eI); i67++) {
                                     this.eI[i67] = 0;
                                 }
-                                for (int i68 = 0; i68 < getLength(this.eW); i68++) {
-                                    this.eW[i68] = 0;
+                                for (int i68 = 0; i68 < getLength(this.rechargeTimes); i68++) {
+                                    this.rechargeTimes[i68] = 0;
                                 }
                                 for (int i69 = 0; i69 < getLength(this.bS); i69++) {
                                     for (int i70 = 0; i70 < getLength(this.bS[i69]); i70++) {
@@ -11494,7 +11501,7 @@ public class AppInstance extends Game {
                                 this.textTextures[1].drawText(String.format("%s %s", this.treasure2Text[this.battleData[18] - 1], this.treasure1Text[this.battleData[20]]), "FONT_SYSTEM_BOLD", 30, 0);
                             }
                         }
-                        aSound.getInstance().play(29);
+                        aSound.getInstance().play(SoundType.REWARD_GET);
                     } else {
                         this.battleData[15] = 6;
                         this.battleData[16] = 0;
@@ -11530,7 +11537,7 @@ public class AppInstance extends Game {
                                 }
                                 this.textTextures[0].drawText(this.treasure3Text[this.battleData[19]][0], "FONT_SYSTEM_BOLD", 30, 0);
                                 this.textTextures[1].drawText(this.treasure2Text[5], "FONT_SYSTEM_BOLD", 30, 0);
-                                aSound.getInstance().play(29);
+                                aSound.getInstance().play(SoundType.REWARD_GET);
                             }
                         }
                     }
@@ -11556,7 +11563,7 @@ public class AppInstance extends Game {
                                 this.eP = 0;
                                 this.battleData[15] = 6;
                                 this.battleData[16] = 0;
-                                aSound.getInstance().play(11);
+                                aSound.getInstance().play(SoundType.BUTTON_PRESS);
                             }
                         }
                     }
@@ -11583,7 +11590,7 @@ public class AppInstance extends Game {
                             this.eP = 0;
                             this.battleData[15] = 6;
                             this.battleData[16] = 0;
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         }
                     }
                 }
@@ -11646,20 +11653,20 @@ public class AppInstance extends Game {
                         if (!R() || !isTouching(this.fw[4][0], this.fw[4][1], this.fw[4][2], this.fw[4][3])) {
                             this.gp[4] = false;
                         } else if (!this.gp[4]) {
-                            aSound.getInstance().play(10);
+                            aSound.getInstance().play(SoundType.BUTTON_SELECT);
                             this.gp[4] = true;
                         }
                         if (!R() || !isTouching(this.fw[10][0], this.fw[10][1], this.fw[10][2], this.fw[10][3])) {
                             this.gp[10] = false;
                         } else if (!this.gp[10]) {
-                            aSound.getInstance().play(10);
+                            aSound.getInstance().play(SoundType.BUTTON_SELECT);
                             this.gp[10] = true;
                         }
                         if (aTwitter.getInstance().c()) {
                             if (!R() || !isTouching(this.fw[11][0], this.fw[11][1], this.fw[11][2], this.fw[11][3])) {
                                 this.gp[11] = false;
                             } else if (!this.gp[11]) {
-                                aSound.getInstance().play(10);
+                                aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                 this.gp[11] = true;
                             }
                         }
@@ -11668,15 +11675,15 @@ public class AppInstance extends Game {
                         if (S() && isTouching(this.fw[4][0], this.fw[4][1], this.fw[4][2], this.fw[4][3])) {
                             int[] iArr10 = this.fx;
                             iArr10[0] = iArr10[0] + 1;
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         } else if (S() && isTouching(this.fw[10][0], this.fw[10][1], this.fw[10][2], this.fw[10][3])) {
                             int[] iArr11 = this.fx;
                             iArr11[10] = iArr11[10] + 1;
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         } else if (S() && isTouching(this.fw[11][0], this.fw[11][1], this.fw[11][2], this.fw[11][3]) && aTwitter.getInstance().c()) {
                             int[] iArr12 = this.fx;
                             iArr12[11] = iArr12[11] + 1;
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         }
                     }
                 }
@@ -11980,7 +11987,7 @@ public class AppInstance extends Game {
         } else if (this.battleData[15] == 3) {
             this.eP++;
             if (this.eP == 1) {
-                aSound.getInstance().play(42);
+                aSound.getInstance().play(SoundType.POPUP);
             }
             if (this.eP == 1) {
                 this.fw[0][0] = ((getWidth() / 2) - 345) + 116;
@@ -12076,32 +12083,32 @@ public class AppInstance extends Game {
                     if (!R() || !isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                         this.gp[0] = false;
                     } else if (!this.gp[0]) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gp[0] = true;
                     }
                     if (!R() || !isTouching(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
                         this.gp[1] = false;
                     } else if (!this.gp[1]) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gp[1] = true;
                     }
                     if (S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                         int[] iArr6 = this.fx;
                         iArr6[0] = iArr6[0] + 1;
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     } else if (S() && isTouching(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
                         int[] iArr7 = this.fx;
                         iArr7[1] = iArr7[1] + 1;
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     }
                     if (!R() || !isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
                         this.gp[14] = false;
                     } else if (!this.gp[14]) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gp[14] = true;
                     }
                     if (S() && isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) && this.bf >= 1) {
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         int[] iArr8 = this.fx;
                         iArr8[14] = iArr8[14] + 1;
                     }
@@ -12110,7 +12117,7 @@ public class AppInstance extends Game {
         } else if (this.battleData[15] == 4) {
             this.eP++;
             if (this.eP == 1) {
-                aSound.getInstance().play(42);
+                aSound.getInstance().play(SoundType.POPUP);
             }
             if (this.eP > getLength(eO) - 1) {
                 this.eP = getLength(eO) - 1;
@@ -12465,35 +12472,35 @@ public class AppInstance extends Game {
                     if (!R() || !isTouching(this.fw[4][0], this.fw[4][1], this.fw[4][2], this.fw[4][3])) {
                         this.gp[4] = false;
                     } else if (!this.gp[4]) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gp[4] = true;
                     }
                     if (!R() || !isTouching(this.fw[10][0], this.fw[10][1], this.fw[10][2], this.fw[10][3])) {
                         this.gp[10] = false;
                     } else if (!this.gp[10]) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gp[10] = true;
                     }
                     if (aTwitter.getInstance().c()) {
                         if (!R() || !isTouching(this.fw[11][0], this.fw[11][1], this.fw[11][2], this.fw[11][3])) {
                             this.gp[11] = false;
                         } else if (!this.gp[11]) {
-                            aSound.getInstance().play(10);
+                            aSound.getInstance().play(SoundType.BUTTON_SELECT);
                             this.gp[11] = true;
                         }
                     }
                     if (S() && isTouching(this.fw[4][0], this.fw[4][1], this.fw[4][2], this.fw[4][3])) {
                         int[] iArr7 = this.fx;
                         iArr7[0] = iArr7[0] + 1;
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     } else if (S() && isTouching(this.fw[10][0], this.fw[10][1], this.fw[10][2], this.fw[10][3])) {
                         int[] iArr8 = this.fx;
                         iArr8[10] = iArr8[10] + 1;
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     } else if (S() && isTouching(this.fw[11][0], this.fw[11][1], this.fw[11][2], this.fw[11][3]) && aTwitter.getInstance().c()) {
                         int[] iArr9 = this.fx;
                         iArr9[11] = iArr9[11] + 1;
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     }
                 }
             }
@@ -15056,16 +15063,16 @@ public class AppInstance extends Game {
             }
             if (this.scrollAmount[0] < 0) {
                 if (this.fs[0] != (-(this.gameStats1[0] / this.boxScale))) {
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 }
                 this.gp[3] = false;
             } else if (this.scrollAmount[0] > 0) {
                 if (this.fs[1] != ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale) {
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 }
                 this.gp[3] = false;
             } else if (this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gp[3]) {
-                aSound.getInstance().play(10);
+                aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 this.gp[3] = true;
             }
             if (this.fs[0] != (-(this.gameStats1[0] / this.boxScale)) && (-(this.gameStats1[0] / this.boxScale)) >= 0) {
@@ -15202,18 +15209,18 @@ public class AppInstance extends Game {
                 if (!R() || !isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                     this.gp[5] = false;
                 } else if (!this.gp[5]) {
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                     this.gp[5] = true;
                 }
                 if (S() && isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
-                    aSound.getInstance().play(11);
+                    aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     int[] iArr12 = this.fx;
                     iArr12[5] = iArr12[5] + 1;
                 } else if (T()) {
                     this.fx[5] = 0;
                     this.eE[1] = true;
                 } else if (S() && isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) && this.bf >= 1) {
-                    aSound.getInstance().play(11);
+                    aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     int[] iArr13 = this.fx;
                     iArr13[14] = iArr13[14] + 1;
                 }
@@ -15221,7 +15228,7 @@ public class AppInstance extends Game {
                     this.gp[14] = false;
                 } else if (!this.gp[14]) {
                     this.gp[14] = true;
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 }
             }
         }
@@ -15977,7 +15984,7 @@ public class AppInstance extends Game {
             int[] iArr3 = this.fQ;
             iArr3[2] = iArr3[2] + 1;
             if (this.fQ[2] == 1) {
-                aSound.getInstance().play(42);
+                aSound.getInstance().play(SoundType.POPUP);
             }
             if (this.fQ[2] > getLength(eO) - 1) {
                 this.fQ[2] = getLength(eO) - 1;
@@ -16000,11 +16007,11 @@ public class AppInstance extends Game {
                     if (!R() || !isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                         this.gp[0] = false;
                     } else if (!this.gp[0]) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gp[0] = true;
                     }
                     if (S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         int[] iArr6 = this.fx;
                         iArr6[0] = iArr6[0] + 1;
                     }
@@ -16201,13 +16208,13 @@ public class AppInstance extends Game {
                                 atexturerenderer.drawScaledImage(this.uiTextures[i22 + 5], (this.w / 2) + (fb[i22] - (dv[this.fy[i22]] / 2)), ((this.eI[0] + 544) + this.eZ) - (dv[this.fy[i22]] / 2), dv[this.fy[i22]] + 110, dv[this.fy[i22]] + 85, 0);
                                 if (this.slotCatIDs[i22] != -1) {
                                     int i23 = this.battleData[10] >= this.unitStats[this.slotCatIDs[i22]][this.slotFormIDs[i22]][6] + (((this.unitStats[this.slotCatIDs[i22]][this.slotFormIDs[i22]][6] * this.eQ) * 50) / 100) ? 0 : 1;
-                                    if (i23 == 1 || this.eW[i22] != 0) {
+                                    if (i23 == 1 || this.rechargeTimes[i22] != 0) {
                                         atexturerenderer.setColor(0, 0, 0);
                                         atexturerenderer.setAlpha(100);
                                         atexturerenderer.drawRectangle(fb[i22] + (this.w / 2), this.eI[0] + 544 + this.eZ, 110, 85);
                                     }
                                     atexturerenderer.setAlpha(255);
-                                    if (this.eW[i22] != 0) {
+                                    if (this.rechargeTimes[i22] != 0) {
                                         a(atexturerenderer, i22, 0, 0);
                                     } else if (this.slotCatIDs[i22] != -1) {
                                         drawCost(atexturerenderer, (this.unitStats[this.slotCatIDs[i22]][this.slotFormIDs[i22]][6] / 100) + ((((this.unitStats[this.slotCatIDs[i22]][this.slotFormIDs[i22]][6] / 100) * this.eQ) * 50) / 100), fb[i22] + 90 + (this.w / 2), this.eI[0] + 544 + 50 + this.eZ, i23, 0, 0);
@@ -16748,13 +16755,13 @@ public class AppInstance extends Game {
                                 if (i88 < 5) {
                                     atexturerenderer.drawScaledImage(this.uiTextures[i88 + 5], (this.w / 2) + (fb[i88] - (dv[this.fy[i88]] / 2)), ((this.eI[0] + 544) + this.eZ) - (dv[this.fy[i88]] / 2), dv[this.fy[i88]] + 110, dv[this.fy[i88]] + 85, 0);
                                     int i89 = this.battleData[10] >= this.unitStats[this.slotCatIDs[i88]][this.slotFormIDs[i88]][6] + (((this.unitStats[this.slotCatIDs[i88]][this.slotFormIDs[i88]][6] * this.eQ) * 50) / 100) ? 0 : 1;
-                                    if (i89 == 1 || this.eW[i88] != 0) {
+                                    if (i89 == 1 || this.rechargeTimes[i88] != 0) {
                                         atexturerenderer.setColor(0, 0, 0);
                                         atexturerenderer.setAlpha(100);
                                         atexturerenderer.drawRectangle(fb[i88] + (this.w / 2), this.eI[0] + 544 + this.eZ, 110, 85);
                                     }
                                     atexturerenderer.setAlpha(255);
-                                    if (this.eW[i88] != 0) {
+                                    if (this.rechargeTimes[i88] != 0) {
                                         a(atexturerenderer, i88, 0, 0);
                                     } else if (this.slotCatIDs[i88] != -1) {
                                         drawCost(atexturerenderer, (this.unitStats[this.slotCatIDs[i88]][this.slotFormIDs[i88]][6] / 100) + ((((this.unitStats[this.slotCatIDs[i88]][this.slotFormIDs[i88]][6] / 100) * this.eQ) * 50) / 100), fb[i88] + 90 + (this.w / 2), this.eI[0] + 544 + 50 + this.eZ, i89, 0, 0);
@@ -16777,13 +16784,13 @@ public class AppInstance extends Game {
                                             atexturerenderer.drawScaledImage(this.uiTextures[i93 + 10], (this.w / 2) + (fb[i93 + 5] - (dv[this.fy[i93]] / 2)), ((this.eI[0] + 544) + this.eZ) - (dv[this.fy[i93]] / 2), dv[this.fy[i93]] + 110, dv[this.fy[i93]] + 85, 0);
                                             if (this.slotCatIDs[i93 + 5] != -1) {
                                                 int i94 = this.battleData[10] >= this.unitStats[this.slotCatIDs[i93 + 5]][this.slotFormIDs[i93 + 5]][6] + (((this.unitStats[this.slotCatIDs[i93 + 5]][this.slotFormIDs[i93 + 5]][6] * this.eQ) * 50) / 100) ? 0 : 1;
-                                                if (i94 == 1 || this.eW[i93 + 5] != 0) {
+                                                if (i94 == 1 || this.rechargeTimes[i93 + 5] != 0) {
                                                     atexturerenderer.setColor(0, 0, 0);
                                                     atexturerenderer.setAlpha(100);
                                                     atexturerenderer.drawRectangle(fb[i93 + 5] + (this.w / 2), this.eI[0] + 544 + this.eZ, 110, 85);
                                                 }
                                                 atexturerenderer.setAlpha(255);
-                                                if (this.eW[i93 + 5] != 0) {
+                                                if (this.rechargeTimes[i93 + 5] != 0) {
                                                     a(atexturerenderer, i93 + 5, 0, 0);
                                                 } else if (this.slotCatIDs[i93 + 5] != -1) {
                                                     drawCost(atexturerenderer, (this.unitStats[this.slotCatIDs[i93 + 5]][this.slotFormIDs[i93 + 5]][6] / 100) + ((((this.unitStats[this.slotCatIDs[i93 + 5]][this.slotFormIDs[i93 + 5]][6] / 100) * this.eQ) * 50) / 100), fb[i93 + 5] + 90 + (this.w / 2), this.eI[0] + 544 + 50 + this.eZ, i94, 0, 0);
@@ -16910,13 +16917,13 @@ public class AppInstance extends Game {
                         atexturerenderer.drawScaledImage(this.uiTextures[i103 + 5], (this.w / 2) + (fb[i103] - (dv[this.fy[i103]] / 2)), ((this.eI[0] + 544) + this.eZ) - (dv[this.fy[i103]] / 2), dv[this.fy[i103]] + 110, dv[this.fy[i103]] + 85, 0);
                         if (this.slotCatIDs[i103] != -1) {
                             int i107 = this.battleData[10] >= this.unitStats[this.slotCatIDs[i103]][this.slotFormIDs[i103]][6] + (((this.unitStats[this.slotCatIDs[i103]][this.slotFormIDs[i103]][6] * this.eQ) * 50) / 100) ? 0 : 1;
-                            if (i107 == 1 || this.eW[i103] != 0) {
+                            if (i107 == 1 || this.rechargeTimes[i103] != 0) {
                                 atexturerenderer.setColor(0, 0, 0);
                                 atexturerenderer.setAlpha(100);
                                 atexturerenderer.drawRectangle(fb[i103] + (this.w / 2), this.eI[0] + 544 + this.eZ, 110, 85);
                             }
                             atexturerenderer.setAlpha(255);
-                            if (this.eW[i103] != 0) {
+                            if (this.rechargeTimes[i103] != 0) {
                                 a(atexturerenderer, i103, 0, 0);
                             } else if (this.slotCatIDs[i103] != -1) {
                                 drawCost(atexturerenderer, (this.unitStats[this.slotCatIDs[i103]][this.slotFormIDs[i103]][6] / 100) + ((((this.unitStats[this.slotCatIDs[i103]][this.slotFormIDs[i103]][6] / 100) * this.eQ) * 50) / 100), fb[i103] + 90 + (this.w / 2), this.eI[0] + 544 + 50 + this.eZ, i107, 0, 0);
@@ -17207,29 +17214,29 @@ public class AppInstance extends Game {
                         if (!R() || !isTouching(this.hj[6][0], this.hj[6][1], this.hj[6][2], this.hj[6][3])) {
                             this.gr[6] = false;
                         } else if (!this.gr[6]) {
-                            aSound.getInstance().play(10);
+                            aSound.getInstance().play(SoundType.BUTTON_SELECT);
                             this.gr[6] = true;
                         }
                         if (this.bB[9] >= 3) {
                             if (!R() || !isTouching(this.hj[7][0], this.hj[7][1], this.hj[7][2], this.hj[7][3])) {
                                 this.gr[7] = false;
                             } else if (!this.gr[7]) {
-                                aSound.getInstance().play(10);
+                                aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                 this.gr[7] = true;
                             }
                         }
                         if (S() && isTouching(this.hj[6][0], this.hj[6][1], this.hj[6][2], this.hj[6][3])) {
                             if (this.bB[9] < 3) {
-                                aSound.getInstance().play(14);
+                                aSound.getInstance().play(SoundType.UPGRADE);
                             } else if (this.catfood >= ab[this.hl]) {
-                                aSound.getInstance().play(14);
+                                aSound.getInstance().play(SoundType.UPGRADE);
                             } else {
-                                aSound.getInstance().play(15);
+                                aSound.getInstance().play(SoundType.CANT_PRESS);
                             }
                             int[] iArr16 = this.hk;
                             iArr16[6] = iArr16[6] + 1;
                         } else if (S() && isTouching(this.hj[7][0], this.hj[7][1], this.hj[7][2], this.hj[7][3]) && this.bB[9] >= 3) {
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                             int[] iArr17 = this.hk;
                             iArr17[7] = iArr17[7] + 1;
                         }
@@ -17238,19 +17245,19 @@ public class AppInstance extends Game {
                             if (!R() || !isTouching(this.hj[1][0], this.hj[1][1], this.hj[1][2], this.hj[1][3])) {
                                 this.gr[1] = false;
                             } else if (!this.gr[1]) {
-                                aSound.getInstance().play(10);
+                                aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                 this.gr[1] = true;
                             }
                             if (!R() || !isTouching(this.hj[2][0], this.hj[2][1], this.hj[2][2], this.hj[2][3])) {
                                 this.gr[2] = false;
                             } else if (!this.gr[2]) {
-                                aSound.getInstance().play(10);
+                                aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                 this.gr[2] = true;
                             }
                             if (!R() || !isTouching(this.hj[3][0], this.hj[3][1], this.hj[3][2], this.hj[3][3])) {
                                 this.gr[3] = false;
                             } else if (!this.gr[3]) {
-                                aSound.getInstance().play(10);
+                                aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                 this.gr[3] = true;
                             }
                         }
@@ -17258,29 +17265,29 @@ public class AppInstance extends Game {
                             if (!R() || !isTouching(this.hj[4][0], this.hj[4][1], this.hj[4][2], this.hj[4][3])) {
                                 this.gr[4] = false;
                             } else if (!this.gr[4]) {
-                                aSound.getInstance().play(10);
+                                aSound.getInstance().play(SoundType.BUTTON_SELECT);
                                 this.gr[4] = true;
                             }
                         }
                         if (this.bB[9] >= 3) {
                             if (S() && isTouching(this.hj[1][0], this.hj[1][1], this.hj[1][2], this.hj[1][3])) {
-                                aSound.getInstance().play(11);
+                                aSound.getInstance().play(SoundType.BUTTON_PRESS);
                                 int[] iArr18 = this.hk;
                                 iArr18[1] = iArr18[1] + 1;
                             }
                             if (S() && isTouching(this.hj[2][0], this.hj[2][1], this.hj[2][2], this.hj[2][3])) {
-                                aSound.getInstance().play(11);
+                                aSound.getInstance().play(SoundType.BUTTON_PRESS);
                                 int[] iArr19 = this.hk;
                                 iArr19[2] = iArr19[2] + 1;
                             }
                             if (S() && isTouching(this.hj[3][0], this.hj[3][1], this.hj[3][2], this.hj[3][3])) {
-                                aSound.getInstance().play(11);
+                                aSound.getInstance().play(SoundType.BUTTON_PRESS);
                                 int[] iArr20 = this.hk;
                                 iArr20[3] = iArr20[3] + 1;
                             }
                         }
                         if (this.bB[9] >= 2 && S() && isTouching(this.hj[4][0], this.hj[4][1], this.hj[4][2], this.hj[4][3])) {
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                             int[] iArr21 = this.hk;
                             iArr21[4] = iArr21[4] + 1;
                         }
@@ -17289,17 +17296,17 @@ public class AppInstance extends Game {
                         if (!R() || !isTouching(this.hj[5][0], this.hj[5][1], this.hj[5][2], this.hj[5][3])) {
                             this.gr[5] = false;
                         } else if (!this.gr[5]) {
-                            aSound.getInstance().play(10);
+                            aSound.getInstance().play(SoundType.BUTTON_SELECT);
                             this.gr[5] = true;
                         }
                         if (!R() || !isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
                             this.gp[14] = false;
                         } else if (!this.gp[14]) {
-                            aSound.getInstance().play(10);
+                            aSound.getInstance().play(SoundType.BUTTON_SELECT);
                             this.gp[14] = true;
                         }
                         if (S() && isTouching(this.hj[5][0], this.hj[5][1], this.hj[5][2], this.hj[5][3])) {
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                             int[] iArr22 = this.hk;
                             iArr22[5] = iArr22[5] + 1;
                         } else if (T() && !this.ha[1]) {
@@ -17377,7 +17384,7 @@ public class AppInstance extends Game {
                                 }
                             }
                         } else if (S() && isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                             int[] iArr24 = this.fx;
                             iArr24[14] = iArr24[14] + 1;
                         }
@@ -17505,16 +17512,16 @@ public class AppInstance extends Game {
             int i30 = this.hl == 0 ? 40 : 0;
             if (this.hc[6] == 1) {
                 if (this.hl == 0) {
-                    aSound.getInstance().play(35);
+                    aSound.getInstance().play(SoundType.MERGE_1);
                 }
                 if (this.hl == 1) {
-                    aSound.getInstance().play(38);
+                    aSound.getInstance().play(SoundType.MERGE_2);
                 }
                 if (this.hl == 2) {
-                    aSound.getInstance().play(39);
+                    aSound.getInstance().play(SoundType.MERGE_3);
                 }
                 if (this.hl == 3) {
-                    aSound.getInstance().play(40);
+                    aSound.getInstance().play(SoundType.MERGE_4);
                 }
             }
             if (this.hc[6] >= this.godAnim[aB[this.hl]][0].a() - i30 || (aB[this.hl] == 3 && this.hc[6] >= 380)) {
@@ -17523,10 +17530,10 @@ public class AppInstance extends Game {
                     int[] iArr31 = this.hc;
                     iArr31[7] = iArr31[7] + 1;
                     if (this.hc[7] == 1) {
-                        aSound.getInstance().play(36);
+                        aSound.getInstance().play(SoundType.GOD_1);
                     }
                     if (this.hc[7] == 32) {
-                        aSound.getInstance().play(37);
+                        aSound.getInstance().play(SoundType.GOD_2);
                     }
                     if (this.hc[7] >= 30) {
                         int[] iArr32 = this.hc;
@@ -17536,10 +17543,10 @@ public class AppInstance extends Game {
                         }
                     }
                     if (this.hc[8] == 1) {
-                        aSound.getInstance().play(36);
+                        aSound.getInstance().play(SoundType.GOD_1);
                     }
                     if (this.hc[8] == 32) {
-                        aSound.getInstance().play(37);
+                        aSound.getInstance().play(SoundType.GOD_2);
                     }
                     if (this.hc[8] >= 30) {
                         int[] iArr33 = this.hc;
@@ -17549,10 +17556,10 @@ public class AppInstance extends Game {
                         }
                     }
                     if (this.hc[9] == 1) {
-                        aSound.getInstance().play(36);
+                        aSound.getInstance().play(SoundType.GOD_1);
                     }
                     if (this.hc[9] == 32) {
-                        aSound.getInstance().play(37);
+                        aSound.getInstance().play(SoundType.GOD_2);
                     }
                     if (this.hc[9] >= this.godAnim[1][1].a()) {
                         this.hc[9] = this.godAnim[1][1].a();
@@ -18589,16 +18596,16 @@ public class AppInstance extends Game {
         if (!this.eE[0] && !this.eE[1] && !this.gF[0] && !this.gF[1] && !this.eb) {
             if (this.scrollAmount[0] < 0) {
                 if (this.gP[0] != (-(this.gameStats1[0] / this.boxScale))) {
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 }
                 this.gp[3] = false;
             } else if (this.scrollAmount[0] > 0) {
                 if (this.gP[1] != ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale) {
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 }
                 this.gp[3] = false;
             } else if (this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gp[3]) {
-                aSound.getInstance().play(10);
+                aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 this.gp[3] = true;
             }
         }
@@ -18707,38 +18714,38 @@ public class AppInstance extends Game {
                     if (z || !R() || !isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                         this.gp[0] = false;
                     } else if (!this.gp[0]) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gp[0] = true;
                     }
                     if (R() || !isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                         this.gp[5] = false;
                     } else if (!this.gp[5]) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gp[5] = true;
                     }
                     if (!z && S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                         if (Z[this.gP[2]] + (Z[this.gP[2]] * this.gS[this.gP[2]]) <= 0) {
                             if (this.catfood >= 500) {
-                                aSound.getInstance().play(11);
+                                aSound.getInstance().play(SoundType.BUTTON_PRESS);
                             } else {
-                                aSound.getInstance().play(15);
+                                aSound.getInstance().play(SoundType.CANT_PRESS);
                             }
                         } else if (this.catfood >= Z[this.gP[2]] + (Z[this.gP[2]] * this.gS[this.gP[2]])) {
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         } else {
-                            aSound.getInstance().play(15);
+                            aSound.getInstance().play(SoundType.CANT_PRESS);
                         }
                         int[] iArr6 = this.fx;
                         iArr6[0] = iArr6[0] + 1;
                     } else if (!S() && isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         int[] iArr7 = this.fx;
                         iArr7[5] = iArr7[5] + 1;
                     } else if (T()) {
                         if (S() && isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) && this.bf >= 1) {
                             int[] iArr8 = this.fx;
                             iArr8[14] = iArr8[14] + 1;
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         }
                     } else if (this.gQ == 0) {
                         this.eE[1] = true;
@@ -18749,7 +18756,7 @@ public class AppInstance extends Game {
                         this.gp[14] = false;
                     } else if (!this.gp[14]) {
                         this.gp[14] = true;
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                     }
                 }
                 z = false;
@@ -19334,7 +19341,7 @@ public class AppInstance extends Game {
             } else {
                 for (int i2 = 0; i2 < this.fL; i2++) {
                     if (R() && isTouching(this.fw[i2][0], this.fw[i2][1], this.fw[i2][2], this.fw[i2][3]) && i2 != this.fI) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         if (this.by[i2] >= 1) {
                             this.fI = i2;
                         }
@@ -19343,50 +19350,50 @@ public class AppInstance extends Game {
                 if (!R() || !isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                     this.gp[5] = false;
                 } else if (!this.gp[5]) {
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                     this.gp[5] = true;
                 }
                 if (S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3]) && this.fI == 0) {
                     int[] iArr17 = this.fx;
                     iArr17[0] = iArr17[0] + 1;
-                    aSound.getInstance().play(11);
+                    aSound.getInstance().play(SoundType.BUTTON_PRESS);
                 } else if (S() && isTouching(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3]) && this.fI == 1) {
                     int[] iArr18 = this.fx;
                     iArr18[1] = iArr18[1] + 1;
-                    aSound.getInstance().play(11);
+                    aSound.getInstance().play(SoundType.BUTTON_PRESS);
                 } else if (S() && isTouching(this.fw[2][0], this.fw[2][1], this.fw[2][2], this.fw[2][3]) && this.fI == 2) {
                     int[] iArr19 = this.fx;
                     iArr19[2] = iArr19[2] + 1;
-                    aSound.getInstance().play(11);
+                    aSound.getInstance().play(SoundType.BUTTON_PRESS);
                 } else if (S() && isTouching(this.fw[3][0], this.fw[3][1], this.fw[3][2], this.fw[3][3]) && this.fI == 3) {
                     int[] iArr20 = this.fx;
                     iArr20[3] = iArr20[3] + 1;
-                    aSound.getInstance().play(11);
+                    aSound.getInstance().play(SoundType.BUTTON_PRESS);
                 } else if (S() && isTouching(this.fw[4][0], this.fw[4][1], this.fw[4][2], this.fw[4][3]) && this.fI == 4) {
                     int[] iArr21 = this.fx;
                     iArr21[4] = iArr21[4] + 1;
-                    aSound.getInstance().play(11);
+                    aSound.getInstance().play(SoundType.BUTTON_PRESS);
                 } else if (S() && isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                     int[] iArr22 = this.fx;
                     iArr22[5] = iArr22[5] + 1;
-                    aSound.getInstance().play(11);
+                    aSound.getInstance().play(SoundType.BUTTON_PRESS);
                 } else if (S() && isTouching(this.fw[13][0], this.fw[13][1], this.fw[13][2], this.fw[13][3])) {
                     if (this.be >= 1) {
                         int[] iArr23 = this.fx;
                         iArr23[13] = iArr23[13] + 1;
                         this.fI = 13;
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         this.gR = 0;
                     }
                 } else if (S() && isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
                     if (this.bf >= 1) {
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         int[] iArr24 = this.fx;
                         iArr24[14] = iArr24[14] + 1;
                     }
                 } else if (S() && isTouching(this.fw[15][0], this.fw[15][1], this.fw[15][2], this.fw[15][3])) {
                     if (this.be >= 1) {
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         int[] iArr25 = this.fx;
                         iArr25[15] = iArr25[15] + 1;
                         this.fI = 13;
@@ -19402,20 +19409,20 @@ public class AppInstance extends Game {
                     this.gp[13] = false;
                 } else if (!this.gp[13]) {
                     this.gp[13] = true;
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 }
                 if (!R() || !isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) || this.bf < 1) {
                     this.gp[14] = false;
                 } else if (!this.gp[14]) {
                     this.gp[14] = true;
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 }
                 if (this.be >= 1) {
                     if (!R() || !isTouching(this.fw[15][0], this.fw[15][1], this.fw[15][2], this.fw[15][3]) || this.bf < 1) {
                         this.gp[15] = false;
                     } else if (!this.gp[15]) {
                         this.gp[15] = true;
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                     }
                 }
             }
@@ -19990,16 +19997,16 @@ public class AppInstance extends Game {
         }
         if (this.scrollAmount[0] < 0) {
             if (this.currentStageBox[0] != (-(this.gameStats1[0] / this.boxScale))) {
-                aSound.getInstance().play(10);
+                aSound.getInstance().play(SoundType.BUTTON_SELECT);
             }
             this.gp[6] = false;
         } else if (this.scrollAmount[0] > 0) {
             if (this.currentStageBox[1] != ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale) {
-                aSound.getInstance().play(10);
+                aSound.getInstance().play(SoundType.BUTTON_SELECT);
             }
             this.gp[6] = false;
         } else if (this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gp[6]) {
-            aSound.getInstance().play(10);
+            aSound.getInstance().play(SoundType.BUTTON_SELECT);
             this.gp[6] = true;
         }
         if (this.currentStageBox[0] != (-(this.gameStats1[0] / this.boxScale))) {
@@ -20061,7 +20068,7 @@ public class AppInstance extends Game {
                             this.eE[2] = true;
                             this.gameStats1[2] = 0;
                             this.gameStats1[3] = 960;
-                            aSound.getInstance().play(7);
+                            aSound.getInstance().play(SoundType.BATTLE_START);
                             this.gA[0] = 0;
                             this.ct = 0;
                             this.currentEnergy -= this.stageEoCStats[this.currentStageBox[2]] + X[this.eQ];
@@ -20079,7 +20086,7 @@ public class AppInstance extends Game {
                         this.eE[2] = true;
                         this.gameStats1[2] = 0;
                         this.gameStats1[3] = 960;
-                        aSound.getInstance().play(7);
+                        aSound.getInstance().play(SoundType.BATTLE_START);
                         this.gA[0] = 0;
                         this.ct = 0;
                         this.currentEnergy -= this.stageEoCStats[this.currentStageBox[2]] + X[this.eQ];
@@ -20287,13 +20294,13 @@ public class AppInstance extends Game {
                 if (!R() || !isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                     this.gp[0] = false;
                 } else if (!this.gp[0]) {
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                     this.gp[0] = true;
                 }
                 if (!R() || !isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                     this.gp[5] = false;
                 } else if (!this.gp[5]) {
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                     this.gp[5] = true;
                 }
                 if (this.be >= 1) {
@@ -20342,11 +20349,11 @@ public class AppInstance extends Game {
                 if (S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3]) && !this.dV) {
                     if (this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0) {
                         if (this.aZ != 0) {
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         } else if (this.currentEnergy < this.stageEoCStats[this.currentStageBox[2]] + X[this.eQ]) {
-                            aSound.getInstance().play(15);
+                            aSound.getInstance().play(SoundType.CANT_PRESS);
                         } else {
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         }
                         int[] iArr24 = this.fx;
                         iArr24[0] = iArr24[0] + 1;
@@ -20354,14 +20361,14 @@ public class AppInstance extends Game {
                         this.ct = 0;
                     }
                 } else if (S() && isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3]) && !this.dV) {
-                    aSound.getInstance().play(11);
+                    aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     int[] iArr25 = this.fx;
                     iArr25[5] = iArr25[5] + 1;
                     this.gA[0] = 0;
                     this.ct = 0;
                 } else if (S() && isTouching(this.fw[13][0], this.fw[13][1], this.fw[13][2], this.fw[13][3]) && !this.dV) {
                     if (this.be >= 1) {
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         int[] iArr26 = this.fx;
                         iArr26[13] = iArr26[13] + 1;
                         this.gA[0] = 0;
@@ -20370,7 +20377,7 @@ public class AppInstance extends Game {
                     }
                 } else if (S() && isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) && !this.dV) {
                     if (this.bf >= 1) {
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         int[] iArr27 = this.fx;
                         iArr27[14] = iArr27[14] + 1;
                         this.gA[0] = 0;
@@ -20378,7 +20385,7 @@ public class AppInstance extends Game {
                     }
                 } else if (S() && isTouching(this.fw[15][0], this.fw[15][1], this.fw[15][2], this.fw[15][3]) && !this.dV) {
                     if (this.be >= 1) {
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         int[] iArr28 = this.fx;
                         iArr28[15] = iArr28[15] + 1;
                         this.gA[0] = 0;
@@ -20387,16 +20394,16 @@ public class AppInstance extends Game {
                     }
                 } else if (S() && isTouching(this.fw[16][0], this.fw[16][1], this.fw[16][2], this.fw[16][3]) && !this.dV) {
                     if (this.aZ != 0) {
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         int[] iArr29 = this.fx;
                         iArr29[16] = iArr29[16] + 1;
                     }
                 } else if (S() && isTouching(this.eJ[0][0], this.eJ[0][1], this.eJ[0][2], this.eJ[0][3])) {
                     if (this.be >= 1) {
                         if (this.bA[0] >= 1) {
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         } else {
-                            aSound.getInstance().play(15);
+                            aSound.getInstance().play(SoundType.CANT_PRESS);
                         }
                         int[] iArr30 = this.eK;
                         iArr30[0] = iArr30[0] + 1;
@@ -20404,9 +20411,9 @@ public class AppInstance extends Game {
                 } else if (S() && isTouching(this.eJ[1][0], this.eJ[1][1], this.eJ[1][2], this.eJ[1][3])) {
                     if (this.be >= 1) {
                         if (this.bA[1] < 1 || this.bb < 1) {
-                            aSound.getInstance().play(15);
+                            aSound.getInstance().play(SoundType.CANT_PRESS);
                         } else {
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         }
                         int[] iArr31 = this.eK;
                         iArr31[1] = iArr31[1] + 1;
@@ -20414,9 +20421,9 @@ public class AppInstance extends Game {
                 } else if (S() && isTouching(this.eJ[2][0], this.eJ[2][1], this.eJ[2][2], this.eJ[2][3])) {
                     if (this.be >= 1) {
                         if (this.bA[2] >= 1) {
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         } else {
-                            aSound.getInstance().play(15);
+                            aSound.getInstance().play(SoundType.CANT_PRESS);
                         }
                         int[] iArr32 = this.eK;
                         iArr32[2] = iArr32[2] + 1;
@@ -20424,9 +20431,9 @@ public class AppInstance extends Game {
                 } else if (S() && isTouching(this.eJ[3][0], this.eJ[3][1], this.eJ[3][2], this.eJ[3][3])) {
                     if (this.be >= 1) {
                         if (this.bA[3] >= 1) {
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         } else {
-                            aSound.getInstance().play(15);
+                            aSound.getInstance().play(SoundType.CANT_PRESS);
                         }
                         int[] iArr33 = this.eK;
                         iArr33[3] = iArr33[3] + 1;
@@ -20434,9 +20441,9 @@ public class AppInstance extends Game {
                 } else if (S() && isTouching(this.eJ[4][0], this.eJ[4][1], this.eJ[4][2], this.eJ[4][3])) {
                     if (this.be >= 1) {
                         if (this.bA[4] >= 1) {
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         } else {
-                            aSound.getInstance().play(15);
+                            aSound.getInstance().play(SoundType.CANT_PRESS);
                         }
                         int[] iArr34 = this.eK;
                         iArr34[4] = iArr34[4] + 1;
@@ -20444,9 +20451,9 @@ public class AppInstance extends Game {
                 } else if (S() && isTouching(this.eJ[5][0], this.eJ[5][1], this.eJ[5][2], this.eJ[5][3])) {
                     if (this.be >= 1) {
                         if (this.bA[5] >= 1) {
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         } else {
-                            aSound.getInstance().play(15);
+                            aSound.getInstance().play(SoundType.CANT_PRESS);
                         }
                         int[] iArr35 = this.eK;
                         iArr35[5] = iArr35[5] + 1;
@@ -20466,13 +20473,13 @@ public class AppInstance extends Game {
                     this.gp[13] = false;
                 } else if (!this.gp[13]) {
                     this.gp[13] = true;
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 }
                 if (!R() || !isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) || this.bf < 1) {
                     this.gp[14] = false;
                 } else if (!this.gp[14]) {
                     this.gp[14] = true;
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 }
             }
         }
@@ -20760,9 +20767,9 @@ public class AppInstance extends Game {
                 this.fz[i3] = 0;
             }
             if (this.gw == 9999) {
-                aSound.getInstance().play(29);
+                aSound.getInstance().play(SoundType.REWARD_GET);
             } else {
-                aSound.getInstance().play(42);
+                aSound.getInstance().play(SoundType.POPUP);
             }
             for (int i4 = 0; i4 < getLength(this.textTextures2); i4++) {
                 if (this.textTextures2[i4].isLoaded()) {
@@ -21099,7 +21106,7 @@ public class AppInstance extends Game {
                     if (this.gx == 1000) {
                         this.battleData[32] = -1;
                     }
-                    aSound.getInstance().play(11);
+                    aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     for (int i38 = 0; i38 < getLength(this.gv); i38++) {
                         this.gv[i38] = 0;
                     }
@@ -21176,13 +21183,13 @@ public class AppInstance extends Game {
                     if (!R() || !isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
                         this.gs[0] = false;
                     } else if (!this.gs[0]) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gs[0] = true;
                     }
                     if (!R() || !isTouching(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3])) {
                         this.gs[1] = false;
                     } else if (!this.gs[1]) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gs[1] = true;
                     }
                     if (this.gw == 1) {
@@ -21190,22 +21197,22 @@ public class AppInstance extends Game {
                             this.gp[14] = false;
                         } else if (!this.gp[14]) {
                             this.gp[14] = true;
-                            aSound.getInstance().play(10);
+                            aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         }
                     }
                     if (S() && isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         int[] iArr8 = this.fz;
                         iArr8[0] = iArr8[0] + 1;
                     } else if (S() && isTouching(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3])) {
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         int[] iArr9 = this.fz;
                         iArr9[1] = iArr9[1] + 1;
                     } else if (S() && isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
                         if (this.gw != 1 || this.bf < 1) {
                             return;
                         }
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         int[] iArr10 = this.fx;
                         iArr10[14] = iArr10[14] + 1;
                     } else if (!S() || !isTouching(this.fw[15][0], this.fw[15][1], this.fw[15][2], this.fw[15][3]) || this.dV) {
@@ -21214,7 +21221,7 @@ public class AppInstance extends Game {
                             this.gu = false;
                         }
                     } else if (this.gw == 99 && this.be >= 1) {
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         int[] iArr11 = this.fx;
                         iArr11[15] = iArr11[15] + 1;
                         this.gA[0] = 0;
@@ -21265,22 +21272,22 @@ public class AppInstance extends Game {
                         if (!R() || !isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
                             this.gs[0] = false;
                         } else if (!this.gs[0]) {
-                            aSound.getInstance().play(10);
+                            aSound.getInstance().play(SoundType.BUTTON_SELECT);
                             this.gs[0] = true;
                         }
                         if (!R() || !isTouching(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3])) {
                             this.gs[1] = false;
                         } else if (!this.gs[1]) {
-                            aSound.getInstance().play(10);
+                            aSound.getInstance().play(SoundType.BUTTON_SELECT);
                             this.gs[1] = true;
                         }
                         if (S() && isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
-                            aSound.getInstance().play(14);
+                            aSound.getInstance().play(SoundType.UPGRADE);
                             int[] iArr14 = this.fz;
                             iArr14[0] = iArr14[0] + 1;
                             return;
                         } else if (S() && isTouching(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3])) {
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                             int[] iArr15 = this.fz;
                             iArr15[1] = iArr15[1] + 1;
                             return;
@@ -21292,7 +21299,7 @@ public class AppInstance extends Game {
                             }
                             return;
                         } else if (this.bf >= 1) {
-                            aSound.getInstance().play(11);
+                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                             int[] iArr16 = this.fx;
                             iArr16[14] = iArr16[14] + 1;
                             return;
@@ -21480,21 +21487,21 @@ public class AppInstance extends Game {
                     if (!R() || !isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
                         this.gs[0] = false;
                     } else if (!this.gs[0]) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gs[0] = true;
                     }
                     if (!R() || !isTouching(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3])) {
                         this.gs[1] = false;
                     } else if (!this.gs[1]) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gs[1] = true;
                     }
                     if (S() && isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         int[] iArr25 = this.fz;
                         iArr25[0] = iArr25[0] + 1;
                     } else if (S() && isTouching(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3])) {
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         int[] iArr26 = this.fz;
                         iArr26[1] = iArr26[1] + 1;
                     } else if (!S() || !isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
@@ -21503,7 +21510,7 @@ public class AppInstance extends Game {
                             this.gu = false;
                         }
                     } else if (this.bf >= 1) {
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         int[] iArr27 = this.fx;
                         iArr27[14] = iArr27[14] + 1;
                     }
@@ -21553,21 +21560,21 @@ public class AppInstance extends Game {
                     if (!R() || !isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
                         this.gs[0] = false;
                     } else if (!this.gs[0]) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gs[0] = true;
                     }
                     if (!R() || !isTouching(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3])) {
                         this.gs[1] = false;
                     } else if (!this.gs[1]) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gs[1] = true;
                     }
                     if (S() && isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         int[] iArr30 = this.fz;
                         iArr30[0] = iArr30[0] + 1;
                     } else if (S() && isTouching(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3])) {
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         int[] iArr31 = this.fz;
                         iArr31[1] = iArr31[1] + 1;
                     } else if (T()) {
@@ -21603,11 +21610,11 @@ public class AppInstance extends Game {
                 if (!R() || !isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
                     this.gs[0] = false;
                 } else if (!this.gs[0]) {
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                     this.gs[0] = true;
                 }
                 if (S() && isTouching(this.fA[0][0], this.fA[0][1], this.fA[0][2], this.fA[0][3])) {
-                    aSound.getInstance().play(11);
+                    aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     int[] iArr32 = this.fz;
                     iArr32[0] = iArr32[0] + 1;
                     return;
@@ -22158,16 +22165,16 @@ public class AppInstance extends Game {
         if (!this.eE[0] && !this.eE[1] && !this.eE[13] && !this.gF[0] && !this.gF[1] && !this.eb && this.fx[0] == 0) {
             if (this.scrollAmount[0] < 0) {
                 if (this.currentBox[0] != (-(this.gameStats1[0] / this.boxScale))) {
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 }
                 this.gp[3] = false;
             } else if (this.scrollAmount[0] > 0) {
                 if (this.currentBox[1] != ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale) {
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 }
                 this.gp[3] = false;
             } else if (this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gp[3]) {
-                aSound.getInstance().play(10);
+                aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 this.gp[3] = true;
             }
         }
@@ -22615,7 +22622,7 @@ public class AppInstance extends Game {
                 if ((this.currentBox[2] > -1 && this.currentBox[2] < this.boxCounts[1] + 1) || !R() || !isTouching(((((getWidth() / 2) - (this.boxSize[this.currentBox[0]][0] / 2)) + (this.boxScale * this.currentBox[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.currentBox[0]][0]), 347 - this.boxSize[this.currentBox[0]][1], this.boxSize[this.currentBox[0]][0], this.boxSize[this.currentBox[0]][1])) {
                     this.gp[2] = false;
                 } else if (!this.gp[2]) {
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                     this.gp[2] = true;
                 }
                 if (!R() || !isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
@@ -22623,21 +22630,21 @@ public class AppInstance extends Game {
                 } else if ((this.gp[0] || (this.currentBox[2] > -1 && this.currentBox[2] < this.boxCounts[1] + 1)) && !this.gp[0] && this.currentBox[2] >= 0 && this.currentBox[2] <= this.boxCounts[1] && this.currentBox[2] >= this.gB[1]) {
                     if (this.currentBox[2] < this.gB[0]) {
                         if (this.bq[this.unitBuyStats[this.boxCatIDs[this.currentBox[2] - this.gB[1]]][15]] >= this.unitBuyStats[this.boxCatIDs[this.currentBox[2] - this.gB[1]]][0] && this.bv[this.boxCatIDs[this.currentBox[2] - this.gB[1]]] + 1 < this.bi) {
-                            aSound.getInstance().play(10);
+                            aSound.getInstance().play(SoundType.BUTTON_SELECT);
                             this.gp[0] = true;
                         }
                     } else if (this.currentBox[2] - this.gB[0] == 0) {
                         if (this.bx[0] + 1 < this.bi) {
-                            aSound.getInstance().play(10);
+                            aSound.getInstance().play(SoundType.BUTTON_SELECT);
                             this.gp[0] = true;
                         }
                     } else if (this.currentBox[2] - this.gB[0] == 1) {
                         if (this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1 < 10) {
-                            aSound.getInstance().play(10);
+                            aSound.getInstance().play(SoundType.BUTTON_SELECT);
                             this.gp[0] = true;
                         }
                     } else if (this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1 < this.bi) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gp[0] = true;
                     }
                 }
@@ -22645,14 +22652,14 @@ public class AppInstance extends Game {
                     if (!R() || !isTouching(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
                         this.gp[1] = false;
                     } else if (!this.gp[1] && this.currentBox[2] >= this.gB[1] && this.currentBox[2] < this.gB[0] && this.currentBox[2] >= 0 && this.currentBox[2] <= this.boxCounts[1] && this.bv[this.boxCatIDs[this.currentBox[2] - this.gB[1]]] + 1 >= 10 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0) {
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gp[1] = true;
                     }
                 }
                 if (!R() || !isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                     this.gp[5] = false;
                 } else if (!this.eE[9] && !this.gp[5]) {
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                     this.gp[5] = true;
                 }
                 if (this.fx[2] == 0 && this.currentBox[0] - 2 >= 0 && this.currentBox[2] <= 0 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && S() && isTouching(((((getWidth() / 2) - (this.boxSize[this.currentBox[0] - 1][0] / 2)) + (this.boxScale * (this.currentBox[0] - 1))) + this.gameStats1[0]) - ((328 - this.boxSize[this.currentBox[0] - 1][0]) + ((328 - this.boxSize[(this.currentBox[0] - 1) + 1][0]) / 2)), 347 - this.boxSize[this.currentBox[0] - 1][1], this.boxSize[this.currentBox[0] - 1][0], this.boxSize[this.currentBox[0] - 1][1])) {
@@ -22660,29 +22667,29 @@ public class AppInstance extends Game {
                     iArr15[2] = iArr15[2] + 1;
                     this.currentBox[5] = -1;
                     this.eE[11] = true;
-                    aSound.getInstance().play(11);
+                    aSound.getInstance().play(SoundType.BUTTON_PRESS);
                 }
                 if (this.fx[2] == 0 && this.currentBox[0] - 2 <= this.boxCounts[1] && this.currentBox[2] >= this.boxCounts[1] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && S() && isTouching(((getWidth() / 2) - (this.boxSize[this.currentBox[0] + 1][0] / 2)) + (this.boxScale * (this.currentBox[0] + 1)) + this.gameStats1[0] + (328 - this.boxSize[this.currentBox[0] + 1][0]), 347 - this.boxSize[this.currentBox[0] + 1][1], this.boxSize[this.currentBox[0] + 1][0], this.boxSize[this.currentBox[0] + 1][1])) {
                     int[] iArr16 = this.fx;
                     iArr16[2] = iArr16[2] + 1;
                     this.currentBox[5] = 1;
-                    aSound.getInstance().play(11);
+                    aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     this.eE[11] = true;
                 }
                 if (this.fx[2] == 0 && ((this.currentBox[2] <= -1 || this.currentBox[2] >= this.boxCounts[1] + 1) && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && S() && isTouching(((((getWidth() / 2) - (this.boxSize[this.currentBox[0]][0] / 2)) + (this.boxScale * this.currentBox[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.currentBox[0]][0]), 347 - this.boxSize[this.currentBox[0]][1], this.boxSize[this.currentBox[0]][0], this.boxSize[this.currentBox[0]][1]))) {
                     int[] iArr17 = this.fx;
                     iArr17[2] = iArr17[2] + 1;
                     this.currentBox[5] = 0;
-                    aSound.getInstance().play(11);
+                    aSound.getInstance().play(SoundType.BUTTON_PRESS);
                     this.eE[11] = true;
                 } else if (!this.eE[11] && S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
                     if (this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && this.currentBox[2] > -1 && this.currentBox[2] < this.boxCounts[1] + 1) {
                         if (this.currentBox[2] < this.gB[1]) {
                             if (this.bd == 0) {
                                 if (this.aY >= hn) {
-                                    aSound.getInstance().play(14);
+                                    aSound.getInstance().play(SoundType.UPGRADE);
                                 } else {
-                                    aSound.getInstance().play(15);
+                                    aSound.getInstance().play(SoundType.CANT_PRESS);
                                     this.ct = 50;
                                 }
                                 int[] iArr18 = this.fx;
@@ -22693,32 +22700,32 @@ public class AppInstance extends Game {
                                 if (this.bu[this.boxCatIDs[this.currentBox[2] - this.gB[1]]] == 0) {
                                     if (this.currentBox[3] == 0) {
                                         if (this.aY >= this.unitBuyStats[this.boxCatIDs[this.currentBox[2] - this.gB[1]]][1]) {
-                                            aSound.getInstance().play(14);
+                                            aSound.getInstance().play(SoundType.UPGRADE);
                                         } else {
-                                            aSound.getInstance().play(15);
+                                            aSound.getInstance().play(SoundType.CANT_PRESS);
                                             this.ct = 50;
                                         }
                                     } else if (this.unitBuyStats[this.boxCatIDs[this.currentBox[2] - this.gB[1]]][12] == 0) {
                                         if (this.aY >= this.unitBuyStats[this.boxCatIDs[this.currentBox[2] - this.gB[1]]][1]) {
-                                            aSound.getInstance().play(14);
+                                            aSound.getInstance().play(SoundType.UPGRADE);
                                         } else {
-                                            aSound.getInstance().play(15);
+                                            aSound.getInstance().play(SoundType.CANT_PRESS);
                                             this.ct = 50;
                                         }
                                     } else if (this.unitBuyStats[this.boxCatIDs[this.currentBox[2] - this.gB[1]]][12] >= 1) {
                                         if (this.catfood >= this.unitBuyStats[this.boxCatIDs[this.currentBox[2] - this.gB[1]]][1]) {
-                                            aSound.getInstance().play(11);
+                                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                                         } else {
-                                            aSound.getInstance().play(11);
+                                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
                                         }
                                     }
                                     int[] iArr19 = this.fx;
                                     iArr19[0] = iArr19[0] + 1;
                                 } else if (this.bv[this.boxCatIDs[this.currentBox[2] - this.gB[1]]] + 1 < this.bi) {
                                     if (this.aY >= this.unitBuyStats[this.boxCatIDs[this.currentBox[2] - this.gB[1]]][((this.bv[this.boxCatIDs[this.currentBox[2] - this.gB[1]]] + 1) % 10) + 2] * (((this.bv[this.boxCatIDs[this.currentBox[2] - this.gB[1]]] + 1) / 10) + 1)) {
-                                        aSound.getInstance().play(14);
+                                        aSound.getInstance().play(SoundType.UPGRADE);
                                     } else {
-                                        aSound.getInstance().play(15);
+                                        aSound.getInstance().play(SoundType.CANT_PRESS);
                                         this.ct = 50;
                                     }
                                     int[] iArr20 = this.fx;
@@ -22728,9 +22735,9 @@ public class AppInstance extends Game {
                         } else if (this.currentBox[2] - this.gB[0] == 0) {
                             if (this.bx[0] + 1 < this.bi) {
                                 if (this.aY >= ac[0][(this.bx[0] + 1) % 10] * (((this.bx[0] + 1) / 10) + 1)) {
-                                    aSound.getInstance().play(14);
+                                    aSound.getInstance().play(SoundType.UPGRADE);
                                 } else {
-                                    aSound.getInstance().play(15);
+                                    aSound.getInstance().play(SoundType.CANT_PRESS);
                                     this.ct = 50;
                                 }
                                 int[] iArr21 = this.fx;
@@ -22740,9 +22747,9 @@ public class AppInstance extends Game {
                             if (this.currentBox[2] - this.gB[0] == 1) {
                                 if (this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1 < 10) {
                                     if (this.aY >= ac[this.currentBox[2] - this.gB[0]][(this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1) % 10] * (((this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1) / 10) + 1)) {
-                                        aSound.getInstance().play(14);
+                                        aSound.getInstance().play(SoundType.UPGRADE);
                                     } else {
-                                        aSound.getInstance().play(15);
+                                        aSound.getInstance().play(SoundType.CANT_PRESS);
                                         this.ct = 50;
                                     }
                                     int[] iArr22 = this.fx;
@@ -22750,9 +22757,9 @@ public class AppInstance extends Game {
                                 }
                             } else if (this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1 < this.bi) {
                                 if (this.aY >= ac[this.currentBox[2] - this.gB[0]][(this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1) % 10] * (((this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1) / 10) + 1)) {
-                                    aSound.getInstance().play(14);
+                                    aSound.getInstance().play(SoundType.UPGRADE);
                                 } else {
-                                    aSound.getInstance().play(15);
+                                    aSound.getInstance().play(SoundType.CANT_PRESS);
                                     this.ct = 50;
                                 }
                                 int[] iArr23 = this.fx;
@@ -22762,13 +22769,13 @@ public class AppInstance extends Game {
                     }
                 } else if (S() && isTouching(this.fw[1][0], this.fw[1][1], this.fw[1][2], this.fw[1][3])) {
                     if (this.bq[0] >= 48 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && this.currentBox[2] >= 0 && this.currentBox[2] <= this.boxCounts[1] && this.currentBox[2] >= this.gB[1] && this.currentBox[2] < this.gB[0] && this.bv[this.boxCatIDs[this.currentBox[2] - this.gB[1]]] + 1 >= 10) {
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         int[] iArr24 = this.fx;
                         iArr24[1] = iArr24[1] + 1;
                     }
                 } else if (S() && isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
                     if (!this.eE[9]) {
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         int[] iArr25 = this.fx;
                         iArr25[5] = iArr25[5] + 1;
                         this.eE[10] = true;
@@ -22777,19 +22784,19 @@ public class AppInstance extends Game {
                     if (this.be >= 1) {
                         int[] iArr26 = this.fx;
                         iArr26[13] = iArr26[13] + 1;
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         this.gR = 0;
                         this.gA[0] = 0;
                     }
                 } else if (S() && isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
                     if (this.bf >= 1) {
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         int[] iArr27 = this.fx;
                         iArr27[14] = iArr27[14] + 1;
                     }
                 } else if (S() && isTouching(this.fw[15][0], this.fw[15][1], this.fw[15][2], this.fw[15][3]) && !this.dV) {
                     if (this.be >= 1) {
-                        aSound.getInstance().play(11);
+                        aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         int[] iArr28 = this.fx;
                         iArr28[15] = iArr28[15] + 1;
                         this.gA[0] = 0;
@@ -22803,20 +22810,20 @@ public class AppInstance extends Game {
                     this.gp[13] = false;
                 } else if (!this.gp[13]) {
                     this.gp[13] = true;
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 }
                 if (!R() || !isTouching(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3]) || this.bf < 1) {
                     this.gp[14] = false;
                 } else if (!this.gp[14]) {
                     this.gp[14] = true;
-                    aSound.getInstance().play(10);
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 }
                 if (this.be >= 1) {
                     if (!R() || !isTouching(this.fw[15][0], this.fw[15][1], this.fw[15][2], this.fw[15][3]) || this.bf < 1) {
                         this.gp[15] = false;
                     } else if (!this.gp[15]) {
                         this.gp[15] = true;
-                        aSound.getInstance().play(10);
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                     }
                 }
             }
