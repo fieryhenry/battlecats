@@ -35,6 +35,6 @@ class MyGLSurfaceRenderer implements GLSurfaceView.Renderer {
             int width2 = (((MyActivity) aGlobal.getInstance().getContext()).b.getWidth() * 640) / ((MyActivity) aGlobal.getInstance().getContext()).b.getHeight();
             aGlobal.getInstance().a(width2 >= 960 ? width2 > 1136 ? 1136 : width2 : 960, 640, ((MyActivity) aGlobal.getInstance().getContext()).b.getWidth(), ((MyActivity) aGlobal.getInstance().getContext()).b.getHeight());
         }
-        aTextureRenderer.getInstance().c();
+        aTextureRenderer.getInstance().setupGL();
     }
 }

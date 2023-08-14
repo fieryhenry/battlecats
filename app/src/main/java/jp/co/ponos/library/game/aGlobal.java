@@ -15,10 +15,10 @@ public class aGlobal {
     static aGlobal instance;
     int c;
     int d;
-    int e;
-    int f;
-    int g;
-    int h;
+    int viewportX;
+    int viewportY;
+    int viewportWidth;
+    int viewportHeight;
     int width;
     int height;
     Handler k;
@@ -27,7 +27,7 @@ public class aGlobal {
     Context context;
     boolean isGameOpen;
     FrameLayout n;
-    GL10 o;
+    GL10 gl10;
     aBackKeyController q;
     aBackKeyController r;
     Random b = new Random();
@@ -51,16 +51,16 @@ public class aGlobal {
         this.width = i;
         this.height = i2;
         if ((this.c * i2) / i <= this.d) {
-            this.g = this.c;
-            this.h = (this.c * i2) / i;
-            this.e = 0;
-            this.f = (this.d - this.h) / 2;
+            this.viewportWidth = this.c;
+            this.viewportHeight = (this.c * i2) / i;
+            this.viewportX = 0;
+            this.viewportY = (this.d - this.viewportHeight) / 2;
             return;
         }
-        this.g = (this.d * i) / i2;
-        this.h = this.d;
-        this.e = (this.c - this.g) / 2;
-        this.f = 0;
+        this.viewportWidth = (this.d * i) / i2;
+        this.viewportHeight = this.d;
+        this.viewportX = (this.c - this.viewportWidth) / 2;
+        this.viewportY = 0;
     }
 
     public void a(Context context) {
@@ -76,7 +76,7 @@ public class aGlobal {
     }
 
     public void a(GL10 gl10) {
-        this.o = gl10;
+        this.gl10 = gl10;
     }
 
     public void a(aBackKeyController abackkeycontroller) {
@@ -84,7 +84,7 @@ public class aGlobal {
     }
 
     public int b() {
-        return this.g;
+        return this.viewportWidth;
     }
 
     public void b(aBackKeyController abackkeycontroller) {

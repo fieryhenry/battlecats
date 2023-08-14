@@ -38,7 +38,7 @@ public abstract class aUtility {
     ProgressDialog k;
 
     public static int transCoordWindowToGLViewX(int i) {
-        return (aGlobal.instance.width * (i - aGlobal.instance.e)) / aGlobal.instance.g;
+        return (aGlobal.instance.width * (i - aGlobal.instance.viewportX)) / aGlobal.instance.viewportWidth;
     }
 
     public static String getString(String str) {
@@ -87,7 +87,7 @@ public abstract class aUtility {
     }
 
     public static int transCoordWindowToGLViewY(int i) {
-        return (aGlobal.instance.height * (i - aGlobal.instance.f)) / aGlobal.instance.h;
+        return (aGlobal.instance.height * (i - aGlobal.instance.viewportY)) / aGlobal.instance.viewportHeight;
     }
 
     /* renamed from: b */

@@ -8,18 +8,21 @@ import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.opengl.GLUtils;
 import java.io.InputStream;
+
+import javax.microedition.khronos.opengles.GL10;
+
 import jp.co.ponos.library.game.DataStreams.aResourceFileStream;
 
 /* renamed from: jp.co.ponos.library.b.ac */
 /* loaded from: classes.dex */
 public class aTexture {
     static Paint paint;
-    int a;
+    int textureID;
     int imgWidth;
     int imgHeight;
-    int d;
-    int e;
-    int f;
+    int pow2Width;
+    int pow2Height;
+    int unused;
     Rect[] rects;
 
     static void setFont(String str, int i) {
@@ -56,37 +59,37 @@ public class aTexture {
     }
 
     void drawImage(Bitmap bitmap, int i) {
-        int[] iArr = new int[1];
+        int[] textureIds = new int[1];
         int width = bitmap.getWidth();
         this.imgWidth = width;
         int height = bitmap.getHeight();
         this.imgHeight = height;
-        int i2 = 1;
-        while (i2 < width) {
-            i2 *= 2;
+        int pow2Width = 1;
+        while (pow2Width < width) {
+            pow2Width *= 2;
         }
-        this.d = i2;
-        int i3 = 1;
-        while (i3 < height) {
-            i3 *= 2;
+        this.pow2Width = pow2Width;
+        int pow2Height = 1;
+        while (pow2Height < height) {
+            pow2Height *= 2;
         }
-        this.e = i3;
-        Bitmap createBitmap = Bitmap.createBitmap(this.d, this.e, Bitmap.Config.ARGB_8888);
+        this.pow2Height = pow2Height;
+        Bitmap createBitmap = Bitmap.createBitmap(this.pow2Width, this.pow2Height, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(createBitmap);
         BitmapDrawable bitmapDrawable = new BitmapDrawable(bitmap);
         bitmapDrawable.setBounds(0, 0, width, height);
         bitmapDrawable.draw(canvas);
-        aGlobal.instance.o.glGenTextures(1, iArr, 0);
-        aGlobal.instance.o.glBindTexture(3553, iArr[0]);
+        aGlobal.instance.gl10.glGenTextures(1, textureIds, 0);
+        aGlobal.instance.gl10.glBindTexture(GL10.GL_TEXTURE_2D, textureIds[0]);
         if ((i & 8) != 0) {
-            aGlobal.instance.o.glTexParameterf(3553, 10241, 9728.0f);
-            aGlobal.instance.o.glTexParameterf(3553, 10240, 9728.0f);
+            aGlobal.instance.gl10.glTexParameterf(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MIN_FILTER, GL10.GL_NEAREST);
+            aGlobal.instance.gl10.glTexParameterf(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MAG_FILTER, GL10.GL_NEAREST);
         } else {
-            aGlobal.instance.o.glTexParameterf(3553, 10241, 9729.0f);
-            aGlobal.instance.o.glTexParameterf(3553, 10240, 9729.0f);
+            aGlobal.instance.gl10.glTexParameterf(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MIN_FILTER, GL10.GL_LINEAR);
+            aGlobal.instance.gl10.glTexParameterf(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MAG_FILTER, GL10.GL_LINEAR);
         }
-        GLUtils.texImage2D(3553, 0, createBitmap, 0);
-        this.a = iArr[0];
+        GLUtils.texImage2D(GL10.GL_TEXTURE_2D, 0, createBitmap, 0);
+        this.textureID = textureIds[0];
     }
 
     public boolean load(String str, String str2) {
@@ -96,7 +99,7 @@ public class aTexture {
     public boolean load(String str, String str2, int i) {
         try {
             reset();
-            this.f = i;
+            this.unused = i;
             if (str2 != null) {
                 if ((i & 1) != 0) {
                     aResourceFileStream aresourcefilestream = new aResourceFileStream();
@@ -182,13 +185,13 @@ public class aTexture {
     }
 
     public boolean isLoaded() {
-        return this.a != 0;
+        return this.textureID != 0;
     }
 
     public void reset() {
-        if (this.a != 0) {
-            aGlobal.instance.o.glDeleteTextures(1, new int[]{this.a}, 0);
-            this.a = 0;
+        if (this.textureID != 0) {
+            aGlobal.instance.gl10.glDeleteTextures(1, new int[]{this.textureID}, 0);
+            this.textureID = 0;
         }
     }
 }

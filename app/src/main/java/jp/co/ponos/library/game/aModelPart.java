@@ -114,13 +114,13 @@ public class aModelPart {
             return;
         }
         if (this.glow == 0) {
-            atexturerenderer.setGlow(0);
+            atexturerenderer.setBlendMode(0);
         } else if (this.glow == 1) {
-            atexturerenderer.setGlow(1);
+            atexturerenderer.setBlendMode(1);
         } else if (this.glow == 2) {
-            atexturerenderer.setGlow(3);
+            atexturerenderer.setBlendMode(3);
         } else if (this.glow == 3) {
-            atexturerenderer.setGlow(4);
+            atexturerenderer.setBlendMode(4);
         }
         atexturerenderer.setImageAlpha((this.baseAlpha * 255) / amodel.alphaUnit);
         atexturerenderer.drawScaledImage(amodel.textures[this.unitID + this.animUnitID], this.E[0] + i, this.E[1] + i2, this.E[2] + i, this.E[3] + i2, this.E[4] + i, this.E[5] + i2, this.E[6] + i, this.E[7] + i2, this.animTextureID + this.textureID);
