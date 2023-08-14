@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
 
     defaultConfig {
         applicationId 'jp.co.ponos.battlecatsrm'
         minSdkVersion 8
-        targetSdkVersion 13
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0.0"
 

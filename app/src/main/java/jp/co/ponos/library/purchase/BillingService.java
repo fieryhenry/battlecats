@@ -69,7 +69,9 @@ public class BillingService extends Service implements ServiceConnection {
         } catch (SecurityException e) {
             Log.e("BillingService", "Security exception: " + e);
         }
-        if (bindService(new Intent("com.android.vending.billing.MarketBillingService.BIND"), this, Context.BIND_AUTO_CREATE)) {
+        Intent intent = new Intent("com.android.vending.billing.MarketBillingService.BIND");
+        intent.setPackage("com.android.vending");
+        if (bindService(intent, this, Context.BIND_AUTO_CREATE)) {
             return true;
         }
         Log.e("BillingService", "Could not bind to service.");
