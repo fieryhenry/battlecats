@@ -15,7 +15,7 @@ fully working we can move on to adding code for later versions.
 ## Prebuilt APKs
 
 Prebuilt APKs can be found in the
-[releases](https://github.com/fieryhenry/battlecats/releases) section for the
+[Releases](https://github.com/fieryhenry/battlecats/releases) section for the
 major versions once they are working.
 
 A debug APK can be found in the artifacts section of the
@@ -88,7 +88,8 @@ Here are some current problems with the app:
 
 - [ ] Some animations are broken
 - [ ] Can't really scroll in the upgrade menu
-- [ ] Freezing if too many enimies die
+- [ ] Freezing if too many enemies die
+- [ ] Cat cannon firing strangely
 
 List is not exhaustive, there are probably lots of other issues that I haven't
 noticed yet.
