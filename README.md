@@ -1,6 +1,6 @@
 # Battle Cats
 
-[JADX](https://github.com/skylot/jadx) decompilation of The Battle Cats exported to a Gradle project
+Decompilation of The Battle Cats based off of a [JADX](https://github.com/skylot/jadx) decompilation
 
 Original APK: <https://apkfree.com/download/battle-cats-1.0.0>. It is a 999999
 cat food APK, but all of that code has been removed
