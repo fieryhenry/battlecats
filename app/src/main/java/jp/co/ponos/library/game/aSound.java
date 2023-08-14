@@ -3,14 +3,12 @@ package jp.co.ponos.library.game;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 
-/* renamed from: jp.co.ponos.library.b.y */
-/* loaded from: classes.dex */
 public class aSound {
     static aSound aSound;
     MediaPlayer bgmMediaPlayer;
     SoundPool soundEffectPool;
     int totalSoundEffects;
-    int[] e;
+    int[] soundTypes;
     int[] soundFiles;
     int[] loadedSoundEffects;
     int[] soundEffects;
@@ -35,7 +33,7 @@ public class aSound {
 
     public void load(int i) {
         try {
-            if ((this.e[i] & 2) == 0 || this.soundEffectLoaded[i]) {
+            if ((this.soundTypes[i] & 2) == 0 || this.soundEffectLoaded[i]) {
                 return;
             }
             this.loadedSoundEffects[i] = this.soundEffectPool.load(aGlobal.instance.context, this.soundFiles[i], 1);
@@ -44,43 +42,43 @@ public class aSound {
         }
     }
 
-    void play(int i, aPlayOption aplayoption, boolean z) {
+    void play(int soundID, aPlayOption aplayoption, boolean changeVolume) {
         try {
-            if ((this.e[i] & 1) != 0 && !this.muteBgm) {
+            if ((this.soundTypes[soundID] & 1) != 0 && !this.muteBgm) {
                 stop(-1);
-                if (!z) {
+                if (!changeVolume) {
                     if (aplayoption == null) {
                         this.volume = 100;
                     } else {
                         this.volume = aplayoption.getVolume();
                     }
                 }
-                this.bgmMediaPlayer = MediaPlayer.create(aGlobal.instance.context, this.soundFiles[i]);
-                this.bgmMediaPlayer.setLooping((this.e[i] & 4) != 0);
+                this.bgmMediaPlayer = MediaPlayer.create(aGlobal.instance.context, this.soundFiles[soundID]);
+                this.bgmMediaPlayer.setLooping((this.soundTypes[soundID] & 4) != 0);
                 this.bgmMediaPlayer.setVolume((this.o * this.volume) / 10000.0f, (this.o * this.volume) / 10000.0f);
                 if (MyApplicationBase.getInstance().isGameOpen()) {
                     this.bgmMediaPlayer.start();
                 }
-            } else if ((this.e[i] & 2) != 0 && !this.muteSoundEffects) {
-                if (!this.soundEffectLoaded[i]) {
+            } else if ((this.soundTypes[soundID] & 2) != 0 && !this.muteSoundEffects) {
+                if (!this.soundEffectLoaded[soundID]) {
                     return;
                 }
-                if (this.soundEffects[i] != 0) {
-                    this.soundEffectPool.stop(this.soundEffects[i]);
+                if (this.soundEffects[soundID] != 0) {
+                    this.soundEffectPool.stop(this.soundEffects[soundID]);
                 }
-                if (!z) {
+                if (!changeVolume) {
                     if (aplayoption == null) {
-                        this.volumes[i] = 100;
+                        this.volumes[soundID] = 100;
                     } else {
-                        this.volumes[i] = aplayoption.getVolume();
+                        this.volumes[soundID] = aplayoption.getVolume();
                     }
                 }
                 if (MyApplicationBase.getInstance().isGameOpen()) {
-                    this.soundEffects[i] = this.soundEffectPool.play(this.loadedSoundEffects[i], (this.p * this.volumes[i]) / 10000.0f, (this.p * this.volumes[i]) / 10000.0f, 1, (this.e[i] & 4) == 0 ? 0 : -1, 1.0f);
+                    this.soundEffects[soundID] = this.soundEffectPool.play(this.loadedSoundEffects[soundID], (this.p * this.volumes[soundID]) / 10000.0f, (this.p * this.volumes[soundID]) / 10000.0f, 1, (this.soundTypes[soundID] & 4) == 0 ? 0 : -1, 1.0f);
                 }
             }
-            if ((this.e[i] & 4) != 0) {
-                this.soundEffectIsPlaying[i] = true;
+            if ((this.soundTypes[soundID] & 4) != 0) {
+                this.soundEffectIsPlaying[soundID] = true;
             }
         } catch (Exception e) {
         }
@@ -94,10 +92,10 @@ public class aSound {
         this.bgmMediaPlayer.stop();
     }
 
-    public void loadMany(int[] iArr, int totalSounds) {
+    public void loadMany(int[] soundTypes, int totalSounds) {
         this.soundEffectPool = new SoundPool(totalSounds, 3, 0);
         this.totalSoundEffects = totalSounds;
-        this.e = iArr;
+        this.soundTypes = soundTypes;
         this.soundFiles = new int[totalSounds];
         this.loadedSoundEffects = new int[totalSounds];
         this.soundEffects = new int[totalSounds];
@@ -118,11 +116,11 @@ public class aSound {
         this.soundEffects[i] = 0;
     }
 
-    public void muteSE(boolean z) {
-        this.muteSoundEffects = z;
-        if (z) {
+    public void muteSE(boolean muteSE) {
+        this.muteSoundEffects = muteSE;
+        if (muteSE) {
             for (int i = 0; i < this.totalSoundEffects; i++) {
-                if ((this.e[i] & 2) != 0 && this.soundEffectLoaded[i] && this.soundEffects[i] != 0) {
+                if ((this.soundTypes[i] & 2) != 0 && this.soundEffectLoaded[i] && this.soundEffects[i] != 0) {
                     this.soundEffectPool.stop(this.soundEffects[i]);
                 }
             }
@@ -132,8 +130,12 @@ public class aSound {
     public void c() {
     }
 
-    public void play(int i) {
-        play(i, null, false);
+    public void play(int soundID) {
+        play(soundID, null, false);
+    }
+
+    public void play(SoundType soundType) {
+        play(soundType.ordinal(), null, false);
     }
 
     public void d() {
@@ -146,25 +148,28 @@ public class aSound {
     /*
         Code decompiled incorrectly, please refer to instructions dump.
     */
-    public void stop(int i) {
-        if (i != -1 && i != -4) {
-            if (i >= 0) {
+    public void stop(int soundID) {
+        if (soundID != -1 && soundID != -4) {
+            if (soundID >= 0) {
                 try {
+                    this.soundEffectPool.stop(this.soundEffects[soundID]);
+                    this.soundEffectIsPlaying[soundID] = false;
+                    return;
                 } catch (Exception e) {
                     return;
                 }
             }
-            if (i == -2 && i != -4) {
-                if (i < 0 || (this.e[i] & 2) == 0 || !this.soundEffectLoaded[i] || this.soundEffects[i] == 0) {
+            if (soundID == -2 && soundID != -4) {
+                if (soundID < 0 || (this.soundTypes[soundID] & 2) == 0 || !this.soundEffectLoaded[soundID] || this.soundEffects[soundID] == 0) {
                     return;
                 } else {
-                    this.soundEffectPool.stop(this.soundEffects[i]);
-                    this.soundEffectIsPlaying[i] = false;
+                    this.soundEffectPool.stop(this.soundEffects[soundID]);
+                    this.soundEffectIsPlaying[soundID] = false;
                     return;
                 }
             }
             for (int i2 = 0; i2 < this.totalSoundEffects; i2++) {
-                if ((this.e[i2] & 2) != 0 && this.soundEffectLoaded[i2] && this.soundEffects[i2] != 0) {
+                if ((this.soundTypes[i2] & 2) != 0 && this.soundEffectLoaded[i2] && this.soundEffects[i2] != 0) {
                     this.soundEffectPool.stop(this.soundEffects[i2]);
                     this.soundEffectIsPlaying[i2] = false;
                 }
@@ -174,11 +179,11 @@ public class aSound {
             this.bgmMediaPlayer.stop();
         }
         for (int i3 = 0; i3 < this.totalSoundEffects; i3++) {
-            if ((this.e[i3] & 1) != 0) {
+            if ((this.soundTypes[i3] & 1) != 0) {
                 this.soundEffectIsPlaying[i3] = false;
             }
         }
-        if (i == -2) {
+        if (soundID == -2) {
         }
         //while (i2 < this.d) {
         //}
@@ -190,7 +195,7 @@ public class aSound {
                 this.bgmMediaPlayer.stop();
             }
             for (int i = 0; i < this.totalSoundEffects; i++) {
-                if ((this.e[i] & 2) != 0 && this.soundEffectLoaded[i] && this.soundEffects[i] != 0) {
+                if ((this.soundTypes[i] & 2) != 0 && this.soundEffectLoaded[i] && this.soundEffects[i] != 0) {
                     this.soundEffectPool.stop(this.soundEffects[i]);
                 }
             }
