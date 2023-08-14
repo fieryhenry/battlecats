@@ -20,7 +20,7 @@ major versions once they are working.
 
 A debug APK can be found in the artifacts section of the
 [Build APK](https://github.com/fieryhenry/battlecats/actions/workflows/build-apk.yml)
-workflow. This APK is built from the latest code in the `main` branch and so
+workflow. This APK is built from the latest code in the `master` branch and so
 might not be working properly.
 
 ## Building the APK yourself
