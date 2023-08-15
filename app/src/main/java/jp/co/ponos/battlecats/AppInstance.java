@@ -3914,8 +3914,8 @@ public class AppInstance extends Game {
                 for (int i120 = 0; i120 < 26; i120++) {
                     this.bw[i120] = 0;
                 }
-                for (int i121 = 0; i121 < getLength(this.bx); i121++) {
-                    this.bx[i121] = 0;
+                for (int i121 = 0; i121 < getLength(this.specialSkillBaseLevels); i121++) {
+                    this.specialSkillBaseLevels[i121] = 0;
                 }
                 this.bh = 0;
                 this.bi = 10;
@@ -4683,7 +4683,7 @@ public class AppInstance extends Game {
             iArr[10] = iArr[10] - (this.unitStats[this.slotCatIDs[i]][this.slotFormIDs[i]][6] + (((this.unitStats[this.slotCatIDs[i]][this.slotFormIDs[i]][6] * this.eQ) * 50) / 100));
             this.rechargeTimes[i] = this.unitStats[this.slotCatIDs[i]][this.slotFormIDs[i]][7];
             int[] iArr2 = this.rechargeTimes;
-            iArr2[i] = iArr2[i] - (ad[7] + (this.bx[7] * 6));
+            iArr2[i] = iArr2[i] - (ad[7] + (this.specialSkillBaseLevels[7] * 6));
             for (int i2 = 0; i2 < 10; i2++) {
                 int[] iArr3 = this.rechargeTimes;
                 iArr3[i] = iArr3[i] - ((cB[2] * this.bO[i2][2]) / 100);
@@ -4825,8 +4825,8 @@ public class AppInstance extends Game {
         for (int i11 = 0; i11 < 10; i11++) {
             i10 += (cB[10] * this.bO[i11][10]) / 100;
         }
-        if (this.currentEnergy >= ad[10] + (this.bx[10] * 10) + i10) {
-            this.currentEnergy = i10 + ad[10] + (this.bx[10] * 10);
+        if (this.currentEnergy >= ad[10] + (this.specialSkillBaseLevels[10] * 10) + i10) {
+            this.currentEnergy = i10 + ad[10] + (this.specialSkillBaseLevels[10] * 10);
             return true;
         }
         return true;
@@ -5248,17 +5248,17 @@ public class AppInstance extends Game {
                                         this.uiTextures[i5 + 11].load(MyUtility.getString(String.format("udi%03d_c.png", this.boxCatIDs[i5 - this.gB[1]])), MyUtility.getString(String.format("udi%03d_c.imgcut", this.boxCatIDs[i5 - this.gB[1]])));
                                     }
                                 }
-                            } else if (i5 - this.gB[0] != 0 || this.bx[0] + 1 >= this.bi) {
+                            } else if (i5 - this.gB[0] != 0 || this.specialSkillBaseLevels[0] + 1 >= this.bi) {
                                 if (i5 - this.gB[0] == 0) {
                                     if (!this.uiTextures[i5 + 11].isLoaded()) {
                                         this.uiTextures[i5 + 11].load(MyUtility.getString(String.format("udi%03d_sg_%s.png", i5 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_sg_%s.imgcut", i5 - this.gB[0], MyUtility.getString("lang"))));
                                     }
-                                } else if (i5 - this.gB[0] != 1 || this.bx[2] + 1 >= 10) {
+                                } else if (i5 - this.gB[0] != 1 || this.specialSkillBaseLevels[2] + 1 >= 10) {
                                     if (i5 - this.gB[0] == 1) {
                                         if (!this.uiTextures[i5 + 11].isLoaded()) {
                                             this.uiTextures[i5 + 11].load(MyUtility.getString(String.format("udi%03d_sg_%s.png", i5 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_sg_%s.imgcut", i5 - this.gB[0], MyUtility.getString("lang"))));
                                         }
-                                    } else if (this.bx[(i5 - this.gB[0]) + 1] + 1 < this.bi) {
+                                    } else if (this.specialSkillBaseLevels[(i5 - this.gB[0]) + 1] + 1 < this.bi) {
                                         if (!this.uiTextures[i5 + 11].isLoaded()) {
                                             this.uiTextures[i5 + 11].load(MyUtility.getString(String.format("udi%03d_s_%s.png", i5 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_s_%s.imgcut", i5 - this.gB[0], MyUtility.getString("lang"))));
                                         }
@@ -7738,7 +7738,7 @@ public class AppInstance extends Game {
                                                             for (int i101 = 0; i101 < 10; i101++) {
                                                                 i100 += (cB[5] * this.bO[i101][5]) / 100;
                                                             }
-                                                            int i102 = ad[8] + (this.bx[8] * 5) + i100;
+                                                            int i102 = ad[8] + (this.specialSkillBaseLevels[8] * 5) + i100;
                                                             int[] iArr90 = this.battleData;
                                                             iArr90[10] = ((i102 * i99) / 100) + iArr90[10];
                                                             if (this.battleData[10] > this.battleData[9]) {
@@ -8143,7 +8143,7 @@ public class AppInstance extends Game {
                                                             for (int i144 = 0; i144 < 10; i144++) {
                                                                 i143 += (cB[3] * this.bO[i144][3]) / 100;
                                                             }
-                                                            this.battleData[17] = (((ad[9] + (this.bx[9] * 5)) + i143) * this.battleData[17]) / 100;
+                                                            this.battleData[17] = (((ad[9] + (this.specialSkillBaseLevels[9] * 5)) + i143) * this.battleData[17]) / 100;
                                                             if (this.eL[4] == 1) {
                                                                 this.battleData[17] = (this.battleData[17] * 15) / 10;
                                                             }
@@ -10853,11 +10853,11 @@ public class AppInstance extends Game {
                                 this.battleData[15] = 0;
                                 this.battleData[14] = 3;
                                 this.unitBattleStats[0][0][1] = 0;
-                                this.unitBattleStats[0][0][7] = ad[6] + (this.bx[6] * 1000);
-                                if (this.bx[6] >= 4 && this.bx[6] <= 7) {
-                                    this.unitBattleStats[0][0][7] = ((this.bx[6] - 4) * 2000) + 6000;
-                                } else if (this.bx[6] >= 8) {
-                                    this.unitBattleStats[0][0][7] = ((this.bx[6] - 8) * 3000) + 15000;
+                                this.unitBattleStats[0][0][7] = ad[6] + (this.specialSkillBaseLevels[6] * 1000);
+                                if (this.specialSkillBaseLevels[6] >= 4 && this.specialSkillBaseLevels[6] <= 7) {
+                                    this.unitBattleStats[0][0][7] = ((this.specialSkillBaseLevels[6] - 4) * 2000) + 6000;
+                                } else if (this.specialSkillBaseLevels[6] >= 8) {
+                                    this.unitBattleStats[0][0][7] = ((this.specialSkillBaseLevels[6] - 8) * 3000) + 15000;
                                 }
                                 for (int i74 = 0; i74 < 10; i74++) {
                                     int[] iArr = this.unitBattleStats[0][0];
@@ -11806,53 +11806,60 @@ public class AppInstance extends Game {
             }
         }
         int i6 = 1;
+        int tempValue = 0;
         while (true) {
             int i7 = i6;
             if (i7 >= this.boxCounts[0] + 1 + this.boxCounts[1] + this.boxCounts[2]) {
                 break;
             }
             if (this.gP[0] == i7) {
-                this.gameStats1[0] = this.gH;
+                //this.gameStats1[0] = this.gH;
+                tempValue = this.gH;
                 this.gameStats1[1] = this.fx[2];
                 f = -(328 - this.boxSize[i7][0]);
             } else if (this.gP[0] + 1 == i7) {
-                this.gameStats1[0] = 0;
+                //this.gameStats1[0] = 0;
+                tempValue = 0;
                 this.gameStats1[1] = 0;
                 f = 328 - this.boxSize[i7][0];
             } else if (this.gP[0] + 2 == i7) {
-                this.gameStats1[0] = 0;
+                //this.gameStats1[0] = 0;
+                tempValue = 0;
                 this.gameStats1[1] = 0;
                 f = (328 - this.boxSize[i7][0]) + ((328 - this.boxSize[i7 - 1][0]) / 2.0f);
             } else if (this.gP[0] + 3 == i7) {
-                this.gameStats1[0] = 0;
+                //this.gameStats1[0] = 0;
+                tempValue = 0;
                 this.gameStats1[1] = 0;
                 f = (328 - this.boxSize[i7][0]) + ((328 - this.boxSize[i7 - 1][0]) / 2.0f) + ((328 - this.boxSize[i7 - 2][0]) / 2.0f);
             } else if (this.gP[0] - 1 == i7) {
-                this.gameStats1[0] = 0;
+                //this.gameStats1[0] = 0;
+                tempValue = 0;
                 this.gameStats1[1] = 0;
                 f = -((328 - this.boxSize[i7][0]) + ((328 - this.boxSize[i7 + 1][0]) / 2.0f));
             } else if (this.gP[0] - 2 == i7) {
-                this.gameStats1[0] = 0;
+                //this.gameStats1[0] = 0;
+                tempValue = 0;
                 this.gameStats1[1] = 0;
                 f = -((328 - this.boxSize[i7][0]) + ((328 - this.boxSize[i7 + 1][0]) / 2.0f));
             } else {
                 i6 = i7 + 1;
             }
             if (i7 - this.boxCounts[0] > -1 && i7 - this.boxCounts[0] < this.boxCounts[1] + 1) {
-                atexturerenderer.drawScaledImagef(this.uiTextures[8], (((cC[this.gameStats1[0]] * 328) / 100.0f) / 2.0f) + ((getWidth() / 2.0f) - (this.boxSize[i7][0] / 2.0f)) + (this.boxScale * i7) + this.gameStats1[0] + f, 347 - this.boxSize[i7][1], this.boxSize[i7][0] - ((cC[this.gameStats1[0]] * 328) / 100.0f), this.boxSize[i7][1], 0);
+                atexturerenderer.drawScaledImagef(this.uiTextures[8], (((cC[tempValue] * 328) / 100.0f) / 2.0f) + ((getWidth() / 2.0f) - (this.boxSize[i7][0] / 2.0f)) + (this.boxScale * i7) + this.gameStats1[0] + f, 347 - this.boxSize[i7][1], this.boxSize[i7][0] - ((cC[tempValue] * 328) / 100.0f), this.boxSize[i7][1], 0);
             }
             if (i7 - this.boxCounts[0] >= 0 && i7 - this.boxCounts[0] <= this.boxCounts[1]) {
                 atexturerenderer.setColor(255, 255, 255);
                 int a = this.textTextures[i7 - this.boxCounts[0]].getImgWidth();
                 atexturerenderer.drawScaledImagef(this.textTextures[i7 - this.boxCounts[0]], ((((((getWidth() / 2.0f) - (this.boxSize[i7][0] / 2.0f)) + (this.boxScale * i7)) + this.gameStats1[0]) + f) + (((328.0f * ((this.boxSize[i7][0] * 10000.0f) / 328.0f)) / 10000.0f) / 2.0f)) - (((a * ((this.boxSize[i7][0] * 10000.0f) / 328.0f)) / 10000.0f) / 2.0f), 347.0f - ((254.0f * ((this.boxSize[i7][1] * 10000.0f) / 263.0f)) / 10000.0f), (a * ((this.boxSize[i7][0] * 10000.0f) / 328.0f)) / 10000.0f, (30.0f * ((this.boxSize[i7][1] * 10000.0f) / 263.0f)) / 10000.0f);
-                atexturerenderer.drawScaledImagef(this.uiTextures[11], (((((310.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f) / 2.0f) + ((getWidth() / 2.0f) - (this.boxSize[i7][0] / 2.0f)) + (this.boxScale * i7) + this.gameStats1[0] + f, 347.0f - ((219.0f * ((this.boxSize[i7][1] * 100.0f) / 263.0f)) / 100.0f), ((310.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) - ((((310.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f), (112.0f * ((this.boxSize[i7][1] * 100.0f) / 263.0f)) / 100.0f, i7 - this.boxCounts[0]);
-                atexturerenderer.drawScaledImagef(this.uiTextures[8], (((57.0f * (((this.boxSize[i7][0] * 100.0f) / 328.0f) / 100.0f)) * cC[this.gameStats1[0]]) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[i7][0] / 2.0f)) + (this.boxScale * i7) + this.gameStats1[0] + f + ((107.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f), 347.0f - ((88.0f * ((this.boxSize[i7][1] * 10000.0f) / 263.0f)) / 10000.0f), ((213.0f * ((this.boxSize[i7][0] * 10000.0f) / 328.0f)) / 10000.0f) - ((((213.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f), (45.0f * ((this.boxSize[i7][1] * 10000.0f) / 263.0f)) / 10000.0f, 28);
-                atexturerenderer.drawScaledImagef(this.uiTextures[0], (((((37.0f + (0 * ((29.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f))) * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f) + ((((((getWidth() / 2.0f) - (this.boxSize[i7][0] / 2.0f)) + (this.boxScale * i7)) + this.gameStats1[0]) + f) - (0 * ((29.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f))) + ((127.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f), 347.0f - ((86.0f * ((this.boxSize[i7][1] * 100.0f) / 263.0f)) / 100.0f), ((55.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) - ((((62.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f), (42.0f * ((this.boxSize[i7][1] * 100.0f) / 263.0f)) / 100.0f, 21);
-                atexturerenderer.drawScaledImagef(this.uiTextures[5], (((((86.0f + (0 * ((29.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f))) * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f) + ((((((getWidth() / 2.0f) - (this.boxSize[i7][0] / 2.0f)) + (this.boxScale * i7)) + this.gameStats1[0]) + f) - (0 * ((29.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f))) + ((78.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f), 347.0f - ((75.0f * ((this.boxSize[i7][1] * 100.0f) / 263.0f)) / 100.0f), ((47.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) - ((((47.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f), (28.0f * ((this.boxSize[i7][1] * 100.0f) / 263.0f)) / 100.0f, 15);
+                atexturerenderer.drawScaledImagef(this.uiTextures[11], (((((310.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f) / 2.0f) + ((getWidth() / 2.0f) - (this.boxSize[i7][0] / 2.0f)) + (this.boxScale * i7) + this.gameStats1[0] + f, 347.0f - ((219.0f * ((this.boxSize[i7][1] * 100.0f) / 263.0f)) / 100.0f), ((310.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) - ((((310.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (112.0f * ((this.boxSize[i7][1] * 100.0f) / 263.0f)) / 100.0f, i7 - this.boxCounts[0]);
+                atexturerenderer.drawScaledImagef(this.uiTextures[8], (((57.0f * (((this.boxSize[i7][0] * 100.0f) / 328.0f) / 100.0f)) * cC[tempValue]) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[i7][0] / 2.0f)) + (this.boxScale * i7) + this.gameStats1[0] + f + ((107.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f), 347.0f - ((88.0f * ((this.boxSize[i7][1] * 10000.0f) / 263.0f)) / 10000.0f), ((213.0f * ((this.boxSize[i7][0] * 10000.0f) / 328.0f)) / 10000.0f) - ((((213.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (45.0f * ((this.boxSize[i7][1] * 10000.0f) / 263.0f)) / 10000.0f, 28);
+                atexturerenderer.drawScaledImagef(this.uiTextures[0], (((((37.0f + (0 * ((29.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f))) * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f) + ((((((getWidth() / 2.0f) - (this.boxSize[i7][0] / 2.0f)) + (this.boxScale * i7)) + this.gameStats1[0]) + f) - (0 * ((29.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f))) + ((127.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f), 347.0f - ((86.0f * ((this.boxSize[i7][1] * 100.0f) / 263.0f)) / 100.0f), ((55.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) - ((((62.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (42.0f * ((this.boxSize[i7][1] * 100.0f) / 263.0f)) / 100.0f, 21);
+                atexturerenderer.drawScaledImagef(this.uiTextures[5], (((((86.0f + (0 * ((29.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f))) * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f) + ((((((getWidth() / 2.0f) - (this.boxSize[i7][0] / 2.0f)) + (this.boxScale * i7)) + this.gameStats1[0]) + f) - (0 * ((29.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f))) + ((78.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f), 347.0f - ((75.0f * ((this.boxSize[i7][1] * 100.0f) / 263.0f)) / 100.0f), ((47.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) - ((((47.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (28.0f * ((this.boxSize[i7][1] * 100.0f) / 263.0f)) / 100.0f, 15);
                 int i8 = 0;
                 int i9 = Z[i7 - this.boxCounts[0]] + (Z[i7 - this.boxCounts[0]] * this.gS[i7 - this.boxCounts[0]]) <= 0 ? 500 : Z[i7 - this.boxCounts[0]] + (Z[i7 - this.boxCounts[0]] * this.gS[i7 - this.boxCounts[0]]);
                 while (true) {
-                    atexturerenderer.drawScaledImagef(this.uiTextures[5], ((((((-117.0f) + (i8 * ((29.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f))) * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f) + ((((((getWidth() / 2.0f) - (this.boxSize[i7][0] / 2.0f)) + (this.boxScale * i7)) + this.gameStats1[0]) + f) - (i8 * ((29.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f))) + ((281.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f), 347.0f - ((86.0f * ((this.boxSize[i7][1] * 100.0f) / 263.0f)) / 100.0f), ((30.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) - ((((30.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f), (42.0f * ((this.boxSize[i7][1] * 100.0f) / 263.0f)) / 100.0f, i9 % 10);
+                    atexturerenderer.drawScaledImagef(this.uiTextures[5], ((((((-117.0f) + (i8 * ((29.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f))) * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f) + ((((((getWidth() / 2.0f) - (this.boxSize[i7][0] / 2.0f)) + (this.boxScale * i7)) + this.gameStats1[0]) + f) - (i8 * ((29.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f))) + ((281.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f), 347.0f - ((86.0f * ((this.boxSize[i7][1] * 100.0f) / 263.0f)) / 100.0f), ((30.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) - ((((30.0f * ((this.boxSize[i7][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (42.0f * ((this.boxSize[i7][1] * 100.0f) / 263.0f)) / 100.0f, i9 % 10);
                     int i10 = i9 / 10;
                     int i11 = i8 + 1;
                     if (i10 <= 0) {
@@ -11864,7 +11871,7 @@ public class AppInstance extends Game {
             }
             atexturerenderer.setColor(0, 0, 0);
             atexturerenderer.setAlpha((255 - ((((this.boxSize[i7][0] * 100) / 328) * 255) / 100)) * 2);
-            atexturerenderer.drawRectangle((int) (((getWidth() / 2) - (this.boxSize[i7][0] / 2)) + (this.boxScale * i7) + this.gameStats1[0] + f + (((cC[this.gameStats1[0]] * 328) / 100) / 2)), 347 - this.boxSize[i7][1], this.boxSize[i7][0] - ((cC[this.gameStats1[0]] * 328) / 100), this.boxSize[i7][1]);
+            atexturerenderer.drawRectangle((int) (((getWidth() / 2) - (this.boxSize[i7][0] / 2)) + (this.boxScale * i7) + this.gameStats1[0] + f + (((cC[tempValue] * 328) / 100) / 2)), 347 - this.boxSize[i7][1], this.boxSize[i7][0] - ((cC[tempValue] * 328) / 100), this.boxSize[i7][1]);
             if (i7 - this.boxCounts[0] >= 0 && this.gG[i7 - this.boxCounts[0]] == 1) {
                 atexturerenderer.setColor(255, 255, 255);
                 atexturerenderer.setAlpha(this.blinkFrame[5]);
@@ -12662,7 +12669,7 @@ public class AppInstance extends Game {
                 i13 += (cB[10] * this.bO[i14][10]) / 100;
             }
             int currentEnergy1 = this.currentEnergy;
-            if (currentEnergy1 >= i13 + ad[10] + (this.bx[10] * 10)) {
+            if (currentEnergy1 >= i13 + ad[10] + (this.specialSkillBaseLevels[10] * 10)) {
                 atexturerenderer.setImageColor(128, 255, 0);
             } else {
                 atexturerenderer.setImageColor(255, 255, 255);
@@ -13594,9 +13601,9 @@ public class AppInstance extends Game {
                                 } else if (this.currentBox[2] < this.gB[0]) {
                                     i = this.bq[this.unitBuyStats[this.boxCatIDs[this.currentBox[2] - this.gB[1]]][15]] < this.unitBuyStats[this.boxCatIDs[this.currentBox[2] - this.gB[1]]][0] ? 0 : this.bu[this.boxCatIDs[this.currentBox[2] - this.gB[1]]] == 0 ? this.unitBuyStats[this.boxCatIDs[this.currentBox[2] - this.gB[1]]][1] : this.unitBuyStats[this.boxCatIDs[this.currentBox[2] - this.gB[1]]][((this.baseUpgrades[this.boxCatIDs[this.currentBox[2] - this.gB[1]]] + 1) % 10) + 2] * (((this.baseUpgrades[this.boxCatIDs[this.currentBox[2] - this.gB[1]]] + 1) / 10) + 1);
                                 } else if ((this.currentBox[2] - this.gB[1]) - this.gB[0] == 0) {
-                                    i = ac[0][(this.bx[0] + 1) % 10] * (((this.bx[0] + 1) / 10) + 1);
+                                    i = specialSkillUpgradeCosts[0][(this.specialSkillBaseLevels[0] + 1) % 10] * (((this.specialSkillBaseLevels[0] + 1) / 10) + 1);
                                 } else if ((this.currentBox[2] - this.gB[1]) - this.gB[0] >= 1) {
-                                    i = ac[(this.currentBox[2] - this.gB[1]) - this.gB[0]][(this.bx[((this.currentBox[2] - this.gB[1]) - this.gB[0]) + 1] + 1) % 10] * (((this.bx[((this.currentBox[2] - this.gB[1]) - this.gB[0]) + 1] + 1) / 10) + 1);
+                                    i = specialSkillUpgradeCosts[(this.currentBox[2] - this.gB[1]) - this.gB[0]][(this.specialSkillBaseLevels[((this.currentBox[2] - this.gB[1]) - this.gB[0]) + 1] + 1) % 10] * (((this.specialSkillBaseLevels[((this.currentBox[2] - this.gB[1]) - this.gB[0]) + 1] + 1) / 10) + 1);
                                 }
                             }
                         } else if (this.getScreenType() == ScreenType.ITEM_SHOP) {
@@ -14280,10 +14287,10 @@ public class AppInstance extends Game {
                     }
                 }
             } else if (this.currentBox[2] - this.gB[0] == 0) {
-                if (this.bx[0] + 1 < this.bi) {
+                if (this.specialSkillBaseLevels[0] + 1 < this.bi) {
                     atexturerenderer.drawScaledImage(this.uiTextures[7], 4 - (dv[this.fx[0]] / 2), 367 - (dv[this.fx[0]] / 2), dv[this.fx[0]] + (383 - dv[this.fx[0]]), dv[this.fx[0]] + 85, 2);
                     atexturerenderer.drawScaledImage(this.uiTextures[7], 43 - (dv[this.fx[0]] / 2), 378 - (dv[this.fx[0]] / 2), dv[this.fx[0]] + 292, dv[this.fx[0]] + 62, 3);
-                    if (this.aY < ac[0][(this.bx[0] + 1) % 10] * (((this.bx[0] + 1) / 10) + 1)) {
+                    if (this.aY < specialSkillUpgradeCosts[0][(this.specialSkillBaseLevels[0] + 1) % 10] * (((this.specialSkillBaseLevels[0] + 1) / 10) + 1)) {
                         atexturerenderer.setImageColor(0, 0, 0);
                         atexturerenderer.setImageAlpha(127);
                         atexturerenderer.drawScaledImage(this.settingsMenuTexture[3], 4 - (dv[this.fx[0]] / 2), 367 - (dv[this.fx[0]] / 2), dv[this.fx[0]] + 383, dv[this.fx[0]] + 85, 3);
@@ -14298,10 +14305,10 @@ public class AppInstance extends Game {
                 }
             } else if (this.currentBox[2] - this.gB[0] >= 1) {
                 if (this.currentBox[2] - this.gB[0] == 1) {
-                    if (this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1 < 10) {
+                    if (this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1 < 10) {
                         atexturerenderer.drawScaledImage(this.uiTextures[7], 4 - (dv[this.fx[0]] / 2), 367 - (dv[this.fx[0]] / 2), dv[this.fx[0]] + (383 - dv[this.fx[0]]), dv[this.fx[0]] + 85, 2);
                         atexturerenderer.drawScaledImage(this.uiTextures[7], 43 - (dv[this.fx[0]] / 2), 378 - (dv[this.fx[0]] / 2), dv[this.fx[0]] + 292, dv[this.fx[0]] + 62, 3);
-                        if (this.aY < ac[this.currentBox[2] - this.gB[0]][(this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1) % 10] * (((this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1) / 10) + 1)) {
+                        if (this.aY < specialSkillUpgradeCosts[this.currentBox[2] - this.gB[0]][(this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1) % 10] * (((this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1) / 10) + 1)) {
                             atexturerenderer.setImageColor(0, 0, 0);
                             atexturerenderer.setImageAlpha(127);
                             atexturerenderer.drawScaledImage(this.settingsMenuTexture[3], 4 - (dv[this.fx[0]] / 2), 367 - (dv[this.fx[0]] / 2), dv[this.fx[0]] + 383, dv[this.fx[0]] + 85, 3);
@@ -14314,10 +14321,10 @@ public class AppInstance extends Game {
                             atexturerenderer.drawScaledImage(this.settingsMenuTexture[3], 4, 367, 383, 85, 5);
                         }
                     }
-                } else if (this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1 < this.bi) {
+                } else if (this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1 < this.bi) {
                     atexturerenderer.drawScaledImage(this.uiTextures[7], 4 - (dv[this.fx[0]] / 2), 367 - (dv[this.fx[0]] / 2), dv[this.fx[0]] + (383 - dv[this.fx[0]]), dv[this.fx[0]] + 85, 2);
                     atexturerenderer.drawScaledImage(this.uiTextures[7], 43 - (dv[this.fx[0]] / 2), 378 - (dv[this.fx[0]] / 2), dv[this.fx[0]] + 292, dv[this.fx[0]] + 62, 3);
-                    if (this.aY < ac[this.currentBox[2] - this.gB[0]][(this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1) % 10] * (((this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1) / 10) + 1)) {
+                    if (this.aY < specialSkillUpgradeCosts[this.currentBox[2] - this.gB[0]][(this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1) % 10] * (((this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1) / 10) + 1)) {
                         atexturerenderer.setImageColor(0, 0, 0);
                         atexturerenderer.setImageAlpha(127);
                         atexturerenderer.drawScaledImage(this.settingsMenuTexture[3], 4 - (dv[this.fx[0]] / 2), 367 - (dv[this.fx[0]] / 2), dv[this.fx[0]] + 383, dv[this.fx[0]] + 85, 3);
@@ -14341,15 +14348,15 @@ public class AppInstance extends Game {
                     //this.gameStats1[0] = 1;
                 }
             } else if (this.currentBox[2] - this.gB[0] == 0) {
-                if (this.bx[0] + 1 < this.bi) {
+                if (this.specialSkillBaseLevels[0] + 1 < this.bi) {
                     //this.gameStats1[0] = 1;
                 }
             } else if (this.currentBox[2] - this.gB[0] >= 1) {
                 if (this.currentBox[2] - this.gB[0] == 1) {
-                    if (this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1 < 10) {
+                    if (this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1 < 10) {
                         //this.gameStats1[0] = 1;
                     }
-                } else if (this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1 < this.bi) {
+                } else if (this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1 < this.bi) {
                     //this.gameStats1[0] = 1;
                 }
             }
@@ -14527,7 +14534,7 @@ public class AppInstance extends Game {
                                 this.gameStats1[3] = 0;
                             }
                         } else {
-                            int i13 = (boxIndex - this.boxCounts[0]) - this.gB[0] == 0 ? this.bx[(boxIndex - this.boxCounts[0]) - this.gB[0]] + 1 : this.bx[((boxIndex + 1) - this.boxCounts[0]) - this.gB[0]] + 1;
+                            int i13 = (boxIndex - this.boxCounts[0]) - this.gB[0] == 0 ? this.specialSkillBaseLevels[(boxIndex - this.boxCounts[0]) - this.gB[0]] + 1 : this.specialSkillBaseLevels[((boxIndex + 1) - this.boxCounts[0]) - this.gB[0]] + 1;
                             if ((boxIndex - this.boxCounts[0]) - this.gB[0] == 1) {
                                 if (i13 >= 10) {
                                     this.gameStats1[1] = 0;
@@ -14598,10 +14605,10 @@ public class AppInstance extends Game {
                         } else if ((boxIndex - this.boxCounts[0]) - this.gB[0] < 0) {
                             this.gameStats1[1] = 0;
                         } else if ((boxIndex - this.boxCounts[0]) - this.gB[0] == 0) {
-                            i2 = this.bx[(boxIndex - this.boxCounts[0]) - this.gB[0]] + 1;
+                            i2 = this.specialSkillBaseLevels[(boxIndex - this.boxCounts[0]) - this.gB[0]] + 1;
                             this.gameStats1[1] = 1;
                         } else {
-                            i2 = this.bx[((boxIndex + 1) - this.boxCounts[0]) - this.gB[0]] + 1;
+                            i2 = this.specialSkillBaseLevels[((boxIndex + 1) - this.boxCounts[0]) - this.gB[0]] + 1;
                             this.gameStats1[1] = 1;
                         }
                         if (boxIndex - this.boxCounts[0] != this.gB[0] + 1 && i2 >= 10 && this.currentBox[3] == 0) {
@@ -14659,15 +14666,17 @@ public class AppInstance extends Game {
                     }
                 } else {
                     upgradeCost = 0;
-                    int baseLevel = 1;
+                    int baseLevel = 0;
                     if (boxIndex - this.boxCounts[0] >= this.gB[0]) {
                         if ((boxIndex - this.boxCounts[0]) - this.gB[0] >= 0) {
                             if ((boxIndex - this.boxCounts[0]) - this.gB[0] == 0) {
-                                int i20 = ac[0][(this.bx[0] + 1) % 10] * (((this.bx[0] + 1) / 10) + 1);
+                                int i20 = specialSkillUpgradeCosts[0][(this.specialSkillBaseLevels[0] + 1) % 10] * (((this.specialSkillBaseLevels[0] + 1) / 10) + 1);
                                 this.gameStats1[1] = 1;
+                                baseLevel = this.specialSkillBaseLevels[0] + 1;
                                 upgradeCost = i20;
                             } else {
-                                i12 = ac[(boxIndex - this.boxCounts[0]) - this.gB[0]][(this.bx[((boxIndex - this.boxCounts[0]) - this.gB[0]) + 1] + 1) % 10] * (((this.bx[((boxIndex - this.boxCounts[0]) - this.gB[0]) + 1] + 1) / 10) + 1);
+                                i12 = specialSkillUpgradeCosts[(boxIndex - this.boxCounts[0]) - this.gB[0]][(this.specialSkillBaseLevels[((boxIndex - this.boxCounts[0]) - this.gB[0]) + 1] + 1) % 10] * (((this.specialSkillBaseLevels[((boxIndex - this.boxCounts[0]) - this.gB[0]) + 1] + 1) / 10) + 1);
+                                baseLevel = this.specialSkillBaseLevels[((boxIndex - this.boxCounts[0]) - this.gB[0]) + 1] + 1;
                                 this.gameStats1[1] = 1;
                                 upgradeCost = i12;
                             }
@@ -14676,24 +14685,24 @@ public class AppInstance extends Game {
                         this.gameStats1[1] = 1;
                         upgradeCost = 0;
                     } else if (this.bu[this.boxCatIDs[(boxIndex - this.boxCounts[0]) - this.gB[1]]] == 0) {
-                        this.gameStats1[1] = 1;
+                        this.gameStats1[1] = 0;
+                        this.gameStats1[3] = 1;
                         upgradeCost = this.unitBuyStats[this.boxCatIDs[(boxIndex - this.boxCounts[0]) - this.gB[1]]][1];
                     } else {
                         this.gameStats1[1] = 1;
                         baseLevel = this.baseUpgrades[this.boxCatIDs[(boxIndex - this.boxCounts[0]) - this.gB[1]]] + 1;
                         upgradeCost = this.unitBuyStats[this.boxCatIDs[(boxIndex - this.boxCounts[0]) - this.gB[1]]][((this.baseUpgrades[this.boxCatIDs[(boxIndex - this.boxCounts[0]) - this.gB[1]]] + 1) % 10) + 2] * (((this.baseUpgrades[this.boxCatIDs[(boxIndex - this.boxCounts[0]) - this.gB[1]]] + 1) / 10) + 1);
                     }
-                    // TODO: Render Current Cat / Special Ability Level
-                    // TODO: Fix "NEED XP" for cats that are purchased with cf
+                    // TODO: render NEW CAT!!
                     atexturerenderer.drawScaledImagef(this.uiTextures[8], (((57.0f * (((this.boxSize[boxIndex][0] * 100.0f) / 328.0f) / 100.0f)) * cC[tempValue]) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[boxIndex][0] / 2.0f)) + (this.boxScale * boxIndex) + this.gameStats1[0] + xBoxOffset + ((107.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f), 347.0f - ((88.0f * ((this.boxSize[boxIndex][1] * 10000.0f) / 263.0f)) / 10000.0f), ((213.0f * ((this.boxSize[boxIndex][0] * 10000.0f) / 328.0f)) / 10000.0f) - ((((213.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (45.0f * ((this.boxSize[boxIndex][1] * 10000.0f) / 263.0f)) / 10000.0f, 72);
                     i2 = upgradeCost;
-                    int i15 = 0;
+                    int i15 = 0; // draw upgrade cost
                     do {
                         atexturerenderer.drawScaledImagef(this.uiTextures[5], ((((((-117.0f) + (i15 * ((29.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f))) * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f) + ((((((getWidth() / 2.0f) - (this.boxSize[boxIndex][0] / 2.0f)) + (this.boxScale * boxIndex)) + this.gameStats1[0]) + xBoxOffset) - (i15 * ((29.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f))) + ((281.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f), 347.0f - ((86.0f * ((this.boxSize[boxIndex][1] * 100.0f) / 263.0f)) / 100.0f), ((30.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) - ((((30.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (42.0f * ((this.boxSize[boxIndex][1] * 100.0f) / 263.0f)) / 100.0f, i2 % 10);
                         i2 /= 10;
                         i15++;
                     } while (i2 > 0);
-                    if (i15 >= 5) {
+                    if (i15 >= 5) { // draw NEED
                         if (this.gameStats1[3] == 0) {
                             atexturerenderer.drawScaledImagef(this.uiTextures[0], ((((((-79.0f) + (i15 * ((29.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f))) * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f) + ((((((getWidth() / 2.0f) - (this.boxSize[boxIndex][0] / 2.0f)) + (this.boxScale * boxIndex)) + this.gameStats1[0]) + xBoxOffset) - (i15 * ((29.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f))) + ((241.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f), 347.0f - ((83.0f * ((this.boxSize[boxIndex][1] * 100.0f) / 263.0f)) / 100.0f), ((62.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) - ((((62.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (36.0f * ((this.boxSize[boxIndex][1] * 100.0f) / 263.0f)) / 100.0f, 23);
                             atexturerenderer.drawScaledImagef(this.uiTextures[5], ((((((-30.0f) + (i15 * ((29.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f))) * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f) + ((((((getWidth() / 2.0f) - (this.boxSize[boxIndex][0] / 2.0f)) + (this.boxScale * boxIndex)) + this.gameStats1[0]) + xBoxOffset) - (i15 * ((29.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f))) + ((194.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f), 347.0f - ((75.0f * ((this.boxSize[boxIndex][1] * 100.0f) / 263.0f)) / 100.0f), ((47.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) - ((((47.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (28.0f * ((this.boxSize[boxIndex][1] * 100.0f) / 263.0f)) / 100.0f, 15);
@@ -14708,7 +14717,7 @@ public class AppInstance extends Game {
                         atexturerenderer.drawScaledImagef(this.uiTextures[0], (((((37.0f + (0 * ((29.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f))) * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f) + ((((((getWidth() / 2.0f) - (this.boxSize[boxIndex][0] / 2.0f)) + (this.boxScale * boxIndex)) + this.gameStats1[0]) + xBoxOffset) - (0 * ((29.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f))) + ((127.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f), 347.0f - ((86.0f * ((this.boxSize[boxIndex][1] * 100.0f) / 263.0f)) / 100.0f), ((55.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) - ((((62.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (42.0f * ((this.boxSize[boxIndex][1] * 100.0f) / 263.0f)) / 100.0f, 21);
                         atexturerenderer.drawScaledImagef(this.uiTextures[5], (((((86.0f + (0 * ((29.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f))) * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f) + ((((((getWidth() / 2.0f) - (this.boxSize[boxIndex][0] / 2.0f)) + (this.boxScale * boxIndex)) + this.gameStats1[0]) + xBoxOffset) - (0 * ((29.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f))) + ((78.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f), 347.0f - ((75.0f * ((this.boxSize[boxIndex][1] * 100.0f) / 263.0f)) / 100.0f), ((47.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) - ((((47.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (28.0f * ((this.boxSize[boxIndex][1] * 100.0f) / 263.0f)) / 100.0f, 15);
                     }
-                    i3 = 0;
+                    i3 = 0; // draw IN USE
                     while (true) {
                         i4 = i3;
                         if (i4 >= getLength(this.slotCatIDs)) {
@@ -14718,6 +14727,16 @@ public class AppInstance extends Game {
                             atexturerenderer.drawScaledImagef(this.uiTextures[9], ((((-59.0f) * (((this.boxSize[boxIndex][0] * 100.0f) / 328.0f) / 100.0f)) * cC[tempValue]) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[boxIndex][0] / 2.0f)) + (this.boxScale * boxIndex) + this.gameStats1[0] + xBoxOffset + ((223.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f), 347.0f - ((223.0f * ((this.boxSize[boxIndex][1] * 100.0f) / 263.0f)) / 100.0f), ((80.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) - ((((80.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (80.0f * ((this.boxSize[boxIndex][1] * 100.0f) / 263.0f)) / 100.0f, 0);
                         }
                         i3 = i4 + 1;
+                    }
+                    i2 = baseLevel; // draw base level
+                    int i16 = 0;
+                    if (this.gameStats1[1] == 1 || this.gameStats1[1] == 2) {
+                        do {
+                            int i17 = i16;
+                            atexturerenderer.drawScaledImagef(this.uiTextures[5], ((((((-117.0f) + (i17 * ((29.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f))) * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f) + ((((((getWidth() / 2.0f) - (this.boxSize[boxIndex][0] / 2.0f)) + (this.boxScale * boxIndex)) + this.gameStats1[0]) + xBoxOffset) - (i17 * ((29.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f))) + ((281.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f), 347.0f - ((152.0f * ((this.boxSize[boxIndex][1] * 100.0f) / 263.0f)) / 100.0f), ((30.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) - ((((30.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (42.0f * ((this.boxSize[boxIndex][1] * 100.0f) / 263.0f)) / 100.0f, i2 % 10);
+                            i2 /= 10;
+                            i16 = i17 + 1;
+                        } while (i2 > 0);
                     }
 
                     if (boxIndex - this.boxCounts[0] < this.gB[1]) {
@@ -18834,20 +18853,12 @@ public class AppInstance extends Game {
                         }
                         int[] iArr6 = this.fx;
                         iArr6[0] = iArr6[0] + 1;
-                    } else if (!isPointerUp() && isTouching(this.buttonCoordinates1[5][0], this.buttonCoordinates1[5][1], this.buttonCoordinates1[5][2], this.buttonCoordinates1[5][3])) {
+                    } else if (isPointerUp() && isTouching(this.buttonCoordinates1[5][0], this.buttonCoordinates1[5][1], this.buttonCoordinates1[5][2], this.buttonCoordinates1[5][3])) {
                         aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         int[] iArr7 = this.fx;
                         iArr7[5] = iArr7[5] + 1;
-                    } else if (isBackPressed()) {
-                        if (isPointerUp() && isTouching(this.buttonCoordinates1[14][0], this.buttonCoordinates1[14][1], this.buttonCoordinates1[14][2], this.buttonCoordinates1[14][3]) && this.bf >= 1) {
-                            int[] iArr8 = this.fx;
-                            iArr8[14] = iArr8[14] + 1;
-                            aSound.getInstance().play(SoundType.BUTTON_PRESS);
-                        }
-                    } else if (this.previousScreen == 0) {
-                        this.eE[1] = true;
-                    } else if (this.previousScreen >= 1) {
-                        this.eE[13] = true;
+                    } else if (isPointerDownNow() && isTouching(this.buttonCoordinates1[5][0], this.buttonCoordinates1[5][1], this.buttonCoordinates1[5][2], this.buttonCoordinates1[5][3])) {
+                        aSound.getInstance().play(SoundType.BUTTON_SELECT);
                     }
                     if (isPointerDown() || !isTouching(this.buttonCoordinates1[14][0], this.buttonCoordinates1[14][1], this.buttonCoordinates1[14][2], this.buttonCoordinates1[14][3])) {
                         this.gp[14] = false;
@@ -18890,6 +18901,13 @@ public class AppInstance extends Game {
                     if (isPointerDown()) {
                     }
                     this.gp[14] = false;
+                }
+                if (isPointerUp() && isTouching(this.buttonCoordinates1[5][0], this.buttonCoordinates1[5][1], this.buttonCoordinates1[5][2], this.buttonCoordinates1[5][3])) {
+                    aSound.getInstance().play(SoundType.BUTTON_PRESS);
+                    int[] iArr7 = this.fx;
+                    iArr7[5] = iArr7[5] + 1;
+                } else if (isPointerDownNow() && isTouching(this.buttonCoordinates1[5][0], this.buttonCoordinates1[5][1], this.buttonCoordinates1[5][2], this.buttonCoordinates1[5][3])) {
+                    aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 }
                 z = false;
                 if (z) {
@@ -19989,8 +20007,8 @@ public class AppInstance extends Game {
         for (int i39 = 0; i39 < 10; i39++) {
             i38 += (cB[10] * this.bO[i39][10]) / 100;
         }
-        if (this.currentEnergy >= ad[10] + (this.bx[10] * 10) + i38) {
-            this.currentEnergy = i38 + ad[10] + (this.bx[10] * 10);
+        if (this.currentEnergy >= ad[10] + (this.specialSkillBaseLevels[10] * 10) + i38) {
+            this.currentEnergy = i38 + ad[10] + (this.specialSkillBaseLevels[10] * 10);
         }
         for (int i40 = 0; i40 < getLength(this.boxSize); i40++) {
             for (int i41 = 0; i41 < getLength(this.boxSize[i40]); i41++) {
@@ -20194,7 +20212,7 @@ public class AppInstance extends Game {
                         i2 += (cB[10] * this.bO[i3][10]) / 100;
                     }
                     if (this.br[this.eQ][this.currentStageBox[2]] >= 1) {
-                        if (ad[10] + (this.bx[10] * 10) + i2 >= ((((((Math.min(this.br[this.eQ][this.currentStageBox[2]] + 1, 8)) + 6) * (X[this.eQ] + this.stageEoCStats[this.currentStageBox[2]])) * 10) / ((Math.min(this.br[this.eQ][this.currentStageBox[2]] + 1, 8)) * 6)) + 5) / 10) {
+                        if (ad[10] + (this.specialSkillBaseLevels[10] * 10) + i2 >= ((((((Math.min(this.br[this.eQ][this.currentStageBox[2]] + 1, 8)) + 6) * (X[this.eQ] + this.stageEoCStats[this.currentStageBox[2]])) * 10) / ((Math.min(this.br[this.eQ][this.currentStageBox[2]] + 1, 8)) * 6)) + 5) / 10) {
                             if (this.fx[0] > getLength(dv) - 1) {
                                 this.fx[0] = 0;
                                 screenTransition();
@@ -20209,7 +20227,7 @@ public class AppInstance extends Game {
                             this.gw = 5;
                             return false;
                         }
-                    } else if (i2 + ad[10] + (this.bx[10] * 10) >= this.stageEoCStats[this.currentStageBox[2]] + X[this.eQ]) {
+                    } else if (i2 + ad[10] + (this.specialSkillBaseLevels[10] * 10) >= this.stageEoCStats[this.currentStageBox[2]] + X[this.eQ]) {
                         if (this.fx[0] > getLength(dv) - 1) {
                             this.fx[0] = 0;
                             screenTransition();
@@ -20298,7 +20316,7 @@ public class AppInstance extends Game {
                     for (int i6 = 0; i6 < 10; i6++) {
                         i5 += (cB[10] * this.bO[i6][10]) / 100;
                     }
-                    if (this.currentEnergy >= i5 + ad[10] + (this.bx[10] * 10)) {
+                    if (this.currentEnergy >= i5 + ad[10] + (this.specialSkillBaseLevels[10] * 10)) {
                         this.fx[16] = 0;
                         screenTransition();
                         this.gu = true;
@@ -21065,9 +21083,9 @@ public class AppInstance extends Game {
                     for (int i21 = 0; i21 < 10; i21++) {
                         i20 += (cB[10] * this.bO[i21][10]) / 100;
                     }
-                    int i22 = ((ad[10] + (this.bx[10] * 10)) + i20) - this.currentEnergy;
+                    int i22 = ((ad[10] + (this.specialSkillBaseLevels[10] * 10)) + i20) - this.currentEnergy;
                     if (this.regionState == 0) {
-                        this.textTextures2[getLength(this.warning2Text[4]) + 1].drawText(String.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.currentEnergy, this.warning1Text[11], i20 + ad[10] + (this.bx[10] * 10), this.warning1Text[12], i22, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures2[getLength(this.warning2Text[4]) + 1].drawText(String.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.currentEnergy, this.warning1Text[11], i20 + ad[10] + (this.specialSkillBaseLevels[10] * 10), this.warning1Text[12], i22, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
                     } else if (this.regionState == 1) {
                         this.textTextures2[getLength(this.warning2Text[4]) + 1].drawText(String.format("%s%d%s", this.warning1Text[12], i22, this.warning1Text[13]), "FONT_SYSTEM_BOLD", 30, 1);
                     }
@@ -21081,9 +21099,9 @@ public class AppInstance extends Game {
                     for (int i25 = 0; i25 < 10; i25++) {
                         i24 += (cB[10] * this.bO[i25][10]) / 100;
                     }
-                    int i26 = ((ad[10] + (this.bx[10] * 10)) + i24) - this.currentEnergy;
+                    int i26 = ((ad[10] + (this.specialSkillBaseLevels[10] * 10)) + i24) - this.currentEnergy;
                     if (this.regionState == 0) {
-                        this.textTextures2[getLength(this.warning2Text[5]) + 1].drawText(String.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.currentEnergy, this.warning1Text[11], i24 + ad[10] + (this.bx[10] * 10), this.warning1Text[12], i26, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures2[getLength(this.warning2Text[5]) + 1].drawText(String.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.currentEnergy, this.warning1Text[11], i24 + ad[10] + (this.specialSkillBaseLevels[10] * 10), this.warning1Text[12], i26, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
                     } else if (this.regionState == 1) {
                         this.textTextures2[getLength(this.warning2Text[5]) + 1].drawText(String.format("%s%d%s", this.warning1Text[12], i26, this.warning1Text[13]), "FONT_SYSTEM_BOLD", 30, 1);
                     }
@@ -21105,9 +21123,9 @@ public class AppInstance extends Game {
                     for (int i30 = 0; i30 < 10; i30++) {
                         i29 += (cB[10] * this.bO[i30][10]) / 100;
                     }
-                    int i31 = ((ad[10] + (this.bx[10] * 10)) + i29) - this.currentEnergy;
+                    int i31 = ((ad[10] + (this.specialSkillBaseLevels[10] * 10)) + i29) - this.currentEnergy;
                     if (this.regionState == 0) {
-                        this.textTextures2[getLength(this.warning2Text[7]) + 1].drawText(String.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.currentEnergy, this.warning1Text[11], i29 + ad[10] + (this.bx[10] * 10), this.warning1Text[12], i31, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures2[getLength(this.warning2Text[7]) + 1].drawText(String.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.currentEnergy, this.warning1Text[11], i29 + ad[10] + (this.specialSkillBaseLevels[10] * 10), this.warning1Text[12], i31, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
                     } else if (this.regionState == 1) {
                         this.textTextures2[getLength(this.warning2Text[7]) + 1].drawText(String.format("%s%d%s", this.warning1Text[12], i31, this.warning1Text[13]), "FONT_SYSTEM_BOLD", 30, 1);
                     }
@@ -21544,7 +21562,7 @@ public class AppInstance extends Game {
                                     for (int i54 = 0; i54 < 10; i54++) {
                                         i53 += (cB[10] * this.bO[i54][10]) / 100;
                                     }
-                                    this.currentEnergy = i53 + ad[10] + (this.bx[10] * 10);
+                                    this.currentEnergy = i53 + ad[10] + (this.specialSkillBaseLevels[10] * 10);
                                     this.hG++;
                                     if (this.hG >= 999999999) {
                                         this.hG = 999999999;
@@ -22182,17 +22200,17 @@ public class AppInstance extends Game {
                         this.uiTextures[i55 + 11].load(MyUtility.getString(String.format("udi%03d_c.png", this.boxCatIDs[i55 - this.gB[1]])), MyUtility.getString(String.format("udi%03d_c.imgcut", this.boxCatIDs[i55 - this.gB[1]])));
                     }
                 }
-            } else if (i55 - this.gB[0] != 0 || this.bx[0] + 1 >= this.bi) {
+            } else if (i55 - this.gB[0] != 0 || this.specialSkillBaseLevels[0] + 1 >= this.bi) {
                 if (i55 - this.gB[0] == 0) {
                     if (!this.uiTextures[i55 + 11].isLoaded()) {
                         this.uiTextures[i55 + 11].load(MyUtility.getString(String.format("udi%03d_sg_%s.png", i55 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_sg_%s.imgcut", i55 - this.gB[0], MyUtility.getString("lang"))));
                     }
-                } else if (i55 - this.gB[0] != 1 || this.bx[2] + 1 >= 10) {
+                } else if (i55 - this.gB[0] != 1 || this.specialSkillBaseLevels[2] + 1 >= 10) {
                     if (i55 - this.gB[0] == 1) {
                         if (!this.uiTextures[i55 + 11].isLoaded()) {
                             this.uiTextures[i55 + 11].load(MyUtility.getString(String.format("udi%03d_sg_%s.png", i55 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_sg_%s.imgcut", i55 - this.gB[0], MyUtility.getString("lang"))));
                         }
-                    } else if (this.bx[(i55 - this.gB[0]) + 1] + 1 < this.bi) {
+                    } else if (this.specialSkillBaseLevels[(i55 - this.gB[0]) + 1] + 1 < this.bi) {
                         if (!this.uiTextures[i55 + 11].isLoaded()) {
                             this.uiTextures[i55 + 11].load(MyUtility.getString(String.format("udi%03d_s_%s.png", i55 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_s_%s.imgcut", i55 - this.gB[0], MyUtility.getString("lang"))));
                         }
@@ -22560,13 +22578,13 @@ public class AppInstance extends Game {
                                 }
                             }
                         } else if (this.currentBox[2] - this.gB[0] == 0) {
-                            if (this.aY >= ac[0][(this.bx[0] + 1) % 10] * (((this.bx[0] + 1) / 10) + 1)) {
-                                this.aY -= ac[0][(this.bx[0] + 1) % 10] * (((this.bx[0] + 1) / 10) + 1);
-                                int[] iArr5 = this.bx;
+                            if (this.aY >= specialSkillUpgradeCosts[0][(this.specialSkillBaseLevels[0] + 1) % 10] * (((this.specialSkillBaseLevels[0] + 1) / 10) + 1)) {
+                                this.aY -= specialSkillUpgradeCosts[0][(this.specialSkillBaseLevels[0] + 1) % 10] * (((this.specialSkillBaseLevels[0] + 1) / 10) + 1);
+                                int[] iArr5 = this.specialSkillBaseLevels;
                                 iArr5[0] = iArr5[0] + 1;
-                                int[] iArr6 = this.bx;
+                                int[] iArr6 = this.specialSkillBaseLevels;
                                 iArr6[1] = iArr6[1] + 1;
-                                if (this.bx[0] + 1 >= this.bi) {
+                                if (this.specialSkillBaseLevels[0] + 1 >= this.bi) {
                                     if (this.uiTextures[this.currentBox[2] + 11].isLoaded()) {
                                         this.uiTextures[this.currentBox[2] + 11].reset();
                                     }
@@ -22587,13 +22605,13 @@ public class AppInstance extends Game {
                             }
                         } else if (this.currentBox[2] - this.gB[0] >= 1) {
                             if (this.currentBox[2] - this.gB[0] == 1) {
-                                if (this.bx[2] + 1 < 10) {
-                                    if (this.aY >= ac[this.currentBox[2] - this.gB[0]][(this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1) % 10] * (((this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1) / 10) + 1)) {
-                                        this.aY -= ac[this.currentBox[2] - this.gB[0]][(this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1) % 10] * (((this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1) / 10) + 1);
-                                        int[] iArr7 = this.bx;
+                                if (this.specialSkillBaseLevels[2] + 1 < 10) {
+                                    if (this.aY >= specialSkillUpgradeCosts[this.currentBox[2] - this.gB[0]][(this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1) % 10] * (((this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1) / 10) + 1)) {
+                                        this.aY -= specialSkillUpgradeCosts[this.currentBox[2] - this.gB[0]][(this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1) % 10] * (((this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1) / 10) + 1);
+                                        int[] iArr7 = this.specialSkillBaseLevels;
                                         int i24 = (this.currentBox[2] - this.gB[0]) + 1;
                                         iArr7[i24] = iArr7[i24] + 1;
-                                        if (this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1 >= 10) {
+                                        if (this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1 >= 10) {
                                             if (this.uiTextures[this.currentBox[2] + 11].isLoaded()) {
                                                 this.uiTextures[this.currentBox[2] + 11].reset();
                                             }
@@ -22613,12 +22631,12 @@ public class AppInstance extends Game {
                                         return false;
                                     }
                                 }
-                            } else if (this.aY >= ac[this.currentBox[2] - this.gB[0]][(this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1) % 10] * (((this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1) / 10) + 1)) {
-                                this.aY -= ac[this.currentBox[2] - this.gB[0]][(this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1) % 10] * (((this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1) / 10) + 1);
-                                int[] iArr8 = this.bx;
+                            } else if (this.aY >= specialSkillUpgradeCosts[this.currentBox[2] - this.gB[0]][(this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1) % 10] * (((this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1) / 10) + 1)) {
+                                this.aY -= specialSkillUpgradeCosts[this.currentBox[2] - this.gB[0]][(this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1) % 10] * (((this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1) / 10) + 1);
+                                int[] iArr8 = this.specialSkillBaseLevels;
                                 int i26 = (this.currentBox[2] - this.gB[0]) + 1;
                                 iArr8[i26] = iArr8[i26] + 1;
-                                if (this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1 >= this.bi) {
+                                if (this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1 >= this.bi) {
                                     if (this.uiTextures[this.currentBox[2] + 11].isLoaded()) {
                                         this.uiTextures[this.currentBox[2] + 11].reset();
                                     }
@@ -22632,8 +22650,8 @@ public class AppInstance extends Game {
                                 }
                                 if ((this.currentBox[2] - this.gB[0]) + 1 == 10) {
                                     this.currentEnergy += 10;
-                                    if (this.currentEnergy >= ad[10] + (this.bx[10] * 10) + i27) {
-                                        this.currentEnergy = i27 + ad[10] + (this.bx[10] * 10);
+                                    if (this.currentEnergy >= ad[10] + (this.specialSkillBaseLevels[10] * 10) + i27) {
+                                        this.currentEnergy = i27 + ad[10] + (this.specialSkillBaseLevels[10] * 10);
                                     }
                                 }
                                 for (int i29 = 0; i29 < getLength(this.gG); i29++) {
@@ -22734,16 +22752,16 @@ public class AppInstance extends Game {
                             this.gp[0] = true;
                         }
                     } else if (this.currentBox[2] - this.gB[0] == 0) {
-                        if (this.bx[0] + 1 < this.bi) {
+                        if (this.specialSkillBaseLevels[0] + 1 < this.bi) {
                             aSound.getInstance().play(SoundType.BUTTON_SELECT);
                             this.gp[0] = true;
                         }
                     } else if (this.currentBox[2] - this.gB[0] == 1) {
-                        if (this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1 < 10) {
+                        if (this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1 < 10) {
                             aSound.getInstance().play(SoundType.BUTTON_SELECT);
                             this.gp[0] = true;
                         }
-                    } else if (this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1 < this.bi) {
+                    } else if (this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1 < this.bi) {
                         aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gp[0] = true;
                     }
@@ -22833,8 +22851,8 @@ public class AppInstance extends Game {
                                 }
                             }
                         } else if (this.currentBox[2] - this.gB[0] == 0) {
-                            if (this.bx[0] + 1 < this.bi) {
-                                if (this.aY >= ac[0][(this.bx[0] + 1) % 10] * (((this.bx[0] + 1) / 10) + 1)) {
+                            if (this.specialSkillBaseLevels[0] + 1 < this.bi) {
+                                if (this.aY >= specialSkillUpgradeCosts[0][(this.specialSkillBaseLevels[0] + 1) % 10] * (((this.specialSkillBaseLevels[0] + 1) / 10) + 1)) {
                                     aSound.getInstance().play(SoundType.UPGRADE);
                                 } else {
                                     aSound.getInstance().play(SoundType.CANT_PRESS);
@@ -22845,8 +22863,8 @@ public class AppInstance extends Game {
                             }
                         } else if (this.currentBox[2] - this.gB[0] >= 1) {
                             if (this.currentBox[2] - this.gB[0] == 1) {
-                                if (this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1 < 10) {
-                                    if (this.aY >= ac[this.currentBox[2] - this.gB[0]][(this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1) % 10] * (((this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1) / 10) + 1)) {
+                                if (this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1 < 10) {
+                                    if (this.aY >= specialSkillUpgradeCosts[this.currentBox[2] - this.gB[0]][(this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1) % 10] * (((this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1) / 10) + 1)) {
                                         aSound.getInstance().play(SoundType.UPGRADE);
                                     } else {
                                         aSound.getInstance().play(SoundType.CANT_PRESS);
@@ -22855,8 +22873,8 @@ public class AppInstance extends Game {
                                     int[] iArr22 = this.fx;
                                     iArr22[0] = iArr22[0] + 1;
                                 }
-                            } else if (this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1 < this.bi) {
-                                if (this.aY >= ac[this.currentBox[2] - this.gB[0]][(this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1) % 10] * (((this.bx[(this.currentBox[2] - this.gB[0]) + 1] + 1) / 10) + 1)) {
+                            } else if (this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1 < this.bi) {
+                                if (this.aY >= specialSkillUpgradeCosts[this.currentBox[2] - this.gB[0]][(this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1) % 10] * (((this.specialSkillBaseLevels[(this.currentBox[2] - this.gB[0]) + 1] + 1) / 10) + 1)) {
                                     aSound.getInstance().play(SoundType.UPGRADE);
                                 } else {
                                     aSound.getInstance().play(SoundType.CANT_PRESS);
@@ -22942,9 +22960,9 @@ public class AppInstance extends Game {
                     this.gz = this.unitBuyStats[this.boxCatIDs[this.currentBox[2] - this.gB[1]]][((this.baseUpgrades[this.boxCatIDs[this.currentBox[2] - this.gB[1]]] + 1) % 10) + 2] * (((this.baseUpgrades[this.boxCatIDs[this.currentBox[2] - this.gB[1]]] + 1) / 10) + 1);
                 }
             } else if ((this.currentBox[2] - this.gB[1]) - this.gB[0] == 0) {
-                this.gz = ac[0][(this.bx[0] + 1) % 10] * (((this.bx[0] + 1) / 10) + 1);
+                this.gz = specialSkillUpgradeCosts[0][(this.specialSkillBaseLevels[0] + 1) % 10] * (((this.specialSkillBaseLevels[0] + 1) / 10) + 1);
             } else if ((this.currentBox[2] - this.gB[1]) - this.gB[0] >= 1) {
-                this.gz = ac[(this.currentBox[2] - this.gB[1]) - this.gB[0]][(this.bx[((this.currentBox[2] - this.gB[1]) - this.gB[0]) + 1] + 1) % 10] * (((this.bx[((this.currentBox[2] - this.gB[1]) - this.gB[0]) + 1] + 1) / 10) + 1);
+                this.gz = specialSkillUpgradeCosts[(this.currentBox[2] - this.gB[1]) - this.gB[0]][(this.specialSkillBaseLevels[((this.currentBox[2] - this.gB[1]) - this.gB[0]) + 1] + 1) % 10] * (((this.specialSkillBaseLevels[((this.currentBox[2] - this.gB[1]) - this.gB[0]) + 1] + 1) / 10) + 1);
             }
         }
         if (this.gI) {

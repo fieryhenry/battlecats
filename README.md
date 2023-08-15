@@ -92,7 +92,6 @@ easier to update it with code from later versions.
 Here are some current problems with the app:
 
 - [ ] Some animations are broken
-- [ ] Can't see current upgrade level of cats
 - [ ] Freezing if too many enemies die
 - [ ] Cat cannon firing strangely
 - [ ] Crashing when trying to go to the catfood shop when you don't have enough

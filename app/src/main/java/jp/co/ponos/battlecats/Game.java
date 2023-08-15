@@ -195,7 +195,7 @@ public class Game extends MyApplicationBase {
     static int[] Z = new int[11];
     static int[] aa = new int[11];
     static int[] ab = new int[4];
-    static int[][] ac = (int[][]) Array.newInstance(Integer.TYPE, 10, 10);
+    static int[][] specialSkillUpgradeCosts = (int[][]) Array.newInstance(Integer.TYPE, 10, 10);
     static int[] ad = new int[11];
     static int[] aB = new int[4];
     static int[][] ck = (int[][]) Array.newInstance(Integer.TYPE, 48, 4);
@@ -280,7 +280,7 @@ public class Game extends MyApplicationBase {
     int[] bu = new int[26];
     int[] baseUpgrades = new int[26];
     int[] bw = new int[26];
-    int[] bx = new int[11];
+    int[] specialSkillBaseLevels = new int[11];
     int[] by = new int[5];
     int[] bz = new int[5];
     int[] bA = new int[6];
@@ -499,7 +499,7 @@ public class Game extends MyApplicationBase {
         cl = new int[][]{new int[]{260, 246}, new int[]{102, 96}, new int[]{74, 114}, new int[]{78, 118}, new int[]{61, 97}, new int[]{78, 85}, new int[]{103, 80}, new int[]{66, 85}, new int[]{53, 64}, new int[]{71, 72}, new int[]{64, 36}, new int[]{52, 25}, new int[]{64, 78}, new int[]{50, 39}, new int[]{124, 125}, new int[]{76, 122}, new int[]{51, 55}, new int[]{93, 67}, new int[]{55, 50}, new int[]{75, 88}, new int[]{64, 56}, new int[]{63, 104}, new int[]{83, 66}, new int[]{39, 61}, new int[]{59, 101}, new int[]{37, 59}, new int[]{67, 76}, new int[]{38, 52}, new int[]{55, 62}, new int[]{68, 103}, new int[]{77, 39}, new int[]{64, 61}, new int[]{93, 88}, new int[]{78, 62}, new int[]{79, 56}, new int[]{50, 29}, new int[]{60, 47}, new int[]{89, 83}, new int[]{96, 76}, new int[]{64, 66}, new int[]{66, 65}, new int[]{66, 96}, new int[]{77, 71}, new int[]{63, 85}, new int[]{45, 44}, new int[]{59, 55}, new int[]{135, 153}, new int[]{22, 17}};
         cm = new int[]{45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 46, 47, 48};
         cn = new int[]{3, 0, 4, 3, 0, 4, 3, 0, 4, 3, 0, 4, 3, 0, 4, 3, 0, 4, 3, 90, 32, 3, 0, 4, 3, 0, 4, 3, 90, 30, 3, 0, 4, 3, 0, 4, 3, 90, 31, 3, 0, 4, 3, 0, 4, 3, 85, 32, 3, 0, 4, 3, 0, 4, 33, 0, 4, 3, 0, 4, 3, 0, 4, 3, 0, 4, 3, 93, 31, 3, 0, 4, 3, 0, 4, 33, 0, 4, 3, 0, 4, 3, 0, 4, 3, 90, 32, 3, 0, 4, 3, 0, 4, 30, 0, 4, 3, 0, 4, 3, 0, 4, 3, 99, 31, 3, 0, 4, 3, 0, 4, 3, 92, 31, 3, 0, 4, 3, 0, 4, 30, 0, 4, 3, 0, 4, 30, 0, 4, 3, 99, 32, 31, 0, 4, 33, 0, 4, 3, 0, 4, 4, 0, 4, 6, 60, 4, 4, 0, 4, 4, 70, 33};
-        ac = new int[][]{new int[]{500, 1000, 2000, 4000, 8000, 12000, 16000, 20000, 24000, 28000}, new int[]{250, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500}, new int[]{250, 500, 1000, 2000, 4000, 6000, 8000, 10000, 12000, 15000}, new int[]{500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000}, new int[]{500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000}, new int[]{500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000}, new int[]{500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000}, new int[]{500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000}, new int[]{500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000}, new int[]{500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000}};
+        specialSkillUpgradeCosts = new int[][]{new int[]{500, 1000, 2000, 4000, 8000, 12000, 16000, 20000, 24000, 28000}, new int[]{250, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500}, new int[]{250, 500, 1000, 2000, 4000, 6000, 8000, 10000, 12000, 15000}, new int[]{500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000}, new int[]{500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000}, new int[]{500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000}, new int[]{500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000}, new int[]{500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000}, new int[]{500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000}, new int[]{500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000}};
         ad = new int[]{100, 1500, 3, 0, 25, 10000, 1000, 0, 100, 100, 100};
         cx = new int[]{4, 4, 4, 4, 3, 3, 2, 2, 1, 1};
         cy = new int[]{7, 4, 5, 7, 3, 3, 3, 7, 6, 1, 2};
@@ -729,9 +729,9 @@ public class Game extends MyApplicationBase {
             this.rechargeTimes[i27] = 0;
         }
         this.battleData[14] = 3;
-        this.battleData[11] = this.bx[4];
+        this.battleData[11] = this.specialSkillBaseLevels[4];
         this.battleData[6] = ad[4] + (this.battleData[11] * 10);
-        this.battleData[7] = ad[5] + (this.bx[5] * 10000);
+        this.battleData[7] = ad[5] + (this.specialSkillBaseLevels[5] * 10000);
         for (int i28 = 0; i28 < getLength(this.bN); i28++) {
             this.bN[i28] = 0;
         }
@@ -761,12 +761,12 @@ public class Game extends MyApplicationBase {
         this.unitBattleStats[0][0][3] = this.bV[0] - 3200;
         this.unitBattleStats[0][0][4] = 4400;
         this.unitBattleStats[0][0][5] = 0;
-        this.unitBattleStats[0][0][6] = ad[2] + (this.bx[2] * 1);
-        this.unitBattleStats[0][0][7] = ad[6] + (this.bx[6] * 1000);
-        if (this.bx[6] >= 4 && this.bx[6] <= 7) {
-            this.unitBattleStats[0][0][7] = ((this.bx[6] - 4) * 2000) + 6000;
-        } else if (this.bx[6] >= 8) {
-            this.unitBattleStats[0][0][7] = ((this.bx[6] - 8) * 3000) + 15000;
+        this.unitBattleStats[0][0][6] = ad[2] + (this.specialSkillBaseLevels[2] * 1);
+        this.unitBattleStats[0][0][7] = ad[6] + (this.specialSkillBaseLevels[6] * 1000);
+        if (this.specialSkillBaseLevels[6] >= 4 && this.specialSkillBaseLevels[6] <= 7) {
+            this.unitBattleStats[0][0][7] = ((this.specialSkillBaseLevels[6] - 4) * 2000) + 6000;
+        } else if (this.specialSkillBaseLevels[6] >= 8) {
+            this.unitBattleStats[0][0][7] = ((this.specialSkillBaseLevels[6] - 8) * 3000) + 15000;
         }
         for (int i34 = 0; i34 < 10; i34++) {
             int[] iArr3 = this.unitBattleStats[0][0];
@@ -775,7 +775,7 @@ public class Game extends MyApplicationBase {
         this.unitBattleStats[0][0][8] = this.unitBattleStats[0][0][7];
         this.unitBattleStats[0][0][9] = 0;
         this.unitBattleStats[0][0][10] = 0;
-        this.unitBattleStats[0][0][11] = ((ad[1] + (this.bx[1] * 50)) - (ad[3] + (this.bx[3] * 50))) + (this.eQ * 450);
+        this.unitBattleStats[0][0][11] = ((ad[1] + (this.specialSkillBaseLevels[1] * 50)) - (ad[3] + (this.specialSkillBaseLevels[3] * 50))) + (this.eQ * 450);
         for (int i35 = 0; i35 < 10; i35++) {
             int[] iArr4 = this.unitBattleStats[0][0];
             iArr4[11] = iArr4[11] - ((cB[9] * this.bO[i35][9]) / 100);
@@ -787,7 +787,7 @@ public class Game extends MyApplicationBase {
         this.unitBattleStats[0][0][13] = 0;
         this.unitBattleStats[0][0][14] = 0;
         this.unitBattleStats[0][0][15] = 1800;
-        this.unitBattleStats[0][0][16] = ad[0] + (this.bx[0] * 50);
+        this.unitBattleStats[0][0][16] = ad[0] + (this.specialSkillBaseLevels[0] * 50);
         for (int i36 = 0; i36 < 10; i36++) {
             int[] iArr5 = this.unitBattleStats[0][0];
             iArr5[16] = iArr5[16] + ((cB[8] * this.bO[i36][8]) / 100);
@@ -1581,7 +1581,7 @@ public class Game extends MyApplicationBase {
     public void a(aTextureRenderer atexturerenderer, int catID, int i2, int i3) {
         this.gameStats1[2] = this.unitStats[this.slotCatIDs[catID]][this.slotFormIDs[catID]][7];
         int[] iArr = this.gameStats1;
-        iArr[2] = iArr[2] - (ad[7] + (this.bx[7] * 6));
+        iArr[2] = iArr[2] - (ad[7] + (this.specialSkillBaseLevels[7] * 6));
         for (int i4 = 0; i4 < 10; i4++) {
             int[] iArr2 = this.gameStats1;
             iArr2[2] = iArr2[2] - ((cB[2] * this.bO[i4][2]) / 100);
@@ -1898,8 +1898,8 @@ public class Game extends MyApplicationBase {
                 for (int i16 = 0; i16 < getLength(this.bw); i16++) {
                     this.bw[i16] = afilestream.readInt();
                 }
-                for (int i17 = 0; i17 < getLength(this.bx); i17++) {
-                    this.bx[i17] = afilestream.readInt();
+                for (int i17 = 0; i17 < getLength(this.specialSkillBaseLevels); i17++) {
+                    this.specialSkillBaseLevels[i17] = afilestream.readInt();
                 }
                 for (int i18 = 0; i18 < getLength(this.by); i18++) {
                     this.by[i18] = afilestream.readInt();
@@ -2016,8 +2016,8 @@ public class Game extends MyApplicationBase {
             for (int i16 = 0; i16 < getLength(this.bw); i16++) {
                 afilestream.writeInt(this.bw[i16]);
             }
-            for (int i17 = 0; i17 < getLength(this.bx); i17++) {
-                afilestream.writeInt(this.bx[i17]);
+            for (int i17 = 0; i17 < getLength(this.specialSkillBaseLevels); i17++) {
+                afilestream.writeInt(this.specialSkillBaseLevels[i17]);
             }
             for (int i18 = 0; i18 < getLength(this.by); i18++) {
                 afilestream.writeInt(this.by[i18]);
@@ -2471,39 +2471,39 @@ public class Game extends MyApplicationBase {
             for (int i11 = 0; i11 < 9; i11++) {
                 if (i11 == 0) {
                     i9 = 108;
-                    i10 = this.bx[0] + 1;
+                    i10 = this.specialSkillBaseLevels[0] + 1;
                     this.gameStats1[0] = this.bi;
                 } else if (i11 == 1) {
                     i9 = 140;
-                    i10 = this.bx[2] + 1;
+                    i10 = this.specialSkillBaseLevels[2] + 1;
                     this.gameStats1[0] = 10;
                 } else if (i11 == 2) {
                     i9 = 172;
-                    i10 = this.bx[3] + 1;
+                    i10 = this.specialSkillBaseLevels[3] + 1;
                     this.gameStats1[0] = this.bi;
                 } else if (i11 == 3) {
                     i9 = 298;
-                    i10 = this.bx[4] + 1;
+                    i10 = this.specialSkillBaseLevels[4] + 1;
                     this.gameStats1[0] = this.bi;
                 } else if (i11 == 4) {
                     i9 = 330;
-                    i10 = this.bx[5] + 1;
+                    i10 = this.specialSkillBaseLevels[5] + 1;
                     this.gameStats1[0] = this.bi;
                 } else if (i11 == 5) {
                     i9 = 204;
-                    i10 = this.bx[6] + 1;
+                    i10 = this.specialSkillBaseLevels[6] + 1;
                     this.gameStats1[0] = this.bi;
                 } else if (i11 == 6) {
                     i9 = 362;
-                    i10 = this.bx[7] + 1;
+                    i10 = this.specialSkillBaseLevels[7] + 1;
                     this.gameStats1[0] = this.bi;
                 } else if (i11 == 7) {
                     i9 = 394;
-                    i10 = this.bx[8] + 1;
+                    i10 = this.specialSkillBaseLevels[8] + 1;
                     this.gameStats1[0] = this.bi;
                 } else if (i11 == 8) {
                     i9 = 426;
-                    i10 = this.bx[9] + 1;
+                    i10 = this.specialSkillBaseLevels[9] + 1;
                     this.gameStats1[0] = this.bi;
                 }
                 if (i10 < this.gameStats1[0]) {
