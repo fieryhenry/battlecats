@@ -27,6 +27,11 @@ A debug APK can be found in the artifacts section of the
 workflow. This APK is built from the latest code in the `master` branch and so
 might not be working properly.
 
+You need to be logged in to GitHub to download the APKs from the artifacts
+section. So if you don't have an account, you can download it from
+[here](https://nightly.link/fieryhenry/battlecats/workflows/build-apk/master/app-debug.apk.zip)
+instead. You will also need to unzip it before you can install it.
+
 ## Building the APK yourself
 
 1. [Download Android Studio](https://developer.android.com/studio)
