@@ -10,7 +10,7 @@ public class MyBackKeyController extends aBackKeyController {
         if (A.a().getSceneType() == SceneType.MAIN && A.a().screenID == 0 && A.a().fG[0] == 0 && !A.a().ee) {
             return false;
         }
-        A.a().S = true;
+        A.a().backPressed = true;
         A.a().i = 0;
         A.a().menuType = -1;
         return true;

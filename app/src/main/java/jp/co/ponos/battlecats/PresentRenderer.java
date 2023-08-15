@@ -19,11 +19,11 @@ public class PresentRenderer extends aPresentRenderer {
     public void a() {
         A.a().e = null;
         A.a().zoom.reset();
-        A.a().M = false;
-        A.a().pointerDown = false;
-        A.a().P = false;
+        A.a().pointerDownNow = false;
+        A.a().isPressEvent = false;
         A.a().pointerUp = false;
-        A.a().O = false;
+        A.a().isReleaseEvent = false;
+        A.a().pointerDown = false;
     }
 
     @Override // jp.co.ponos.library.game.aPresentRenderer

@@ -22,22 +22,22 @@ import jp.co.ponos.library.score.MyUtility;
 /* renamed from: jp.co.ponos.battlecats.e */
 /* loaded from: classes.dex */
 public class Game extends MyApplicationBase {
-    int D;
+    int initState;
     int currentXTouch;
     int touchX;
-    int G;
+    int tempXTouch;
     int prevXTouch;
     int currentYTouch;
     int touchY;
-    int K;
+    int tempYTouch;
     int prevYTouch;
-    boolean M;
+    boolean pointerDownNow;
+    boolean isPressEvent;
     boolean pointerDown;
-    boolean O;
-    boolean P;
     boolean pointerUp;
-    boolean R;
-    boolean S;
+    boolean isReleaseEvent;
+    boolean isBackPressed;
+    boolean backPressed;
     int scene;
     int scene2;
     int V;
@@ -108,7 +108,7 @@ public class Game extends MyApplicationBase {
     int eZ;
     int ea;
     boolean eb;
-    int ec;
+    int openingTimer;
     int ed;
     boolean ee;
     boolean ef;
@@ -121,7 +121,7 @@ public class Game extends MyApplicationBase {
     String f;
     int screenID;
     int fE;
-    int fF;
+    int screenLoadState;
     int fI;
     int fJ;
     int fK;
@@ -186,7 +186,7 @@ public class Game extends MyApplicationBase {
     boolean t;
     boolean u;
     boolean v;
-    int w;
+    int excessWidth;
     int zoomLevel;
     static int[] l = new int[8];
     static int[] m = new int[8];
@@ -408,7 +408,7 @@ public class Game extends MyApplicationBase {
     int[] fp = new int[10];
     int[] fq = new int[4];
     int[] fs = new int[3];
-    int[][] fw = (int[][]) Array.newInstance(Integer.TYPE, 17, 4);
+    int[][] buttonCoordinates1 = (int[][]) Array.newInstance(Integer.TYPE, 17, 4);
     int[] fx = new int[17];
     int[] fy = new int[10];
     int[] fz = new int[2];
@@ -417,7 +417,7 @@ public class Game extends MyApplicationBase {
     int[] fC = new int[13];
     int[] fG = new int[4];
     int[] fH = new int[3];
-    int[] fQ = new int[11];
+    int[] blinkFrame = new int[11];
     int[] fR = new int[2];
     int[] currentBox = new int[6];
     int[] fW = new int[10];
@@ -538,13 +538,13 @@ public class Game extends MyApplicationBase {
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
-    public int M() {
-        return this.G;
+    public int getTempXTouch() {
+        return this.tempXTouch;
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
-    public int N() {
-        return this.K;
+    public int getTempYTouch() {
+        return this.tempYTouch;
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
@@ -558,23 +558,23 @@ public class Game extends MyApplicationBase {
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
-    public boolean Q() {
-        return this.M;
+    public boolean isPointerDownNow() {
+        return this.pointerDownNow;
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
-    public boolean R() {
-        return this.O;
+    public boolean isPointerDown() {
+        return this.pointerDown;
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
-    public boolean S() {
-        return this.P;
+    public boolean isPointerUp() {
+        return this.pointerUp;
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
-    public boolean T() {
-        return this.R;
+    public boolean isBackPressed() {
+        return this.isBackPressed;
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
@@ -673,9 +673,9 @@ public class Game extends MyApplicationBase {
         U();
         this.eR = 0;
         this.eP = 0;
-        for (int i18 = 0; i18 < getLength(this.fw); i18++) {
-            for (int i19 = 0; i19 < getLength(this.fw[i18]); i19++) {
-                this.fw[i18][i19] = 0;
+        for (int i18 = 0; i18 < getLength(this.buttonCoordinates1); i18++) {
+            for (int i19 = 0; i19 < getLength(this.buttonCoordinates1[i18]); i19++) {
+                this.buttonCoordinates1[i18][i19] = 0;
             }
         }
         for (int i20 = 0; i20 < getLength(this.fx); i20++) {
@@ -819,7 +819,7 @@ public class Game extends MyApplicationBase {
         }
         if (this.bV[4] == 2) {
             for (int i44 = 0; i44 < getLength(this.cc); i44++) {
-                this.cc[i44][0] = ((i44 * 192) + aMath.rand(192)) % ((this.bV[0] / 10) + (this.w * 4));
+                this.cc[i44][0] = ((i44 * 192) + aMath.rand(192)) % ((this.bV[0] / 10) + (this.excessWidth * 4));
                 this.cc[i44][1] = aMath.rand(((100 - this.battleData[28]) * 20) + 200) - ((100 - this.battleData[28]) * 20);
                 this.cc[i44][2] = 0;
                 this.cc[i44][3] = aMath.rand(20) + 5;
@@ -827,7 +827,7 @@ public class Game extends MyApplicationBase {
             }
         } else if (this.bV[4] == 3) {
             for (int i45 = 0; i45 < getLength(this.ce); i45++) {
-                this.ce[i45][0] = ((((i45 * 56) + aMath.rand(56)) % (this.bV[0] / 10)) + (this.w * 4)) * 100;
+                this.ce[i45][0] = ((((i45 * 56) + aMath.rand(56)) % (this.bV[0] / 10)) + (this.excessWidth * 4)) * 100;
                 this.ce[i45][1] = (aMath.rand(((100 - this.battleData[28]) * 20) + 640) - ((100 - this.battleData[28]) * 20)) * 100;
                 this.ce[i45][2] = 175 - aMath.rand(85);
                 this.ce[i45][3] = aMath.rand(600) + 200;
@@ -1081,22 +1081,22 @@ public class Game extends MyApplicationBase {
         }
         this.textTextures[10].drawText(this.optionText[1], "FONT_SYSTEM_BOLD", 30, 1);
         this.gA[0] = 20;
-        this.fw[0][0] = this.w + 814;
-        this.fw[0][1] = this.eZ + 510;
-        this.fw[0][2] = 146;
-        this.fw[0][3] = 130;
-        this.fw[1][0] = 0;
-        this.fw[1][1] = this.eZ + 515;
-        this.fw[1][2] = 146;
-        this.fw[1][3] = 125;
-        this.fw[3][0] = 0;
-        this.fw[3][1] = 0 - this.eZ;
-        this.fw[3][2] = 88;
-        this.fw[3][3] = 88;
+        this.buttonCoordinates1[0][0] = this.excessWidth + 814;
+        this.buttonCoordinates1[0][1] = this.eZ + 510;
+        this.buttonCoordinates1[0][2] = 146;
+        this.buttonCoordinates1[0][3] = 130;
+        this.buttonCoordinates1[1][0] = 0;
+        this.buttonCoordinates1[1][1] = this.eZ + 515;
+        this.buttonCoordinates1[1][2] = 146;
+        this.buttonCoordinates1[1][3] = 125;
+        this.buttonCoordinates1[3][0] = 0;
+        this.buttonCoordinates1[3][1] = 0 - this.eZ;
+        this.buttonCoordinates1[3][2] = 88;
+        this.buttonCoordinates1[3][3] = 88;
         int i66 = 5;
         for (int i67 = 5; i67 >= 0; i67--) {
             if (this.eL[i67] != 0) {
-                this.eJ[i67][0] = (i66 * 88) + 432 + this.w;
+                this.eJ[i67][0] = (i66 * 88) + 432 + this.excessWidth;
                 this.eJ[i67][1] = 43 - this.eZ;
                 this.eJ[i67][2] = 88;
                 this.eJ[i67][3] = 88;
@@ -1165,7 +1165,7 @@ public class Game extends MyApplicationBase {
         for (int i80 = 0; i80 < getLength(this.fC); i80++) {
             this.fC[i80] = 0;
         }
-        this.fB[0][0] = (this.w / 2) + 280;
+        this.fB[0][0] = (this.excessWidth / 2) + 280;
         this.fB[0][1] = 80;
         this.fB[0][2] = 88;
         this.fB[0][3] = 88;
@@ -1173,70 +1173,70 @@ public class Game extends MyApplicationBase {
         this.fB[1][1] = 0;
         this.fB[1][2] = 0;
         this.fB[1][3] = 0;
-        this.fB[2][0] = (this.w / 2) + 535;
+        this.fB[2][0] = (this.excessWidth / 2) + 535;
         this.fB[2][1] = 276;
         this.fB[2][2] = 106;
         this.fB[2][3] = 88;
-        this.fB[3][0] = (((this.w / 2) + 248) + 252) - 2;
+        this.fB[3][0] = (((this.excessWidth / 2) + 248) + 252) - 2;
         this.fB[3][1] = 371;
         this.fB[3][2] = 88;
         this.fB[3][3] = 88;
-        this.fB[4][0] = (((this.w / 2) + 248) + 356) - 2;
+        this.fB[4][0] = (((this.excessWidth / 2) + 248) + 356) - 2;
         this.fB[4][1] = 371;
         this.fB[4][2] = 88;
         this.fB[4][3] = 88;
-        this.fB[5][0] = (this.w / 2) + 248 + 404;
+        this.fB[5][0] = (this.excessWidth / 2) + 248 + 404;
         this.fB[5][1] = 48;
         this.fB[5][2] = 95;
         this.fB[5][3] = 95;
-        this.fB[6][0] = (this.w / 2) + 248 + 40;
+        this.fB[6][0] = (this.excessWidth / 2) + 248 + 40;
         this.fB[6][1] = 456;
         this.fB[6][2] = 381;
         this.fB[6][3] = 88;
-        this.fB[7][0] = (this.w / 2) + 248 + 40;
+        this.fB[7][0] = (this.excessWidth / 2) + 248 + 40;
         this.fB[7][1] = 189;
         this.fB[7][2] = 168;
         this.fB[7][3] = 88;
-        this.fB[8][0] = (this.w / 2) + 309;
+        this.fB[8][0] = (this.excessWidth / 2) + 309;
         this.fB[8][1] = 284;
         this.fB[8][2] = 131;
         this.fB[8][3] = 131;
-        this.fB[9][0] = (this.w / 2) + 288;
+        this.fB[9][0] = (this.excessWidth / 2) + 288;
         this.fB[9][1] = 363;
         this.fB[9][2] = 168;
         this.fB[9][3] = 88;
-        this.fB[10][0] = (this.w / 2) + 251;
+        this.fB[10][0] = (this.excessWidth / 2) + 251;
         this.fB[10][1] = 374;
         this.fB[10][2] = 168;
         this.fB[10][3] = 88;
-        this.fB[11][0] = (this.w / 2) + 541;
+        this.fB[11][0] = (this.excessWidth / 2) + 541;
         this.fB[11][1] = 374;
         this.fB[11][2] = 168;
         this.fB[11][3] = 88;
-        this.fB[12][0] = (this.w / 2) + 500;
+        this.fB[12][0] = (this.excessWidth / 2) + 500;
         this.fB[12][1] = 191;
         this.fB[12][2] = 172;
         this.fB[12][3] = 88;
         for (int i81 = 0; i81 < getLength(this.hb); i81++) {
             this.hb[i81] = 0.0f;
         }
-        this.hj[0][0] = (this.w / 2) + 246;
+        this.hj[0][0] = (this.excessWidth / 2) + 246;
         this.hj[0][1] = 0 - this.eZ;
         this.hj[0][2] = 131;
         this.hj[0][3] = 107;
-        this.hj[1][0] = (this.w / 2) + 246;
+        this.hj[1][0] = (this.excessWidth / 2) + 246;
         this.hj[1][1] = 345;
         this.hj[1][2] = 96;
         this.hj[1][3] = 96;
-        this.hj[2][0] = (this.w / 2) + 426;
+        this.hj[2][0] = (this.excessWidth / 2) + 426;
         this.hj[2][1] = 335;
         this.hj[2][2] = 96;
         this.hj[2][3] = 96;
-        this.hj[3][0] = (this.w / 2) + 606;
+        this.hj[3][0] = (this.excessWidth / 2) + 606;
         this.hj[3][1] = 345;
         this.hj[3][2] = 96;
         this.hj[3][3] = 96;
-        this.hj[4][0] = (this.w / 2) + 786;
+        this.hj[4][0] = (this.excessWidth / 2) + 786;
         this.hj[4][1] = 335;
         this.hj[4][2] = 96;
         this.hj[4][3] = 96;
@@ -1244,11 +1244,11 @@ public class Game extends MyApplicationBase {
         this.hj[5][1] = 541;
         this.hj[5][2] = 95;
         this.hj[5][3] = 95;
-        this.hj[6][0] = (this.w / 2) + 422;
+        this.hj[6][0] = (this.excessWidth / 2) + 422;
         this.hj[6][1] = 313;
         this.hj[6][2] = 381;
         this.hj[6][3] = 88;
-        this.hj[7][0] = (this.w / 2) + 803;
+        this.hj[7][0] = (this.excessWidth / 2) + 803;
         this.hj[7][1] = 173;
         this.hj[7][2] = 95;
         this.hj[7][3] = 95;
@@ -1256,22 +1256,22 @@ public class Game extends MyApplicationBase {
         this.hj[8][1] = 547;
         this.hj[8][2] = 88;
         this.hj[8][3] = 88;
-        this.fw[10][0] = this.w + 701;
-        this.fw[10][1] = this.eZ + 578;
-        this.fw[10][2] = 88;
-        this.fw[10][3] = 88;
-        this.fw[11][0] = this.w + 799;
-        this.fw[11][1] = this.eZ + 578;
-        this.fw[11][2] = 88;
-        this.fw[11][3] = 88;
-        this.fw[13][0] = 197;
-        this.fw[13][1] = 552;
-        this.fw[13][2] = 214;
-        this.fw[13][3] = 88;
-        this.fw[14][0] = this.w + 680;
-        this.fw[14][1] = 552;
-        this.fw[14][2] = 88;
-        this.fw[14][3] = 88;
+        this.buttonCoordinates1[10][0] = this.excessWidth + 701;
+        this.buttonCoordinates1[10][1] = this.eZ + 578;
+        this.buttonCoordinates1[10][2] = 88;
+        this.buttonCoordinates1[10][3] = 88;
+        this.buttonCoordinates1[11][0] = this.excessWidth + 799;
+        this.buttonCoordinates1[11][1] = this.eZ + 578;
+        this.buttonCoordinates1[11][2] = 88;
+        this.buttonCoordinates1[11][3] = 88;
+        this.buttonCoordinates1[13][0] = 197;
+        this.buttonCoordinates1[13][1] = 552;
+        this.buttonCoordinates1[13][2] = 214;
+        this.buttonCoordinates1[13][3] = 88;
+        this.buttonCoordinates1[14][0] = this.excessWidth + 680;
+        this.buttonCoordinates1[14][1] = 552;
+        this.buttonCoordinates1[14][2] = 88;
+        this.buttonCoordinates1[14][3] = 88;
         for (int i82 = 0; i82 < getLength(this.em); i82++) {
             this.em[i82] = 0;
         }
@@ -1325,8 +1325,8 @@ public class Game extends MyApplicationBase {
         for (int i98 = 0; i98 < getLength(this.ei); i98++) {
             this.ei[i98] = 0;
         }
-        for (int i99 = 0; i99 < getLength(this.fQ); i99++) {
-            this.fQ[i99] = 0;
+        for (int i99 = 0; i99 < getLength(this.blinkFrame); i99++) {
+            this.blinkFrame[i99] = 0;
         }
         this.eC = false;
         this.dV = false;
@@ -1413,9 +1413,9 @@ public class Game extends MyApplicationBase {
             this.gp[i] = false;
         }
         //aAd.b().f();
-        for (int i2 = 0; i2 < getLength(this.fw); i2++) {
-            for (int i3 = 0; i3 < getLength(this.fw[i2]); i3++) {
-                this.fw[i2][i3] = 0;
+        for (int i2 = 0; i2 < getLength(this.buttonCoordinates1); i2++) {
+            for (int i3 = 0; i3 < getLength(this.buttonCoordinates1[i2]); i3++) {
+                this.buttonCoordinates1[i2][i3] = 0;
             }
         }
         for (int i4 = 0; i4 < getLength(this.eh); i4++) {
@@ -1424,20 +1424,20 @@ public class Game extends MyApplicationBase {
         for (int i5 = 0; i5 < getLength(this.ei); i5++) {
             this.ei[i5] = 0;
         }
-        for (int i6 = 0; i6 < getLength(this.fQ); i6++) {
-            this.fQ[i6] = 0;
+        for (int i6 = 0; i6 < getLength(this.blinkFrame); i6++) {
+            this.blinkFrame[i6] = 0;
         }
         for (int i7 = 0; i7 < getLength(this.fx); i7++) {
             this.fx[i7] = 0;
         }
-        this.fw[0][0] = 633;
-        this.fw[0][1] = 488;
-        this.fw[0][2] = 304;
-        this.fw[0][3] = 86;
-        this.fw[5][0] = 4;
-        this.fw[5][1] = 541;
-        this.fw[5][2] = 95;
-        this.fw[5][3] = 95;
+        this.buttonCoordinates1[0][0] = 633;
+        this.buttonCoordinates1[0][1] = 488;
+        this.buttonCoordinates1[0][2] = 304;
+        this.buttonCoordinates1[0][3] = 86;
+        this.buttonCoordinates1[5][0] = 4;
+        this.buttonCoordinates1[5][1] = 541;
+        this.buttonCoordinates1[5][2] = 95;
+        this.buttonCoordinates1[5][3] = 95;
         for (int i8 = 0; i8 < getLength(this.gm); i8++) {
             this.gm[i8] = 0;
         }
@@ -1448,7 +1448,7 @@ public class Game extends MyApplicationBase {
         this.gm[0] = 297;
         this.gm[1] = 0;
         this.eE[0] = false;
-        this.fQ[2] = 0;
+        this.blinkFrame[2] = 0;
         loadTextures2();
         for (int i10 = 0; i10 < 10; i10++) {
             if (this.slotCatIDs[i10] - 2 >= 0) {
@@ -1591,15 +1591,15 @@ public class Game extends MyApplicationBase {
         this.gameStats1[7] = ((100 - i3) * 10) / 100;
         if (i2 == 0) {
             atexturerenderer.setColor(0, 0, 0);
-            atexturerenderer.drawRectangle(fb[catID] + 6 + (this.w / 2), ((this.eI[0] + 610) - 4) + this.eZ, 97, 14);
+            atexturerenderer.drawRectangle(fb[catID] + 6 + (this.excessWidth / 2), ((this.eI[0] + 610) - 4) + this.eZ, 97, 14);
             atexturerenderer.setColor(0, 255, 255);
-            atexturerenderer.drawRectangle(fb[catID] + 8 + (this.w / 2), ((this.eI[0] + 612) - 4) + this.eZ, this.gameStats1[3], 10);
+            atexturerenderer.drawRectangle(fb[catID] + 8 + (this.excessWidth / 2), ((this.eI[0] + 612) - 4) + this.eZ, this.gameStats1[3], 10);
             return;
         }
         atexturerenderer.setColor(0, 0, 0);
-        atexturerenderer.drawRectangle(fb[catID] + 6 + ((97 - this.gameStats1[4]) / 2) + (this.w / 2), (((this.eI[0] + 610) + this.eD[i2]) - ((14 - this.gameStats1[5]) / 2)) + this.eZ, this.gameStats1[4], this.gameStats1[5]);
+        atexturerenderer.drawRectangle(fb[catID] + 6 + ((97 - this.gameStats1[4]) / 2) + (this.excessWidth / 2), (((this.eI[0] + 610) + this.eD[i2]) - ((14 - this.gameStats1[5]) / 2)) + this.eZ, this.gameStats1[4], this.gameStats1[5]);
         atexturerenderer.setColor(0, 255, 255);
-        atexturerenderer.drawRectangle(fb[catID] + 8 + ((93 - (((100 - i3) * 93) / 100)) / 2) + (this.w / 2), (((this.eI[0] + 612) + this.eD[i2]) - ((10 - this.gameStats1[7]) / 2)) + this.eZ, this.gameStats1[6], this.gameStats1[7]);
+        atexturerenderer.drawRectangle(fb[catID] + 8 + ((93 - (((100 - i3) * 93) / 100)) / 2) + (this.excessWidth / 2), (((this.eI[0] + 612) + this.eD[i2]) - ((10 - this.gameStats1[7]) / 2)) + this.eZ, this.gameStats1[6], this.gameStats1[7]);
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
@@ -1698,29 +1698,29 @@ public class Game extends MyApplicationBase {
                         screenTransition();
                         this.fP = 0;
                         this.screenID = 9;
-                        this.fF = -1;
-                        this.fQ[2] = 0;
+                        this.screenLoadState = -1;
+                        this.blinkFrame[2] = 0;
                         this.eE[1] = false;
                         return false;
                     }
                 } else {
-                    if (!R() || !isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                    if (!isPointerDown() || !isTouching(this.buttonCoordinates1[0][0], this.buttonCoordinates1[0][1], this.buttonCoordinates1[0][2], this.buttonCoordinates1[0][3])) {
                         this.gp[0] = false;
                     } else if (!this.gp[0]) {
                         aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gp[0] = true;
                     }
-                    if (!R() || !isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
+                    if (!isPointerDown() || !isTouching(this.buttonCoordinates1[5][0], this.buttonCoordinates1[5][1], this.buttonCoordinates1[5][2], this.buttonCoordinates1[5][3])) {
                         this.gp[5] = false;
                     } else if (!this.gp[5]) {
                         aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gp[5] = true;
                     }
-                    if (S() && isTouching(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                    if (isPointerUp() && isTouching(this.buttonCoordinates1[0][0], this.buttonCoordinates1[0][1], this.buttonCoordinates1[0][2], this.buttonCoordinates1[0][3])) {
                         int[] iArr3 = this.fx;
                         iArr3[0] = iArr3[0] + 1;
                         aSound.getInstance().play(SoundType.BUTTON_PRESS);
-                    } else if (S() && isTouching(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
+                    } else if (isPointerUp() && isTouching(this.buttonCoordinates1[5][0], this.buttonCoordinates1[5][1], this.buttonCoordinates1[5][2], this.buttonCoordinates1[5][3])) {
                         int[] iArr4 = this.fx;
                         iArr4[5] = iArr4[5] + 1;
                         aSound.getInstance().play(SoundType.BUTTON_PRESS);
@@ -1728,37 +1728,37 @@ public class Game extends MyApplicationBase {
                 }
             }
             if (this.eE[0]) {
-                int[] iArr5 = this.fQ;
+                int[] iArr5 = this.blinkFrame;
                 iArr5[2] = iArr5[2] + 1;
                 this.gm[0] = (this.gm[0] * 2) + 1;
                 if (this.gm[0] >= 297) {
                     this.gm[0] = 297;
                     this.gm[1] = this.gm[1] / 2;
                 }
-                if (this.fQ[2] > getLength(fM) - 1) {
-                    this.fQ[2] = getLength(fM) - 1;
+                if (this.blinkFrame[2] > getLength(fM) - 1) {
+                    this.blinkFrame[2] = getLength(fM) - 1;
                     this.fP = getWidth();
                     if (this.gm[1] <= 0) {
                         this.eE[0] = false;
-                        this.fQ[2] = 0;
+                        this.blinkFrame[2] = 0;
                     }
                 } else {
-                    this.fP = fM[this.fQ[2]];
+                    this.fP = fM[this.blinkFrame[2]];
                 }
             } else if (this.eE[1]) {
-                int[] iArr6 = this.fQ;
+                int[] iArr6 = this.blinkFrame;
                 iArr6[2] = iArr6[2] + 1;
-                if (this.fQ[2] > getLength(fM) - 1) {
+                if (this.blinkFrame[2] > getLength(fM) - 1) {
                     this.fP = 0;
                 } else {
-                    this.fP = fM[(getLength(fM) - 1) - this.fQ[2]];
+                    this.fP = fM[(getLength(fM) - 1) - this.blinkFrame[2]];
                 }
-                if (this.fQ[2] > getLength(fM)) {
-                    this.fQ[2] = 0;
+                if (this.blinkFrame[2] > getLength(fM)) {
+                    this.blinkFrame[2] = 0;
                     screenTransition();
                     this.fP = 0;
                     this.screenID = 9;
-                    this.fF = -1;
+                    this.screenLoadState = -1;
                     this.eE[1] = false;
                     return false;
                 }
@@ -1772,23 +1772,23 @@ public class Game extends MyApplicationBase {
                     if (this.eh[1] >= getWidth()) {
                         this.eh[1] = getWidth();
                     }
-                    int[] iArr7 = this.fQ;
+                    int[] iArr7 = this.blinkFrame;
                     iArr7[0] = iArr7[0] + 1;
-                    if (this.fQ[0] >= getLength(cu)) {
+                    if (this.blinkFrame[0] >= getLength(cu)) {
                         this.fR[0] = 1;
                         this.dY = 1;
                         this.eE[2] = false;
-                        this.fQ[0] = 0;
+                        this.blinkFrame[0] = 0;
                     }
                 }
             }
             if (this.dY == 1) {
-                int[] iArr8 = this.fQ;
+                int[] iArr8 = this.blinkFrame;
                 iArr8[1] = iArr8[1] + 1;
-                if (this.fQ[1] >= 10) {
-                    int[] iArr9 = this.fQ;
+                if (this.blinkFrame[1] >= 10) {
+                    int[] iArr9 = this.blinkFrame;
                     iArr9[0] = iArr9[0] + 1;
-                    if (this.fQ[0] >= 60) {
+                    if (this.blinkFrame[0] >= 60) {
                         this.eb = true;
                         this.ed = 1;
                     }
@@ -1796,10 +1796,10 @@ public class Game extends MyApplicationBase {
             }
         } else {
             this.eE[5] = true;
-            this.pointerDown = false;
+            this.isPressEvent = false;
+            this.isReleaseEvent = false;
             this.pointerUp = false;
-            this.P = false;
-            this.O = false;
+            this.pointerDown = false;
         }
         return true;
     }
@@ -1925,7 +1925,7 @@ public class Game extends MyApplicationBase {
         if (ad()) {
             return true;
         }
-        this.D = 0;
+        this.initState = 0;
         return false;
     }
 
@@ -2196,9 +2196,9 @@ public class Game extends MyApplicationBase {
                 for (int i2 = 0; i2 < getLength(this.gp); i2++) {
                     this.gp[i2] = false;
                 }
-                for (int i3 = 0; i3 < getLength(this.fw); i3++) {
-                    for (int i4 = 0; i4 < getLength(this.fw[i3]); i4++) {
-                        this.fw[i3][i4] = 0;
+                for (int i3 = 0; i3 < getLength(this.buttonCoordinates1); i3++) {
+                    for (int i4 = 0; i4 < getLength(this.buttonCoordinates1[i3]); i4++) {
+                        this.buttonCoordinates1[i3][i4] = 0;
                     }
                 }
                 for (int i5 = 0; i5 < getLength(this.textTextures); i5++) {
@@ -2244,19 +2244,19 @@ public class Game extends MyApplicationBase {
                     this.ci[i8][2] = (aMath.rand(15) + 3) * 100;
                     this.ci[i8][3] = aMath.rand(8) + 1;
                 }
-                for (int i10 = 0; i10 < getLength(this.fw); i10++) {
-                    for (int i11 = 0; i11 < getLength(this.fw[i10]); i11++) {
-                        this.fw[i10][i11] = 0;
+                for (int i10 = 0; i10 < getLength(this.buttonCoordinates1); i10++) {
+                    for (int i11 = 0; i11 < getLength(this.buttonCoordinates1[i10]); i11++) {
+                        this.buttonCoordinates1[i10][i11] = 0;
                     }
                 }
-                this.fw[0][0] = this.w + 788;
-                this.fw[0][1] = this.eZ + 556;
-                this.fw[0][2] = 168;
-                this.fw[0][3] = 88;
-                this.fF = -1;
+                this.buttonCoordinates1[0][0] = this.excessWidth + 788;
+                this.buttonCoordinates1[0][1] = this.eZ + 556;
+                this.buttonCoordinates1[0][2] = 168;
+                this.buttonCoordinates1[0][3] = 88;
+                this.screenLoadState = -1;
                 this.screenID = 0;
-                for (int i12 = 0; i12 < getLength(this.fQ); i12++) {
-                    this.fQ[i12] = 0;
+                for (int i12 = 0; i12 < getLength(this.blinkFrame); i12++) {
+                    this.blinkFrame[i12] = 0;
                 }
                 for (int i13 = 0; i13 < getLength(this.fx); i13++) {
                     this.fx[i13] = 0;
@@ -2302,8 +2302,8 @@ public class Game extends MyApplicationBase {
                         this.textTextures[i17].drawText(this.endingText[i17], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 }
-                for (int i18 = 0; i18 < getLength(this.fQ); i18++) {
-                    this.fQ[i18] = 0;
+                for (int i18 = 0; i18 < getLength(this.blinkFrame); i18++) {
+                    this.blinkFrame[i18] = 0;
                 }
                 for (int i19 = 0; i19 < getLength(this.fx); i19++) {
                     this.fx[i19] = 0;
@@ -2359,12 +2359,12 @@ public class Game extends MyApplicationBase {
                 this.dE = 0;
                 this.dF = 0;
                 this.dG = 0;
-                this.fF = -1;
+                this.screenLoadState = -1;
                 this.screenID = 0;
-                this.fw[0][0] = this.w + 788;
-                this.fw[0][1] = this.eZ + 556;
-                this.fw[0][2] = 168;
-                this.fw[0][3] = 88;
+                this.buttonCoordinates1[0][0] = this.excessWidth + 788;
+                this.buttonCoordinates1[0][1] = this.eZ + 556;
+                this.buttonCoordinates1[0][2] = 168;
+                this.buttonCoordinates1[0][3] = 88;
                 this.zoomLevel = 10000;
                 aSound.getInstance().stop(-1);
                 aSound.getInstance().play(SoundType.ENDING);
@@ -2380,9 +2380,9 @@ public class Game extends MyApplicationBase {
                         }
                     }
                 }
-                for (int i28 = 0; i28 < getLength(this.fw); i28++) {
-                    for (int i29 = 0; i29 < getLength(this.fw[i28]); i29++) {
-                        this.fw[i28][i29] = 0;
+                for (int i28 = 0; i28 < getLength(this.buttonCoordinates1); i28++) {
+                    for (int i29 = 0; i29 < getLength(this.buttonCoordinates1[i28]); i29++) {
+                        this.buttonCoordinates1[i28][i29] = 0;
                     }
                 }
                 this.zoomLevel = 10000;
@@ -2522,72 +2522,72 @@ public class Game extends MyApplicationBase {
         atexturerenderer.drawScaledImage(this.settingsMenuTexture[0], (this.fP + 572) - 88, 0, 572, 637, 1);
         if (this.dY == 0) {
             if (this.fR[0] == 0) {
-                i2 = cu[this.fQ[0]];
+                i2 = cu[this.blinkFrame[0]];
             } else if (this.fR[0] == 1) {
-                i2 = cv[this.fQ[0]];
+                i2 = cv[this.blinkFrame[0]];
             } else {
                 int i14 = this.fR[0];
             }
             if (this.dY != 1) {
-                atexturerenderer.drawScaledImage(this.uiTextures[1], 659, (this.fQ[0] == 2 || this.fQ[0] == 3 || this.fQ[0] == 6 || this.fQ[0] == 7 || this.fQ[0] == 10 || this.fQ[0] == 11 || this.fQ[0] == 14 || this.fQ[0] == 15 || this.fQ[0] == 18 || this.fQ[0] == 19) ? 308 : 312, 355, 355, 0);
-                if (this.fQ[0] >= 2) {
-                    if (this.fQ[0] - 2 == 0) {
+                atexturerenderer.drawScaledImage(this.uiTextures[1], 659, (this.blinkFrame[0] == 2 || this.blinkFrame[0] == 3 || this.blinkFrame[0] == 6 || this.blinkFrame[0] == 7 || this.blinkFrame[0] == 10 || this.blinkFrame[0] == 11 || this.blinkFrame[0] == 14 || this.blinkFrame[0] == 15 || this.blinkFrame[0] == 18 || this.blinkFrame[0] == 19) ? 308 : 312, 355, 355, 0);
+                if (this.blinkFrame[0] >= 2) {
+                    if (this.blinkFrame[0] - 2 == 0) {
                         atexturerenderer.drawScaledImage(this.uiTextures[8], -28, -1, 504, 504, 0);
-                    } else if (this.fQ[0] - 2 == 1) {
+                    } else if (this.blinkFrame[0] - 2 == 1) {
                         atexturerenderer.drawScaledImage(this.uiTextures[8], 35, 62, 378, 378, 0);
-                    } else if (this.fQ[0] - 2 == 2) {
+                    } else if (this.blinkFrame[0] - 2 == 2) {
                         atexturerenderer.drawScaledImage(this.uiTextures[8], 98, 125, 252, 252, 0);
-                    } else if (this.fQ[0] - 2 >= 3) {
+                    } else if (this.blinkFrame[0] - 2 >= 3) {
                         atexturerenderer.drawScaledImage(this.uiTextures[8], 161, 188, 126, 126, 0);
                     }
                 }
-                if (this.fQ[0] >= 6) {
-                    if (this.fQ[0] - 6 == 0) {
+                if (this.blinkFrame[0] >= 6) {
+                    if (this.blinkFrame[0] - 6 == 0) {
                         atexturerenderer.drawScaledImage(this.uiTextures[8], 100, -1, 504, 504, 1);
-                    } else if (this.fQ[0] - 6 == 1) {
+                    } else if (this.blinkFrame[0] - 6 == 1) {
                         atexturerenderer.drawScaledImage(this.uiTextures[8], 163, 62, 378, 378, 1);
-                    } else if (this.fQ[0] - 6 == 2) {
+                    } else if (this.blinkFrame[0] - 6 == 2) {
                         atexturerenderer.drawScaledImage(this.uiTextures[8], 226, 125, 252, 252, 1);
-                    } else if (this.fQ[0] - 6 >= 3) {
+                    } else if (this.blinkFrame[0] - 6 >= 3) {
                         atexturerenderer.drawScaledImage(this.uiTextures[8], 289, 188, 126, 126, 1);
                     }
                 }
-                if (this.fQ[0] >= 10) {
-                    if (this.fQ[0] - 2 == 0) {
+                if (this.blinkFrame[0] >= 10) {
+                    if (this.blinkFrame[0] - 2 == 0) {
                         atexturerenderer.drawScaledImage(this.uiTextures[8], 228, -1, 504, 504, 2);
-                    } else if (this.fQ[0] - 10 == 1) {
+                    } else if (this.blinkFrame[0] - 10 == 1) {
                         atexturerenderer.drawScaledImage(this.uiTextures[8], 291, 62, 378, 378, 2);
-                    } else if (this.fQ[0] - 10 == 2) {
+                    } else if (this.blinkFrame[0] - 10 == 2) {
                         atexturerenderer.drawScaledImage(this.uiTextures[8], 354, 125, 252, 252, 2);
-                    } else if (this.fQ[0] - 10 >= 3) {
+                    } else if (this.blinkFrame[0] - 10 >= 3) {
                         atexturerenderer.drawScaledImage(this.uiTextures[8], 417, 188, 126, 126, 2);
                     }
                 }
-                if (this.fQ[0] >= 14) {
-                    if (this.fQ[0] - 14 == 0) {
+                if (this.blinkFrame[0] >= 14) {
+                    if (this.blinkFrame[0] - 14 == 0) {
                         atexturerenderer.drawScaledImage(this.uiTextures[8], 356, -1, 504, 504, 3);
-                    } else if (this.fQ[0] - 14 == 1) {
+                    } else if (this.blinkFrame[0] - 14 == 1) {
                         atexturerenderer.drawScaledImage(this.uiTextures[8], 419, 62, 378, 378, 3);
-                    } else if (this.fQ[0] - 14 == 2) {
+                    } else if (this.blinkFrame[0] - 14 == 2) {
                         atexturerenderer.drawScaledImage(this.uiTextures[8], 482, 125, 252, 252, 3);
-                    } else if (this.fQ[0] - 14 >= 3) {
+                    } else if (this.blinkFrame[0] - 14 >= 3) {
                         atexturerenderer.drawScaledImage(this.uiTextures[8], 545, 188, 126, 126, 3);
                     }
                 }
-                if (this.fQ[0] >= 18) {
-                    if (this.fQ[0] - 18 == 0) {
+                if (this.blinkFrame[0] >= 18) {
+                    if (this.blinkFrame[0] - 18 == 0) {
                         atexturerenderer.drawScaledImage(this.uiTextures[8], 484, -1, 504, 504, 4);
-                    } else if (this.fQ[0] - 18 == 1) {
+                    } else if (this.blinkFrame[0] - 18 == 1) {
                         atexturerenderer.drawScaledImage(this.uiTextures[8], 547, 62, 378, 378, 4);
-                    } else if (this.fQ[0] - 18 == 2) {
+                    } else if (this.blinkFrame[0] - 18 == 2) {
                         atexturerenderer.drawScaledImage(this.uiTextures[8], 610, 125, 252, 252, 4);
-                    } else if (this.fQ[0] - 18 >= 3) {
+                    } else if (this.blinkFrame[0] - 18 >= 3) {
                         atexturerenderer.drawScaledImage(this.uiTextures[8], 673, 188, 126, 126, 4);
                     }
                 }
             } else {
                 atexturerenderer.drawScaledImage(this.uiTextures[1], 659, i2, 355, 355, 0);
-                if (this.fQ[1] == 1 || this.fQ[1] == 2 || this.fQ[1] == 4 || this.fQ[1] == 5) {
+                if (this.blinkFrame[1] == 1 || this.blinkFrame[1] == 2 || this.blinkFrame[1] == 4 || this.blinkFrame[1] == 5) {
                     atexturerenderer.drawScaledImage(this.uiTextures[1], 659, i2, 355, 191, 2);
                 }
             }
@@ -2603,8 +2603,8 @@ public class Game extends MyApplicationBase {
             if (this.gm[1] < 297) {
                 atexturerenderer.drawScaledImagef(this.uiTextures[2], (8 - this.gm[1]) - this.eh[0], 3, 7);
             }
-            atexturerenderer.drawScaledImage(this.uiTextures[0], this.fw[5][0] - (dv[this.fx[5]] / 2), this.ei[0] + (this.fw[5][1] - (dv[this.fx[5]] / 2)), dv[this.fx[5]] + this.fw[5][2], dv[this.fx[5]] + this.fw[5][3], 9);
-            atexturerenderer.drawScaledImage(this.uiTextures[0], (this.fw[5][0] + 4) - (dv[this.fx[5]] / 2), this.ei[0] + ((this.fw[5][1] + 17) - (dv[this.fx[5]] / 2)), dv[this.fx[5]] + 84, dv[this.fx[5]] + 60, 3);
+            atexturerenderer.drawScaledImage(this.uiTextures[0], this.buttonCoordinates1[5][0] - (dv[this.fx[5]] / 2), this.ei[0] + (this.buttonCoordinates1[5][1] - (dv[this.fx[5]] / 2)), dv[this.fx[5]] + this.buttonCoordinates1[5][2], dv[this.fx[5]] + this.buttonCoordinates1[5][3], 9);
+            atexturerenderer.drawScaledImage(this.uiTextures[0], (this.buttonCoordinates1[5][0] + 4) - (dv[this.fx[5]] / 2), this.ei[0] + ((this.buttonCoordinates1[5][1] + 17) - (dv[this.fx[5]] / 2)), dv[this.fx[5]] + 84, dv[this.fx[5]] + 60, 3);
             atexturerenderer.drawScaledImagef(this.uiTextures[5], this.eh[0] + 670, 0, 11);
             atexturerenderer.drawScaledImagef(this.uiTextures[5], this.eh[0] + 608, 7, 10);
             i3 = this.aY;
@@ -2628,8 +2628,8 @@ public class Game extends MyApplicationBase {
         }
         if (this.gm[1] < 297) {
         }
-        atexturerenderer.drawScaledImage(this.uiTextures[0], this.fw[5][0] - (dv[this.fx[5]] / 2), this.ei[0] + (this.fw[5][1] - (dv[this.fx[5]] / 2)), dv[this.fx[5]] + this.fw[5][2], dv[this.fx[5]] + this.fw[5][3], 9);
-        atexturerenderer.drawScaledImage(this.uiTextures[0], (this.fw[5][0] + 4) - (dv[this.fx[5]] / 2), this.ei[0] + ((this.fw[5][1] + 17) - (dv[this.fx[5]] / 2)), dv[this.fx[5]] + 84, dv[this.fx[5]] + 60, 3);
+        atexturerenderer.drawScaledImage(this.uiTextures[0], this.buttonCoordinates1[5][0] - (dv[this.fx[5]] / 2), this.ei[0] + (this.buttonCoordinates1[5][1] - (dv[this.fx[5]] / 2)), dv[this.fx[5]] + this.buttonCoordinates1[5][2], dv[this.fx[5]] + this.buttonCoordinates1[5][3], 9);
+        atexturerenderer.drawScaledImage(this.uiTextures[0], (this.buttonCoordinates1[5][0] + 4) - (dv[this.fx[5]] / 2), this.ei[0] + ((this.buttonCoordinates1[5][1] + 17) - (dv[this.fx[5]] / 2)), dv[this.fx[5]] + 84, dv[this.fx[5]] + 60, 3);
         atexturerenderer.drawScaledImagef(this.uiTextures[5], this.eh[0] + 670, 0, 11);
         atexturerenderer.drawScaledImagef(this.uiTextures[5], this.eh[0] + 608, 7, 10);
         i3 = this.aY;
