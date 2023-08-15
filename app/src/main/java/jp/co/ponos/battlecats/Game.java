@@ -278,7 +278,7 @@ public class Game extends MyApplicationBase {
     int[][] bs = (int[][]) Array.newInstance(Integer.TYPE, 10, 49);
     int[] bt = new int[30];
     int[] bu = new int[26];
-    int[] bv = new int[26];
+    int[] baseUpgrades = new int[26];
     int[] bw = new int[26];
     int[] bx = new int[11];
     int[] by = new int[5];
@@ -1884,8 +1884,8 @@ public class Game extends MyApplicationBase {
                 for (int i14 = 0; i14 < getLength(this.bu); i14++) {
                     this.bu[i14] = afilestream.readInt();
                 }
-                for (int i15 = 0; i15 < getLength(this.bv); i15++) {
-                    this.bv[i15] = afilestream.readInt();
+                for (int i15 = 0; i15 < getLength(this.baseUpgrades); i15++) {
+                    this.baseUpgrades[i15] = afilestream.readInt();
                 }
                 for (int i16 = 0; i16 < getLength(this.bw); i16++) {
                     this.bw[i16] = afilestream.readInt();
@@ -2002,8 +2002,8 @@ public class Game extends MyApplicationBase {
             for (int i14 = 0; i14 < getLength(this.bu); i14++) {
                 afilestream.writeInt(this.bu[i14]);
             }
-            for (int i15 = 0; i15 < getLength(this.bv); i15++) {
-                afilestream.writeInt(this.bv[i15]);
+            for (int i15 = 0; i15 < getLength(this.baseUpgrades); i15++) {
+                afilestream.writeInt(this.baseUpgrades[i15]);
             }
             for (int i16 = 0; i16 < getLength(this.bw); i16++) {
                 afilestream.writeInt(this.bw[i16]);
@@ -2443,8 +2443,8 @@ public class Game extends MyApplicationBase {
                     i5 = i6;
                 } else {
                     atexturerenderer.drawScaledImage(this.uniTextures[i7], (((i7 % 5) * 121) + 111) - this.eh[0], ((i7 / 5) * 119) + 134, 110, 85, 0);
-                    if (this.bv[this.slotCatIDs[i7] - 2] + 1 < this.bi) {
-                        i5 = this.bv[this.slotCatIDs[i7] - 2] + 1;
+                    if (this.baseUpgrades[this.slotCatIDs[i7] - 2] + 1 < this.bi) {
+                        i5 = this.baseUpgrades[this.slotCatIDs[i7] - 2] + 1;
                         int i8 = 0;
                         do {
                             atexturerenderer.drawScaledImagef(this.uiTextures[6], ((206 - (i8 * 12)) + ((i7 % 5) * 121)) - this.eh[0], ((i7 / 5) * 119) + 109, (i5 % 10) + 8);
