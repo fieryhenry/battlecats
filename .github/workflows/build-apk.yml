@@ -3,8 +3,29 @@ name: Build APK
 on:
   push:
     branches: [ "master" ]
+    paths: 
+      - 'app/src/**'
+      - 'app/build.gradle'
+      - 'gradle/**'
+      - 'build.gradle'
+      - 'gradle.properties'
+      - 'gradlew'
+      - 'gradlew.bat'
+      - 'settings.gradle'
+      - 'gradle/wrapper/**'
+
   pull_request:
     branches: [ "master" ]
+    paths: 
+      - 'app/src/**'
+      - 'app/build.gradle'
+      - 'gradle/**'
+      - 'build.gradle'
+      - 'gradle.properties'
+      - 'gradlew'
+      - 'gradlew.bat'
+      - 'settings.gradle'
+      - 'gradle/wrapper/**'
 
 permissions:
   contents: write
@@ -32,13 +53,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: app-debug.apk
-        path: app/build/outputs/apk/debug/app-debug.apk 
-      
-    - name: Commit APK
-      run: |
-        cp app/build/outputs/apk/debug/app-debug.apk jp.co.ponos.battlecatsrm.apk
-        git config --global user.name 'github-actions[bot]'
-        git config --global user.email 'battlecatsupload+github-actions[bot]@users.noreply.github.com'
-        git add jp.co.ponos.battlecatsrm.apk
-        git commit -m "Upload APK"
-        git push
+        path: app/build/outputs/apk/debug/app-debug.apk
