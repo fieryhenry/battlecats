@@ -64,9 +64,9 @@ public class PresentRenderer extends aPresentRenderer {
             MyUtility.getInstance().addWebClient();
             A.a().i = 0;
             A.a().menuType = -1;
-            int W = A.a().getScene();
+            SceneType sceneType = A.a().getSceneType();
             A.a();
-            if (W == 100) {
+            if (sceneType == SceneType.MAIN) {
                 int i = A.a().screenID;
                 A.a();
                 if (i == 0) {
@@ -79,7 +79,7 @@ public class PresentRenderer extends aPresentRenderer {
         } else if (A.a().menuType == 2) {
             A.a().i = 0;
             A.a().menuType = -1;
-            if (A.a().getScene() == 100 && A.a().screenID == 0) {
+            if (A.a().getSceneType() == SceneType.MAIN && A.a().screenID == 0) {
                 //aAd.b().d();
             }
             if (z) {
@@ -89,7 +89,7 @@ public class PresentRenderer extends aPresentRenderer {
         } else if (A.a().menuType == 3) {
             A.a().i = 0;
             A.a().menuType = -1;
-            if (A.a().getScene() == 100 && A.a().screenID == 0) {
+            if (A.a().getSceneType() == SceneType.MAIN && A.a().screenID == 0) {
                 //aAd.b().d();
             }
             if (z) {
@@ -99,7 +99,7 @@ public class PresentRenderer extends aPresentRenderer {
         } else if (A.a().menuType == 4) {
             A.a().i = 0;
             A.a().menuType = -1;
-            if (A.a().getScene() == 100 && A.a().screenID == 0) {
+            if (A.a().getSceneType() == SceneType.MAIN && A.a().screenID == 0) {
                 //aAd.b().d();
             }
             if (z) {
@@ -109,7 +109,7 @@ public class PresentRenderer extends aPresentRenderer {
         } else if (A.a().menuType == 5) {
             A.a().i = 0;
             A.a().menuType = -1;
-            if (A.a().getScene() == 100 && A.a().screenID == 0) {
+            if (A.a().getSceneType() == SceneType.MAIN && A.a().screenID == 0) {
                 //aAd.b().d();
             }
             if (z) {
@@ -123,7 +123,7 @@ public class PresentRenderer extends aPresentRenderer {
         } else {
             A.a().i = 0;
             A.a().menuType = -1;
-            if (A.a().getScene() == 100 && A.a().screenID == 0) {
+            if (A.a().getSceneType() == SceneType.MAIN && A.a().screenID == 0) {
                 //aAd.b().d();
             }
             if (z) {

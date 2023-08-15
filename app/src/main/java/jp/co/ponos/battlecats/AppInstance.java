@@ -3999,7 +3999,7 @@ public class AppInstance extends Game {
             aResourceFileStream aresourcefilestream2 = new aResourceFileStream();
             // if (!aString.isEqual(aAssetTextStream.getHash("stage.csv"), new String[]{"3ac0e88db95b36b363a5792941fb1e98"}[0])) {
             //     this.D = 0;
-            //     setScene(4);
+            //     setScene(SceneType.ERROR);
             //     return;
             // }
             if (aresourcefilestream2.openRead(String.format("stage.csv", new Object[0]))) {
@@ -4011,7 +4011,7 @@ public class AppInstance extends Game {
             aresourcefilestream2.close();
             // if (!aString.isEqual(aAssetTextStream.getHash("StampData.csv"), new String[]{"edce825665d2713a8b41f2abd641b1b4"}[0])) {
             //     this.D = 0;
-            //     setScene(4);
+            //     setScene(SceneType.ERROR);
             //     return;
             // }
             if (aresourcefilestream2.openRead(String.format("StampData.csv", new Object[0]))) {
@@ -4852,7 +4852,7 @@ public class AppInstance extends Game {
     void loadUnitBuyStats(int i) {
         // if (!aString.isEqual(aAssetTextStream.getHash(String.format("unitbuy%03d.csv", i + 1)), new String[]{"804ffc7cbfb735e79d355538117f602a", "da00d88cc9c3127e88a999879e203a80", "3cf141900d9b21d99811dc850408f901", "4960b382d7171aa0340ae7559f380bea", "47b5dc4ab2521d191b92c7b2f9a5ba2c", "8f9a611bb43e9252e7469274eba48ecb", "1dc60dd4e820a3367da711966904ffbf", "d0cba580b0d3ef8dd3c084912ffd437a", "83d503725ab63f834afda0f11b7027ba", "1e7c9194142f634fc2b7cd01cdef3ef4", "553afaf8a7b6d47304269a93c9f76636", "fb9fe18da89f1b96f739adbe931c7fe0", "3d260bfb7d74ab43f9f31495a257b5f1", "bd06858427bdea0199d2d7e12c24e903", "9761b3638597a99b9dfef46d097d0ed2", "61a2e033ae724d6ae337294ed3db38cd", "3591f4ee40440ed4e73494b4c9eef85a", "74330d071ce91eb822951f64104d1b30", "dab38fe098106d2ac187fa410c978486", "22f151fe39ffa40b088f2d64a182c9e5", "191afdccc437d2917500675ced12fb3f", "fd09308a974adeaf7db94cc205f6b10b", "30bb912a4cf7b19c23136af2f3804cbd", "d6ea2f2b783d3ba4ba9cee5caa92550b", "363076546cdfe5f0f6448844f571e353", "e49bd23022e28870bee5cf9315df487d"}[i])) {
         //     this.D = 0;
-        //     setScene(4);
+        //     setScene(SceneType.ERROR);
         //     return;
         // }
         aResourceFileStream aresourcefilestream = new aResourceFileStream();
@@ -4972,8 +4972,8 @@ public class AppInstance extends Game {
             if (!this.settingsMenuTexture[3].isLoaded()) {
                 this.settingsMenuTexture[3].load(MyUtility.getString(String.format("img%03d.png", 102)), MyUtility.getString(String.format("img%03d.imgcut", 102)));
             }
-            switch (getScene()) {
-                case 98:
+            switch (getSceneType()) {
+                case OPENING:
                     if (!this.openingTexture[0].isLoaded()) {
                         this.openingTexture[0].reset();
                     }
@@ -4992,7 +4992,7 @@ public class AppInstance extends Game {
                         break;
                     }
                     break;
-                case 99:
+                case ENDING:
                     if (this.uiTextures[0].isLoaded()) {
                         this.uiTextures[0].reset();
                     }
@@ -5019,7 +5019,7 @@ public class AppInstance extends Game {
                         break;
                     }
                     break;
-                case 100:
+                case MAIN:
                     if (this.screenID == 0) {
                         if (this.settingsMenuTexture[1].isLoaded()) {
                             this.settingsMenuTexture[1].reset();
@@ -5453,7 +5453,7 @@ public class AppInstance extends Game {
                         }
                     }
                     break;
-                case 300: // battle
+                case BATTLE: // battle
                     if (this.settingsMenuTexture[1].isLoaded()) {
                         this.settingsMenuTexture[1].reset();
                     }
@@ -5659,7 +5659,7 @@ public class AppInstance extends Game {
             }
             MyUtility.getInstance().addAlertCloser();
             if (this.D == 2) {
-                setScene(98);
+                setScene(SceneType.OPENING);
             }
             this.D = 0;
         }
@@ -5824,8 +5824,8 @@ public class AppInstance extends Game {
                 }
             }
             if (!this.gu && !this.gU) {
-                switch (getScene()) {
-                    case 98:
+                switch (getSceneType()) {
+                    case OPENING:
                         int[] iArr = this.fQ;
                         iArr[0] = iArr[0] + 1;
                         if (this.dz >= 1) {
@@ -5880,7 +5880,7 @@ public class AppInstance extends Game {
                             } else if (this.dz == 2) {
                                 this.dA++;
                                 if (this.dA >= 160) {
-                                    setScene(100);
+                                    setScene(SceneType.MAIN);
                                     return;
                                 }
                             }
@@ -5922,7 +5922,7 @@ public class AppInstance extends Game {
                             return;
                         }
                         //break;
-                    case 99:
+                    case ENDING:
                         int[] iArr8 = this.fQ;
                         iArr8[1] = iArr8[1] + 1;
                         int[] iArr9 = this.fQ;
@@ -6123,7 +6123,7 @@ public class AppInstance extends Game {
                             return;
                         }
                         //break;
-                    case 100:
+                    case MAIN:
                         if (this.fF == -1) {
                             if (this.screenID == 0) {
                                 C();
@@ -6199,7 +6199,7 @@ public class AppInstance extends Game {
                             return;
                         }
                         break;
-                    case 300:
+                    case BATTLE:
                         if (!this.ee && !this.gU && !this.ha[0]) {
                             this.a2.translate((this.w / 2) + 0, 520.0f);
                             this.b2.scale(this.zoomLevel / 100, this.zoomLevel / 100);
@@ -8571,7 +8571,7 @@ public class AppInstance extends Game {
     void loadUnitStats(int catID) {
         // if (!aString.isEqual(aAssetTextStream.getHash(String.format("unit%03d.csv", catID + 1)), new String[]{"c1270af3244e3bcbee86ee907b6620d6", "5e2d37c28d9e40a9f8782a8e27795f3d", "460611b2de02427382067dcc3d0cc814", "402c64570c5e2c4e8215e4931cf977b2", "b839b84eae1717435ca8f3f2e7e1a854", "4f51f1ddc6d279b46256015a8bf80a4c", "988ce06e07fc9a37a3e5c15f0a28524e", "b9dbe2183b5499818190caa0b9c3f71c", "9b04a3c0dd286686a75278299ffd1a3e", "a31375f8f95246ac8216e68036811d2b", "3d6cb7f95624b4bb8ad7fa2550778882", "aaa281d59c8d7df53f507048492a6cc0", "d96417e8192416632355f20e812aa7bd", "cdc09e9ee36c50c6c4eba2dcb3a3333f", "fb7ecb5101a43146354e1cc05742db04", "d1cb69d162b974483778f35c6f9b6b95", "06259e2354febd4a8f2ec5a790b4cb4d", "ae541a88640505aa18dba6b13dcacf70", "defde8fb3562f29a1439db6904cb1f4d", "09cd101bfb8fd4932177c0a55fc0fe16", "210e495fbe7f5b5df2d08f6754b32e28", "68954abe7e5c084b14876b38a4bcb463", "1550f363ff89f2d491beb020dbc8ac8a", "d1cb69d162b974483778f35c6f9b6b95", "9596d33e9868e98d6f2ffd76a8efac2f", "cc0a57073a5038c5017d11f7077ad570"}[catID])) {
         //     this.D = 0;
-        //     setScene(4);
+        //     setScene(SceneType.ERROR);
         //     return;
         // }
         aResourceFileStream aresourcefilestream = new aResourceFileStream();
@@ -8634,12 +8634,12 @@ public class AppInstance extends Game {
         texRenderer.resetProjection();
         texRenderer.removeAnimTransformer();
         texRenderer.setOffset(0, this.eZ);
-        switch (getScene2()) {
-            case 4:
+        switch (getScene2Type()) {
+            case ERROR: // error
                 texRenderer.setColor(0, 0, 0);
                 texRenderer.drawRectangle(0, -this.eZ, getWidth(), getHeight());
                 break;
-            case 98:
+            case OPENING: // opening
                 texRenderer.setColor(0, 0, 0);
                 texRenderer.drawRectangle(0, -this.eZ, getWidth(), getHeight());
                 texRenderer.setColor(0, 0, 0);
@@ -8713,7 +8713,7 @@ public class AppInstance extends Game {
                     }
                 }
                 break;
-            case 99:
+            case ENDING: // ending
                 texRenderer.setColor(100, 100, 100);
                 texRenderer.drawRectangle(0, -this.eZ, getWidth(), getHeight());
                 float ah2 = (((getWidth() / 960) * 720) - 640) / 2;
@@ -8791,7 +8791,7 @@ public class AppInstance extends Game {
                     }
                 }
                 break;
-            case 100:
+            case MAIN: // main menu
                 texRenderer.setColor(255, 255, 255);
                 texRenderer.drawRectangle(0, -this.eZ, getWidth(), getHeight());
                 if (this.screenID == 0) {
@@ -8829,7 +8829,7 @@ public class AppInstance extends Game {
                 }
                 a(texRenderer, this.ed);
                 break;
-            case 300:
+            case BATTLE: // battle
                 if (this.hl == 0) {
                     for (int i10 = 0; i10 < 3; i10++) {
                         if (this.hc[i10 + 7] == 32) {
@@ -10082,7 +10082,7 @@ public class AppInstance extends Game {
     void loadEnemyStats() {
         // if (!aString.isEqual(aAssetTextStream.getHash("t_unit.csv"), new String[]{"48ffde5dd85d010a1e497456122afc2e"}[0])) {
         //     this.D = 0;
-        //     setScene(4);
+        //     setScene(SceneType.ERROR);
         //     return;
         // }
         aResourceFileStream aresourcefilestream = new aResourceFileStream();
@@ -10149,16 +10149,16 @@ public class AppInstance extends Game {
             }
             if (this.ec == 26) {
                 screenTransition();
-                switch (getScene()) {
-                    case 98:
+                switch (getSceneType()) {
+                    case OPENING:
                         for (int i2 = 0; i2 < getLength(this.eM); i2++) {
                             this.eM[i2] = false;
                         }
-                        setScene(100);
+                        setScene(SceneType.MAIN);
                         this.screenID = 0;
                         this.fF = -1;
                         break;
-                    case 100:
+                    case MAIN:
                         if (this.screenID != 0 && this.screenID != 99999) {
                             if (this.screenID == 5 || (this.aZ == 0 && this.screenID == 9)) {
                                 if (this.fE == 5) {
@@ -10254,12 +10254,12 @@ public class AppInstance extends Game {
                                     this.eM[i10] = false;
                                 }
                             } else if (this.eg == 1) {
-                                setScene(98);
+                                setScene(SceneType.OPENING);
                                 for (int i11 = 0; i11 < getLength(this.eM); i11++) {
                                     this.eM[i11] = false;
                                 }
                             } else if (this.eg == 2) {
-                                setScene(99);
+                                setScene(SceneType.ENDING);
                                 for (int i12 = 0; i12 < getLength(this.eM); i12++) {
                                     this.eM[i12] = false;
                                 }
@@ -10284,8 +10284,8 @@ public class AppInstance extends Game {
         } else if (i == 1) {
             if (this.ec == 10) {
                 screenTransition();
-                switch (getScene()) {
-                    case 300:
+                switch (getSceneType()) {
+                    case BATTLE:
                         if (this.battleData[14] == 1 && this.battleData[21] == 0) {
                             if (this.bz[1] == 0) {
                                 this.bz[1] = 1;
@@ -10336,10 +10336,10 @@ public class AppInstance extends Game {
             }
             if (this.ec == 11) {
                 screenTransition();
-                switch (getScene()) {
-                    case 99:
+                switch (getSceneType()) {
+                    case ENDING:
                         if (this.eg == 2) {
-                            setScene(100);
+                            setScene(SceneType.MAIN);
                             this.screenID = 0;
                             this.fF = -1;
                             for (int i15 = 0; i15 < getLength(this.eM); i15++) {
@@ -10348,7 +10348,7 @@ public class AppInstance extends Game {
                             return false;
                         }
                         this.bj = 1;
-                        setScene(100);
+                        setScene(SceneType.MAIN);
                         for (int i16 = 0; i16 < getLength(this.eM); i16++) {
                             this.eM[i16] = false;
                         }
@@ -10372,18 +10372,18 @@ public class AppInstance extends Game {
                             return false;
                         }
                         return false;
-                    case 100:
+                    case MAIN:
                         //aAd.b().f();
                         if (this.eg != 0) {
                             if (this.eg == 1) {
-                                setScene(98);
+                                setScene(SceneType.OPENING);
                                 this.eg = 0;
                                 for (int i20 = 0; i20 < getLength(this.eM); i20++) {
                                     this.eM[i20] = false;
                                 }
                                 return false;
                             } else if (this.eg == 2) {
-                                setScene(99);
+                                setScene(SceneType.ENDING);
                                 this.eg = 0;
                                 for (int i21 = 0; i21 < getLength(this.eM); i21++) {
                                     this.eM[i21] = false;
@@ -10407,7 +10407,7 @@ public class AppInstance extends Game {
                                     this.dH = 48;
                                     this.eQ = 0;
                                 }
-                                setScene(300);
+                                setScene(SceneType.BATTLE);
                                 if (this.screenID != 5) {
                                     aSave();
                                     return false;
@@ -10444,13 +10444,13 @@ public class AppInstance extends Game {
                             }
                             return false;
                         }
-                    case 300:
+                    case BATTLE:
                         if (this.battleData[14] == 0) {
                             if (this.aZ == 0) {
                                 for (int i23 = 0; i23 < getLength(this.eM); i23++) {
                                     this.eM[i23] = false;
                                 }
-                                setScene(100);
+                                setScene(SceneType.MAIN);
                                 this.screenID = 0;
                                 this.fF = -1;
                                 for (int i24 = 0; i24 < getLength(this.eM); i24++) {
@@ -10461,7 +10461,7 @@ public class AppInstance extends Game {
                                 for (int i25 = 0; i25 < getLength(this.eM); i25++) {
                                     this.eM[i25] = false;
                                 }
-                                setScene(100);
+                                setScene(SceneType.MAIN);
                                 this.fP = 0;
                                 for (int i26 = 0; i26 < getLength(this.eE); i26++) {
                                     this.eE[i26] = false;
@@ -10488,7 +10488,7 @@ public class AppInstance extends Game {
                                 for (int i30 = 0; i30 < getLength(this.scrollAmount); i30++) {
                                     this.scrollAmount[i30] = 0;
                                 }
-                                setScene(100);
+                                setScene(SceneType.MAIN);
                                 this.fP = 0;
                                 for (int i31 = 0; i31 < getLength(this.eE); i31++) {
                                     this.eE[i31] = false;
@@ -10564,7 +10564,7 @@ public class AppInstance extends Game {
                                     for (int i36 = 0; i36 < getLength(this.eM); i36++) {
                                         this.eM[i36] = false;
                                     }
-                                    setScene(100);
+                                    setScene(SceneType.MAIN);
                                     this.fP = 0;
                                     for (int i37 = 0; i37 < getLength(this.eE); i37++) {
                                         this.eE[i37] = false;
@@ -10662,7 +10662,7 @@ public class AppInstance extends Game {
                                     this.eM[i48] = false;
                                 }
                                 loadTextures2();
-                                setScene(99);
+                                setScene(SceneType.ENDING);
                                 return false;
                             }
                         } else if (this.battleData[14] == 2) {
@@ -10692,7 +10692,7 @@ public class AppInstance extends Game {
                                     for (int i56 = 0; i56 < getLength(this.eM); i56++) {
                                         this.eM[i56] = false;
                                     }
-                                    setScene(100);
+                                    setScene(SceneType.MAIN);
                                     this.screenID = 0;
                                     this.fF = -1;
                                     return false;
@@ -10700,7 +10700,7 @@ public class AppInstance extends Game {
                                 for (int i57 = 0; i57 < getLength(this.eM); i57++) {
                                     this.eM[i57] = false;
                                 }
-                                setScene(100);
+                                setScene(SceneType.MAIN);
                                 this.screenID = 5;
                                 this.fF = -1;
                                 this.fP = 0;
@@ -10930,7 +10930,7 @@ public class AppInstance extends Game {
                             for (int i99 = 0; i99 < getLength(this.eM); i99++) {
                                 this.eM[i99] = false;
                             }
-                            setScene(100);
+                            setScene(SceneType.MAIN);
                             this.fP = 0;
                             for (int i100 = 0; i100 < getLength(this.eE); i100++) {
                                 this.eE[i100] = false;
@@ -10972,7 +10972,7 @@ public class AppInstance extends Game {
                             for (int i109 = 0; i109 < getLength(this.eM); i109++) {
                                 this.eM[i109] = false;
                             }
-                            setScene(100);
+                            setScene(SceneType.MAIN);
                             this.fP = 0;
                             for (int i110 = 0; i110 < getLength(this.eE); i110++) {
                                 this.eE[i110] = false;
@@ -13231,8 +13231,8 @@ public class AppInstance extends Game {
             atexturerenderer.drawRectangle(0, -this.eZ, getWidth(), getHeight());
             atexturerenderer.drawScaledImage(this.popupTexture, (this.w / 2) + (480 - (((eO[this.gv[0]] * 690) / 100) / 2)), 364 - (((eO[this.gv[0]] * 229) / 100) / 2), (eO[this.gv[0]] * 690) / 100, (eO[this.gv[0]] * 229) / 100, 0);
             if (this.gw == 1) {
-                switch (getScene2()) {
-                    case 100:
+                switch (getScene2Type()) {
+                    case MAIN:
                         atexturerenderer.drawScaledImage(this.uiTextures[0], this.w + (688 - (dv[this.fx[14]] / 2)) + this.gameStats1[2], 593 - (dv[this.fx[14]] / 2), dv[this.fx[14]] + 55, dv[this.fx[14]] + 42, 21);
                         if (this.bf >= 1) {
                             atexturerenderer.drawScaledImage(this.uiTextures[0], this.w + (733 - (dv[this.fx[14]] / 2)) + this.gameStats1[2], 610 - (dv[this.fx[14]] / 2), dv[this.fx[14]] + 27, dv[this.fx[14]] + 26, 18);
@@ -13245,7 +13245,7 @@ public class AppInstance extends Game {
                             i8 /= 10;
                             i9++;
                         } while (i8 > 0);
-                    case 300:
+                    case BATTLE:
                         atexturerenderer.drawScaledImage(this.uiTextures[21], this.w + (688 - (dv[this.fx[14]] / 2)), 593 - (dv[this.fx[14]] / 2), dv[this.fx[14]] + 55, dv[this.fx[14]] + 42, 21);
                         atexturerenderer.drawScaledImage(this.uiTextures[21], this.w + (733 - (dv[this.fx[14]] / 2)), 610 - (dv[this.fx[14]] / 2), dv[this.fx[14]] + 27, dv[this.fx[14]] + 26, 18);
                         int i10 = this.catfood;
@@ -13259,8 +13259,8 @@ public class AppInstance extends Game {
                         break;
                 }
             } else if (this.gw == 99) {
-                switch (getScene2()) {
-                    case 100:
+                switch (getScene2Type()) {
+                    case MAIN:
                         atexturerenderer.drawScaledImagef(this.uiTextures[5], 570, 17, 10);
                         int i12 = this.aY;
                         int i13 = 0;
@@ -13282,8 +13282,8 @@ public class AppInstance extends Game {
             atexturerenderer.setAlpha(178);
             atexturerenderer.drawRectangle(0, -this.eZ, getWidth(), getHeight());
             atexturerenderer.drawScaledImage(this.popupTexture, (this.w / 2) + (480 - (((eO[this.gv[0]] * 690) / 100) / 2)), 364 - (((eO[this.gv[0]] * 229) / 100) / 2), (eO[this.gv[0]] * 690) / 100, (eO[this.gv[0]] * 229) / 100, 0);
-            switch (getScene2()) {
-                case 100:
+            switch (getScene2Type()) {
+                case MAIN:
                     atexturerenderer.drawScaledImage(this.uiTextures[0], this.w + (688 - (dv[this.fx[14]] / 2)) + this.gameStats1[2], 593 - (dv[this.fx[14]] / 2), dv[this.fx[14]] + 55, dv[this.fx[14]] + 42, 21);
                     if (this.bf >= 1) {
                         atexturerenderer.drawScaledImage(this.uiTextures[0], this.w + (733 - (dv[this.fx[14]] / 2)) + this.gameStats1[2], 610 - (dv[this.fx[14]] / 2), dv[this.fx[14]] + 27, dv[this.fx[14]] + 26, 18);
@@ -13339,11 +13339,11 @@ public class AppInstance extends Game {
             return;
         }
         if (this.gw == 0) {
-            switch (getScene2()) {
-                case 98:
+            switch (getScene2Type()) {
+                case OPENING:
                 default:
                     return;
-                case 99:
+                case ENDING:
                     if (this.gx == 999) {
                         int i18 = 0;
                         for (int i19 = 0; i19 < 4; i19++) {
@@ -13433,7 +13433,7 @@ public class AppInstance extends Game {
                             return;
                         }
                     }
-                case 100:
+                case MAIN:
                     int i28 = 0;
                     if (this.screenID == 0) {
                         atexturerenderer.setColor(255, 255, 255);
@@ -13471,7 +13471,7 @@ public class AppInstance extends Game {
                         return;
                     }
                     return;
-                case 300:
+                case BATTLE:
                     if (this.gx == 999) {
                         int i33 = -1;
                         for (int i34 = 0; i34 < 2; i34++) {
@@ -13528,12 +13528,12 @@ public class AppInstance extends Game {
                 i38 += 2;
                 i40++;
             }
-            switch (getScene2()) {
-                case 98:
-                case 99:
+            switch (getScene2Type()) {
+                case OPENING:
+                case ENDING:
                 default:
                     return;
-                case 100:
+                case MAIN:
                     atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + (251 - (dv[this.fz[0]] / 2)), 382 - (dv[this.fz[0]] / 2), dv[this.fz[0]] + 168, dv[this.fz[0]] + 72, 0);
                     atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + (541 - (dv[this.fz[1]] / 2)), 382 - (dv[this.fz[1]] / 2), dv[this.fz[1]] + 168, dv[this.fz[1]] + 72, 0);
                     atexturerenderer.drawScaledImage(this.uiTextures[0], (this.w / 2) + (260 - (dv[this.fz[0]] / 2)), 390 - (dv[this.fz[0]] / 2), dv[this.fz[0]] + 150, dv[this.fz[0]] + 55, 4);
@@ -13595,7 +13595,7 @@ public class AppInstance extends Game {
                     if (this.gw != 1) {
                     }
                     break;
-                case 300:
+                case BATTLE:
                     atexturerenderer.drawScaledImage(this.uiTextures[21], (this.w / 2) + (251 - (dv[this.fz[0]] / 2)), 382 - (dv[this.fz[0]] / 2), dv[this.fz[0]] + 168, dv[this.fz[0]] + 72, 2);
                     atexturerenderer.drawScaledImage(this.uiTextures[21], (this.w / 2) + (541 - (dv[this.fz[1]] / 2)), 382 - (dv[this.fz[1]] / 2), dv[this.fz[1]] + 168, dv[this.fz[1]] + 72, 2);
                     atexturerenderer.drawScaledImage(this.uiTextures[21], (this.w / 2) + (260 - (dv[this.fz[0]] / 2)), 390 - (dv[this.fz[0]] / 2), dv[this.fz[0]] + 150, dv[this.fz[0]] + 55, 4);
@@ -13628,12 +13628,12 @@ public class AppInstance extends Game {
                 i47 += 2;
                 i49++;
             }
-            switch (getScene2()) {
-                case 98:
-                case 99:
+            switch (getScene2Type()) {
+                case OPENING:
+                case ENDING:
                 default:
                     return;
-                case 100:
+                case MAIN:
                     atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + (251 - (dv[this.fz[0]] / 2)), 382 - (dv[this.fz[0]] / 2), dv[this.fz[0]] + 168, dv[this.fz[0]] + 72, 0);
                     atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + (541 - (dv[this.fz[1]] / 2)), 382 - (dv[this.fz[1]] / 2), dv[this.fz[1]] + 168, dv[this.fz[1]] + 72, 0);
                     atexturerenderer.drawScaledImage(this.uiTextures[0], (this.w / 2) + (260 - (dv[this.fz[0]] / 2)), 390 - (dv[this.fz[0]] / 2), dv[this.fz[0]] + 150, dv[this.fz[0]] + 55, 4);
@@ -13677,7 +13677,7 @@ public class AppInstance extends Game {
                     atexturerenderer.drawScaledImage(this.uiTextures[0], (this.w / 2) + (642 - ((i7 < 5 ? i7 - 4 : 0) * 29)), 208, 55, 42, 21);
                     atexturerenderer.drawScaledImagef(this.uiTextures[5], (593 - (i7 * 29)) + (this.w / 2), 222.0f, 47.0f, 28.0f, 15);
                     return;
-                case 300:
+                case BATTLE:
                     atexturerenderer.setColor(255, 255, 255);
                     for (int i50 = 0; i50 < 4; i50++) {
                         atexturerenderer.drawScaledImage(this.textTextures2[i50], getWidth() / 2, (i50 * 36) + 270, 1);
@@ -13719,7 +13719,7 @@ public class AppInstance extends Game {
                         }
                         atexturerenderer.drawScaledImage(this.uiTextures[0], (this.w / 2) + (642 - ((i4 >= 5 ? i4 - 4 : 0) * 29)), 208, 55, 42, 21);
                         atexturerenderer.drawScaledImagef(this.uiTextures[5], (593 - (i4 * 29)) + (this.w / 2), 222.0f, 47.0f, 28.0f, 15);
-                        switch (getScene2()) {
+                        switch (getScene2Type()) {
                         }
                     }
                     i51 = -i52;
@@ -13745,7 +13745,7 @@ public class AppInstance extends Game {
                                 }
                                 atexturerenderer.drawScaledImage(this.uiTextures[0], (this.w / 2) + (642 - ((i4 >= 5 ? i4 - 4 : 0) * 29)), 208, 55, 42, 21);
                                 atexturerenderer.drawScaledImagef(this.uiTextures[5], (593 - (i4 * 29)) + (this.w / 2), 222.0f, 47.0f, 28.0f, 15);
-                                switch (getScene2()) {
+                                switch (getScene2Type()) {
                                 }
                             }
                             atexturerenderer.drawScaledImage(this.textTextures2[i2], getWidth() / 2, (i51 * 18) + 306, 1);
@@ -13765,12 +13765,12 @@ public class AppInstance extends Game {
                             } while (i3 > 0);
                             atexturerenderer.drawScaledImage(this.uiTextures[0], (this.w / 2) + (642 - ((i4 >= 5 ? i4 - 4 : 0) * 29)), 208, 55, 42, 21);
                             atexturerenderer.drawScaledImagef(this.uiTextures[5], (593 - (i4 * 29)) + (this.w / 2), 222.0f, 47.0f, 28.0f, 15);
-                            switch (getScene2()) {
-                                case 98:
-                                case 99:
+                            switch (getScene2Type()) {
+                                case OPENING:
+                                case ENDING:
                                 default:
                                     return;
-                                case 100:
+                                case MAIN:
                                     atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + (251 - (dv[this.fz[0]] / 2)), 382 - (dv[this.fz[0]] / 2), dv[this.fz[0]] + 168, dv[this.fz[0]] + 72, 0);
                                     atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.w / 2) + (541 - (dv[this.fz[1]] / 2)), 382 - (dv[this.fz[1]] / 2), dv[this.fz[1]] + 168, dv[this.fz[1]] + 72, 0);
                                     atexturerenderer.drawScaledImage(this.uiTextures[0], (this.w / 2) + (260 - (dv[this.fz[0]] / 2)), 390 - (dv[this.fz[0]] / 2), dv[this.fz[0]] + 150, dv[this.fz[0]] + 55, 4);
@@ -13803,7 +13803,7 @@ public class AppInstance extends Game {
                     }
                     atexturerenderer.drawScaledImage(this.uiTextures[0], (this.w / 2) + (642 - ((i4 >= 5 ? i4 - 4 : 0) * 29)), 208, 55, 42, 21);
                     atexturerenderer.drawScaledImagef(this.uiTextures[5], (593 - (i4 * 29)) + (this.w / 2), 222.0f, 47.0f, 28.0f, 15);
-                    switch (getScene2()) {
+                    switch (getScene2Type()) {
                     }
                 } else {
                     i51 = -i52;
@@ -13826,7 +13826,7 @@ public class AppInstance extends Game {
             }
             atexturerenderer.drawScaledImage(this.uiTextures[0], (this.w / 2) + (642 - ((i4 >= 5 ? i4 - 4 : 0) * 29)), 208, 55, 42, 21);
             atexturerenderer.drawScaledImagef(this.uiTextures[5], (593 - (i4 * 29)) + (this.w / 2), 222.0f, 47.0f, 28.0f, 15);
-            switch (getScene2()) {
+            switch (getScene2Type()) {
             }
         } else if (this.gw == 5 || this.gw == 6 || this.gw == 8 || this.gw == 9 || this.gw == 10) {
             atexturerenderer.setColor(255, 255, 255);
@@ -16027,8 +16027,8 @@ public class AppInstance extends Game {
         int i3;
         int i4;
         int i5;
-        switch (getScene2()) {
-            case 100:
+        switch (getScene2Type()) {
+            case MAIN:
                 if (this.bB[6] == 1) {
                     atexturerenderer.setColor(0, 0, 0, 204);
                     atexturerenderer.drawRectangle(0, 0 - this.eZ, getWidth(), getHeight());
@@ -16170,7 +16170,7 @@ public class AppInstance extends Game {
                         i15 = i16 + 1;
                     }
                 }
-            case 300:
+            case BATTLE:
                 if (this.hH == 1) {
                     atexturerenderer.setColor(0, 0, 0, 204);
                     atexturerenderer.drawRectangle(0, 0 - this.eZ, getWidth(), getHeight());
@@ -20777,8 +20777,8 @@ public class AppInstance extends Game {
                 }
             }
             if (this.gw == 0) {
-                switch (getScene()) {
-                    case 99:
+                switch (getSceneType()) {
+                    case ENDING:
                         if (this.dE == 5) {
                             for (int i5 = 0; i5 < getLength(this.endingMessageText[0]) && !aString.isEqual(this.endingMessageText[0][i5], "＠"); i5++) {
                                 if (!this.textTextures2[i5].isLoaded()) {
@@ -20809,7 +20809,7 @@ public class AppInstance extends Game {
                             break;
                         }
                         break;
-                    case 100:
+                    case MAIN:
                         if (this.screenID == 0) {
                             if (!this.textTextures2[0].isLoaded()) {
                                 this.textTextures2[0].drawText(this.optionText[2], "FONT_SYSTEM_BOLD", 30, 1);
@@ -20838,7 +20838,7 @@ public class AppInstance extends Game {
                             break;
                         }
                         break;
-                    case 300:
+                    case BATTLE:
                         if (this.gx == 1) {
                             if (this.bz[1] == 0) {
                                 for (int i10 = 0; i10 < getLength(this.mainMenuPopupText[0]) && !aString.isEqual(this.mainMenuPopupText[0][i10], "＠"); i10++) {
@@ -21086,8 +21086,8 @@ public class AppInstance extends Game {
             if (this.gv[1] >= 30) {
                 this.gv[1] = 30;
                 if (S()) {
-                    switch (getScene()) {
-                        case 99:
+                    switch (getSceneType()) {
+                        case ENDING:
                             if (this.dE == 5) {
                                 this.dE = 6;
                                 break;
@@ -21099,7 +21099,7 @@ public class AppInstance extends Game {
                                 break;
                             }
                             break;
-                        case 300:
+                        case BATTLE:
                             boolean z = this.ha[0];
                             break;
                     }
@@ -21312,8 +21312,8 @@ public class AppInstance extends Game {
                 iArr17[0] = iArr17[0] + 1;
                 if (this.fz[0] > getLength(dv) - 1) {
                     this.fz[0] = 0;
-                    switch (getScene()) {
-                        case 100:
+                    switch (getSceneType()) {
+                        case MAIN:
                             if (this.screenID != 0 && this.screenID != 5 && this.screenID != 9) {
                                 if (this.screenID == 7) {
                                     this.catfood -= this.unitBuyStats[this.boxCatIDs[this.currentBox[2] - this.gB[1]]][1];
@@ -21419,8 +21419,8 @@ public class AppInstance extends Game {
                     iArr22[0] = iArr22[0] + 1;
                     if (this.fz[0] > getLength(dv) - 1) {
                         this.fz[0] = 0;
-                        switch (getScene()) {
-                            case 100:
+                        switch (getSceneType()) {
+                            case MAIN:
                                 if (this.screenID == 9) {
                                     if (this.catfood < 30) {
                                         screenTransition();

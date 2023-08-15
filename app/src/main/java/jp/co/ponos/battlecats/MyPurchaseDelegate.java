@@ -14,10 +14,10 @@ public class MyPurchaseDelegate extends aPurchaseDelegate {
 
     @Override // jp.co.ponos.library.purchase.aPurchaseDelegate
     public boolean a(String str) {
-        if ((A.a().getScene() == 300 && A.a().battleData[14] == 1) || A.a().getScene() == 99) {
+        if ((A.a().getSceneType() == SceneType.BATTLE && A.a().battleData[14] == 1) || A.a().getSceneType() == SceneType.ENDING) {
             return false;
         }
-        if (A.a().getScene() == 100 && A.a().screenID == 9999) {
+        if (A.a().getSceneType() == SceneType.MAIN && A.a().screenID == 9999) {
             return false;
         }
         for (int i = 0; i < 8; i++) {
