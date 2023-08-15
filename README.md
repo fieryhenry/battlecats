@@ -14,6 +14,10 @@ fully working we can move on to adding code for later versions.
 
 ## Prebuilt APKs
 
+NOTE: This app is very early in development and so it is basically unusable if
+you want to play the original game. It is mainly for people who want to help fix
+issues in the code or are interested in modding and want to test stuff out.
+
 Prebuilt APKs can be found in the
 [Releases](https://github.com/fieryhenry/battlecats/releases) section for the
 major versions once they are working.
@@ -24,10 +28,6 @@ workflow. This APK is built from the latest code in the `master` branch and so
 might not be working properly.
 
 ## Building the APK yourself
-
-NOTE: This app is very early in development and so it is basically unusable if
-you want to play the original game. It is mainly for people who want to help fix
-issues in the code or are interested in modding and want to test stuff out.
 
 1. [Download Android Studio](https://developer.android.com/studio)
 2. Clone this repository using `git` or by downloading the zip and extracting it
@@ -87,9 +87,11 @@ easier to update it with code from later versions.
 Here are some current problems with the app:
 
 - [ ] Some animations are broken
-- [ ] Can't really scroll in the upgrade menu
+- [ ] Can't see current upgrade level of cats
 - [ ] Freezing if too many enemies die
 - [ ] Cat cannon firing strangely
+- [ ] Crashing when trying to go to the catfood shop when you don't have enough
+      catfood
 
 List is not exhaustive, there are probably lots of other issues that I haven't
 noticed yet.
