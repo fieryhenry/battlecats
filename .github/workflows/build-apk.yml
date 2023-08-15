@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ "master" ]
 
+permissions:
+  contents: write
+
 jobs:
   build:
 
@@ -30,3 +33,11 @@ jobs:
       with:
         name: app-debug.apk
         path: app/build/outputs/apk/debug/app-debug.apk 
+      
+    - name: Commit APK
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'battlecatsupload+github-actions[bot]@users.noreply.github.com'
+        git add app/build/outputs/apk/debug/app-debug.apk
+        git commit -m "Upload APK"
+        git push
