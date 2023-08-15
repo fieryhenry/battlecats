@@ -14576,7 +14576,7 @@ public class AppInstance extends Game {
                             i3 = 0;
                             while (true) {
                                 i4 = i3;
-                                if (i4 < getLength(this.slotCatIDs)) {
+                                if (i4 >= getLength(this.slotCatIDs)) {
                                     break;
                                 }
                                 if (this.slotCatIDs[i4] == this.boxCatIDs[(boxIndex - this.boxCounts[0]) - this.gB[1]] + 2) {
@@ -14683,8 +14683,8 @@ public class AppInstance extends Game {
                         baseLevel = this.baseUpgrades[this.boxCatIDs[(boxIndex - this.boxCounts[0]) - this.gB[1]]] + 1;
                         upgradeCost = this.unitBuyStats[this.boxCatIDs[(boxIndex - this.boxCounts[0]) - this.gB[1]]][((this.baseUpgrades[this.boxCatIDs[(boxIndex - this.boxCounts[0]) - this.gB[1]]] + 1) % 10) + 2] * (((this.baseUpgrades[this.boxCatIDs[(boxIndex - this.boxCounts[0]) - this.gB[1]]] + 1) / 10) + 1);
                     }
-                    // TODO: Render "In Use" Icon
                     // TODO: Render Current Cat / Special Ability Level
+                    // TODO: Fix "NEED XP" for cats that are purchased with cf
                     atexturerenderer.drawScaledImagef(this.uiTextures[8], (((57.0f * (((this.boxSize[boxIndex][0] * 100.0f) / 328.0f) / 100.0f)) * cC[tempValue]) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[boxIndex][0] / 2.0f)) + (this.boxScale * boxIndex) + this.gameStats1[0] + xBoxOffset + ((107.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f), 347.0f - ((88.0f * ((this.boxSize[boxIndex][1] * 10000.0f) / 263.0f)) / 10000.0f), ((213.0f * ((this.boxSize[boxIndex][0] * 10000.0f) / 328.0f)) / 10000.0f) - ((((213.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (45.0f * ((this.boxSize[boxIndex][1] * 10000.0f) / 263.0f)) / 10000.0f, 72);
                     i2 = upgradeCost;
                     int i15 = 0;
@@ -14708,6 +14708,18 @@ public class AppInstance extends Game {
                         atexturerenderer.drawScaledImagef(this.uiTextures[0], (((((37.0f + (0 * ((29.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f))) * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f) + ((((((getWidth() / 2.0f) - (this.boxSize[boxIndex][0] / 2.0f)) + (this.boxScale * boxIndex)) + this.gameStats1[0]) + xBoxOffset) - (0 * ((29.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f))) + ((127.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f), 347.0f - ((86.0f * ((this.boxSize[boxIndex][1] * 100.0f) / 263.0f)) / 100.0f), ((55.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) - ((((62.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (42.0f * ((this.boxSize[boxIndex][1] * 100.0f) / 263.0f)) / 100.0f, 21);
                         atexturerenderer.drawScaledImagef(this.uiTextures[5], (((((86.0f + (0 * ((29.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f))) * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f) + ((((((getWidth() / 2.0f) - (this.boxSize[boxIndex][0] / 2.0f)) + (this.boxScale * boxIndex)) + this.gameStats1[0]) + xBoxOffset) - (0 * ((29.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f))) + ((78.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f), 347.0f - ((75.0f * ((this.boxSize[boxIndex][1] * 100.0f) / 263.0f)) / 100.0f), ((47.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) - ((((47.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (28.0f * ((this.boxSize[boxIndex][1] * 100.0f) / 263.0f)) / 100.0f, 15);
                     }
+                    i3 = 0;
+                    while (true) {
+                        i4 = i3;
+                        if (i4 >= getLength(this.slotCatIDs)) {
+                            break;
+                        }
+                        if (this.slotCatIDs[i4] == this.boxCatIDs[(boxIndex - this.boxCounts[0]) - this.gB[1]] + 2) {
+                            atexturerenderer.drawScaledImagef(this.uiTextures[9], ((((-59.0f) * (((this.boxSize[boxIndex][0] * 100.0f) / 328.0f) / 100.0f)) * cC[tempValue]) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[boxIndex][0] / 2.0f)) + (this.boxScale * boxIndex) + this.gameStats1[0] + xBoxOffset + ((223.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f), 347.0f - ((223.0f * ((this.boxSize[boxIndex][1] * 100.0f) / 263.0f)) / 100.0f), ((80.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) - ((((80.0f * ((this.boxSize[boxIndex][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (80.0f * ((this.boxSize[boxIndex][1] * 100.0f) / 263.0f)) / 100.0f, 0);
+                        }
+                        i3 = i4 + 1;
+                    }
+
                     if (boxIndex - this.boxCounts[0] < this.gB[1]) {
                     }
                     int i1422 = this.boxCounts[0];
