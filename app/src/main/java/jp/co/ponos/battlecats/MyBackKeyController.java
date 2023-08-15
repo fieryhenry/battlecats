@@ -7,7 +7,7 @@ import jp.co.ponos.library.game.aBackKeyController;
 public class MyBackKeyController extends aBackKeyController {
     @Override // jp.co.ponos.library.game.aBackKeyController
     public boolean a() {
-        if (A.a().getSceneType() == SceneType.MAIN && A.a().screenID == 0 && A.a().fG[0] == 0 && !A.a().ee) {
+        if (A.a().getSceneType() == SceneType.MAIN && A.a().getScreenType() == ScreenType.TITLE && A.a().fG[0] == 0 && !A.a().ee) {
             return false;
         }
         A.a().backPressed = true;

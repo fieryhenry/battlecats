@@ -62,7 +62,7 @@ public class MyActivity extends Activity {
         if ((A.a().getSceneType() == SceneType.BATTLE && A.a().battleData[14] == 1) || A.a().getSceneType() == SceneType.ENDING) {
             return;
         }
-        if (!(A.a().getSceneType() == SceneType.MAIN && A.a().screenID == 9999) && i > 0) {
+        if (!(A.a().getSceneType() == SceneType.MAIN && A.a().getScreenType() == ScreenType.STAMP) && i > 0) {
             A.a().catfood += i;
             MyUtility.getInstance().addButton(String.format(a, Integer.valueOf(i)));
             A.a().aSave();

@@ -1,6 +1,5 @@
 package jp.co.ponos.battlecats;
 
-import static java.lang.Math.abs;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -1180,7 +1179,7 @@ public class AppInstance extends Game {
         for (int i5 = 0; i5 < getLength(this.blinkFrame); i5++) {
             this.blinkFrame[i5] = 0;
         }
-        if (this.gQ == 0) {
+        if (this.previousScreen == 0) {
             this.blinkFrame[0] = getLength(cu) - 1;
         }
         this.buttonCoordinates1[1][0] = 36;
@@ -1191,7 +1190,7 @@ public class AppInstance extends Game {
         this.buttonCoordinates1[2][1] = 171;
         this.buttonCoordinates1[2][2] = 88;
         this.buttonCoordinates1[2][3] = 97;
-        if (this.gQ == 0) {
+        if (this.previousScreen == 0) {
             for (int i6 = 0; i6 < getLength(this.fq); i6++) {
                 this.fq[i6] = 0;
             }
@@ -1460,7 +1459,7 @@ public class AppInstance extends Game {
                 if (this.gm[1] <= 0) {
                     this.eE[0] = false;
                     this.blinkFrame[2] = 0;
-                    this.gQ = 0;
+                    this.previousScreen = 0;
                 }
             } else {
                 this.fP = fM[this.blinkFrame[2]];
@@ -1479,7 +1478,7 @@ public class AppInstance extends Game {
                 if (this.gm[0] <= 0) {
                     this.blinkFrame[2] = 0;
                     screenTransition();
-                    this.screenID = 5;
+                    this.setScreenType(ScreenType.CAT_BASE);
                     this.screenLoadState = -1;
                     this.eE[1] = false;
                     return false;
@@ -1506,9 +1505,9 @@ public class AppInstance extends Game {
                 this.fP = 0;
                 this.blinkFrame[2] = 0;
                 screenTransition();
-                this.screenID = 999;
+                this.setScreenType(ScreenType.ITEM_SHOP);
                 this.screenLoadState = -1;
-                this.gQ = 4;
+                this.previousScreen = 4;
                 return false;
             }
         }
@@ -1959,7 +1958,7 @@ public class AppInstance extends Game {
             for (int i19 = 0; i19 < getLength(this.blinkFrame); i19++) {
                 this.blinkFrame[i19] = 0;
             }
-            if (this.gQ == 0) {
+            if (this.previousScreen == 0) {
                 this.blinkFrame[0] = getLength(cu) - 1;
             }
             for (int i20 = 0; i20 < getLength(this.eE); i20++) {
@@ -1994,7 +1993,7 @@ public class AppInstance extends Game {
             if (this.bL[i29] > i27) {
                 i27 = this.bL[i29];
                 if (this.ff[3] != this.bL[i29]) {
-                    if (this.gQ == 0) {
+                    if (this.previousScreen == 0) {
                         this.gE[i28] = this.bL[i29];
                     }
                     i28++;
@@ -2018,7 +2017,7 @@ public class AppInstance extends Game {
         this.ff[0] = this.boxCounts[0];
         this.ff[2] = 0;
         this.ff[1] = (this.boxScale * 100) + (this.gameStats1[0] / this.boxScale);
-        if (this.gQ >= 1) {
+        if (this.previousScreen >= 1) {
             int i31 = 0;
             for (int i32 = 0; i32 < getLength(this.ff); i32++) {
                 this.ff[i32] = this.gT[i32];
@@ -2964,7 +2963,7 @@ public class AppInstance extends Game {
                 if (this.gm[1] <= 0) {
                     this.eE[0] = false;
                     this.blinkFrame[2] = 0;
-                    this.gQ = 0;
+                    this.previousScreen = 0;
                 }
             } else {
                 this.fP = fM[this.blinkFrame[2]];
@@ -2983,7 +2982,7 @@ public class AppInstance extends Game {
                 if (this.gm[0] <= 0) {
                     this.blinkFrame[2] = 0;
                     screenTransition();
-                    this.screenID = 5;
+                    this.setScreenType(ScreenType.CAT_BASE);
                     this.screenLoadState = -1;
                     this.eE[1] = false;
                     return false;
@@ -3002,7 +3001,7 @@ public class AppInstance extends Game {
             if (this.blinkFrame[6] > getLength(fM)) {
                 this.blinkFrame[6] = 0;
                 screenTransition();
-                this.screenID = 3;
+                this.setScreenType(ScreenType.EQUIP);
                 this.screenLoadState = -1;
                 return false;
             }
@@ -3040,9 +3039,9 @@ public class AppInstance extends Game {
                 this.fP = 0;
                 this.blinkFrame[2] = 0;
                 screenTransition();
-                this.screenID = 999;
+                this.setScreenType(ScreenType.ITEM_SHOP);
                 this.screenLoadState = -1;
-                this.gQ = 3;
+                this.previousScreen = 3;
                 int i22 = 0;
                 for (int i23 = 0; i23 < getLength(this.ff); i23++) {
                     this.gT[i23] = this.ff[i23];
@@ -3868,7 +3867,7 @@ public class AppInstance extends Game {
                     this.bc[i107] = 0;
                 }
                 this.bd = 0;
-                this.gQ = 0;
+                this.previousScreen = 0;
                 this.bf = 0;
                 for (int i108 = 0; i108 < 10; i108++) {
                     this.bp[i108] = 0;
@@ -5020,7 +5019,7 @@ public class AppInstance extends Game {
                     }
                     break;
                 case MAIN:
-                    if (this.screenID == 0) {
+                    if (this.getScreenType() == ScreenType.TITLE) {
                         if (this.settingsMenuTexture[1].isLoaded()) {
                             this.settingsMenuTexture[1].reset();
                         }
@@ -5058,7 +5057,17 @@ public class AppInstance extends Game {
                             this.uiTextures[9].load(MyUtility.getString(String.format("img%03d.png", 31)), MyUtility.getString(String.format("img%03d.imgcut", 31)));
                         }
                     }
-                    if (this.screenID == 5 || this.screenID == 4 || this.screenID == 9 || this.screenID == 7 || this.screenID == 3 || this.screenID == 6 || this.screenID == 8 || this.screenID == 999 || this.screenID == 9999) {
+                    if (
+                            this.getScreenType() == ScreenType.CAT_BASE
+                            || this.getScreenType() == ScreenType.MAP2
+                            || this.getScreenType() == ScreenType.MAP
+                            || this.getScreenType() == ScreenType.POWER_UP
+                            || this.getScreenType() == ScreenType.EQUIP
+                            || this.getScreenType() == ScreenType.TREASURE
+                            || this.getScreenType() == ScreenType.ENEMY_GUIDE
+                            || this.getScreenType() == ScreenType.ITEM_SHOP
+                            || this.getScreenType() == ScreenType.STAMP
+                    ) {
                         if (this.settingsMenuTexture[0].isLoaded()) {
                             this.settingsMenuTexture[0].reset();
                         }
@@ -5102,7 +5111,7 @@ public class AppInstance extends Game {
                             this.uiTextures[5].load(MyUtility.getString(String.format("img%03d.png", 24)), MyUtility.getString(String.format("img%03d.imgcut", 24)));
                         }
                     }
-                    if (this.screenID == 4) {
+                    if (this.getScreenType() == ScreenType.MAP2) {
                         for (int slotIndex = 0; slotIndex < 10; slotIndex++) {
                             if (!this.uniTextures[slotIndex].isLoaded()) {
                                 if (this.slotCatIDs[slotIndex] == -1) {
@@ -5133,7 +5142,7 @@ public class AppInstance extends Game {
                             this.uiTextures[8].load(MyUtility.getString(String.format("img%03d.png", 33)), MyUtility.getString(String.format("img%03d.imgcut", 33)));
                         }
                     }
-                    if (this.screenID == 9) {
+                    if (this.getScreenType() == ScreenType.MAP) {
                         if (this.uiTextures[6].isLoaded()) {
                             this.uiTextures[6].reset();
                         }
@@ -5177,7 +5186,7 @@ public class AppInstance extends Game {
                             this.uiTextures[13].load(MyUtility.getString(String.format("img%03d.png", 1)), MyUtility.getString(String.format("img%03d.imgcut", 1)));
                         }
                     }
-                    if (this.screenID == 7) {
+                    if (this.getScreenType() == ScreenType.POWER_UP) {
                         if (this.uiTextures[6].isLoaded()) {
                             this.uiTextures[6].reset();
                         }
@@ -5264,7 +5273,7 @@ public class AppInstance extends Game {
                             }
                         }
                     }
-                    if (this.screenID == 3) {
+                    if (this.getScreenType() == ScreenType.EQUIP) {
                         for (int i6 = 0; i6 < 10; i6++) {
                             if (!this.uniTextures[i6].isLoaded()) {
                                 if (this.slotCatIDs[i6] == -1) {
@@ -5328,7 +5337,7 @@ public class AppInstance extends Game {
                             }
                         }
                     }
-                    if (this.screenID == 6) {
+                    if (this.getScreenType() == ScreenType.TREASURE) {
                         this.fr = -1;
                         h(this.fq[0]);
                         if (this.uiTextures[6].isLoaded()) {
@@ -5344,7 +5353,7 @@ public class AppInstance extends Game {
                             this.uiTextures[8].load(MyUtility.getString(String.format("ot%03d_c.png", 11)), MyUtility.getString(String.format("ot%03d_c.imgcut", 11)));
                         }
                     }
-                    if (this.screenID == 8) {
+                    if (this.getScreenType() == ScreenType.ENEMY_GUIDE) {
                         if (this.uiTextures[6].isLoaded()) {
                             this.uiTextures[6].reset();
                         }
@@ -5372,7 +5381,7 @@ public class AppInstance extends Game {
                         this.ft = -1;
                         a(1, this.fs[2]);
                     }
-                    if (this.screenID == 999) {
+                    if (this.getScreenType() == ScreenType.ITEM_SHOP) {
                         if (this.uiTextures[6].isLoaded()) {
                             this.uiTextures[6].reset();
                         }
@@ -5404,7 +5413,7 @@ public class AppInstance extends Game {
                             this.uiTextures[11].load(MyUtility.getString(String.format("item%03d.png", 0)), MyUtility.getString(String.format("item%03d.imgcut", 0)));
                         }
                     }
-                    if (this.screenID == 9999) {
+                    if (this.getScreenType() == ScreenType.STAMP) {
                         if (this.stampTextures[0].isLoaded()) {
                             this.stampTextures[0].reset();
                         }
@@ -5432,7 +5441,7 @@ public class AppInstance extends Game {
                             this.uiTextures[10].load(MyUtility.getString(String.format("img%03d.png", 25)), MyUtility.getString(String.format("img%03d.imgcut", 25)));
                         }
                     }
-                    if (this.screenID == 99999) {
+                    if (this.getScreenType() == ScreenType.LEGEND) {
                         if (!this.uiTextures[0].isLoaded()) {
                             this.uiTextures[0].load(MyUtility.getString(String.format("img_%03d_intro.png", 45)), MyUtility.getString(String.format("img_%03d_intro.imgcut", 45)));
                         }
@@ -6125,74 +6134,100 @@ public class AppInstance extends Game {
                         //break;
                     case MAIN:
                         if (this.screenLoadState == -1) {
-                            if (this.screenID == 0) {
-                                titleLoad();
-                            } else if (this.screenID == 5) {
-                                catBaseLoad();
-                            } else if (this.screenID == 9) {
-                                mapLoad();
-                            } else if (this.screenID == 7) {
-                                powerUpLoad();
-                            } else if (this.screenID == 3) {
-                                equipLoad();
-                            } else if (this.screenID == 6) {
-                                treasureLoad();
-                            } else if (this.screenID == 8) {
-                                enemyGuideLoad();
-                            } else if (this.screenID == 4) {
-                                Z();
-                            } else if (this.screenID == 999) {
-                                itemShopLoad();
-                            } else if (this.screenID == 9999) {
-                                stampLoad();
-                            } else if (this.screenID == 99999) {
-                                legendLoad();
-                            }
-                            this.screenLoadState = 1;
+                            switch (getScreenType()) {
+                                case TITLE:
+                                    titleLoad();
+                                    break;
+                                case CAT_BASE:
+                                    catBaseLoad();
+                                    break;
+                                case MAP:
+                                    mapLoad();
+                                    break;
+                                case POWER_UP:
+                                    powerUpLoad();
+                                    break;
+                                case EQUIP:
+                                    equipLoad();
+                                    break;
+                                case TREASURE:
+                                    treasureLoad();
+                                    break;
+                                case ENEMY_GUIDE:
+                                    enemyGuideLoad();
+                                    break;
+                                case MAP2:
+                                    Z();
+                                    break;
+                                case ITEM_SHOP:
+                                    itemShopLoad();
+                                    break;
+                                case STAMP:
+                                    stampLoad();
+                                    break;
+                                case LEGEND:
+                                    legendLoad();
+                                    break;
+                                }
+                                this.screenLoadState = 1;
                         }
                         if (this.screenLoadState > 0) {
-                            if (this.screenID == 0) {
-                                if (!titleProcess()) {
-                                    return;
-                                }
-                            } else if (this.screenID == 5) {
-                                if (!catBaseProcess()) {
-                                    return;
-                                }
-                            } else if (this.screenID == 9) {
-                                if (!mapProcess()) {
-                                    return;
-                                }
-                            } else if (this.screenID == 7) {
-                                if (!powerUpProcess()) {
-                                    return;
-                                }
-                            } else if (this.screenID == 3) {
-                                if (!equipProcess()) {
-                                    return;
-                                }
-                            } else if (this.screenID == 6) {
-                                if (!treasureProcess()) {
-                                    return;
-                                }
-                            } else if (this.screenID == 8) {
-                                if (!enemyGuideProcess()) {
-                                    return;
-                                }
-                            } else if (this.screenID == 4) {
-                                if (!aa()) {
-                                    return;
-                                }
-                            } else if (this.screenID == 999) {
-                                if (!itemShopProcess()) {
-                                    return;
-                                }
-                            } else if (this.screenID == 9999) {
-                                if (!stampProcess()) {
-                                    return;
-                                }
-                            } else if (this.screenID == 99999 && !legendProcess()) {
-                                return;
+                            switch (getScreenType()) {
+                                case TITLE:
+                                    if (!titleProcess()) {
+                                        return;
+                                    }
+                                    break;
+                                case CAT_BASE:
+                                    if (!catBaseProcess()) {
+                                        return;
+                                    }
+                                    break;
+                                case MAP:
+                                    if (!mapProcess()) {
+                                        return;
+                                    }
+                                    break;
+                                case POWER_UP:
+                                    if (!powerUpProcess()) {
+                                        return;
+                                    }
+                                    break;
+                                case EQUIP:
+                                    if (!equipProcess()) {
+                                        return;
+                                    }
+                                    break;
+                                case TREASURE:
+                                    if (!treasureProcess()) {
+                                        return;
+                                    }
+                                    break;
+                                case ENEMY_GUIDE:
+                                    if (!enemyGuideProcess()) {
+                                        return;
+                                    }
+                                    break;
+                                case MAP2:
+                                    if (!aa()) {
+                                        return;
+                                    }
+                                    break;
+                                case ITEM_SHOP:
+                                    if (!itemShopProcess()) {
+                                        return;
+                                    }
+                                    break;
+                                case STAMP:
+                                    if (!stampProcess()) {
+                                        return;
+                                    }
+                                    break;
+                                case LEGEND:
+                                    if (!legendProcess()) {
+                                        return;
+                                    }
+                                    break;
                             }
                         }
                         if (!g(this.ed)) {
@@ -8794,38 +8829,40 @@ public class AppInstance extends Game {
             case MAIN: // main menu
                 texRenderer.setColor(255, 255, 255);
                 texRenderer.drawRectangle(0, -this.eZ, getWidth(), getHeight());
-                if (this.screenID == 0) {
-                    titleDraw(texRenderer);
-                }
-                if (this.screenID == 5) {
-                    catBaseDraw(texRenderer);
-                }
-                if (this.screenID == 9) {
-                    mapDraw(texRenderer);
-                }
-                if (this.screenID == 7) {
-                    powerUpDraw(texRenderer);
-                }
-                if (this.screenID == 3) {
-                    r(texRenderer);
-                }
-                if (this.screenID == 6) {
-                    p(texRenderer);
-                }
-                if (this.screenID == 8) {
-                    f(texRenderer);
-                }
-                if (this.screenID == 4) {
-                    s(texRenderer);
-                }
-                if (this.screenID == 999) {
-                    i(texRenderer);
-                }
-                if (this.screenID == 9999) {
-                    n(texRenderer);
-                }
-                if (this.screenID == 99999) {
-                    g(texRenderer);
+                switch (getScreenType()) {
+                    case TITLE:
+                        titleDraw(texRenderer);
+                        break;
+                    case CAT_BASE:
+                        catBaseDraw(texRenderer);
+                        break;
+                    case MAP:
+                        mapDraw(texRenderer);
+                        break;
+                    case POWER_UP:
+                        powerUpDraw(texRenderer);
+                        break;
+                    case EQUIP:
+                        equipDraw(texRenderer);
+                        break;
+                    case TREASURE:
+                        treasureDraw(texRenderer);
+                        break;
+                    case ENEMY_GUIDE:
+                        enemyGuideDraw(texRenderer);
+                        break;
+                    case MAP2:
+                        map2Draw(texRenderer);
+                        break;
+                    case ITEM_SHOP:
+                        itemShopDraw(texRenderer);
+                        break;
+                    case STAMP:
+                        stampDraw(texRenderer);
+                        break;
+                    case LEGEND:
+                        legendDraw(texRenderer);
+                        break;
                 }
                 a(texRenderer, this.ed);
                 break;
@@ -9906,7 +9943,7 @@ public class AppInstance extends Game {
         }
     }
 
-    void f(aTextureRenderer atexturerenderer) {
+    void enemyGuideDraw(aTextureRenderer atexturerenderer) {
         atexturerenderer.drawScaledImage(this.uiTextures[6], 0, 0, getWidth(), 640, 0);
         atexturerenderer.setImageAlpha(((int) (115.0f * aMath.cos(this.blinkFrame[5]))) + 140);
         atexturerenderer.drawScaledImage(this.uiTextures[7], 0, 0, getWidth(), 816, 0);
@@ -9961,7 +9998,7 @@ public class AppInstance extends Game {
         atexturerenderer.drawScaledImagef(this.uiTextures[2], 0, 638, 10);
         atexturerenderer.drawScaledImagef(this.uiTextures[2], 0, 0, 0);
         if (this.gm[0] < 297) {
-            if (this.gQ == 0) {
+            if (this.previousScreen == 0) {
                 atexturerenderer.drawScaledImagef(this.uiTextures[2], 8 - this.gm[0], 3, 1);
             } else {
                 atexturerenderer.drawScaledImagef(this.uiTextures[2], 8 - this.gm[0], 3, 8);
@@ -10032,7 +10069,7 @@ public class AppInstance extends Game {
             atexturerenderer.drawScaledImagef(this.uiTextures[2], 0, 638, 10);
             atexturerenderer.drawScaledImagef(this.uiTextures[2], 0, 0, 0);
             if (this.gm[0] < 297) {
-                if (this.gQ == 0) {
+                if (this.previousScreen == 0) {
                     atexturerenderer.drawScaledImagef(this.uiTextures[2], 8 - this.gm[0], 3, 1);
                 } else {
                     atexturerenderer.drawScaledImagef(this.uiTextures[2], 8 - this.gm[0], 3, 8);
@@ -10105,7 +10142,7 @@ public class AppInstance extends Game {
         aresourcefilestream.close();
     }
 
-    void g(aTextureRenderer atexturerenderer) {
+    void legendDraw(aTextureRenderer atexturerenderer) {
         atexturerenderer.drawScaledImage(this.uiTextures[0], 0, -40, getWidth(), 720, 0);
         if (this.eQ >= 1) {
             if (this.blinkFrame[1] == 0) {
@@ -10155,14 +10192,14 @@ public class AppInstance extends Game {
                             this.eM[i2] = false;
                         }
                         setScene(SceneType.MAIN);
-                        this.screenID = 0;
+                        this.setScreenType(ScreenType.TITLE);
                         this.screenLoadState = -1;
                         break;
                     case MAIN:
-                        if (this.screenID != 0 && this.screenID != 99999) {
-                            if (this.screenID == 5 || (this.aZ == 0 && this.screenID == 9)) {
+                        if (this.getScreenType() != ScreenType.TITLE && this.getScreenType() != ScreenType.LEGEND) {
+                            if (this.getScreenType() == ScreenType.CAT_BASE || (this.aZ == 0 && this.getScreenType() == ScreenType.MAP)) {
                                 if (this.fE == 5) {
-                                    this.screenID = 0;
+                                    this.setScreenType(ScreenType.TITLE);
                                     this.screenLoadState = -1;
                                     this.fI = 0;
                                     for (int i3 = 0; i3 < getLength(this.blinkFrame); i3++) {
@@ -10175,8 +10212,8 @@ public class AppInstance extends Game {
                                         this.eM[i5] = false;
                                     }
                                     break;
-                                } else if (this.aZ == 0 && this.screenID == 9) {
-                                    this.screenID = 0;
+                                } else if (this.aZ == 0 && this.getScreenType() == ScreenType.MAP) {
+                                    this.setScreenType(ScreenType.TITLE);
                                     this.screenLoadState = -1;
                                     this.fI = 0;
                                     for (int i6 = 0; i6 < getLength(this.blinkFrame); i6++) {
@@ -10194,10 +10231,10 @@ public class AppInstance extends Game {
                         } else {
                             if (this.eg == 0) {
                                 if (this.aZ == 0) {
-                                    this.screenID = 9;
+                                    this.setScreenType(ScreenType.MAP);
                                     this.screenLoadState = -1;
                                 } else {
-                                    this.screenID = 5;
+                                    this.setScreenType(ScreenType.CAT_BASE);
                                     this.screenLoadState = -1;
                                     this.fP = 0;
                                     this.eE[0] = false;
@@ -10265,7 +10302,7 @@ public class AppInstance extends Game {
                                 }
                             }
                             this.bg = this.eQ;
-                            if (this.screenID != 5) {
+                            if (this.getScreenType() != ScreenType.CAT_BASE) {
                                 aSave();
                                 break;
                             }
@@ -10275,7 +10312,7 @@ public class AppInstance extends Game {
             }
             if (this.openingTimer >= 26) {
                 this.eb = false;
-                if (this.screenID != 5) {
+                if (this.getScreenType() != ScreenType.CAT_BASE) {
                     aSave();
                     return false;
                 }
@@ -10340,7 +10377,7 @@ public class AppInstance extends Game {
                     case ENDING:
                         if (this.eg == 2) {
                             setScene(SceneType.MAIN);
-                            this.screenID = 0;
+                            this.setScreenType(ScreenType.TITLE);
                             this.screenLoadState = -1;
                             for (int i15 = 0; i15 < getLength(this.eM); i15++) {
                                 this.eM[i15] = false;
@@ -10362,12 +10399,12 @@ public class AppInstance extends Game {
                         for (int i19 = 0; i19 < getLength(this.fR); i19++) {
                             this.fR[i19] = 0;
                         }
-                        this.screenID = 0;
+                        this.setScreenType(ScreenType.TITLE);
                         this.screenLoadState = -1;
                         loadTextures2();
                         aSound.getInstance().stop(-1);
                         aSound.getInstance().play(SoundType.CAT_BASE);
-                        if (this.screenID != 5) {
+                        if (this.getScreenType() != ScreenType.CAT_BASE) {
                             aSave();
                             return false;
                         }
@@ -10392,30 +10429,30 @@ public class AppInstance extends Game {
                             } else {
                                 return false;
                             }
-                        } else if (this.screenID != 9999) {
-                            if (this.screenID == 5 && this.bo == 1) {
-                                this.screenID = 9999;
+                        } else if (this.getScreenType() != ScreenType.STAMP) {
+                            if (this.getScreenType() == ScreenType.CAT_BASE && this.bo == 1) {
+                                this.setScreenType(ScreenType.STAMP);
                                 this.screenLoadState = -1;
                                 return false;
-                            } else if (this.screenID == 0 && this.hr) {
-                                this.screenID = 99999;
+                            } else if (this.getScreenType() == ScreenType.TITLE && this.hr) {
+                                this.setScreenType(ScreenType.LEGEND);
                                 this.screenLoadState = -1;
                                 this.hr = false;
                                 return false;
                             } else {
-                                if (this.screenID == 0) {
+                                if (this.getScreenType() == ScreenType.TITLE) {
                                     this.dH = 48;
                                     this.eQ = 0;
                                 }
                                 setScene(SceneType.BATTLE);
-                                if (this.screenID != 5) {
+                                if (this.getScreenType() != ScreenType.CAT_BASE) {
                                     aSave();
                                     return false;
                                 }
                                 return false;
                             }
                         } else {
-                            this.screenID = 5;
+                            this.setScreenType(ScreenType.CAT_BASE);
                             this.screenLoadState = -1;
                             this.bo = 0;
                             this.aV--;
@@ -10438,7 +10475,7 @@ public class AppInstance extends Game {
                                 this.bz[4] = 1;
                             }
                             this.hp = 0;
-                            if (this.screenID != 5) {
+                            if (this.getScreenType() != ScreenType.CAT_BASE) {
                                 aSave();
                                 return false;
                             }
@@ -10451,7 +10488,7 @@ public class AppInstance extends Game {
                                     this.eM[i23] = false;
                                 }
                                 setScene(SceneType.MAIN);
-                                this.screenID = 0;
+                                this.setScreenType(ScreenType.TITLE);
                                 this.screenLoadState = -1;
                                 for (int i24 = 0; i24 < getLength(this.eM); i24++) {
                                     this.eM[i24] = false;
@@ -10472,11 +10509,11 @@ public class AppInstance extends Game {
                                 for (int i28 = 0; i28 < getLength(this.fR); i28++) {
                                     this.fR[i28] = 0;
                                 }
-                                this.screenID = 0;
+                                this.setScreenType(ScreenType.TITLE);
                                 this.screenLoadState = -1;
                                 loadTextures2();
                                 this.gL = true;
-                                if (this.screenID != 5) {
+                                if (this.getScreenType() != ScreenType.CAT_BASE) {
                                     aSave();
                                     return false;
                                 }
@@ -10499,7 +10536,7 @@ public class AppInstance extends Game {
                                 for (int i33 = 0; i33 < getLength(this.fR); i33++) {
                                     this.fR[i33] = 0;
                                 }
-                                this.screenID = 5;
+                                this.setScreenType(ScreenType.CAT_BASE);
                                 this.screenLoadState = -1;
                                 for (int i34 = 0; i34 < getLength(this.uiTextures); i34++) {
                                     this.uiTextures[i34].reset();
@@ -10549,7 +10586,7 @@ public class AppInstance extends Game {
                                 loadTextures2();
                                 aSound.getInstance().stop(-1);
                                 aSound.getInstance().play(SoundType.CAT_BASE);
-                                if (this.screenID != 5) {
+                                if (this.getScreenType() != ScreenType.CAT_BASE) {
                                     aSave();
                                     return false;
                                 }
@@ -10575,7 +10612,7 @@ public class AppInstance extends Game {
                                     for (int i39 = 0; i39 < getLength(this.fR); i39++) {
                                         this.fR[i39] = 0;
                                     }
-                                    this.screenID = 5;
+                                    this.setScreenType(ScreenType.CAT_BASE);
                                     this.screenLoadState = -1;
                                     for (int i40 = 0; i40 < getLength(this.fx); i40++) {
                                         this.fx[i40] = 0;
@@ -10650,7 +10687,7 @@ public class AppInstance extends Game {
                                     }
                                     this.aZ = 1;
                                     this.bf = 1;
-                                    if (this.screenID != 5) {
+                                    if (this.getScreenType() != ScreenType.CAT_BASE) {
                                         aSave();
                                         break;
                                     }
@@ -10693,7 +10730,7 @@ public class AppInstance extends Game {
                                         this.eM[i56] = false;
                                     }
                                     setScene(SceneType.MAIN);
-                                    this.screenID = 0;
+                                    this.setScreenType(ScreenType.TITLE);
                                     this.screenLoadState = -1;
                                     return false;
                                 }
@@ -10701,7 +10738,7 @@ public class AppInstance extends Game {
                                     this.eM[i57] = false;
                                 }
                                 setScene(SceneType.MAIN);
-                                this.screenID = 5;
+                                this.setScreenType(ScreenType.CAT_BASE);
                                 this.screenLoadState = -1;
                                 this.fP = 0;
                                 for (int i58 = 0; i58 < getLength(this.eE); i58++) {
@@ -10959,11 +10996,11 @@ public class AppInstance extends Game {
                             for (int i108 = 0; i108 < getLength(this.fz); i108++) {
                                 this.fz[i108] = 0;
                             }
-                            this.screenID = 0;
+                            this.setScreenType(ScreenType.TITLE);
                             this.screenLoadState = -1;
                             loadTextures2();
                             this.gL = true;
-                            if (this.screenID != 5) {
+                            if (this.getScreenType() != ScreenType.CAT_BASE) {
                                 aSave();
                                 return false;
                             }
@@ -11004,11 +11041,11 @@ public class AppInstance extends Game {
                             for (int i119 = 0; i119 < getLength(this.scrollAmount); i119++) {
                                 this.scrollAmount[i119] = 0;
                             }
-                            this.screenID = 0;
+                            this.setScreenType(ScreenType.TITLE);
                             this.screenLoadState = -1;
                             loadTextures2();
                             this.gL = true;
-                            if (this.screenID != 5) {
+                            if (this.getScreenType() != ScreenType.CAT_BASE) {
                                 aSave();
                                 return false;
                             }
@@ -11696,7 +11733,7 @@ public class AppInstance extends Game {
         return true;
     }
 
-    void i(aTextureRenderer atexturerenderer) {
+    void itemShopDraw(aTextureRenderer atexturerenderer) {
         boolean z;
         float f = 0;
         atexturerenderer.drawScaledImage(this.uiTextures[7], 0, 0, getWidth(), 407, 0);
@@ -11886,17 +11923,17 @@ public class AppInstance extends Game {
         atexturerenderer.drawScaledImage(this.uiTextures[2], 0, 585, getWidth(), 55, 0);
         atexturerenderer.setOrientation(0);
         if (this.gm[0] < 297) {
-            if (this.gQ == 0) {
+            if (this.previousScreen == 0) {
                 atexturerenderer.drawScaledImagef(this.uiTextures[2], 8 - this.gm[0], 3, 1);
-            } else if (this.gQ == 1) {
+            } else if (this.previousScreen == 1) {
                 atexturerenderer.drawScaledImagef(this.uiTextures[2], 8 - this.gm[0], 3, 6);
-            } else if (this.gQ == 2) {
+            } else if (this.previousScreen == 2) {
                 atexturerenderer.drawScaledImagef(this.uiTextures[2], 8 - this.gm[0], 3, 2);
-            } else if (this.gQ == 3) {
+            } else if (this.previousScreen == 3) {
                 atexturerenderer.drawScaledImagef(this.uiTextures[2], 8 - this.gm[0], 3, 3);
-            } else if (this.gQ == 4) {
+            } else if (this.previousScreen == 4) {
                 atexturerenderer.drawScaledImagef(this.uiTextures[2], 8 - this.gm[0], 3, 4);
-            } else if (this.gQ == 5) {
+            } else if (this.previousScreen == 5) {
                 atexturerenderer.drawScaledImagef(this.uiTextures[2], 8 - this.gm[0], 3, 5);
             }
         }
@@ -13002,9 +13039,9 @@ public class AppInstance extends Game {
         atexturerenderer.drawScaledImage(this.uiTextures[2], 0, 585, getWidth(), 55, 0);
         atexturerenderer.setOrientation(0);
         if (this.gm[0] < 297) {
-            if (this.gQ == 0) {
+            if (this.previousScreen == 0) {
                 atexturerenderer.drawScaledImagef(this.uiTextures[2], (8 - this.gm[0]) - this.gameStats1[2], 3, 1);
-            } else if (this.gQ == 1) {
+            } else if (this.previousScreen == 1) {
                 atexturerenderer.drawScaledImagef(this.uiTextures[2], (8 - this.gm[0]) - this.gameStats1[2], 3, 8);
             }
         }
@@ -13435,13 +13472,13 @@ public class AppInstance extends Game {
                     }
                 case MAIN:
                     int i28 = 0;
-                    if (this.screenID == 0) {
+                    if (this.getScreenType() == ScreenType.TITLE) {
                         atexturerenderer.setColor(255, 255, 255);
                         if (this.textTextures2[0].isLoaded()) {
                             atexturerenderer.drawScaledImage(this.textTextures2[0], getWidth() / 2, 305, 1);
                         }
                     }
-                    if (this.screenID == 7) {
+                    if (this.getScreenType() == ScreenType.POWER_UP) {
                         for (int i29 = 0; i29 < getLength(this.textTextures2); i29++) {
                             if (this.textTextures2[i29].isLoaded()) {
                                 i28 = -(i29 - 1);
@@ -13455,7 +13492,7 @@ public class AppInstance extends Game {
                             i28 += 2;
                         }
                     }
-                    if (this.screenID == 3) {
+                    if (this.getScreenType() == ScreenType.EQUIP) {
                         for (int i31 = 0; i31 < getLength(this.textTextures2); i31++) {
                             if (this.textTextures2[i31].isLoaded()) {
                                 i28 = -(i31 - 1);
@@ -13543,10 +13580,10 @@ public class AppInstance extends Game {
                     } else if (!this.gU && isPointerDown() && isTouching(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3]) && !this.eb) {
                         atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.excessWidth / 2) + 541, 382, 168, 72, ((this.gv[2] % 4) / 2) + 1);
                     }
-                    if (this.screenID != 0 && this.screenID != 5) {
-                        if (this.screenID == 9) {
+                    if (this.getScreenType() != ScreenType.TITLE && this.getScreenType() != ScreenType.CAT_BASE) {
+                        if (this.getScreenType() == ScreenType.MAP) {
                             i = 30;
-                        } else if (this.screenID == 7) {
+                        } else if (this.getScreenType() == ScreenType.POWER_UP) {
                             if (this.gw == 1) {
                                 i = this.unitBuyStats[this.boxCatIDs[this.currentBox[2] - this.gB[1]]][1];
                             } else if (this.gw == 99 && this.currentBox[2] >= 0 && this.currentBox[2] <= this.boxCounts[1]) {
@@ -13562,7 +13599,7 @@ public class AppInstance extends Game {
                                     i = ac[(this.currentBox[2] - this.gB[1]) - this.gB[0]][(this.bx[((this.currentBox[2] - this.gB[1]) - this.gB[0]) + 1] + 1) % 10] * (((this.bx[((this.currentBox[2] - this.gB[1]) - this.gB[0]) + 1] + 1) / 10) + 1);
                                 }
                             }
-                        } else if (this.screenID == 999) {
+                        } else if (this.getScreenType() == ScreenType.ITEM_SHOP) {
                             i = Z[this.gP[2]] + (Z[this.gP[2]] * this.gS[this.gP[2]]) <= 0 ? 500 : Z[this.gP[2]] + (Z[this.gP[2]] * this.gS[this.gP[2]]);
                         }
                         if (this.gw != 1) {
@@ -13643,10 +13680,16 @@ public class AppInstance extends Game {
                     } else if (!this.gU && isPointerDown() && isTouching(this.fA[1][0], this.fA[1][1], this.fA[1][2], this.fA[1][3]) && !this.eb) {
                         atexturerenderer.drawScaledImage(this.settingsMenuTexture[2], (this.excessWidth / 2) + 541, 382, 168, 72, ((this.gv[2] % 4) / 2) + 1);
                     }
-                    if (this.screenID != 0 && this.screenID != 5 && this.screenID != 9) {
-                        if (this.screenID == 7) {
+                    if (this.getScreenType() != ScreenType.TITLE && this.getScreenType() != ScreenType.CAT_BASE && this.getScreenType() != ScreenType.MAP) {
+                        if (this.getScreenType() == ScreenType.POWER_UP) {
                             i5 = this.unitBuyStats[this.boxCatIDs[this.currentBox[2] - this.gB[1]]][1];
-                        } else if (this.screenID != 3 && this.screenID != 6 && this.screenID != 8 && this.screenID != 4 && this.screenID == 999) {
+                        } else if (
+                                this.getScreenType() != ScreenType.EQUIP
+                                        && this.getScreenType() != ScreenType.TREASURE
+                                        && this.getScreenType() != ScreenType.ENEMY_GUIDE
+                                        && this.getScreenType() != ScreenType.MAP2
+                                        && this.getScreenType() == ScreenType.ITEM_SHOP
+                        ) {
                             if (Z[this.gP[2]] + (Z[this.gP[2]] * this.gS[this.gP[2]]) <= 0) {
                                 i5 = 500;
                             } else if (this.catfood >= Z[this.gP[2]] + (Z[this.gP[2]] * this.gS[this.gP[2]])) {
@@ -14061,7 +14104,7 @@ public class AppInstance extends Game {
         for (int i11 = 0; i11 < getLength(this.blinkFrame); i11++) {
             this.blinkFrame[i11] = 0;
         }
-        if (this.gQ == 0) {
+        if (this.previousScreen == 0) {
             this.blinkFrame[0] = getLength(cu) - 1;
         }
         for (int i12 = 0; i12 < getLength(this.gm); i12++) {
@@ -14829,7 +14872,7 @@ public class AppInstance extends Game {
         atexturerenderer.drawScaledImage(this.uiTextures[2], 0, 585, getWidth(), 55, 0);
         atexturerenderer.setOrientation(0);
         if (this.gm[0] < 297) {
-            if (this.gQ == 0) {
+            if (this.previousScreen == 0) {
                 atexturerenderer.drawScaledImagef(this.uiTextures[2], 8 - this.gm[0], 3, 1);
             } else {
                 atexturerenderer.drawScaledImagef(this.uiTextures[2], 8 - this.gm[0], 3, 8);
@@ -14879,7 +14922,7 @@ public class AppInstance extends Game {
         } while (i31 > 0);
     }
 
-    void n(aTextureRenderer atexturerenderer) {
+    void stampDraw(aTextureRenderer atexturerenderer) {
         int i = 0;
         while (true) {
             int i2 = i;
@@ -15290,7 +15333,7 @@ public class AppInstance extends Game {
                 if (this.gm[1] <= 0) {
                     this.eE[0] = false;
                     this.blinkFrame[2] = 0;
-                    this.gQ = 0;
+                    this.previousScreen = 0;
                 }
             } else {
                 this.fP = fM[this.blinkFrame[2]];
@@ -15310,7 +15353,7 @@ public class AppInstance extends Game {
                 this.fP = 0;
                 if (this.gm[0] <= 0) {
                     screenTransition();
-                    this.screenID = 5;
+                    this.setScreenType(ScreenType.CAT_BASE);
                     this.screenLoadState = -1;
                     this.blinkFrame[2] = 0;
                     this.eE[1] = false;
@@ -15332,9 +15375,9 @@ public class AppInstance extends Game {
                 this.fP = 0;
                 this.blinkFrame[2] = 0;
                 screenTransition();
-                this.screenID = 999;
+                this.setScreenType(ScreenType.ITEM_SHOP);
                 this.screenLoadState = -1;
-                this.gQ = 5;
+                this.previousScreen = 5;
                 return false;
             }
         }
@@ -15813,7 +15856,7 @@ public class AppInstance extends Game {
         }
     }
 
-    void p(aTextureRenderer atexturerenderer) {
+    void treasureDraw(aTextureRenderer atexturerenderer) {
         int i;
         int i2 = 0;
         atexturerenderer.setColor(0, 0, 0);
@@ -15968,7 +16011,7 @@ public class AppInstance extends Game {
         atexturerenderer.drawScaledImagef(this.uiTextures[2], 0, 585, 0);
         atexturerenderer.setOrientation(0);
         if (this.gm[0] < 297) {
-            if (this.gQ == 0) {
+            if (this.previousScreen == 0) {
                 atexturerenderer.drawScaledImagef(this.uiTextures[2], 8 - this.gm[0], 3, 1);
             } else {
                 atexturerenderer.drawScaledImagef(this.uiTextures[2], 8 - this.gm[0], 3, 8);
@@ -18005,7 +18048,7 @@ public class AppInstance extends Game {
             this.gm[i20] = 0;
         }
         this.gm[1] = 297;
-        if (this.gQ == 0) {
+        if (this.previousScreen == 0) {
             this.blinkFrame[0] = getLength(cu) - 1;
         }
         for (int i21 = 0; i21 < getLength(this.gB); i21++) {
@@ -18102,7 +18145,7 @@ public class AppInstance extends Game {
         this.isScrolling = false;
     }
 
-    void r(aTextureRenderer atexturerenderer) {
+    void equipDraw(aTextureRenderer atexturerenderer) {
         boolean z;
         float f = 0;
         float f2 = 0;
@@ -18525,7 +18568,7 @@ public class AppInstance extends Game {
         atexturerenderer.drawScaledImage(this.uiTextures[2], 0, 585, getWidth(), 55, 0);
         atexturerenderer.setOrientation(0);
         if (this.gm[0] < 297) {
-            if (this.gQ == 0) {
+            if (this.previousScreen == 0) {
                 atexturerenderer.drawScaledImagef(this.uiTextures[2], 8 - this.gm[0], 3, 1);
             } else {
                 atexturerenderer.drawScaledImagef(this.uiTextures[2], 8 - this.gm[0], 3, 8);
@@ -18718,9 +18761,9 @@ public class AppInstance extends Game {
                 iArr4[5] = iArr4[5] + 1;
                 if (this.fx[5] > getLength(dv) - 1) {
                     this.fx[5] = 0;
-                    if (this.gQ == 0) {
+                    if (this.previousScreen == 0) {
                         this.eE[1] = true;
-                    } else if (this.gQ >= 1) {
+                    } else if (this.previousScreen >= 1) {
                         this.eE[13] = true;
                     }
                 }
@@ -18789,9 +18832,9 @@ public class AppInstance extends Game {
                             iArr8[14] = iArr8[14] + 1;
                             aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         }
-                    } else if (this.gQ == 0) {
+                    } else if (this.previousScreen == 0) {
                         this.eE[1] = true;
-                    } else if (this.gQ >= 1) {
+                    } else if (this.previousScreen >= 1) {
                         this.eE[13] = true;
                     }
                     if (isPointerDown() || !isTouching(this.buttonCoordinates1[14][0], this.buttonCoordinates1[14][1], this.buttonCoordinates1[14][2], this.buttonCoordinates1[14][3])) {
@@ -18888,14 +18931,14 @@ public class AppInstance extends Game {
                 this.fP = 0;
                 if (this.gm[0] <= 0) {
                     screenTransition();
-                    if (this.gQ == 0) {
-                        this.screenID = 5;
+                    if (this.previousScreen == 0) {
+                        this.setScreenType(ScreenType.CAT_BASE);
                         this.screenLoadState = -1;
                         this.blinkFrame[2] = 0;
                         this.eE[1] = false;
                         return false;
-                    } else if (this.gQ == 1) {
-                        this.screenID = 9;
+                    } else if (this.previousScreen == 1) {
+                        this.setScreenType(ScreenType.MAP);
                         this.screenLoadState = -1;
                         this.blinkFrame[2] = 0;
                         this.eE[1] = false;
@@ -18920,16 +18963,16 @@ public class AppInstance extends Game {
                 this.fP = 0;
                 this.blinkFrame[2] = 0;
                 screenTransition();
-                if (this.gQ == 1) {
-                    this.screenID = 9;
-                } else if (this.gQ == 2) {
-                    this.screenID = 7;
-                } else if (this.gQ == 3) {
-                    this.screenID = 3;
-                } else if (this.gQ == 4) {
-                    this.screenID = 6;
-                } else if (this.gQ == 5) {
-                    this.screenID = 8;
+                if (this.previousScreen == 1) {
+                    this.setScreenType(ScreenType.MAP);
+                } else if (this.previousScreen == 2) {
+                    this.setScreenType(ScreenType.POWER_UP);
+                } else if (this.previousScreen == 3) {
+                    this.setScreenType(ScreenType.EQUIP);
+                } else if (this.previousScreen == 4) {
+                    this.setScreenType(ScreenType.TREASURE);
+                } else if (this.previousScreen == 5) {
+                    this.setScreenType(ScreenType.ENEMY_GUIDE);
                 }
                 this.screenLoadState = -1;
                 this.eE[1] = false;
@@ -19014,7 +19057,7 @@ public class AppInstance extends Game {
                 this.buttonCoordinates1[i][i2] = 0;
             }
         }
-        this.gQ = 0;
+        this.previousScreen = 0;
         this.buttonCoordinates1[5][0] = 4;
         this.buttonCoordinates1[5][1] = 541;
         this.buttonCoordinates1[5][2] = 95;
@@ -19505,7 +19548,7 @@ public class AppInstance extends Game {
                 if (this.fI == 0) {
                     this.fx[0] = 0;
                     screenTransition();
-                    this.screenID = 9;
+                    this.setScreenType(ScreenType.MAP);
                     this.screenLoadState = -1;
                     this.eE[0] = true;
                     this.eE[1] = false;
@@ -19517,7 +19560,7 @@ public class AppInstance extends Game {
                 } else if (this.fI == 1) {
                     this.fx[1] = 0;
                     screenTransition();
-                    this.screenID = 7;
+                    this.setScreenType(ScreenType.POWER_UP);
                     this.screenLoadState = -1;
                     this.eE[0] = true;
                     this.eE[1] = false;
@@ -19529,7 +19572,7 @@ public class AppInstance extends Game {
                 } else if (this.fI == 2) {
                     this.fx[2] = 0;
                     screenTransition();
-                    this.screenID = 3;
+                    this.setScreenType(ScreenType.EQUIP);
                     this.screenLoadState = -1;
                     this.eE[0] = true;
                     this.eE[1] = false;
@@ -19541,7 +19584,7 @@ public class AppInstance extends Game {
                 } else if (this.fI == 3) {
                     this.fx[3] = 0;
                     screenTransition();
-                    this.screenID = 6;
+                    this.setScreenType(ScreenType.TREASURE);
                     this.screenLoadState = -1;
                     this.eE[0] = true;
                     this.eE[1] = false;
@@ -19553,7 +19596,7 @@ public class AppInstance extends Game {
                 } else if (this.fI == 4) {
                     this.fx[4] = 0;
                     screenTransition();
-                    this.screenID = 8;
+                    this.setScreenType(ScreenType.ENEMY_GUIDE);
                     this.screenLoadState = -1;
                     this.eE[0] = true;
                     this.eE[1] = false;
@@ -19564,7 +19607,7 @@ public class AppInstance extends Game {
                     return false;
                 } else if (this.fI == 13) {
                     screenTransition();
-                    this.screenID = 999;
+                    this.setScreenType(ScreenType.ITEM_SHOP);
                     this.screenLoadState = -1;
                     this.eE[0] = true;
                     this.eE[1] = false;
@@ -19807,7 +19850,7 @@ public class AppInstance extends Game {
         for (int i24 = 0; i24 < getLength(this.ei); i24++) {
             this.ei[i24] = 0;
         }
-        if (this.gQ == 0) {
+        if (this.previousScreen == 0) {
             for (int i25 = 0; i25 < getLength(this.gameStats1); i25++) {
                 this.gameStats1[i25] = 0;
             }
@@ -20566,7 +20609,7 @@ public class AppInstance extends Game {
                 if (this.gm[1] <= 0) {
                     this.eE[0] = false;
                     this.blinkFrame[2] = 0;
-                    this.gQ = 0;
+                    this.previousScreen = 0;
                 }
             } else {
                 this.fP = fM[this.blinkFrame[2]];
@@ -20585,7 +20628,7 @@ public class AppInstance extends Game {
                 if (this.gm[0] <= 0) {
                     this.blinkFrame[2] = 0;
                     screenTransition();
-                    this.screenID = 5;
+                    this.setScreenType(ScreenType.CAT_BASE);
                     this.screenLoadState = -1;
                     this.eE[1] = false;
                     return false;
@@ -20646,9 +20689,9 @@ public class AppInstance extends Game {
                     this.gD[i18] = this.boxCounts[i18];
                 }
                 this.fP = 0;
-                this.screenID = 999;
+                this.setScreenType(ScreenType.ITEM_SHOP);
                 this.screenLoadState = -1;
-                this.gQ = 1;
+                this.previousScreen = 1;
                 return false;
             }
         }
@@ -20852,12 +20895,12 @@ public class AppInstance extends Game {
                         }
                         break;
                     case MAIN:
-                        if (this.screenID == 0) {
+                        if (this.getScreenType() == ScreenType.TITLE) {
                             if (!this.textTextures2[0].isLoaded()) {
                                 this.textTextures2[0].drawText(this.optionText[2], "FONT_SYSTEM_BOLD", 30, 1);
                                 break;
                             }
-                        } else if (this.screenID == 7) {
+                        } else if (this.getScreenType() == ScreenType.POWER_UP) {
                             if (this.gx == 0) {
                                 for (int i8 = 0; i8 < getLength(this.mainMenuPopupText[1]) && !aString.isEqual(this.mainMenuPopupText[1][i8], "＠"); i8++) {
                                     if (!this.textTextures2[i8].isLoaded()) {
@@ -20875,7 +20918,7 @@ public class AppInstance extends Game {
                                 this.bd = 1;
                                 break;
                             }
-                        } else if (this.screenID == 3 && !this.textTextures2[0].isLoaded()) {
+                        } else if (this.getScreenType() == ScreenType.EQUIP && !this.textTextures2[0].isLoaded()) {
                             this.textTextures2[0].drawText(this.warning1Text[8], "FONT_SYSTEM_BOLD", 30, 1);
                             break;
                         }
@@ -21356,8 +21399,8 @@ public class AppInstance extends Game {
                     this.fz[0] = 0;
                     switch (getSceneType()) {
                         case MAIN:
-                            if (this.screenID != 0 && this.screenID != 5 && this.screenID != 9) {
-                                if (this.screenID == 7) {
+                            if (this.getScreenType() != ScreenType.TITLE && this.getScreenType() != ScreenType.CAT_BASE && this.getScreenType() != ScreenType.MAP) {
+                                if (this.getScreenType() == ScreenType.POWER_UP) {
                                     this.catfood -= this.unitBuyStats[this.boxCatIDs[this.currentBox[2] - this.gB[1]]][1];
                                     if (this.bh == 0) {
                                         screenTransition();
@@ -21391,7 +21434,13 @@ public class AppInstance extends Game {
                                     this.gG[this.currentBox[2]] = 1;
                                     this.blinkFrame[5] = 255;
                                     break;
-                                } else if (this.screenID != 3 && this.screenID != 6 && this.screenID != 8 && this.screenID != 4 && this.screenID == 999) {
+                                } else if (
+                                        this.getScreenType() != ScreenType.EQUIP
+                                        && this.getScreenType() != ScreenType.TREASURE
+                                        && this.getScreenType() != ScreenType.ENEMY_GUIDE
+                                        && this.getScreenType() != ScreenType.MAP2
+                                        && this.getScreenType() == ScreenType.ITEM_SHOP
+                                ) {
                                     if (Z[this.gP[2]] + (Z[this.gP[2]] * this.gS[this.gP[2]]) <= 0) {
                                         this.catfood -= 500;
                                         if (this.gP[2] < this.gB[0]) {
@@ -21463,7 +21512,7 @@ public class AppInstance extends Game {
                         this.fz[0] = 0;
                         switch (getSceneType()) {
                             case MAIN:
-                                if (this.screenID == 9) {
+                                if (this.getScreenType() == ScreenType.MAP) {
                                     if (this.catfood < 30) {
                                         screenTransition();
                                         this.gw = 1;
@@ -21779,7 +21828,7 @@ public class AppInstance extends Game {
             for (int i10 = 0; i10 < getLength(this.blinkFrame); i10++) {
                 this.blinkFrame[i10] = 0;
             }
-            if (this.gQ == 0) {
+            if (this.previousScreen == 0) {
                 this.blinkFrame[0] = getLength(cu) - 1;
             }
             for (int i11 = 0; i11 < getLength(this.eE); i11++) {
@@ -21834,7 +21883,7 @@ public class AppInstance extends Game {
             if (this.bL[i24] > i22) {
                 i22 = this.bL[i24];
                 if (this.currentBox[3] != this.bL[i24]) {
-                    if (this.gQ == 0) {
+                    if (this.previousScreen == 0) {
                         this.gE[i23] = this.bL[i24];
                     }
                     i23++;
@@ -21842,7 +21891,7 @@ public class AppInstance extends Game {
                 i21++;
             }
         }
-        if (this.gQ >= 1) {
+        if (this.previousScreen >= 1) {
             int i25 = 0;
             for (int i26 = 0; i26 < getLength(this.currentBox); i26++) {
                 this.currentBox[i26] = this.gT[i26];
@@ -21860,7 +21909,7 @@ public class AppInstance extends Game {
         this.currentBox[0] = this.boxCounts[0];
         this.currentBox[2] = 0;
         this.currentBox[1] = (this.boxScale * 100) + (this.gameStats1[0] / this.boxScale);
-        if (this.gQ >= 1) {
+        if (this.previousScreen >= 1) {
             int i27 = 0;
             for (int i28 = 0; i28 < getLength(this.currentBox); i28++) {
                 this.currentBox[i28] = this.gT[i28];
@@ -22949,7 +22998,7 @@ public class AppInstance extends Game {
                 if (this.gm[1] <= 0) {
                     this.eE[0] = false;
                     this.blinkFrame[2] = 0;
-                    this.gQ = 0;
+                    this.previousScreen = 0;
                 }
             } else {
                 this.fP = fM[this.blinkFrame[2]];
@@ -22968,7 +23017,7 @@ public class AppInstance extends Game {
                 if (this.gm[0] <= 0) {
                     this.blinkFrame[2] = 0;
                     screenTransition();
-                    this.screenID = 5;
+                    this.setScreenType(ScreenType.CAT_BASE);
                     this.screenLoadState = -1;
                     this.eE[1] = false;
                     return false;
@@ -22987,7 +23036,7 @@ public class AppInstance extends Game {
             if (this.blinkFrame[6] > getLength(fM)) {
                 this.blinkFrame[6] = 0;
                 screenTransition();
-                this.screenID = 7;
+                this.setScreenType(ScreenType.POWER_UP);
                 this.screenLoadState = -1;
                 return false;
             }
@@ -23015,9 +23064,9 @@ public class AppInstance extends Game {
                 this.fP = 0;
                 this.blinkFrame[2] = 0;
                 screenTransition();
-                this.screenID = 999;
+                this.setScreenType(ScreenType.ITEM_SHOP);
                 this.screenLoadState = -1;
-                this.gQ = 2;
+                this.previousScreen = 2;
                 int i35 = 0;
                 for (int i36 = 0; i36 < getLength(this.currentBox); i36++) {
                     this.gT[i36] = this.currentBox[i36];

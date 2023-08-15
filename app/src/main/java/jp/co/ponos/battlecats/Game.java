@@ -154,7 +154,7 @@ public class Game extends MyApplicationBase {
     int gM;
     boolean gN;
     boolean gO;
-    int gQ;
+    int previousScreen;
     int gR;
     boolean gU;
     int gW;
@@ -525,6 +525,14 @@ public class Game extends MyApplicationBase {
         this.purchaseIDs = new String[]{"jp.co.ponos.battlecats.nekokan1", "jp.co.ponos.battlecats.nekokan2", "jp.co.ponos.battlecats.nekokan3", "jp.co.ponos.battlecats.nekokan4", "jp.co.ponos.battlecats.nekokan5", "jp.co.ponos.battlecats.nekokan6", "jp.co.ponos.battlecats.nekokan7", "jp.co.ponos.battlecats.nekokan8"};
         l = new int[]{30, 90, 180, 330, 690, 1080, 1860, 3900};
         m = new int[]{1, 2, 3, 0, 4, 5, 6, 7};
+    }
+
+    public ScreenType getScreenType() {
+        return ScreenType.valueOf(screenID);
+    }
+
+    public void setScreenType(ScreenType screenType) {
+        screenID = screenType.screenID;
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
@@ -1697,7 +1705,7 @@ public class Game extends MyApplicationBase {
                         this.fx[5] = 0;
                         screenTransition();
                         this.fP = 0;
-                        this.screenID = 9;
+                        this.setScreenType(ScreenType.MAP);
                         this.screenLoadState = -1;
                         this.blinkFrame[2] = 0;
                         this.eE[1] = false;
@@ -1757,7 +1765,7 @@ public class Game extends MyApplicationBase {
                     this.blinkFrame[2] = 0;
                     screenTransition();
                     this.fP = 0;
-                    this.screenID = 9;
+                    this.setScreenType(ScreenType.MAP);
                     this.screenLoadState = -1;
                     this.eE[1] = false;
                     return false;
@@ -2254,7 +2262,7 @@ public class Game extends MyApplicationBase {
                 this.buttonCoordinates1[0][2] = 168;
                 this.buttonCoordinates1[0][3] = 88;
                 this.screenLoadState = -1;
-                this.screenID = 0;
+                this.setScreenType(ScreenType.TITLE);
                 for (int i12 = 0; i12 < getLength(this.blinkFrame); i12++) {
                     this.blinkFrame[i12] = 0;
                 }
@@ -2360,7 +2368,7 @@ public class Game extends MyApplicationBase {
                 this.dF = 0;
                 this.dG = 0;
                 this.screenLoadState = -1;
-                this.screenID = 0;
+                this.setScreenType(ScreenType.TITLE);
                 this.buttonCoordinates1[0][0] = this.excessWidth + 788;
                 this.buttonCoordinates1[0][1] = this.eZ + 556;
                 this.buttonCoordinates1[0][2] = 168;
@@ -2407,7 +2415,7 @@ public class Game extends MyApplicationBase {
     /*
         Code decompiled incorrectly, please refer to instructions dump.
     */
-    public void s(aTextureRenderer atexturerenderer) {
+    public void map2Draw(aTextureRenderer atexturerenderer) {
         int i;
         int i2 = 0;
         int i3;

@@ -17,7 +17,7 @@ public class MyPurchaseDelegate extends aPurchaseDelegate {
         if ((A.a().getSceneType() == SceneType.BATTLE && A.a().battleData[14] == 1) || A.a().getSceneType() == SceneType.ENDING) {
             return false;
         }
-        if (A.a().getSceneType() == SceneType.MAIN && A.a().screenID == 9999) {
+        if (A.a().getSceneType() == SceneType.MAIN && A.a().getScreenType() == ScreenType.STAMP) {
             return false;
         }
         for (int i = 0; i < 8; i++) {
