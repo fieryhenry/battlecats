@@ -15,11 +15,11 @@ public class aTextureRenderer {
     int imageOrientation;
     short[] vertexCoordinatesS = new short[32];
     float[] vertexCoordinatesF = new float[32];
-    int[] d = new int[64];
+    int[] colors = new int[64];
     int[] vertexCoordinatesI = new int[8];
     ShortBuffer shortBuffer;
     FloatBuffer floatBuffer;
-    IntBuffer h;
+    IntBuffer colorBuffer;
     IntBuffer intBuffer;
     float zoomFactor;
     int xOffsetI;
@@ -479,43 +479,43 @@ public class aTextureRenderer {
         }
     }
 
-    public void drawScaledImage(aTexture atexture, int i, int i2, int i3, int i4, int i5, int i6, int i7, int i8, float f, int i9) {
-        a(atexture, i, i2, i3, i4, i5, i6, i7, i8, f, atexture.rects[i9].x, atexture.rects[i9].y, atexture.rects[i9].width, atexture.rects[i9].height);
+    public void drawScaledImage(aTexture atexture, int x, int width, int height, int i4, int i5, int i6, int i7, int i8, float angle, int rectID) {
+        drawScaledImage(atexture, x, width, height, i4, i5, i6, i7, i8, angle, atexture.rects[rectID].x, atexture.rects[rectID].y, atexture.rects[rectID].width, atexture.rects[rectID].height);
     }
 
-    public void a(aTexture atexture, int i, int i2, int i3, int i4, int i5, int i6, int i7, int i8, float f, int i9, int i10, int i11, int i12) {
-        int i13;
-        int i14;
-        int i15 = (i5 & 1) != 0 ? (i - (i3 / 2)) + this.xOffsetI : (i5 & 2) != 0 ? (i - i3) + this.xOffsetI : this.xOffsetI + i;
-        int i16 = (i5 & 4) != 0 ? (i2 - (i4 / 2)) + this.yOffsetI : (i5 & 8) != 0 ? (i2 - i4) + this.yOffsetI : this.yOffsetI + i2;
-        if ((i8 & 16) != 0) {
-            i13 = i6 + this.xOffsetI;
-            i14 = this.yOffsetI + i7;
+    public void drawScaledImage(aTexture atexture, int x, int y, int width, int height, int positionFlag, int xOffset, int yOffset, int offsetFlag, float angle, int cutX, int cutY, int cutWidth, int cutHeight) {
+        int offsetX;
+        int offsetY;
+        int posX = (positionFlag & 1) != 0 ? (x - (width / 2)) + this.xOffsetI : (positionFlag & 2) != 0 ? (x - width) + this.xOffsetI : this.xOffsetI + x;
+        int posY = (positionFlag & 4) != 0 ? (y - (height / 2)) + this.yOffsetI : (positionFlag & 8) != 0 ? (y - height) + this.yOffsetI : this.yOffsetI + y;
+        if ((offsetFlag & 16) != 0) {
+            offsetX = xOffset + this.xOffsetI;
+            offsetY = this.yOffsetI + yOffset;
         } else {
-            i13 = (i8 & 1) != 0 ? (i3 / 2) + i15 + i6 : (i8 & 2) != 0 ? i15 + i3 + i6 : i15 + i6;
-            i14 = (i8 & 4) != 0 ? (i4 / 2) + i16 + i7 : (i8 & 8) != 0 ? i16 + i4 + i7 : i16 + i7;
+            offsetX = (offsetFlag & 1) != 0 ? (width / 2) + posX + xOffset : (offsetFlag & 2) != 0 ? posX + width + xOffset : posX + xOffset;
+            offsetY = (offsetFlag & 4) != 0 ? (height / 2) + posY + yOffset : (offsetFlag & 8) != 0 ? posY + height + yOffset : posY + yOffset;
         }
-        int i17 = i15 - i13;
-        int i18 = i16 - i14;
-        int i19 = i17 + i3;
-        int i20 = i18 + i4;
-        float f2 = -f;
-        drawScaledImage(atexture, (int) ((i17 * aMath.cos(f2)) + (i18 * aMath.sin(f2)) + i13), (int) (((-i17) * aMath.sin(f2)) + (i18 * aMath.cos(f2)) + i14), (int) ((i17 * aMath.cos(f2)) + (i20 * aMath.sin(f2)) + i13), (int) (((-i17) * aMath.sin(f2)) + (i20 * aMath.cos(f2)) + i14), (int) ((i19 * aMath.cos(f2)) + (i20 * aMath.sin(f2)) + i13), (int) ((i20 * aMath.cos(f2)) + ((-i19) * aMath.sin(f2)) + i14), (int) (i13 + (i19 * aMath.cos(f2)) + (i18 * aMath.sin(f2))), (int) (i14 + ((-i19) * aMath.sin(f2)) + (i18 * aMath.cos(f2))), i9, i10, i11, i12);
+        int deltaX = posX - offsetX;
+        int deltaY = posY - offsetY;
+        int x1 = deltaX + width;
+        int y1 = deltaY + height;
+        float angle2 = -angle;
+        drawScaledImage(atexture, (int) ((deltaX * aMath.cos(angle2)) + (deltaY * aMath.sin(angle2)) + offsetX), (int) (((-deltaX) * aMath.sin(angle2)) + (deltaY * aMath.cos(angle2)) + offsetY), (int) ((deltaX * aMath.cos(angle2)) + (y1 * aMath.sin(angle2)) + offsetX), (int) (((-deltaX) * aMath.sin(angle2)) + (y1 * aMath.cos(angle2)) + offsetY), (int) ((x1 * aMath.cos(angle2)) + (y1 * aMath.sin(angle2)) + offsetX), (int) ((y1 * aMath.cos(angle2)) + ((-x1) * aMath.sin(angle2)) + offsetY), (int) (offsetX + (x1 * aMath.cos(angle2)) + (deltaY * aMath.sin(angle2))), (int) (offsetY + ((-x1) * aMath.sin(angle2)) + (deltaY * aMath.cos(angle2))), cutX, cutY, cutWidth, cutHeight);
     }
 
-    public void drawScaledImage(aTexture atexture, int i, int i2, int i3, int i4, int i5, int i6, int i7, int i8, int i9) {
-        drawScaledImage(atexture, i, i2, i3, i4, i5, i6, i7, i8, atexture.rects[i9].x, atexture.rects[i9].y, atexture.rects[i9].width, atexture.rects[i9].height);
+    public void drawScaledImage(aTexture atexture, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int rectID) {
+        drawScaledImage(atexture, x1, y1, x2, y2, x3, y3, x4, y4, atexture.rects[rectID].x, atexture.rects[rectID].y, atexture.rects[rectID].width, atexture.rects[rectID].height);
     }
 
-    public void drawScaledImage(aTexture atexture, int i, int i2, int i3, int i4, int i5, int i6, int i7, int i8, int i9, int i10, int i11, int i12) {
-        int i13 = this.xOffsetI + i;
-        int i14 = this.yOffsetI + i2;
-        int i15 = this.xOffsetI + i3;
-        int i16 = this.yOffsetI + i4;
-        int i17 = this.xOffsetI + i5;
-        int i18 = this.yOffsetI + i6;
-        int i19 = this.xOffsetI + i7;
-        int i20 = this.yOffsetI + i8;
+    public void drawScaledImage(aTexture atexture, int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int cutX, int cutY, int cutWidth, int cutHeight) {
+        int i13 = this.xOffsetI + x1;
+        int i14 = this.yOffsetI + y1;
+        int i15 = this.xOffsetI + x2;
+        int i16 = this.yOffsetI + y2;
+        int i17 = this.xOffsetI + x3;
+        int i18 = this.yOffsetI + y3;
+        int i19 = this.xOffsetI + x4;
+        int i20 = this.yOffsetI + y4;
         this.vertexCoordinatesS[0] = (short) i13;
         this.vertexCoordinatesS[1] = (short) i14;
         this.vertexCoordinatesS[2] = (short) i15;
@@ -528,14 +528,14 @@ public class aTextureRenderer {
         this.shortBuffer.clear();
         this.shortBuffer.put(this.vertexCoordinatesS);
         this.shortBuffer.position(0);
-        this.vertexCoordinatesI[0] = i9;
-        this.vertexCoordinatesI[1] = i10;
-        this.vertexCoordinatesI[2] = i9;
-        this.vertexCoordinatesI[3] = i10 + i12;
-        this.vertexCoordinatesI[4] = i9 + i11;
-        this.vertexCoordinatesI[5] = i10;
-        this.vertexCoordinatesI[6] = i9 + i11;
-        this.vertexCoordinatesI[7] = i10 + i12;
+        this.vertexCoordinatesI[0] = cutX;
+        this.vertexCoordinatesI[1] = cutY;
+        this.vertexCoordinatesI[2] = cutX;
+        this.vertexCoordinatesI[3] = cutY + cutHeight;
+        this.vertexCoordinatesI[4] = cutX + cutWidth;
+        this.vertexCoordinatesI[5] = cutY;
+        this.vertexCoordinatesI[6] = cutX + cutWidth;
+        this.vertexCoordinatesI[7] = cutY + cutHeight;
         for (int i21 = 0; i21 < 4; i21++) {
             this.vertexCoordinatesI[i21 * 2] = (65536 * this.vertexCoordinatesI[i21 * 2]) / atexture.pow2Width;
             this.vertexCoordinatesI[(i21 * 2) + 1] = (65536 * this.vertexCoordinatesI[(i21 * 2) + 1]) / atexture.pow2Height;
@@ -588,12 +588,12 @@ public class aTextureRenderer {
         }
     }
 
-    public void a(int[] iArr, int[] iArr2, int i) {
-        for (int i2 = 0; i2 < i; i2++) {
-            this.vertexCoordinatesS[i2 * 2] = (short) (iArr[i2] + this.xOffsetI);
-            this.vertexCoordinatesS[(i2 * 2) + 1] = (short) (iArr2[i2] + this.yOffsetI);
+    public void drawVertices(int[] xCoordinates, int[] yCoordinates, int count) {
+        for (int i = 0; i < count; i++) {
+            this.vertexCoordinatesS[i * 2] = (short) (xCoordinates[i] + this.xOffsetI);
+            this.vertexCoordinatesS[(i * 2) + 1] = (short) (yCoordinates[i] + this.yOffsetI);
         }
-        applyTransformationToCoordinates(this.vertexCoordinatesS, i);
+        applyTransformationToCoordinates(this.vertexCoordinatesS, count);
         this.shortBuffer.clear();
         this.shortBuffer.put(this.vertexCoordinatesS);
         this.shortBuffer.position(0);
@@ -601,32 +601,32 @@ public class aTextureRenderer {
         aGlobal.instance.gl10.glBlendFunc(this.blendSFactor, this.blendDFactor);
         aGlobal.instance.gl10.glColor4f(this.red / 255.0f, this.green / 255.0f, this.blue / 255.0f, this.alpha / 255.0f);
         aGlobal.instance.gl10.glVertexPointer(2, 5122, 0, this.shortBuffer);
-        aGlobal.instance.gl10.glDrawArrays(6, 0, i);
+        aGlobal.instance.gl10.glDrawArrays(GL10.GL_TRIANGLE_FAN, 0, count);
     }
 
-    public void a(int[] iArr, int[] iArr2, int[] iArr3, int i) {
-        for (int i2 = 0; i2 < i; i2++) {
-            this.vertexCoordinatesS[i2 * 2] = (short) (iArr[i2] + this.xOffsetI);
-            this.vertexCoordinatesS[(i2 * 2) + 1] = (short) (iArr2[i2] + this.yOffsetI);
-            this.d[i2 * 4] = (((iArr3[i2] >> 16) & 255) * 65536) / 255;
-            this.d[(i2 * 4) + 1] = (((iArr3[i2] >> 8) & 255) * 65536) / 255;
-            this.d[(i2 * 4) + 2] = ((iArr3[i2] & 255) * 65536) / 255;
-            this.d[(i2 * 4) + 3] = (((iArr3[i2] >> 24) & 255) * 65536) / 255;
+    public void a(int[] xCoordinates, int[] yCoordinates, int[] colors, int totalPairs) {
+        for (int i = 0; i < totalPairs; i++) {
+            this.vertexCoordinatesS[i * 2] = (short) (xCoordinates[i] + this.xOffsetI);
+            this.vertexCoordinatesS[(i * 2) + 1] = (short) (yCoordinates[i] + this.yOffsetI);
+            this.colors[i * 4] = (((colors[i] >> 16) & 255) * 65536) / 255;
+            this.colors[(i * 4) + 1] = (((colors[i] >> 8) & 255) * 65536) / 255;
+            this.colors[(i * 4) + 2] = ((colors[i] & 255) * 65536) / 255;
+            this.colors[(i * 4) + 3] = (((colors[i] >> 24) & 255) * 65536) / 255;
         }
-        applyTransformationToCoordinates(this.vertexCoordinatesS, i);
+        applyTransformationToCoordinates(this.vertexCoordinatesS, totalPairs);
         this.shortBuffer.clear();
         this.shortBuffer.put(this.vertexCoordinatesS);
         this.shortBuffer.position(0);
-        this.h.clear();
-        this.h.put(this.d);
-        this.h.position(0);
+        this.colorBuffer.clear();
+        this.colorBuffer.put(this.colors);
+        this.colorBuffer.position(0);
         aGlobal.instance.gl10.glEnableClientState(32886);
         aGlobal.instance.gl10.glDisable(GL10.GL_TEXTURE_2D);
         aGlobal.instance.gl10.glBlendFunc(this.blendSFactor, this.blendDFactor);
         aGlobal.instance.gl10.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         aGlobal.instance.gl10.glVertexPointer(2, 5122, 0, this.shortBuffer);
-        aGlobal.instance.gl10.glColorPointer(4, 5132, 0, this.h);
-        aGlobal.instance.gl10.glDrawArrays(6, 0, i);
+        aGlobal.instance.gl10.glColorPointer(4, 5132, 0, this.colorBuffer);
+        aGlobal.instance.gl10.glDrawArrays(6, 0, totalPairs);
         aGlobal.instance.gl10.glDisableClientState(32886);
     }
 
@@ -652,11 +652,11 @@ public class aTextureRenderer {
         this.imageAlpha = 255;
     }
 
-    public void b(int i, int i2, int i3, int i4) {
-        int i5 = this.xOffsetI + i;
-        int i6 = this.yOffsetI + i2;
-        int i7 = this.xOffsetI + i3;
-        int i8 = this.yOffsetI + i4;
+    public void drawLine(int x1, int y1, int x2, int y2) {
+        int i5 = this.xOffsetI + x1;
+        int i6 = this.yOffsetI + y1;
+        int i7 = this.xOffsetI + x2;
+        int i8 = this.yOffsetI + y2;
         this.vertexCoordinatesS[0] = (short) i5;
         this.vertexCoordinatesS[1] = (short) i6;
         this.vertexCoordinatesS[2] = (short) i7;
@@ -668,8 +668,8 @@ public class aTextureRenderer {
         aGlobal.instance.gl10.glDisable(GL10.GL_TEXTURE_2D);
         aGlobal.instance.gl10.glBlendFunc(this.blendSFactor, this.blendDFactor);
         aGlobal.instance.gl10.glColor4f(this.red / 255.0f, this.green / 255.0f, this.blue / 255.0f, this.alpha / 255.0f);
-        aGlobal.instance.gl10.glVertexPointer(2, 5122, 0, this.shortBuffer);
-        aGlobal.instance.gl10.glDrawArrays(1, 0, 2);
+        aGlobal.instance.gl10.glVertexPointer(2, GL10.GL_SHORT, 0, this.shortBuffer);
+        aGlobal.instance.gl10.glDrawArrays(GL10.GL_LINES, 0, 2);
     }
 
     public void drawScaledImagef(aTexture atexture, int xPos, int yPos, int rectID) {
@@ -688,9 +688,9 @@ public class aTextureRenderer {
         ByteBuffer allocateDirect2 = ByteBuffer.allocateDirect(this.vertexCoordinatesS.length * 4);
         allocateDirect2.order(ByteOrder.nativeOrder());
         this.floatBuffer = allocateDirect2.asFloatBuffer();
-        ByteBuffer allocateDirect3 = ByteBuffer.allocateDirect(this.d.length * 4);
+        ByteBuffer allocateDirect3 = ByteBuffer.allocateDirect(this.colors.length * 4);
         allocateDirect3.order(ByteOrder.nativeOrder());
-        this.h = allocateDirect3.asIntBuffer();
+        this.colorBuffer = allocateDirect3.asIntBuffer();
         ByteBuffer allocateDirect4 = ByteBuffer.allocateDirect(this.vertexCoordinatesI.length * 4);
         allocateDirect4.order(ByteOrder.nativeOrder());
         this.intBuffer = allocateDirect4.asIntBuffer();

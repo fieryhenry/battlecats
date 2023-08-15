@@ -62,7 +62,7 @@ public class MyActivity extends Activity {
         if ((A.a().getScene() == 300 && A.a().battleData[14] == 1) || A.a().getScene() == 99) {
             return;
         }
-        if (!(A.a().getScene() == 100 && A.a().fD == 9999) && i > 0) {
+        if (!(A.a().getScene() == 100 && A.a().screenID == 9999) && i > 0) {
             A.a().catfood += i;
             MyUtility.getInstance().addButton(String.format(a, Integer.valueOf(i)));
             A.a().aSave();

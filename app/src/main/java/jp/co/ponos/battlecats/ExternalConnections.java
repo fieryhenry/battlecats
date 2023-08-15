@@ -59,13 +59,13 @@ class ExternalConnections extends ScoreSubmit {
             A.a().hC[1] = 999999999;
         }
         A.a().ae();
-        if (A.a().getScene() == 100 && A.a().fD == 0) {
+        if (A.a().getScene() == 100 && A.a().screenID == 0) {
             //aAd.b().d();
         }
     }
 
     public void games() {
-        if (A.a().getScene() == 100 && A.a().fD == 0) {
+        if (A.a().getScene() == 100 && A.a().screenID == 0) {
             //aAd.b().d();
         }
         MyUtility.getInstance().addWebClient();
@@ -113,7 +113,7 @@ class ExternalConnections extends ScoreSubmit {
     }
 
     public void review(String str) {
-        if (A.a().getScene() == 100 && A.a().fD == 0) {
+        if (A.a().getScene() == 100 && A.a().screenID == 0) {
             //aAd.b().d();
         }
         A.a().f = null;
@@ -138,7 +138,7 @@ class ExternalConnections extends ScoreSubmit {
         MyUtility.getInstance().addWebClient();
         A.a().i = 0;
         A.a().menuType = -1;
-        if (A.a().getScene() == 100 && A.a().fD == 0) {
+        if (A.a().getScene() == 100 && A.a().screenID == 0) {
             //aAd.b().d();
         }
         aTwitter.getInstance().tweet(aString.format("%s %s %s", aString.format(MyUtility.getString("twitter_txt3"), A.a().f), MyUtility.getString("url_abbr"), MyUtility.getString("twitter_hash")), null, null);
@@ -151,7 +151,7 @@ class ExternalConnections extends ScoreSubmit {
     }
 
     public void video() {
-        if (A.a().getScene() == 100 && A.a().fD == 0) {
+        if (A.a().getScene() == 100 && A.a().screenID == 0) {
             //aAd.b().d();
         }
         MyUtility.getInstance().addWebClient();

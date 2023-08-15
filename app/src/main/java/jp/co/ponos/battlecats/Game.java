@@ -119,7 +119,7 @@ public class Game extends MyApplicationBase {
     int ey;
     int ez;
     String f;
-    int fD;
+    int screenID;
     int fE;
     int fF;
     int fI;
@@ -1689,7 +1689,7 @@ public class Game extends MyApplicationBase {
                         this.fx[5] = 0;
                         screenTransition();
                         this.fP = 0;
-                        this.fD = 9;
+                        this.screenID = 9;
                         this.fF = -1;
                         this.fQ[2] = 0;
                         this.eE[1] = false;
@@ -1749,7 +1749,7 @@ public class Game extends MyApplicationBase {
                     this.fQ[2] = 0;
                     screenTransition();
                     this.fP = 0;
-                    this.fD = 9;
+                    this.screenID = 9;
                     this.fF = -1;
                     this.eE[1] = false;
                     return false;
@@ -2243,7 +2243,7 @@ public class Game extends MyApplicationBase {
                 this.fw[0][2] = 168;
                 this.fw[0][3] = 88;
                 this.fF = -1;
-                this.fD = 0;
+                this.screenID = 0;
                 for (int i12 = 0; i12 < getLength(this.fQ); i12++) {
                     this.fQ[i12] = 0;
                 }
@@ -2349,7 +2349,7 @@ public class Game extends MyApplicationBase {
                 this.dF = 0;
                 this.dG = 0;
                 this.fF = -1;
-                this.fD = 0;
+                this.screenID = 0;
                 this.fw[0][0] = this.w + 788;
                 this.fw[0][1] = this.eZ + 556;
                 this.fw[0][2] = 168;
