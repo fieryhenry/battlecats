@@ -73,7 +73,8 @@ Then follow the build instructions on the jadx github page to build it yourself.
 Most of the issues are probably around jadx incorrectly decompiling control flow
 stuff like loops and if statements. Jadx creates lots of `while(true)` loops
 with no way for them to stop. I have fixed some of those from looping
-infinitely, although I'm not confident I did that correctly. So if you are
+infinitely, although I'm not confident I did that correctly. There are lots of
+empty if statements which I assume just haven't been decompiled. So if you are
 looking for sources of error check for those first.
 
 Jadx also sometimes creates new local variables that don't exist e.g `r1` and
