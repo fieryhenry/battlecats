@@ -11748,17 +11748,19 @@ public class AppInstance extends Game {
             if (this.bA[this.gP[2]] < 9000) {
                 z = true;
             }
-            z = false;
+            else {
+                z = false;
+            }
         } else {
             if (this.aY < 90000000) {
                 z = true;
             }
-            z = false;
+            else {
+                z = false;
+            }
         }
         if (z) {
             atexturerenderer.drawScaledImage(this.uiTextures[7], 4 - (dv[this.fx[0]] / 2), 367 - (dv[this.fx[0]] / 2), dv[this.fx[0]] + 383, dv[this.fx[0]] + 85, 2);
-        }
-        if (z) {
             if (Z[this.gP[2]] + (Z[this.gP[2]] * this.gS[this.gP[2]]) <= 0) {
                 if (this.catfood >= 500) {
                     atexturerenderer.drawScaledImage(this.uiTextures[7], 43 - (dv[this.fx[0]] / 2), 378 - (dv[this.fx[0]] / 2), dv[this.fx[0]] + 292, dv[this.fx[0]] + 62, 3);
