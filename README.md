@@ -95,7 +95,9 @@ Here are some current problems with the app:
 - [ ] Freezing if too many enemies die
 - [ ] Cat cannon firing strangely
 - [ ] Crashing when trying to go to the catfood shop when you don't have enough
-      catfood
+  catfood
+- [ ] Not being able to buy anything in the item shop (all of that code didn't
+  decompile)
 
 List is not exhaustive, there are probably lots of other issues that I haven't
 noticed yet.
