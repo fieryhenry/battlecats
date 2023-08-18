@@ -123,7 +123,7 @@ public class Game extends MyApplicationBase {
     int fE;
     int screenLoadState;
     int fI;
-    int fJ;
+    int bigCatText;
     int fK;
     int fL;
     int fP;
@@ -1362,7 +1362,7 @@ public class Game extends MyApplicationBase {
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
-    public void loadTextures2() {
+    public void resetTextures() {
         for (int i = 0; i < getLength(this.unitTexturesF); i++) {
             if (this.unitTexturesF[i].isLoaded()) {
                 this.unitTexturesF[i].reset();
@@ -1457,7 +1457,7 @@ public class Game extends MyApplicationBase {
         this.gm[1] = 0;
         this.eE[0] = false;
         this.blinkFrame[2] = 0;
-        loadTextures2();
+        resetTextures();
         for (int i10 = 0; i10 < 10; i10++) {
             if (this.slotCatIDs[i10] - 2 >= 0) {
                 this.slotFormIDs[i10] = this.bw[this.slotCatIDs[i10] - 2];
@@ -2274,7 +2274,7 @@ public class Game extends MyApplicationBase {
                         this.uiTextures[i14].reset();
                     }
                 }
-                loadTextures2();
+                resetTextures();
                 if (!this.openingTexture[0].isLoaded()) {
                     this.openingTexture[0].reset();
                 }
@@ -2339,7 +2339,7 @@ public class Game extends MyApplicationBase {
                         this.uiTextures[i23].reset();
                     }
                 }
-                loadTextures2();
+                resetTextures();
                 if (this.uiTextures[0].isLoaded()) {
                     this.uiTextures[0].reset();
                 }

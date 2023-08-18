@@ -35,7 +35,7 @@ public class AppInstance extends Game {
     }
 
     void stampLoad() {
-        loadTextures2();
+        resetTextures();
         for (int i = 6; i < getLength(this.uiTextures) - 6; i++) {
             if (this.uiTextures[i].isLoaded()) {
                 this.uiTextures[i].reset();
@@ -273,7 +273,7 @@ public class AppInstance extends Game {
             this.fC[i8] = 0;
         }
         this.textTextures[0].drawText(this.optionText[0], "FONT_SYSTEM_BOLD", 30, 1);
-        loadTextures2();
+        resetTextures();
         for (int i9 = 0; i9 < getLength(this.uiTextures); i9++) {
             if (this.uiTextures[i9].isLoaded()) {
                 this.uiTextures[i9].reset();
@@ -1159,7 +1159,7 @@ public class AppInstance extends Game {
 
     void treasureLoad() {
         //aAd.b().f();
-        loadTextures2();
+        resetTextures();
         for (int i = 6; i < getLength(this.uiTextures) - 6; i++) {
             if (this.uiTextures[i].isLoaded()) {
                 this.uiTextures[i].reset();
@@ -2012,7 +2012,7 @@ public class AppInstance extends Game {
                 this.uniTextures[i30].reset();
             }
         }
-        loadTextures2();
+        resetTextures();
         this.gameStats1[0] = -(this.boxScale * this.boxCounts[0]);
         this.ff[0] = this.boxCounts[0];
         this.ff[2] = 0;
@@ -10401,7 +10401,7 @@ public class AppInstance extends Game {
                         }
                         this.setScreenType(ScreenType.TITLE);
                         this.screenLoadState = -1;
-                        loadTextures2();
+                        resetTextures();
                         aSound.getInstance().stop(-1);
                         aSound.getInstance().play(SoundType.CAT_BASE);
                         if (this.getScreenType() != ScreenType.CAT_BASE) {
@@ -10511,7 +10511,7 @@ public class AppInstance extends Game {
                                 }
                                 this.setScreenType(ScreenType.TITLE);
                                 this.screenLoadState = -1;
-                                loadTextures2();
+                                resetTextures();
                                 this.gL = true;
                                 if (this.getScreenType() != ScreenType.CAT_BASE) {
                                     aSave();
@@ -10583,7 +10583,7 @@ public class AppInstance extends Game {
                                 if (!this.settingsMenuTexture[0].isLoaded()) {
                                     this.settingsMenuTexture[0].load(MyUtility.getString(String.format("img%03d_%d.png", 9, this.eQ + 3)), MyUtility.getString(String.format("img%03d_%d.imgcut", 9, this.eQ + 3)));
                                 }
-                                loadTextures2();
+                                resetTextures();
                                 aSound.getInstance().stop(-1);
                                 aSound.getInstance().play(SoundType.CAT_BASE);
                                 if (this.getScreenType() != ScreenType.CAT_BASE) {
@@ -10680,7 +10680,7 @@ public class AppInstance extends Game {
                                     if (!this.settingsMenuTexture[0].isLoaded()) {
                                         this.settingsMenuTexture[0].load(MyUtility.getString(String.format("img%03d_%d.png", 9, this.eQ + 3)), MyUtility.getString(String.format("img%03d_%d.imgcut", 9, this.eQ + 3)));
                                     }
-                                    loadTextures2();
+                                    resetTextures();
                                     aSound.getInstance().stop(-1);
                                     aSound.getInstance().play(SoundType.CAT_BASE);
                                     if (this.aZ == 0) {
@@ -10698,7 +10698,7 @@ public class AppInstance extends Game {
                                 for (int i48 = 0; i48 < getLength(this.eM); i48++) {
                                     this.eM[i48] = false;
                                 }
-                                loadTextures2();
+                                resetTextures();
                                 setScene(SceneType.ENDING);
                                 return false;
                             }
@@ -10795,7 +10795,7 @@ public class AppInstance extends Game {
                                 if (!this.settingsMenuTexture[0].isLoaded()) {
                                     this.settingsMenuTexture[0].load(MyUtility.getString(String.format("img%03d_%d.png", 9, this.eQ + 3)), MyUtility.getString(String.format("img%03d_%d.imgcut", 9, this.eQ + 3)));
                                 }
-                                loadTextures2();
+                                resetTextures();
                                 aSound.getInstance().stop(-1);
                                 aSound.getInstance().play(SoundType.CAT_BASE);
                                 return false;
@@ -10998,7 +10998,7 @@ public class AppInstance extends Game {
                             }
                             this.setScreenType(ScreenType.TITLE);
                             this.screenLoadState = -1;
-                            loadTextures2();
+                            resetTextures();
                             this.gL = true;
                             if (this.getScreenType() != ScreenType.CAT_BASE) {
                                 aSave();
@@ -11043,7 +11043,7 @@ public class AppInstance extends Game {
                             }
                             this.setScreenType(ScreenType.TITLE);
                             this.screenLoadState = -1;
-                            loadTextures2();
+                            resetTextures();
                             this.gL = true;
                             if (this.getScreenType() != ScreenType.CAT_BASE) {
                                 aSave();
@@ -12316,32 +12316,32 @@ public class AppInstance extends Game {
                     i18++;
                 } else if (this.fK != 4) {
                     int i19 = this.aX == 0 ? 2 : 0;
-                    if (this.fJ < getLength(this.mainMenuWText) - i19) {
-                        if (aString.isEqual(this.mainMenuWText[this.fJ][i18], "＠")) {
+                    if (this.bigCatText < getLength(this.mainMenuWText) - i19) {
+                        if (aString.isEqual(this.mainMenuWText[this.bigCatText][i18], "＠")) {
                             break;
                         }
                         i17 = i18 + 1;
                         i18++;
-                    } else if (this.fJ < (getLength(this.mainMenuWText) - i19) + getLength(this.mainMenuPText)) {
-                        if (aString.isEqual(this.mainMenuPText[this.fJ - (getLength(this.mainMenuWText) - i19)][i18], "＠")) {
+                    } else if (this.bigCatText < (getLength(this.mainMenuWText) - i19) + getLength(this.mainMenuPText)) {
+                        if (aString.isEqual(this.mainMenuPText[this.bigCatText - (getLength(this.mainMenuWText) - i19)][i18], "＠")) {
                             break;
                         }
                         i17 = i18 + 1;
                         i18++;
-                    } else if (this.fJ < (getLength(this.mainMenuWText) - i19) + getLength(this.mainMenuPText) + getLength(this.mainMenuUText)) {
-                        if (aString.isEqual(this.mainMenuUText[this.fJ - ((getLength(this.mainMenuWText) - i19) + getLength(this.mainMenuPText))][i18], "＠")) {
+                    } else if (this.bigCatText < (getLength(this.mainMenuWText) - i19) + getLength(this.mainMenuPText) + getLength(this.mainMenuUText)) {
+                        if (aString.isEqual(this.mainMenuUText[this.bigCatText - ((getLength(this.mainMenuWText) - i19) + getLength(this.mainMenuPText))][i18], "＠")) {
                             break;
                         }
                         i17 = i18 + 1;
                         i18++;
-                    } else if (this.fJ < (getLength(this.mainMenuWText) - i19) + getLength(this.mainMenuPText) + getLength(this.mainMenuUText) + getLength(this.mainMenuTText)) {
-                        if (aString.isEqual(this.mainMenuTText[this.fJ - (((getLength(this.mainMenuWText) - i19) + getLength(this.mainMenuPText)) + getLength(this.mainMenuUText))][i18], "＠")) {
+                    } else if (this.bigCatText < (getLength(this.mainMenuWText) - i19) + getLength(this.mainMenuPText) + getLength(this.mainMenuUText) + getLength(this.mainMenuTText)) {
+                        if (aString.isEqual(this.mainMenuTText[this.bigCatText - (((getLength(this.mainMenuWText) - i19) + getLength(this.mainMenuPText)) + getLength(this.mainMenuUText))][i18], "＠")) {
                             break;
                         }
                         i17 = i18 + 1;
                         i18++;
                     } else {
-                        if (aString.isEqual(this.mainMenuBText[this.fJ - ((((getLength(this.mainMenuWText) - i19) + getLength(this.mainMenuPText)) + getLength(this.mainMenuUText)) + getLength(this.mainMenuTText))][i18], "＠")) {
+                        if (aString.isEqual(this.mainMenuBText[this.bigCatText - ((((getLength(this.mainMenuWText) - i19) + getLength(this.mainMenuPText)) + getLength(this.mainMenuUText)) + getLength(this.mainMenuTText))][i18], "＠")) {
                             break;
                         }
                         i17 = i18 + 1;
@@ -14061,7 +14061,7 @@ public class AppInstance extends Game {
             this.gp[i] = false;
         }
         //aAd.b().f();
-        loadTextures2();
+        resetTextures();
         for (int i2 = 6; i2 < getLength(this.uiTextures) - 6; i2++) {
             if (this.uiTextures[i2].isLoaded()) {
                 this.uiTextures[i2].reset();
@@ -15441,7 +15441,7 @@ public class AppInstance extends Game {
         for (int i = 0; i < getLength(this.gp); i++) {
             this.gp[i] = false;
         }
-        loadTextures2();
+        resetTextures();
         for (int i2 = 0; i2 < getLength(this.uiTextures); i2++) {
             if (this.uiTextures[i2].isLoaded()) {
                 this.uiTextures[i2].reset();
@@ -18014,7 +18014,7 @@ public class AppInstance extends Game {
         if (this.be == 1) {
             this.be = 2;
         }
-        loadTextures2();
+        resetTextures();
         for (int i = 6; i < getLength(this.uiTextures) - 6; i++) {
             if (this.uiTextures[i].isLoaded()) {
                 this.uiTextures[i].reset();
@@ -18659,7 +18659,7 @@ public class AppInstance extends Game {
     */
     boolean itemShopProcess() {
         boolean z;
-        loadTextures2();
+        resetTextures();
         int[] iArr = this.gameStats1;
         iArr[0] = iArr[0] + this.scrollAmount[0];
         int[] iArr2 = this.gameStats1;
@@ -19121,46 +19121,46 @@ public class AppInstance extends Game {
         }
         if (this.bz[0] >= 2 || this.bz[1] >= 2 || this.bz[2] >= 2 || this.bz[3] >= 2 || this.bz[4] >= 2) {
             this.fK = 5;
-            int a = this.bz[0] >= 2 ? (getLength(this.mainMenuWText) - (this.aX == 0 ? 2 : 0)) + 0 : 0;
+            int bigCatText = this.bz[0] >= 2 ? (getLength(this.mainMenuWText) - (this.aX == 0 ? 2 : 0)) + 0 : 0;
             if (this.bz[1] >= 2) {
-                a += getLength(this.mainMenuPText);
+                bigCatText += getLength(this.mainMenuPText);
             }
             if (this.bz[2] >= 2) {
-                a += getLength(this.mainMenuUText);
+                bigCatText += getLength(this.mainMenuUText);
             }
             if (this.bz[3] >= 2) {
-                a += getLength(this.mainMenuTText);
+                bigCatText += getLength(this.mainMenuTText);
             }
             if (this.bz[4] >= 2) {
-                a += getLength(this.mainMenuBText);
+                bigCatText += getLength(this.mainMenuBText);
             }
-            this.fJ = aMath.rand(a);
+            this.bigCatText = aMath.rand(bigCatText);
             int i5 = this.aX == 0 ? 2 : 0;
-            if (this.fJ >= 0 && this.bz[0] == 0) {
-                this.fJ += getLength(this.mainMenuWText) - i5;
+            if (this.bigCatText >= 0 && this.bz[0] == 0) {
+                this.bigCatText += getLength(this.mainMenuWText) - i5;
             }
-            if (this.fJ >= getLength(this.mainMenuWText) - i5 && this.bz[1] == 0) {
-                this.fJ += getLength(this.mainMenuPText);
+            if (this.bigCatText >= getLength(this.mainMenuWText) - i5 && this.bz[1] == 0) {
+                this.bigCatText += getLength(this.mainMenuPText);
             }
-            if (this.fJ >= (getLength(this.mainMenuWText) - i5) + getLength(this.mainMenuPText) && this.bz[2] == 0) {
-                this.fJ += getLength(this.mainMenuUText);
+            if (this.bigCatText >= (getLength(this.mainMenuWText) - i5) + getLength(this.mainMenuPText) && this.bz[2] == 0) {
+                this.bigCatText += getLength(this.mainMenuUText);
             }
-            if (this.fJ >= (getLength(this.mainMenuWText) - i5) + getLength(this.mainMenuPText) + getLength(this.mainMenuUText) && this.bz[3] == 0) {
-                this.fJ += getLength(this.mainMenuTText);
+            if (this.bigCatText >= (getLength(this.mainMenuWText) - i5) + getLength(this.mainMenuPText) + getLength(this.mainMenuUText) && this.bz[3] == 0) {
+                this.bigCatText += getLength(this.mainMenuTText);
             }
             int i6 = this.aX == 0 ? 2 : 0;
             for (int i7 = 0; i7 < 5; i7++) {
                 if (!this.textTextures[i7].isLoaded()) {
-                    if (this.fJ < getLength(this.mainMenuWText) - i6) {
-                        this.textTextures[i7].drawText(this.mainMenuWText[this.fJ][i7], "FONT_SYSTEM_BOLD", 30, 1);
-                    } else if (this.fJ < (getLength(this.mainMenuWText) - i6) + getLength(this.mainMenuPText)) {
-                        this.textTextures[i7].drawText(this.mainMenuPText[this.fJ - (getLength(this.mainMenuWText) - i6)][i7], "FONT_SYSTEM_BOLD", 30, 1);
-                    } else if (this.fJ < (getLength(this.mainMenuWText) - i6) + getLength(this.mainMenuPText) + getLength(this.mainMenuUText)) {
-                        this.textTextures[i7].drawText(this.mainMenuUText[(this.fJ - (getLength(this.mainMenuWText) - i6)) - getLength(this.mainMenuPText)][i7], "FONT_SYSTEM_BOLD", 30, 1);
-                    } else if (this.fJ < (getLength(this.mainMenuWText) - i6) + getLength(this.mainMenuPText) + getLength(this.mainMenuUText) + getLength(this.mainMenuTText)) {
-                        this.textTextures[i7].drawText(this.mainMenuTText[((this.fJ - (getLength(this.mainMenuWText) - i6)) - getLength(this.mainMenuPText)) - getLength(this.mainMenuUText)][i7], "FONT_SYSTEM_BOLD", 30, 1);
+                    if (this.bigCatText < getLength(this.mainMenuWText) - i6) {
+                        this.textTextures[i7].drawText(this.mainMenuWText[this.bigCatText][i7], "FONT_SYSTEM_BOLD", 30, 1);
+                    } else if (this.bigCatText < (getLength(this.mainMenuWText) - i6) + getLength(this.mainMenuPText)) {
+                        this.textTextures[i7].drawText(this.mainMenuPText[this.bigCatText - (getLength(this.mainMenuWText) - i6)][i7], "FONT_SYSTEM_BOLD", 30, 1);
+                    } else if (this.bigCatText < (getLength(this.mainMenuWText) - i6) + getLength(this.mainMenuPText) + getLength(this.mainMenuUText)) {
+                        this.textTextures[i7].drawText(this.mainMenuUText[(this.bigCatText - (getLength(this.mainMenuWText) - i6)) - getLength(this.mainMenuPText)][i7], "FONT_SYSTEM_BOLD", 30, 1);
+                    } else if (this.bigCatText < (getLength(this.mainMenuWText) - i6) + getLength(this.mainMenuPText) + getLength(this.mainMenuUText) + getLength(this.mainMenuTText)) {
+                        this.textTextures[i7].drawText(this.mainMenuTText[((this.bigCatText - (getLength(this.mainMenuWText) - i6)) - getLength(this.mainMenuPText)) - getLength(this.mainMenuUText)][i7], "FONT_SYSTEM_BOLD", 30, 1);
                     } else {
-                        this.textTextures[i7].drawText(this.mainMenuBText[(((this.fJ - (getLength(this.mainMenuWText) - i6)) - getLength(this.mainMenuPText)) - getLength(this.mainMenuUText)) - getLength(this.mainMenuTText)][i7], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[i7].drawText(this.mainMenuBText[(((this.bigCatText - (getLength(this.mainMenuWText) - i6)) - getLength(this.mainMenuPText)) - getLength(this.mainMenuUText)) - getLength(this.mainMenuTText)][i7], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 }
             }
@@ -19296,7 +19296,7 @@ public class AppInstance extends Game {
         for (int i30 = 0; i30 < getLength(this.scrollAmount); i30++) {
             this.scrollAmount[i30] = 0;
         }
-        loadTextures2();
+        resetTextures();
         for (int i31 = 0; i31 < getLength(this.gp); i31++) {
             this.gp[i31] = false;
         }
@@ -19341,63 +19341,52 @@ public class AppInstance extends Game {
     boolean catBaseProcess() {
         if (!this.eE[0] && !this.eE[2] && !this.eb) {
             if (this.fx[0] >= 1) {
-                int[] iArr = this.fx;
-                iArr[0] = iArr[0] + 1;
+                this.fx[0] += 1;
                 if (this.fx[0] > getLength(dv) - 1) {
                     this.fx[0] = getLength(dv) - 1;
-                    int[] iArr2 = this.blinkFrame;
-                    iArr2[4] = iArr2[4] + 1;
+                    this.blinkFrame[4] += 1;
                     if (this.blinkFrame[4] >= 10) {
                         this.eE[1] = true;
                     }
                 }
             } else if (this.fx[1] >= 1) {
-                int[] iArr3 = this.fx;
-                iArr3[1] = iArr3[1] + 1;
+                this.fx[1] += 1;
                 if (this.fx[1] > getLength(dv) - 1) {
                     this.fx[1] = getLength(dv) - 1;
-                    int[] iArr4 = this.blinkFrame;
-                    iArr4[4] = iArr4[4] + 1;
+                    this.blinkFrame[4] += 1;
                     if (this.blinkFrame[4] >= 10) {
                         this.eE[1] = true;
                     }
                 }
             } else if (this.fx[2] >= 1) {
-                int[] iArr5 = this.fx;
-                iArr5[2] = iArr5[2] + 1;
+                this.fx[2] += 1;
                 if (this.fx[2] > getLength(dv) - 1) {
                     this.fx[2] = getLength(dv) - 1;
-                    int[] iArr6 = this.blinkFrame;
-                    iArr6[4] = iArr6[4] + 1;
+                    this.blinkFrame[4] += 1;
                     if (this.blinkFrame[4] >= 10) {
                         this.eE[1] = true;
                     }
                 }
             } else if (this.fx[3] >= 1) {
-                int[] iArr7 = this.fx;
-                iArr7[3] = iArr7[3] + 1;
+                this.fx[3] += 1;
                 if (this.fx[3] > getLength(dv) - 1) {
                     this.fx[3] = getLength(dv) - 1;
-                    int[] iArr8 = this.blinkFrame;
-                    iArr8[4] = iArr8[4] + 1;
+                    this.blinkFrame[4] += 1;
                     if (this.blinkFrame[4] >= 10) {
                         this.eE[1] = true;
                     }
                 }
             } else if (this.fx[4] >= 1) {
-                int[] iArr9 = this.fx;
-                iArr9[4] = iArr9[4] + 1;
+                this.fx[4] += 1;
                 if (this.fx[4] > getLength(dv) - 1) {
                     this.fx[4] = getLength(dv) - 1;
-                    int[] iArr10 = this.blinkFrame;
-                    iArr10[4] = iArr10[4] + 1;
+                    this.blinkFrame[4] += 1;
                     if (this.blinkFrame[4] >= 10) {
                         this.eE[1] = true;
                     }
                 }
             } else if (this.fx[5] >= 1) {
-                int[] iArr11 = this.fx;
-                iArr11[5] = iArr11[5] + 1;
+                this.fx[5] += 1;
                 if (this.fx[5] > getLength(dv) - 1) {
                     this.fx[5] = 0;
                     screenTransition();
@@ -19406,8 +19395,7 @@ public class AppInstance extends Game {
                     return false;
                 }
             } else if (this.fx[13] >= 1) {
-                int[] iArr12 = this.fx;
-                iArr12[13] = iArr12[13] + 1;
+                this.fx[13] += 1;
                 if (this.fx[13] > getLength(dv) - 1) {
                     this.fx[13] = getLength(dv) - 1;
                     int[] iArr13 = this.blinkFrame;
@@ -19417,8 +19405,7 @@ public class AppInstance extends Game {
                     }
                 }
             } else if (this.fx[14] >= 1) {
-                int[] iArr14 = this.fx;
-                iArr14[14] = iArr14[14] + 1;
+                this.fx[14] += 1;
                 if (this.fx[14] > getLength(dv) - 1) {
                     this.fx[14] = 0;
                     if (this.bB[8] == 0) {
@@ -19443,8 +19430,7 @@ public class AppInstance extends Game {
                     }
                 }
             } else if (this.fx[15] >= 1) {
-                int[] iArr15 = this.fx;
-                iArr15[15] = iArr15[15] + 1;
+                this.fx[15] += 1;
                 if (this.fx[15] > getLength(dv) - 1) {
                     this.fx[15] = getLength(dv) - 1;
                     int[] iArr16 = this.blinkFrame;
@@ -19469,33 +19455,26 @@ public class AppInstance extends Game {
                     this.gp[5] = true;
                 }
                 if (isPointerUp() && isTouching(this.buttonCoordinates1[0][0], this.buttonCoordinates1[0][1], this.buttonCoordinates1[0][2], this.buttonCoordinates1[0][3]) && this.fI == 0) {
-                    int[] iArr17 = this.fx;
-                    iArr17[0] = iArr17[0] + 1;
+                    this.fx[0] += 1;
                     aSound.getInstance().play(SoundType.BUTTON_PRESS);
                 } else if (isPointerUp() && isTouching(this.buttonCoordinates1[1][0], this.buttonCoordinates1[1][1], this.buttonCoordinates1[1][2], this.buttonCoordinates1[1][3]) && this.fI == 1) {
-                    int[] iArr18 = this.fx;
-                    iArr18[1] = iArr18[1] + 1;
+                    this.fx[1] += 1;
                     aSound.getInstance().play(SoundType.BUTTON_PRESS);
                 } else if (isPointerUp() && isTouching(this.buttonCoordinates1[2][0], this.buttonCoordinates1[2][1], this.buttonCoordinates1[2][2], this.buttonCoordinates1[2][3]) && this.fI == 2) {
-                    int[] iArr19 = this.fx;
-                    iArr19[2] = iArr19[2] + 1;
+                    this.fx[2] += 1;
                     aSound.getInstance().play(SoundType.BUTTON_PRESS);
                 } else if (isPointerUp() && isTouching(this.buttonCoordinates1[3][0], this.buttonCoordinates1[3][1], this.buttonCoordinates1[3][2], this.buttonCoordinates1[3][3]) && this.fI == 3) {
-                    int[] iArr20 = this.fx;
-                    iArr20[3] = iArr20[3] + 1;
+                    this.fx[3] += 1;
                     aSound.getInstance().play(SoundType.BUTTON_PRESS);
                 } else if (isPointerUp() && isTouching(this.buttonCoordinates1[4][0], this.buttonCoordinates1[4][1], this.buttonCoordinates1[4][2], this.buttonCoordinates1[4][3]) && this.fI == 4) {
-                    int[] iArr21 = this.fx;
-                    iArr21[4] = iArr21[4] + 1;
+                    this.fx[4] += 1;
                     aSound.getInstance().play(SoundType.BUTTON_PRESS);
                 } else if (isPointerUp() && isTouching(this.buttonCoordinates1[5][0], this.buttonCoordinates1[5][1], this.buttonCoordinates1[5][2], this.buttonCoordinates1[5][3])) {
-                    int[] iArr22 = this.fx;
-                    iArr22[5] = iArr22[5] + 1;
+                    this.fx[5] += 1;
                     aSound.getInstance().play(SoundType.BUTTON_PRESS);
                 } else if (isPointerUp() && isTouching(this.buttonCoordinates1[13][0], this.buttonCoordinates1[13][1], this.buttonCoordinates1[13][2], this.buttonCoordinates1[13][3])) {
                     if (this.be >= 1) {
-                        int[] iArr23 = this.fx;
-                        iArr23[13] = iArr23[13] + 1;
+                        this.fx[13] += 1;
                         this.fI = 13;
                         aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         this.gR = 0;
@@ -19503,14 +19482,12 @@ public class AppInstance extends Game {
                 } else if (isPointerUp() && isTouching(this.buttonCoordinates1[14][0], this.buttonCoordinates1[14][1], this.buttonCoordinates1[14][2], this.buttonCoordinates1[14][3])) {
                     if (this.bf >= 1) {
                         aSound.getInstance().play(SoundType.BUTTON_PRESS);
-                        int[] iArr24 = this.fx;
-                        iArr24[14] = iArr24[14] + 1;
+                        this.fx[14] += 1;
                     }
                 } else if (isPointerUp() && isTouching(this.buttonCoordinates1[15][0], this.buttonCoordinates1[15][1], this.buttonCoordinates1[15][2], this.buttonCoordinates1[15][3])) {
                     if (this.be >= 1) {
                         aSound.getInstance().play(SoundType.BUTTON_PRESS);
-                        int[] iArr25 = this.fx;
-                        iArr25[15] = iArr25[15] + 1;
+                        this.fx[15] += 1;
                         this.fI = 13;
                         this.gR = 1;
                     }
@@ -19731,7 +19708,7 @@ public class AppInstance extends Game {
                 this.buttonCoordinates1[i3][i4] = 0;
             }
         }
-        loadTextures2();
+        resetTextures();
         for (int i5 = 6; i5 < getLength(this.uiTextures) - 6; i5++) {
             if (this.uiTextures[i5].isLoaded()) {
                 this.uiTextures[i5].reset();
