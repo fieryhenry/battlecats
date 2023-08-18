@@ -8030,27 +8030,24 @@ public class AppInstance extends Game {
                                             }
                                         }
                                     }
-                                    boolean isUnitHit = false;
+                                    boolean isUnitHit = true;
+                                    boolean isHit = false;
                                     for (int unitType = 0; unitType < 2; unitType++) {
                                         int unitID = 0;
                                         while (unitID < getLength(this.unitBattleStats[unitType])) {
                                             if (this.unitBattleStats[unitType][unitID][0] != 0 && this.unitBattleStats[unitType][unitID][19] != 0) {
+                                                isHit = true;
                                                 this.bS[unitType][unitID][0] = 12;
                                                 if (unitID == 0) {
+                                                    isUnitHit = false;
                                                     this.bS[unitType][0][1] = (this.unitBattleStats[unitType][0][3] - 687) + ((aMath.rand(46) - 25) * 10);
                                                     this.bS[unitType][0][2] = (this.unitBattleStats[unitType][0][4] - 1175) - (aMath.rand(25) * 10);
                                                     this.unitBattleStats[unitType][0][5] = 1;
                                                     if (this.unitBattleStats[unitType][0][1] == 0 || this.unitBattleStats[unitType][0][1] == 1) {
                                                         this.unitBattleStats[unitType][0][1] = 1;
                                                         this.unitBattleStats[unitType][0][2] = 4;
-                                                        isUnitHit = true; // cat
-                                                    } else {
-                                                        isUnitHit = false; // enemy base
                                                     }
                                                 } else {
-                                                    if (!isUnitHit) {
-                                                        isUnitHit = true; // cannon
-                                                    }
                                                     this.bS[unitType][unitID][1] = (this.unitBattleStats[unitType][unitID][3] - 687) - ((aMath.rand(46) - 25) * 10);
                                                     this.bS[unitType][unitID][2] = (this.unitBattleStats[unitType][unitID][4] - 1175) + ((aMath.rand(31) - 15) * 10);
                                                 }
@@ -8233,16 +8230,17 @@ public class AppInstance extends Game {
                                         }
                                     }
                                     if (this.battleData[14] == 0) {
-                                        if (isUnitHit) {
-                                            int randomHit = aMath.rand(2);
-                                            if (randomHit == 0) {
-                                                aSound.getInstance().play(SoundType.HIT_1);
+                                        if (isHit) {
+                                            if (isUnitHit) {
+                                                int randomHit = aMath.rand(2);
+                                                if (randomHit == 0) {
+                                                    aSound.getInstance().play(SoundType.HIT_1);
+                                                } else {
+                                                    aSound.getInstance().play(SoundType.HIT_2);
+                                                }
+                                            } else if (!isUnitHit) {
+                                                aSound.getInstance().play(SoundType.BASE_HIT);
                                             }
-                                            else {
-                                                aSound.getInstance().play(SoundType.HIT_2);
-                                            }
-                                        } else if (isUnitHit) {
-                                            aSound.getInstance().play(SoundType.BASE_HIT);
                                         }
                                         for (int slotID = 0; slotID < 10; slotID++) {
                                             if (this.rechargeTimes[slotID] > 0) {
@@ -13887,29 +13885,25 @@ public class AppInstance extends Game {
                     if (this.gw == 5) {
                         if (!aString.isEqual(this.warning2Text[6][i54], "＠")) {
                             i53 = -(i54 - 1);
-                            i54++;
                         }
                     } else if (this.gw == 6) {
                         if (aString.isEqual(this.warning2Text[7][i54], "＠")) {
                             i53 = -(i54 - 1);
                         } else {
                             i53 = -(i54 - 1);
-                            i54++;
                         }
                     } else if (this.gw == 8) {
                         if (!aString.isEqual(this.warning2Text[9][i54], "＠")) {
                             i53 = -(i54 - 1);
-                            i54++;
                         }
                     } else if (this.gw != 9) {
                         if (this.gw == 10 && aString.isEqual(this.warning2Text[11][i54], "＠")) {
                         }
                         i53 = -(i54 - 1);
-                        i54++;
                     } else if (!aString.isEqual(this.warning2Text[10][i54], "＠")) {
                         i53 = -(i54 - 1);
-                        i54++;
                     }
+                    i54++;
                 }
                 else {
                     break;
