@@ -1940,15 +1940,15 @@ public class AppInstance extends Game {
         this.bC[0] = 1;
         if (this.gF[0]) {
             this.gF[1] = true;
-            if (this.ff[2] + this.ff[5] <= -1) {
-                this.ff[3] = this.gE[(-(this.ff[2] + this.ff[5])) - 1];
-                this.bC[this.gE[(-(this.ff[2] + this.ff[5])) - 1]] = 1;
-            } else if ((this.ff[2] + this.ff[5]) - (this.boxCounts[1] + 1) >= 0) {
-                this.ff[3] = this.gE[((this.ff[2] + this.ff[5]) - this.boxCounts[1]) - 1];
-                this.bC[this.gE[((this.ff[2] + this.ff[5]) - this.boxCounts[1]) - 1]] = 1;
+            if (this.currentBox2[2] + this.currentBox2[5] <= -1) {
+                this.currentBox2[3] = this.gE[(-(this.currentBox2[2] + this.currentBox2[5])) - 1];
+                this.bC[this.gE[(-(this.currentBox2[2] + this.currentBox2[5])) - 1]] = 1;
+            } else if ((this.currentBox2[2] + this.currentBox2[5]) - (this.boxCounts[1] + 1) >= 0) {
+                this.currentBox2[3] = this.gE[((this.currentBox2[2] + this.currentBox2[5]) - this.boxCounts[1]) - 1];
+                this.bC[this.gE[((this.currentBox2[2] + this.currentBox2[5]) - this.boxCounts[1]) - 1]] = 1;
             }
             this.eE[11] = false;
-            this.ff[5] = 0;
+            this.currentBox2[5] = 0;
         } else {
             for (int i18 = 0; i18 < getLength(this.gm); i18++) {
                 this.gm[i18] = 0;
@@ -1965,8 +1965,8 @@ public class AppInstance extends Game {
                 this.eE[i20] = false;
             }
             this.eE[0] = true;
-            for (int i21 = 0; i21 < getLength(this.ff); i21++) {
-                this.ff[i21] = 0;
+            for (int i21 = 0; i21 < getLength(this.currentBox2); i21++) {
+                this.currentBox2[i21] = 0;
             }
         }
         for (int i22 = 0; i22 < getLength(this.bL); i22++) {
@@ -1992,7 +1992,7 @@ public class AppInstance extends Game {
         for (int i29 = 0; i29 < getLength(this.bL); i29++) {
             if (this.bL[i29] > i27) {
                 i27 = this.bL[i29];
-                if (this.ff[3] != this.bL[i29]) {
+                if (this.currentBox2[3] != this.bL[i29]) {
                     if (this.previousScreen == 0) {
                         this.gE[i28] = this.bL[i29];
                     }
@@ -2001,7 +2001,7 @@ public class AppInstance extends Game {
                 i26++;
             }
         }
-        if (this.ff[3] >= 1) {
+        if (this.currentBox2[3] >= 1) {
             i26 = 2;
         }
         this.boxCounts[0] = i26;
@@ -2014,13 +2014,13 @@ public class AppInstance extends Game {
         }
         resetTextures();
         this.gameStats1[0] = -(this.boxScale * this.boxCounts[0]);
-        this.ff[0] = this.boxCounts[0];
-        this.ff[2] = 0;
-        this.ff[1] = (this.boxScale * 100) + (this.gameStats1[0] / this.boxScale);
+        this.currentBox2[0] = this.boxCounts[0];
+        this.currentBox2[2] = 0;
+        this.currentBox2[1] = (this.boxScale * 100) + (this.gameStats1[0] / this.boxScale);
         if (this.previousScreen >= 1) {
             int i31 = 0;
-            for (int i32 = 0; i32 < getLength(this.ff); i32++) {
-                this.ff[i32] = this.gT[i32];
+            for (int i32 = 0; i32 < getLength(this.currentBox2); i32++) {
+                this.currentBox2[i32] = this.gT[i32];
                 i31 = i32 + 1;
             }
             this.gameStats1[0] = this.gT[i31];
@@ -2034,7 +2034,7 @@ public class AppInstance extends Game {
             }
         }
         for (int i35 = 0; i35 < 26; i35++) {
-            if (this.unitBuyStats[i35][13] == this.ff[3] && this.bq[this.unitBuyStats[i35][15]] >= this.unitBuyStats[i35][0] && this.bu[i35] != 0) {
+            if (this.unitBuyStats[i35][13] == this.currentBox2[3] && this.bq[this.unitBuyStats[i35][15]] >= this.unitBuyStats[i35][0] && this.bu[i35] != 0) {
                 int i36 = 0;
                 while (true) {
                     if (i36 >= getLength(this.boxCatIDs)) {
@@ -2081,8 +2081,8 @@ public class AppInstance extends Game {
         }
         int i43 = this.gA[3];
         while (i43 < this.gA[3] + 3) {
-            if (this.ff[2] < 0 || this.ff[2] > this.boxCounts[1]) {
-                if (this.ff[3] == 0) {
+            if (this.currentBox2[2] < 0 || this.currentBox2[2] > this.boxCounts[1]) {
+                if (this.currentBox2[3] == 0) {
                     i43 = this.gA[3];
                     while (i43 < this.gA[3] + 3) {
                         this.textTextures[i43].drawText(this.categoryExplanation[0][i43 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
@@ -2095,18 +2095,18 @@ public class AppInstance extends Game {
                         i43++;
                     }
                 }
-            } else if (this.bw[this.boxCatIDs[this.ff[2]]] == 0) {
+            } else if (this.bw[this.boxCatIDs[this.currentBox2[2]]] == 0) {
                 if (!this.textTextures[i43].isLoaded()) {
-                    this.textTextures[i43].drawText(this.unitExplanationText[this.boxCatIDs[this.ff[2]]][0][(i43 - this.gA[3]) + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[i43].drawText(this.unitExplanationText[this.boxCatIDs[this.currentBox2[2]]][0][(i43 - this.gA[3]) + 1], "FONT_SYSTEM_BOLD", 30, 1);
                 }
-            } else if (this.bw[this.boxCatIDs[this.ff[2]]] == 1 && !this.textTextures[i43].isLoaded()) {
-                this.textTextures[i43].drawText(this.unitExplanationText[this.boxCatIDs[this.ff[2]]][1][(i43 - this.gA[3]) + 1], "FONT_SYSTEM_BOLD", 30, 1);
+            } else if (this.bw[this.boxCatIDs[this.currentBox2[2]]] == 1 && !this.textTextures[i43].isLoaded()) {
+                this.textTextures[i43].drawText(this.unitExplanationText[this.boxCatIDs[this.currentBox2[2]]][1][(i43 - this.gA[3]) + 1], "FONT_SYSTEM_BOLD", 30, 1);
             }
             this.gA[4] = i43 + 1;
             i43++;
         }
         if (!this.textTextures[this.gA[4]].isLoaded()) {
-            if (this.ff[3] == 0) {
+            if (this.currentBox2[3] == 0) {
                 this.textTextures[this.gA[4]].drawText(this.pageNameText[0], "FONT_SYSTEM_BOLD", 30, 1);
             } else {
                 this.textTextures[this.gA[4]].drawText(this.pageNameText[5], "FONT_SYSTEM_BOLD", 30, 1);
@@ -2135,14 +2135,14 @@ public class AppInstance extends Game {
         if (!this.uiTextures[7].isLoaded()) {
             this.uiTextures[7].load(MyUtility.getString(String.format("img%03d.png", 29)), MyUtility.getString(String.format("img%03d.imgcut", 29)));
         }
-        if (this.ff[3] == 0) {
+        if (this.currentBox2[3] == 0) {
             if (this.uiTextures[8].isLoaded()) {
                 this.uiTextures[8].reset();
             }
             if (!this.uiTextures[8].isLoaded()) {
                 this.uiTextures[8].load(MyUtility.getString(String.format("img%03d.png", 23)), MyUtility.getString(String.format("img%03d.imgcut", 23)));
             }
-        } else if (this.ff[3] >= 1) {
+        } else if (this.currentBox2[3] >= 1) {
             if (this.uiTextures[8].isLoaded()) {
                 this.uiTextures[8].reset();
             }
@@ -2234,8 +2234,7 @@ public class AppInstance extends Game {
     }
 
     boolean equipProcess() {
-        int[] iArr = this.gameStats1;
-        iArr[0] = iArr[0] + this.scrollAmount[0];
+        this.gameStats1[0] += this.scrollAmount[0];
         this.scrollAmount[0] = (int) (this.scrollAmount[0] * 0.9d);
         if (this.gameStats1[0] >= ((this.boxScale / 2) - this.boxScale) - 20) {
             this.gameStats1[0] = ((this.boxScale / 2) - this.boxScale) - 20;
@@ -2291,12 +2290,12 @@ public class AppInstance extends Game {
         }
         if (!this.eE[0] && !this.eE[1] && !this.eE[13] && !this.eb) {
             if (this.scrollAmount[0] < 0) {
-                if (this.ff[0] != (-(this.gameStats1[0] / this.boxScale))) {
+                if (this.currentBox2[0] != (-(this.gameStats1[0] / this.boxScale))) {
                     aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 }
                 this.gp[0] = false;
             } else if (this.scrollAmount[0] > 0) {
-                if (this.ff[1] != ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale) {
+                if (this.currentBox2[1] != ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale) {
                     aSound.getInstance().play(SoundType.BUTTON_SELECT);
                 }
                 this.gp[0] = false;
@@ -2305,26 +2304,26 @@ public class AppInstance extends Game {
                 this.gp[0] = true;
             }
         }
-        if (this.ff[0] != (-(this.gameStats1[0] / this.boxScale))) {
-            this.ff[0] = -(this.gameStats1[0] / this.boxScale);
+        if (this.currentBox2[0] != (-(this.gameStats1[0] / this.boxScale))) {
+           this.currentBox2[0] = -(this.gameStats1[0] / this.boxScale);
         }
-        if (this.ff[1] != ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale) {
-            this.ff[1] = ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale;
+        if (this.currentBox2[1] != ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale) {
+            this.currentBox2[1] = ((this.boxScale * 100) + this.gameStats1[0]) / this.boxScale;
         }
         if ((-this.gameStats1[0]) % this.boxScale >= this.boxScale / 2) {
-            if ((this.ff[0] + 1) - this.boxCounts[0] != this.ff[2]) {
-                this.ff[2] = (this.ff[0] + 1) - this.boxCounts[0];
-                if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1]) {
+            if ((this.currentBox2[0] + 1) - this.boxCounts[0] != this.currentBox2[2]) {
+                this.currentBox2[2] = (this.currentBox2[0] + 1) - this.boxCounts[0];
+                if (this.currentBox2[2] >= 0 && this.currentBox2[2] <= this.boxCounts[1]) {
                     for (int i2 = this.gA[3]; i2 < this.gA[3] + 3; i2++) {
-                        if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1]) {
-                            if (this.bw[this.boxCatIDs[this.ff[2]]] == 0) {
-                                this.textTextures[i2].drawText(this.unitExplanationText[this.boxCatIDs[this.ff[2]]][0][(i2 - this.gA[3]) + 1], "FONT_SYSTEM_BOLD", 30, 1);
-                            } else if (this.bw[this.boxCatIDs[this.ff[2]]] == 1) {
-                                this.textTextures[i2].drawText(this.unitExplanationText[this.boxCatIDs[this.ff[2]]][1][(i2 - this.gA[3]) + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                        if (this.currentBox2[2] >= 0 && this.currentBox2[2] <= this.boxCounts[1]) {
+                            if (this.bw[this.boxCatIDs[this.currentBox2[2]]] == 0) {
+                                this.textTextures[i2].drawText(this.unitExplanationText[this.boxCatIDs[this.currentBox2[2]]][0][(i2 - this.gA[3]) + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                            } else if (this.bw[this.boxCatIDs[this.currentBox2[2]]] == 1) {
+                                this.textTextures[i2].drawText(this.unitExplanationText[this.boxCatIDs[this.currentBox2[2]]][1][(i2 - this.gA[3]) + 1], "FONT_SYSTEM_BOLD", 30, 1);
                             }
                         }
                     }
-                } else if (this.ff[3] == 0) {
+                } else if (this.currentBox2[3] == 0) {
                     for (int i3 = this.gA[3]; i3 < this.gA[3] + 3; i3++) {
                         this.textTextures[i3].drawText(this.categoryExplanation[0][i3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
                     }
@@ -2334,17 +2333,17 @@ public class AppInstance extends Game {
                     }
                 }
             }
-        } else if (this.ff[0] - this.boxCounts[0] != this.ff[2]) {
-            this.ff[2] = this.ff[0] - this.boxCounts[0];
-            if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1]) {
+        } else if (this.currentBox2[0] - this.boxCounts[0] != this.currentBox2[2]) {
+            this.currentBox2[2] = this.currentBox2[0] - this.boxCounts[0];
+            if (this.currentBox2[2] >= 0 && this.currentBox2[2] <= this.boxCounts[1]) {
                 for (int i5 = this.gA[3]; i5 < this.gA[3] + 3; i5++) {
-                    if (this.bw[this.boxCatIDs[this.ff[2]]] == 0) {
-                        this.textTextures[i5].drawText(this.unitExplanationText[this.boxCatIDs[this.ff[2]]][0][(i5 - this.gA[3]) + 1], "FONT_SYSTEM_BOLD", 30, 1);
-                    } else if (this.bw[this.boxCatIDs[this.ff[2]]] == 1) {
-                        this.textTextures[i5].drawText(this.unitExplanationText[this.boxCatIDs[this.ff[2]]][1][(i5 - this.gA[3]) + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                    if (this.bw[this.boxCatIDs[this.currentBox2[2]]] == 0) {
+                        this.textTextures[i5].drawText(this.unitExplanationText[this.boxCatIDs[this.currentBox2[2]]][0][(i5 - this.gA[3]) + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                    } else if (this.bw[this.boxCatIDs[this.currentBox2[2]]] == 1) {
+                        this.textTextures[i5].drawText(this.unitExplanationText[this.boxCatIDs[this.currentBox2[2]]][1][(i5 - this.gA[3]) + 1], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 }
-            } else if (this.ff[3] == 0) {
+            } else if (this.currentBox2[3] == 0) {
                 for (int i6 = this.gA[3]; i6 < this.gA[3] + 3; i6++) {
                     this.textTextures[i6].drawText(this.categoryExplanation[0][i6 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
                 }
@@ -2465,7 +2464,7 @@ public class AppInstance extends Game {
                     }
                 }
             } else {
-                if ((this.ff[2] > -1 && this.ff[2] < this.boxCounts[1] + 1) || this.eE[5] || this.gameStats1[0] % this.boxScale != 0 || this.scrollAmount[0] != 0 || !isPointerDown() || !isTouching(((((getWidth() / 2) - (this.boxSize[this.ff[0]][0] / 2)) + (this.boxScale * this.ff[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.ff[0]][0]), 559 - this.boxSize[this.ff[0]][1], this.boxSize[this.ff[0]][0], this.boxSize[this.ff[0]][1])) {
+                if ((this.currentBox2[2] > -1 && this.currentBox2[2] < this.boxCounts[1] + 1) || this.eE[5] || this.gameStats1[0] % this.boxScale != 0 || this.scrollAmount[0] != 0 || !isPointerDown() || !isTouching(((((getWidth() / 2) - (this.boxSize[this.currentBox2[0]][0] / 2)) + (this.boxScale * this.currentBox2[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.currentBox2[0]][0]), 559 - this.boxSize[this.currentBox2[0]][1], this.boxSize[this.currentBox2[0]][0], this.boxSize[this.currentBox2[0]][1])) {
                     this.gp[2] = false;
                 } else if (!this.gp[2]) {
                     aSound.getInstance().play(SoundType.BUTTON_SELECT);
@@ -2474,14 +2473,14 @@ public class AppInstance extends Game {
                 if (!this.gJ && !this.gI && !this.fn && !this.eE[6] && this.fh == 0) {
                     if (!isPointerDown() || !isTouching(this.buttonCoordinates1[11][0], this.buttonCoordinates1[11][1], this.buttonCoordinates1[11][2], this.buttonCoordinates1[11][3])) {
                         this.gp[11] = false;
-                    } else if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1] && !this.eE[5] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gp[11]) {
+                    } else if (this.currentBox2[2] >= 0 && this.currentBox2[2] <= this.boxCounts[1] && !this.eE[5] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gp[11]) {
                         aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gp[11] = true;
                     }
                     if (this.bq[0] >= 48) {
                         if (!isPointerDown() || !isTouching(this.buttonCoordinates1[12][0], this.buttonCoordinates1[12][1], this.buttonCoordinates1[12][2], this.buttonCoordinates1[12][3])) {
                             this.gp[12] = false;
-                        } else if (!this.gp[12] && !this.eE[5] && this.baseUpgrades[this.ff[2]] + 1 >= 10 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0) {
+                        } else if (!this.gp[12] && !this.eE[5] && this.baseUpgrades[this.currentBox2[2]] + 1 >= 10 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0) {
                             aSound.getInstance().play(SoundType.BUTTON_SELECT);
                             this.gp[12] = true;
                         }
@@ -2492,34 +2491,34 @@ public class AppInstance extends Game {
                         aSound.getInstance().play(SoundType.BUTTON_SELECT);
                         this.gp[10] = true;
                     }
-                    if (this.fx[2] == 0 && this.ff[0] - 2 >= 0 && this.ff[2] <= 0 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && isPointerUp() && isTouching(((((getWidth() / 2) - (this.boxSize[this.ff[0] - 1][0] / 2)) + (this.boxScale * (this.ff[0] - 1))) + this.gameStats1[0]) - ((328 - this.boxSize[this.ff[0] - 1][0]) + ((328 - this.boxSize[(this.ff[0] - 1) + 1][0]) / 2)), 559 - this.boxSize[this.ff[0] - 1][1], this.boxSize[this.ff[0] - 1][0], this.boxSize[this.ff[0] - 1][1])) {
+                    if (this.fx[2] == 0 && this.currentBox2[0] - 2 >= 0 && this.currentBox2[2] <= 0 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && isPointerUp() && isTouching(((((getWidth() / 2) - (this.boxSize[this.currentBox2[0] - 1][0] / 2)) + (this.boxScale * (this.currentBox2[0] - 1))) + this.gameStats1[0]) - ((328 - this.boxSize[this.currentBox2[0] - 1][0]) + ((328 - this.boxSize[(this.currentBox2[0] - 1) + 1][0]) / 2)), 559 - this.boxSize[this.currentBox2[0] - 1][1], this.boxSize[this.currentBox2[0] - 1][0], this.boxSize[this.currentBox2[0] - 1][1])) {
                         int[] iArr8 = this.fx;
                         iArr8[2] = iArr8[2] + 1;
-                        this.ff[5] = -1;
+                        this.currentBox2[5] = -1;
                         aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         this.eE[11] = true;
                     }
-                    if (this.fx[2] == 0 && this.ff[0] - 2 <= this.boxCounts[1] && this.ff[2] >= this.boxCounts[1] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && isPointerUp() && isTouching(((getWidth() / 2) - (this.boxSize[this.ff[0] + 1][0] / 2)) + (this.boxScale * (this.ff[0] + 1)) + this.gameStats1[0] + (328 - this.boxSize[this.ff[0] + 1][0]), 559 - this.boxSize[this.ff[0] + 1][1], this.boxSize[this.ff[0] + 1][0], this.boxSize[this.ff[0] + 1][1])) {
+                    if (this.fx[2] == 0 && this.currentBox2[0] - 2 <= this.boxCounts[1] && this.currentBox2[2] >= this.boxCounts[1] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && isPointerUp() && isTouching(((getWidth() / 2) - (this.boxSize[this.currentBox2[0] + 1][0] / 2)) + (this.boxScale * (this.currentBox2[0] + 1)) + this.gameStats1[0] + (328 - this.boxSize[this.currentBox2[0] + 1][0]), 559 - this.boxSize[this.currentBox2[0] + 1][1], this.boxSize[this.currentBox2[0] + 1][0], this.boxSize[this.currentBox2[0] + 1][1])) {
                         int[] iArr9 = this.fx;
                         iArr9[2] = iArr9[2] + 1;
-                        this.ff[5] = 1;
+                        this.currentBox2[5] = 1;
                         aSound.getInstance().play(SoundType.BUTTON_PRESS);
                         this.eE[11] = true;
                     }
-                    if (this.fx[2] == 0 && ((this.ff[2] <= -1 || this.ff[2] >= this.boxCounts[1] + 1) && !this.eE[5] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && isPointerUp() && isTouching(((((getWidth() / 2) - (this.boxSize[this.ff[0]][0] / 2)) + (this.boxScale * this.ff[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.ff[0]][0]), 559 - this.boxSize[this.ff[0]][1], this.boxSize[this.ff[0]][0], this.boxSize[this.ff[0]][1]))) {
+                    if (this.fx[2] == 0 && ((this.currentBox2[2] <= -1 || this.currentBox2[2] >= this.boxCounts[1] + 1) && !this.eE[5] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && isPointerUp() && isTouching(((((getWidth() / 2) - (this.boxSize[this.currentBox2[0]][0] / 2)) + (this.boxScale * this.currentBox2[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.currentBox2[0]][0]), 559 - this.boxSize[this.currentBox2[0]][1], this.boxSize[this.currentBox2[0]][0], this.boxSize[this.currentBox2[0]][1]))) {
                         int[] iArr10 = this.fx;
                         iArr10[2] = iArr10[2] + 1;
                         aSound.getInstance().play(SoundType.BUTTON_PRESS);
-                        this.ff[5] = 0;
+                        this.currentBox2[5] = 0;
                         this.eE[11] = true;
                     } else if (!this.eE[11] && isPointerUp() && isTouching(this.buttonCoordinates1[11][0], this.buttonCoordinates1[11][1], this.buttonCoordinates1[11][2], this.buttonCoordinates1[11][3])) {
-                        if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1] && !this.eE[5] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gJ) {
+                        if (this.currentBox2[2] >= 0 && this.currentBox2[2] <= this.boxCounts[1] && !this.eE[5] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.gJ) {
                             aSound.getInstance().play(SoundType.BUTTON_PRESS);
                             int[] iArr11 = this.fx;
                             iArr11[11] = iArr11[11] + 1;
                         }
                     } else if (!this.eE[11] && isPointerUp() && isTouching(this.buttonCoordinates1[12][0], this.buttonCoordinates1[12][1], this.buttonCoordinates1[12][2], this.buttonCoordinates1[12][3])) {
-                        if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1] && !this.eE[5] && this.baseUpgrades[this.boxCatIDs[this.ff[2]]] + 1 >= 10 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && this.bq[0] >= 48) {
+                        if (this.currentBox2[2] >= 0 && this.currentBox2[2] <= this.boxCounts[1] && !this.eE[5] && this.baseUpgrades[this.boxCatIDs[this.currentBox2[2]]] + 1 >= 10 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && this.bq[0] >= 48) {
                             aSound.getInstance().play(SoundType.BUTTON_PRESS);
                             int[] iArr12 = this.fx;
                             iArr12[12] = iArr12[12] + 1;
@@ -2572,29 +2571,33 @@ public class AppInstance extends Game {
                 }
             }
         }
+        int tempValue = this.gameStats1[0];
         if ((-this.gameStats1[0]) % this.boxScale == 0) {
-            this.gameStats1[0] = 0;
-            this.gameStats1[1] = -(328 - this.boxSize[this.ff[0] + this.gameStats1[0]][0]);
+            //this.gameStats1[0] = 0;
+            tempValue = 0;
+            this.gameStats1[1] = -(328 - this.boxSize[this.currentBox2[0] + 0][0]);
         } else if ((-this.gameStats1[0]) % this.boxScale >= this.boxScale / 2) {
-            this.gameStats1[0] = 1;
-            this.gameStats1[1] = 328 - this.boxSize[this.ff[0] + this.gameStats1[0]][0];
+            //this.gameStats1[0] = 1;
+            tempValue = 1;
+            this.gameStats1[1] = 328 - this.boxSize[this.currentBox2[0] + 1][0];
         } else {
-            this.gameStats1[0] = 0;
-            this.gameStats1[1] = -(328 - this.boxSize[this.ff[0] + this.gameStats1[0]][0]);
+            //this.gameStats1[0] = 0;
+            tempValue = 0;
+            this.gameStats1[1] = -(328 - this.boxSize[this.currentBox2[0] + 0][0]);
         }
         boolean z5 = false;
         for (int i13 = 0; i13 < 10; i13++) {
-            if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1] && this.slotCatIDs[i13] - 2 == this.boxCatIDs[this.ff[2]]) {
+            if (this.currentBox2[2] >= 0 && this.currentBox2[2] <= this.boxCounts[1] && this.slotCatIDs[i13] - 2 == this.boxCatIDs[this.currentBox2[2]]) {
                 z5 = true;
             }
         }
-        if (this.ff[2] <= -1 || this.ff[2] >= this.boxCounts[1] + 1) {
+        if (this.currentBox2[2] <= -1 || this.currentBox2[2] >= this.boxCounts[1] + 1) {
             z5 = true;
         }
-        if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1] && this.bu[this.boxCatIDs[this.ff[2]]] == 0) {
+        if (this.currentBox2[2] >= 0 && this.currentBox2[2] <= this.boxCounts[1] && this.bu[this.boxCatIDs[this.currentBox2[2]]] == 0) {
             z5 = true;
         }
-        if (z5 || this.gJ || this.gI || !isPointerDown() || this.eE[4] || !isTouching(((getWidth() / 2) - (this.boxSize[this.ff[0] + this.gameStats1[0]][0] / 2)) + (this.boxScale * (this.ff[0] + this.gameStats1[0])) + this.gameStats1[0] + this.gameStats1[1], 559 - this.boxSize[this.ff[0] + this.gameStats1[0]][1], this.boxSize[this.ff[0] + this.gameStats1[0]][0], this.boxSize[this.ff[0] + this.gameStats1[0]][1])) {
+        if (z5 || this.gJ || this.gI || !isPointerDown() || this.eE[4] || !isTouching(((getWidth() / 2) - (this.boxSize[this.currentBox2[0] + tempValue][0] / 2)) + (this.boxScale * (this.currentBox2[0] + tempValue)) + this.gameStats1[0] + this.gameStats1[1], 559 - this.boxSize[this.currentBox2[0] + tempValue][1], this.boxSize[this.currentBox2[0] + tempValue][0], this.boxSize[this.currentBox2[0] + tempValue][1])) {
             this.fk[10] = 0;
         } else {
             if (this.scrollAmount[0] == 0) {
@@ -2613,8 +2616,8 @@ public class AppInstance extends Game {
             for (int i14 = 0; i14 < 10; i14++) {
                 if (isTouching(this.buttonCoordinates1[i14][0], this.buttonCoordinates1[i14][1], this.buttonCoordinates1[i14][2], this.buttonCoordinates1[i14][3])) {
                     if (this.fp[i14] >= 15) {
-                        if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1]) {
-                            this.slotCatIDs[i14] = this.boxCatIDs[this.ff[2]] + 2;
+                        if (this.currentBox2[2] >= 0 && this.currentBox2[2] <= this.boxCounts[1]) {
+                            this.slotCatIDs[i14] = this.boxCatIDs[this.currentBox2[2]] + 2;
                         }
                         this.slotFormIDs[i14] = this.bw[this.slotCatIDs[i14] - 2];
                         if (this.uniTextures[i14].isLoaded()) {
@@ -2671,7 +2674,10 @@ public class AppInstance extends Game {
             }
             this.eE[6] = false;
         } else {
-            if (!this.eE[3] && isTouching(((getWidth() / 2) - (this.boxSize[this.ff[0] + this.gameStats1[0]][0] / 2)) + (this.boxScale * (this.ff[0] + this.gameStats1[0])) + this.gameStats1[0] + this.gameStats1[1], 559 - this.boxSize[this.ff[0] + this.gameStats1[0]][1], this.boxSize[this.ff[0] + this.gameStats1[0]][0], this.boxSize[this.ff[0] + this.gameStats1[0]][1])) {
+            // TODO: fix gameStats1[0]
+            // TODO: replace tempValue with gameStats1[0] when gameStats1[0] is fixed
+            tempValue = 1;
+            if (!this.eE[3] && isTouching(((getWidth() / 2) - (this.boxSize[this.currentBox2[0] + tempValue][0] / 2)) + (this.boxScale * (this.currentBox2[0] + tempValue)) + tempValue + this.gameStats1[1], 559 - this.boxSize[this.currentBox2[0] + tempValue][1], this.boxSize[this.currentBox2[0] + tempValue][0], this.boxSize[this.currentBox2[0] + tempValue][1])) {
                 this.fn = true;
             }
             this.ei[1] = getCurrentYTouch();
@@ -2687,8 +2693,8 @@ public class AppInstance extends Game {
                         this.fl = 55;
                         this.fm = 42;
                         this.fh = i15 + 1;
-                        if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1]) {
-                            this.slotCatIDs[i15] = this.boxCatIDs[this.ff[2]] + 2;
+                        if (this.currentBox2[2] >= 0 && this.currentBox2[2] <= this.boxCounts[1]) {
+                            this.slotCatIDs[i15] = this.boxCatIDs[this.currentBox2[2]] + 2;
                         }
                         this.slotFormIDs[i15] = this.bw[this.slotCatIDs[i15] - 2];
                         this.eE[3] = true;
@@ -3043,8 +3049,8 @@ public class AppInstance extends Game {
                 this.screenLoadState = -1;
                 this.previousScreen = 3;
                 int i22 = 0;
-                for (int i23 = 0; i23 < getLength(this.ff); i23++) {
-                    this.gT[i23] = this.ff[i23];
+                for (int i23 = 0; i23 < getLength(this.currentBox2); i23++) {
+                    this.gT[i23] = this.currentBox2[i23];
                     i22 = i23 + 1;
                 }
                 this.gT[i22] = this.gameStats1[0];
@@ -3054,12 +3060,12 @@ public class AppInstance extends Game {
         for (int i24 = 0; i24 < getLength(this.boxSize); i24++) {
             for (int i25 = 0; i25 < getLength(this.boxSize[i24]); i25++) {
                 if (i25 == 0) {
-                    if (i24 == this.ff[0]) {
+                    if (i24 == this.currentBox2[0]) {
                         this.boxSize[i24][i25] = (((((this.gameStats1[0] % this.boxScale) * 100) / this.boxScale) * 99) / 100) + 328;
                         if (this.gameStats1[0] > 0) {
                             this.boxSize[i24][i25] = 328 - (((((this.gameStats1[0] % this.boxScale) * 100) / this.boxScale) * 99) / 100);
                         }
-                    } else if (i24 == this.ff[0] + 1) {
+                    } else if (i24 == this.currentBox2[0] + 1) {
                         this.boxSize[i24][i25] = 229 - (((((this.gameStats1[0] % this.boxScale) * 100) / this.boxScale) * 99) / 100);
                     } else {
                         this.boxSize[i24][i25] = 229;
@@ -3070,12 +3076,12 @@ public class AppInstance extends Game {
                         this.boxSize[i24][i25] = 229;
                     }
                 } else if (i25 == 1) {
-                    if (i24 == this.ff[0]) {
+                    if (i24 == this.currentBox2[0]) {
                         this.boxSize[i24][i25] = (((((this.gameStats1[0] % this.boxScale) * 100) / this.boxScale) * 79) / 100) + 263;
                         if (this.gameStats1[0] > 0) {
                             this.boxSize[i24][i25] = 263 - (((((this.gameStats1[0] % this.boxScale) * 100) / this.boxScale) * 79) / 100);
                         }
-                    } else if (i24 == this.ff[0] + 1) {
+                    } else if (i24 == this.currentBox2[0] + 1) {
                         this.boxSize[i24][i25] = 184 - (((((this.gameStats1[0] % this.boxScale) * 100) / this.boxScale) * 79) / 100);
                     } else {
                         this.boxSize[i24][i25] = 184;
@@ -3100,17 +3106,17 @@ public class AppInstance extends Game {
                 this.gH = 0;
                 this.gI = false;
             }
-            if (cC[this.gH] == 100 && this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1]) {
-                if (this.bw[this.boxCatIDs[this.ff[2]]] == 0) {
-                    this.bw[this.boxCatIDs[this.ff[2]]] = 1;
-                    this.textTextures[this.ff[2]].drawText(this.unitExplanationText[this.boxCatIDs[this.ff[2]]][1][0], "FONT_SYSTEM_BOLD", 30, 1);
+            if (cC[this.gH] == 100 && this.currentBox2[2] >= 0 && this.currentBox2[2] <= this.boxCounts[1]) {
+                if (this.bw[this.boxCatIDs[this.currentBox2[2]]] == 0) {
+                    this.bw[this.boxCatIDs[this.currentBox2[2]]] = 1;
+                    this.textTextures[this.currentBox2[2]].drawText(this.unitExplanationText[this.boxCatIDs[this.currentBox2[2]]][1][0], "FONT_SYSTEM_BOLD", 30, 1);
                     for (int i26 = this.gA[3]; i26 < this.gA[3] + 3; i26++) {
-                        if (this.bw[this.boxCatIDs[this.ff[2]]] == 1) {
-                            this.textTextures[i26].drawText(this.unitExplanationText[this.boxCatIDs[this.ff[2]]][1][(i26 - this.gA[3]) + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                        if (this.bw[this.boxCatIDs[this.currentBox2[2]]] == 1) {
+                            this.textTextures[i26].drawText(this.unitExplanationText[this.boxCatIDs[this.currentBox2[2]]][1][(i26 - this.gA[3]) + 1], "FONT_SYSTEM_BOLD", 30, 1);
                         }
                     }
                     for (int i27 = 0; i27 < 10; i27++) {
-                        if (this.slotCatIDs[i27] - 2 == this.boxCatIDs[this.ff[2]]) {
+                        if (this.slotCatIDs[i27] - 2 == this.boxCatIDs[this.currentBox2[2]]) {
                             this.slotFormIDs[i27] = this.bw[this.slotCatIDs[i27] - 2];
                             if (this.uniTextures[i27].isLoaded()) {
                                 this.uniTextures[i27].reset();
@@ -3126,16 +3132,16 @@ public class AppInstance extends Game {
                             }
                         }
                     }
-                } else if (this.bw[this.boxCatIDs[this.ff[2]]] == 1) {
-                    this.bw[this.boxCatIDs[this.ff[2]]] = 0;
-                    this.textTextures[this.ff[2]].drawText(this.unitExplanationText[this.boxCatIDs[this.ff[2]]][0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                } else if (this.bw[this.boxCatIDs[this.currentBox2[2]]] == 1) {
+                    this.bw[this.boxCatIDs[this.currentBox2[2]]] = 0;
+                    this.textTextures[this.currentBox2[2]].drawText(this.unitExplanationText[this.boxCatIDs[this.currentBox2[2]]][0][0], "FONT_SYSTEM_BOLD", 30, 1);
                     for (int i28 = this.gA[3]; i28 < this.gA[3] + 3; i28++) {
-                        if (this.bw[this.boxCatIDs[this.ff[2]]] == 0) {
-                            this.textTextures[i28].drawText(this.unitExplanationText[this.boxCatIDs[this.ff[2]]][0][(i28 - this.gA[3]) + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                        if (this.bw[this.boxCatIDs[this.currentBox2[2]]] == 0) {
+                            this.textTextures[i28].drawText(this.unitExplanationText[this.boxCatIDs[this.currentBox2[2]]][0][(i28 - this.gA[3]) + 1], "FONT_SYSTEM_BOLD", 30, 1);
                         }
                     }
                     for (int i29 = 0; i29 < 10; i29++) {
-                        if (this.slotCatIDs[i29] - 2 == this.boxCatIDs[this.ff[2]]) {
+                        if (this.slotCatIDs[i29] - 2 == this.boxCatIDs[this.currentBox2[2]]) {
                             this.slotFormIDs[i29] = this.bw[this.slotCatIDs[i29] - 2];
                             if (this.uniTextures[i29].isLoaded()) {
                                 this.uniTextures[i29].reset();
@@ -3152,17 +3158,17 @@ public class AppInstance extends Game {
                         }
                     }
                 }
-                if (this.uiTextures[this.ff[2] + 11].isLoaded()) {
-                    this.uiTextures[this.ff[2] + 11].reset();
+                if (this.uiTextures[this.currentBox2[2] + 11].isLoaded()) {
+                    this.uiTextures[this.currentBox2[2] + 11].reset();
                 }
-                if (this.uiTextures[this.ff[2] + 11].isLoaded()) {
-                    this.uiTextures[this.ff[2] + 11].reset();
+                if (this.uiTextures[this.currentBox2[2] + 11].isLoaded()) {
+                    this.uiTextures[this.currentBox2[2] + 11].reset();
                 }
-                if (!this.uiTextures[this.ff[2] + 11].isLoaded()) {
-                    if (this.bw[this.boxCatIDs[this.ff[2]]] == 0) {
-                        this.uiTextures[this.ff[2] + 11].load(MyUtility.getString(String.format("udi%03d_f.png", this.boxCatIDs[this.ff[2]])), MyUtility.getString(String.format("udi%03d_f.imgcut", this.boxCatIDs[this.ff[2]])));
+                if (!this.uiTextures[this.currentBox2[2] + 11].isLoaded()) {
+                    if (this.bw[this.boxCatIDs[this.currentBox2[2]]] == 0) {
+                        this.uiTextures[this.currentBox2[2] + 11].load(MyUtility.getString(String.format("udi%03d_f.png", this.boxCatIDs[this.currentBox2[2]])), MyUtility.getString(String.format("udi%03d_f.imgcut", this.boxCatIDs[this.currentBox2[2]])));
                     } else {
-                        this.uiTextures[this.ff[2] + 11].load(MyUtility.getString(String.format("udi%03d_c.png", this.boxCatIDs[this.ff[2]])), MyUtility.getString(String.format("udi%03d_c.imgcut", this.boxCatIDs[this.ff[2]])));
+                        this.uiTextures[this.currentBox2[2] + 11].load(MyUtility.getString(String.format("udi%03d_c.png", this.boxCatIDs[this.currentBox2[2]])), MyUtility.getString(String.format("udi%03d_c.imgcut", this.boxCatIDs[this.currentBox2[2]])));
                     }
                 }
             }
@@ -5297,14 +5303,14 @@ public class AppInstance extends Game {
                         if (!this.uiTextures[7].isLoaded()) {
                             this.uiTextures[7].load(MyUtility.getString(String.format("img%03d.png", 29)), MyUtility.getString(String.format("img%03d.imgcut", 29)));
                         }
-                        if (this.ff[3] == 0) {
+                        if (this.currentBox2[3] == 0) {
                             if (this.uiTextures[8].isLoaded()) {
                                 this.uiTextures[8].reset();
                             }
                             if (!this.uiTextures[8].isLoaded()) {
                                 this.uiTextures[8].load(MyUtility.getString(String.format("img%03d.png", 23)), MyUtility.getString(String.format("img%03d.imgcut", 23)));
                             }
-                        } else if (this.ff[3] >= 1) {
+                        } else if (this.currentBox2[3] >= 1) {
                             if (this.uiTextures[8].isLoaded()) {
                                 this.uiTextures[8].reset();
                             }
@@ -14686,6 +14692,7 @@ public class AppInstance extends Game {
                         upgradeCost = this.unitBuyStats[this.boxCatIDs[(boxIndex - this.boxCounts[0]) - this.gB[1]]][1];
                     } else {
                         this.gameStats1[1] = 1;
+                        this.gameStats1[3] = 0;
                         baseLevel = this.baseUpgrades[this.boxCatIDs[(boxIndex - this.boxCounts[0]) - this.gB[1]]] + 1;
                         upgradeCost = this.unitBuyStats[this.boxCatIDs[(boxIndex - this.boxCounts[0]) - this.gB[1]]][((this.baseUpgrades[this.boxCatIDs[(boxIndex - this.boxCounts[0]) - this.gB[1]]] + 1) % 10) + 2] * (((this.baseUpgrades[this.boxCatIDs[(boxIndex - this.boxCounts[0]) - this.gB[1]]] + 1) / 10) + 1);
                     }
@@ -18183,7 +18190,7 @@ public class AppInstance extends Game {
         atexturerenderer.drawScaledImagef(this.uiTextures[7], (this.excessWidth / 2) + 45, 222, 8);
         atexturerenderer.drawScaledImagef(this.uiTextures[7], (this.excessWidth / 2) + 176, 90, 11);
         atexturerenderer.drawScaledImagef(this.uiTextures[8], 0, 287, 48);
-        if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1]) {
+        if (this.currentBox2[2] >= 0 && this.currentBox2[2] <= this.boxCounts[1]) {
             atexturerenderer.drawScaledImage(this.textTextures[this.gA[4]], 146, 291, 1);
         }
         if (this.gJ) {
@@ -18194,7 +18201,7 @@ public class AppInstance extends Game {
                 iArr[10] = iArr[10] + 1;
                 atexturerenderer.drawScaledImage(this.settingsMenuTexture[3], this.excessWidth + 652, 287, 304, 74, ((this.blinkFrame[10] % 4) / 2) + 1);
             }
-        } else if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1]) {
+        } else if (this.currentBox2[2] >= 0 && this.currentBox2[2] <= this.boxCounts[1]) {
             atexturerenderer.drawScaledImage(this.settingsMenuTexture[3], this.excessWidth + (652 - (dv[this.fx[11]] / 2)), 287 - (dv[this.fx[11]] / 2), dv[this.fx[11]] + 304, dv[this.fx[11]] + 74, 0);
             atexturerenderer.drawScaledImage(this.uiTextures[7], this.excessWidth + (690 - (dv[this.fx[11]] / 2)), 293 - (dv[this.fx[11]] / 2), dv[this.fx[11]] + 231, dv[this.fx[11]] + 62, 3);
             if (!this.eE[5] && !this.eE[0] && !this.eE[1] && !this.gU && !this.gu && isPointerDown() && isTouching(this.buttonCoordinates1[11][0], this.buttonCoordinates1[11][1], this.buttonCoordinates1[11][2], this.buttonCoordinates1[11][3])) {
@@ -18202,45 +18209,52 @@ public class AppInstance extends Game {
             }
         }
         int i = 1;
+        int tempValue = 0;
         while (true) {
             int i2 = i;
             if (i2 >= this.boxCounts[0] + 1 + this.boxCounts[1] + this.boxCounts[2]) {
                 break;
             }
-            if (this.ff[0] == i2) {
-                this.gameStats1[0] = this.gH;
-                if (this.ff[5] == 0) {
+            if (this.currentBox2[0] == i2) {
+                //this.gameStats1[0] = this.gH;
+                tempValue = this.gH;
+                if (this.currentBox2[5] == 0) {
                     this.gameStats1[1] = this.fx[2];
                 } else {
                     this.gameStats1[1] = 0;
                 }
                 f2 = -(328 - this.boxSize[i2][0]);
-            } else if (this.ff[0] + 1 == i2) {
-                this.gameStats1[0] = 0;
-                if (this.ff[5] == 1) {
+            } else if (this.currentBox2[0] + 1 == i2) {
+                //this.gameStats1[0] = 0;
+                tempValue = 0;
+                if (this.currentBox2[5] == 1) {
                     this.gameStats1[1] = this.fx[2];
                 } else {
                     this.gameStats1[1] = 0;
                 }
                 f2 = 328 - this.boxSize[i2][0];
-            } else if (this.ff[0] + 2 == i2) {
-                this.gameStats1[0] = 0;
+            } else if (this.currentBox2[0] + 2 == i2) {
+                //this.gameStats1[0] = 0;
+                tempValue = 0;
                 this.gameStats1[1] = 0;
                 f2 = (328 - this.boxSize[i2][0]) + ((328 - this.boxSize[i2 - 1][0]) / 2.0f);
-            } else if (this.ff[0] + 3 == i2) {
-                this.gameStats1[0] = 0;
+            } else if (this.currentBox2[0] + 3 == i2) {
+                //this.gameStats1[0] = 0;
+                tempValue = 0;
                 this.gameStats1[1] = 0;
                 f2 = (328 - this.boxSize[i2][0]) + ((328 - this.boxSize[i2 - 1][0]) / 2.0f) + ((328 - this.boxSize[i2 - 2][0]) / 2.0f);
-            } else if (this.ff[0] - 1 == i2) {
-                this.gameStats1[0] = 0;
-                if (this.ff[5] == -1) {
+            } else if (this.currentBox2[0] - 1 == i2) {
+                //this.gameStats1[0] = 0;
+                tempValue = 0;
+                if (this.currentBox2[5] == -1) {
                     this.gameStats1[1] = this.fx[2];
                 } else {
                     this.gameStats1[1] = 0;
                 }
                 f2 = -((328 - this.boxSize[i2][0]) + ((328 - this.boxSize[i2 + 1][0]) / 2.0f));
-            } else if (this.ff[0] - 2 == i2) {
-                this.gameStats1[0] = 0;
+            } else if (this.currentBox2[0] - 2 == i2) {
+                //tempValue = 0;
+                //this.gameStats1[0] = 0;
                 this.gameStats1[1] = 0;
                 f2 = -((328 - this.boxSize[i2][0]) + ((328 - this.boxSize[i2 + 1][0]) / 2.0f) + ((328 - this.boxSize[i2 + 2][0]) / 2.0f));
             } else {
@@ -18248,49 +18262,53 @@ public class AppInstance extends Game {
             }
             if (i2 - this.boxCounts[0] <= -1 || i2 - this.boxCounts[0] >= this.boxCounts[1] + 1) {
                 int i3 = 0;
-                atexturerenderer.drawScaledImagef(this.uiTextures[8], ((((((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2)) + this.gameStats1[0]) + f2) + (((cC[this.gameStats1[0]] * 328) / 100.0f) / 2.0f)) - (dv[this.gameStats1[1]] / 2), (559 - this.boxSize[i2][1]) - (dv[this.gameStats1[1]] / 2), dv[this.gameStats1[1]] + (this.boxSize[i2][0] - ((cC[this.gameStats1[0]] * 328) / 100.0f)), this.boxSize[i2][1] + dv[this.gameStats1[1]], 53);
+                if (this.gameStats1[1] < 0) {
+                    this.gameStats1[1] = 0;
+                }
+                this.gameStats1[1] %= 6;
+                atexturerenderer.drawScaledImagef(this.uiTextures[8], ((((((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2)) + this.gameStats1[0]) + f2) + (((cC[tempValue] * 328) / 100.0f) / 2.0f)) - (dv[this.gameStats1[1]] / 2), (559 - this.boxSize[i2][1]) - (dv[this.gameStats1[1]] / 2), dv[this.gameStats1[1]] + (this.boxSize[i2][0] - ((cC[tempValue] * 328) / 100.0f)), this.boxSize[i2][1] + dv[this.gameStats1[1]], 53);
                 if (i2 - this.boxCounts[0] <= -1) {
                     i3 = this.gE[(-(i2 - this.boxCounts[0])) - 1];
                 } else if (i2 - this.boxCounts[0] >= this.boxCounts[1] + 1) {
                     i3 = this.gE[((i2 - this.boxCounts[0]) - this.boxCounts[1]) - 1];
                 }
                 if (i3 == 0 || i3 == 1) {
-                    atexturerenderer.drawScaledImagef(this.uiTextures[8], ((((((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2)) + this.gameStats1[0]) + f2) + (((cC[this.gameStats1[0]] * 328) / 100.0f) / 2.0f)) - (dv[this.gameStats1[1]] / 2), (559.0f - ((162.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f)) - (dv[this.gameStats1[1]] / 2), dv[this.gameStats1[1]] + (this.boxSize[i2][0] - ((cC[this.gameStats1[0]] * 328) / 100.0f)), dv[this.gameStats1[1]] + ((60.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f), 49);
+                    atexturerenderer.drawScaledImagef(this.uiTextures[8], ((((((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2)) + this.gameStats1[0]) + f2) + (((cC[tempValue] * 328) / 100.0f) / 2.0f)) - (dv[this.gameStats1[1]] / 2), (559.0f - ((162.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f)) - (dv[this.gameStats1[1]] / 2), dv[this.gameStats1[1]] + (this.boxSize[i2][0] - ((cC[tempValue] * 328) / 100.0f)), dv[this.gameStats1[1]] + ((60.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f), 49);
                 } else {
-                    atexturerenderer.drawScaledImagef(this.uiTextures[8], ((((((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2)) + this.gameStats1[0]) + f2) + (((cC[this.gameStats1[0]] * 328) / 100.0f) / 2.0f)) - (dv[this.gameStats1[1]] / 2), (559.0f - ((183.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f)) - (dv[this.gameStats1[1]] / 2), dv[this.gameStats1[1]] + (this.boxSize[i2][0] - ((cC[this.gameStats1[0]] * 328) / 100.0f)), dv[this.gameStats1[1]] + ((60.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f), 49);
-                    atexturerenderer.drawScaledImagef(this.uiTextures[8], (((((((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2)) + this.gameStats1[0]) + f2) + ((132.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f)) + ((((132.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f)) - (dv[this.gameStats1[1]] / 2), (559.0f - ((126.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f)) - (dv[this.gameStats1[1]] / 2), dv[this.gameStats1[1]] + (((60.0f * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) - ((((60.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f)), dv[this.gameStats1[1]] + ((60.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f), (i3 - 1) + 73);
+                    atexturerenderer.drawScaledImagef(this.uiTextures[8], ((((((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2)) + this.gameStats1[0]) + f2) + (((cC[tempValue] * 328) / 100.0f) / 2.0f)) - (dv[this.gameStats1[1]] / 2), (559.0f - ((183.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f)) - (dv[this.gameStats1[1]] / 2), dv[this.gameStats1[1]] + (this.boxSize[i2][0] - ((cC[tempValue] * 328) / 100.0f)), dv[this.gameStats1[1]] + ((60.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f), 49);
+                    atexturerenderer.drawScaledImagef(this.uiTextures[8], (((((((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2)) + this.gameStats1[0]) + f2) + ((132.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f)) + ((((132.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f)) - (dv[this.gameStats1[1]] / 2), (559.0f - ((126.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f)) - (dv[this.gameStats1[1]] / 2), dv[this.gameStats1[1]] + (((60.0f * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) - ((((60.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f)), dv[this.gameStats1[1]] + ((60.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f), (i3 - 1) + 73);
                 }
             } else {
-                atexturerenderer.drawScaledImagef(this.uiTextures[8], (((cC[this.gameStats1[0]] * 328) / 100.0f) / 2.0f) + ((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2) + this.gameStats1[0] + f2, 559 - this.boxSize[i2][1], this.boxSize[i2][0] - ((cC[this.gameStats1[0]] * 328) / 100.0f), this.boxSize[i2][1], 47);
+                atexturerenderer.drawScaledImagef(this.uiTextures[8], (((cC[tempValue] * 328) / 100.0f) / 2.0f) + ((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2) + this.gameStats1[0] + f2, 559 - this.boxSize[i2][1], this.boxSize[i2][0] - ((cC[tempValue] * 328) / 100.0f), this.boxSize[i2][1], 47);
             }
             if (i2 - this.boxCounts[0] >= 0 && i2 - this.boxCounts[0] <= this.boxCounts[1]) {
                 if (this.bq[this.unitBuyStats[this.boxCatIDs[i2 - this.boxCounts[0]]][15]] < this.unitBuyStats[this.boxCatIDs[i2 - this.boxCounts[0]]][0]) {
                     atexturerenderer.setColor(255, 255, 255);
                     int a = this.textTextures[i2 - this.boxCounts[0]].getImgWidth();
-                    atexturerenderer.drawScaledImagef(this.textTextures[i2 - this.boxCounts[0]], (((((((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2)) + this.gameStats1[0]) + f2) + (((328.0f * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) / 2.0f)) - (((a * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) / 2.0f)) + (((((a * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) * cC[this.gameStats1[0]]) / 100.0f) / 2.0f), 559.0f - ((254.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f), ((a * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) - ((((a * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) * cC[this.gameStats1[0]]) / 100.0f), (30.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f);
-                    atexturerenderer.drawScaledImagef(this.uiTextures[8], (((((309.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f) / 2.0f) + ((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2) + this.gameStats1[0] + f2 + ((6.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) + ((((6.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f), 559.0f - ((102.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f), ((309.0f * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) - ((((309.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f), (92.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f, 56);
+                    atexturerenderer.drawScaledImagef(this.textTextures[i2 - this.boxCounts[0]], (((((((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2)) + this.gameStats1[0]) + f2) + (((328.0f * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) / 2.0f)) - (((a * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) / 2.0f)) + (((((a * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) * cC[tempValue]) / 100.0f) / 2.0f), 559.0f - ((254.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f), ((a * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) - ((((a * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) * cC[tempValue]) / 100.0f), (30.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f);
+                    atexturerenderer.drawScaledImagef(this.uiTextures[8], (((((309.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f) / 2.0f) + ((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2) + this.gameStats1[0] + f2 + ((6.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) + ((((6.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), 559.0f - ((102.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f), ((309.0f * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) - ((((309.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (92.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f, 56);
                     atexturerenderer.drawScaledImagef(this.uiTextures[8], ((180.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2) + this.gameStats1[0] + f2, 559.0f - ((138.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f), (138.0f * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f, (34.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f, 57);
-                    if (this.ff[3] == 0) {
+                    if (this.currentBox2[3] == 0) {
                         atexturerenderer.setImageColor(0, 0, 0);
                     }
                 } else if (this.bu[this.boxCatIDs[i2 - this.boxCounts[0]]] == 0) {
                     atexturerenderer.setColor(255, 255, 255);
                     int a2 = this.textTextures[i2 - this.boxCounts[0]].getImgWidth();
-                    atexturerenderer.drawScaledImagef(this.textTextures[i2 - this.boxCounts[0]], (((((((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2)) + this.gameStats1[0]) + f2) + (((328.0f * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) / 2.0f)) - (((a2 * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) / 2.0f)) + (((((a2 * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) * cC[this.gameStats1[0]]) / 100.0f) / 2.0f), 559.0f - ((254.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f), ((a2 * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) - ((((a2 * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) * cC[this.gameStats1[0]]) / 100.0f), (30.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f);
-                    atexturerenderer.drawScaledImagef(this.uiTextures[8], (((((309.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f) / 2.0f) + ((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2) + this.gameStats1[0] + f2 + ((6.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) + ((((6.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f), 559.0f - ((102.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f), ((309.0f * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) - ((((309.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f), (92.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f, 56);
+                    atexturerenderer.drawScaledImagef(this.textTextures[i2 - this.boxCounts[0]], (((((((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2)) + this.gameStats1[0]) + f2) + (((328.0f * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) / 2.0f)) - (((a2 * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) / 2.0f)) + (((((a2 * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) * cC[tempValue]) / 100.0f) / 2.0f), 559.0f - ((254.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f), ((a2 * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) - ((((a2 * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) * cC[tempValue]) / 100.0f), (30.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f);
+                    atexturerenderer.drawScaledImagef(this.uiTextures[8], (((((309.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f) / 2.0f) + ((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2) + this.gameStats1[0] + f2 + ((6.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) + ((((6.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), 559.0f - ((102.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f), ((309.0f * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) - ((((309.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (92.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f, 56);
                     atexturerenderer.drawScaledImagef(this.uiTextures[8], ((180.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2) + this.gameStats1[0] + f2, 559.0f - ((138.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f), (138.0f * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f, (34.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f, 57);
-                    if (this.ff[3] == 0) {
+                    if (this.currentBox2[3] == 0) {
                         atexturerenderer.setImageColor(0, 0, 0);
                     }
                 } else {
                     atexturerenderer.setColor(255, 255, 255);
                     int a3 = this.textTextures[i2 - this.boxCounts[0]].getImgWidth();
-                    atexturerenderer.drawScaledImagef(this.textTextures[i2 - this.boxCounts[0]], (((((((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2)) + this.gameStats1[0]) + f2) + (((328.0f * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) / 2.0f)) - (((a3 * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) / 2.0f)) + (((((a3 * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) * cC[this.gameStats1[0]]) / 100.0f) / 2.0f), 559.0f - ((254.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f), ((a3 * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) - ((((a3 * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) * cC[this.gameStats1[0]]) / 100.0f), (30.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f);
+                    atexturerenderer.drawScaledImagef(this.textTextures[i2 - this.boxCounts[0]], (((((((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2)) + this.gameStats1[0]) + f2) + (((328.0f * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) / 2.0f)) - (((a3 * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) / 2.0f)) + (((((a3 * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) * cC[tempValue]) / 100.0f) / 2.0f), 559.0f - ((254.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f), ((a3 * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) - ((((a3 * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f) * cC[tempValue]) / 100.0f), (30.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f);
                 }
-                atexturerenderer.drawScaledImagef(this.uiTextures[(i2 + 11) - this.boxCounts[0]], (((((328.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f) / 2.0f) + ((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2) + this.gameStats1[0] + f2, 559.0f - ((219.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f), ((328.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) - ((((328.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f), (114.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f, 0);
+                atexturerenderer.drawScaledImagef(this.uiTextures[(i2 + 11) - this.boxCounts[0]], (((((328.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f) / 2.0f) + ((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2) + this.gameStats1[0] + f2, 559.0f - ((219.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f), ((328.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) - ((((328.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (114.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f, 0);
                 atexturerenderer.setImageColor(255, 255, 255);
                 if (this.bu[this.boxCatIDs[i2 - this.boxCounts[0]]] == 0) {
-                    if (this.ff[3] == 0) {
+                    if (this.currentBox2[3] == 0) {
                         if (this.aY >= this.unitBuyStats[this.boxCatIDs[i2 - this.boxCounts[0]]][1]) {
                             atexturerenderer.drawScaledImagef(this.uiTextures[8], ((15.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) + ((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2) + this.gameStats1[0] + f2, 559.0f - ((131.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f), (187.0f * ((this.boxSize[i2][0] * 10000.0f) / 328.0f)) / 10000.0f, (53.0f * ((this.boxSize[i2][1] * 10000.0f) / 263.0f)) / 10000.0f, 58);
                         }
@@ -18305,15 +18323,15 @@ public class AppInstance extends Game {
                         break;
                     }
                     if (this.slotCatIDs[i5] == this.boxCatIDs[i2 - this.boxCounts[0]] + 2) {
-                        if (this.ff[2] < 0 || this.ff[2] > this.boxCounts[1]) {
-                            atexturerenderer.drawScaledImagef(this.uiTextures[9], ((((-59.0f) * (((this.boxSize[i2][0] * 100.0f) / 328.0f) / 100.0f)) * cC[this.gameStats1[0]]) / 100.0f) + ((getWidth() / 2) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2) + this.gameStats1[0] + f2 + ((223.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f), 559.0f - ((217.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f), ((80.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) - ((((80.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f), (80.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f, 0);
-                        } else if (this.boxCatIDs[this.ff[2]] + 2 != this.boxCatIDs[i2 - this.boxCounts[0]] + 2) {
-                            atexturerenderer.drawScaledImagef(this.uiTextures[9], ((((-59.0f) * (((this.boxSize[i2][0] * 100.0f) / 328.0f) / 100.0f)) * cC[this.gameStats1[0]]) / 100.0f) + ((getWidth() / 2) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2) + this.gameStats1[0] + f2 + ((223.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f), 559.0f - ((217.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f), ((80.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) - ((((80.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f), (80.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f, 0);
+                        if (this.currentBox2[2] < 0 || this.currentBox2[2] > this.boxCounts[1]) {
+                            atexturerenderer.drawScaledImagef(this.uiTextures[9], ((((-59.0f) * (((this.boxSize[i2][0] * 100.0f) / 328.0f) / 100.0f)) * cC[tempValue]) / 100.0f) + ((getWidth() / 2) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2) + this.gameStats1[0] + f2 + ((223.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f), 559.0f - ((217.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f), ((80.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) - ((((80.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (80.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f, 0);
+                        } else if (this.boxCatIDs[this.currentBox2[2]] + 2 != this.boxCatIDs[i2 - this.boxCounts[0]] + 2) {
+                            atexturerenderer.drawScaledImagef(this.uiTextures[9], ((((-59.0f) * (((this.boxSize[i2][0] * 100.0f) / 328.0f) / 100.0f)) * cC[tempValue]) / 100.0f) + ((getWidth() / 2) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2) + this.gameStats1[0] + f2 + ((223.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f), 559.0f - ((217.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f), ((80.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) - ((((80.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (80.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f, 0);
                         } else if (!this.fn) {
                             if (this.eE[3]) {
-                                atexturerenderer.drawScaledImagef(this.uiTextures[9], ((((-59.0f) * (((this.boxSize[i2][0] * 100.0f) / 328.0f) / 100.0f)) * cC[this.gameStats1[0]]) / 100.0f) + ((getWidth() / 2) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2) + this.gameStats1[0] + f2 + ((223.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f), 559.0f - ((217.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f), ((80.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) - ((((80.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f), (80.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f, 0);
+                                atexturerenderer.drawScaledImagef(this.uiTextures[9], ((((-59.0f) * (((this.boxSize[i2][0] * 100.0f) / 328.0f) / 100.0f)) * cC[tempValue]) / 100.0f) + ((getWidth() / 2) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2) + this.gameStats1[0] + f2 + ((223.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f), 559.0f - ((217.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f), ((80.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) - ((((80.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (80.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f, 0);
                             } else {
-                                atexturerenderer.drawScaledImagef(this.uiTextures[9], ((((-59.0f) * (((this.boxSize[i2][0] * 100.0f) / 328.0f) / 100.0f)) * cC[this.gameStats1[0]]) / 100.0f) + ((getWidth() / 2) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2) + this.gameStats1[0] + f2 + ((223.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f), 559.0f - ((217.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f), ((80.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) - ((((80.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f), (80.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f, 0);
+                                atexturerenderer.drawScaledImagef(this.uiTextures[9], ((((-59.0f) * (((this.boxSize[i2][0] * 100.0f) / 328.0f) / 100.0f)) * cC[tempValue]) / 100.0f) + ((getWidth() / 2) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2) + this.gameStats1[0] + f2 + ((223.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f), 559.0f - ((217.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f), ((80.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) - ((((80.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (80.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f, 0);
                             }
                         }
                     }
@@ -18326,32 +18344,32 @@ public class AppInstance extends Game {
                         do {
                             int i8 = i7;
                             int i9 = i6;
-                            atexturerenderer.drawScaledImagef(this.uiTextures[5], ((((((-117.0f) + (i8 * ((29.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f))) * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f) + ((((((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2)) + this.gameStats1[0]) + f2) - (i8 * ((29.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f))) + ((281.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f), 559.0f - ((152.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f), ((30.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) - ((((30.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f), (42.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f, i9 % 10);
+                            atexturerenderer.drawScaledImagef(this.uiTextures[5], ((((((-117.0f) + (i8 * ((29.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f))) * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f) + ((((((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2)) + this.gameStats1[0]) + f2) - (i8 * ((29.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f))) + ((281.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f), 559.0f - ((152.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f), ((30.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) - ((((30.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (42.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f, i9 % 10);
                             i6 = i9 / 10;
                             i7 = i8 + 1;
                         } while (i6 > 0);
                     } else {
-                        atexturerenderer.drawScaledImagef(this.uiTextures[8], ((((((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2)) + this.gameStats1[0]) + f2) - (1 * ((43.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f))) + ((290.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) + ((((((1 * ((43.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f)) - 126.0f) * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f), 559.0f - ((144.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f), ((58.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) - ((((58.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f), (35.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f, 52);
+                        atexturerenderer.drawScaledImagef(this.uiTextures[8], ((((((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2)) + this.gameStats1[0]) + f2) - (1 * ((43.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f))) + ((290.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) + ((((((1 * ((43.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f)) - 126.0f) * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), 559.0f - ((144.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f), ((58.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) - ((((58.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (35.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f, 52);
                     }
                     int i10 = ((((this.unitStats[this.boxCatIDs[i2 - this.boxCounts[0]] + 2][0][6] / 100) * this.eQ) * 50) / 100) + (this.unitStats[this.boxCatIDs[i2 - this.boxCounts[0]] + 2][0][6] / 100);
                     int i11 = 0;
                     do {
                         int i12 = i11;
                         int i13 = i10;
-                        atexturerenderer.drawScaledImagef(this.uiTextures[8], ((((((-118.0f) + (i12 * ((13.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f))) * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f) + ((((((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2)) + this.gameStats1[0]) + f2) - (i12 * ((13.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f))) + ((282.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f), 559.0f - ((98.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f), ((13.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) - ((((13.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f), (26.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f, (i13 % 10) + 1);
+                        atexturerenderer.drawScaledImagef(this.uiTextures[8], ((((((-118.0f) + (i12 * ((13.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f))) * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f) + ((((((getWidth() / 2.0f) - (this.boxSize[i2][0] / 2.0f)) + (this.boxScale * i2)) + this.gameStats1[0]) + f2) - (i12 * ((13.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f))) + ((282.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f), 559.0f - ((98.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f), ((13.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) - ((((13.0f * ((this.boxSize[i2][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (26.0f * ((this.boxSize[i2][1] * 100.0f) / 263.0f)) / 100.0f, (i13 % 10) + 1);
                         i10 = i13 / 10;
                         i11 = i12 + 1;
                     } while (i10 > 0);
                 }
             }
             atexturerenderer.setColor(0, 0, 0);
-            if (this.gI && this.ff[0] == i2) {
-                atexturerenderer.setAlpha((cC[this.gameStats1[0]] * 255) / 100);
+            if (this.gI && this.currentBox2[0] == i2) {
+                atexturerenderer.setAlpha((cC[tempValue] * 255) / 100);
             } else {
                 atexturerenderer.setAlpha((255 - ((((this.boxSize[i2][0] * 100) / 328) * 255) / 100)) * 2);
             }
             if (i2 - this.boxCounts[0] > -1 && i2 - this.boxCounts[0] < this.boxCounts[1] + 1) {
-                atexturerenderer.drawRectangle((int) (((getWidth() / 2) - (this.boxSize[i2][0] / 2)) + (this.boxScale * i2) + this.gameStats1[0] + f2 + (((cC[this.gameStats1[0]] * 328) / 100) / 2)), 559 - this.boxSize[i2][1], this.boxSize[i2][0] - ((cC[this.gameStats1[0]] * 328) / 100), this.boxSize[i2][1]);
+                atexturerenderer.drawRectangle((int) (((getWidth() / 2) - (this.boxSize[i2][0] / 2)) + (this.boxScale * i2) + this.gameStats1[0] + f2 + (((cC[tempValue] * 328) / 100) / 2)), 559 - this.boxSize[i2][1], this.boxSize[i2][0] - ((cC[tempValue] * 328) / 100), this.boxSize[i2][1]);
             }
             i = i2 + 1;
         }
@@ -18361,74 +18379,81 @@ public class AppInstance extends Game {
                 z = false;
                 break;
             }
-            if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1] && this.slotCatIDs[i14] == this.boxCatIDs[this.ff[2]] + 2 && !this.fn) {
+            if (this.currentBox2[2] >= 0 && this.currentBox2[2] <= this.boxCounts[1] && this.slotCatIDs[i14] == this.boxCatIDs[this.currentBox2[2]] + 2 && !this.fn) {
                 z = true;
                 break;
             }
             i14++;
         }
-        if (this.ff[2] < 0 || this.ff[2] > this.boxCounts[1]) {
-            if ((this.ff[2] <= -1 || this.ff[2] >= this.boxCounts[1] + 1) && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[5]) {
+        if (this.currentBox2[2] < 0 || this.currentBox2[2] > this.boxCounts[1]) {
+            if ((this.currentBox2[2] <= -1 || this.currentBox2[2] >= this.boxCounts[1] + 1) && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[5]) {
                 if (this.blinkFrame[3] % 4 == 0 || this.blinkFrame[3] % 4 == 1) {
                     atexturerenderer.drawScaledImage(this.uiTextures[8], (this.excessWidth / 2) + 316, 297, 324, 260, 31);
                 } else {
                     atexturerenderer.drawScaledImage(this.uiTextures[8], (this.excessWidth / 2) + 316, 297, 324, 260, 32);
                 }
             }
-        } else if (!z && this.bu[this.boxCatIDs[this.ff[2]]] >= 1 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[5]) {
+        } else if (!z && this.bu[this.boxCatIDs[this.currentBox2[2]]] >= 1 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[5]) {
             if (this.blinkFrame[3] % 4 == 0 || this.blinkFrame[3] % 4 == 1) {
                 atexturerenderer.drawScaledImage(this.uiTextures[8], (this.excessWidth / 2) + 316, 297, 324, 260, 31);
             } else {
                 atexturerenderer.drawScaledImage(this.uiTextures[8], (this.excessWidth / 2) + 316, 297, 324, 260, 32);
             }
         }
+        tempValue = 0;
         int i15 = 1;
         while (true) {
             int i16 = i15;
             if (i16 >= this.boxCounts[0] + 1 + this.boxCounts[1] + this.boxCounts[2]) {
                 break;
             }
-            if (this.ff[0] == i16) {
-                this.gameStats1[0] = this.gH;
-                if (this.ff[5] == 0) {
+            if (this.currentBox2[0] == i16) {
+                //this.gameStats1[0] = this.gH;
+                tempValue = this.gH;
+                if (this.currentBox2[5] == 0) {
                     this.gameStats1[1] = this.fx[2];
                 } else {
                     this.gameStats1[1] = 0;
                 }
                 f = -(328 - this.boxSize[i16][0]);
-            } else if (this.ff[0] + 1 == i16) {
-                this.gameStats1[0] = 0;
-                if (this.ff[5] == 1) {
+            } else if (this.currentBox2[0] + 1 == i16) {
+                //this.gameStats1[0] = 0;
+                tempValue = 0;
+                if (this.currentBox2[5] == 1) {
                     this.gameStats1[1] = this.fx[2];
                 } else {
                     this.gameStats1[1] = 0;
                 }
                 f = 328 - this.boxSize[i16][0];
-            } else if (this.ff[0] + 2 == i16) {
-                this.gameStats1[0] = 0;
+            } else if (this.currentBox2[0] + 2 == i16) {
+                //this.gameStats1[0] = 0;
+                tempValue = 0;
                 this.gameStats1[1] = 0;
                 f = (328 - this.boxSize[i16][0]) + ((328 - this.boxSize[i16 - 1][0]) / 2.0f);
-            } else if (this.ff[0] + 3 == i16) {
-                this.gameStats1[0] = 0;
+            } else if (this.currentBox2[0] + 3 == i16) {
+                //this.gameStats1[0] = 0;
+                tempValue = 0;
                 this.gameStats1[1] = 0;
                 f = (328 - this.boxSize[i16][0]) + ((328 - this.boxSize[i16 - 1][0]) / 2.0f) + ((328 - this.boxSize[i16 - 2][0]) / 2.0f);
-            } else if (this.ff[0] - 1 == i16) {
-                this.gameStats1[0] = 0;
-                if (this.ff[5] == -1) {
+            } else if (this.currentBox2[0] - 1 == i16) {
+                //this.gameStats1[0] = 0;
+                tempValue = 0;
+                if (this.currentBox2[5] == -1) {
                     this.gameStats1[1] = this.fx[2];
                 } else {
                     this.gameStats1[1] = 0;
                 }
                 f = -((328 - this.boxSize[i16][0]) + ((328 - this.boxSize[i16 + 1][0]) / 2.0f));
-            } else if (this.ff[0] - 2 == i16) {
-                this.gameStats1[0] = 0;
+            } else if (this.currentBox2[0] - 2 == i16) {
+                //this.gameStats1[0] = 0;
+                tempValue = 0;
                 this.gameStats1[1] = 0;
                 f = -((328 - this.boxSize[i16][0]) + ((328 - this.boxSize[i16 + 1][0]) / 2.0f));
             } else {
                 i15 = i16 + 1;
             }
             if (i16 - this.boxCounts[0] >= 0 && i16 - this.boxCounts[0] <= this.boxCounts[1] && this.bq[this.unitBuyStats[this.boxCatIDs[i16 - this.boxCounts[0]]][15]] >= this.unitBuyStats[this.boxCatIDs[i16 - this.boxCounts[0]]][0] && this.bu[this.boxCatIDs[i16 - this.boxCounts[0]]] == 0 && (this.blinkFrame[3] % 8) / 4 == 0) {
-                atexturerenderer.drawScaledImagef(this.newTexture, ((((-135.0f) * (((this.boxSize[i16][0] * 100.0f) / 328.0f) / 100.0f)) * cC[this.gameStats1[0]]) / 100.0f) + f + ((getWidth() / 2.0f) - (this.boxSize[i16][0] / 2.0f)) + (this.boxScale * i16) + this.gameStats1[0] + ((269.0f * ((this.boxSize[i16][0] * 100.0f) / 328.0f)) / 100.0f), 559.0f - ((303.0f * ((this.boxSize[i16][1] * 100.0f) / 263.0f)) / 100.0f), ((80.0f * ((this.boxSize[i16][0] * 100.0f) / 328.0f)) / 100.0f) - ((((80.0f * ((this.boxSize[i16][0] * 100.0f) / 328.0f)) / 100.0f) * cC[this.gameStats1[0]]) / 100.0f), (80.0f * ((this.boxSize[i16][1] * 100.0f) / 263.0f)) / 100.0f, 0);
+                atexturerenderer.drawScaledImagef(this.newTexture, ((((-135.0f) * (((this.boxSize[i16][0] * 100.0f) / 328.0f) / 100.0f)) * cC[tempValue]) / 100.0f) + f + ((getWidth() / 2.0f) - (this.boxSize[i16][0] / 2.0f)) + (this.boxScale * i16) + this.gameStats1[0] + ((269.0f * ((this.boxSize[i16][0] * 100.0f) / 328.0f)) / 100.0f), 559.0f - ((303.0f * ((this.boxSize[i16][1] * 100.0f) / 263.0f)) / 100.0f), ((80.0f * ((this.boxSize[i16][0] * 100.0f) / 328.0f)) / 100.0f) - ((((80.0f * ((this.boxSize[i16][0] * 100.0f) / 328.0f)) / 100.0f) * cC[tempValue]) / 100.0f), (80.0f * ((this.boxSize[i16][1] * 100.0f) / 263.0f)) / 100.0f, 0);
             }
             i15 = i16 + 1;
         }
@@ -18460,7 +18485,7 @@ public class AppInstance extends Game {
             if (i20 >= 10) {
                 break;
             }
-            if (this.slotCatIDs[i20] != -1 && this.fh - 1 != i20 && this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1] && this.slotCatIDs[i20] - 2 == this.boxCatIDs[this.ff[2]]) {
+            if (this.slotCatIDs[i20] != -1 && this.fh - 1 != i20 && this.currentBox2[2] >= 0 && this.currentBox2[2] <= this.boxCounts[1] && this.slotCatIDs[i20] - 2 == this.boxCatIDs[this.currentBox2[2]]) {
                 if (this.blinkFrame[3] % 4 == 0 || this.blinkFrame[3] % 4 == 1) {
                     atexturerenderer.drawScaledImage(this.uiTextures[7], this.fj[i20][0] + this.fg[i20][0], this.fj[i20][1] + this.fg[i20][1], 110, 85, 9);
                 } else {
@@ -18483,42 +18508,42 @@ public class AppInstance extends Game {
         if (this.gJ) {
             atexturerenderer.drawScaledImage(this.uiTextures[7], (getWidth() / 2) - (((eO[this.gK] * 869) / 100) / 2), 183 - (((eO[this.gK] * 180) / 100) / 2), (eO[this.gK] * 869) / 100, (eO[this.gK] * 180) / 100, 1);
             atexturerenderer.setColor(255, 255, 255);
-            if (this.gK >= getLength(eO) - 1 && this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1]) {
-                if (this.bq[this.unitBuyStats[this.boxCatIDs[this.ff[2]]][15]] < this.unitBuyStats[this.boxCatIDs[this.ff[2]]][0]) {
+            if (this.gK >= getLength(eO) - 1 && this.currentBox2[2] >= 0 && this.currentBox2[2] <= this.boxCounts[1]) {
+                if (this.bq[this.unitBuyStats[this.boxCatIDs[this.currentBox2[2]]][15]] < this.unitBuyStats[this.boxCatIDs[this.currentBox2[2]]][0]) {
                     atexturerenderer.drawScaledImage(this.textTextures[this.gA[0] + 1], getWidth() / 2, 123, 1);
                     atexturerenderer.drawScaledImage(this.textTextures[this.gA[0] + 2], getWidth() / 2, 159, 1);
-                } else if (this.bu[this.boxCatIDs[this.ff[2]]] != 0) {
+                } else if (this.bu[this.boxCatIDs[this.currentBox2[2]]] != 0) {
                     for (int i23 = this.gA[3]; i23 < this.gA[3] + 3; i23++) {
                         atexturerenderer.drawScaledImage(this.textTextures[i23], getWidth() / 2, (((i23 - this.gA[3]) * 36) + 128) - 5, 1);
                     }
                 }
             }
         }
-        if (this.bq[0] >= 48 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1] && this.baseUpgrades[this.boxCatIDs[this.ff[2]]] + 1 >= 10) {
+        if (this.bq[0] >= 48 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && this.currentBox2[2] >= 0 && this.currentBox2[2] <= this.boxCounts[1] && this.baseUpgrades[this.boxCatIDs[this.currentBox2[2]]] + 1 >= 10) {
             atexturerenderer.drawScaledImage(this.uiTextures[8], (((getWidth() / 2) - 164) + 285) - (dv[this.fx[12]] / 2), 516 - (dv[this.fx[12]] / 2), dv[this.fx[12]] + 69, dv[this.fx[12]] + 69, 46);
         }
         if ((-this.gameStats1[0]) % this.boxScale == 0) {
-            this.gameStats1[0] = 0;
-            this.gameStats1[1] = -(328 - this.boxSize[this.ff[0] + this.gameStats1[0]][0]);
+            //this.gameStats1[0] = 0;
+            this.gameStats1[1] = -(328 - this.boxSize[this.currentBox2[0] + 0][0]);
         } else if ((-this.gameStats1[0]) % this.boxScale >= this.boxScale / 2) {
-            this.gameStats1[0] = 1;
-            this.gameStats1[1] = 328 - this.boxSize[this.ff[0] + this.gameStats1[0]][0];
+            //this.gameStats1[0] = 1;
+            this.gameStats1[1] = 328 - this.boxSize[this.currentBox2[0] + 1][0];
         } else {
-            this.gameStats1[0] = 0;
-            this.gameStats1[1] = -(328 - this.boxSize[this.ff[0] + this.gameStats1[0]][0]);
+            //this.gameStats1[0] = 0;
+            this.gameStats1[1] = -(328 - this.boxSize[this.currentBox2[0] + 0][0]);
         }
         if (this.fn) {
             atexturerenderer.setImageAlpha(127);
-            atexturerenderer.drawScaledImage(this.uiTextures[8], this.gameStats1[1] - ((this.boxSize[this.ff[0] + this.gameStats1[0]][0] + ((this.boxSize[this.ff[0] + this.gameStats1[0]][0] * (this.fo[0] - 55)) / 100)) / 2), this.ei[1] - ((this.boxSize[this.ff[0] + this.gameStats1[0]][1] + ((this.boxSize[this.ff[0] + this.gameStats1[0]][1] * (this.fo[1] - 55)) / 100)) / 2), ((this.boxSize[this.ff[0] + this.gameStats1[0]][0] * (this.fo[0] - 55)) / 100) + this.boxSize[this.ff[0] + this.gameStats1[0]][0], ((this.boxSize[this.ff[0] + this.gameStats1[0]][1] * (this.fo[1] - 55)) / 100) + this.boxSize[this.ff[0] + this.gameStats1[0]][1], 47);
-            int a4 = this.textTextures[this.ff[2]].getImgWidth();
-            atexturerenderer.drawScaledImagef(this.textTextures[this.ff[2]], (((this.gameStats1[1] - ((this.boxSize[this.ff[0] + this.gameStats1[0]][0] + ((this.boxSize[this.ff[0] + this.gameStats1[0]][0] * (this.fo[0] - 55)) / 100.0f)) / 2.0f)) + (this.boxSize[this.ff[0] + this.gameStats1[0]][0] / 2.0f)) + (((this.boxSize[this.ff[0] + this.gameStats1[0]][0] / 2.0f) * ((float) (this.fo[0] - 55))) / 100.0f)) - ((a4 / 2.0f) + (((a4 / 2.0f) * ((float) (this.fo[0] - 55))) / 100.0f)), ((this.ei[1] + 9) + (((this.fo[1] - 55) * 9) / 100.0f)) - ((this.boxSize[this.ff[0] + this.gameStats1[0]][1] + ((this.boxSize[this.ff[0] + this.gameStats1[0]][1] * (this.fo[1] - 55)) / 100.0f)) / 2.0f), (((this.fo[0] - 55) * a4) / 100.0f) + ((a4 * ((this.boxSize[this.ff[0] + this.gameStats1[0]][0] * 10000.0f) / 328.0f)) / 10000.0f), (((this.fo[1] - 55) * 30) / 100.0f) + ((30.0f * ((this.boxSize[this.ff[0] + this.gameStats1[0]][1] * 10000.0f) / 263.0f)) / 10000.0f));
-            atexturerenderer.drawScaledImagef(this.uiTextures[this.ff[2] + 11], this.gameStats1[1] - ((this.boxSize[this.ff[0] + this.gameStats1[0]][0] + ((this.boxSize[this.ff[0] + this.gameStats1[0]][0] * (this.fo[0] - 55)) / 100.0f)) / 2.0f), ((this.ei[1] + 44) + (((this.fo[1] - 55) * 44) / 100.0f)) - ((this.boxSize[this.ff[0] + this.gameStats1[0]][1] + ((this.boxSize[this.ff[0] + this.gameStats1[0]][1] * (this.fo[1] - 55)) / 100.0f)) / 2.0f), ((this.boxSize[this.ff[0] + this.gameStats1[0]][0] * (this.fo[0] - 55)) / 100.0f) + this.boxSize[this.ff[0] + this.gameStats1[0]][0], (((this.fo[1] - 55) * 114) / 100.0f) + ((114.0f * ((this.boxSize[this.ff[0] + this.gameStats1[0]][1] * 100) / 263.0f)) / 100.0f), 0);
-            int i24 = (this.ff[2] < 0 || this.ff[2] > this.boxCounts[1]) ? a4 : this.baseUpgrades[this.boxCatIDs[this.ff[2]]] + 1;
+            atexturerenderer.drawScaledImage(this.uiTextures[8], this.gameStats1[1] - ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][0] + ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][0] * (this.fo[0] - 55)) / 100)) / 2), this.ei[1] - ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][1] + ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][1] * (this.fo[1] - 55)) / 100)) / 2), ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][0] * (this.fo[0] - 55)) / 100) + this.boxSize[this.currentBox2[0] + this.gameStats1[0]][0], ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][1] * (this.fo[1] - 55)) / 100) + this.boxSize[this.currentBox2[0] + this.gameStats1[0]][1], 47);
+            int a4 = this.textTextures[this.currentBox2[2]].getImgWidth();
+            atexturerenderer.drawScaledImagef(this.textTextures[this.currentBox2[2]], (((this.gameStats1[1] - ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][0] + ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][0] * (this.fo[0] - 55)) / 100.0f)) / 2.0f)) + (this.boxSize[this.currentBox2[0] + this.gameStats1[0]][0] / 2.0f)) + (((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][0] / 2.0f) * ((float) (this.fo[0] - 55))) / 100.0f)) - ((a4 / 2.0f) + (((a4 / 2.0f) * ((float) (this.fo[0] - 55))) / 100.0f)), ((this.ei[1] + 9) + (((this.fo[1] - 55) * 9) / 100.0f)) - ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][1] + ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][1] * (this.fo[1] - 55)) / 100.0f)) / 2.0f), (((this.fo[0] - 55) * a4) / 100.0f) + ((a4 * ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][0] * 10000.0f) / 328.0f)) / 10000.0f), (((this.fo[1] - 55) * 30) / 100.0f) + ((30.0f * ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][1] * 10000.0f) / 263.0f)) / 10000.0f));
+            atexturerenderer.drawScaledImagef(this.uiTextures[this.currentBox2[2] + 11], this.gameStats1[1] - ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][0] + ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][0] * (this.fo[0] - 55)) / 100.0f)) / 2.0f), ((this.ei[1] + 44) + (((this.fo[1] - 55) * 44) / 100.0f)) - ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][1] + ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][1] * (this.fo[1] - 55)) / 100.0f)) / 2.0f), ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][0] * (this.fo[0] - 55)) / 100.0f) + this.boxSize[this.currentBox2[0] + this.gameStats1[0]][0], (((this.fo[1] - 55) * 114) / 100.0f) + ((114.0f * ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][1] * 100) / 263.0f)) / 100.0f), 0);
+            int i24 = (this.currentBox2[2] < 0 || this.currentBox2[2] > this.boxCounts[1]) ? a4 : this.baseUpgrades[this.boxCatIDs[this.currentBox2[2]]] + 1;
             if (i24 < this.bi) {
                 int i25 = 0;
                 int i26 = i24;
                 while (true) {
-                    atexturerenderer.drawScaledImagef(this.uiTextures[8], (290 - (i25 * 13)) + (((290 - (i25 * 13)) * (this.fo[0] - 55)) / 100.0f) + (this.gameStats1[1] - ((this.boxSize[this.ff[0] + this.gameStats1[0]][0] + ((this.boxSize[this.ff[0] + this.gameStats1[0]][0] * (this.fo[0] - 55)) / 100.0f)) / 2.0f)), ((this.ei[1] + 120) + (((this.fo[1] - 55) * 120) / 100.0f)) - ((this.boxSize[this.ff[0] + this.gameStats1[0]][1] + ((this.boxSize[this.ff[0] + this.gameStats1[0]][1] * (this.fo[1] - 55)) / 100.0f)) / 2.0f), (((this.fo[0] - 55) * 14) / 100.0f) + ((14.0f * ((this.boxSize[this.ff[0] + this.gameStats1[0]][0] * 10000.0f) / 328.0f)) / 10000.0f), (((this.fo[1] - 55) * 34) / 100.0f) + ((34.0f * ((this.boxSize[this.ff[0] + this.gameStats1[0]][1] * 10000.0f) / 263.0f)) / 10000.0f), (i26 % 10) + 11);
+                    atexturerenderer.drawScaledImagef(this.uiTextures[8], (290 - (i25 * 13)) + (((290 - (i25 * 13)) * (this.fo[0] - 55)) / 100.0f) + (this.gameStats1[1] - ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][0] + ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][0] * (this.fo[0] - 55)) / 100.0f)) / 2.0f)), ((this.ei[1] + 120) + (((this.fo[1] - 55) * 120) / 100.0f)) - ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][1] + ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][1] * (this.fo[1] - 55)) / 100.0f)) / 2.0f), (((this.fo[0] - 55) * 14) / 100.0f) + ((14.0f * ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][0] * 10000.0f) / 328.0f)) / 10000.0f), (((this.fo[1] - 55) * 34) / 100.0f) + ((34.0f * ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][1] * 10000.0f) / 263.0f)) / 10000.0f), (i26 % 10) + 11);
                     int i27 = i26 / 10;
                     int i28 = i25 + 1;
                     if (i27 <= 0) {
@@ -18528,12 +18553,12 @@ public class AppInstance extends Game {
                     i26 = i27;
                 }
             } else {
-                atexturerenderer.drawScaledImagef(this.uiTextures[8], 247 + (((this.fo[0] - 55) * 247) / 100.0f) + (this.gameStats1[1] - ((this.boxSize[this.ff[0] + this.gameStats1[0]][0] + ((this.boxSize[this.ff[0] + this.gameStats1[0]][0] * (this.fo[0] - 55)) / 100.0f)) / 2.0f)), ((this.ei[1] + 119) + (((this.fo[1] - 55) * 119) / 100.0f)) - ((this.boxSize[this.ff[0] + this.gameStats1[0]][1] + ((this.boxSize[this.ff[0] + this.gameStats1[0]][1] * (this.fo[1] - 55)) / 100.0f)) / 2.0f), (((this.fo[0] - 55) * 58) / 100.0f) + ((58.0f * ((this.boxSize[this.ff[0] + this.gameStats1[0]][0] * 10000.0f) / 328.0f)) / 10000.0f), (((this.fo[1] - 55) * 35) / 100.0f) + ((35.0f * ((this.boxSize[this.ff[0] + this.gameStats1[0]][1] * 10000.0f) / 263.0f)) / 10000.0f), 52);
+                atexturerenderer.drawScaledImagef(this.uiTextures[8], 247 + (((this.fo[0] - 55) * 247) / 100.0f) + (this.gameStats1[1] - ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][0] + ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][0] * (this.fo[0] - 55)) / 100.0f)) / 2.0f)), ((this.ei[1] + 119) + (((this.fo[1] - 55) * 119) / 100.0f)) - ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][1] + ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][1] * (this.fo[1] - 55)) / 100.0f)) / 2.0f), (((this.fo[0] - 55) * 58) / 100.0f) + ((58.0f * ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][0] * 10000.0f) / 328.0f)) / 10000.0f), (((this.fo[1] - 55) * 35) / 100.0f) + ((35.0f * ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][1] * 10000.0f) / 263.0f)) / 10000.0f), 52);
             }
             int i29 = 0;
-            int i30 = (this.ff[2] < 0 || this.ff[2] > this.boxCounts[1]) ? 0 : (this.unitStats[this.boxCatIDs[this.ff[2]] + 2][0][6] / 100) + ((((this.unitStats[this.boxCatIDs[this.ff[2]] + 2][0][6] / 100) * this.eQ) * 50) / 100);
+            int i30 = (this.currentBox2[2] < 0 || this.currentBox2[2] > this.boxCounts[1]) ? 0 : (this.unitStats[this.boxCatIDs[this.currentBox2[2]] + 2][0][6] / 100) + ((((this.unitStats[this.boxCatIDs[this.currentBox2[2]] + 2][0][6] / 100) * this.eQ) * 50) / 100);
             while (true) {
-                atexturerenderer.drawScaledImagef(this.uiTextures[8], (282 - (i29 * 13)) + (((282 - (i29 * 13)) * (this.fo[0] - 55)) / 100.0f) + (this.gameStats1[1] - ((this.boxSize[this.ff[0] + this.gameStats1[0]][0] + ((this.boxSize[this.ff[0] + this.gameStats1[0]][0] * (this.fo[0] - 55)) / 100.0f)) / 2.0f)), ((this.ei[1] + 165) + (((this.fo[1] - 55) * 165) / 100.0f)) - ((this.boxSize[this.ff[0] + this.gameStats1[0]][1] + ((this.boxSize[this.ff[0] + this.gameStats1[0]][1] * (this.fo[1] - 55)) / 100.0f)) / 2.0f), (((this.fo[0] - 55) * 13) / 100.0f) + ((13.0f * ((this.boxSize[this.ff[0] + this.gameStats1[0]][0] * 10000.0f) / 328.0f)) / 10000.0f), (((this.fo[1] - 55) * 26) / 100.0f) + ((26.0f * ((this.boxSize[this.ff[0] + this.gameStats1[0]][1] * 10000.0f) / 263.0f)) / 10000.0f), (i30 % 10) + 1);
+                atexturerenderer.drawScaledImagef(this.uiTextures[8], (282 - (i29 * 13)) + (((282 - (i29 * 13)) * (this.fo[0] - 55)) / 100.0f) + (this.gameStats1[1] - ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][0] + ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][0] * (this.fo[0] - 55)) / 100.0f)) / 2.0f)), ((this.ei[1] + 165) + (((this.fo[1] - 55) * 165) / 100.0f)) - ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][1] + ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][1] * (this.fo[1] - 55)) / 100.0f)) / 2.0f), (((this.fo[0] - 55) * 13) / 100.0f) + ((13.0f * ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][0] * 10000.0f) / 328.0f)) / 10000.0f), (((this.fo[1] - 55) * 26) / 100.0f) + ((26.0f * ((this.boxSize[this.currentBox2[0] + this.gameStats1[0]][1] * 10000.0f) / 263.0f)) / 10000.0f), (i30 % 10) + 1);
                 int i31 = i30 / 10;
                 int i32 = i29 + 1;
                 if (i31 <= 0) {
@@ -18545,21 +18570,21 @@ public class AppInstance extends Game {
         }
         atexturerenderer.setImageAlpha(255);
         atexturerenderer.setImageAlpha(127);
-        if (this.ff[2] >= 0) {
+        if (this.currentBox2[2] >= 0) {
             atexturerenderer.drawScaledImagef(this.uiTextures[10], (int) (49.0f + (10.0f * aMath.sin(this.blinkFrame[4] * 30))), 391, 0);
         }
-        if (this.ff[2] < this.boxCounts[1] + this.boxCounts[2]) {
+        if (this.currentBox2[2] < this.boxCounts[1] + this.boxCounts[2]) {
             atexturerenderer.setOrientation(1);
             atexturerenderer.drawScaledImagef(this.uiTextures[10], (int) ((849.0f - (10.0f * aMath.sin(this.blinkFrame[4] * 30))) + this.excessWidth), 391, 0);
         }
         atexturerenderer.setOrientation(0);
         atexturerenderer.setImageAlpha(255);
-        if (this.ff[2] >= 0 && this.ff[2] <= this.boxCounts[1]) {
+        if (this.currentBox2[2] >= 0 && this.currentBox2[2] <= this.boxCounts[1]) {
             int i33 = -this.boxCounts[1];
             int i34 = this.boxCounts[1];
             int i35 = 0;
             do {
-                if (this.ff[2] == i35) {
+                if (this.currentBox2[2] == i35) {
                     atexturerenderer.setImageColor(255, 255, 255);
                     atexturerenderer.setImageAlpha(255);
                 } else {
@@ -18607,13 +18632,13 @@ public class AppInstance extends Game {
         atexturerenderer.drawScaledImage(this.uiTextures[0], this.buttonCoordinates1[10][0] - (dv[this.fx[10]] / 2), this.buttonCoordinates1[10][1] - (dv[this.fx[10]] / 2), dv[this.fx[10]] + this.buttonCoordinates1[10][2], dv[this.fx[10]] + this.buttonCoordinates1[10][3], 9);
         atexturerenderer.drawScaledImage(this.uiTextures[0], (this.buttonCoordinates1[10][0] + 4) - (dv[this.fx[10]] / 2), (this.buttonCoordinates1[10][1] + 17) - (dv[this.fx[10]] / 2), dv[this.fx[10]] + 84, dv[this.fx[10]] + 60, 3);
         boolean z2 = false;
-        if (this.fx[2] == 0 && this.ff[0] - 1 >= 0 && this.ff[2] <= 0 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && ((isPointerDown() || isPointerUp()) && isTouching((int) (((((getWidth() / 2) - (this.boxSize[this.ff[0] - 1][0] / 2)) + (this.boxScale * (this.ff[0] - 1))) + this.gameStats1[0]) - ((328 - this.boxSize[this.ff[0] - 1][0]) + ((328 - this.boxSize[(this.ff[0] - 1) + 1][0]) / 2.0f))), 559 - this.boxSize[this.ff[0] - 1][1], this.boxSize[this.ff[0] - 1][0], this.boxSize[this.ff[0] - 1][1]))) {
+        if (this.fx[2] == 0 && this.currentBox2[0] - 1 >= 0 && this.currentBox2[2] <= 0 && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && ((isPointerDown() || isPointerUp()) && isTouching((int) (((((getWidth() / 2) - (this.boxSize[this.currentBox2[0] - 1][0] / 2)) + (this.boxScale * (this.currentBox2[0] - 1))) + this.gameStats1[0]) - ((328 - this.boxSize[this.currentBox2[0] - 1][0]) + ((328 - this.boxSize[(this.currentBox2[0] - 1) + 1][0]) / 2.0f))), 559 - this.boxSize[this.currentBox2[0] - 1][1], this.boxSize[this.currentBox2[0] - 1][0], this.boxSize[this.currentBox2[0] - 1][1]))) {
             z2 = true;
         }
-        if (this.fx[2] == 0 && this.ff[2] >= this.boxCounts[1] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && ((isPointerDown() || isPointerUp()) && isTouching(((getWidth() / 2) - (this.boxSize[this.ff[0] + 1][0] / 2)) + (this.boxScale * (this.ff[0] + 1)) + this.gameStats1[0] + (328 - this.boxSize[this.ff[0] + 1][0]), 559 - this.boxSize[this.ff[0] + 1][1], this.boxSize[this.ff[0] + 1][0], this.boxSize[this.ff[0] + 1][1]))) {
+        if (this.fx[2] == 0 && this.currentBox2[2] >= this.boxCounts[1] && this.gameStats1[0] % this.boxScale == 0 && this.scrollAmount[0] == 0 && !this.eE[9] && ((isPointerDown() || isPointerUp()) && isTouching(((getWidth() / 2) - (this.boxSize[this.currentBox2[0] + 1][0] / 2)) + (this.boxScale * (this.currentBox2[0] + 1)) + this.gameStats1[0] + (328 - this.boxSize[this.currentBox2[0] + 1][0]), 559 - this.boxSize[this.currentBox2[0] + 1][1], this.boxSize[this.currentBox2[0] + 1][0], this.boxSize[this.currentBox2[0] + 1][1]))) {
             z2 = true;
         }
-        if ((this.fx[2] != 0 || ((this.ff[2] > -1 && this.ff[2] < this.boxCounts[1] + 1) || this.eE[5] || this.gameStats1[0] % this.boxScale != 0 || this.scrollAmount[0] != 0 || ((!isPointerDown() && !isPointerUp()) || !isTouching(((((getWidth() / 2) - (this.boxSize[this.ff[0]][0] / 2)) + (this.boxScale * this.ff[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.ff[0]][0]), 559 - this.boxSize[this.ff[0]][1], this.boxSize[this.ff[0]][0], this.boxSize[this.ff[0]][1])))) && !this.eE[5] && this.fx[2] == 0 && !z2 && !this.eE[0] && !this.eE[1] && !this.eE[2] && !this.eb && this.eE[10] && !this.gJ) {
+        if ((this.fx[2] != 0 || ((this.currentBox2[2] > -1 && this.currentBox2[2] < this.boxCounts[1] + 1) || this.eE[5] || this.gameStats1[0] % this.boxScale != 0 || this.scrollAmount[0] != 0 || ((!isPointerDown() && !isPointerUp()) || !isTouching(((((getWidth() / 2) - (this.boxSize[this.currentBox2[0]][0] / 2)) + (this.boxScale * this.currentBox2[0])) + this.gameStats1[0]) - (328 - this.boxSize[this.currentBox2[0]][0]), 559 - this.boxSize[this.currentBox2[0]][1], this.boxSize[this.currentBox2[0]][0], this.boxSize[this.currentBox2[0]][1])))) && !this.eE[5] && this.fx[2] == 0 && !z2 && !this.eE[0] && !this.eE[1] && !this.eE[2] && !this.eb && this.eE[10] && !this.gJ) {
             atexturerenderer.drawScaledImage(this.uiTextures[0], 3, 540, 96, 96, ((this.blinkFrame[3] % 4) / 2) + 12);
         }
         atexturerenderer.drawScaledImagef(this.uiTextures[5], this.excessWidth + 670, 0, 11);
@@ -22206,9 +22231,6 @@ public class AppInstance extends Game {
         this.gameStats1[0] += this.scrollAmount[0];
         this.gameStats1[1] -= this.scrollAmount[0];
         this.scrollAmount[0] = (int) (this.scrollAmount[0] * 0.9d);
-        if (this.scrollAmount[0] != 0) {
-            this.scrollAmount[0] = this.scrollAmount[0];
-        }
         if (this.gameStats1[0] >= ((this.boxScale / 2) - this.boxScale) - 20) {
             this.gameStats1[0] = ((this.boxScale / 2) - this.boxScale) - 20;
             this.gameStats1[1] = this.boxScale * 100;
