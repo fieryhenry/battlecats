@@ -400,7 +400,7 @@ public class Game extends MyApplicationBase {
     int[] rechargeTimes = new int[10];
     int[] fc = new int[2];
     int[] fd = new int[2];
-    int[] ff = new int[6];
+    int[] currentBox2 = new int[6];
     int[][] fg = (int[][]) Array.newInstance(Integer.TYPE, 10, 2);
     int[][] fj = (int[][]) Array.newInstance(Integer.TYPE, 10, 4);
     int[] fk = new int[11];
