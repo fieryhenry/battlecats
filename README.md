@@ -99,6 +99,7 @@ Here are some current problems with the app:
   catfood
 - [ ] Not being able to buy anything in the item shop (all of that code didn't
   decompile)
+- [ ] Not being to able to equip cats
 
 List is not exhaustive, there are probably lots of other issues that I haven't
 noticed yet.
