@@ -18,7 +18,7 @@ public class Model {
       return this.i[var1];
    }
 
-   public void a() {
+   public void setAction() {
       this.a((ModelAnimation)null, 0, 0, 1);
    }
 
@@ -194,7 +194,7 @@ public class Model {
 
    }
 
-   public void a(Texture[] var1) {
+   public void setTextures(Texture[] var1) {
       this.a = var1;
    }
 

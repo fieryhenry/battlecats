@@ -6,6 +6,7 @@ import java.util.Calendar;
 import jp.co.ponos.library.game.Model;
 import jp.co.ponos.library.game.ModelAnimation;
 import jp.co.ponos.library.game.Point;
+import jp.co.ponos.library.game.SoundType;
 import jp.co.ponos.library.game.TextureRenderer;
 import jp.co.ponos.library.game.aMath;
 import jp.co.ponos.library.game.Sound;
@@ -86,9 +87,9 @@ public class Game extends MyApplicationBase {
     Texture[] aC = new Texture[1];
     Model[] aD = new Model[2];
     ModelAnimation[][] aE = new ModelAnimation[2][3];
-    Texture[] aF = new Texture[2];
-    Model[] aG = new Model[2];
-    ModelAnimation[] aH = new ModelAnimation[2];
+    Texture[] stampTextures = new Texture[2];
+    Model[] stampModels = new Model[2];
+    ModelAnimation[] stampAnims = new ModelAnimation[2];
     Texture[] aI = new Texture[2];
     Model aJ;
     ModelAnimation[] aK = new ModelAnimation[2];
@@ -107,7 +108,7 @@ public class Game extends MyApplicationBase {
     int aX;
     int aY;
     int aZ;
-    Texture[] ae = new Texture[30];
+    Texture[] uiTextures = new Texture[30];
     Texture[] af = new Texture[4];
     Texture[] textTextures = new Texture[100];
     Texture[] ah = new Texture[15];
@@ -167,8 +168,8 @@ public class Game extends MyApplicationBase {
     int bi;
     int bj;
     int[] bk = new int[10];
-    int bl;
-    int[] bm = new int[30];
+    int currentStamp;
+    int[] stampClaimFlags = new int[30];
     int bn;
     int bo;
     int[] bp = new int[10];
@@ -298,7 +299,7 @@ public class Game extends MyApplicationBase {
     boolean ee;
     boolean ef;
     int eg;
-    int[] eh = new int[5];
+    int[] scrollOffset = new int[5];
     int[] ei = new int[3];
     int[] ej = new int[1];
     int[] ek = new int[3];
@@ -331,7 +332,7 @@ public class Game extends MyApplicationBase {
     int fK;
     int fL;
     int fP;
-    int[] fQ = new int[11];
+    int[] frameCounter = new int[11];
     int[] fR = new int[2];
     int[] fS = new int[6];
     boolean fT;
@@ -361,7 +362,7 @@ public class Game extends MyApplicationBase {
     int ft;
     int fu;
     int fv;
-    int[][] fw = new int[17][4];
+    int[][] buttonCoordinates1 = new int[17][4];
     int[] fx = new int[17];
     int[] fy = new int[10];
     int[] fz = new int[2];
@@ -407,7 +408,7 @@ public class Game extends MyApplicationBase {
     int[] gm = new int[2];
     int[][] gn = new int[2][3];
     int[][] go = new int[60][2];
-    boolean[] gp = new boolean[17];
+    boolean[] shouldPlayButtonSelect = new boolean[17];
     boolean[] gq = new boolean[15];
     boolean[] gr = new boolean[15];
     boolean[] gs = new boolean[2];
@@ -416,7 +417,7 @@ public class Game extends MyApplicationBase {
     int[] gv = new int[3];
     int gw;
     int gx;
-    int gy;
+    int boxScale;
     int gz;
     boolean h;
     int hA;
@@ -427,7 +428,7 @@ public class Game extends MyApplicationBase {
     int hF;
     int hG;
     int hH;
-    boolean hI;
+    boolean isScrolling;
     SimpleDateFormat hJ = new SimpleDateFormat("yyyyMMddHHmmss");
     SimpleDateFormat hK = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     int[] hL = new int[]{5, 5, 5, 5, 5, 1, 5, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 5, 5, 5, 5, 5, 2, 2, 2, 2, 2, 2, 2, 2};
@@ -808,8 +809,8 @@ public class Game extends MyApplicationBase {
             this.hk[var1] = 0;
         }
 
-        for (var1 = 0; var1 < this.getLength(this.gp); ++var1) {
-            this.gp[var1] = false;
+        for (var1 = 0; var1 < this.getLength(this.shouldPlayButtonSelect); ++var1) {
+            this.shouldPlayButtonSelect[var1] = false;
         }
 
         for (var1 = 0; var1 < this.getLength(this.bM); ++var1) {
@@ -850,9 +851,9 @@ public class Game extends MyApplicationBase {
         this.eR = 0;
         this.eP = 0;
 
-        for (var1 = 0; var1 < this.getLength(this.fw); ++var1) {
-            for (var2 = 0; var2 < this.getLength(this.fw[var1]); ++var2) {
-                this.fw[var1][var2] = 0;
+        for (var1 = 0; var1 < this.getLength(this.buttonCoordinates1); ++var1) {
+            for (var2 = 0; var2 < this.getLength(this.buttonCoordinates1[var1]); ++var2) {
+                this.buttonCoordinates1[var1][var2] = 0;
             }
         }
 
@@ -1056,28 +1057,28 @@ public class Game extends MyApplicationBase {
             this.af[1].load(MyUtility.getString(String.format("img%03d.png", 100)), MyUtility.getString(String.format("img%03d.imgcut", 100)));
         }
 
-        if (this.ae[0].isLoaded()) {
-            this.ae[0].reset();
+        if (this.uiTextures[0].isLoaded()) {
+            this.uiTextures[0].reset();
         }
 
-        if (!this.ae[0].isLoaded()) {
-            this.ae[0].load(MyUtility.getString(String.format("bg%03d.png", this.bV[4] + 0)), MyUtility.getString(String.format("bg%03d.imgcut", this.bV[4])));
+        if (!this.uiTextures[0].isLoaded()) {
+            this.uiTextures[0].load(MyUtility.getString(String.format("bg%03d.png", this.bV[4] + 0)), MyUtility.getString(String.format("bg%03d.imgcut", this.bV[4])));
         }
 
-        if (this.ae[1].isLoaded()) {
-            this.ae[1].reset();
+        if (this.uiTextures[1].isLoaded()) {
+            this.uiTextures[1].reset();
         }
 
-        if (!this.ae[1].isLoaded()) {
-            this.ae[1].load(MyUtility.getString(String.format("fc%03d.png", 0)), MyUtility.getString(String.format("fc%03d.imgcut", 0)));
+        if (!this.uiTextures[1].isLoaded()) {
+            this.uiTextures[1].load(MyUtility.getString(String.format("fc%03d.png", 0)), MyUtility.getString(String.format("fc%03d.imgcut", 0)));
         }
 
-        if (this.ae[2].isLoaded()) {
-            this.ae[2].reset();
+        if (this.uiTextures[2].isLoaded()) {
+            this.uiTextures[2].reset();
         }
 
-        if (!this.ae[2].isLoaded()) {
-            this.ae[2].load(MyUtility.getString(String.format("ec%03d.png", this.bM[20])), MyUtility.getString(String.format("ec%03d.imgcut", this.bM[20])));
+        if (!this.uiTextures[2].isLoaded()) {
+            this.uiTextures[2].load(MyUtility.getString(String.format("ec%03d.png", this.bM[20])), MyUtility.getString(String.format("ec%03d.imgcut", this.bM[20])));
         }
 
         if (this.aC[0].isLoaded()) {
@@ -1099,97 +1100,97 @@ public class Game extends MyApplicationBase {
             }
 
             for (var1 = 0; var1 < 2; ++var1) {
-                this.aD[var1].a(this.aC);
-                this.aD[var1].a();
+                this.aD[var1].setTextures(this.aC);
+                this.aD[var1].setAction();
             }
         }
 
-        if (this.ae[4].isLoaded()) {
-            this.ae[4].reset();
+        if (this.uiTextures[4].isLoaded()) {
+            this.uiTextures[4].reset();
         }
 
-        if (!this.ae[4].isLoaded()) {
-            this.ae[4].load(MyUtility.getString(String.format("img%03d.png", 1)), MyUtility.getString(String.format("img%03d.imgcut", 1)));
+        if (!this.uiTextures[4].isLoaded()) {
+            this.uiTextures[4].load(MyUtility.getString(String.format("img%03d.png", 1)), MyUtility.getString(String.format("img%03d.imgcut", 1)));
         }
 
-        if (this.ae[15].isLoaded()) {
-            this.ae[15].reset();
+        if (this.uiTextures[15].isLoaded()) {
+            this.uiTextures[15].reset();
         }
 
-        if (!this.ae[15].isLoaded()) {
-            this.ae[15].load(MyUtility.getString(String.format("img%03d.png", 2)), MyUtility.getString(String.format("img%03d.imgcut", 2)));
+        if (!this.uiTextures[15].isLoaded()) {
+            this.uiTextures[15].load(MyUtility.getString(String.format("img%03d.png", 2)), MyUtility.getString(String.format("img%03d.imgcut", 2)));
         }
 
-        if (this.ae[16].isLoaded()) {
-            this.ae[16].reset();
+        if (this.uiTextures[16].isLoaded()) {
+            this.uiTextures[16].reset();
         }
 
-        if (!this.ae[16].isLoaded()) {
-            this.ae[16].load(MyUtility.getString(String.format("ec%03d_s.png", this.bM[20])), MyUtility.getString(String.format("ec%03d_s.imgcut", this.bM[20])));
+        if (!this.uiTextures[16].isLoaded()) {
+            this.uiTextures[16].load(MyUtility.getString(String.format("ec%03d_s.png", this.bM[20])), MyUtility.getString(String.format("ec%03d_s.imgcut", this.bM[20])));
         }
 
-        if (this.ae[17].isLoaded()) {
-            this.ae[17].reset();
+        if (this.uiTextures[17].isLoaded()) {
+            this.uiTextures[17].reset();
         }
 
-        if (!this.ae[17].isLoaded()) {
-            this.ae[17].load(MyUtility.getString(String.format("ec%03d_n_%s.png", this.bM[20], MyUtility.getString("lang"))), MyUtility.getString(String.format("ec%03d_n_%s.imgcut", this.bM[20], MyUtility.getString("lang"))));
+        if (!this.uiTextures[17].isLoaded()) {
+            this.uiTextures[17].load(MyUtility.getString(String.format("ec%03d_n_%s.png", this.bM[20], MyUtility.getString("lang"))), MyUtility.getString(String.format("ec%03d_n_%s.imgcut", this.bM[20], MyUtility.getString("lang"))));
         }
 
-        if (this.ae[18].isLoaded()) {
-            this.ae[18].reset();
+        if (this.uiTextures[18].isLoaded()) {
+            this.uiTextures[18].reset();
         }
 
-        if (!this.ae[18].isLoaded()) {
-            this.ae[18].load(MyUtility.getString(String.format("img%03d.png", 3)), MyUtility.getString(String.format("img%03d.imgcut", 3)));
+        if (!this.uiTextures[18].isLoaded()) {
+            this.uiTextures[18].load(MyUtility.getString(String.format("img%03d.png", 3)), MyUtility.getString(String.format("img%03d.imgcut", 3)));
         }
 
-        if (this.ae[19].isLoaded()) {
-            this.ae[19].reset();
+        if (this.uiTextures[19].isLoaded()) {
+            this.uiTextures[19].reset();
         }
 
-        if (!this.ae[19].isLoaded()) {
-            this.ae[19].load(MyUtility.getString(String.format("img%03d.png", 4)), MyUtility.getString(String.format("img%03d.imgcut", 4)));
+        if (!this.uiTextures[19].isLoaded()) {
+            this.uiTextures[19].load(MyUtility.getString(String.format("img%03d.png", 4)), MyUtility.getString(String.format("img%03d.imgcut", 4)));
         }
 
-        if (this.ae[20].isLoaded()) {
-            this.ae[20].reset();
+        if (this.uiTextures[20].isLoaded()) {
+            this.uiTextures[20].reset();
         }
 
-        if (!this.ae[20].isLoaded()) {
-            this.ae[20].load(MyUtility.getString(String.format("img%03d.png", 43)), MyUtility.getString(String.format("img%03d.imgcut", 43)));
+        if (!this.uiTextures[20].isLoaded()) {
+            this.uiTextures[20].load(MyUtility.getString(String.format("img%03d.png", 43)), MyUtility.getString(String.format("img%03d.imgcut", 43)));
         }
 
-        if (this.ae[21].isLoaded()) {
-            this.ae[21].reset();
+        if (this.uiTextures[21].isLoaded()) {
+            this.uiTextures[21].reset();
         }
 
-        if (!this.ae[21].isLoaded()) {
-            this.ae[21].load(MyUtility.getString(String.format("img%03d.png", 6)), MyUtility.getString(String.format("img%03d.imgcut", 6)));
+        if (!this.uiTextures[21].isLoaded()) {
+            this.uiTextures[21].load(MyUtility.getString(String.format("img%03d.png", 6)), MyUtility.getString(String.format("img%03d.imgcut", 6)));
         }
 
-        if (this.ae[23].isLoaded()) {
-            this.ae[23].reset();
+        if (this.uiTextures[23].isLoaded()) {
+            this.uiTextures[23].reset();
         }
 
-        if (!this.ae[23].isLoaded()) {
-            this.ae[23].load(MyUtility.getString(String.format("img%03d.png", 40)), MyUtility.getString(String.format("img%03d.imgcut", 40)));
+        if (!this.uiTextures[23].isLoaded()) {
+            this.uiTextures[23].load(MyUtility.getString(String.format("img%03d.png", 40)), MyUtility.getString(String.format("img%03d.imgcut", 40)));
         }
 
-        if (this.ae[24].isLoaded()) {
-            this.ae[24].reset();
+        if (this.uiTextures[24].isLoaded()) {
+            this.uiTextures[24].reset();
         }
 
-        if (!this.ae[24].isLoaded()) {
-            this.ae[24].load(MyUtility.getString(String.format("img%03d.png", 41)), MyUtility.getString(String.format("img%03d.imgcut", 41)));
+        if (!this.uiTextures[24].isLoaded()) {
+            this.uiTextures[24].load(MyUtility.getString(String.format("img%03d.png", 41)), MyUtility.getString(String.format("img%03d.imgcut", 41)));
         }
 
-        if (this.ae[25].isLoaded()) {
-            this.ae[25].reset();
+        if (this.uiTextures[25].isLoaded()) {
+            this.uiTextures[25].reset();
         }
 
-        if (!this.ae[25].isLoaded()) {
-            this.ae[25].load(MyUtility.getString(String.format("img%03d.png", 42)), MyUtility.getString(String.format("img%03d.imgcut", 42)));
+        if (!this.uiTextures[25].isLoaded()) {
+            this.uiTextures[25].load(MyUtility.getString(String.format("img%03d.png", 42)), MyUtility.getString(String.format("img%03d.imgcut", 42)));
         }
 
         if (this.ay[0].isLoaded()) {
@@ -1202,32 +1203,32 @@ public class Game extends MyApplicationBase {
 
         this.az[0][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 0, 1)));
         this.aA[0][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 0, 1)));
-        this.az[0][0].a(this.ay);
-        this.az[0][0].a();
+        this.az[0][0].setTextures(this.ay);
+        this.az[0][0].setAction();
         this.az[0][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 0, 2)));
         this.aA[0][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 0, 2)));
-        this.az[0][1].a(this.ay);
-        this.az[0][1].a();
+        this.az[0][1].setTextures(this.ay);
+        this.az[0][1].setAction();
         this.az[1][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 1, 1)));
         this.aA[1][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 1, 1)));
-        this.az[1][0].a(this.ay);
-        this.az[1][0].a();
+        this.az[1][0].setTextures(this.ay);
+        this.az[1][0].setAction();
         this.az[1][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 1, 2)));
         this.aA[1][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 1, 2)));
-        this.az[1][1].a(this.ay);
-        this.az[1][1].a();
+        this.az[1][1].setTextures(this.ay);
+        this.az[1][1].setAction();
         this.az[2][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 2, 1)));
         this.aA[2][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 2, 1)));
-        this.az[2][0].a(this.ay);
-        this.az[2][0].a();
+        this.az[2][0].setTextures(this.ay);
+        this.az[2][0].setAction();
         this.az[2][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 2, 2)));
         this.aA[2][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 2, 2)));
-        this.az[2][1].a(this.ay);
-        this.az[2][1].a();
+        this.az[2][1].setTextures(this.ay);
+        this.az[2][1].setAction();
         this.az[3][0].load(MyUtility.getString(String.format("%03d_g%02d.mamodel", 0, 3)));
         this.aA[3][0].load(MyUtility.getString(String.format("%03d_g%02d.maanim", 0, 3)));
-        this.az[3][0].a(this.ay);
-        this.az[3][0].a();
+        this.az[3][0].setTextures(this.ay);
+        this.az[3][0].setAction();
 
         for (var1 = 0; var1 < this.getLength(this.ar); ++var1) {
             if (this.ar[var1].isLoaded()) {
@@ -1242,20 +1243,20 @@ public class Game extends MyApplicationBase {
         }
 
         for (var1 = 0; var1 < 10; ++var1) {
-            if (this.ae[var1 + 5].isLoaded()) {
-                this.ae[var1 + 5].reset();
+            if (this.uiTextures[var1 + 5].isLoaded()) {
+                this.uiTextures[var1 + 5].reset();
             }
         }
 
         for (var1 = 0; var1 < 10; ++var1) {
             if (this.bk[var1] == -1) {
-                this.ae[var1 + 5].load(MyUtility.getString(String.format("uni.png")), MyUtility.getString(String.format("uni.imgcut")));
+                this.uiTextures[var1 + 5].load(MyUtility.getString(String.format("uni.png")), MyUtility.getString(String.format("uni.imgcut")));
             } else if (this.eV[var1] == 0) {
-                if (!this.ae[var1 + 5].isLoaded()) {
-                    this.ae[var1 + 5].load(MyUtility.getString(String.format("uni%03d_f%02d.png", this.bk[var1] - 2, 0)), MyUtility.getString(String.format("uni%03d_f%02d.imgcut", this.bk[var1] - 2, 0)));
+                if (!this.uiTextures[var1 + 5].isLoaded()) {
+                    this.uiTextures[var1 + 5].load(MyUtility.getString(String.format("uni%03d_f%02d.png", this.bk[var1] - 2, 0)), MyUtility.getString(String.format("uni%03d_f%02d.imgcut", this.bk[var1] - 2, 0)));
                 }
-            } else if (this.eV[var1] == 1 && !this.ae[var1 + 5].isLoaded()) {
-                this.ae[var1 + 5].load(MyUtility.getString(String.format("uni%03d_c%02d.png", this.bk[var1] - 2, 0)), MyUtility.getString(String.format("uni%03d_c%02d.imgcut", this.bk[var1] - 2, 0)));
+            } else if (this.eV[var1] == 1 && !this.uiTextures[var1 + 5].isLoaded()) {
+                this.uiTextures[var1 + 5].load(MyUtility.getString(String.format("uni%03d_c%02d.png", this.bk[var1] - 2, 0)), MyUtility.getString(String.format("uni%03d_c%02d.imgcut", this.bk[var1] - 2, 0)));
             }
         }
 
@@ -1270,8 +1271,8 @@ public class Game extends MyApplicationBase {
                             this.au[var1][var2].load(MyUtility.getString(String.format("%03d_f%02d.maanim", this.bk[var1] - 2, var2)));
                         }
 
-                        this.at[var1].a(this.ar);
-                        this.at[var1].a();
+                        this.at[var1].setTextures(this.ar);
+                        this.at[var1].setAction();
                     }
                 } else if (this.eV[var1] == 1 && !this.as[this.bk[var1] - 2].isLoaded()) {
                     this.as[this.bk[var1] - 2].load(MyUtility.getString(String.format("i%03d_c.png", this.bk[var1] - 2)), MyUtility.getString(String.format("%03d_c.imgcut", this.bk[var1] - 2)));
@@ -1281,8 +1282,8 @@ public class Game extends MyApplicationBase {
                         this.au[var1][var2].load(MyUtility.getString(String.format("%03d_c%02d.maanim", this.bk[var1] - 2, var2)));
                     }
 
-                    this.at[var1].a(this.as);
-                    this.at[var1].a();
+                    this.at[var1].setTextures(this.as);
+                    this.at[var1].setAction();
                 }
             }
         }
@@ -1320,8 +1321,8 @@ public class Game extends MyApplicationBase {
                     this.ax[var1][var2].load(MyUtility.getString(String.format("%03d_e%02d.maanim", this.eU[var1] - 2, var2)));
                 }
 
-                this.aw[var1].a(this.av);
-                this.aw[var1].a();
+                this.aw[var1].setTextures(this.av);
+                this.aw[var1].setAction();
             }
         }
 
@@ -1349,18 +1350,18 @@ public class Game extends MyApplicationBase {
 
         this.textTextures[10].drawText(this.optionText[1], "FONT_SYSTEM_BOLD", 30, 1);
         this.gA[0] = 20;
-        this.fw[0][0] = this.excessWidth + 814;
-        this.fw[0][1] = this.eZ + 510;
-        this.fw[0][2] = 146;
-        this.fw[0][3] = 130;
-        this.fw[1][0] = 0;
-        this.fw[1][1] = this.eZ + 515;
-        this.fw[1][2] = 146;
-        this.fw[1][3] = 125;
-        this.fw[3][0] = 0;
-        this.fw[3][1] = 0 - this.eZ;
-        this.fw[3][2] = 88;
-        this.fw[3][3] = 88;
+        this.buttonCoordinates1[0][0] = this.excessWidth + 814;
+        this.buttonCoordinates1[0][1] = this.eZ + 510;
+        this.buttonCoordinates1[0][2] = 146;
+        this.buttonCoordinates1[0][3] = 130;
+        this.buttonCoordinates1[1][0] = 0;
+        this.buttonCoordinates1[1][1] = this.eZ + 515;
+        this.buttonCoordinates1[1][2] = 146;
+        this.buttonCoordinates1[1][3] = 125;
+        this.buttonCoordinates1[3][0] = 0;
+        this.buttonCoordinates1[3][1] = 0 - this.eZ;
+        this.buttonCoordinates1[3][2] = 88;
+        this.buttonCoordinates1[3][3] = 88;
         var3 = 5;
 
         for (var1 = 5; var1 >= 0; var3 = var2) {
@@ -1421,7 +1422,7 @@ public class Game extends MyApplicationBase {
 
         this.gW = 0;
         this.fX = aMath.rand(this.bM[9]);
-        Sound.getInstance().stop(-1);
+        Sound.getInstance().stop(SoundType.ALL);
         this.eH[0] = 0;
 
         for (var1 = 0; var1 < 10; ++var1) {
@@ -1542,22 +1543,22 @@ public class Game extends MyApplicationBase {
         this.hj[8][1] = 547;
         this.hj[8][2] = 88;
         this.hj[8][3] = 88;
-        this.fw[10][0] = this.excessWidth + 701;
-        this.fw[10][1] = this.eZ + 578;
-        this.fw[10][2] = 88;
-        this.fw[10][3] = 88;
-        this.fw[11][0] = this.excessWidth + 799;
-        this.fw[11][1] = this.eZ + 578;
-        this.fw[11][2] = 88;
-        this.fw[11][3] = 88;
-        this.fw[13][0] = 197;
-        this.fw[13][1] = 552;
-        this.fw[13][2] = 214;
-        this.fw[13][3] = 88;
-        this.fw[14][0] = this.excessWidth + 680;
-        this.fw[14][1] = 552;
-        this.fw[14][2] = 88;
-        this.fw[14][3] = 88;
+        this.buttonCoordinates1[10][0] = this.excessWidth + 701;
+        this.buttonCoordinates1[10][1] = this.eZ + 578;
+        this.buttonCoordinates1[10][2] = 88;
+        this.buttonCoordinates1[10][3] = 88;
+        this.buttonCoordinates1[11][0] = this.excessWidth + 799;
+        this.buttonCoordinates1[11][1] = this.eZ + 578;
+        this.buttonCoordinates1[11][2] = 88;
+        this.buttonCoordinates1[11][3] = 88;
+        this.buttonCoordinates1[13][0] = 197;
+        this.buttonCoordinates1[13][1] = 552;
+        this.buttonCoordinates1[13][2] = 214;
+        this.buttonCoordinates1[13][3] = 88;
+        this.buttonCoordinates1[14][0] = this.excessWidth + 680;
+        this.buttonCoordinates1[14][1] = 552;
+        this.buttonCoordinates1[14][2] = 88;
+        this.buttonCoordinates1[14][3] = 88;
 
         for (var1 = 0; var1 < this.getLength(this.em); ++var1) {
             this.em[var1] = 0;
@@ -1621,16 +1622,16 @@ public class Game extends MyApplicationBase {
             }
         }
 
-        for (var1 = 0; var1 < this.getLength(this.eh); ++var1) {
-            this.eh[var1] = 0;
+        for (var1 = 0; var1 < this.getLength(this.scrollOffset); ++var1) {
+            this.scrollOffset[var1] = 0;
         }
 
         for (var1 = 0; var1 < this.getLength(this.ei); ++var1) {
             this.ei[var1] = 0;
         }
 
-        for (var1 = 0; var1 < this.getLength(this.fQ); ++var1) {
-            this.fQ[var1] = 0;
+        for (var1 = 0; var1 < this.getLength(this.frameCounter); ++var1) {
+            this.frameCounter[var1] = 0;
         }
 
         this.eC = false;
@@ -1643,8 +1644,16 @@ public class Game extends MyApplicationBase {
         return this.scene;
     }
 
+    SceneType getSceneType() {
+        return SceneType.valueOf(this.scene);
+    }
+
     int getScene2() {
         return this.scene2;
+    }
+
+    SceneType getScene2Type() {
+        return SceneType.valueOf(this.scene2);
     }
 
     void resetTextures() {
@@ -1699,9 +1708,9 @@ public class Game extends MyApplicationBase {
             }
         }
 
-        for (var2 = 0; var2 < this.getLength(this.aF); ++var2) {
-            if (this.aF[var2].isLoaded()) {
-                this.aF[var2].reset();
+        for (var2 = 0; var2 < this.getLength(this.stampTextures); ++var2) {
+            if (this.stampTextures[var2].isLoaded()) {
+                this.stampTextures[var2].reset();
             }
         }
 
@@ -1715,42 +1724,42 @@ public class Game extends MyApplicationBase {
 
     void map2Load() {
         int var1;
-        for (var1 = 0; var1 < this.getLength(this.gp); ++var1) {
-            this.gp[var1] = false;
+        for (var1 = 0; var1 < this.getLength(this.shouldPlayButtonSelect); ++var1) {
+            this.shouldPlayButtonSelect[var1] = false;
         }
 
         //jp.co.ponos.library.a.a.b().f();
 
-        for (var1 = 0; var1 < this.getLength(this.fw); ++var1) {
-            for (int var2 = 0; var2 < this.getLength(this.fw[var1]); ++var2) {
-                this.fw[var1][var2] = 0;
+        for (var1 = 0; var1 < this.getLength(this.buttonCoordinates1); ++var1) {
+            for (int var2 = 0; var2 < this.getLength(this.buttonCoordinates1[var1]); ++var2) {
+                this.buttonCoordinates1[var1][var2] = 0;
             }
         }
 
-        for (var1 = 0; var1 < this.getLength(this.eh); ++var1) {
-            this.eh[var1] = 0;
+        for (var1 = 0; var1 < this.getLength(this.scrollOffset); ++var1) {
+            this.scrollOffset[var1] = 0;
         }
 
         for (var1 = 0; var1 < this.getLength(this.ei); ++var1) {
             this.ei[var1] = 0;
         }
 
-        for (var1 = 0; var1 < this.getLength(this.fQ); ++var1) {
-            this.fQ[var1] = 0;
+        for (var1 = 0; var1 < this.getLength(this.frameCounter); ++var1) {
+            this.frameCounter[var1] = 0;
         }
 
         for (var1 = 0; var1 < this.getLength(this.fx); ++var1) {
             this.fx[var1] = 0;
         }
 
-        this.fw[0][0] = 633;
-        this.fw[0][1] = 488;
-        this.fw[0][2] = 304;
-        this.fw[0][3] = 86;
-        this.fw[5][0] = 4;
-        this.fw[5][1] = 541;
-        this.fw[5][2] = 95;
-        this.fw[5][3] = 95;
+        this.buttonCoordinates1[0][0] = 633;
+        this.buttonCoordinates1[0][1] = 488;
+        this.buttonCoordinates1[0][2] = 304;
+        this.buttonCoordinates1[0][3] = 86;
+        this.buttonCoordinates1[5][0] = 4;
+        this.buttonCoordinates1[5][1] = 541;
+        this.buttonCoordinates1[5][2] = 95;
+        this.buttonCoordinates1[5][3] = 95;
 
         for (var1 = 0; var1 < this.getLength(this.gm); ++var1) {
             this.gm[var1] = 0;
@@ -1765,7 +1774,7 @@ public class Game extends MyApplicationBase {
         this.gm[0] = 297;
         this.gm[1] = 0;
         this.eE[0] = false;
-        this.fQ[2] = 0;
+        this.frameCounter[2] = 0;
         this.resetTextures();
 
         for (var1 = 0; var1 < 10; ++var1) {
@@ -1788,40 +1797,40 @@ public class Game extends MyApplicationBase {
             }
         }
 
-        if (this.ae[6].isLoaded()) {
-            this.ae[6].reset();
+        if (this.uiTextures[6].isLoaded()) {
+            this.uiTextures[6].reset();
         }
 
-        if (!this.ae[6].isLoaded()) {
-            this.ae[6].load(MyUtility.getString(String.format("img%03d.png", 32)), MyUtility.getString(String.format("img%03d.imgcut", 32)));
+        if (!this.uiTextures[6].isLoaded()) {
+            this.uiTextures[6].load(MyUtility.getString(String.format("img%03d.png", 32)), MyUtility.getString(String.format("img%03d.imgcut", 32)));
         }
 
-        if (this.ae[7].isLoaded()) {
-            this.ae[7].reset();
+        if (this.uiTextures[7].isLoaded()) {
+            this.uiTextures[7].reset();
         }
 
-        if (!this.ae[7].isLoaded()) {
-            this.ae[7].load(MyUtility.getString(String.format("img%03d.png", 19)), MyUtility.getString(String.format("img%03d.imgcut", 19)));
+        if (!this.uiTextures[7].isLoaded()) {
+            this.uiTextures[7].load(MyUtility.getString(String.format("img%03d.png", 19)), MyUtility.getString(String.format("img%03d.imgcut", 19)));
         }
 
-        if (this.ae[8].isLoaded()) {
-            this.ae[8].reset();
+        if (this.uiTextures[8].isLoaded()) {
+            this.uiTextures[8].reset();
         }
 
-        if (!this.ae[8].isLoaded()) {
-            this.ae[8].load(MyUtility.getString(String.format("img%03d.png", 33)), MyUtility.getString(String.format("img%03d.imgcut", 33)));
+        if (!this.uiTextures[8].isLoaded()) {
+            this.uiTextures[8].load(MyUtility.getString(String.format("img%03d.png", 33)), MyUtility.getString(String.format("img%03d.imgcut", 33)));
         }
 
-        if (this.ae[9].isLoaded()) {
-            this.ae[9].reset();
+        if (this.uiTextures[9].isLoaded()) {
+            this.uiTextures[9].reset();
         }
 
-        if (this.ae[10].isLoaded()) {
-            this.ae[10].reset();
+        if (this.uiTextures[10].isLoaded()) {
+            this.uiTextures[10].reset();
         }
 
-        if (this.ae[11].isLoaded()) {
-            this.ae[11].reset();
+        if (this.uiTextures[11].isLoaded()) {
+            this.uiTextures[11].reset();
         }
 
         this.dY = 0;
@@ -1935,9 +1944,9 @@ public class Game extends MyApplicationBase {
                     var7 = (100 - var6) * 22 / 100;
                     var8 = (100 - var6) * 26 / 100;
                     if (var5 == 2) {
-                        var1.drawScaledImageI(this.ae[4], var3, var4 + (26 - var8) / 2, var7, var8, 45);
+                        var1.drawScaledImageI(this.uiTextures[4], var3, var4 + (26 - var8) / 2, var7, var8, 45);
                     } else if (var5 == 3) {
-                        var1.drawScaledImageI(this.ae[4], var3, var4 + (26 - var8) / 2, var7, var8, 56);
+                        var1.drawScaledImageI(this.uiTextures[4], var3, var4 + (26 - var8) / 2, var7, var8, 56);
                     }
 
                     var9 = (100 - var6) * 18 / 100;
@@ -1948,9 +1957,9 @@ public class Game extends MyApplicationBase {
 
                     while (true) {
                         if (var5 == 2) {
-                            var1.drawScaledImageI(this.ae[4], var2 + (18 - var9) / 2, var4 + (26 - var8) / 2, var9, var8, var3 % 10 + 35);
+                            var1.drawScaledImageI(this.uiTextures[4], var2 + (18 - var9) / 2, var4 + (26 - var8) / 2, var9, var8, var3 % 10 + 35);
                         } else if (var5 == 3) {
-                            var1.drawScaledImageI(this.ae[4], var2 + (18 - var9) / 2, var4 + (26 - var8) / 2, var9, var8, var3 % 10 + 46);
+                            var1.drawScaledImageI(this.uiTextures[4], var2 + (18 - var9) / 2, var4 + (26 - var8) / 2, var9, var8, var3 % 10 + 46);
                         }
 
                         var3 /= 10;
@@ -1968,9 +1977,9 @@ public class Game extends MyApplicationBase {
                 var4 = (100 - var6) * 22 / 100;
                 var8 = (100 - var6) * 26 / 100;
                 if (var5 == 0) {
-                    var1.drawScaledImageI(this.ae[4], var3 + (22 - var4) / 2, var7 + (26 - var8) / 2, var4, var8, 45);
+                    var1.drawScaledImageI(this.uiTextures[4], var3 + (22 - var4) / 2, var7 + (26 - var8) / 2, var4, var8, 45);
                 } else if (var5 == 1) {
-                    var1.drawScaledImageI(this.ae[4], var3 + (22 - var4) / 2, var7 + (26 - var8) / 2, var4, var8, 56);
+                    var1.drawScaledImageI(this.uiTextures[4], var3 + (22 - var4) / 2, var7 + (26 - var8) / 2, var4, var8, 56);
                 }
 
                 var4 = (100 - var6) * 15 / 100;
@@ -1982,9 +1991,9 @@ public class Game extends MyApplicationBase {
 
                 while (true) {
                     if (var5 == 0) {
-                        var1.drawScaledImageI(this.ae[4], var2 + (18 - var9) / 2, var7 + (26 - var8) / 2, var9, var8, var3 % 10 + 35);
+                        var1.drawScaledImageI(this.uiTextures[4], var2 + (18 - var9) / 2, var7 + (26 - var8) / 2, var9, var8, var3 % 10 + 35);
                     } else if (var5 == 1) {
-                        var1.drawScaledImageI(this.ae[4], var2 + (18 - var9) / 2, var7 + (26 - var8) / 2, var9, var8, var3 % 10 + 46);
+                        var1.drawScaledImageI(this.uiTextures[4], var2 + (18 - var9) / 2, var7 + (26 - var8) / 2, var9, var8, var3 % 10 + 46);
                     }
 
                     var3 /= 10;
@@ -1999,7 +2008,7 @@ public class Game extends MyApplicationBase {
         } else if (var7 == 1) {
             var7 = (100 - var6) * 22 / 100;
             var5 = (100 - var6) * 26 / 100;
-            var1.drawScaledImageI(this.ae[8], var3 + (22 - var7) / 2, var4 + (26 - var5) / 2, var7, var5, 70);
+            var1.drawScaledImageI(this.uiTextures[8], var3 + (22 - var7) / 2, var4 + (26 - var5) / 2, var7, var5, 70);
             var5 = (100 - var6) * 15 / 100;
             var8 = (100 - var6) * 18 / 100;
             var7 = (100 - var6) * 26 / 100;
@@ -2008,7 +2017,7 @@ public class Game extends MyApplicationBase {
             var2 = var5;
 
             while (true) {
-                var1.drawScaledImageI(this.ae[8], var2 + (18 - var8) / 2, var4 + (26 - var7) / 2, var8, var7, var3 % 10 + 60);
+                var1.drawScaledImageI(this.uiTextures[8], var2 + (18 - var8) / 2, var4 + (26 - var7) / 2, var8, var7, var3 % 10 + 60);
                 var3 /= 10;
                 var5 = (100 - var6) * 15 / 100;
                 if (var3 <= 0) {
@@ -2033,8 +2042,8 @@ public class Game extends MyApplicationBase {
                     if (this.fx[0] > this.getLength(dv) - 1) {
                         this.fx[0] = 0;
                         this.eE[2] = true;
-                        this.eh[1] = 960;
-                        Sound.getInstance().play(7);
+                        this.scrollOffset[1] = 960;
+                        Sound.getInstance().play(SoundType.BATTLE_START);
                     }
                 } else if (this.fx[5] >= 1) {
                     var2 = this.fx;
@@ -2045,43 +2054,43 @@ public class Game extends MyApplicationBase {
                         this.fP = 0;
                         this.screen = 9;
                         this.fF = -1;
-                        this.fQ[2] = 0;
+                        this.frameCounter[2] = 0;
                         this.eE[1] = false;
                         return var1;
                     }
                 } else {
-                    if (this.R() && this.b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
-                        if (!this.gp[0]) {
-                            Sound.getInstance().play(10);
-                            this.gp[0] = true;
+                    if (this.R() && this.b(this.buttonCoordinates1[0][0], this.buttonCoordinates1[0][1], this.buttonCoordinates1[0][2], this.buttonCoordinates1[0][3])) {
+                        if (!this.shouldPlayButtonSelect[0]) {
+                            Sound.getInstance().play(SoundType.BUTTON_SELECT);
+                            this.shouldPlayButtonSelect[0] = true;
                         }
                     } else {
-                        this.gp[0] = false;
+                        this.shouldPlayButtonSelect[0] = false;
                     }
 
-                    if (this.R() && this.b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
-                        if (!this.gp[5]) {
-                            Sound.getInstance().play(10);
-                            this.gp[5] = true;
+                    if (this.R() && this.b(this.buttonCoordinates1[5][0], this.buttonCoordinates1[5][1], this.buttonCoordinates1[5][2], this.buttonCoordinates1[5][3])) {
+                        if (!this.shouldPlayButtonSelect[5]) {
+                            Sound.getInstance().play(SoundType.BUTTON_SELECT);
+                            this.shouldPlayButtonSelect[5] = true;
                         }
                     } else {
-                        this.gp[5] = false;
+                        this.shouldPlayButtonSelect[5] = false;
                     }
 
-                    if (this.S() && this.b(this.fw[0][0], this.fw[0][1], this.fw[0][2], this.fw[0][3])) {
+                    if (this.S() && this.b(this.buttonCoordinates1[0][0], this.buttonCoordinates1[0][1], this.buttonCoordinates1[0][2], this.buttonCoordinates1[0][3])) {
                         var2 = this.fx;
                         var10002 = var2[0]++;
-                        Sound.getInstance().play(11);
-                    } else if (this.S() && this.b(this.fw[5][0], this.fw[5][1], this.fw[5][2], this.fw[5][3])) {
+                        Sound.getInstance().play(SoundType.BUTTON_PRESS);
+                    } else if (this.S() && this.b(this.buttonCoordinates1[5][0], this.buttonCoordinates1[5][1], this.buttonCoordinates1[5][2], this.buttonCoordinates1[5][3])) {
                         var2 = this.fx;
                         var10002 = var2[5]++;
-                        Sound.getInstance().play(11);
+                        Sound.getInstance().play(SoundType.BUTTON_PRESS);
                     }
                 }
             }
 
             if (this.eE[0]) {
-                var2 = this.fQ;
+                var2 = this.frameCounter;
                 var10002 = var2[2]++;
                 this.gm[0] = this.gm[0] * 2 + 1;
                 if (this.gm[0] >= 297) {
@@ -2089,27 +2098,27 @@ public class Game extends MyApplicationBase {
                     this.gm[1] /= 2;
                 }
 
-                if (this.fQ[2] > this.getLength(fM) - 1) {
-                    this.fQ[2] = this.getLength(fM) - 1;
+                if (this.frameCounter[2] > this.getLength(fM) - 1) {
+                    this.frameCounter[2] = this.getLength(fM) - 1;
                     this.fP = this.getWidth();
                     if (this.gm[1] <= 0) {
                         this.eE[0] = false;
-                        this.fQ[2] = 0;
+                        this.frameCounter[2] = 0;
                     }
                 } else {
-                    this.fP = fM[this.fQ[2]];
+                    this.fP = fM[this.frameCounter[2]];
                 }
             } else if (this.eE[1]) {
-                var2 = this.fQ;
+                var2 = this.frameCounter;
                 var10002 = var2[2]++;
-                if (this.fQ[2] > this.getLength(fM) - 1) {
+                if (this.frameCounter[2] > this.getLength(fM) - 1) {
                     this.fP = 0;
                 } else {
-                    this.fP = fM[this.getLength(fM) - 1 - this.fQ[2]];
+                    this.fP = fM[this.getLength(fM) - 1 - this.frameCounter[2]];
                 }
 
-                if (this.fQ[2] > this.getLength(fM)) {
-                    this.fQ[2] = 0;
+                if (this.frameCounter[2] > this.getLength(fM)) {
+                    this.frameCounter[2] = 0;
                     this.screenTransition();
                     this.fP = 0;
                     this.screen = 9;
@@ -2118,34 +2127,34 @@ public class Game extends MyApplicationBase {
                     return var1;
                 }
             } else if (this.eE[2]) {
-                this.eh[0] = this.eh[0] * 2 + 1;
+                this.scrollOffset[0] = this.scrollOffset[0] * 2 + 1;
                 this.ei[0] = this.ei[0] * 2 + 1;
-                if (this.eh[0] >= this.getWidth()) {
-                    this.eh[0] = this.getWidth();
+                if (this.scrollOffset[0] >= this.getWidth()) {
+                    this.scrollOffset[0] = this.getWidth();
                     this.ei[0] = this.getHeight();
-                    this.eh[1] /= 2;
-                    if (this.eh[1] >= this.getWidth()) {
-                        this.eh[1] = this.getWidth();
+                    this.scrollOffset[1] /= 2;
+                    if (this.scrollOffset[1] >= this.getWidth()) {
+                        this.scrollOffset[1] = this.getWidth();
                     }
 
-                    var2 = this.fQ;
+                    var2 = this.frameCounter;
                     var10002 = var2[0]++;
-                    if (this.fQ[0] >= this.getLength(cu)) {
+                    if (this.frameCounter[0] >= this.getLength(cu)) {
                         this.fR[0] = 1;
                         this.dY = 1;
                         this.eE[2] = false;
-                        this.fQ[0] = 0;
+                        this.frameCounter[0] = 0;
                     }
                 }
             }
 
             if (this.dY == 1) {
-                var2 = this.fQ;
+                var2 = this.frameCounter;
                 var10002 = var2[1]++;
-                if (this.fQ[1] >= 10) {
-                    var2 = this.fQ;
+                if (this.frameCounter[1] >= 10) {
+                    var2 = this.frameCounter;
                     var10002 = var2[0]++;
-                    if (this.fQ[0] >= 60) {
+                    if (this.frameCounter[0] >= 60) {
                         this.eb = true;
                         this.ed = 1;
                     }
@@ -2225,10 +2234,10 @@ public class Game extends MyApplicationBase {
                     this.bk[var4] = var2.readInt();
                 }
 
-                this.bl = var2.readInt();
+                this.currentStamp = var2.readInt();
 
-                for (var4 = 0; var4 < this.getLength(this.bm); ++var4) {
-                    this.bm[var4] = var2.readInt();
+                for (var4 = 0; var4 < this.getLength(this.stampClaimFlags); ++var4) {
+                    this.stampClaimFlags[var4] = var2.readInt();
                 }
 
                 this.bn = var2.readInt();
@@ -2392,10 +2401,10 @@ public class Game extends MyApplicationBase {
                 var2.writeInt(this.bk[var3]);
             }
 
-            var2.writeInt(this.bl);
+            var2.writeInt(this.currentStamp);
 
-            for (var3 = 0; var3 < this.getLength(this.bm); ++var3) {
-                var2.writeInt(this.bm[var3]);
+            for (var3 = 0; var3 < this.getLength(this.stampClaimFlags); ++var3) {
+                var2.writeInt(this.stampClaimFlags[var3]);
             }
 
             var2.writeInt(this.bn);
@@ -2665,102 +2674,106 @@ public class Game extends MyApplicationBase {
 
     }
 
-    void j(int var1) {
-        this.scene = var1;
-        this.k(var1);
+    void setScene(SceneType scene) {
+        this.setScene(scene.sceneID);
+    }
+
+    void setScene(int sceneID) {
+        this.scene = sceneID;
+        this.setScene2(sceneID);
         int var2;
-        switch (this.getScene()) {
-            case 4:
+        switch (this.getSceneType()) {
+            case ERROR:
                 MyUtility.getInstance().addButton(MyUtility.getString("err_txt"));
-                Sound.getInstance().stop(-1);
+                Sound.getInstance().stop(SoundType.ALL);
                 break;
-            case 98:
+            case OPENING:
                 //jp.co.ponos.library.a.a.b().f();
 
-                for (var1 = 0; var1 < this.getLength(this.gp); ++var1) {
-                    this.gp[var1] = false;
+                for (sceneID = 0; sceneID < this.getLength(this.shouldPlayButtonSelect); ++sceneID) {
+                    this.shouldPlayButtonSelect[sceneID] = false;
                 }
 
-                for (var1 = 0; var1 < this.getLength(this.fw); ++var1) {
-                    for (var2 = 0; var2 < this.getLength(this.fw[var1]); ++var2) {
-                        this.fw[var1][var2] = 0;
+                for (sceneID = 0; sceneID < this.getLength(this.buttonCoordinates1); ++sceneID) {
+                    for (var2 = 0; var2 < this.getLength(this.buttonCoordinates1[sceneID]); ++var2) {
+                        this.buttonCoordinates1[sceneID][var2] = 0;
                     }
                 }
 
-                for (var1 = 0; var1 < this.getLength(this.textTextures); ++var1) {
-                    if (this.textTextures[var1].isLoaded()) {
-                        this.textTextures[var1].reset();
+                for (sceneID = 0; sceneID < this.getLength(this.textTextures); ++sceneID) {
+                    if (this.textTextures[sceneID].isLoaded()) {
+                        this.textTextures[sceneID].reset();
                     }
                 }
 
-                for (var1 = 0; var1 < this.getLength(this.openingText); ++var1) {
-                    if (!this.textTextures[var1].isLoaded()) {
+                for (sceneID = 0; sceneID < this.getLength(this.openingText); ++sceneID) {
+                    if (!this.textTextures[sceneID].isLoaded()) {
                         if (this.versionCode == 0) {
-                            if (var1 == 0) {
-                                this.textTextures[var1].drawText(String.format("%d%s", this.fv, this.openingText[var1]), "FONT_SYSTEM_BOLD", 30, 1);
+                            if (sceneID == 0) {
+                                this.textTextures[sceneID].drawText(String.format("%d%s", this.fv, this.openingText[sceneID]), "FONT_SYSTEM_BOLD", 30, 1);
                             } else {
-                                this.textTextures[var1].drawText(this.openingText[var1], "FONT_SYSTEM_BOLD", 30, 1);
+                                this.textTextures[sceneID].drawText(this.openingText[sceneID], "FONT_SYSTEM_BOLD", 30, 1);
                             }
                         } else if (this.versionCode == 1) {
-                            if (var1 == 2) {
-                                String var3 = String.format(this.openingText[var1], this.fv);
-                                this.textTextures[var1].drawText(String.format("%s", var3), "FONT_SYSTEM_BOLD", 30, 1);
+                            if (sceneID == 2) {
+                                String var3 = String.format(this.openingText[sceneID], this.fv);
+                                this.textTextures[sceneID].drawText(String.format("%s", var3), "FONT_SYSTEM_BOLD", 30, 1);
                             } else {
-                                this.textTextures[var1].drawText(this.openingText[var1], "FONT_SYSTEM_BOLD", 30, 1);
+                                this.textTextures[sceneID].drawText(this.openingText[sceneID], "FONT_SYSTEM_BOLD", 30, 1);
                             }
                         }
                     }
                 }
 
-                for (var1 = 0; var1 < this.getLength(this.dw); ++var1) {
-                    this.dw[var1] = 0;
+                for (sceneID = 0; sceneID < this.getLength(this.dw); ++sceneID) {
+                    this.dw[sceneID] = 0;
                 }
 
                 this.dy = 0;
                 this.dz = 0;
                 this.dA = 0;
 
-                for (var1 = 0; var1 < 50; ++var1) {
+                for (sceneID = 0; sceneID < 50; ++sceneID) {
                     for (var2 = 0; var2 < 8; ++var2) {
                         if (var2 == 0) {
-                            this.cg[var1][0][var2] = (var1 * 48 + aMath.rand(48) % this.getWidth()) * 100;
-                            this.cg[var1][1][var2] = (aMath.rand(50) + 640) * 100;
+                            this.cg[sceneID][0][var2] = (sceneID * 48 + aMath.rand(48) % this.getWidth()) * 100;
+                            this.cg[sceneID][1][var2] = (aMath.rand(50) + 640) * 100;
                         } else {
-                            this.cg[var1][0][var2] = this.cg[var1][0][0];
-                            this.cg[var1][1][var2] = this.cg[var1][1][0];
+                            this.cg[sceneID][0][var2] = this.cg[sceneID][0][0];
+                            this.cg[sceneID][1][var2] = this.cg[sceneID][1][0];
                         }
                     }
 
-                    this.ci[var1][0] = 0;
-                    this.ci[var1][1] = (aMath.rand(50) + 3) * 10;
-                    this.ci[var1][2] = (aMath.rand(15) + 3) * 100;
-                    this.ci[var1][3] = aMath.rand(8) + 1;
+                    this.ci[sceneID][0] = 0;
+                    this.ci[sceneID][1] = (aMath.rand(50) + 3) * 10;
+                    this.ci[sceneID][2] = (aMath.rand(15) + 3) * 100;
+                    this.ci[sceneID][3] = aMath.rand(8) + 1;
                 }
 
-                for (var1 = 0; var1 < this.getLength(this.fw); ++var1) {
-                    for (var2 = 0; var2 < this.getLength(this.fw[var1]); ++var2) {
-                        this.fw[var1][var2] = 0;
+                for (sceneID = 0; sceneID < this.getLength(this.buttonCoordinates1); ++sceneID) {
+                    for (var2 = 0; var2 < this.getLength(this.buttonCoordinates1[sceneID]); ++var2) {
+                        this.buttonCoordinates1[sceneID][var2] = 0;
                     }
                 }
 
-                this.fw[0][0] = this.excessWidth + 788;
-                this.fw[0][1] = this.eZ + 556;
-                this.fw[0][2] = 168;
-                this.fw[0][3] = 88;
+                this.buttonCoordinates1[0][0] = this.excessWidth + 788;
+                this.buttonCoordinates1[0][1] = this.eZ + 556;
+                this.buttonCoordinates1[0][2] = 168;
+                this.buttonCoordinates1[0][3] = 88;
                 this.fF = -1;
                 this.screen = 0;
 
-                for (var1 = 0; var1 < this.getLength(this.fQ); ++var1) {
-                    this.fQ[var1] = 0;
+                for (sceneID = 0; sceneID < this.getLength(this.frameCounter); ++sceneID) {
+                    this.frameCounter[sceneID] = 0;
                 }
 
-                for (var1 = 0; var1 < this.getLength(this.fx); ++var1) {
-                    this.fx[var1] = 0;
+                for (sceneID = 0; sceneID < this.getLength(this.fx); ++sceneID) {
+                    this.fx[sceneID] = 0;
                 }
 
-                for (var1 = 0; var1 < this.getLength(this.ae); ++var1) {
-                    if (this.ae[var1].isLoaded()) {
-                        this.ae[var1].reset();
+                for (sceneID = 0; sceneID < this.getLength(this.uiTextures); ++sceneID) {
+                    if (this.uiTextures[sceneID].isLoaded()) {
+                        this.uiTextures[sceneID].reset();
                     }
                 }
 
@@ -2775,105 +2788,105 @@ public class Game extends MyApplicationBase {
 
                 this.ap[0].load(MyUtility.getString(String.format("opening.mamodel")));
                 this.aq[0].load(MyUtility.getString(String.format("opening.maanim")));
-                this.ap[0].a(this.ao);
-                this.ap[0].a();
-                if (!this.ae[2].isLoaded()) {
-                    this.ae[2].reset();
+                this.ap[0].setTextures(this.ao);
+                this.ap[0].setAction();
+                if (!this.uiTextures[2].isLoaded()) {
+                    this.uiTextures[2].reset();
                 }
 
-                if (!this.ae[2].isLoaded()) {
-                    this.ae[2].load(MyUtility.getString(String.format("img%03d.png", 6)), MyUtility.getString(String.format("img%03d.imgcut", 6)));
+                if (!this.uiTextures[2].isLoaded()) {
+                    this.uiTextures[2].load(MyUtility.getString(String.format("img%03d.png", 6)), MyUtility.getString(String.format("img%03d.imgcut", 6)));
                 }
 
                 this.z = 10000;
-                Sound.getInstance().stop(-1);
-                Sound.getInstance().play(0);
+                Sound.getInstance().stop(SoundType.ALL);
+                Sound.getInstance().play(SoundType.OPENING);
                 break;
-            case 99:
+            case ENDING:
                 //jp.co.ponos.library.a.a.b().f();
 
-                for (var1 = 0; var1 < this.getLength(this.gp); ++var1) {
-                    this.gp[var1] = false;
+                for (sceneID = 0; sceneID < this.getLength(this.shouldPlayButtonSelect); ++sceneID) {
+                    this.shouldPlayButtonSelect[sceneID] = false;
                 }
 
-                for (var1 = 0; var1 < this.getLength(this.textTextures); ++var1) {
-                    if (this.textTextures[var1].isLoaded()) {
-                        this.textTextures[var1].reset();
+                for (sceneID = 0; sceneID < this.getLength(this.textTextures); ++sceneID) {
+                    if (this.textTextures[sceneID].isLoaded()) {
+                        this.textTextures[sceneID].reset();
                     }
                 }
 
-                for (var1 = 0; var1 < this.getLength(this.endingText); ++var1) {
-                    if (!this.textTextures[var1].isLoaded()) {
-                        this.textTextures[var1].drawText(this.endingText[var1], "FONT_SYSTEM_BOLD", 30, 1);
+                for (sceneID = 0; sceneID < this.getLength(this.endingText); ++sceneID) {
+                    if (!this.textTextures[sceneID].isLoaded()) {
+                        this.textTextures[sceneID].drawText(this.endingText[sceneID], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 }
 
-                for (var1 = 0; var1 < this.getLength(this.fQ); ++var1) {
-                    this.fQ[var1] = 0;
+                for (sceneID = 0; sceneID < this.getLength(this.frameCounter); ++sceneID) {
+                    this.frameCounter[sceneID] = 0;
                 }
 
-                for (var1 = 0; var1 < this.getLength(this.fx); ++var1) {
-                    this.fx[var1] = 0;
+                for (sceneID = 0; sceneID < this.getLength(this.fx); ++sceneID) {
+                    this.fx[sceneID] = 0;
                 }
 
-                for (var1 = 0; var1 < this.getLength(this.eE); ++var1) {
-                    this.eE[var1] = false;
+                for (sceneID = 0; sceneID < this.getLength(this.eE); ++sceneID) {
+                    this.eE[sceneID] = false;
                 }
 
-                for (var1 = 0; var1 < 50; ++var1) {
+                for (sceneID = 0; sceneID < 50; ++sceneID) {
                     for (var2 = 0; var2 < 8; ++var2) {
                         if (var2 == 0) {
-                            this.cg[var1][0][var2] = (var1 * 48 + aMath.rand(48) % this.getWidth()) * 100;
-                            this.cg[var1][1][var2] = (aMath.rand(50) + 640) * 100;
+                            this.cg[sceneID][0][var2] = (sceneID * 48 + aMath.rand(48) % this.getWidth()) * 100;
+                            this.cg[sceneID][1][var2] = (aMath.rand(50) + 640) * 100;
                         } else {
-                            this.cg[var1][0][var2] = this.cg[var1][0][0];
-                            this.cg[var1][1][var2] = this.cg[var1][1][0];
+                            this.cg[sceneID][0][var2] = this.cg[sceneID][0][0];
+                            this.cg[sceneID][1][var2] = this.cg[sceneID][1][0];
                         }
                     }
 
-                    this.ci[var1][0] = 0;
-                    this.ci[var1][1] = (aMath.rand(50) + 3) * 10;
-                    this.ci[var1][2] = (aMath.rand(15) + 3) * 100;
-                    this.ci[var1][3] = aMath.rand(8) + 1;
+                    this.ci[sceneID][0] = 0;
+                    this.ci[sceneID][1] = (aMath.rand(50) + 3) * 10;
+                    this.ci[sceneID][2] = (aMath.rand(15) + 3) * 100;
+                    this.ci[sceneID][3] = aMath.rand(8) + 1;
                 }
 
-                for (var1 = 0; var1 < this.getLength(this.ae); ++var1) {
-                    if (this.ae[var1].isLoaded()) {
-                        this.ae[var1].reset();
+                for (sceneID = 0; sceneID < this.getLength(this.uiTextures); ++sceneID) {
+                    if (this.uiTextures[sceneID].isLoaded()) {
+                        this.uiTextures[sceneID].reset();
                     }
                 }
 
                 this.resetTextures();
-                if (this.ae[0].isLoaded()) {
-                    this.ae[0].reset();
+                if (this.uiTextures[0].isLoaded()) {
+                    this.uiTextures[0].reset();
                 }
 
-                if (!this.ae[0].isLoaded()) {
-                    this.ae[0].load(MyUtility.getString(String.format("img%03d.png", 35)), MyUtility.getString(String.format("img%03d.imgcut", 35)));
+                if (!this.uiTextures[0].isLoaded()) {
+                    this.uiTextures[0].load(MyUtility.getString(String.format("img%03d.png", 35)), MyUtility.getString(String.format("img%03d.imgcut", 35)));
                 }
 
-                if (this.ae[1].isLoaded()) {
-                    this.ae[1].reset();
+                if (this.uiTextures[1].isLoaded()) {
+                    this.uiTextures[1].reset();
                 }
 
-                if (!this.ae[1].isLoaded()) {
-                    this.ae[1].load(MyUtility.getString(String.format("img%03d.png", 7)), MyUtility.getString(String.format("img%03d.imgcut", 7)));
+                if (!this.uiTextures[1].isLoaded()) {
+                    this.uiTextures[1].load(MyUtility.getString(String.format("img%03d.png", 7)), MyUtility.getString(String.format("img%03d.imgcut", 7)));
                 }
 
-                if (this.ae[2].isLoaded()) {
-                    this.ae[2].reset();
+                if (this.uiTextures[2].isLoaded()) {
+                    this.uiTextures[2].reset();
                 }
 
-                if (!this.ae[2].isLoaded()) {
-                    this.ae[2].load(MyUtility.getString(String.format("img%03d.png", 6)), MyUtility.getString(String.format("img%03d.imgcut", 6)));
+                if (!this.uiTextures[2].isLoaded()) {
+                    this.uiTextures[2].load(MyUtility.getString(String.format("img%03d.png", 6)), MyUtility.getString(String.format("img%03d.imgcut", 6)));
                 }
 
-                if (this.ae[3].isLoaded()) {
-                    this.ae[3].reset();
+                if (this.uiTextures[3].isLoaded()) {
+                    this.uiTextures[3].reset();
                 }
 
-                if (!this.ae[3].isLoaded()) {
-                    this.ae[3].load(MyUtility.getString(String.format("img%03d.png", 36)), MyUtility.getString(String.format("img%03d.imgcut", 36)));
+                if (!this.uiTextures[3].isLoaded()) {
+                    this.uiTextures[3].load(MyUtility.getString(String.format("img%03d.png", 36)), MyUtility.getString(String.format("img%03d.imgcut", 36)));
                 }
 
                 this.dE = 0;
@@ -2881,52 +2894,56 @@ public class Game extends MyApplicationBase {
                 this.dG = 0;
                 this.fF = -1;
                 this.screen = 0;
-                this.fw[0][0] = this.excessWidth + 788;
-                this.fw[0][1] = this.eZ + 556;
-                this.fw[0][2] = 168;
-                this.fw[0][3] = 88;
+                this.buttonCoordinates1[0][0] = this.excessWidth + 788;
+                this.buttonCoordinates1[0][1] = this.eZ + 556;
+                this.buttonCoordinates1[0][2] = 168;
+                this.buttonCoordinates1[0][3] = 88;
                 this.z = 10000;
-                Sound.getInstance().stop(-1);
-                Sound.getInstance().play(5);
+                Sound.getInstance().stop(SoundType.ALL);
+                Sound.getInstance().play(SoundType.ENDING);
                 break;
-            case 100:
-                for (var1 = 0; var1 < this.getLength(this.gp); ++var1) {
-                    this.gp[var1] = false;
+            case MAIN:
+                for (sceneID = 0; sceneID < this.getLength(this.shouldPlayButtonSelect); ++sceneID) {
+                    this.shouldPlayButtonSelect[sceneID] = false;
                 }
 
-                for (var1 = 0; var1 < this.getLength(this.bR); ++var1) {
-                    for (var2 = 0; var2 < this.getLength(this.bR[var1]); ++var2) {
-                        for (int var4 = 0; var4 < this.getLength(this.bR[var1][var2]); ++var4) {
-                            this.bR[var1][var2][var4] = 0;
+                for (sceneID = 0; sceneID < this.getLength(this.bR); ++sceneID) {
+                    for (var2 = 0; var2 < this.getLength(this.bR[sceneID]); ++var2) {
+                        for (int var4 = 0; var4 < this.getLength(this.bR[sceneID][var2]); ++var4) {
+                            this.bR[sceneID][var2][var4] = 0;
                         }
                     }
                 }
 
-                for (var1 = 0; var1 < this.getLength(this.fw); ++var1) {
-                    for (var2 = 0; var2 < this.getLength(this.fw[var1]); ++var2) {
-                        this.fw[var1][var2] = 0;
+                for (sceneID = 0; sceneID < this.getLength(this.buttonCoordinates1); ++sceneID) {
+                    for (var2 = 0; var2 < this.getLength(this.buttonCoordinates1[sceneID]); ++var2) {
+                        this.buttonCoordinates1[sceneID][var2] = 0;
                     }
                 }
 
                 this.z = 10000;
                 break;
-            case 300:
+            case BATTLE:
                 this.V();
         }
 
     }
 
-    void k(int var1) {
-        this.scene2 = var1;
+    void setScene2(int sceneID) {
+        this.scene2 = sceneID;
+    }
+
+    void setScene2(SceneType scene) {
+        this.scene2 = scene.sceneID;
     }
 
     void s(TextureRenderer var1) {
-        var1.drawScaledImageI(this.ae[6], 0, 42, 0);
+        var1.drawScaledImageI(this.uiTextures[6], 0, 42, 0);
         var1.setColor(0, 0, 0);
         int var2;
         int var3;
         if (this.eE[2]) {
-            var2 = this.eh[0];
+            var2 = this.scrollOffset[0];
             var3 = var2;
             if (var2 >= 63) {
                 var3 = 63;
@@ -2941,31 +2958,31 @@ public class Game extends MyApplicationBase {
         if (this.dY == 0) {
             var1.setAlpha(63 - var3);
             var1.drawRectangle(0, 367, this.getWidth(), 190);
-            var1.drawScaledImageI(this.ae[6], 0 - this.eh[0], 79, 1);
-            var1.drawScaledImageI(this.ae[6], 0 - this.eh[0], 66, 2);
-            var1.drawScaledImageI(this.ae[6], 0 - this.eh[0], 352, 3);
-            var1.drawScaledImageI(this.ae[6], this.eh[0] + 748, 85, 4);
-            var1.drawScaledImageI(this.ae[6], this.eh[0] + 733, 60, 5);
-            var1.drawScaledImageI(this.ae[6], this.eh[0] + 748, 277, 6);
-            var1.drawScaledImageI(this.ae[6], this.eh[0] + 733, 252, 7);
+            var1.drawScaledImageI(this.uiTextures[6], 0 - this.scrollOffset[0], 79, 1);
+            var1.drawScaledImageI(this.uiTextures[6], 0 - this.scrollOffset[0], 66, 2);
+            var1.drawScaledImageI(this.uiTextures[6], 0 - this.scrollOffset[0], 352, 3);
+            var1.drawScaledImageI(this.uiTextures[6], this.scrollOffset[0] + 748, 85, 4);
+            var1.drawScaledImageI(this.uiTextures[6], this.scrollOffset[0] + 733, 60, 5);
+            var1.drawScaledImageI(this.uiTextures[6], this.scrollOffset[0] + 748, 277, 6);
+            var1.drawScaledImageI(this.uiTextures[6], this.scrollOffset[0] + 733, 252, 7);
             if (!this.eE[2]) {
-                var1.drawScaledImageI(this.ae[6], 633 - dv[this.fx[0]] / 2, 494 - dv[this.fx[0]] / 2, dv[this.fx[0]] + 304, dv[this.fx[0]] + 74, 21);
-                var1.drawScaledImageI(this.ae[6], 671 - dv[this.fx[0]] / 2, 500 - dv[this.fx[0]] / 2, dv[this.fx[0]] + 231, dv[this.fx[0]] + 62, 22);
+                var1.drawScaledImageI(this.uiTextures[6], 633 - dv[this.fx[0]] / 2, 494 - dv[this.fx[0]] / 2, dv[this.fx[0]] + 304, dv[this.fx[0]] + 74, 21);
+                var1.drawScaledImageI(this.uiTextures[6], 671 - dv[this.fx[0]] / 2, 500 - dv[this.fx[0]] / 2, dv[this.fx[0]] + 231, dv[this.fx[0]] + 62, 22);
             }
 
             var3 = 0;
 
             for (var2 = 0; var2 < 10; ++var2) {
                 if (this.bk[var2] != -1) {
-                    var1.drawScaledImageI(this.ak[var2], var2 % 5 * 121 + 111 - this.eh[0], var2 / 5 * 119 + 134, 110, 85, 0);
+                    var1.drawScaledImageI(this.ak[var2], var2 % 5 * 121 + 111 - this.scrollOffset[0], var2 / 5 * 119 + 134, 110, 85, 0);
                     if (this.bv[this.bk[var2] - 2] + 1 >= this.bi) {
-                        var1.drawScaledImageI(this.ae[6], var2 % 5 * 121 + 176 - this.eh[0], var2 / 5 * 119 + 109, 18);
+                        var1.drawScaledImageI(this.uiTextures[6], var2 % 5 * 121 + 176 - this.scrollOffset[0], var2 / 5 * 119 + 109, 18);
                     } else {
                         var3 = this.bv[this.bk[var2] - 2] + 1;
                         var9 = 0;
 
                         do {
-                            var1.drawScaledImageI(this.ae[6], 206 - var9 * 12 + var2 % 5 * 121 - this.eh[0], var2 / 5 * 119 + 109, var3 % 10 + 8);
+                            var1.drawScaledImageI(this.uiTextures[6], 206 - var9 * 12 + var2 % 5 * 121 - this.scrollOffset[0], var2 / 5 * 119 + 109, var3 % 10 + 8);
                             var4 = var3 / 10;
                             ++var9;
                             var3 = var4;
@@ -3018,12 +3035,12 @@ public class Game extends MyApplicationBase {
                 }
 
                 if (var3 >= this.eH[0]) {
-                    var1.drawScaledImageI(this.ae[6], this.eh[0] + 889, var11, 18);
+                    var1.drawScaledImageI(this.uiTextures[6], this.scrollOffset[0] + 889, var11, 18);
                 } else {
                     var7 = 0;
 
                     do {
-                        var1.drawScaledImageI(this.ae[6], 919 - var7 * 12 + this.eh[0], var11, var3 % 10 + 8);
+                        var1.drawScaledImageI(this.uiTextures[6], 919 - var7 * 12 + this.scrollOffset[0], var11, var3 % 10 + 8);
                         var9 = var3 / 10;
                         ++var7;
                         var3 = var9;
@@ -3037,8 +3054,8 @@ public class Game extends MyApplicationBase {
         if (this.eE[2] || this.dY >= 1) {
             var1.setColor(0, 0, 0);
             var1.setAlpha(63);
-            var1.drawRectangle(this.eh[1] + 0, 487, this.getWidth(), 56);
-            var1.drawScaledImage(this.ae[7], (float) (0 - this.eh[1]), 492.0F, 224.0F, 45.0F, cm[this.dH]);
+            var1.drawRectangle(this.scrollOffset[1] + 0, 487, this.getWidth(), 56);
+            var1.drawScaledImage(this.uiTextures[7], (float) (0 - this.scrollOffset[1]), 492.0F, 224.0F, 45.0F, cm[this.dH]);
         }
 
         label203:
@@ -3047,12 +3064,12 @@ public class Game extends MyApplicationBase {
             var1.drawScaledImageI(this.af[0], this.fP + 572 - 88, 0, 572, 637, 1);
             if (this.dY == 0) {
                 if (this.fR[0] == 0) {
-                    var3 = cu[this.fQ[0]];
+                    var3 = cu[this.frameCounter[0]];
                     break label203;
                 }
 
                 if (this.fR[0] == 1) {
-                    var3 = cv[this.fQ[0]];
+                    var3 = cv[this.frameCounter[0]];
                     break label203;
                 }
 
@@ -3064,114 +3081,114 @@ public class Game extends MyApplicationBase {
 
         if (this.dY == 1) {
             short var12 = 312;
-            if (this.fQ[0] == 2 || this.fQ[0] == 3 || this.fQ[0] == 6 || this.fQ[0] == 7 || this.fQ[0] == 10 || this.fQ[0] == 11 || this.fQ[0] == 14 || this.fQ[0] == 15 || this.fQ[0] == 18 || this.fQ[0] == 19) {
+            if (this.frameCounter[0] == 2 || this.frameCounter[0] == 3 || this.frameCounter[0] == 6 || this.frameCounter[0] == 7 || this.frameCounter[0] == 10 || this.frameCounter[0] == 11 || this.frameCounter[0] == 14 || this.frameCounter[0] == 15 || this.frameCounter[0] == 18 || this.frameCounter[0] == 19) {
                 var12 = 308;
             }
 
-            var1.drawScaledImageI(this.ae[1], 659, var12, 355, 355, 0);
-            if (this.fQ[0] >= 2) {
-                if (this.fQ[0] - 2 == 0) {
-                    var1.drawScaledImageI(this.ae[8], -28, -1, 504, 504, 0);
-                } else if (this.fQ[0] - 2 == 1) {
-                    var1.drawScaledImageI(this.ae[8], 35, 62, 378, 378, 0);
-                } else if (this.fQ[0] - 2 == 2) {
-                    var1.drawScaledImageI(this.ae[8], 98, 125, 252, 252, 0);
-                } else if (this.fQ[0] - 2 >= 3) {
-                    var1.drawScaledImageI(this.ae[8], 161, 188, 126, 126, 0);
+            var1.drawScaledImageI(this.uiTextures[1], 659, var12, 355, 355, 0);
+            if (this.frameCounter[0] >= 2) {
+                if (this.frameCounter[0] - 2 == 0) {
+                    var1.drawScaledImageI(this.uiTextures[8], -28, -1, 504, 504, 0);
+                } else if (this.frameCounter[0] - 2 == 1) {
+                    var1.drawScaledImageI(this.uiTextures[8], 35, 62, 378, 378, 0);
+                } else if (this.frameCounter[0] - 2 == 2) {
+                    var1.drawScaledImageI(this.uiTextures[8], 98, 125, 252, 252, 0);
+                } else if (this.frameCounter[0] - 2 >= 3) {
+                    var1.drawScaledImageI(this.uiTextures[8], 161, 188, 126, 126, 0);
                 }
             }
 
-            if (this.fQ[0] >= 6) {
-                if (this.fQ[0] - 6 == 0) {
-                    var1.drawScaledImageI(this.ae[8], 100, -1, 504, 504, 1);
-                } else if (this.fQ[0] - 6 == 1) {
-                    var1.drawScaledImageI(this.ae[8], 163, 62, 378, 378, 1);
-                } else if (this.fQ[0] - 6 == 2) {
-                    var1.drawScaledImageI(this.ae[8], 226, 125, 252, 252, 1);
-                } else if (this.fQ[0] - 6 >= 3) {
-                    var1.drawScaledImageI(this.ae[8], 289, 188, 126, 126, 1);
+            if (this.frameCounter[0] >= 6) {
+                if (this.frameCounter[0] - 6 == 0) {
+                    var1.drawScaledImageI(this.uiTextures[8], 100, -1, 504, 504, 1);
+                } else if (this.frameCounter[0] - 6 == 1) {
+                    var1.drawScaledImageI(this.uiTextures[8], 163, 62, 378, 378, 1);
+                } else if (this.frameCounter[0] - 6 == 2) {
+                    var1.drawScaledImageI(this.uiTextures[8], 226, 125, 252, 252, 1);
+                } else if (this.frameCounter[0] - 6 >= 3) {
+                    var1.drawScaledImageI(this.uiTextures[8], 289, 188, 126, 126, 1);
                 }
             }
 
-            if (this.fQ[0] >= 10) {
-                if (this.fQ[0] - 2 == 0) {
-                    var1.drawScaledImageI(this.ae[8], 228, -1, 504, 504, 2);
-                } else if (this.fQ[0] - 10 == 1) {
-                    var1.drawScaledImageI(this.ae[8], 291, 62, 378, 378, 2);
-                } else if (this.fQ[0] - 10 == 2) {
-                    var1.drawScaledImageI(this.ae[8], 354, 125, 252, 252, 2);
-                } else if (this.fQ[0] - 10 >= 3) {
-                    var1.drawScaledImageI(this.ae[8], 417, 188, 126, 126, 2);
+            if (this.frameCounter[0] >= 10) {
+                if (this.frameCounter[0] - 2 == 0) {
+                    var1.drawScaledImageI(this.uiTextures[8], 228, -1, 504, 504, 2);
+                } else if (this.frameCounter[0] - 10 == 1) {
+                    var1.drawScaledImageI(this.uiTextures[8], 291, 62, 378, 378, 2);
+                } else if (this.frameCounter[0] - 10 == 2) {
+                    var1.drawScaledImageI(this.uiTextures[8], 354, 125, 252, 252, 2);
+                } else if (this.frameCounter[0] - 10 >= 3) {
+                    var1.drawScaledImageI(this.uiTextures[8], 417, 188, 126, 126, 2);
                 }
             }
 
-            if (this.fQ[0] >= 14) {
-                if (this.fQ[0] - 14 == 0) {
-                    var1.drawScaledImageI(this.ae[8], 356, -1, 504, 504, 3);
-                } else if (this.fQ[0] - 14 == 1) {
-                    var1.drawScaledImageI(this.ae[8], 419, 62, 378, 378, 3);
-                } else if (this.fQ[0] - 14 == 2) {
-                    var1.drawScaledImageI(this.ae[8], 482, 125, 252, 252, 3);
-                } else if (this.fQ[0] - 14 >= 3) {
-                    var1.drawScaledImageI(this.ae[8], 545, 188, 126, 126, 3);
+            if (this.frameCounter[0] >= 14) {
+                if (this.frameCounter[0] - 14 == 0) {
+                    var1.drawScaledImageI(this.uiTextures[8], 356, -1, 504, 504, 3);
+                } else if (this.frameCounter[0] - 14 == 1) {
+                    var1.drawScaledImageI(this.uiTextures[8], 419, 62, 378, 378, 3);
+                } else if (this.frameCounter[0] - 14 == 2) {
+                    var1.drawScaledImageI(this.uiTextures[8], 482, 125, 252, 252, 3);
+                } else if (this.frameCounter[0] - 14 >= 3) {
+                    var1.drawScaledImageI(this.uiTextures[8], 545, 188, 126, 126, 3);
                 }
             }
 
-            if (this.fQ[0] >= 18) {
-                if (this.fQ[0] - 18 == 0) {
-                    var1.drawScaledImageI(this.ae[8], 484, -1, 504, 504, 4);
-                } else if (this.fQ[0] - 18 == 1) {
-                    var1.drawScaledImageI(this.ae[8], 547, 62, 378, 378, 4);
-                } else if (this.fQ[0] - 18 == 2) {
-                    var1.drawScaledImageI(this.ae[8], 610, 125, 252, 252, 4);
-                } else if (this.fQ[0] - 18 >= 3) {
-                    var1.drawScaledImageI(this.ae[8], 673, 188, 126, 126, 4);
+            if (this.frameCounter[0] >= 18) {
+                if (this.frameCounter[0] - 18 == 0) {
+                    var1.drawScaledImageI(this.uiTextures[8], 484, -1, 504, 504, 4);
+                } else if (this.frameCounter[0] - 18 == 1) {
+                    var1.drawScaledImageI(this.uiTextures[8], 547, 62, 378, 378, 4);
+                } else if (this.frameCounter[0] - 18 == 2) {
+                    var1.drawScaledImageI(this.uiTextures[8], 610, 125, 252, 252, 4);
+                } else if (this.frameCounter[0] - 18 >= 3) {
+                    var1.drawScaledImageI(this.uiTextures[8], 673, 188, 126, 126, 4);
                 }
             }
         } else {
-            var1.drawScaledImageI(this.ae[1], 659, var3, 355, 355, 0);
-            if (this.fQ[1] == 1 || this.fQ[1] == 2 || this.fQ[1] == 4 || this.fQ[1] == 5) {
-                var1.drawScaledImageI(this.ae[1], 659, var3, 355, 191, 2);
+            var1.drawScaledImageI(this.uiTextures[1], 659, var3, 355, 355, 0);
+            if (this.frameCounter[1] == 1 || this.frameCounter[1] == 2 || this.frameCounter[1] == 4 || this.frameCounter[1] == 5) {
+                var1.drawScaledImageI(this.uiTextures[1], 659, var3, 355, 191, 2);
             }
         }
 
-        var1.drawScaledImageI(this.ae[2], 0, -42, 10);
-        var1.drawScaledImageI(this.ae[2], 0, 638, 10);
-        var1.drawScaledImageI(this.ae[2], 0, 0, 0);
+        var1.drawScaledImageI(this.uiTextures[2], 0, -42, 10);
+        var1.drawScaledImageI(this.uiTextures[2], 0, 638, 10);
+        var1.drawScaledImageI(this.uiTextures[2], 0, 0, 0);
         var1.setImageOrientation(2);
-        var1.drawScaledImageI(this.ae[2], 0, 585, 0);
+        var1.drawScaledImageI(this.uiTextures[2], 0, 585, 0);
         var1.setImageOrientation(0);
         if (this.gm[0] < 297) {
-            var1.drawScaledImageI(this.ae[2], 8 - this.gm[0], 3, 6);
+            var1.drawScaledImageI(this.uiTextures[2], 8 - this.gm[0], 3, 6);
         }
 
         if (this.gm[1] < 297) {
-            var1.drawScaledImageI(this.ae[2], 8 - this.gm[1] - this.eh[0], 3, 7);
+            var1.drawScaledImageI(this.uiTextures[2], 8 - this.gm[1] - this.scrollOffset[0], 3, 7);
         }
 
-        Texture var5 = this.ae[0];
-        int var6 = this.fw[5][0];
+        Texture var5 = this.uiTextures[0];
+        int var6 = this.buttonCoordinates1[5][0];
         var4 = dv[this.fx[5]] / 2;
-        var2 = this.fw[5][1];
+        var2 = this.buttonCoordinates1[5][1];
         var7 = dv[this.fx[5]] / 2;
         var3 = this.ei[0];
-        int var8 = this.fw[5][2];
+        int var8 = this.buttonCoordinates1[5][2];
         var9 = dv[this.fx[5]];
-        int var10 = this.fw[5][3];
+        int var10 = this.buttonCoordinates1[5][3];
         var1.drawScaledImageI(var5, var6 - var4, var3 + (var2 - var7), var9 + var8, dv[this.fx[5]] + var10, 9);
-        var5 = this.ae[0];
-        var9 = this.fw[5][0];
+        var5 = this.uiTextures[0];
+        var9 = this.buttonCoordinates1[5][0];
         var4 = dv[this.fx[5]] / 2;
-        var2 = this.fw[5][1];
+        var2 = this.buttonCoordinates1[5][1];
         var3 = dv[this.fx[5]] / 2;
         var1.drawScaledImageI(var5, var9 + 4 - var4, this.ei[0] + (var2 + 17 - var3), dv[this.fx[5]] + 84, dv[this.fx[5]] + 60, 3);
-        var1.drawScaledImageI(this.ae[5], this.eh[0] + 670, 0, 11);
-        var1.drawScaledImageI(this.ae[5], this.eh[0] + 608, 7, 10);
+        var1.drawScaledImageI(this.uiTextures[5], this.scrollOffset[0] + 670, 0, 11);
+        var1.drawScaledImageI(this.uiTextures[5], this.scrollOffset[0] + 608, 7, 10);
         var3 = this.aY;
         var2 = 0;
 
         do {
-            var1.drawScaledImageI(this.ae[5], 924 - var2 * 29 + this.eh[0], 6, var3 % 10);
+            var1.drawScaledImageI(this.uiTextures[5], 924 - var2 * 29 + this.scrollOffset[0], 6, var3 % 10);
             var4 = var3 / 10;
             ++var2;
             var3 = var4;
