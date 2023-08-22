@@ -23,7 +23,7 @@ public class MyPurchaseDelegate extends PurchaseDelegate {
 
       var3 = var2;
       if (A.a().getSceneType() != SceneType.ENDING) {
-         if (A.a().getSceneType() == SceneType.MAIN && A.a().screen == 9999) {
+         if (A.a().getSceneType() == SceneType.MAIN && A.a().getScreenType() == ScreenType.STAMP) {
             var3 = var2;
          } else {
             int var4 = 0;

@@ -1644,6 +1644,18 @@ public class Game extends MyApplicationBase {
         return this.scene;
     }
 
+    int getScreen() {
+        return this.screen;
+    }
+
+    ScreenType getScreenType() {
+        return ScreenType.valueOf(this.screen);
+    }
+
+    public void setScreenType(ScreenType screenType) {
+        this.screen = screenType.screenID;
+    }
+
     SceneType getSceneType() {
         return SceneType.valueOf(this.scene);
     }
@@ -2052,7 +2064,7 @@ public class Game extends MyApplicationBase {
                         this.fx[5] = 0;
                         this.screenTransition();
                         this.fP = 0;
-                        this.screen = 9;
+                        this.setScreenType(ScreenType.MAP);
                         this.fF = -1;
                         this.frameCounter[2] = 0;
                         this.eE[1] = false;
@@ -2121,7 +2133,7 @@ public class Game extends MyApplicationBase {
                     this.frameCounter[2] = 0;
                     this.screenTransition();
                     this.fP = 0;
-                    this.screen = 9;
+                    this.setScreenType(ScreenType.MAP);
                     this.fF = -1;
                     this.eE[1] = false;
                     return var1;
@@ -2761,7 +2773,7 @@ public class Game extends MyApplicationBase {
                 this.buttonCoordinates1[0][2] = 168;
                 this.buttonCoordinates1[0][3] = 88;
                 this.fF = -1;
-                this.screen = 0;
+                this.setScreenType(ScreenType.TITLE);
 
                 for (sceneID = 0; sceneID < this.getLength(this.frameCounter); ++sceneID) {
                     this.frameCounter[sceneID] = 0;
@@ -2893,7 +2905,7 @@ public class Game extends MyApplicationBase {
                 this.dF = 0;
                 this.dG = 0;
                 this.fF = -1;
-                this.screen = 0;
+                this.setScreenType(ScreenType.TITLE);
                 this.buttonCoordinates1[0][0] = this.excessWidth + 788;
                 this.buttonCoordinates1[0][1] = this.eZ + 556;
                 this.buttonCoordinates1[0][2] = 168;

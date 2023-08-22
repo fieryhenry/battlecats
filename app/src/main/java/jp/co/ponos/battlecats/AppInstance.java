@@ -1697,7 +1697,7 @@ public class AppInstance extends Game {
             if (this.gm[0] <= 0) {
                this.frameCounter[2] = 0;
                this.screenTransition();
-               this.screen = 5;
+               this.setScreenType(ScreenType.CAT_BASE);
                this.fF = -1;
                this.eE[1] = false;
                return var1;
@@ -1728,7 +1728,7 @@ public class AppInstance extends Game {
             this.fP = 0;
             this.frameCounter[2] = 0;
             this.screenTransition();
-            this.screen = 999;
+            this.setScreenType(ScreenType.ITEM_SHOP);
             this.fF = -1;
             this.gQ = 4;
             return var1;
@@ -3486,7 +3486,7 @@ public class AppInstance extends Game {
                if (this.gm[0] <= 0) {
                   this.frameCounter[2] = 0;
                   this.screenTransition();
-                  this.screen = 5;
+                  this.setScreenType(ScreenType.CAT_BASE);
                   this.fF = -1;
                   this.eE[1] = false;
                   return var1;
@@ -3506,7 +3506,7 @@ public class AppInstance extends Game {
             if (this.frameCounter[6] > this.getLength(fM)) {
                this.frameCounter[6] = 0;
                this.screenTransition();
-               this.screen = 3;
+               this.setScreenType(ScreenType.EQUIP);
                this.fF = -1;
                return var1;
             }
@@ -3549,7 +3549,7 @@ public class AppInstance extends Game {
                this.fP = 0;
                this.frameCounter[2] = 0;
                this.screenTransition();
-               this.screen = 999;
+               this.setScreenType(ScreenType.ITEM_SHOP);
                this.fF = -1;
                this.gQ = 3;
                var6 = 0;
@@ -8856,27 +8856,27 @@ public class AppInstance extends Game {
 
     private boolean mainProcess() {
         if (this.fF == -1) {
-           if (this.screen == 0) {
+           if (this.getScreenType() == ScreenType.TITLE) {
               this.titleLoad();
-           } else if (this.screen == 5) {
+           } else if (this.getScreenType() == ScreenType.CAT_BASE) {
               this.catBaseLoad();
-           } else if (this.screen == 9) {
+           } else if (this.getScreenType() == ScreenType.MAP) {
               this.mapLoad();
-           } else if (this.screen == 7) {
+           } else if (this.getScreenType() == ScreenType.POWER_UP) {
               this.powerUpLoad();
-           } else if (this.screen == 3) {
+           } else if (this.getScreenType() == ScreenType.EQUIP) {
               this.equipLoad();
-           } else if (this.screen == 6) {
+           } else if (this.getScreenType() == ScreenType.TREASURE) {
               this.treasureLoad();
-           } else if (this.screen == 8) {
+           } else if (this.getScreenType() == ScreenType.ENEMY_GUIDE) {
               this.enemyGuideLoad();
-           } else if (this.screen == 4) {
+           } else if (this.getScreenType() == ScreenType.MAP2) {
               this.map2Load();
-           } else if (this.screen == 999) {
+           } else if (this.getScreenType() == ScreenType.ITEM_SHOP) {
               this.itemShopLoad();
-           } else if (this.screen == 9999) {
+           } else if (this.getScreenType() == ScreenType.STAMP) {
               this.stampLoad();
-           } else if (this.screen == 99999) {
+           } else if (this.getScreenType() == ScreenType.LEGEND) {
               this.legendLoad();
            }
 
@@ -8884,47 +8884,47 @@ public class AppInstance extends Game {
         }
 
         if (this.fF > 0) {
-           if (this.screen == 0) {
+           if (this.getScreenType() == ScreenType.TITLE) {
               if (!this.titleProcess()) {
                   return true;
               }
-           } else if (this.screen == 5) {
+           } else if (this.getScreenType() == ScreenType.CAT_BASE) {
               if (!this.catBaseProcess()) {
                   return true;
               }
-           } else if (this.screen == 9) {
+           } else if (this.getScreenType() == ScreenType.MAP) {
               if (!this.mapProcess()) {
                   return true;
               }
-           } else if (this.screen == 7) {
+           } else if (this.getScreenType() == ScreenType.POWER_UP) {
               if (!this.powerupProcess()) {
                   return true;
               }
-           } else if (this.screen == 3) {
+           } else if (this.getScreenType() == ScreenType.EQUIP) {
               if (!this.equipProcess()) {
                   return true;
               }
-           } else if (this.screen == 6) {
+           } else if (this.getScreenType() == ScreenType.TREASURE) {
               if (!this.treasureProcess()) {
                   return true;
               }
-           } else if (this.screen == 8) {
+           } else if (this.getScreenType() == ScreenType.ENEMY_GUIDE) {
               if (!this.enemyGuideProcess()) {
                   return true;
               }
-           } else if (this.screen == 4) {
+           } else if (this.getScreenType() == ScreenType.MAP2) {
               if (!this.map2Process()) {
                   return true;
               }
-           } else if (this.screen == 999) {
+           } else if (this.getScreenType() == ScreenType.ITEM_SHOP) {
               if (!this.itemShopProcess()) {
                   return true;
               }
-           } else if (this.screen == 9999) {
+           } else if (this.getScreenType() == ScreenType.STAMP) {
               if (!this.stampProcess()) {
                   return true;
               }
-           } else if (this.screen == 99999 && !this.legendProcess()) {
+           } else if (this.getScreenType() == ScreenType.LEGEND && !this.legendProcess()) {
                return true;
            }
         }
@@ -9515,7 +9515,7 @@ public class AppInstance extends Game {
 
     private void mainLoad() {
         int var1;
-        if (this.screen == 0) {
+        if (this.getScreenType() == ScreenType.TITLE) {
            if (this.af[1].isLoaded()) {
               this.af[1].reset();
            }
@@ -9565,7 +9565,7 @@ public class AppInstance extends Game {
            }
         }
 
-        if (this.screen == 5 || this.screen == 4 || this.screen == 9 || this.screen == 7 || this.screen == 3 || this.screen == 6 || this.screen == 8 || this.screen == 999 || this.screen == 9999) {
+        if (this.getScreenType() == ScreenType.CAT_BASE || this.getScreenType() == ScreenType.MAP2 || this.getScreenType() == ScreenType.MAP|| this.getScreenType() == ScreenType.POWER_UP || this.getScreenType() == ScreenType.EQUIP || this.getScreenType() == ScreenType.TREASURE || this.getScreenType() == ScreenType.ENEMY_GUIDE || this.getScreenType() == ScreenType.ITEM_SHOP || this.getScreenType() == ScreenType.STAMP) {
            if (this.af[0].isLoaded()) {
               this.af[0].reset();
            }
@@ -9623,7 +9623,7 @@ public class AppInstance extends Game {
            }
         }
 
-        if (this.screen == 4) {
+        if (this.getScreenType() == ScreenType.MAP2) {
            for(var1 = 0; var1 < 10; ++var1) {
               if (!this.ak[var1].isLoaded()) {
                  if (this.bk[var1] == -1) {
@@ -9661,7 +9661,7 @@ public class AppInstance extends Game {
            }
         }
 
-        if (this.screen == 9) {
+        if (this.getScreenType() == ScreenType.MAP) {
            if (this.uiTextures[6].isLoaded()) {
               this.uiTextures[6].reset();
            }
@@ -9719,7 +9719,7 @@ public class AppInstance extends Game {
            }
         }
 
-        if (this.screen == 7) {
+        if (this.getScreenType() == ScreenType.POWER_UP) {
            if (this.uiTextures[6].isLoaded()) {
               this.uiTextures[6].reset();
            }
@@ -9821,7 +9821,7 @@ public class AppInstance extends Game {
            }
         }
 
-        if (this.screen == 3) {
+        if (this.getScreenType() == ScreenType.EQUIP) {
            for(var1 = 0; var1 < 10; ++var1) {
               if (!this.ak[var1].isLoaded()) {
                  if (this.bk[var1] == -1) {
@@ -9899,7 +9899,7 @@ public class AppInstance extends Game {
            }
         }
 
-        if (this.screen == 6) {
+        if (this.getScreenType() == ScreenType.TREASURE) {
            this.fr = -1;
            this.h(this.fq[0]);
            if (this.uiTextures[6].isLoaded()) {
@@ -9919,7 +9919,7 @@ public class AppInstance extends Game {
            }
         }
 
-        if (this.screen == 8) {
+        if (this.getScreenType() == ScreenType.ENEMY_GUIDE) {
            if (this.uiTextures[6].isLoaded()) {
               this.uiTextures[6].reset();
            }
@@ -9956,7 +9956,7 @@ public class AppInstance extends Game {
            this.a(1, this.fs[2]);
         }
 
-        if (this.screen == 999) {
+        if (this.getScreenType() == ScreenType.ITEM_SHOP) {
            if (this.uiTextures[6].isLoaded()) {
               this.uiTextures[6].reset();
            }
@@ -9998,7 +9998,7 @@ public class AppInstance extends Game {
            }
         }
 
-        if (this.screen == 9999) {
+        if (this.getScreenType() == ScreenType.STAMP) {
            if (this.stampTextures[0].isLoaded()) {
               this.stampTextures[0].reset();
            }
@@ -10032,7 +10032,7 @@ public class AppInstance extends Game {
            }
         }
 
-        if (this.screen == 99999) {
+        if (this.getScreenType() == ScreenType.LEGEND) {
            if (!this.uiTextures[0].isLoaded()) {
               this.uiTextures[0].load(MyUtility.getString(String.format("img_%03d_intro.png", 45)), MyUtility.getString(String.format("img_%03d_intro.imgcut", 45)));
            }
@@ -10373,47 +10373,47 @@ public class AppInstance extends Game {
          case MAIN:
             textureRenderer.setColor(255, 255, 255);
             textureRenderer.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
-            if (this.screen == 0) {
+            if (this.getScreenType() == ScreenType.TITLE) {
                this.o(textureRenderer);
             }
 
-            if (this.screen == 5) {
+            if (this.getScreenType() == ScreenType.CAT_BASE) {
                this.j(textureRenderer);
             }
 
-            if (this.screen == 9) {
+            if (this.getScreenType() == ScreenType.MAP) {
                this.k(textureRenderer);
             }
 
-            if (this.screen == 7) {
+            if (this.getScreenType() == ScreenType.POWER_UP) {
                this.m(textureRenderer);
             }
 
-            if (this.screen == 3) {
+            if (this.getScreenType() == ScreenType.EQUIP) {
                this.r(textureRenderer);
             }
 
-            if (this.screen == 6) {
+            if (this.getScreenType() == ScreenType.TREASURE) {
                this.p(textureRenderer);
             }
 
-            if (this.screen == 8) {
+            if (this.getScreenType() == ScreenType.ENEMY_GUIDE) {
                this.f(textureRenderer);
             }
 
-            if (this.screen == 4) {
+            if (this.getScreenType() == ScreenType.MAP2) {
                this.s(textureRenderer);
             }
 
-            if (this.screen == 999) {
+            if (this.getScreenType() == ScreenType.ITEM_SHOP) {
                this.i(textureRenderer);
             }
 
-            if (this.screen == 9999) {
+            if (this.getScreenType() == ScreenType.STAMP) {
                this.n(textureRenderer);
             }
 
-            if (this.screen == 99999) {
+            if (this.getScreenType() == ScreenType.LEGEND) {
                this.g(textureRenderer);
             }
 
@@ -11850,16 +11850,16 @@ public class AppInstance extends Game {
                   }
 
                   this.setScene(SceneType.MAIN);
-                  this.screen = 0;
+                  this.setScreenType(ScreenType.TITLE);
                   this.fF = -1;
                case ENDING:
                default:
                   break;
                case MAIN:
-                  if (this.screen != 0 && this.screen != 99999) {
-                     if (this.screen == 5 || this.aZ == 0 && this.screen == 9) {
+                  if (this.getScreenType() != ScreenType.TITLE && this.getScreenType() != ScreenType.LEGEND) {
+                     if (this.getScreenType() == ScreenType.CAT_BASE || this.aZ == 0 && this.getScreenType() == ScreenType.MAP) {
                         if (this.fE == 5) {
-                           this.screen = 0;
+                           this.setScreenType(ScreenType.TITLE);
                            this.fF = -1;
                            this.fI = 0;
 
@@ -11874,8 +11874,8 @@ public class AppInstance extends Game {
                            for(var1 = 0; var1 < this.getLength(this.eM); ++var1) {
                               this.eM[var1] = false;
                            }
-                        } else if (this.aZ == 0 && this.screen == 9) {
-                           this.screen = 0;
+                        } else if (this.aZ == 0 && this.getScreenType() == ScreenType.MAP) {
+                           this.setScreenType(ScreenType.TITLE);
                            this.fF = -1;
                            this.fI = 0;
 
@@ -11895,10 +11895,10 @@ public class AppInstance extends Game {
                   } else {
                      if (this.eg == 0) {
                         if (this.aZ == 0) {
-                           this.screen = 9;
+                           this.setScreenType(ScreenType.MAP);
                            this.fF = -1;
                         } else {
-                           this.screen = 5;
+                           this.setScreenType(ScreenType.CAT_BASE);
                            this.fF = -1;
                            this.fP = 0;
                            this.eE[0] = false;
@@ -11986,7 +11986,7 @@ public class AppInstance extends Game {
                      }
 
                      this.bg = this.eQ;
-                     if (this.screen != 5) {
+                     if (this.getScreenType() != ScreenType.CAT_BASE) {
                         this.ac();
                      }
                   }
@@ -11996,7 +11996,7 @@ public class AppInstance extends Game {
          if (this.ec >= 26) {
             this.eb = false;
             var3 = var2;
-            if (this.screen != 5) {
+            if (this.getScreenType() != ScreenType.CAT_BASE) {
                this.ac();
                var3 = var2;
             }
@@ -12080,7 +12080,7 @@ public class AppInstance extends Game {
                case ENDING:
                   if (this.eg == 2) {
                      this.setScene(SceneType.MAIN);
-                     this.screen = 0;
+                     this.setScreenType(ScreenType.TITLE);
                      this.fF = -1;
                      var1 = 0;
 
@@ -12115,13 +12115,13 @@ public class AppInstance extends Game {
                         this.fR[var1] = 0;
                      }
 
-                     this.screen = 0;
+                     this.setScreenType(ScreenType.TITLE);
                      this.fF = -1;
                      this.resetTextures();
                      Sound.getInstance().stop(SoundType.ALL);
                      Sound.getInstance().play(SoundType.CAT_BASE);
                      var3 = var2;
-                     if (this.screen != 5) {
+                     if (this.getScreenType() != ScreenType.CAT_BASE) {
                         this.ac();
                         var3 = var2;
                      }
@@ -12131,8 +12131,8 @@ public class AppInstance extends Game {
                case MAIN:
                   //jp.co.ponos.library.a.a.b().f();
                   if (this.eg == 0) {
-                     if (this.screen == 9999) {
-                        this.screen = 5;
+                     if (this.getScreenType() == ScreenType.STAMP) {
+                        this.setScreenType(ScreenType.CAT_BASE);
                         this.fF = -1;
                         this.bo = 0;
                         --this.aV;
@@ -12160,33 +12160,33 @@ public class AppInstance extends Game {
 
                         this.hp = 0;
                         var3 = var2;
-                        if (this.screen != 5) {
+                        if (this.getScreenType() != ScreenType.CAT_BASE) {
                            this.ac();
                            var3 = var2;
                            return var3;
                         }
 
                         return var3;
-                     } else if (this.screen == 5 && this.bo == 1) {
-                        this.screen = 9999;
+                     } else if (this.getScreenType() == ScreenType.CAT_BASE && this.bo == 1) {
+                        this.setScreenType(ScreenType.STAMP);
                         this.fF = -1;
                         var3 = var2;
                         return var3;
                      } else {
-                        if (this.screen == 0 && this.hr) {
-                           this.screen = 99999;
+                        if (this.getScreenType() == ScreenType.TITLE && this.hr) {
+                           this.setScreenType(ScreenType.LEGEND);
                            this.fF = -1;
                            this.hr = false;
                            var3 = var2;
                         } else {
-                           if (this.screen == 0) {
+                           if (this.getScreenType() == ScreenType.TITLE) {
                               this.dH = 48;
                               this.eQ = 0;
                            }
 
                            this.setScene(SceneType.BATTLE);
                            var3 = var2;
-                           if (this.screen != 5) {
+                           if (this.getScreenType() != ScreenType.CAT_BASE) {
                               this.ac();
                               var3 = var2;
                               return var3;
@@ -12237,7 +12237,7 @@ public class AppInstance extends Game {
                         }
 
                         this.setScene(SceneType.MAIN);
-                        this.screen = 0;
+                        this.setScreenType(ScreenType.TITLE);
                         this.fF = -1;
                         var1 = 0;
 
@@ -12271,12 +12271,12 @@ public class AppInstance extends Game {
                               this.fR[var1] = 0;
                            }
 
-                           this.screen = 0;
+                           this.setScreenType(ScreenType.TITLE);
                            this.fF = -1;
                            this.resetTextures();
                            this.gL = true;
                            var3 = var2;
-                           if (this.screen != 5) {
+                           if (this.getScreenType() != ScreenType.CAT_BASE) {
                               this.ac();
                               var3 = var2;
                               return var3;
@@ -12305,7 +12305,7 @@ public class AppInstance extends Game {
                               this.fR[var1] = 0;
                            }
 
-                           this.screen = 5;
+                           this.setScreenType(ScreenType.CAT_BASE);
                            this.fF = -1;
 
                            for(var1 = 0; var1 < this.getLength(this.uiTextures); ++var1) {
@@ -12372,7 +12372,7 @@ public class AppInstance extends Game {
                            Sound.getInstance().stop(SoundType.ALL);
                            Sound.getInstance().play(SoundType.CAT_BASE);
                            var3 = var2;
-                           if (this.screen != 5) {
+                           if (this.getScreenType() != ScreenType.CAT_BASE) {
                               this.ac();
                               var3 = var2;
                               return var3;
@@ -12422,7 +12422,7 @@ public class AppInstance extends Game {
                            this.fR[var1] = 0;
                         }
 
-                        this.screen = 5;
+                        this.setScreenType(ScreenType.CAT_BASE);
                         this.fF = -1;
 
                         for(var1 = 0; var1 < this.getLength(this.fx); ++var1) {
@@ -12529,7 +12529,7 @@ public class AppInstance extends Game {
 
                         this.aZ = 1;
                         this.bf = 1;
-                        if (this.screen != 5) {
+                        if (this.getScreenType() != ScreenType.CAT_BASE) {
                            this.ac();
                         }
                      }
@@ -12569,7 +12569,7 @@ public class AppInstance extends Game {
                            }
 
                            this.setScene(SceneType.MAIN);
-                           this.screen = 0;
+                           this.setScreenType(ScreenType.TITLE);
                            this.fF = -1;
                            var3 = var2;
                         } else {
@@ -12578,7 +12578,7 @@ public class AppInstance extends Game {
                            }
 
                            this.setScene(SceneType.MAIN);
-                           this.screen = 5;
+                           this.setScreenType(ScreenType.CAT_BASE);
                            this.fF = -1;
                            this.fP = 0;
 
@@ -12913,12 +12913,12 @@ public class AppInstance extends Game {
                            this.fz[var1] = 0;
                         }
 
-                        this.screen = 0;
+                        this.setScreenType(ScreenType.TITLE);
                         this.fF = -1;
                         this.resetTextures();
                         this.gL = true;
                         var3 = var2;
-                        if (this.screen != 5) {
+                        if (this.getScreenType() != ScreenType.CAT_BASE) {
                            this.ac();
                            var3 = var2;
                         }
@@ -12974,12 +12974,12 @@ public class AppInstance extends Game {
                            this.ek[var1] = 0;
                         }
 
-                        this.screen = 0;
+                        this.setScreenType(ScreenType.TITLE);
                         this.fF = -1;
                         this.resetTextures();
                         this.gL = true;
                         var3 = var2;
-                        if (this.screen != 5) {
+                        if (this.getScreenType() != ScreenType.CAT_BASE) {
                            this.ac();
                            var3 = var2;
                         }
@@ -16013,14 +16013,14 @@ public class AppInstance extends Game {
                   case MAIN:
                      var3 = 0;
                      byte var7 = 0;
-                     if (this.screen == 0) {
+                     if (this.getScreenType() == ScreenType.TITLE) {
                         var1.setColor(255, 255, 255);
                         if (this.ah[0].isLoaded()) {
                            var1.drawScaledImage(this.ah[0], this.getWidth() / 2, 305, 1);
                         }
                      }
 
-                     if (this.screen == 7) {
+                     if (this.getScreenType() == ScreenType.POWER_UP) {
                         var4 = 0;
 
                         for(var3 = var7; var4 < this.getLength(this.ah); ++var4) {
@@ -16039,7 +16039,7 @@ public class AppInstance extends Game {
                         }
                      }
 
-                     if (this.screen == 3) {
+                     if (this.getScreenType() == ScreenType.EQUIP) {
                         for(var4 = 0; var4 < this.getLength(this.ah); ++var4) {
                            if (this.ah[var4].isLoaded()) {
                               var3 = -(var4 - 1);
@@ -16146,10 +16146,10 @@ public class AppInstance extends Game {
                               var1.drawScaledImageI(this.af[2], this.excessWidth / 2 + 541, 382, 168, 72, this.gv[2] % 4 / 2 + 1);
                            }
 
-                           if (this.screen != 0 && this.screen != 5 && this.screen != 9) {
-                              if (this.screen == 7) {
+                           if (this.getScreenType() != ScreenType.TITLE && this.getScreenType() != ScreenType.CAT_BASE && this.getScreenType() != ScreenType.MAP) {
+                              if (this.getScreenType() == ScreenType.POWER_UP) {
                                  var3 = this.bJ[this.bK[this.fS[2] - this.gB[1]]][1];
-                              } else if (this.screen != 3 && this.screen != 6 && this.screen != 8 && this.screen != 4 && this.screen == 999) {
+                              } else if (this.getScreenType() != ScreenType.EQUIP && this.getScreenType() != ScreenType.TREASURE && this.getScreenType() != ScreenType.ENEMY_GUIDE && this.getScreenType() != ScreenType.MAP2 && this.getScreenType() == ScreenType.ITEM_SHOP) {
                                  if (Z[this.gP[2]] + Z[this.gP[2]] * this.gS[this.gP[2]] <= 0) {
                                     var3 = 500;
                                  } else if (this.aL >= Z[this.gP[2]] + Z[this.gP[2]] * this.gS[this.gP[2]]) {
@@ -16550,13 +16550,13 @@ public class AppInstance extends Game {
                         }
 
                         label602: {
-                           if (this.screen != 0 && this.screen != 5) {
-                              if (this.screen == 9) {
+                           if (this.getScreenType() != ScreenType.TITLE && this.getScreenType() != ScreenType.CAT_BASE) {
+                              if (this.getScreenType() == ScreenType.MAP) {
                                  var3 = 30;
                                  break label602;
                               }
 
-                              if (this.screen == 7) {
+                              if (this.getScreenType() == ScreenType.POWER_UP) {
                                  if (this.gw == 1) {
                                     var3 = this.bJ[this.bK[this.fS[2] - this.gB[1]]][1];
                                     break label602;
@@ -16591,7 +16591,7 @@ public class AppInstance extends Game {
                                        }
                                     }
                                  }
-                              } else if (this.screen == 999) {
+                              } else if (this.getScreenType() == ScreenType.ITEM_SHOP) {
                                  if (Z[this.gP[2]] + Z[this.gP[2]] * this.gS[this.gP[2]] <= 0) {
                                     var3 = 500;
                                  } else {
@@ -18350,7 +18350,7 @@ public class AppInstance extends Game {
             this.fP = 0;
             if (this.gm[0] <= 0) {
                this.screenTransition();
-               this.screen = 5;
+               this.setScreenType(ScreenType.CAT_BASE);
                this.fF = -1;
                this.frameCounter[2] = 0;
                this.eE[1] = false;
@@ -18374,7 +18374,7 @@ public class AppInstance extends Game {
             this.fP = 0;
             this.frameCounter[2] = 0;
             this.screenTransition();
-            this.screen = 999;
+            this.setScreenType(ScreenType.ITEM_SHOP);
             this.fF = -1;
             this.gQ = 5;
             return var1;
@@ -23087,7 +23087,7 @@ public class AppInstance extends Game {
             if (this.gm[0] <= 0) {
                this.screenTransition();
                if (this.gQ == 0) {
-                  this.screen = 5;
+                  this.setScreenType(ScreenType.CAT_BASE);
                   this.fF = -1;
                   this.frameCounter[2] = 0;
                   this.eE[1] = false;
@@ -23095,7 +23095,7 @@ public class AppInstance extends Game {
                } else {
                   var4 = var1;
                   if (this.gQ == 1) {
-                     this.screen = 9;
+                     this.setScreenType(ScreenType.MAP);
                      this.fF = -1;
                      this.frameCounter[2] = 0;
                      this.eE[1] = false;
@@ -23125,15 +23125,15 @@ public class AppInstance extends Game {
             this.frameCounter[2] = 0;
             this.screenTransition();
             if (this.gQ == 1) {
-               this.screen = 9;
+               this.setScreenType(ScreenType.MAP);
             } else if (this.gQ == 2) {
-               this.screen = 7;
+               this.setScreenType(ScreenType.POWER_UP);
             } else if (this.gQ == 3) {
-               this.screen = 3;
+               this.setScreenType(ScreenType.EQUIP);
             } else if (this.gQ == 4) {
-               this.screen = 6;
+               this.setScreenType(ScreenType.TREASURE);
             } else if (this.gQ == 5) {
-               this.screen = 8;
+               this.setScreenType(ScreenType.ENEMY_GUIDE);
             }
 
             this.fF = -1;
@@ -23861,7 +23861,7 @@ public class AppInstance extends Game {
             if (this.fI == 0) {
                this.fx[0] = 0;
                this.screenTransition();
-               this.screen = 9;
+               this.setScreenType(ScreenType.MAP);
                this.fF = -1;
                this.eE[0] = true;
                this.eE[1] = false;
@@ -23877,7 +23877,7 @@ public class AppInstance extends Game {
             if (this.fI == 1) {
                this.fx[1] = 0;
                this.screenTransition();
-               this.screen = 7;
+               this.setScreenType(ScreenType.POWER_UP);
                this.fF = -1;
                this.eE[0] = true;
                this.eE[1] = false;
@@ -23893,7 +23893,7 @@ public class AppInstance extends Game {
             if (this.fI == 2) {
                this.fx[2] = 0;
                this.screenTransition();
-               this.screen = 3;
+               this.setScreenType(ScreenType.EQUIP);
                this.fF = -1;
                this.eE[0] = true;
                this.eE[1] = false;
@@ -23909,7 +23909,7 @@ public class AppInstance extends Game {
             if (this.fI == 3) {
                this.fx[3] = 0;
                this.screenTransition();
-               this.screen = 6;
+               this.setScreenType(ScreenType.TREASURE);
                this.fF = -1;
                this.eE[0] = true;
                this.eE[1] = false;
@@ -23925,7 +23925,7 @@ public class AppInstance extends Game {
             if (this.fI == 4) {
                this.fx[4] = 0;
                this.screenTransition();
-               this.screen = 8;
+               this.setScreenType(ScreenType.ENEMY_GUIDE);
                this.fF = -1;
                this.eE[0] = true;
                this.eE[1] = false;
@@ -23940,7 +23940,7 @@ public class AppInstance extends Game {
 
             if (this.fI == 13) {
                this.screenTransition();
-               this.screen = 999;
+               this.setScreenType(ScreenType.ITEM_SHOP);
                this.fF = -1;
                this.eE[0] = true;
                this.eE[1] = false;
@@ -25121,7 +25121,7 @@ public class AppInstance extends Game {
                if (this.gm[0] <= 0) {
                   this.frameCounter[2] = 0;
                   this.screenTransition();
-                  this.screen = 5;
+                  this.setScreenType(ScreenType.CAT_BASE);
                   this.fF = -1;
                   this.eE[1] = false;
                   return var1;
@@ -25190,7 +25190,7 @@ public class AppInstance extends Game {
                }
 
                this.fP = 0;
-               this.screen = 999;
+               this.setScreenType(ScreenType.ITEM_SHOP);
                this.fF = -1;
                this.gQ = 1;
                return var1;
@@ -25434,12 +25434,12 @@ public class AppInstance extends Game {
                         break;
                      }
                   case MAIN:
-                     if (this.screen == 0) {
+                     if (this.getScreenType() == ScreenType.TITLE) {
                         if (!this.ah[0].isLoaded()) {
                            this.ah[0].drawText(this.optionText[2], "FONT_SYSTEM_BOLD", 30, 1);
                         }
-                     } else if (this.screen != 7) {
-                        if (this.screen == 3 && !this.ah[0].isLoaded()) {
+                     } else if (this.getScreenType() != ScreenType.POWER_UP) {
+                        if (this.getScreenType() == ScreenType.EQUIP && !this.ah[0].isLoaded()) {
                            this.ah[0].drawText(this.warning1Text[8], "FONT_SYSTEM_BOLD", 30, 1);
                         }
                      } else if (this.gx == 0) {
@@ -25797,8 +25797,8 @@ public class AppInstance extends Game {
                         this.fz[0] = 0;
                         switch (this.getSceneType()) {
                            case MAIN:
-                              if (this.screen != 0 && this.screen != 5 && this.screen != 9) {
-                                 if (this.screen == 7) {
+                              if (this.getScreenType() != ScreenType.TITLE && this.getScreenType() != ScreenType.CAT_BASE && this.getScreenType() != ScreenType.MAP) {
+                                 if (this.getScreenType() == ScreenType.POWER_UP) {
                                     this.aL -= this.bJ[this.bK[this.fS[2] - this.gB[1]]][1];
                                     if (this.bh == 0) {
                                        this.screenTransition();
@@ -25839,7 +25839,7 @@ public class AppInstance extends Game {
                                        this.gG[this.fS[2]] = 1;
                                        this.frameCounter[5] = 255;
                                     }
-                                 } else if (this.screen != 3 && this.screen != 6 && this.screen != 8 && this.screen != 4 && this.screen == 999) {
+                                 } else if (this.getScreenType() != ScreenType.EQUIP && this.getScreenType() != ScreenType.TREASURE && this.getScreenType() != ScreenType.ENEMY_GUIDE && this.getScreenType() != ScreenType.MAP2 && this.getScreenType() == ScreenType.ITEM_SHOP) {
                                     if (Z[this.gP[2]] + Z[this.gP[2]] * this.gS[this.gP[2]] <= 0) {
                                        this.aL -= 500;
                                        if (this.gP[2] < this.gB[0]) {
@@ -26158,7 +26158,7 @@ public class AppInstance extends Game {
                      this.fz[0] = 0;
                      switch (this.getSceneType()) {
                         case MAIN:
-                           if (this.screen == 9) {
+                           if (this.getScreenType() == ScreenType.MAP) {
                               if (this.aL < 30) {
                                  this.screenTransition();
                                  this.gw = 1;
@@ -27851,7 +27851,7 @@ public class AppInstance extends Game {
             if (this.gm[0] <= 0) {
                this.frameCounter[2] = 0;
                this.screenTransition();
-               this.screen = 5;
+               this.setScreenType(ScreenType.CAT_BASE);
                this.fF = -1;
                this.eE[1] = false;
                return var1;
@@ -27871,7 +27871,7 @@ public class AppInstance extends Game {
          if (this.frameCounter[6] > this.getLength(fM)) {
             this.frameCounter[6] = 0;
             this.screenTransition();
-            this.screen = 7;
+            this.setScreenType(ScreenType.POWER_UP);
             this.fF = -1;
             return var1;
          }
@@ -27901,7 +27901,7 @@ public class AppInstance extends Game {
             this.fP = 0;
             this.frameCounter[2] = 0;
             this.screenTransition();
-            this.screen = 999;
+            this.setScreenType(ScreenType.ITEM_SHOP);
             this.fF = -1;
             this.gQ = 2;
             var4 = 0;

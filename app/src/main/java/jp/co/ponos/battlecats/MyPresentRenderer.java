@@ -64,9 +64,9 @@ class MyPresentRenderer extends WebClientViewer {
             SceneType sceneType = A.a().getSceneType();
             A.a();
             if (sceneType == SceneType.MAIN) {
-               int var3 = A.a().screen;
+               ScreenType screenType = A.a().getScreenType();
                A.a();
-               if (var3 == 0) {
+               if (screenType == ScreenType.TITLE) {
                   //jp.co.ponos.library.a.a.b().d();
                }
             }
@@ -78,7 +78,7 @@ class MyPresentRenderer extends WebClientViewer {
       } else if (A.a().menuType == 2) {
          A.a().i = 0;
          A.a().menuType = -1;
-         if (A.a().getSceneType() == SceneType.MAIN && A.a().screen == 0) {
+         if (A.a().getSceneType() == SceneType.MAIN && A.a().getScreenType() == ScreenType.TITLE) {
             //jp.co.ponos.library.a.a.b().d();
          }
 
@@ -90,7 +90,7 @@ class MyPresentRenderer extends WebClientViewer {
       } else if (A.a().menuType == 3) {
          A.a().i = 0;
          A.a().menuType = -1;
-         if (A.a().getSceneType() == SceneType.MAIN && A.a().screen == 0) {
+         if (A.a().getSceneType() == SceneType.MAIN && A.a().getScreenType() == ScreenType.TITLE) {
             //jp.co.ponos.library.a.a.b().d();
          }
 
@@ -102,7 +102,7 @@ class MyPresentRenderer extends WebClientViewer {
       } else if (A.a().menuType == 4) {
          A.a().i = 0;
          A.a().menuType = -1;
-         if (A.a().getSceneType() == SceneType.MAIN && A.a().screen == 0) {
+         if (A.a().getSceneType() == SceneType.MAIN && A.a().getScreenType() == ScreenType.TITLE) {
             //jp.co.ponos.library.a.a.b().d();
          }
 
@@ -114,7 +114,7 @@ class MyPresentRenderer extends WebClientViewer {
       } else if (A.a().menuType == 5) {
          A.a().i = 0;
          A.a().menuType = -1;
-         if (A.a().getSceneType() == SceneType.MAIN && A.a().screen == 0) {
+         if (A.a().getSceneType() == SceneType.MAIN && A.a().getScreenType() == ScreenType.TITLE) {
             //jp.co.ponos.library.a.a.b().d();
          }
 
@@ -126,7 +126,7 @@ class MyPresentRenderer extends WebClientViewer {
       } else if (A.a().menuType == 6) {
          A.a().i = 0;
          A.a().menuType = -1;
-         if (A.a().getSceneType() == SceneType.MAIN && A.a().screen == 0) {
+         if (A.a().getSceneType() == SceneType.MAIN && A.a().getScreenType() == ScreenType.TITLE) {
             //jp.co.ponos.library.a.a.b().d();
          }
 
