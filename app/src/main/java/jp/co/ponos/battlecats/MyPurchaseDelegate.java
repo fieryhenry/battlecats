@@ -14,7 +14,7 @@ public class MyPurchaseDelegate extends PurchaseDelegate {
    public boolean a(String var1) {
       boolean var2 = false;
       boolean var3;
-      if (A.a().getScene() == 300) {
+      if (A.a().getSceneType() == SceneType.BATTLE) {
          var3 = var2;
          if (A.a().bM[14] == 1) {
             return var3;
@@ -22,8 +22,8 @@ public class MyPurchaseDelegate extends PurchaseDelegate {
       }
 
       var3 = var2;
-      if (A.a().getScene() != 99) {
-         if (A.a().getScene() == 100 && A.a().screen == 9999) {
+      if (A.a().getSceneType() != SceneType.ENDING) {
+         if (A.a().getSceneType() == SceneType.MAIN && A.a().screen == 9999) {
             var3 = var2;
          } else {
             int var4 = 0;

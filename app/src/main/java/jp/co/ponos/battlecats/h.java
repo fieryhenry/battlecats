@@ -1,5 +1,6 @@
 package jp.co.ponos.battlecats;
 
+
 import jp.co.ponos.library.game.PurchaseDelegate;
 import jp.co.ponos.library.game.aString;
 import jp.co.ponos.library.game.Utility;
@@ -61,14 +62,14 @@ class h extends jp.co.ponos.library.score.e {
       }
 
       A.a().ae();
-      if (A.a().getScene() == 100 && A.a().screen == 0) {
+      if (A.a().getSceneType() == SceneType.MAIN && A.a().screen == 0) {
          //jp.co.ponos.library.a.a.b().d();
       }
 
    }
 
    public void games() {
-      if (A.a().getScene() == 100 && A.a().screen == 0) {
+      if (A.a().getSceneType() == SceneType.MAIN && A.a().screen == 0) {
          //jp.co.ponos.library.a.a.b().d();
       }
 
@@ -120,7 +121,7 @@ class h extends jp.co.ponos.library.score.e {
    }
 
    public void review(String var1) {
-      if (A.a().getScene() == 100 && A.a().screen == 0) {
+      if (A.a().getSceneType() == SceneType.MAIN && A.a().screen == 0) {
          //jp.co.ponos.library.a.a.b().d();
       }
 
@@ -147,7 +148,7 @@ class h extends jp.co.ponos.library.score.e {
       MyUtility.getInstance().addWebClient();
       A.a().i = 0;
       A.a().menuType = -1;
-      if (A.a().getScene() == 100 && A.a().screen == 0) {
+      if (A.a().getSceneType() == SceneType.MAIN && A.a().screen == 0) {
          //jp.co.ponos.library.a.a.b().d();
       }
 
@@ -163,7 +164,7 @@ class h extends jp.co.ponos.library.score.e {
    }
 
    public void video() {
-      if (A.a().getScene() == 100 && A.a().screen == 0) {
+      if (A.a().getSceneType() == SceneType.MAIN && A.a().screen == 0) {
          //jp.co.ponos.library.a.a.b().d();
       }
 
