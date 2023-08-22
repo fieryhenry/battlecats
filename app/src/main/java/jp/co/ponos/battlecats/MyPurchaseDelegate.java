@@ -48,10 +48,10 @@ public class MyPurchaseDelegate extends PurchaseDelegate {
                   }
 
                   AppInstance var7 = A.a();
-                  int var5 = var7.aL;
-                  var7.aL = AppInstance.l[var4] + var5;
-                  if (A.a().aL >= 999999) {
-                     A.a().aL = 999999;
+                  int var5 = var7.catfood;
+                  var7.catfood = AppInstance.l[var4] + var5;
+                  if (A.a().catfood >= 999999) {
+                     A.a().catfood = 999999;
                   }
 
                   A.a().h = true;

@@ -96,7 +96,7 @@ public class s {
             a.remove(var3);
             HttpClient var6 = a();
             HttpConnectionParams.setConnectionTimeout(var6.getParams(), 10000);
-            HttpPost var31 = new HttpPost(Settings.getInstance().a(Utility.decrypt(Utility.md5("s"), "CdTw1Qm0PDW7xd5OeYD/DCe0NkeB0wcTNbgDxskn5Hcf5f0JylsjMzkAqWF3R3ut0/Tqa2Pz6Wk7UiOam1ho2w==")));
+            HttpPost var31 = new HttpPost(Settings.getInstance().getSetting(Utility.decrypt(Utility.md5("s"), "CdTw1Qm0PDW7xd5OeYD/DCe0NkeB0wcTNbgDxskn5Hcf5f0JylsjMzkAqWF3R3ut0/Tqa2Pz6Wk7UiOam1ho2w==")));
             ArrayList var7 = new ArrayList();
             var7.add(new BasicNameValuePair("signedData", var0));
             var7.add(new BasicNameValuePair("signature", var1));
@@ -201,7 +201,7 @@ public class s {
       HttpConnectionParams.setConnectionTimeout(a2.getParams(), 10000);
       try {
          try {
-            HttpResponse execute = a2.execute(new HttpPost(Settings.getInstance().a("https://www.ponos.net/android/appli/purchase/verify_start.php")), basicHttpContext);
+            HttpResponse execute = a2.execute(new HttpPost(Settings.getInstance().getSetting("https://www.ponos.net/android/appli/purchase/verify_start.php")), basicHttpContext);
             try {
                if (execute.getStatusLine().getStatusCode() != 200) {
                   throw new v(514);

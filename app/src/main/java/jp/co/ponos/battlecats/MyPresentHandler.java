@@ -28,65 +28,65 @@ class MyPresentHandler extends PurchaseHandler {
                AppInstance var8;
                if (var4 == 0) {
                   var8 = A.a();
-                  var8.aY += 10000;
-                  if (A.a().aY >= 99999999) {
-                     A.a().aY = 99999999;
+                  var8.xp += 10000;
+                  if (A.a().xp >= 99999999) {
+                     A.a().xp = 99999999;
                   }
                } else if (var4 == 1) {
                   var8 = A.a();
-                  var8.aY += 10000;
-                  if (A.a().aY >= 99999999) {
-                     A.a().aY = 99999999;
+                  var8.xp += 10000;
+                  if (A.a().xp >= 99999999) {
+                     A.a().xp = 99999999;
                   }
                } else {
                   int[] var9;
                   if (var4 == 2) {
-                     var9 = A.a().bA;
+                     var9 = A.a().battleItems;
                      var9[0] += 15;
-                     if (A.a().bA[0] >= 9999) {
-                        A.a().bA[0] = 9999;
+                     if (A.a().battleItems[0] >= 9999) {
+                        A.a().battleItems[0] = 9999;
                      }
                   } else if (var4 == 3) {
                      var8 = A.a();
-                     var8.aL += 30;
-                     if (A.a().aL >= 999999) {
-                        A.a().aL = 999999;
+                     var8.catfood += 30;
+                     if (A.a().catfood >= 999999) {
+                        A.a().catfood = 999999;
                      }
                   } else if (var4 == 4) {
                      var8 = A.a();
-                     var8.aY += 30000;
-                     if (A.a().aY >= 99999999) {
-                        A.a().aY = 99999999;
+                     var8.xp += 30000;
+                     if (A.a().xp >= 99999999) {
+                        A.a().xp = 99999999;
                      }
                   } else if (var4 == 5) {
-                     var9 = A.a().bA;
+                     var9 = A.a().battleItems;
                      var9[1] += 3;
-                     if (A.a().bA[1] >= 9999) {
-                        A.a().bA[1] = 9999;
+                     if (A.a().battleItems[1] >= 9999) {
+                        A.a().battleItems[1] = 9999;
                      }
                   } else if (var4 == 6) {
                      var8 = A.a();
-                     var8.aL += 30;
-                     if (A.a().aL >= 999999) {
-                        A.a().aL = 999999;
+                     var8.catfood += 30;
+                     if (A.a().catfood >= 999999) {
+                        A.a().catfood = 999999;
                      }
                   } else if (var4 == 7) {
                      var8 = A.a();
-                     var8.aY += 50000;
-                     if (A.a().aY >= 99999999) {
-                        A.a().aY = 99999999;
+                     var8.xp += 50000;
+                     if (A.a().xp >= 99999999) {
+                        A.a().xp = 99999999;
                      }
                   } else if (var4 == 8) {
-                     var9 = A.a().bA;
+                     var9 = A.a().battleItems;
                      var9[1] += 5;
-                     if (A.a().bA[1] >= 9999) {
-                        A.a().bA[1] = 9999;
+                     if (A.a().battleItems[1] >= 9999) {
+                        A.a().battleItems[1] = 9999;
                      }
                   } else if (var4 == 9) {
                      var8 = A.a();
-                     var8.aL += 30;
-                     if (A.a().aL >= 999999) {
-                        A.a().aL = 999999;
+                     var8.catfood += 30;
+                     if (A.a().catfood >= 999999) {
+                        A.a().catfood = 999999;
                      }
                   } else if (var4 == 10) {
                      A.a().bD[0] = 1;

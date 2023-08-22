@@ -10,7 +10,7 @@ public class MyUtility extends Utility {
    }
 
    public static String getAppli() {
-      return Settings.getInstance().a(decrypt(md5("a"), "b+rB23dnIvnucgCR1oPbX2IU5sODvhUS1C6t3Tga/+boJbf2dDtLDjb3En8q50TG"));
+      return Settings.getInstance().getSetting(decrypt(md5("a"), "b+rB23dnIvnucgCR1oPbX2IU5sODvhUS1C6t3Tga/+boJbf2dDtLDjb3En8q50TG"));
    }
 
    protected String getAppliPage(String var1, String var2) {

@@ -93,8 +93,8 @@ public class Game extends MyApplicationBase {
     Texture[] aI = new Texture[2];
     Model aJ;
     ModelAnimation[] aK = new ModelAnimation[2];
-    int aL;
-    int aM;
+    int catfood;
+    int currentEnergy;
     int[] aN = new int[2];
     int[] aO = new int[2];
     int[] aP = new int[2];
@@ -106,7 +106,7 @@ public class Game extends MyApplicationBase {
     int aV;
     int aW;
     int aX;
-    int aY;
+    int xp;
     int aZ;
     Texture[] uiTextures = new Texture[30];
     Texture[] af = new Texture[4];
@@ -131,7 +131,7 @@ public class Game extends MyApplicationBase {
     Texture[] ay = new Texture[1];
     Model[][] az = new Model[4][2];
     boolean b;
-    int[] bA = new int[6];
+    int[] battleItems = new int[6];
     int[] bB = new int[10];
     int[] bC = new int[20];
     int[] bD = new int[1];
@@ -766,7 +766,7 @@ public class Game extends MyApplicationBase {
         int[] var4;
         for (var1 = 0; var1 < 6; ++var1) {
             if (this.eM[var1]) {
-                var4 = this.bA;
+                var4 = this.battleItems;
                 var10002 = var4[var1]--;
                 this.eL[var1] = 1;
             } else {
@@ -2186,9 +2186,9 @@ public class Game extends MyApplicationBase {
 
     boolean ab() {
         boolean var1 = false;
-        FileStream var2 = new FileStream();
-        if (var2.openRead("SAVE_DATA")) {
-            var2.enableMD5();
+        FileStream stream = new FileStream();
+        if (stream.openRead("SAVE_DATA")) {
+            stream.enableMD5();
             //if (!var2.e()) {
             //   var2.f();
             //   this.j(4);
@@ -2196,71 +2196,71 @@ public class Game extends MyApplicationBase {
             //   return var1;
             //}
 
-            int var3 = var2.readInt();
-            Sound.getInstance().muteBGM(var2.readBoolean());
-            Sound.getInstance().muteSE(var2.readBoolean());
-            if (var3 == 0 || var3 == 1) {
-                this.aL = var2.readInt();
-                this.aM = var2.readInt();
+            int gameVersion = stream.readInt();
+            Sound.getInstance().muteBGM(stream.readBoolean());
+            Sound.getInstance().muteSE(stream.readBoolean());
+            if (gameVersion == 0 || gameVersion == 1) {
+                this.catfood = stream.readInt();
+                this.currentEnergy = stream.readInt();
 
                 int var4;
                 for (var4 = 0; var4 < this.getLength(this.aN); ++var4) {
-                    this.aN[var4] = var2.readInt();
+                    this.aN[var4] = stream.readInt();
                 }
 
                 for (var4 = 0; var4 < this.getLength(this.aO); ++var4) {
-                    this.aO[var4] = var2.readInt();
+                    this.aO[var4] = stream.readInt();
                 }
 
                 for (var4 = 0; var4 < this.getLength(this.aP); ++var4) {
-                    this.aP[var4] = var2.readInt();
+                    this.aP[var4] = stream.readInt();
                 }
 
-                this.aQ = var2.readDouble();
-                this.aR = var2.readInt();
-                this.aS = var2.readInt();
-                this.aT = var2.readInt();
-                this.aU = var2.readInt();
-                this.aV = var2.readInt();
-                this.aW = var2.readInt();
-                this.aX = var2.readInt();
-                this.aY = var2.readInt();
-                this.aZ = var2.readInt();
-                this.ba = var2.readInt();
-                this.bb = var2.readInt();
+                this.aQ = stream.readDouble();
+                this.aR = stream.readInt();
+                this.aS = stream.readInt();
+                this.aT = stream.readInt();
+                this.aU = stream.readInt();
+                this.aV = stream.readInt();
+                this.aW = stream.readInt();
+                this.aX = stream.readInt();
+                this.xp = stream.readInt();
+                this.aZ = stream.readInt();
+                this.ba = stream.readInt();
+                this.bb = stream.readInt();
 
                 for (var4 = 0; var4 < this.getLength(this.bc); ++var4) {
-                    this.bc[var4] = var2.readInt();
+                    this.bc[var4] = stream.readInt();
                 }
 
-                this.bd = var2.readInt();
-                this.be = var2.readInt();
-                this.bf = var2.readInt();
-                this.u = var2.readBoolean();
-                this.bg = var2.readInt();
-                this.bh = var2.readInt();
-                this.bi = var2.readInt();
-                this.bj = var2.readInt();
+                this.bd = stream.readInt();
+                this.be = stream.readInt();
+                this.bf = stream.readInt();
+                this.u = stream.readBoolean();
+                this.bg = stream.readInt();
+                this.bh = stream.readInt();
+                this.bi = stream.readInt();
+                this.bj = stream.readInt();
 
                 for (var4 = 0; var4 < this.getLength(this.bk); ++var4) {
-                    this.bk[var4] = var2.readInt();
+                    this.bk[var4] = stream.readInt();
                 }
 
-                this.currentStamp = var2.readInt();
+                this.currentStamp = stream.readInt();
 
                 for (var4 = 0; var4 < this.getLength(this.stampClaimFlags); ++var4) {
-                    this.stampClaimFlags[var4] = var2.readInt();
+                    this.stampClaimFlags[var4] = stream.readInt();
                 }
 
-                this.bn = var2.readInt();
-                this.bo = var2.readInt();
+                this.bn = stream.readInt();
+                this.bo = stream.readInt();
 
                 for (var4 = 0; var4 < this.getLength(this.bp); ++var4) {
-                    this.bp[var4] = var2.readInt();
+                    this.bp[var4] = stream.readInt();
                 }
 
                 for (var4 = 0; var4 < this.getLength(this.bq); ++var4) {
-                    this.bq[var4] = var2.readInt();
+                    this.bq[var4] = stream.readInt();
                 }
 
                 var4 = 0;
@@ -2271,59 +2271,59 @@ public class Game extends MyApplicationBase {
                     if (var4 >= this.getLength(this.br)) {
                         for (var4 = 0; var4 < this.getLength(this.bs); ++var4) {
                             for (var5 = 0; var5 < this.getLength(this.bs[var4]); ++var5) {
-                                this.bs[var4][var5] = var2.readInt();
+                                this.bs[var4][var5] = stream.readInt();
                             }
                         }
 
                         for (var4 = 0; var4 < this.getLength(this.bt); ++var4) {
-                            this.bt[var4] = var2.readInt();
+                            this.bt[var4] = stream.readInt();
                         }
 
                         for (var4 = 0; var4 < this.getLength(this.bu); ++var4) {
-                            this.bu[var4] = var2.readInt();
+                            this.bu[var4] = stream.readInt();
                         }
 
                         for (var4 = 0; var4 < this.getLength(this.bv); ++var4) {
-                            this.bv[var4] = var2.readInt();
+                            this.bv[var4] = stream.readInt();
                         }
 
                         for (var4 = 0; var4 < this.getLength(this.bw); ++var4) {
-                            this.bw[var4] = var2.readInt();
+                            this.bw[var4] = stream.readInt();
                         }
 
                         for (var4 = 0; var4 < this.getLength(this.bx); ++var4) {
-                            this.bx[var4] = var2.readInt();
+                            this.bx[var4] = stream.readInt();
                         }
 
                         for (var4 = 0; var4 < this.getLength(this.by); ++var4) {
-                            this.by[var4] = var2.readInt();
+                            this.by[var4] = stream.readInt();
                         }
 
                         for (var4 = 0; var4 < this.getLength(this.bz); ++var4) {
-                            this.bz[var4] = var2.readInt();
+                            this.bz[var4] = stream.readInt();
                         }
 
-                        for (var4 = 0; var4 < this.getLength(this.bA); ++var4) {
-                            this.bA[var4] = var2.readInt();
+                        for (var4 = 0; var4 < this.getLength(this.battleItems); ++var4) {
+                            this.battleItems[var4] = stream.readInt();
                         }
 
                         for (var4 = 0; var4 < this.getLength(this.bB); ++var4) {
-                            this.bB[var4] = var2.readInt();
+                            this.bB[var4] = stream.readInt();
                         }
 
                         for (var4 = 0; var4 < this.getLength(this.bC); ++var4) {
-                            this.bC[var4] = var2.readInt();
+                            this.bC[var4] = stream.readInt();
                         }
 
                         for (var4 = 0; var4 < this.getLength(this.bD); ++var4) {
-                            this.bD[var4] = var2.readInt();
+                            this.bD[var4] = stream.readInt();
                         }
 
                         for (var4 = 0; var4 < this.getLength(this.bE); ++var4) {
-                            this.bE[var4] = var2.readInt();
+                            this.bE[var4] = stream.readInt();
                         }
 
-                        if (var3 < 1) {
+                        if (gameVersion < 1) {
                             break;
                         }
 
@@ -2334,20 +2334,20 @@ public class Game extends MyApplicationBase {
                                 break label193;
                             }
 
-                            this.bF[var4] = var2.readBoolean();
+                            this.bF[var4] = stream.readBoolean();
                             ++var4;
                         }
                     }
 
                     for (var5 = 0; var5 < this.getLength(this.br[var4]); ++var5) {
-                        this.br[var4][var5] = var2.readInt();
+                        this.br[var4][var5] = stream.readInt();
                     }
 
                     ++var4;
                 }
             }
 
-            var2.close();
+            stream.close();
         }
 
         if (!this.ad()) {
@@ -2367,8 +2367,8 @@ public class Game extends MyApplicationBase {
             var2.writeInt(1);
             var2.writeBoolean(Sound.getInstance().isMutedBGM());
             var2.writeBoolean(Sound.getInstance().isMutedSE());
-            var2.writeInt(this.aL);
-            var2.writeInt(this.aM);
+            var2.writeInt(this.catfood);
+            var2.writeInt(this.currentEnergy);
 
             int var3;
             for (var3 = 0; var3 < this.getLength(this.aN); ++var3) {
@@ -2391,7 +2391,7 @@ public class Game extends MyApplicationBase {
             var2.writeInt(this.aV);
             var2.writeInt(this.aW);
             var2.writeInt(this.aX);
-            var2.writeInt(this.aY);
+            var2.writeInt(this.xp);
             var2.writeInt(this.aZ);
             var2.writeInt(this.ba);
             var2.writeInt(this.bb);
@@ -2471,8 +2471,8 @@ public class Game extends MyApplicationBase {
                 var2.writeInt(this.bz[var3]);
             }
 
-            for (var3 = 0; var3 < this.getLength(this.bA); ++var3) {
-                var2.writeInt(this.bA[var3]);
+            for (var3 = 0; var3 < this.getLength(this.battleItems); ++var3) {
+                var2.writeInt(this.battleItems[var3]);
             }
 
             for (var3 = 0; var3 < this.getLength(this.bB); ++var3) {
@@ -3196,7 +3196,7 @@ public class Game extends MyApplicationBase {
         var1.drawScaledImageI(var5, var9 + 4 - var4, this.ei[0] + (var2 + 17 - var3), dv[this.fx[5]] + 84, dv[this.fx[5]] + 60, 3);
         var1.drawScaledImageI(this.uiTextures[5], this.scrollOffset[0] + 670, 0, 11);
         var1.drawScaledImageI(this.uiTextures[5], this.scrollOffset[0] + 608, 7, 10);
-        var3 = this.aY;
+        var3 = this.xp;
         var2 = 0;
 
         do {
