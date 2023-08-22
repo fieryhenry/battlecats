@@ -57,18 +57,18 @@ public class AppInstance extends Game {
          this.gp[var1] = false;
       }
 
-      this.ag[0].a(this.dq[0], "FONT_SYSTEM_BOLD", 46, 0);
-      this.ag[1].a(this.dq[1], "FONT_SYSTEM_BOLD", 24, 0);
-      if (this.p == 0) {
-         this.ag[2].a(this.dq[2], "FONT_SYSTEM_BOLD", 24, 0);
-         this.ag[3].a(String.format("%s%d%s", this.dq[3], 30 - (this.bl + 1), this.dq[4]), "FONT_SYSTEM_BOLD", 24, 0);
-      } else if (this.p == 1) {
-         this.ag[2].a(String.format("%s %d %s", this.dq[2], 30 - (this.bl + 1), this.dq[18]), "FONT_SYSTEM_BOLD", 24, 0);
-         this.ag[3].a(String.format("%s", this.dq[3]), "FONT_SYSTEM_BOLD", 24, 0);
+      this.textTextures[0].drawText(this.stampMessageText[0], "FONT_SYSTEM_BOLD", 46, 0);
+      this.textTextures[1].drawText(this.stampMessageText[1], "FONT_SYSTEM_BOLD", 24, 0);
+      if (this.versionCode == 0) {
+         this.textTextures[2].drawText(this.stampMessageText[2], "FONT_SYSTEM_BOLD", 24, 0);
+         this.textTextures[3].drawText(String.format("%s%d%s", this.stampMessageText[3], 30 - (this.bl + 1), this.stampMessageText[4]), "FONT_SYSTEM_BOLD", 24, 0);
+      } else if (this.versionCode == 1) {
+         this.textTextures[2].drawText(String.format("%s %d %s", this.stampMessageText[2], 30 - (this.bl + 1), this.stampMessageText[18]), "FONT_SYSTEM_BOLD", 24, 0);
+         this.textTextures[3].drawText(String.format("%s", this.stampMessageText[3]), "FONT_SYSTEM_BOLD", 24, 0);
       }
 
-      this.ag[4].a(this.dq[16], "FONT_SYSTEM_BOLD", 22, 1);
-      this.ag[5].a(this.dq[17], "FONT_SYSTEM_BOLD", 22, 1);
+      this.textTextures[4].drawText(this.stampMessageText[16], "FONT_SYSTEM_BOLD", 22, 1);
+      this.textTextures[5].drawText(this.stampMessageText[17], "FONT_SYSTEM_BOLD", 22, 1);
       this.fw[0][0] = this.excessWidth / 2 + 225;
       this.fw[0][1] = 485;
       this.fw[0][2] = 381;
@@ -84,7 +84,7 @@ public class AppInstance extends Game {
          this.aF[0].load(MyUtility.getString(String.format("i%03d_stamp_f.png", 0)), MyUtility.getString(String.format("%03d_stamp_f.imgcut", 0)));
       }
 
-      this.aG[0].a(MyUtility.getString(String.format("%03d_stamp_f.mamodel", 0)));
+      this.aG[0].load(MyUtility.getString(String.format("%03d_stamp_f.mamodel", 0)));
       this.aH[0].load(MyUtility.getString(String.format("%03d_stamp_f00.maanim", 0)));
       this.aG[0].a(this.aF);
       this.aG[0].a();
@@ -96,7 +96,7 @@ public class AppInstance extends Game {
          this.aF[1].load(MyUtility.getString(String.format("i%03d_img044.png", 1)), MyUtility.getString(String.format("i%03d_img044.imgcut", 1)));
       }
 
-      this.aG[1].a(MyUtility.getString(String.format("%03d_img044.mamodel", 1)));
+      this.aG[1].load(MyUtility.getString(String.format("%03d_img044.mamodel", 1)));
       this.aH[1].load(MyUtility.getString(String.format("stamp.maanim")));
       this.aG[1].a(this.aF);
       this.aG[1].a();
@@ -289,9 +289,9 @@ public class AppInstance extends Game {
       this.gp[6] = true;
       //jp.co.ponos.library.a.a.b().d();
 
-      for(var1 = 0; var1 < this.getLength(this.ag); ++var1) {
-         if (this.ag[var1].isLoaded()) {
-            this.ag[var1].reset();
+      for(var1 = 0; var1 < this.getLength(this.textTextures); ++var1) {
+         if (this.textTextures[var1].isLoaded()) {
+            this.textTextures[var1].reset();
          }
       }
 
@@ -312,7 +312,7 @@ public class AppInstance extends Game {
          this.fC[var1] = 0;
       }
 
-      this.ag[0].a(this.db[0], "FONT_SYSTEM_BOLD", 30, 1);
+      this.textTextures[0].drawText(this.optionText[0], "FONT_SYSTEM_BOLD", 30, 1);
       this.resetTextures();
 
       for(var1 = 0; var1 < this.getLength(this.ae); ++var1) {
@@ -1864,41 +1864,41 @@ public class AppInstance extends Game {
          if (this.hH == 1) {
             for(var2 = 0; var2 < 4; ++var2) {
                if (!this.ai[var2].isLoaded()) {
-                  if (aString.equals(this.cW[this.gW + 1][var2], "＠")) {
+                  if (aString.equals(this.stageFirstMessageText[this.gW + 1][var2], "＠")) {
                      break;
                   }
 
-                  this.ai[var2].a(this.cW[this.gW + 1][var2], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.ai[var2].drawText(this.stageFirstMessageText[this.gW + 1][var2], "FONT_SYSTEM_BOLD", 30, 1);
                }
             }
          } else if (this.bB[0] == 1) {
             for(var2 = 0; var2 < 4; ++var2) {
                if (!this.ai[var2].isLoaded()) {
-                  if (aString.equals(this.df[0][this.gW * 4 + var2], "＠")) {
+                  if (aString.equals(this.tutorialText[0][this.gW * 4 + var2], "＠")) {
                      break;
                   }
 
-                  this.ai[var2].a(this.df[0][this.gW * 4 + var2], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.ai[var2].drawText(this.tutorialText[0][this.gW * 4 + var2], "FONT_SYSTEM_BOLD", 30, 1);
                }
             }
          } else if (this.bB[1] == 1) {
             for(var2 = 0; var2 < 4; ++var2) {
                if (!this.ai[var2].isLoaded()) {
-                  if (aString.equals(this.df[1][this.gW * 4 + var2], "＠")) {
+                  if (aString.equals(this.tutorialText[1][this.gW * 4 + var2], "＠")) {
                      break;
                   }
 
-                  this.ai[var2].a(this.df[1][this.gW * 4 + var2], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.ai[var2].drawText(this.tutorialText[1][this.gW * 4 + var2], "FONT_SYSTEM_BOLD", 30, 1);
                }
             }
          } else if (this.bB[2] == 1) {
             for(var2 = 0; var2 < 4; ++var2) {
                if (!this.ai[var2].isLoaded()) {
-                  if (aString.equals(this.df[2][this.gW * 4 + var2], "＠")) {
+                  if (aString.equals(this.tutorialText[2][this.gW * 4 + var2], "＠")) {
                      break;
                   }
 
-                  this.ai[var2].a(this.df[2][this.gW * 4 + var2], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.ai[var2].drawText(this.tutorialText[2][this.gW * 4 + var2], "FONT_SYSTEM_BOLD", 30, 1);
                }
             }
          } else if (this.bB[3] == 1) {
@@ -1906,71 +1906,71 @@ public class AppInstance extends Game {
 
             for(var2 = 0; var2 < 4; ++var2) {
                if (!this.ai[var2].isLoaded()) {
-                  if (aString.equals(this.df[3][this.gW * 4 + var2], "＠")) {
+                  if (aString.equals(this.tutorialText[3][this.gW * 4 + var2], "＠")) {
                      break;
                   }
 
-                  this.ai[var2].a(this.df[3][this.gW * 4 + var2], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.ai[var2].drawText(this.tutorialText[3][this.gW * 4 + var2], "FONT_SYSTEM_BOLD", 30, 1);
                }
             }
          } else if (this.bB[4] == 1) {
             for(var2 = 0; var2 < 4; ++var2) {
                if (!this.ai[var2].isLoaded()) {
-                  if (aString.equals(this.df[4][var2], "＠")) {
+                  if (aString.equals(this.tutorialText[4][var2], "＠")) {
                      break;
                   }
 
-                  this.ai[var2].a(this.df[4][var2], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.ai[var2].drawText(this.tutorialText[4][var2], "FONT_SYSTEM_BOLD", 30, 1);
                }
             }
          } else if (this.bB[5] == 1) {
             for(var2 = 0; var2 < 4; ++var2) {
                if (!this.ai[var2].isLoaded()) {
-                  if (aString.equals(this.df[5][var2], "＠")) {
+                  if (aString.equals(this.tutorialText[5][var2], "＠")) {
                      break;
                   }
 
-                  this.ai[var2].a(this.df[5][var2], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.ai[var2].drawText(this.tutorialText[5][var2], "FONT_SYSTEM_BOLD", 30, 1);
                }
             }
          } else if (this.bB[6] == 1) {
             for(var2 = 0; var2 < 4; ++var2) {
                if (!this.ai[var2].isLoaded()) {
-                  if (aString.equals(this.df[6][this.gW * 4 + var2], "＠")) {
+                  if (aString.equals(this.tutorialText[6][this.gW * 4 + var2], "＠")) {
                      break;
                   }
 
-                  this.ai[var2].a(this.df[6][this.gW * 4 + var2], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.ai[var2].drawText(this.tutorialText[6][this.gW * 4 + var2], "FONT_SYSTEM_BOLD", 30, 1);
                }
             }
          } else if (this.bB[7] == 1) {
             for(var2 = 0; var2 < 4; ++var2) {
                if (!this.ai[var2].isLoaded()) {
-                  if (aString.equals(this.df[7][var2], "＠")) {
+                  if (aString.equals(this.tutorialText[7][var2], "＠")) {
                      break;
                   }
 
-                  this.ai[var2].a(this.df[7][var2], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.ai[var2].drawText(this.tutorialText[7][var2], "FONT_SYSTEM_BOLD", 30, 1);
                }
             }
          } else if (this.bB[8] == 1) {
             for(var2 = 0; var2 < 4; ++var2) {
                if (!this.ai[var2].isLoaded()) {
-                  if (aString.equals(this.df[8][this.gW * 4 + var2], "＠")) {
+                  if (aString.equals(this.tutorialText[8][this.gW * 4 + var2], "＠")) {
                      break;
                   }
 
-                  this.ai[var2].a(this.df[8][this.gW * 4 + var2], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.ai[var2].drawText(this.tutorialText[8][this.gW * 4 + var2], "FONT_SYSTEM_BOLD", 30, 1);
                }
             }
          } else if (this.bB[9] == 1) {
             for(var2 = 0; var2 < 4; ++var2) {
                if (!this.ai[var2].isLoaded()) {
-                  if (aString.equals(this.df[9][var2], "＠")) {
+                  if (aString.equals(this.tutorialText[9][var2], "＠")) {
                      break;
                   }
 
-                  this.ai[var2].a(this.df[9][var2], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.ai[var2].drawText(this.tutorialText[9][var2], "FONT_SYSTEM_BOLD", 30, 1);
                }
             }
          }
@@ -2347,9 +2347,9 @@ public class AppInstance extends Game {
          this.gA[var1] = 0;
       }
 
-      for(var1 = 0; var1 < this.getLength(this.ag); ++var1) {
-         if (this.ag[var1].isLoaded()) {
-            this.ag[var1].reset();
+      for(var1 = 0; var1 < this.getLength(this.textTextures); ++var1) {
+         if (this.textTextures[var1].isLoaded()) {
+            this.textTextures[var1].reset();
          }
       }
 
@@ -2379,9 +2379,9 @@ public class AppInstance extends Game {
       for(var1 = 0; var1 < this.getLength(this.bK); ++var1) {
          if (this.bK[var1] != -1) {
             if (this.bw[this.bK[var1]] == 0) {
-               this.ag[var4].a(this.cT[this.bK[var1]][0][0], "FONT_SYSTEM_BOLD", 30, 1);
+               this.textTextures[var4].drawText(this.unitExplanationText[this.bK[var1]][0][0], "FONT_SYSTEM_BOLD", 30, 1);
             } else if (this.bw[this.bK[var1]] == 1) {
-               this.ag[var4].a(this.cT[this.bK[var1]][1][0], "FONT_SYSTEM_BOLD", 30, 1);
+               this.textTextures[var4].drawText(this.unitExplanationText[this.bK[var1]][1][0], "FONT_SYSTEM_BOLD", 30, 1);
             }
 
             this.gA[0] = var4 + 1;
@@ -2395,8 +2395,8 @@ public class AppInstance extends Game {
       var6[1] = var1;
       var5[2] = var1;
 
-      for(var1 = this.gA[2]; var1 < this.getLength(this.cD) + this.gA[2]; ++var1) {
-         this.ag[var1].a(this.cD[var1 - this.gA[2]], "FONT_SYSTEM_BOLD", 30, 1);
+      for(var1 = this.gA[2]; var1 < this.getLength(this.warning1Text) + this.gA[2]; ++var1) {
+         this.textTextures[var1].drawText(this.warning1Text[var1 - this.gA[2]], "FONT_SYSTEM_BOLD", 30, 1);
          this.gA[3] = var1 + 1;
       }
 
@@ -2404,16 +2404,16 @@ public class AppInstance extends Game {
          if (this.ff[2] >= 0 && this.ff[2] <= this.gC[1]) {
             if (this.bw[this.bK[this.ff[2]]] == 0) {
                var1 = var4;
-               if (!this.ag[var4].isLoaded()) {
-                  this.ag[var4].a(this.cT[this.bK[this.ff[2]]][0][var4 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+               if (!this.textTextures[var4].isLoaded()) {
+                  this.textTextures[var4].drawText(this.unitExplanationText[this.bK[this.ff[2]]][0][var4 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                   var1 = var4;
                }
             } else {
                var1 = var4;
                if (this.bw[this.bK[this.ff[2]]] == 1) {
                   var1 = var4;
-                  if (!this.ag[var4].isLoaded()) {
-                     this.ag[var4].a(this.cT[this.bK[this.ff[2]]][1][var4 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                  if (!this.textTextures[var4].isLoaded()) {
+                     this.textTextures[var4].drawText(this.unitExplanationText[this.bK[this.ff[2]]][1][var4 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                      var1 = var4;
                   }
                }
@@ -2427,7 +2427,7 @@ public class AppInstance extends Game {
                   break;
                }
 
-               this.ag[var4].a(this.dp[0][var4 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+               this.textTextures[var4].drawText(this.categoryExplanationText[0][var4 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
                ++var4;
             }
          } else {
@@ -2439,7 +2439,7 @@ public class AppInstance extends Game {
                   break;
                }
 
-               this.ag[var4].a(this.dp[1][var4 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+               this.textTextures[var4].drawText(this.categoryExplanationText[1][var4 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
                ++var4;
             }
          }
@@ -2447,11 +2447,11 @@ public class AppInstance extends Game {
          this.gA[4] = var1 + 1;
       }
 
-      if (!this.ag[this.gA[4]].isLoaded()) {
+      if (!this.textTextures[this.gA[4]].isLoaded()) {
          if (this.ff[3] == 0) {
-            this.ag[this.gA[4]].a(this.cY[0], "FONT_SYSTEM_BOLD", 30, 1);
+            this.textTextures[this.gA[4]].drawText(this.pageNameText[0], "FONT_SYSTEM_BOLD", 30, 1);
          } else {
-            this.ag[this.gA[4]].a(this.cY[5], "FONT_SYSTEM_BOLD", 30, 1);
+            this.textTextures[this.gA[4]].drawText(this.pageNameText[5], "FONT_SYSTEM_BOLD", 30, 1);
          }
       }
 
@@ -2694,19 +2694,19 @@ public class AppInstance extends Game {
                   for(var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
                      if (this.ff[2] >= 0 && this.ff[2] <= this.gC[1]) {
                         if (this.bw[this.bK[this.ff[2]]] == 0) {
-                           this.ag[var3].a(this.cT[this.bK[this.ff[2]]][0][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                           this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.ff[2]]][0][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                         } else if (this.bw[this.bK[this.ff[2]]] == 1) {
-                           this.ag[var3].a(this.cT[this.bK[this.ff[2]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                           this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.ff[2]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                         }
                      }
                   }
                } else if (this.ff[3] == 0) {
                   for(var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-                     this.ag[var3].a(this.dp[0][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[var3].drawText(this.categoryExplanationText[0][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
                   }
                } else {
                   for(var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-                     this.ag[var3].a(this.dp[1][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[var3].drawText(this.categoryExplanationText[1][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
                   }
                }
             }
@@ -2715,18 +2715,18 @@ public class AppInstance extends Game {
             if (this.ff[2] >= 0 && this.ff[2] <= this.gC[1]) {
                for(var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
                   if (this.bw[this.bK[this.ff[2]]] == 0) {
-                     this.ag[var3].a(this.cT[this.bK[this.ff[2]]][0][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.ff[2]]][0][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                   } else if (this.bw[this.bK[this.ff[2]]] == 1) {
-                     this.ag[var3].a(this.cT[this.bK[this.ff[2]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.ff[2]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                   }
                }
             } else if (this.ff[3] == 0) {
                for(var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-                  this.ag[var3].a(this.dp[0][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[var3].drawText(this.categoryExplanationText[0][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
                }
             } else {
                for(var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-                  this.ag[var3].a(this.dp[1][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[var3].drawText(this.categoryExplanationText[1][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
                }
             }
          }
@@ -3620,11 +3620,11 @@ public class AppInstance extends Game {
             if (cC[this.gH] == 100 && this.ff[2] >= 0 && this.ff[2] <= this.gC[1]) {
                if (this.bw[this.bK[this.ff[2]]] == 0) {
                   this.bw[this.bK[this.ff[2]]] = 1;
-                  this.ag[this.ff[2]].a(this.cT[this.bK[this.ff[2]]][1][0], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[this.ff[2]].drawText(this.unitExplanationText[this.bK[this.ff[2]]][1][0], "FONT_SYSTEM_BOLD", 30, 1);
 
                   for(var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
                      if (this.bw[this.bK[this.ff[2]]] == 1) {
-                        this.ag[var3].a(this.cT[this.bK[this.ff[2]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.ff[2]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                      }
                   }
 
@@ -3648,11 +3648,11 @@ public class AppInstance extends Game {
                   }
                } else if (this.bw[this.bK[this.ff[2]]] == 1) {
                   this.bw[this.bK[this.ff[2]]] = 0;
-                  this.ag[this.ff[2]].a(this.cT[this.bK[this.ff[2]]][0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[this.ff[2]].drawText(this.unitExplanationText[this.bK[this.ff[2]]][0][0], "FONT_SYSTEM_BOLD", 30, 1);
 
                   for(var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
                      if (this.bw[this.bK[this.ff[2]]] == 0) {
-                        this.ag[var3].a(this.cT[this.bK[this.ff[2]]][0][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.ff[2]]][0][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                      }
                   }
 
@@ -3885,485 +3885,485 @@ public class AppInstance extends Game {
       this.ag();
       if (aString.equals(MyUtility.getString("lang"), "ja")) {
          this.q = 30;
-         this.p = 0;
+         this.versionCode = 0;
       } else if (aString.equals(MyUtility.getString("lang"), "en")) {
          this.q = 15;
-         this.p = 1;
+         this.versionCode = 1;
       }
 
       Sound.getInstance().loadMany(this.hL, 43);
-      AssetTextStream var2 = new AssetTextStream();
-      if (var2.openRead(String.format("OP_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.cJ); ++var1) {
-            if (this.p == 0) {
-               var2.readLine();
-            } else if (this.p == 1) {
-               var2.readLine("\\*");
+      AssetTextStream stream = new AssetTextStream();
+      if (stream.openRead(String.format("OP_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.openingText); ++var1) {
+            if (this.versionCode == 0) {
+               stream.readLine();
+            } else if (this.versionCode == 1) {
+               stream.readLine("\\*");
             }
 
-            this.cJ[var1] = var2.getLine(0);
+            this.openingText[var1] = stream.getLine(0);
          }
       }
 
-      var2.close();
-      if (var2.openRead(String.format("ED_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.cK); ++var1) {
-            if (this.p == 0) {
-               var2.readLine();
-            } else if (this.p == 1) {
-               var2.readLine("\\*");
+      stream.close();
+      if (stream.openRead(String.format("ED_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.endingText); ++var1) {
+            if (this.versionCode == 0) {
+               stream.readLine();
+            } else if (this.versionCode == 1) {
+               stream.readLine("\\*");
             }
 
-            this.cK[var1] = var2.getLine(0);
+            this.endingText[var1] = stream.getLine(0);
          }
       }
 
-      var2.close();
+      stream.close();
       int var3;
-      if (var2.openRead(String.format("EnemyPictureBook_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.cQ); ++var1) {
-            if (this.p == 0) {
-               var2.readLine();
-            } else if (this.p == 1) {
-               var2.readLine("\\*");
+      if (stream.openRead(String.format("EnemyPictureBook_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.enemyPictureBookText); ++var1) {
+            if (this.versionCode == 0) {
+               stream.readLine();
+            } else if (this.versionCode == 1) {
+               stream.readLine("\\*");
             }
 
-            for(var3 = 0; var3 < this.getLength(this.cQ[var1]); ++var3) {
-               this.cQ[var1][var3] = var2.getLine(var3);
-            }
-         }
-      }
-
-      var2.close();
-      if (var2.openRead(String.format("EnemyPictureBookQuestion_%s.csv", MyUtility.getString("lang")))) {
-         var2.readLine();
-
-         for(var1 = 0; var1 < this.getLength(this.cR); ++var1) {
-            this.cR[var1] = var2.getLine(var1);
-         }
-      }
-
-      var2.close();
-      if (var2.openRead(String.format("StageName_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.cF); ++var1) {
-            var2.readLine();
-            this.cF[var1] = var2.getLine(0);
-         }
-      }
-
-      var2.close();
-      if (var2.openRead(String.format("Treasure1_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.cG); ++var1) {
-            var2.readLine();
-            this.cG[var1] = var2.getLine(0);
-         }
-      }
-
-      var2.close();
-      if (var2.openRead(String.format("Treasure2_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.cH); ++var1) {
-            var2.readLine();
-            this.cH[var1] = var2.getLine(0);
-         }
-      }
-
-      var2.close();
-      if (var2.openRead(String.format("Treasure3_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.cI); ++var1) {
-            var2.readLine();
-
-            for(var3 = 0; var3 < this.getLength(this.cI[var1]); ++var3) {
-               this.cI[var1][var3] = var2.getLine(var3);
+            for(var3 = 0; var3 < this.getLength(this.enemyPictureBookText[var1]); ++var3) {
+               this.enemyPictureBookText[var1][var3] = stream.getLine(var3);
             }
          }
       }
 
-      var2.close();
-      if (var2.openRead(String.format("Warning1_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.cD); ++var1) {
-            var2.readLine();
-            this.cD[var1] = var2.getLine(0);
+      stream.close();
+      if (stream.openRead(String.format("EnemyPictureBookQuestion_%s.csv", MyUtility.getString("lang")))) {
+         stream.readLine();
+
+         for(var1 = 0; var1 < this.getLength(this.enemyPictureBookQuestionText); ++var1) {
+            this.enemyPictureBookQuestionText[var1] = stream.getLine(var1);
          }
       }
 
-      var2.close();
-      if (var2.openRead(String.format("Warning2_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.cE); ++var1) {
-            if (this.p == 0) {
-               var2.readLine();
-            } else if (this.p == 1) {
-               var2.readLine("\\*");
-            }
-
-            for(var3 = 0; var3 < this.getLength(this.cE[var1]); ++var3) {
-               this.cE[var1][var3] = var2.getLine(var3);
-            }
+      stream.close();
+      if (stream.openRead(String.format("StageName_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.stageNamesText); ++var1) {
+            stream.readLine();
+            this.stageNamesText[var1] = stream.getLine(0);
          }
       }
 
-      if (var2.openRead(String.format("MainMenuW_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.cL); ++var1) {
-            if (this.p == 0) {
-               var2.readLine();
-            } else if (this.p == 1) {
-               var2.readLine("\\*");
-            }
-
-            for(var3 = 0; var3 < this.getLength(this.cL[var1]); ++var3) {
-               this.cL[var1][var3] = var2.getLine(var3);
-            }
+      stream.close();
+      if (stream.openRead(String.format("Treasure1_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.treasure1Text); ++var1) {
+            stream.readLine();
+            this.treasure1Text[var1] = stream.getLine(0);
          }
       }
 
-      var2.close();
-      if (var2.openRead(String.format("MainMenuP_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.cM); ++var1) {
-            if (this.p == 0) {
-               var2.readLine();
-            } else if (this.p == 1) {
-               var2.readLine("\\*");
-            }
+      stream.close();
+      if (stream.openRead(String.format("Treasure2_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.treasure2Text); ++var1) {
+            stream.readLine();
+            this.treasure2Text[var1] = stream.getLine(0);
+         }
+      }
 
-            for(var3 = 0; var3 < this.getLength(this.cM[var1]); ++var3) {
-               this.cM[var1][var3] = var2.getLine(var3);
+      stream.close();
+      if (stream.openRead(String.format("Treasure3_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.treasure3Text); ++var1) {
+            stream.readLine();
+
+            for(var3 = 0; var3 < this.getLength(this.treasure3Text[var1]); ++var3) {
+               this.treasure3Text[var1][var3] = stream.getLine(var3);
             }
          }
       }
 
-      var2.close();
-      if (var2.openRead(String.format("MainMenuU_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.cN); ++var1) {
-            if (this.p == 0) {
-               var2.readLine();
-            } else if (this.p == 1) {
-               var2.readLine("\\*");
+      stream.close();
+      if (stream.openRead(String.format("Warning1_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.warning1Text); ++var1) {
+            stream.readLine();
+            this.warning1Text[var1] = stream.getLine(0);
+         }
+      }
+
+      stream.close();
+      if (stream.openRead(String.format("Warning2_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.warning2Text); ++var1) {
+            if (this.versionCode == 0) {
+               stream.readLine();
+            } else if (this.versionCode == 1) {
+               stream.readLine("\\*");
             }
 
-            for(var3 = 0; var3 < this.getLength(this.cN[var1]); ++var3) {
-               this.cN[var1][var3] = var2.getLine(var3);
+            for(var3 = 0; var3 < this.getLength(this.warning2Text[var1]); ++var3) {
+               this.warning2Text[var1][var3] = stream.getLine(var3);
             }
          }
       }
 
-      var2.close();
-      if (var2.openRead(String.format("MainMenuT_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.cO); ++var1) {
-            if (this.p == 0) {
-               var2.readLine();
-            } else if (this.p == 1) {
-               var2.readLine("\\*");
+      if (stream.openRead(String.format("MainMenuW_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.mainMenuWText); ++var1) {
+            if (this.versionCode == 0) {
+               stream.readLine();
+            } else if (this.versionCode == 1) {
+               stream.readLine("\\*");
             }
 
-            for(var3 = 0; var3 < this.getLength(this.cO[var1]); ++var3) {
-               this.cO[var1][var3] = var2.getLine(var3);
-            }
-         }
-      }
-
-      var2.close();
-      if (var2.openRead(String.format("MainMenuB_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.cP); ++var1) {
-            if (this.p == 0) {
-               var2.readLine();
-            } else if (this.p == 1) {
-               var2.readLine("\\*");
-            }
-
-            for(var3 = 0; var3 < this.getLength(this.cP[var1]); ++var3) {
-               this.cP[var1][var3] = var2.getLine(var3);
+            for(var3 = 0; var3 < this.getLength(this.mainMenuWText[var1]); ++var3) {
+               this.mainMenuWText[var1][var3] = stream.getLine(var3);
             }
          }
       }
 
-      var2.close();
-      if (var2.openRead(String.format("Unit_Explanation_Off_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.cS); ++var1) {
-            var2.readLine();
+      stream.close();
+      if (stream.openRead(String.format("MainMenuP_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.mainMenuPText); ++var1) {
+            if (this.versionCode == 0) {
+               stream.readLine();
+            } else if (this.versionCode == 1) {
+               stream.readLine("\\*");
+            }
 
-            for(var3 = 0; var3 < this.getLength(this.cS[var1]); ++var3) {
-               this.cS[var1][var3] = var2.getLine(var3);
+            for(var3 = 0; var3 < this.getLength(this.mainMenuPText[var1]); ++var3) {
+               this.mainMenuPText[var1][var3] = stream.getLine(var3);
             }
          }
       }
 
-      var2.close();
+      stream.close();
+      if (stream.openRead(String.format("MainMenuU_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.mainMenuUText); ++var1) {
+            if (this.versionCode == 0) {
+               stream.readLine();
+            } else if (this.versionCode == 1) {
+               stream.readLine("\\*");
+            }
+
+            for(var3 = 0; var3 < this.getLength(this.mainMenuUText[var1]); ++var3) {
+               this.mainMenuUText[var1][var3] = stream.getLine(var3);
+            }
+         }
+      }
+
+      stream.close();
+      if (stream.openRead(String.format("MainMenuT_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.mainMenuTText); ++var1) {
+            if (this.versionCode == 0) {
+               stream.readLine();
+            } else if (this.versionCode == 1) {
+               stream.readLine("\\*");
+            }
+
+            for(var3 = 0; var3 < this.getLength(this.mainMenuTText[var1]); ++var3) {
+               this.mainMenuTText[var1][var3] = stream.getLine(var3);
+            }
+         }
+      }
+
+      stream.close();
+      if (stream.openRead(String.format("MainMenuB_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.mainMenuBText); ++var1) {
+            if (this.versionCode == 0) {
+               stream.readLine();
+            } else if (this.versionCode == 1) {
+               stream.readLine("\\*");
+            }
+
+            for(var3 = 0; var3 < this.getLength(this.mainMenuBText[var1]); ++var3) {
+               this.mainMenuBText[var1][var3] = stream.getLine(var3);
+            }
+         }
+      }
+
+      stream.close();
+      if (stream.openRead(String.format("Unit_Explanation_Off_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.unitExplanationOffText); ++var1) {
+            stream.readLine();
+
+            for(var3 = 0; var3 < this.getLength(this.unitExplanationOffText[var1]); ++var3) {
+               this.unitExplanationOffText[var1][var3] = stream.getLine(var3);
+            }
+         }
+      }
+
+      stream.close();
 
       int var4;
       for(var1 = 0; var1 < 26; ++var1) {
-         if (var2.openRead(String.format("Unit_Explanation%d_%s.csv", var1 + 1, MyUtility.getString("lang")))) {
-            for(var3 = 0; var3 < this.getLength(this.cT[var1]); ++var3) {
-               var2.readLine();
+         if (stream.openRead(String.format("Unit_Explanation%d_%s.csv", var1 + 1, MyUtility.getString("lang")))) {
+            for(var3 = 0; var3 < this.getLength(this.unitExplanationText[var1]); ++var3) {
+               stream.readLine();
 
-               for(var4 = 0; var4 < this.getLength(this.cT[var1][var3]); ++var4) {
-                  this.cT[var1][var3][var4] = var2.getLine(var4);
+               for(var4 = 0; var4 < this.getLength(this.unitExplanationText[var1][var3]); ++var4) {
+                  this.unitExplanationText[var1][var3][var4] = stream.getLine(var4);
                }
             }
          }
       }
 
-      var2.close();
-      if (var2.openRead(String.format("God_Explanation_%s.csv", MyUtility.getString("lang")))) {
-         var2.readLine();
+      stream.close();
+      if (stream.openRead(String.format("God_Explanation_%s.csv", MyUtility.getString("lang")))) {
+         stream.readLine();
 
-         for(var1 = 0; var1 < this.getLength(this.cU); ++var1) {
-            this.cU[var1] = var2.getLine(var1);
+         for(var1 = 0; var1 < this.getLength(this.godExplanationText); ++var1) {
+            this.godExplanationText[var1] = stream.getLine(var1);
          }
       }
 
-      var2.close();
-      if (var2.openRead(String.format("StageFirstMessage_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.cW); ++var1) {
-            var2.readLine();
+      stream.close();
+      if (stream.openRead(String.format("StageFirstMessage_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.stageFirstMessageText); ++var1) {
+            stream.readLine();
 
-            for(var3 = 0; var3 < this.getLength(this.cW[var1]); ++var3) {
-               this.cW[var1][var3] = var2.getLine(var3);
+            for(var3 = 0; var3 < this.getLength(this.stageFirstMessageText[var1]); ++var3) {
+               this.stageFirstMessageText[var1][var3] = stream.getLine(var3);
             }
          }
       }
 
-      var2.close();
+      stream.close();
 
-      for(var1 = 0; var1 < this.getLength(this.cV); ++var1) {
-         if (var2.openRead(String.format("Cat_Explanation%d_%s.csv", var1 + 1, MyUtility.getString("lang")))) {
-            var2.readLine();
+      for(var1 = 0; var1 < this.getLength(this.catExplanationText); ++var1) {
+         if (stream.openRead(String.format("Cat_Explanation%d_%s.csv", var1 + 1, MyUtility.getString("lang")))) {
+            stream.readLine();
 
-            for(var3 = 0; var3 < this.getLength(this.cV[var1]); ++var3) {
-               this.cV[var1][var3] = var2.getLine(var3);
+            for(var3 = 0; var3 < this.getLength(this.catExplanationText[var1]); ++var3) {
+               this.catExplanationText[var1][var3] = stream.getLine(var3);
             }
          }
       }
 
-      var2.close();
-      if (var2.openRead(String.format("ChallengeMode_%s.csv", MyUtility.getString("lang")))) {
-         var2.readLine();
+      stream.close();
+      if (stream.openRead(String.format("ChallengeMode_%s.csv", MyUtility.getString("lang")))) {
+         stream.readLine();
 
-         for(var1 = 0; var1 < this.getLength(this.cX); ++var1) {
-            this.cX[var1] = var2.getLine(var1);
+         for(var1 = 0; var1 < this.getLength(this.challengeModeText); ++var1) {
+            this.challengeModeText[var1] = stream.getLine(var1);
          }
       }
 
-      var2.close();
-      if (var2.openRead(String.format("PageName_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.cY); ++var1) {
-            var2.readLine();
-            this.cY[var1] = var2.getLine(0);
+      stream.close();
+      if (stream.openRead(String.format("PageName_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.pageNameText); ++var1) {
+            stream.readLine();
+            this.pageNameText[var1] = stream.getLine(0);
          }
       }
 
-      var2.close();
-      if (var2.openRead(String.format("FirstLose_%s.csv", MyUtility.getString("lang")))) {
-         var2.readLine();
+      stream.close();
+      if (stream.openRead(String.format("FirstLose_%s.csv", MyUtility.getString("lang")))) {
+         stream.readLine();
 
-         for(var1 = 0; var1 < this.getLength(this.cZ); ++var1) {
-            this.cZ[var1] = var2.getLine(var1);
+         for(var1 = 0; var1 < this.getLength(this.firstLoseText); ++var1) {
+            this.firstLoseText[var1] = stream.getLine(var1);
          }
       }
 
-      var2.close();
+      stream.close();
 
-      for(var1 = 0; var1 < this.getLength(this.da); ++var1) {
-         if (var2.openRead(String.format("Lose%d_%s.csv", var1 + 1, MyUtility.getString("lang")))) {
-            for(var3 = 0; var3 < this.getLength(this.da[var1]); ++var3) {
-               if (this.p == 0) {
-                  var2.readLine();
-               } else if (this.p == 1) {
-                  var2.readLine("\\*");
+      for(var1 = 0; var1 < this.getLength(this.loseText); ++var1) {
+         if (stream.openRead(String.format("Lose%d_%s.csv", var1 + 1, MyUtility.getString("lang")))) {
+            for(var3 = 0; var3 < this.getLength(this.loseText[var1]); ++var3) {
+               if (this.versionCode == 0) {
+                  stream.readLine();
+               } else if (this.versionCode == 1) {
+                  stream.readLine("\\*");
                }
 
-               for(var4 = 0; var4 < this.getLength(this.da[var1][var3]); ++var4) {
-                  this.da[var1][var3][var4] = var2.getLine(var4);
+               for(var4 = 0; var4 < this.getLength(this.loseText[var1][var3]); ++var4) {
+                  this.loseText[var1][var3][var4] = stream.getLine(var4);
                }
             }
          }
       }
 
-      var2.close();
-      if (var2.openRead(String.format("Option_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.db); ++var1) {
-            var2.readLine();
-            this.db[var1] = var2.getLine(0);
+      stream.close();
+      if (stream.openRead(String.format("Option_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.optionText); ++var1) {
+            stream.readLine();
+            this.optionText[var1] = stream.getLine(0);
          }
       }
 
-      if (var2.openRead(String.format("ItemName_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.dc); ++var1) {
-            var2.readLine();
-            this.dc[var1] = var2.getLine(0);
+      if (stream.openRead(String.format("ItemName_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.itemNameText); ++var1) {
+            stream.readLine();
+            this.itemNameText[var1] = stream.getLine(0);
          }
       }
 
-      var2.close();
-      if (var2.openRead(String.format("Item_Explanation_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.dd); ++var1) {
-            var2.readLine();
+      stream.close();
+      if (stream.openRead(String.format("Item_Explanation_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.itemExplanationText); ++var1) {
+            stream.readLine();
 
-            for(var3 = 0; var3 < this.getLength(this.dd[var1]); ++var3) {
-               this.dd[var1][var3] = var2.getLine(var3);
+            for(var3 = 0; var3 < this.getLength(this.itemExplanationText[var1]); ++var3) {
+               this.itemExplanationText[var1][var3] = stream.getLine(var3);
             }
          }
       }
 
-      var2.close();
-      if (var2.openRead(String.format("MainMenuPopUp_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.de); ++var1) {
-            if (this.p == 0) {
-               var2.readLine();
-            } else if (this.p == 1) {
-               var2.readLine("\\*");
+      stream.close();
+      if (stream.openRead(String.format("MainMenuPopUp_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.mainMenuPopUpText); ++var1) {
+            if (this.versionCode == 0) {
+               stream.readLine();
+            } else if (this.versionCode == 1) {
+               stream.readLine("\\*");
             }
 
-            for(var3 = 0; var3 < this.getLength(this.de[var1]); ++var3) {
-               this.de[var1][var3] = var2.getLine(var3);
-            }
-         }
-      }
-
-      var2.close();
-      if (var2.openRead(String.format("Tutorial_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.df); ++var1) {
-            if (this.p == 0) {
-               var2.readLine();
-            } else if (this.p == 1) {
-               var2.readLine("\\*");
-            }
-
-            for(var3 = 0; var3 < this.getLength(this.df[var1]); ++var3) {
-               this.df[var1][var3] = var2.getLine(var3);
+            for(var3 = 0; var3 < this.getLength(this.mainMenuPopUpText[var1]); ++var3) {
+               this.mainMenuPopUpText[var1][var3] = stream.getLine(var3);
             }
          }
       }
 
-      var2.close();
-      if (var2.openRead(String.format("God1_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.dh); ++var1) {
-            var2.readLine();
+      stream.close();
+      if (stream.openRead(String.format("Tutorial_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.tutorialText); ++var1) {
+            if (this.versionCode == 0) {
+               stream.readLine();
+            } else if (this.versionCode == 1) {
+               stream.readLine("\\*");
+            }
 
-            for(var3 = 0; var3 < this.getLength(this.dh[var1]); ++var3) {
-               this.dh[var1][var3] = var2.getLine(var3);
+            for(var3 = 0; var3 < this.getLength(this.tutorialText[var1]); ++var3) {
+               this.tutorialText[var1][var3] = stream.getLine(var3);
             }
          }
       }
 
-      var2.close();
-      if (var2.openRead(String.format("God2_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.di); ++var1) {
-            if (this.p == 0) {
-               var2.readLine();
-            } else if (this.p == 1) {
-               var2.readLine("\\*");
-            }
+      stream.close();
+      if (stream.openRead(String.format("God1_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.god1Text); ++var1) {
+            stream.readLine();
 
-            for(var3 = 0; var3 < this.getLength(this.di[var1]); ++var3) {
-               this.di[var1][var3] = var2.getLine(var3);
+            for(var3 = 0; var3 < this.getLength(this.god1Text[var1]); ++var3) {
+               this.god1Text[var1][var3] = stream.getLine(var3);
             }
          }
       }
 
-      var2.close();
-      if (var2.openRead(String.format("God3_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.dj); ++var1) {
-            var2.readLine();
+      stream.close();
+      if (stream.openRead(String.format("God2_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.god2Text); ++var1) {
+            if (this.versionCode == 0) {
+               stream.readLine();
+            } else if (this.versionCode == 1) {
+               stream.readLine("\\*");
+            }
 
-            for(var3 = 0; var3 < this.getLength(this.dj[var1]); ++var3) {
-               this.dj[var1][var3] = var2.getLine(var3);
+            for(var3 = 0; var3 < this.getLength(this.god2Text[var1]); ++var3) {
+               this.god2Text[var1][var3] = stream.getLine(var3);
             }
          }
       }
 
-      var2.close();
-      if (var2.openRead(String.format("God4_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.dk); ++var1) {
-            var2.readLine();
+      stream.close();
+      if (stream.openRead(String.format("God3_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.god3Text); ++var1) {
+            stream.readLine();
 
-            for(var3 = 0; var3 < this.getLength(this.dk[var1]); ++var3) {
-               this.dk[var1][var3] = var2.getLine(var3);
+            for(var3 = 0; var3 < this.getLength(this.god3Text[var1]); ++var3) {
+               this.god3Text[var1][var3] = stream.getLine(var3);
             }
          }
       }
 
-      var2.close();
-      if (var2.openRead(String.format("GodName_%s.csv", MyUtility.getString("lang")))) {
-         var2.readLine();
-         this.dl = var2.getLine(0);
-      }
+      stream.close();
+      if (stream.openRead(String.format("God4_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.god4Text); ++var1) {
+            stream.readLine();
 
-      var2.close();
-      if (var2.openRead(String.format("GodItemName_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.dm); ++var1) {
-            var2.readLine();
-            this.dm[var1] = var2.getLine(0);
-         }
-      }
-
-      var2.close();
-      if (var2.openRead(String.format("GodItemExplanation_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.dn); ++var1) {
-            var2.readLine();
-
-            for(var3 = 0; var3 < this.getLength(this.dn[var1]); ++var3) {
-               this.dn[var1][var3] = var2.getLine(var3);
+            for(var3 = 0; var3 < this.getLength(this.god4Text[var1]); ++var3) {
+               this.god4Text[var1][var3] = stream.getLine(var3);
             }
          }
       }
 
-      var2.close();
-      if (var2.openRead(String.format("ED_Message_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.dg); ++var1) {
-            var2.readLine();
+      stream.close();
+      if (stream.openRead(String.format("GodName_%s.csv", MyUtility.getString("lang")))) {
+         stream.readLine();
+         this.godNameText = stream.getLine(0);
+      }
 
-            for(var3 = 0; var3 < this.getLength(this.dg[var1]); ++var3) {
-               this.dg[var1][var3] = var2.getLine(var3);
+      stream.close();
+      if (stream.openRead(String.format("GodItemName_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.godItemNameText); ++var1) {
+            stream.readLine();
+            this.godItemNameText[var1] = stream.getLine(0);
+         }
+      }
+
+      stream.close();
+      if (stream.openRead(String.format("GodItemExplanation_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.godItemExplanationText); ++var1) {
+            stream.readLine();
+
+            for(var3 = 0; var3 < this.getLength(this.godItemExplanationText[var1]); ++var3) {
+               this.godItemExplanationText[var1][var3] = stream.getLine(var3);
             }
          }
       }
 
-      var2.close();
-      if (var2.openRead(String.format("PopUpMessage_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.do1); ++var1) {
-            var2.readLine();
+      stream.close();
+      if (stream.openRead(String.format("ED_Message_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.endingMessageText); ++var1) {
+            stream.readLine();
 
-            for(var3 = 0; var3 < this.getLength(this.do1[var1]); ++var3) {
-               this.do1[var1][var3] = var2.getLine(var3);
+            for(var3 = 0; var3 < this.getLength(this.endingMessageText[var1]); ++var3) {
+               this.endingMessageText[var1][var3] = stream.getLine(var3);
             }
          }
       }
 
-      var2.close();
-      if (var2.openRead(String.format("Category_Explanation_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.dp); ++var1) {
-            var2.readLine();
+      stream.close();
+      if (stream.openRead(String.format("PopUpMessage_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.popUpMessageText); ++var1) {
+            stream.readLine();
 
-            for(var3 = 0; var3 < this.getLength(this.dp[var1]); ++var3) {
-               this.dp[var1][var3] = var2.getLine(var3);
+            for(var3 = 0; var3 < this.getLength(this.popUpMessageText[var1]); ++var3) {
+               this.popUpMessageText[var1][var3] = stream.getLine(var3);
             }
          }
       }
 
-      var2.close();
-      if (var2.openRead(String.format("StampMessage_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.dq); ++var1) {
-            if (this.p == 0) {
-               var2.readLine();
-            } else if (this.p == 1) {
-               var2.readLine("\\*");
-            }
+      stream.close();
+      if (stream.openRead(String.format("Category_Explanation_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.categoryExplanationText); ++var1) {
+            stream.readLine();
 
-            this.dq[var1] = var2.getLine(0);
-         }
-      }
-
-      var2.close();
-      if (var2.openRead(String.format("GiftMessage_%s.csv", MyUtility.getString("lang")))) {
-         for(var1 = 0; var1 < this.getLength(this.dr); ++var1) {
-            var2.readLine();
-
-            for(var3 = 0; var3 < this.getLength(this.dr[var1]); ++var3) {
-               this.dr[var1][var3] = var2.getLine(var3);
+            for(var3 = 0; var3 < this.getLength(this.categoryExplanationText[var1]); ++var3) {
+               this.categoryExplanationText[var1][var3] = stream.getLine(var3);
             }
          }
       }
 
-      var2.close();
+      stream.close();
+      if (stream.openRead(String.format("StampMessage_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.stampMessageText); ++var1) {
+            if (this.versionCode == 0) {
+               stream.readLine();
+            } else if (this.versionCode == 1) {
+               stream.readLine("\\*");
+            }
+
+            this.stampMessageText[var1] = stream.getLine(0);
+         }
+      }
+
+      stream.close();
+      if (stream.openRead(String.format("GiftMessage_%s.csv", MyUtility.getString("lang")))) {
+         for(var1 = 0; var1 < this.getLength(this.giftMessageText); ++var1) {
+            stream.readLine();
+
+            for(var3 = 0; var3 < this.getLength(this.giftMessageText[var1]); ++var3) {
+               this.giftMessageText[var1][var3] = stream.getLine(var3);
+            }
+         }
+      }
+
+      stream.close();
       this.a = Calendar.getInstance();
       this.fv = this.a.get(1);
 
@@ -4387,8 +4387,8 @@ public class AppInstance extends Game {
          this.gv[var1] = 0;
       }
 
-      for(var1 = 0; var1 < this.getLength(this.ag); ++var1) {
-         this.ag[var1] = new Texture();
+      for(var1 = 0; var1 < this.getLength(this.textTextures); ++var1) {
+         this.textTextures[var1] = new Texture();
       }
 
       for(var1 = 0; var1 < this.getLength(this.ae); ++var1) {
@@ -4707,26 +4707,26 @@ public class AppInstance extends Game {
          MyUtility.getInstance().setWebClientViewer(this.c);
          this.U();
          this.D = 2;
-         var2 = new AssetTextStream();
-            if (var2.openRead(String.format("stage.csv"))) {
+         stream = new AssetTextStream();
+            if (stream.openRead(String.format("stage.csv"))) {
                for(var1 = 0; var1 < this.getLength(this.bG); ++var1) {
-                  var2.readLine();
-                  this.bG[var1] = var2.getInt(0);
+                  stream.readLine();
+                  this.bG[var1] = stream.getInt(0);
                }
             }
 
-            var2.close();
-               if (var2.openRead(String.format("StampData.csv"))) {
+            stream.close();
+               if (stream.openRead(String.format("StampData.csv"))) {
                   for(var1 = 0; var1 < this.getLength(this.ho); ++var1) {
-                     var2.readLine();
+                     stream.readLine();
 
                      for(var3 = 0; var3 < this.getLength(this.ho[var1]); ++var3) {
-                        this.ho[var1][var3] = var2.getInt(var3);
+                        this.ho[var1][var3] = stream.getInt(var3);
                      }
                   }
                }
 
-               var2.close();
+               stream.close();
                this.eQ = 0;
 
                for(var1 = 0; var1 < 26; ++var1) {
@@ -4798,9 +4798,9 @@ public class AppInstance extends Game {
                      }
                   }
 
-                  for(var1 = 0; var1 < this.getLength(this.ag); ++var1) {
-                     if (this.ag[var1].isLoaded()) {
-                        this.ag[var1].reset();
+                  for(var1 = 0; var1 < this.getLength(this.textTextures); ++var1) {
+                     if (this.textTextures[var1].isLoaded()) {
+                        this.textTextures[var1].reset();
                      }
                   }
 
@@ -4812,12 +4812,12 @@ public class AppInstance extends Game {
                      var1 = 0;
 
                      while(true) {
-                        if (var1 >= this.getLength(this.cR)) {
+                        if (var1 >= this.getLength(this.enemyPictureBookQuestionText)) {
                            break label115;
                         }
 
-                        if (!this.ag[var1].isLoaded()) {
-                           this.ag[var1].a(this.cR[var1], "FONT_SYSTEM_BOLD", 30, 0);
+                        if (!this.textTextures[var1].isLoaded()) {
+                           this.textTextures[var1].drawText(this.enemyPictureBookQuestionText[var1], "FONT_SYSTEM_BOLD", 30, 0);
                         }
 
                         ++var1;
@@ -4835,7 +4835,7 @@ public class AppInstance extends Game {
                         this.av[dt[var2] - 2].load(MyUtility.getString(String.format("i%03d_e.png", dt[var2] - 2)), MyUtility.getString(String.format("%03d_e.imgcut", dt[var2] - 2)));
                      }
 
-                     this.aw[0].a(String.format("%03d_e.mamodel", dt[var2] - 2));
+                     this.aw[0].load(String.format("%03d_e.mamodel", dt[var2] - 2));
 
                      for(var1 = 0; var1 < this.getLength(this.ax[0]); ++var1) {
                         this.ax[0][var1].load(String.format("%03d_e%02d.maanim", dt[var2] - 2, var1));
@@ -4848,12 +4848,12 @@ public class AppInstance extends Game {
                   var1 = 0;
 
                   while(true) {
-                     if (var1 >= this.getLength(this.cQ[dt[var2] - 2])) {
+                     if (var1 >= this.getLength(this.enemyPictureBookText[dt[var2] - 2])) {
                         break label115;
                      }
 
-                     if (!this.ag[var1].isLoaded()) {
-                        this.ag[var1].a(this.cQ[dt[var2] - 2][var1], "FONT_SYSTEM_BOLD", 30, 0);
+                     if (!this.textTextures[var1].isLoaded()) {
+                        this.textTextures[var1].drawText(this.enemyPictureBookText[dt[var2] - 2][var1], "FONT_SYSTEM_BOLD", 30, 0);
                      }
 
                      ++var1;
@@ -5537,37 +5537,37 @@ public class AppInstance extends Game {
          var1.drawScaledImageI(this.al, this.getWidth() / 2 - eO[this.eP] * 690 / 100 / 2, 490 - eO[this.eP] * 179 / 100 / 2, eO[this.eP] * 690 / 100, eO[this.eP] * 179 / 100, 0);
          if (this.eP >= this.getLength(eO) - 1) {
             var1.setColor(255, 255, 0);
-            if (this.p == 0) {
-               var2 = Texture.b(this.cH[3], 30) + 15 + Texture.b(this.cH[this.bM[18] - 1], 30) + Texture.b(this.cG[this.bM[20]], 30);
-               var1.drawScaledImage(this.ag[0], this.getWidth() / 2 - var2 / 2, 444, 0);
+            if (this.versionCode == 0) {
+               var2 = Texture.measureText(this.treasure2Text[3], 30) + 15 + Texture.measureText(this.treasure2Text[this.bM[18] - 1], 30) + Texture.measureText(this.treasure1Text[this.bM[20]], 30);
+               var1.drawScaledImage(this.textTextures[0], this.getWidth() / 2 - var2 / 2, 444, 0);
                var3 = this.getWidth() / 2;
                var2 /= 2;
-               var4 = Texture.b(this.cH[3], 30);
+               var4 = Texture.measureText(this.treasure2Text[3], 30);
                var1.setColor(255, 255, 255);
-               var1.drawScaledImage(this.ag[1], var3 - var2 + var4 + 15, 444, 0);
+               var1.drawScaledImage(this.textTextures[1], var3 - var2 + var4 + 15, 444, 0);
                if (this.bM[16] % 4 != 0 && this.bM[16] % 4 != 1) {
                   var1.setColor(255, 0, 255);
                } else {
                   var1.setColor(255, 255, 0);
                }
 
-               var3 = Texture.b(this.cH[6], 30);
-               var1.drawScaledImage(this.ag[2], this.getWidth() / 2 - var3 / 2, 492, 0);
-            } else if (this.p == 1) {
+               var3 = Texture.measureText(this.treasure2Text[6], 30);
+               var1.drawScaledImage(this.textTextures[2], this.getWidth() / 2 - var3 / 2, 492, 0);
+            } else if (this.versionCode == 1) {
                if (this.bM[16] % 4 != 0 && this.bM[16] % 4 != 1) {
                   var1.setColor(255, 0, 255);
                } else {
                   var1.setColor(255, 255, 0);
                }
 
-               var2 = Texture.b(this.cH[6], 30) + 15 + Texture.b(this.cH[9], 30);
-               var1.drawScaledImage(this.ag[0], this.getWidth() / 2 - var2 / 2, 444, 0);
+               var2 = Texture.measureText(this.treasure2Text[6], 30) + 15 + Texture.measureText(this.treasure2Text[9], 30);
+               var1.drawScaledImage(this.textTextures[0], this.getWidth() / 2 - var2 / 2, 444, 0);
                var3 = this.getWidth() / 2;
                var3 = var2 / 2;
                var1.setColor(255, 255, 255);
-               var3 = Texture.b(this.cH[this.bM[18] - 1], 30);
-               var2 = Texture.b(this.cG[this.bM[20]], 30);
-               var1.drawScaledImage(this.ag[1], this.getWidth() / 2 - (var3 + 15 + var2) / 2, 492, 0);
+               var3 = Texture.measureText(this.treasure2Text[this.bM[18] - 1], 30);
+               var2 = Texture.measureText(this.treasure1Text[this.bM[20]], 30);
+               var1.drawScaledImage(this.textTextures[1], this.getWidth() / 2 - (var3 + 15 + var2) / 2, 492, 0);
             }
          }
       }
@@ -5575,30 +5575,30 @@ public class AppInstance extends Game {
       if (this.bM[15] == 5) {
          var1.drawScaledImageI(this.al, this.getWidth() / 2 - eO[this.eP] * 690 / 100 / 2, 490 - eO[this.eP] * 179 / 100 / 2, eO[this.eP] * 690 / 100, eO[this.eP] * 179 / 100, 0);
          if (this.eP >= this.getLength(eO) - 1) {
-            if (this.p == 0) {
-               var3 = Texture.b(this.cI[this.bM[19]][0], 30);
+            if (this.versionCode == 0) {
+               var3 = Texture.measureText(this.treasure3Text[this.bM[19]][0], 30);
                var1.setColor(255, 255, 255);
-               var1.drawScaledImage(this.ag[0], this.getWidth() / 2 - var3 / 2, 444, 0);
+               var1.drawScaledImage(this.textTextures[0], this.getWidth() / 2 - var3 / 2, 444, 0);
                if (this.bM[16] % 4 != 0 && this.bM[16] % 4 != 1) {
                   var1.setColor(255, 0, 255);
                } else {
                   var1.setColor(255, 255, 0);
                }
 
-               var3 = Texture.b(this.cH[5], 30);
-               var1.drawScaledImage(this.ag[1], this.getWidth() / 2 - var3 / 2, 492, 0);
-            } else if (this.p == 1) {
-               var3 = Texture.b(this.cI[this.bM[19]][0], 30);
+               var3 = Texture.measureText(this.treasure2Text[5], 30);
+               var1.drawScaledImage(this.textTextures[1], this.getWidth() / 2 - var3 / 2, 492, 0);
+            } else if (this.versionCode == 1) {
+               var3 = Texture.measureText(this.treasure3Text[this.bM[19]][0], 30);
                var1.setColor(255, 255, 255);
-               var1.drawScaledImage(this.ag[0], this.getWidth() / 2 - var3 / 2, 492, 0);
+               var1.drawScaledImage(this.textTextures[0], this.getWidth() / 2 - var3 / 2, 492, 0);
                if (this.bM[16] % 4 != 0 && this.bM[16] % 4 != 1) {
                   var1.setColor(255, 0, 255);
                } else {
                   var1.setColor(255, 255, 0);
                }
 
-               var3 = Texture.b(this.cH[5], 30);
-               var1.drawScaledImage(this.ag[1], this.getWidth() / 2 - var3 / 2, 444, 0);
+               var3 = Texture.measureText(this.treasure2Text[5], 30);
+               var1.drawScaledImage(this.textTextures[1], this.getWidth() / 2 - var3 / 2, 444, 0);
             }
          }
       }
@@ -5700,12 +5700,12 @@ public class AppInstance extends Game {
                var1.setColor(255, 255, 255);
                var2 = 0;
 
-               for(var3 = 0; var3 < 4 && !aString.equals(this.cE[2][var3], "＠"); ++var3) {
+               for(var3 = 0; var3 < 4 && !aString.equals(this.warning2Text[2][var3], "＠"); ++var3) {
                   var2 = -var3;
                }
 
-               for(var3 = 0; var3 < this.getLength(this.cE[2]) && !aString.equals(this.cE[2][var3], "＠"); ++var3) {
-                  var1.drawScaledImage(this.ag[var3], this.getWidth() / 2, var2 * 18 + 404, 1);
+               for(var3 = 0; var3 < this.getLength(this.warning2Text[2]) && !aString.equals(this.warning2Text[2][var3], "＠"); ++var3) {
+                  var1.drawScaledImage(this.textTextures[var3], this.getWidth() / 2, var2 * 18 + 404, 1);
                   var2 += 2;
                }
 
@@ -5773,14 +5773,14 @@ public class AppInstance extends Game {
             var1.setColor(255, 255, 255);
             var3 = 0;
 
-            for(var2 = 0; var2 < this.getLength(this.da[this.eQ][this.eS]) && !aString.equals(this.da[this.eQ][this.eS][var2], "＠"); ++var2) {
+            for(var2 = 0; var2 < this.getLength(this.loseText[this.eQ][this.eS]) && !aString.equals(this.loseText[this.eQ][this.eS][var2], "＠"); ++var2) {
                var3 = -(var2 - 1);
             }
 
             --var3;
 
-            for(var2 = 0; var2 < this.getLength(this.da[this.eQ][this.eS]) && !aString.equals(this.da[this.eQ][this.eS][var2], "＠"); ++var2) {
-               var1.drawScaledImage(this.ag[var2 + 2], this.getWidth() / 2, var3 * 18 + 472, 1);
+            for(var2 = 0; var2 < this.getLength(this.loseText[this.eQ][this.eS]) && !aString.equals(this.loseText[this.eQ][this.eS][var2], "＠"); ++var2) {
+               var1.drawScaledImage(this.textTextures[var2 + 2], this.getWidth() / 2, var3 * 18 + 472, 1);
                var3 += 2;
             }
          }
@@ -6037,7 +6037,7 @@ public class AppInstance extends Game {
                      this.ao[0].load(MyUtility.getString(String.format("img%03d.png", 13)), MyUtility.getString(String.format("000_img%03d.imgcut", 13)));
                   }
 
-                  this.ap[0].a(MyUtility.getString(String.format("opening.mamodel")));
+                  this.ap[0].load(MyUtility.getString(String.format("opening.mamodel")));
                   this.aq[0].load(MyUtility.getString(String.format("opening.maanim")));
                   this.ap[0].a(this.ao);
                   this.ap[0].a();
@@ -6575,7 +6575,7 @@ public class AppInstance extends Game {
                         this.aF[0].load(MyUtility.getString(String.format("i%03d_stamp_f.png", 0)), MyUtility.getString(String.format("%03d_stamp_f.imgcut", 0)));
                      }
 
-                     this.aG[0].a(MyUtility.getString(String.format("%03d_stamp_f.mamodel", 0)));
+                     this.aG[0].load(MyUtility.getString(String.format("%03d_stamp_f.mamodel", 0)));
                      this.aH[0].load(MyUtility.getString(String.format("%03d_stamp_f00.maanim", 0)));
                      this.aG[0].a(this.aF);
                      this.aG[0].a();
@@ -6587,7 +6587,7 @@ public class AppInstance extends Game {
                         this.aF[1].load(MyUtility.getString(String.format("i%03d_img044.png", 1)), MyUtility.getString(String.format("i%03d_img044.imgcut", 1)));
                      }
 
-                     this.aG[1].a(MyUtility.getString(String.format("%03d_img044.mamodel", 1)));
+                     this.aG[1].load(MyUtility.getString(String.format("%03d_img044.mamodel", 1)));
                      this.aH[1].load(MyUtility.getString(String.format("stamp.maanim")));
                      this.aG[1].a(this.aF);
                      this.aG[1].a();
@@ -6614,7 +6614,7 @@ public class AppInstance extends Game {
                            this.aI[this.eQ - 1].load(MyUtility.getString(String.format("i%03d_p.png", this.eQ - 1)), MyUtility.getString(String.format("%03d_p.imgcut", this.eQ - 1)));
                         }
 
-                        this.aJ.a(MyUtility.getString(String.format("%03d_p.mamodel", this.eQ - 1)));
+                        this.aJ.load(MyUtility.getString(String.format("%03d_p.mamodel", this.eQ - 1)));
 
                         for(var1 = 0; var1 < this.getLength(this.aK); ++var1) {
                            this.aK[var1].load(MyUtility.getString(String.format("%03d_p%02d.maanim", this.eQ - 1, var1)));
@@ -6664,13 +6664,13 @@ public class AppInstance extends Game {
 
                   if (!this.aC[0].isLoaded()) {
                      this.aC[0].load(MyUtility.getString(String.format("i%03d_a.png", 0)), MyUtility.getString(String.format("%03d_a.imgcut", 0)));
-                     this.aD[0].a(MyUtility.getString(String.format("%03d_a.mamodel", 0)));
+                     this.aD[0].load(MyUtility.getString(String.format("%03d_a.mamodel", 0)));
 
                      for(var1 = 0; var1 < 1; ++var1) {
                         this.aE[0][var1].load(MyUtility.getString(String.format("%03d_a%02d.maanim", 0, var1)));
                      }
 
-                     this.aD[1].a(MyUtility.getString(String.format("%03d_a.mamodel", 1)));
+                     this.aD[1].load(MyUtility.getString(String.format("%03d_a.mamodel", 1)));
 
                      for(var1 = 0; var1 < 2; ++var1) {
                         this.aE[1][var1].load(MyUtility.getString(String.format("%03d_a%02d.maanim", 1, var1)));
@@ -6778,31 +6778,31 @@ public class AppInstance extends Game {
                      this.ay[0].load(MyUtility.getString(String.format("i%03d_g.png", 0)), MyUtility.getString(String.format("%03d_g.imgcut", 0)));
                   }
 
-                  this.az[0][0].a(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 0, 1)));
+                  this.az[0][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 0, 1)));
                   this.aA[0][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 0, 1)));
                   this.az[0][0].a(this.ay);
                   this.az[0][0].a();
-                  this.az[0][1].a(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 0, 2)));
+                  this.az[0][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 0, 2)));
                   this.aA[0][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 0, 2)));
                   this.az[0][1].a(this.ay);
                   this.az[0][1].a();
-                  this.az[1][0].a(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 1, 1)));
+                  this.az[1][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 1, 1)));
                   this.aA[1][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 1, 1)));
                   this.az[1][0].a(this.ay);
                   this.az[1][0].a();
-                  this.az[1][1].a(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 1, 2)));
+                  this.az[1][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 1, 2)));
                   this.aA[1][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 1, 2)));
                   this.az[1][1].a(this.ay);
                   this.az[1][1].a();
-                  this.az[2][0].a(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 2, 1)));
+                  this.az[2][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 2, 1)));
                   this.aA[2][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 2, 1)));
                   this.az[2][0].a(this.ay);
                   this.az[2][0].a();
-                  this.az[2][1].a(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 2, 2)));
+                  this.az[2][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 2, 2)));
                   this.aA[2][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 2, 2)));
                   this.az[2][1].a(this.ay);
                   this.az[2][1].a();
-                  this.az[3][0].a(MyUtility.getString(String.format("%03d_g%02d.mamodel", 0, 3)));
+                  this.az[3][0].load(MyUtility.getString(String.format("%03d_g%02d.mamodel", 0, 3)));
                   this.aA[3][0].load(MyUtility.getString(String.format("%03d_g%02d.maanim", 0, 3)));
                   this.az[3][0].a(this.ay);
                   this.az[3][0].a();
@@ -6830,7 +6830,7 @@ public class AppInstance extends Game {
                         if (this.eV[var1] == 0) {
                            if (!this.ar[this.bk[var1] - 2].isLoaded()) {
                               this.ar[this.bk[var1] - 2].load(MyUtility.getString(String.format("i%03d_f.png", this.bk[var1] - 2)), MyUtility.getString(String.format("%03d_f.imgcut", this.bk[var1] - 2)));
-                              this.at[var1].a(MyUtility.getString(String.format("%03d_f.mamodel", this.bk[var1] - 2)));
+                              this.at[var1].load(MyUtility.getString(String.format("%03d_f.mamodel", this.bk[var1] - 2)));
 
                               for(var2 = 0; var2 < this.getLength(this.au[var1]); ++var2) {
                                  this.au[var1][var2].load(MyUtility.getString(String.format("%03d_f%02d.maanim", this.bk[var1] - 2, var2)));
@@ -6841,7 +6841,7 @@ public class AppInstance extends Game {
                            }
                         } else if (this.eV[var1] == 1 && !this.as[this.bk[var1] - 2].isLoaded()) {
                            this.as[this.bk[var1] - 2].load(MyUtility.getString(String.format("i%03d_c.png", this.bk[var1] - 2)), MyUtility.getString(String.format("%03d_c.imgcut", this.bk[var1] - 2)));
-                           this.at[var1].a(MyUtility.getString(String.format("%03d_c.mamodel", this.bk[var1] - 2)));
+                           this.at[var1].load(MyUtility.getString(String.format("%03d_c.mamodel", this.bk[var1] - 2)));
 
                            for(var2 = 0; var2 < this.getLength(this.au[var1]); ++var2) {
                               this.au[var1][var2].load(MyUtility.getString(String.format("%03d_c%02d.maanim", this.bk[var1] - 2, var2)));
@@ -6867,7 +6867,7 @@ public class AppInstance extends Game {
                            this.av[this.eU[var1] - 2].load(MyUtility.getString(String.format("i%03d_e.png", this.eU[var1] - 2)), MyUtility.getString(String.format("%03d_e.imgcut", this.eU[var1] - 2)));
                         }
 
-                        this.aw[var1].a(MyUtility.getString(String.format("%03d_e.mamodel", this.eU[var1] - 2)));
+                        this.aw[var1].load(MyUtility.getString(String.format("%03d_e.mamodel", this.eU[var1] - 2)));
 
                         for(var2 = 0; var2 < this.getLength(this.ax[var1]); ++var2) {
                            this.ax[var1][var2].load(MyUtility.getString(String.format("%03d_e%02d.maanim", this.eU[var1] - 2, var2)));
@@ -7251,7 +7251,7 @@ public class AppInstance extends Game {
                                  ++this.dG;
                               }
 
-                              var1 = this.getLength(this.cK) * 40 + 640 + this.eZ * 3 - this.dG;
+                              var1 = this.getLength(this.endingText) * 40 + 640 + this.eZ * 3 - this.dG;
                               if (var1 <= 230) {
                                  this.dG += 230 - var1;
                                  this.dE = 2;
@@ -8379,10 +8379,10 @@ public class AppInstance extends Game {
                                     if (this.R() && this.b(this.eJ[var1][0], this.eJ[var1][1], this.eJ[var1][2], this.eJ[var1][3]) && this.eM[var1]) {
                                        if (this.dW != var1 || !this.dV) {
                                           this.dW = var1;
-                                          this.ag[this.gA[0] + 0].a(this.dc[this.dW], "FONT_SYSTEM_BOLD", 30, 1);
+                                          this.textTextures[this.gA[0] + 0].drawText(this.itemNameText[this.dW], "FONT_SYSTEM_BOLD", 30, 1);
 
                                           for(var2 = this.gA[0]; var2 < this.gA[0] + 3; ++var2) {
-                                             this.ag[var2 + 1].a(this.dd[this.dW][var2 - this.gA[0]], "FONT_SYSTEM_BOLD", 30, 1);
+                                             this.textTextures[var2 + 1].drawText(this.itemExplanationText[this.dW][var2 - this.gA[0]], "FONT_SYSTEM_BOLD", 30, 1);
                                           }
                                        }
 
@@ -10360,7 +10360,7 @@ public class AppInstance extends Game {
             textureRenderer.setColor(255, 255, 255);
 
             for(var3 = 0; var3 < 73; ++var3) {
-               textureRenderer.drawScaledImage(this.ag[var3], this.getWidth() / 2, this.getHeight() + var3 * 40 - this.dy, 1);
+               textureRenderer.drawScaledImage(this.textTextures[var3], this.getWidth() / 2, this.getHeight() + var3 * 40 - this.dy, 1);
             }
 
             var4 = this.dB;
@@ -10456,11 +10456,11 @@ public class AppInstance extends Game {
             if (this.dE >= 1) {
                textureRenderer.setColor(255, 255, 255);
 
-               for(var3 = 0; var3 < this.getLength(this.cK); ++var3) {
-                  if (aString.equals(this.cK[var3], "＠")) {
+               for(var3 = 0; var3 < this.getLength(this.endingText); ++var3) {
+                  if (aString.equals(this.endingText[var3], "＠")) {
                      textureRenderer.drawScaledImageI(this.ae[3], this.excessWidth / 2 + 0, this.getHeight() + var3 * 40 - this.dG, 1);
                   } else {
-                     textureRenderer.drawScaledImage(this.ag[var3], this.getWidth() / 2, this.getHeight() + var3 * 40 - this.dG, 1);
+                     textureRenderer.drawScaledImage(this.textTextures[var3], this.getWidth() / 2, this.getHeight() + var3 * 40 - this.dG, 1);
                   }
                }
             }
@@ -11367,9 +11367,9 @@ public class AppInstance extends Game {
 
                for(var3 = 0; var3 < 4; ++var3) {
                   if (var3 == 0) {
-                     textureRenderer.drawScaledImage(this.ag[this.gA[0] + var3], this.excessWidth + 597, var3 * 36 + 253 - 108, 1);
-                  } else if (!aString.equals(this.dd[this.dW][var3 - 1], "＠")) {
-                     textureRenderer.drawScaledImage(this.ag[this.gA[0] + var3], this.excessWidth + 597, var3 * 36 + 253 - 108, 1);
+                     textureRenderer.drawScaledImage(this.textTextures[this.gA[0] + var3], this.excessWidth + 597, var3 * 36 + 253 - 108, 1);
+                  } else if (!aString.equals(this.itemExplanationText[this.dW][var3 - 1], "＠")) {
+                     textureRenderer.drawScaledImage(this.textTextures[this.gA[0] + var3], this.excessWidth + 597, var3 * 36 + 253 - 108, 1);
                   }
                }
             }
@@ -11435,14 +11435,14 @@ public class AppInstance extends Game {
                if (this.eP >= this.getLength(eO) - 1) {
                   var6 = 0;
 
-                  for(var3 = 0; var3 < this.getLength(this.cW[0]) && !aString.equals(this.cW[0][var3], "＠"); ++var3) {
+                  for(var3 = 0; var3 < this.getLength(this.stageFirstMessageText[0]) && !aString.equals(this.stageFirstMessageText[0][var3], "＠"); ++var3) {
                      --var6;
                   }
 
                   ++var6;
 
-                  for(var3 = 0; var3 < this.getLength(this.cW[0]) && !aString.equals(this.cW[0][var3], "＠"); ++var3) {
-                     textureRenderer.drawScaledImage(this.ag[var3 + 1], this.getWidth() / 2, var6 * 18 + 305, 1);
+                  for(var3 = 0; var3 < this.getLength(this.stageFirstMessageText[0]) && !aString.equals(this.stageFirstMessageText[0][var3], "＠"); ++var3) {
+                     textureRenderer.drawScaledImage(this.textTextures[var3 + 1], this.getWidth() / 2, var6 * 18 + 305, 1);
                      var6 += 2;
                   }
                }
@@ -11496,7 +11496,7 @@ public class AppInstance extends Game {
                if (this.ef) {
                   textureRenderer.drawScaledImageI(this.al, this.excessWidth / 2 + 135, 250, 690, 229, 0);
                   textureRenderer.setColor(255, 255, 255);
-                  textureRenderer.drawScaledImage(this.ag[10], this.getWidth() / 2, 295, 1);
+                  textureRenderer.drawScaledImage(this.textTextures[10], this.getWidth() / 2, 295, 1);
                   textureRenderer.drawScaledImageI(this.af[2], 251 - dv[this.fC[10]] / 2 + this.excessWidth / 2, 382 - dv[this.fC[10]] / 2, dv[this.fC[10]] + 168, dv[this.fC[10]] + 72, 0);
                   textureRenderer.drawScaledImageI(this.af[2], 541 - dv[this.fC[11]] / 2 + this.excessWidth / 2, 382 - dv[this.fC[11]] / 2, dv[this.fC[11]] + 168, dv[this.fC[11]] + 72, 0);
                   textureRenderer.drawScaledImageI(this.ae[21], 260 - dv[this.fC[10]] / 2 + this.excessWidth / 2, 390 - dv[this.fC[10]] / 2, dv[this.fC[10]] + 150, dv[this.fC[10]] + 55, 4);
@@ -11670,9 +11670,9 @@ public class AppInstance extends Game {
 
       for(var2 = 0; var2 < 5; ++var2) {
          if (var2 == 0) {
-            var1.drawScaledImage(this.ag[var2], this.eh[0] + 128 + this.fs[2] * this.gy + this.excessWidth / 2, var2 * 36 + 378);
+            var1.drawScaledImage(this.textTextures[var2], this.eh[0] + 128 + this.fs[2] * this.gy + this.excessWidth / 2, var2 * 36 + 378);
          } else {
-            var1.drawScaledImage(this.ag[var2], this.eh[0] + 211 + this.fs[2] * this.gy + this.excessWidth / 2, var2 * 36 + 378);
+            var1.drawScaledImage(this.textTextures[var2], this.eh[0] + 211 + this.fs[2] * this.gy + this.excessWidth / 2, var2 * 36 + 378);
          }
       }
 
@@ -11928,7 +11928,7 @@ public class AppInstance extends Game {
 
       var1.drawScaledImageI(this.al, 480 - eO[this.fQ[2]] * 690 / 100 / 2 + this.excessWidth / 2, 529 - eO[this.fQ[2]] * 179 / 100 / 2, eO[this.fQ[2]] * 690 / 100, eO[this.fQ[2]] * 179 / 100, 0);
       if (this.fQ[2] >= this.getLength(eO) - 1 && this.eQ >= 1) {
-         for(int var2 = 0; var2 < this.getLength(this.dr[this.eQ - 1]); ++var2) {
+         for(int var2 = 0; var2 < this.getLength(this.giftMessageText[this.eQ - 1]); ++var2) {
             if (var2 == 0) {
                if (this.fQ[4] % 4 / 2 == 0) {
                   var1.setColor(255, 255, 0);
@@ -11939,7 +11939,7 @@ public class AppInstance extends Game {
                var1.setColor(255, 255, 255);
             }
 
-            var1.drawScaledImage(this.ag[var2], this.getWidth() / 2, var2 * 36 + 439 - 72 + 90, 1);
+            var1.drawScaledImage(this.textTextures[var2], this.getWidth() / 2, var2 * 36 + 439 - 72 + 90, 1);
          }
       }
 
@@ -12641,7 +12641,7 @@ public class AppInstance extends Game {
                         Sound.getInstance().play(2);
                         if (this.aZ == 0) {
                            String var4;
-                           if (this.p == 0) {
+                           if (this.versionCode == 0) {
                               var4 = "4d4de961-b1a0-4294-8b29-d81c26a229b2";
                            } else {
                               var4 = "9d70f289-44cd-49cf-a4c1-e7e0e5188814";
@@ -13148,92 +13148,92 @@ public class AppInstance extends Game {
             this.ae[7].load(MyUtility.getString(String.format("ot%03d_o.png", cA[var1])), MyUtility.getString(String.format("ot%03d_o.imgcut", cA[var1])));
          }
 
-         for(var3 = 0; var3 < this.getLength(this.ag); ++var3) {
-            if (this.ag[var3].isLoaded()) {
-               this.ag[var3].reset();
+         for(var3 = 0; var3 < this.getLength(this.textTextures); ++var3) {
+            if (this.textTextures[var3].isLoaded()) {
+               this.textTextures[var3].reset();
             }
          }
 
          for(var3 = 0; var3 < 3; ++var3) {
             if (!var2) {
-               if (!this.ag[var3].isLoaded()) {
-                  this.ag[var3].a(this.cI[var1 + 12][var3], "FONT_SYSTEM_BOLD", 30, 1);
+               if (!this.textTextures[var3].isLoaded()) {
+                  this.textTextures[var3].drawText(this.treasure3Text[var1 + 12][var3], "FONT_SYSTEM_BOLD", 30, 1);
                }
-            } else if (!this.ag[var3].isLoaded()) {
+            } else if (!this.textTextures[var3].isLoaded()) {
                if (var3 == 0) {
-                  this.ag[var3].a(this.cI[var1][var3], "FONT_SYSTEM_BOLD", 30, 0);
+                  this.textTextures[var3].drawText(this.treasure3Text[var1][var3], "FONT_SYSTEM_BOLD", 30, 0);
                } else {
-                  this.ag[var3].a(this.cI[var1][var3], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[var3].drawText(this.treasure3Text[var1][var3], "FONT_SYSTEM_BOLD", 30, 1);
                }
             }
          }
 
          if (var2) {
-            if (this.p == 0) {
-               if (!this.ag[3].isLoaded()) {
-                  this.ag[3].a(String.format("%d%s%s", this.bO[this.eQ][var1], this.cH[8], this.cH[7]), "FONT_SYSTEM_BOLD", 30, 0);
+            if (this.versionCode == 0) {
+               if (!this.textTextures[3].isLoaded()) {
+                  this.textTextures[3].drawText(String.format("%d%s%s", this.bO[this.eQ][var1], this.treasure2Text[8], this.treasure2Text[7]), "FONT_SYSTEM_BOLD", 30, 0);
                }
-            } else if (this.p == 1 && !this.ag[3].isLoaded()) {
-               this.ag[3].a(String.format("%s%d%s", this.cH[7], this.bO[this.eQ][var1], this.cH[8]), "FONT_SYSTEM_BOLD", 30, 0);
+            } else if (this.versionCode == 1 && !this.textTextures[3].isLoaded()) {
+               this.textTextures[3].drawText(String.format("%s%d%s", this.treasure2Text[7], this.bO[this.eQ][var1], this.treasure2Text[8]), "FONT_SYSTEM_BOLD", 30, 0);
             }
          }
 
          for(int var4 = 0; var4 < this.getLength(cz[var1]) && cz[var1][var4] != -1; ++var4) {
             if (this.bs[this.eQ][cz[var1][var4]] == 0) {
-               if (this.p == 0) {
-                  if (!this.ag[var4 * 3 + 4 + 0].isLoaded()) {
-                     this.ag[var4 * 3 + 4 + 0].a(this.cH[3], "FONT_SYSTEM_BOLD", 30, 0);
+               if (this.versionCode == 0) {
+                  if (!this.textTextures[var4 * 3 + 4 + 0].isLoaded()) {
+                     this.textTextures[var4 * 3 + 4 + 0].drawText(this.treasure2Text[3], "FONT_SYSTEM_BOLD", 30, 0);
                   }
 
-                  if (!this.ag[var4 * 3 + 4 + 1].isLoaded()) {
-                     this.ag[var4 * 3 + 4 + 1].a(this.cG[48], "FONT_SYSTEM_BOLD", 30, 0);
+                  if (!this.textTextures[var4 * 3 + 4 + 1].isLoaded()) {
+                     this.textTextures[var4 * 3 + 4 + 1].drawText(this.treasure1Text[48], "FONT_SYSTEM_BOLD", 30, 0);
                   }
 
-                  this.ag[var4 * 3 + 4 + 2].a(String.format("%s%s", this.cF[cz[var1][var4]], this.cH[9]), "FONT_SYSTEM_BOLD", 30, 0);
-               } else if (this.p == 1) {
-                  if (!this.ag[var4 * 3 + 4 + 0].isLoaded()) {
-                     this.ag[var4 * 3 + 4 + 0].a(this.cH[3], "FONT_SYSTEM_BOLD", 30, 0);
+                  this.textTextures[var4 * 3 + 4 + 2].drawText(String.format("%s%s", this.stageNamesText[cz[var1][var4]], this.treasure2Text[9]), "FONT_SYSTEM_BOLD", 30, 0);
+               } else if (this.versionCode == 1) {
+                  if (!this.textTextures[var4 * 3 + 4 + 0].isLoaded()) {
+                     this.textTextures[var4 * 3 + 4 + 0].drawText(this.treasure2Text[3], "FONT_SYSTEM_BOLD", 30, 0);
                   }
 
                   if (this.fq[2] != 10) {
-                     if (!this.ag[var4 * 3 + 4 + 1].isLoaded()) {
-                        this.ag[var4 * 3 + 4 + 1].a(String.format(" %s", this.cG[48]), "FONT_SYSTEM_BOLD", 30, 0);
+                     if (!this.textTextures[var4 * 3 + 4 + 1].isLoaded()) {
+                        this.textTextures[var4 * 3 + 4 + 1].drawText(String.format(" %s", this.treasure1Text[48]), "FONT_SYSTEM_BOLD", 30, 0);
                      }
-                  } else if (!this.ag[var4 * 3 + 4 + 1].isLoaded()) {
-                     this.ag[var4 * 3 + 4 + 1].a(String.format(" %s", this.cG[48]), "FONT_SYSTEM_BOLD", 30, 0);
+                  } else if (!this.textTextures[var4 * 3 + 4 + 1].isLoaded()) {
+                     this.textTextures[var4 * 3 + 4 + 1].drawText(String.format(" %s", this.treasure1Text[48]), "FONT_SYSTEM_BOLD", 30, 0);
                   }
 
-                  this.ag[var4 * 3 + 4 + 2].a(String.format("%s %s", this.cH[4], this.cF[cz[var1][var4] + 49]), "FONT_SYSTEM_BOLD", 30, 0);
+                  this.textTextures[var4 * 3 + 4 + 2].drawText(String.format("%s %s", this.treasure2Text[4], this.stageNamesText[cz[var1][var4] + 49]), "FONT_SYSTEM_BOLD", 30, 0);
                }
             } else if (this.bs[this.eQ][cz[var1][var4]] == 1) {
-               if (this.p == 0) {
-                  this.ag[var4 * 3 + 4 + 0].a(this.cH[3], "FONT_SYSTEM_BOLD", 30, 0);
-                  this.ag[var4 * 3 + 4 + 1].a(String.format("%s%s", this.cH[0], this.cG[cz[var1][var4]]), "FONT_SYSTEM_BOLD", 30, 0);
-                  this.ag[var4 * 3 + 4 + 2].a(String.format("%s%s", this.cF[cz[var1][var4]], this.cH[4]), "FONT_SYSTEM_BOLD", 30, 0);
-               } else if (this.p == 1) {
-                  this.ag[var4 * 3 + 4 + 0].a(String.format("%s", this.cH[10]), "FONT_SYSTEM_BOLD", 30, 0);
-                  this.ag[var4 * 3 + 4 + 1].a(String.format("%s %s", this.cH[0], this.cG[cz[var1][var4]]), "FONT_SYSTEM_BOLD", 30, 0);
-                  this.ag[var4 * 3 + 4 + 2].a(String.format("%s %s", this.cH[4], this.cF[cz[var1][var4] + 49]), "FONT_SYSTEM_BOLD", 30, 0);
+               if (this.versionCode == 0) {
+                  this.textTextures[var4 * 3 + 4 + 0].drawText(this.treasure2Text[3], "FONT_SYSTEM_BOLD", 30, 0);
+                  this.textTextures[var4 * 3 + 4 + 1].drawText(String.format("%s%s", this.treasure2Text[0], this.treasure1Text[cz[var1][var4]]), "FONT_SYSTEM_BOLD", 30, 0);
+                  this.textTextures[var4 * 3 + 4 + 2].drawText(String.format("%s%s", this.stageNamesText[cz[var1][var4]], this.treasure2Text[4]), "FONT_SYSTEM_BOLD", 30, 0);
+               } else if (this.versionCode == 1) {
+                  this.textTextures[var4 * 3 + 4 + 0].drawText(String.format("%s", this.treasure2Text[10]), "FONT_SYSTEM_BOLD", 30, 0);
+                  this.textTextures[var4 * 3 + 4 + 1].drawText(String.format("%s %s", this.treasure2Text[0], this.treasure1Text[cz[var1][var4]]), "FONT_SYSTEM_BOLD", 30, 0);
+                  this.textTextures[var4 * 3 + 4 + 2].drawText(String.format("%s %s", this.treasure2Text[4], this.stageNamesText[cz[var1][var4] + 49]), "FONT_SYSTEM_BOLD", 30, 0);
                }
             } else if (this.bs[this.eQ][cz[var1][var4]] == 2) {
-               if (this.p == 0) {
-                  this.ag[var4 * 3 + 4 + 0].a(this.cH[3], "FONT_SYSTEM_BOLD", 30, 0);
-                  this.ag[var4 * 3 + 4 + 1].a(String.format("%s%s", this.cH[1], this.cG[cz[var1][var4]]), "FONT_SYSTEM_BOLD", 30, 0);
-                  this.ag[var4 * 3 + 4 + 2].a(String.format("%s%s", this.cF[cz[var1][var4]], this.cH[4]), "FONT_SYSTEM_BOLD", 30, 0);
-               } else if (this.p == 1) {
-                  this.ag[var4 * 3 + 4 + 0].a(String.format("%s", this.cH[10]), "FONT_SYSTEM_BOLD", 30, 0);
-                  this.ag[var4 * 3 + 4 + 1].a(String.format("%s %s", this.cH[1], this.cG[cz[var1][var4]]), "FONT_SYSTEM_BOLD", 30, 0);
-                  this.ag[var4 * 3 + 4 + 2].a(String.format("%s %s", this.cH[4], this.cF[cz[var1][var4] + 49]), "FONT_SYSTEM_BOLD", 30, 0);
+               if (this.versionCode == 0) {
+                  this.textTextures[var4 * 3 + 4 + 0].drawText(this.treasure2Text[3], "FONT_SYSTEM_BOLD", 30, 0);
+                  this.textTextures[var4 * 3 + 4 + 1].drawText(String.format("%s%s", this.treasure2Text[1], this.treasure1Text[cz[var1][var4]]), "FONT_SYSTEM_BOLD", 30, 0);
+                  this.textTextures[var4 * 3 + 4 + 2].drawText(String.format("%s%s", this.stageNamesText[cz[var1][var4]], this.treasure2Text[4]), "FONT_SYSTEM_BOLD", 30, 0);
+               } else if (this.versionCode == 1) {
+                  this.textTextures[var4 * 3 + 4 + 0].drawText(String.format("%s", this.treasure2Text[10]), "FONT_SYSTEM_BOLD", 30, 0);
+                  this.textTextures[var4 * 3 + 4 + 1].drawText(String.format("%s %s", this.treasure2Text[1], this.treasure1Text[cz[var1][var4]]), "FONT_SYSTEM_BOLD", 30, 0);
+                  this.textTextures[var4 * 3 + 4 + 2].drawText(String.format("%s %s", this.treasure2Text[4], this.stageNamesText[cz[var1][var4] + 49]), "FONT_SYSTEM_BOLD", 30, 0);
                }
             } else if (this.bs[this.eQ][cz[var1][var4]] == 3) {
-               if (this.p == 0) {
-                  this.ag[var4 * 3 + 4 + 0].a(this.cH[3], "FONT_SYSTEM_BOLD", 30, 0);
-                  this.ag[var4 * 3 + 4 + 1].a(String.format("%s%s", this.cH[2], this.cG[cz[var1][var4]]), "FONT_SYSTEM_BOLD", 30, 0);
-                  this.ag[var4 * 3 + 4 + 2].a(String.format("%s%s", this.cF[cz[var1][var4]], this.cH[4]), "FONT_SYSTEM_BOLD", 30, 0);
-               } else if (this.p == 1) {
-                  this.ag[var4 * 3 + 4 + 0].a(String.format("%s", this.cH[10]), "FONT_SYSTEM_BOLD", 30, 0);
-                  this.ag[var4 * 3 + 4 + 1].a(String.format("%s %s", this.cH[2], this.cG[cz[var1][var4]]), "FONT_SYSTEM_BOLD", 30, 0);
-                  this.ag[var4 * 3 + 4 + 2].a(String.format("%s %s", this.cH[4], this.cF[cz[var1][var4] + 49]), "FONT_SYSTEM_BOLD", 30, 0);
+               if (this.versionCode == 0) {
+                  this.textTextures[var4 * 3 + 4 + 0].drawText(this.treasure2Text[3], "FONT_SYSTEM_BOLD", 30, 0);
+                  this.textTextures[var4 * 3 + 4 + 1].drawText(String.format("%s%s", this.treasure2Text[2], this.treasure1Text[cz[var1][var4]]), "FONT_SYSTEM_BOLD", 30, 0);
+                  this.textTextures[var4 * 3 + 4 + 2].drawText(String.format("%s%s", this.stageNamesText[cz[var1][var4]], this.treasure2Text[4]), "FONT_SYSTEM_BOLD", 30, 0);
+               } else if (this.versionCode == 1) {
+                  this.textTextures[var4 * 3 + 4 + 0].drawText(String.format("%s", this.treasure2Text[10]), "FONT_SYSTEM_BOLD", 30, 0);
+                  this.textTextures[var4 * 3 + 4 + 1].drawText(String.format("%s %s", this.treasure2Text[2], this.treasure1Text[cz[var1][var4]]), "FONT_SYSTEM_BOLD", 30, 0);
+                  this.textTextures[var4 * 3 + 4 + 2].drawText(String.format("%s %s", this.treasure2Text[4], this.stageNamesText[cz[var1][var4] + 49]), "FONT_SYSTEM_BOLD", 30, 0);
                }
             }
          }
@@ -13355,9 +13355,9 @@ public class AppInstance extends Game {
          var1.drawScaledImageI(this.ae[24], this.excessWidth / 2 + 212, this.he[1] + 33, 700, 112, 1);
          var1.setImageAlpha(255);
          var1.setColor(255, 255, 255);
-         var1.drawScaledImage(this.ag[0], this.excessWidth / 2 + 579, this.he[1] + 55, 1);
-         var1.drawScaledImage(this.ag[1], this.excessWidth / 2 + 579, this.he[1] + 91, 1);
-         var1.drawScaledImage(this.ag[2], this.excessWidth / 2 + 555, this.he[1] + 299, 1);
+         var1.drawScaledImage(this.textTextures[0], this.excessWidth / 2 + 579, this.he[1] + 55, 1);
+         var1.drawScaledImage(this.textTextures[1], this.excessWidth / 2 + 579, this.he[1] + 91, 1);
+         var1.drawScaledImage(this.textTextures[2], this.excessWidth / 2 + 555, this.he[1] + 299, 1);
          if (this.hc[1] <= 3) {
             var1.drawScaledImageI(this.ae[21], 4 - dv[this.hk[5]] / 2, 541 - dv[this.hk[5]] / 2, dv[this.hk[5]] + 95, dv[this.hk[5]] + 95, 9);
             var1.drawScaledImageI(this.ae[21], 8 - dv[this.hk[5]] / 2, 558 - dv[this.hk[5]] / 2, dv[this.hk[5]] + 84, dv[this.hk[5]] + 60, 3);
@@ -13434,9 +13434,9 @@ public class AppInstance extends Game {
             var4 += 2;
          }
 
-         var1.drawScaledImage(this.ag[3], this.excessWidth / 2 + 500, 230, 1);
-         var1.drawScaledImage(this.ag[4], this.excessWidth / 2 + 499, 468, 1);
-         var1.drawScaledImage(this.ag[5], this.excessWidth / 2 + 499, 504, 1);
+         var1.drawScaledImage(this.textTextures[3], this.excessWidth / 2 + 500, 230, 1);
+         var1.drawScaledImage(this.textTextures[4], this.excessWidth / 2 + 499, 468, 1);
+         var1.drawScaledImage(this.textTextures[5], this.excessWidth / 2 + 499, 504, 1);
          if (this.bB[9] == 2) {
             var1.drawScaledImageI(this.an, this.excessWidth / 2 + 564, (int)(211.0F + 10.0F * aMath.sin((float)(this.hc[28] * 30))), 96, 96, 0);
          }
@@ -13673,19 +13673,19 @@ public class AppInstance extends Game {
                   this.bM[15] = 4;
                   this.bM[16] = 0;
                   if (this.bM[18] >= 1) {
-                     for(var3 = 0; var3 < this.getLength(this.ag); ++var3) {
-                        if (this.ag[var3].isLoaded()) {
-                           this.ag[var3].reset();
+                     for(var3 = 0; var3 < this.getLength(this.textTextures); ++var3) {
+                        if (this.textTextures[var3].isLoaded()) {
+                           this.textTextures[var3].reset();
                         }
                      }
 
-                     if (this.p == 0) {
-                        this.ag[0].a(this.cH[3], "FONT_SYSTEM_BOLD", 30, 0);
-                        this.ag[1].a(String.format("%s%s", this.cH[this.bM[18] - 1], this.cG[this.bM[20]]), "FONT_SYSTEM_BOLD", 30, 0);
-                        this.ag[2].a(this.cH[6], "FONT_SYSTEM_BOLD", 30, 0);
-                     } else if (this.p == 1) {
-                        this.ag[0].a(String.format("%s %s", this.cH[6], this.cH[9]), "FONT_SYSTEM_BOLD", 30, 0);
-                        this.ag[1].a(String.format("%s %s", this.cH[this.bM[18] - 1], this.cG[this.bM[20]]), "FONT_SYSTEM_BOLD", 30, 0);
+                     if (this.versionCode == 0) {
+                        this.textTextures[0].drawText(this.treasure2Text[3], "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[1].drawText(String.format("%s%s", this.treasure2Text[this.bM[18] - 1], this.treasure1Text[this.bM[20]]), "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[2].drawText(this.treasure2Text[6], "FONT_SYSTEM_BOLD", 30, 0);
+                     } else if (this.versionCode == 1) {
+                        this.textTextures[0].drawText(String.format("%s %s", this.treasure2Text[6], this.treasure2Text[9]), "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[1].drawText(String.format("%s %s", this.treasure2Text[this.bM[18] - 1], this.treasure1Text[this.bM[20]]), "FONT_SYSTEM_BOLD", 30, 0);
                      }
                   }
 
@@ -13721,14 +13721,14 @@ public class AppInstance extends Game {
                         this.bM[15] = 5;
                         this.bM[16] = 0;
 
-                        for(var3 = 0; var3 < this.getLength(this.ag); ++var3) {
-                           if (this.ag[var3].isLoaded()) {
-                              this.ag[var3].reset();
+                        for(var3 = 0; var3 < this.getLength(this.textTextures); ++var3) {
+                           if (this.textTextures[var3].isLoaded()) {
+                              this.textTextures[var3].reset();
                            }
                         }
 
-                        this.ag[0].a(this.cI[this.bM[19]][0], "FONT_SYSTEM_BOLD", 30, 0);
-                        this.ag[1].a(this.cH[5], "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[0].drawText(this.treasure3Text[this.bM[19]][0], "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[1].drawText(this.treasure2Text[5], "FONT_SYSTEM_BOLD", 30, 0);
                         Sound.getInstance().play(29);
                      }
                   }
@@ -13844,7 +13844,7 @@ public class AppInstance extends Game {
                var10002 = var2[11]++;
                if (this.fx[11] > this.getLength(dv) - 1) {
                   this.fx[11] = 0;
-                  String var6 = String.format(MyUtility.getString("twitter_txt1"), this.cF[cm[this.bM[0]]]);
+                  String var6 = String.format(MyUtility.getString("twitter_txt1"), this.stageNamesText[cm[this.bM[0]]]);
                   Twitter.getInstance().tweet(String.format("%s %s %s", var6, MyUtility.getString("url_abbr"), MyUtility.getString("twitter_hash")), null, null);
                   this.zoom.reset();
                }
@@ -13908,12 +13908,12 @@ public class AppInstance extends Game {
       var1.drawScaledImageI(this.ae[7], 0, 362, this.getWidth(), 238, 1);
       var1.drawScaledImageI(this.ae[8], 0, 78, 1);
       var1.setColor(255, 255, 255);
-      var1.drawScaledImage(this.ag[this.gA[0]], 146, 82, 1);
+      var1.drawScaledImage(this.textTextures[this.gA[0]], 146, 82, 1);
 
       int var2;
       for(var2 = 0; var2 < 3; ++var2) {
-         if (!aString.equals(this.dd[this.gP[2]][var2], "＠")) {
-            var1.drawScaledImage(this.ag[this.gA[1] + var2], this.getWidth() / 2 + 20, var2 * 36 + 470 - 5, 1);
+         if (!aString.equals(this.itemExplanationText[this.gP[2]][var2], "＠")) {
+            var1.drawScaledImage(this.textTextures[this.gA[1] + var2], this.getWidth() / 2 + 20, var2 * 36 + 470 - 5, 1);
          }
       }
 
@@ -14038,8 +14038,8 @@ public class AppInstance extends Game {
 
          if (var4 - this.gC[0] >= 0 && var4 - this.gC[0] <= this.gC[1]) {
             var1.setColor(255, 255, 255);
-            var2 = this.ag[var4 - this.gC[0]].a();
-            var1.drawScaledImage(this.ag[var4 - this.gC[0]], (float)this.getWidth() / 2.0F - (float)this.go[var4][0] / 2.0F + (float)(this.gy * var4) + (float)this.eh[0] + var10 + 328.0F * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F - (float)var2 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F, 347.0F - 254.0F * ((float)this.go[var4][1] * 10000.0F / 263.0F) / 10000.0F, (float)var2 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F, 30.0F * ((float)this.go[var4][1] * 10000.0F / 263.0F) / 10000.0F);
+            var2 = this.textTextures[var4 - this.gC[0]].getImgWidth();
+            var1.drawScaledImage(this.textTextures[var4 - this.gC[0]], (float)this.getWidth() / 2.0F - (float)this.go[var4][0] / 2.0F + (float)(this.gy * var4) + (float)this.eh[0] + var10 + 328.0F * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F - (float)var2 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F, 347.0F - 254.0F * ((float)this.go[var4][1] * 10000.0F / 263.0F) / 10000.0F, (float)var2 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F, 30.0F * ((float)this.go[var4][1] * 10000.0F / 263.0F) / 10000.0F);
             var6 = this.ae[11];
             var14 = (float)this.getWidth() / 2.0F;
             var11 = (float)this.go[var4][0] / 2.0F;
@@ -14275,8 +14275,8 @@ public class AppInstance extends Game {
                   this.bM[15] = 3;
                }
 
-               for(this.bM[16] = 0; var1 < this.getLength(this.cE[2]); ++var1) {
-                  this.ag[var1].a(this.cE[2][var1], "FONT_SYSTEM_BOLD", 30, 1);
+               for(this.bM[16] = 0; var1 < this.getLength(this.warning2Text[2]); ++var1) {
+                  this.textTextures[var1].drawText(this.warning2Text[2][var1], "FONT_SYSTEM_BOLD", 30, 1);
                }
             } else {
                var5 = this.ei;
@@ -14291,8 +14291,8 @@ public class AppInstance extends Game {
 
                   this.bM[16] = 0;
 
-                  for(var1 = var2; var1 < this.getLength(this.cE[2]); ++var1) {
-                     this.ag[var1].a(this.cE[2][var1], "FONT_SYSTEM_BOLD", 30, 1);
+                  for(var1 = var2; var1 < this.getLength(this.warning2Text[2]); ++var1) {
+                     this.textTextures[var1].drawText(this.warning2Text[2][var1], "FONT_SYSTEM_BOLD", 30, 1);
                   }
                }
             }
@@ -14359,14 +14359,14 @@ public class AppInstance extends Game {
                   this.bM[24] = 1;
                   var2 = 0;
 
-                  for(var1 = 0; var1 < this.getLength(this.da[this.eQ]) && !aString.equals(this.da[this.eQ][var1][0], "＠"); ++var1) {
+                  for(var1 = 0; var1 < this.getLength(this.loseText[this.eQ]) && !aString.equals(this.loseText[this.eQ][var1][0], "＠"); ++var1) {
                      ++var2;
                   }
 
                   this.eS = aMath.rand(var2);
 
-                  for(var1 = var3; var1 < this.getLength(this.da[this.eQ][this.eS]); ++var1) {
-                     this.ag[var1 + 2].a(this.da[this.eQ][this.eS][var1], "FONT_SYSTEM_BOLD", 30, 1);
+                  for(var1 = var3; var1 < this.getLength(this.loseText[this.eQ][this.eS]); ++var1) {
+                     this.textTextures[var1 + 2].drawText(this.loseText[this.eQ][this.eS][var1], "FONT_SYSTEM_BOLD", 30, 1);
                   }
                }
             } else if (this.fx[14] >= 1) {
@@ -14480,6 +14480,7 @@ public class AppInstance extends Game {
       var1.setImageOrientation(1);
       var1.drawScaledImageI(this.ae[1], this.excessWidth / 2 + 430, 480, 100, 100, 0);
       var1.setImageOrientation(0);
+       int total = 0;
       int[] var2 = this.gh;
       this.gh[1] = 0;
       var2[0] = 0;
@@ -14605,30 +14606,25 @@ public class AppInstance extends Game {
          var4 = 0;
          var5 = 0;
 
-         while(true) {
-            var6 = var4;
-            if (var4 >= 5) {
-               break;
-            }
-
+         for (int i = 0; i < 5; ++i) {
             if (this.fK == 0) {
-               if (aString.equals(this.cL[0][var4], "＠")) {
+               if (aString.equals(this.mainMenuWText[0][i], "＠")) {
                   break;
                }
             } else if (this.fK == 1) {
-               if (aString.equals(this.cM[0][var4], "＠")) {
+               if (aString.equals(this.mainMenuPText[0][i], "＠")) {
                   break;
                }
             } else if (this.fK == 2) {
-               if (aString.equals(this.cN[0][var4], "＠")) {
+               if (aString.equals(this.mainMenuUText[0][i], "＠")) {
                   break;
                }
             } else if (this.fK == 3) {
-               if (aString.equals(this.cO[0][var4], "＠")) {
+               if (aString.equals(this.mainMenuTText[0][i], "＠")) {
                   break;
                }
             } else if (this.fK == 4) {
-               if (aString.equals(this.cP[0][var4], "＠")) {
+               if (aString.equals(this.mainMenuBText[0][i], "＠")) {
                   break;
                }
             } else {
@@ -14638,40 +14634,40 @@ public class AppInstance extends Game {
                   var4 = 0;
                }
 
-               if (this.fJ < this.getLength(this.cL) - var4) {
-                  if (aString.equals(this.cL[this.fJ][var6], "＠")) {
+               if (this.qouteIndex < this.getLength(this.mainMenuWText) - var4) {
+                  if (aString.equals(this.mainMenuWText[this.qouteIndex][i], "＠")) {
                      break;
                   }
                } else {
                   int var7;
-                  if (this.fJ < this.getLength(this.cL) - var4 + this.getLength(this.cM)) {
-                     var7 = this.getLength(this.cL);
-                     if (aString.equals(this.cM[this.fJ - (var7 - var4)][var6], "＠")) {
+                  if (this.qouteIndex < this.getLength(this.mainMenuWText) - var4 + this.getLength(this.mainMenuPText)) {
+                     var7 = this.getLength(this.mainMenuWText);
+                     if (aString.equals(this.mainMenuPText[this.qouteIndex - (var7 - var4)][i], "＠")) {
                         break;
                      }
                   } else {
                      int var8;
-                     if (this.fJ < this.getLength(this.cL) - var4 + this.getLength(this.cM) + this.getLength(this.cN)) {
-                        var8 = this.getLength(this.cL);
-                        var7 = this.getLength(this.cM);
-                        if (aString.equals(this.cN[this.fJ - (var8 - var4 + var7)][var6], "＠")) {
+                     if (this.qouteIndex < this.getLength(this.mainMenuWText) - var4 + this.getLength(this.mainMenuPText) + this.getLength(this.mainMenuUText)) {
+                        var8 = this.getLength(this.mainMenuWText);
+                        var7 = this.getLength(this.mainMenuPText);
+                        if (aString.equals(this.mainMenuUText[this.qouteIndex - (var8 - var4 + var7)][i], "＠")) {
                            break;
                         }
                      } else {
                         int var9;
-                        if (this.fJ < this.getLength(this.cL) - var4 + this.getLength(this.cM) + this.getLength(this.cN) + this.getLength(this.cO)) {
-                           var9 = this.getLength(this.cL);
-                           var8 = this.getLength(this.cM);
-                           var7 = this.getLength(this.cN);
-                           if (aString.equals(this.cO[this.fJ - (var9 - var4 + var8 + var7)][var6], "＠")) {
+                        if (this.qouteIndex < this.getLength(this.mainMenuWText) - var4 + this.getLength(this.mainMenuPText) + this.getLength(this.mainMenuUText) + this.getLength(this.mainMenuTText)) {
+                           var9 = this.getLength(this.mainMenuWText);
+                           var8 = this.getLength(this.mainMenuPText);
+                           var7 = this.getLength(this.mainMenuUText);
+                           if (aString.equals(this.mainMenuTText[this.qouteIndex - (var9 - var4 + var8 + var7)][i], "＠")) {
                               break;
                            }
                         } else {
-                           var7 = this.getLength(this.cL);
-                           var9 = this.getLength(this.cM);
-                           var8 = this.getLength(this.cN);
-                           int var10 = this.getLength(this.cO);
-                           if (aString.equals(this.cP[this.fJ - (var7 - var4 + var9 + var8 + var10)][var6], "＠")) {
+                           var7 = this.getLength(this.mainMenuWText);
+                           var9 = this.getLength(this.mainMenuPText);
+                           var8 = this.getLength(this.mainMenuUText);
+                           int var10 = this.getLength(this.mainMenuTText);
+                           if (aString.equals(this.mainMenuBText[this.qouteIndex - (var7 - var4 + var9 + var8 + var10)][i], "＠")) {
                               break;
                            }
                         }
@@ -14679,11 +14675,10 @@ public class AppInstance extends Game {
                   }
                }
             }
-
-            ++var4;
-            var5 = var6 + 1;
+            total = i;
          }
 
+         var5 = total + 1;
          var6 = 0;
 
          for(var4 = 0; var6 < var5 - 1; var4 += 180) {
@@ -14691,7 +14686,7 @@ public class AppInstance extends Game {
          }
 
          for(var6 = 0; var6 < var5; ++var6) {
-            var1.drawScaledImage(this.ag[var6], this.excessWidth + 678, var6 * 36 + 223 - var4 / 10, 1);
+            var1.drawScaledImage(this.textTextures[var6], this.excessWidth + 678, var6 * 36 + 223 - var4 / 10, 1);
          }
       }
 
@@ -15144,7 +15139,7 @@ public class AppInstance extends Game {
          if (!this.eE[2] && this.dY == 0) {
             var4 = this.br[this.eQ][var2 - 2];
             if (var2 - 2 == this.dI[2] && !this.eE[9] && var4 >= 1) {
-               if (this.p == 0) {
+               if (this.versionCode == 0) {
                   var3 = this.ae[9];
                   var13 = (float)this.getWidth() / 2.0F;
                   var16 = (float)this.go[var2][0] / 2.0F;
@@ -15173,7 +15168,7 @@ public class AppInstance extends Game {
 
                      ++var5;
                   }
-               } else if (this.p == 1) {
+               } else if (this.versionCode == 1) {
                   var3 = this.ae[9];
                   var13 = (float)this.getWidth() / 2.0F;
                   var15 = (float)this.go[var2][0] / 2.0F;
@@ -15319,8 +15314,8 @@ public class AppInstance extends Game {
                var1.setColor(255, 255, 255);
                var1.setColor(255, 0, 0);
 
-               for(var2 = 0; var2 < this.getLength(this.cE[1]) && !aString.equals(this.cE[1][var2], "＠"); ++var2) {
-                  var1.drawScaledImage(this.ag[var2 + 10], this.excessWidth + 597, var2 * 36 + 421 - 108 + 21, 1);
+               for(var2 = 0; var2 < this.getLength(this.warning2Text[1]) && !aString.equals(this.warning2Text[1][var2], "＠"); ++var2) {
+                  var1.drawScaledImage(this.textTextures[var2 + 10], this.excessWidth + 597, var2 * 36 + 421 - 108 + 21, 1);
                }
             }
          } else {
@@ -15329,16 +15324,16 @@ public class AppInstance extends Game {
                var1.fillRect(242.0F + (float)this.excessWidth, 281.0F, 710.0F, 42.0F);
                var1.setColor(255, 0, 0);
 
-               for(var2 = 0; var2 < this.getLength(this.cE[15]) && !aString.equals(this.cE[15][var2], "＠"); ++var2) {
-                  var1.drawScaledImage(this.ag[var2 + 20], this.excessWidth + 597, 287, 1);
+               for(var2 = 0; var2 < this.getLength(this.warning2Text[15]) && !aString.equals(this.warning2Text[15][var2], "＠"); ++var2) {
+                  var1.drawScaledImage(this.textTextures[var2 + 20], this.excessWidth + 597, 287, 1);
                }
             } else if (this.bA[this.dW] <= 0) {
                var1.setColor(0, 0, 0, 216);
                var1.fillRect(242.0F + (float)this.excessWidth, 281.0F, 710.0F, 42.0F);
                var1.setColor(255, 0, 0);
 
-               for(var2 = 0; var2 < this.getLength(this.cE[1]) && !aString.equals(this.cE[1][var2], "＠"); ++var2) {
-                  var1.drawScaledImage(this.ag[var2 + 10], this.excessWidth + 597, 287, 1);
+               for(var2 = 0; var2 < this.getLength(this.warning2Text[1]) && !aString.equals(this.warning2Text[1][var2], "＠"); ++var2) {
+                  var1.drawScaledImage(this.textTextures[var2 + 10], this.excessWidth + 597, 287, 1);
                }
             }
 
@@ -15351,9 +15346,9 @@ public class AppInstance extends Game {
 
             for(var2 = 0; var2 < 4; ++var2) {
                if (var2 == 0) {
-                  var1.drawScaledImage(this.ag[var2], this.excessWidth + 597, var2 * 36 + 421 - 108 + 21, 1);
-               } else if (!aString.equals(this.dd[this.dW][var2 - 1], "＠")) {
-                  var1.drawScaledImage(this.ag[var2], this.excessWidth + 597, var2 * 36 + 421 - 108 + 21, 1);
+                  var1.drawScaledImage(this.textTextures[var2], this.excessWidth + 597, var2 * 36 + 421 - 108 + 21, 1);
+               } else if (!aString.equals(this.itemExplanationText[this.dW][var2 - 1], "＠")) {
+                  var1.drawScaledImage(this.textTextures[var2], this.excessWidth + 597, var2 * 36 + 421 - 108 + 21, 1);
                }
             }
          }
@@ -15379,7 +15374,7 @@ public class AppInstance extends Game {
       if (this.dY == 1) {
          var17 = 312;
          short var18;
-         if (this.p == 0) {
+         if (this.versionCode == 0) {
             label445: {
                if (this.fQ[0] != 2 && this.fQ[0] != 3 && this.fQ[0] != 6 && this.fQ[0] != 7 && this.fQ[0] != 10 && this.fQ[0] != 11 && this.fQ[0] != 14 && this.fQ[0] != 15 && this.fQ[0] != 18) {
                   var18 = var17;
@@ -15392,7 +15387,7 @@ public class AppInstance extends Game {
             }
          } else {
             var18 = var17;
-            if (this.p == 1) {
+            if (this.versionCode == 1) {
                label649: {
                   if (this.fQ[0] != 2 && this.fQ[0] != 3 && this.fQ[0] != 6 && this.fQ[0] != 7 && this.fQ[0] != 10 && this.fQ[0] != 11 && this.fQ[0] != 14) {
                      var18 = var17;
@@ -15408,7 +15403,7 @@ public class AppInstance extends Game {
 
          var1.drawScaledImageI(this.ae[1], this.excessWidth + 659, var18, 355, 355, 0);
          if (this.fQ[0] >= 2) {
-            if (this.p == 0) {
+            if (this.versionCode == 0) {
                if (this.fQ[0] - 2 == 0) {
                   var1.drawScaledImageI(this.ae[12], this.excessWidth / 2 - 28, -1, 504, 504, 0);
                } else if (this.fQ[0] - 2 == 1) {
@@ -15418,7 +15413,7 @@ public class AppInstance extends Game {
                } else if (this.fQ[0] - 2 >= 3) {
                   var1.drawScaledImageI(this.ae[12], this.excessWidth / 2 + 161, 188, 126, 126, 0);
                }
-            } else if (this.p == 1) {
+            } else if (this.versionCode == 1) {
                if (this.fQ[0] - 2 == 0) {
                   var1.drawScaledImageI(this.ae[12], this.excessWidth / 2 - 244, -1, 980, 504, 0);
                } else if (this.fQ[0] - 2 == 1) {
@@ -15432,7 +15427,7 @@ public class AppInstance extends Game {
          }
 
          if (this.fQ[0] >= 6) {
-            if (this.p == 0) {
+            if (this.versionCode == 0) {
                if (this.fQ[0] - 6 == 0) {
                   var1.drawScaledImageI(this.ae[12], this.excessWidth / 2 + 100, -1, 504, 504, 1);
                } else if (this.fQ[0] - 6 == 1) {
@@ -15442,7 +15437,7 @@ public class AppInstance extends Game {
                } else if (this.fQ[0] - 6 >= 3) {
                   var1.drawScaledImageI(this.ae[12], this.excessWidth / 2 + 289, 188, 126, 126, 1);
                }
-            } else if (this.p == 1) {
+            } else if (this.versionCode == 1) {
                if (this.fQ[0] - 6 == 0) {
                   var1.drawScaledImageI(this.ae[12], this.excessWidth / 2 - 191, -1, 1500, 504, 1);
                } else if (this.fQ[0] - 6 == 1) {
@@ -15456,7 +15451,7 @@ public class AppInstance extends Game {
          }
 
          if (this.fQ[0] >= 10) {
-            if (this.p == 0) {
+            if (this.versionCode == 0) {
                if (this.fQ[0] - 10 == 0) {
                   var1.drawScaledImageI(this.ae[12], this.excessWidth / 2 + 228, -1, 504, 504, 2);
                } else if (this.fQ[0] - 10 == 1) {
@@ -15466,7 +15461,7 @@ public class AppInstance extends Game {
                } else if (this.fQ[0] - 10 >= 3) {
                   var1.drawScaledImageI(this.ae[12], this.excessWidth / 2 + 417, 188, 126, 126, 2);
                }
-            } else if (this.p == 1) {
+            } else if (this.versionCode == 1) {
                if (this.fQ[0] - 10 == 0) {
                   var1.drawScaledImageI(this.ae[12], this.excessWidth / 2 + 683, -1, 176, 504, 2);
                } else if (this.fQ[0] - 10 == 1) {
@@ -15480,7 +15475,7 @@ public class AppInstance extends Game {
          }
 
          if (this.fQ[0] >= 14) {
-            if (this.p == 0) {
+            if (this.versionCode == 0) {
                if (this.fQ[0] - 14 == 0) {
                   var1.drawScaledImageI(this.ae[12], this.excessWidth / 2 + 356, -1, 504, 504, 3);
                } else if (this.fQ[0] - 14 == 1) {
@@ -15490,7 +15485,7 @@ public class AppInstance extends Game {
                } else if (this.fQ[0] - 14 >= 3) {
                   var1.drawScaledImageI(this.ae[12], this.excessWidth / 2 + 545, 188, 126, 126, 3);
                }
-            } else if (this.p == 1) {
+            } else if (this.versionCode == 1) {
                if (this.fQ[0] - 14 == 0) {
                   var1.drawScaledImageI(this.ae[12], this.excessWidth / 2 + 727, -1, 176, 504, 3);
                } else if (this.fQ[0] - 14 == 1) {
@@ -15503,7 +15498,7 @@ public class AppInstance extends Game {
             }
          }
 
-         if (this.fQ[0] >= 18 && this.p == 0) {
+         if (this.fQ[0] >= 18 && this.versionCode == 0) {
             if (this.fQ[0] - 18 == 0) {
                var1.drawScaledImageI(this.ae[12], this.excessWidth / 2 + 484, -1, 504, 504, 4);
             } else if (this.fQ[0] - 18 == 1) {
@@ -16241,11 +16236,11 @@ public class AppInstance extends Game {
                      var1.setColor(255, 255, 255);
                      var4 = 0;
 
-                     for(var3 = 0; var3 < 4 && !aString.equals(this.cE[3][var3], "＠"); ++var3) {
+                     for(var3 = 0; var3 < 4 && !aString.equals(this.warning2Text[3][var3], "＠"); ++var3) {
                         var4 = -var3;
                      }
 
-                     for(var3 = 0; var3 < 4 && !aString.equals(this.cE[3][var3], "＠"); ++var3) {
+                     for(var3 = 0; var3 < 4 && !aString.equals(this.warning2Text[3][var3], "＠"); ++var3) {
                         var1.drawScaledImage(this.ah[var3], this.getWidth() / 2, var4 * 18 + 306, 1);
                         var4 += 2;
                      }
@@ -16336,11 +16331,11 @@ public class AppInstance extends Game {
                            var3 = 0;
                            var1.setColor(255, 255, 255);
 
-                           for(var4 = 0; var4 < 4 && !aString.equals(this.cE[8][var4], "＠"); ++var4) {
+                           for(var4 = 0; var4 < 4 && !aString.equals(this.warning2Text[8][var4], "＠"); ++var4) {
                               var3 = -var4;
                            }
 
-                           for(var4 = 0; var4 < 4 && !aString.equals(this.cE[8][var4], "＠"); ++var4) {
+                           for(var4 = 0; var4 < 4 && !aString.equals(this.warning2Text[8][var4], "＠"); ++var4) {
                               var1.drawScaledImage(this.ah[var4], this.getWidth() / 2, var3 * 18 + 306, 1);
                               var3 += 2;
                            }
@@ -16466,13 +16461,13 @@ public class AppInstance extends Game {
                            var4 = 0;
                            var1.setColor(255, 255, 0);
 
-                           for(var3 = 0; var3 < 4 && !aString.equals(this.cE[14][var3], "＠"); ++var3) {
+                           for(var3 = 0; var3 < 4 && !aString.equals(this.warning2Text[14][var3], "＠"); ++var3) {
                               --var4;
                            }
 
                            ++var4;
 
-                           for(var3 = 0; var3 < 4 && !aString.equals(this.cE[14][var3], "＠"); ++var3) {
+                           for(var3 = 0; var3 < 4 && !aString.equals(this.warning2Text[14][var3], "＠"); ++var3) {
                               var1.drawScaledImage(this.ah[var3], this.getWidth() / 2, var4 * 18 + 305, 1);
                               var4 += 2;
                            }
@@ -16483,23 +16478,23 @@ public class AppInstance extends Game {
 
                         for(var4 = 0; var4 < 4; ++var4) {
                            if (this.gw == 5) {
-                              if (aString.equals(this.cE[6][var4], "＠")) {
+                              if (aString.equals(this.warning2Text[6][var4], "＠")) {
                                  break;
                               }
                            } else if (this.gw == 6) {
-                              if (aString.equals(this.cE[7][var4], "＠")) {
+                              if (aString.equals(this.warning2Text[7][var4], "＠")) {
                                  var3 = -(var4 - 1);
                                  break;
                               }
                            } else if (this.gw == 8) {
-                              if (aString.equals(this.cE[9][var4], "＠")) {
+                              if (aString.equals(this.warning2Text[9][var4], "＠")) {
                                  break;
                               }
                            } else if (this.gw == 9) {
-                              if (aString.equals(this.cE[10][var4], "＠")) {
+                              if (aString.equals(this.warning2Text[10][var4], "＠")) {
                                  break;
                               }
-                           } else if (this.gw == 10 && aString.equals(this.cE[11][var4], "＠")) {
+                           } else if (this.gw == 10 && aString.equals(this.warning2Text[11][var4], "＠")) {
                               break;
                            }
 
@@ -16518,22 +16513,22 @@ public class AppInstance extends Game {
                            }
 
                            if (this.gw == 5) {
-                              if (aString.equals(this.cE[6][var4], "＠")) {
+                              if (aString.equals(this.warning2Text[6][var4], "＠")) {
                                  break;
                               }
                            } else if (this.gw == 6) {
-                              if (aString.equals(this.cE[7][var4], "＠")) {
+                              if (aString.equals(this.warning2Text[7][var4], "＠")) {
                                  break;
                               }
                            } else if (this.gw == 8) {
-                              if (aString.equals(this.cE[9][var4], "＠")) {
+                              if (aString.equals(this.warning2Text[9][var4], "＠")) {
                                  break;
                               }
                            } else if (this.gw == 9) {
-                              if (aString.equals(this.cE[10][var4], "＠")) {
+                              if (aString.equals(this.warning2Text[10][var4], "＠")) {
                                  break;
                               }
-                           } else if (this.gw == 10 && aString.equals(this.cE[11][var4], "＠")) {
+                           } else if (this.gw == 10 && aString.equals(this.warning2Text[11][var4], "＠")) {
                               break;
                            }
 
@@ -16542,7 +16537,7 @@ public class AppInstance extends Game {
                         }
 
                         if (this.gw == 6) {
-                           var1.drawScaledImage(this.ah[this.getLength(this.cE[7]) + 1], this.getWidth() / 2, var3 * 18 + 284, 1);
+                           var1.drawScaledImage(this.ah[this.getLength(this.warning2Text[7]) + 1], this.getWidth() / 2, var3 * 18 + 284, 1);
                         }
                      }
                   } else {
@@ -16551,10 +16546,10 @@ public class AppInstance extends Game {
 
                      for(var3 = 0; var3 < 4; ++var3) {
                         if (this.gw == 3) {
-                           if (aString.equals(this.cE[4][var3], "＠")) {
+                           if (aString.equals(this.warning2Text[4][var3], "＠")) {
                               break;
                            }
-                        } else if (this.gw == 4 && aString.equals(this.cE[5][var3], "＠")) {
+                        } else if (this.gw == 4 && aString.equals(this.warning2Text[5][var3], "＠")) {
                            break;
                         }
 
@@ -16572,10 +16567,10 @@ public class AppInstance extends Game {
 
                      for(var4 = 0; var4 < 4; ++var4) {
                         if (this.gw == 3) {
-                           if (aString.equals(this.cE[4][var4], "＠")) {
+                           if (aString.equals(this.warning2Text[4][var4], "＠")) {
                               break;
                            }
-                        } else if (this.gw == 4 && aString.equals(this.cE[5][var4], "＠")) {
+                        } else if (this.gw == 4 && aString.equals(this.warning2Text[5][var4], "＠")) {
                            break;
                         }
 
@@ -16584,9 +16579,9 @@ public class AppInstance extends Game {
                      }
 
                      if (this.gw == 3) {
-                        var1.drawScaledImage(this.ah[this.getLength(this.cE[4]) + 1], this.getWidth() / 2, var3 * 18 + 306, 1);
+                        var1.drawScaledImage(this.ah[this.getLength(this.warning2Text[4]) + 1], this.getWidth() / 2, var3 * 18 + 306, 1);
                      } else if (this.gw == 4) {
-                        var1.drawScaledImage(this.ah[this.getLength(this.cE[5]) + 1], this.getWidth() / 2, var3 * 18 + 306, 1);
+                        var1.drawScaledImage(this.ah[this.getLength(this.warning2Text[5]) + 1], this.getWidth() / 2, var3 * 18 + 306, 1);
                      }
 
                      var3 = 30;
@@ -16644,11 +16639,11 @@ public class AppInstance extends Game {
 
                   var5 = 0;
 
-                  for(var4 = 0; var4 < 4 && !aString.equals(this.cE[var9][var4], "＠"); ++var4) {
+                  for(var4 = 0; var4 < 4 && !aString.equals(this.warning2Text[var9][var4], "＠"); ++var4) {
                      var5 = -var4;
                   }
 
-                  for(var4 = 0; var4 < 4 && !aString.equals(this.cE[var9][var4], "＠"); ++var4) {
+                  for(var4 = 0; var4 < 4 && !aString.equals(this.warning2Text[var9][var4], "＠"); ++var4) {
                      var1.drawScaledImage(this.ah[var4], this.getWidth() / 2, var5 * 18 + 306, 1);
                      var5 += 2;
                   }
@@ -16999,7 +16994,7 @@ public class AppInstance extends Game {
 
       var1.setColor(255, 255, 255);
       if (this.fS[2] >= 0 && this.fS[2] <= this.gC[1]) {
-         var1.drawScaledImage(this.ag[this.gA[4]], 146, 82, 1);
+         var1.drawScaledImage(this.textTextures[this.gA[4]], 146, 82, 1);
       }
 
       int var2;
@@ -17174,36 +17169,36 @@ public class AppInstance extends Game {
                var1.setColor(255, 255, 255);
 
                for(var2 = this.gA[3]; var2 < this.gA[3] + 3; ++var2) {
-                  var1.drawScaledImage(this.ag[var2], this.getWidth() / 2 + 20, (var2 - this.gA[3]) * 36 + 470 - 5, 1);
+                  var1.drawScaledImage(this.textTextures[var2], this.getWidth() / 2 + 20, (var2 - this.gA[3]) * 36 + 470 - 5, 1);
                }
             } else {
                var1.setColor(255, 255, 0);
-               var1.drawScaledImage(this.ag[this.gA[5]], this.getWidth() / 2 + 20, 465, 1);
+               var1.drawScaledImage(this.textTextures[this.gA[5]], this.getWidth() / 2 + 20, 465, 1);
             }
          } else if (this.fS[2] < this.gB[0]) {
             if (this.ct <= 0) {
                var1.setColor(255, 255, 255);
 
                for(var2 = this.gA[3]; var2 < this.gA[3] + 3; ++var2) {
-                  var1.drawScaledImage(this.ag[var2], this.getWidth() / 2 + 20, (var2 - this.gA[3]) * 36 + 470 - 5, 1);
+                  var1.drawScaledImage(this.textTextures[var2], this.getWidth() / 2 + 20, (var2 - this.gA[3]) * 36 + 470 - 5, 1);
                }
             } else {
                var1.setColor(255, 255, 0);
-               var1.drawScaledImage(this.ag[this.gA[5]], this.getWidth() / 2 + 20, 465, 1);
+               var1.drawScaledImage(this.textTextures[this.gA[5]], this.getWidth() / 2 + 20, 465, 1);
             }
          } else if (this.ct <= 0) {
             var1.setColor(255, 255, 255);
 
             for(var2 = this.gA[3]; var2 < this.gA[3] + 3; ++var2) {
-               var1.drawScaledImage(this.ag[var2], this.getWidth() / 2 + 20, (var2 - this.gA[3]) * 36 + 470 - 5, 1);
+               var1.drawScaledImage(this.textTextures[var2], this.getWidth() / 2 + 20, (var2 - this.gA[3]) * 36 + 470 - 5, 1);
             }
          } else {
             var1.setColor(255, 255, 0);
-            var1.drawScaledImage(this.ag[this.gA[5]], this.getWidth() / 2 + 20, 465, 1);
+            var1.drawScaledImage(this.textTextures[this.gA[5]], this.getWidth() / 2 + 20, 465, 1);
          }
       } else {
          for(var2 = this.gA[3]; var2 < this.gA[3] + 3; ++var2) {
-            var1.drawScaledImage(this.ag[var2], this.getWidth() / 2 + 20, (var2 - this.gA[3]) * 36 + 470 - 5, 1);
+            var1.drawScaledImage(this.textTextures[var2], this.getWidth() / 2 + 20, (var2 - this.gA[3]) * 36 + 470 - 5, 1);
          }
       }
 
@@ -17378,8 +17373,8 @@ public class AppInstance extends Game {
 
          if (var3 - this.gC[0] >= 0 && var3 - this.gC[0] <= this.gC[1]) {
             if (var3 - this.gC[0] < this.gB[1]) {
-               var2 = this.ag[var3 - this.gC[0]].a();
-               var1.drawScaledImage(this.ag[var3 - this.gC[0]], (float)this.getWidth() / 2.0F - (float)this.go[var3][0] / 2.0F + (float)(this.gy * var3) + (float)this.eh[0] + var10 + 328.0F * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F - (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F + (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F / 2.0F, 347.0F - 254.0F * ((float)this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F, (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F - (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F, 30.0F * ((float)this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F);
+               var2 = this.textTextures[var3 - this.gC[0]].getImgWidth();
+               var1.drawScaledImage(this.textTextures[var3 - this.gC[0]], (float)this.getWidth() / 2.0F - (float)this.go[var3][0] / 2.0F + (float)(this.gy * var3) + (float)this.eh[0] + var10 + 328.0F * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F - (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F + (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F / 2.0F, 347.0F - 254.0F * ((float)this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F, (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F - (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F, 30.0F * ((float)this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F);
                var6 = this.ae[8];
                var18 = (float)this.getWidth() / 2.0F;
                var16 = (float)this.go[var3][0] / 2.0F;
@@ -17396,8 +17391,8 @@ public class AppInstance extends Game {
                var1.drawScaledImage(var6, 180.0F * ((float)this.go[var3][0] * 100.0F / 328.0F) / 100.0F + var18 - var15 + var16 + var17 + var10, 347.0F - 138.0F * ((float)this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F, 138.0F * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F, 34.0F * ((float)this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F, 57);
             } else if (var3 - this.gC[0] < this.gB[0]) {
                if (this.bq[this.bJ[this.bK[var3 - this.gC[0] - this.gB[1]]][15]] < this.bJ[this.bK[var3 - this.gC[0] - this.gB[1]]][0]) {
-                  var2 = this.ag[var3 - this.gC[0]].a();
-                  var1.drawScaledImage(this.ag[var3 - this.gC[0]], (float)this.getWidth() / 2.0F - (float)this.go[var3][0] / 2.0F + (float)(this.gy * var3) + (float)this.eh[0] + var10 + 328.0F * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F - (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F + (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F / 2.0F, 347.0F - 254.0F * ((float)this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F, (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F - (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F, 30.0F * ((float)this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F);
+                  var2 = this.textTextures[var3 - this.gC[0]].getImgWidth();
+                  var1.drawScaledImage(this.textTextures[var3 - this.gC[0]], (float)this.getWidth() / 2.0F - (float)this.go[var3][0] / 2.0F + (float)(this.gy * var3) + (float)this.eh[0] + var10 + 328.0F * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F - (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F + (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F / 2.0F, 347.0F - 254.0F * ((float)this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F, (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F - (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F, 30.0F * ((float)this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F);
                   var1.setImageColor(255, 255, 255);
                   var6 = this.ae[8];
                   var15 = (float)this.getWidth() / 2.0F;
@@ -17418,8 +17413,8 @@ public class AppInstance extends Game {
                   }
                } else if (this.bu[this.bK[var3 - this.gC[0] - this.gB[1]]] == 0) {
                   var1.setColor(255, 255, 255);
-                  var2 = this.ag[var3 - this.gC[0]].a();
-                  var1.drawScaledImage(this.ag[var3 - this.gC[0]], (float)this.getWidth() / 2.0F - (float)this.go[var3][0] / 2.0F + (float)(this.gy * var3) + (float)this.eh[0] + var10 + 328.0F * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F - (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F + (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F / 2.0F, 347.0F - 254.0F * ((float)this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F, (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F - (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F, 30.0F * ((float)this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F);
+                  var2 = this.textTextures[var3 - this.gC[0]].getImgWidth();
+                  var1.drawScaledImage(this.textTextures[var3 - this.gC[0]], (float)this.getWidth() / 2.0F - (float)this.go[var3][0] / 2.0F + (float)(this.gy * var3) + (float)this.eh[0] + var10 + 328.0F * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F - (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F + (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F / 2.0F, 347.0F - 254.0F * ((float)this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F, (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F - (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F, 30.0F * ((float)this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F);
                   var1.setImageColor(255, 255, 255);
                   var6 = this.ae[8];
                   var14 = (float)this.getWidth() / 2.0F;
@@ -17449,19 +17444,19 @@ public class AppInstance extends Game {
                   var1.drawScaledImage(var6, 309.0F * ((float)this.go[var3][0] * 100.0F / 328.0F) / 100.0F * (float)cC[this.eH[0]] / 100.0F / 2.0F + var15 - var17 + var18 + var12 + var10 + var14 + var16, 347.0F - 102.0F * ((float)this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F, 309.0F * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F - 309.0F * ((float)this.go[var3][0] * 100.0F / 328.0F) / 100.0F * (float)cC[this.eH[0]] / 100.0F, 92.0F * ((float)this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F, 56);
                   var1.setColor(255, 255, 255);
                   if (this.bw[this.bK[var3 - this.gC[0] - this.gB[1]]] == 0) {
-                     Texture.b(this.cT[this.bK[var3 - this.gC[0] - this.gB[1]]][0][0], 30);
+                     Texture.measureText(this.unitExplanationText[this.bK[var3 - this.gC[0] - this.gB[1]]][0][0], 30);
                   } else {
-                     Texture.b(this.cT[this.bK[var3 - this.gC[0] - this.gB[1]]][1][0], 30);
+                     Texture.measureText(this.unitExplanationText[this.bK[var3 - this.gC[0] - this.gB[1]]][1][0], 30);
                   }
 
-                  var2 = this.ag[var3 - this.gC[0]].a();
-                  var1.drawScaledImage(this.ag[var3 - this.gC[0]], (float)this.getWidth() / 2.0F - (float)this.go[var3][0] / 2.0F + (float)(this.gy * var3) + (float)this.eh[0] + var10 + 328.0F * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F - (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F + (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F / 2.0F, 347.0F - 254.0F * ((float)this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F, (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F - (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F, 30.0F * ((float)this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F);
+                  var2 = this.textTextures[var3 - this.gC[0]].getImgWidth();
+                  var1.drawScaledImage(this.textTextures[var3 - this.gC[0]], (float)this.getWidth() / 2.0F - (float)this.go[var3][0] / 2.0F + (float)(this.gy * var3) + (float)this.eh[0] + var10 + 328.0F * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F - (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F + (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F / 2.0F, 347.0F - 254.0F * ((float)this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F, (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F - (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F, 30.0F * ((float)this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F);
                   var1.setImageColor(255, 255, 255);
                }
             } else {
                var1.setColor(255, 255, 255);
-               var2 = this.ag[var3 - this.gC[0]].a();
-               var1.drawScaledImage(this.ag[var3 - this.gC[0]], (float)this.getWidth() / 2.0F - (float)this.go[var3][0] / 2.0F + (float)(this.gy * var3) + (float)this.eh[0] + var10 + 328.0F * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F - (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F, 347.0F - 254.0F * ((float)this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F, (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F, 30.0F * ((float)this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F);
+               var2 = this.textTextures[var3 - this.gC[0]].getImgWidth();
+               var1.drawScaledImage(this.textTextures[var3 - this.gC[0]], (float)this.getWidth() / 2.0F - (float)this.go[var3][0] / 2.0F + (float)(this.gy * var3) + (float)this.eh[0] + var10 + 328.0F * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F - (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F, 347.0F - 254.0F * ((float)this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F, (float)var2 * ((float)this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F, 30.0F * ((float)this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F);
             }
 
             var6 = this.ae[var3 + 11 - this.gC[0]];
@@ -18000,8 +17995,8 @@ public class AppInstance extends Game {
       }
 
       var1.setColor(255, 255, 255);
-      var1.drawScaledImage(this.ag[0], 31, 118, 0);
-      var1.drawScaledImage(this.ag[1], 74, 168, 0);
+      var1.drawScaledImage(this.textTextures[0], 31, 118, 0);
+      var1.drawScaledImage(this.textTextures[1], 74, 168, 0);
 
       int var3;
       Texture var4;
@@ -18081,9 +18076,9 @@ public class AppInstance extends Game {
       for(var2 = 0; var2 < 30; ++var2) {
          var1.setColor(0, 0, 0);
          if (var3 - 1 == var2) {
-            var1.drawScaledImage(this.ag[4], this.getWidth() / 2 - 99 + this.gy * var2 + this.eh[0] + 99, 267, 1);
+            var1.drawScaledImage(this.textTextures[4], this.getWidth() / 2 - 99 + this.gy * var2 + this.eh[0] + 99, 267, 1);
          } else if (var3 == var2) {
-            var1.drawScaledImage(this.ag[5], this.getWidth() / 2 - 99 + this.gy * var2 + this.eh[0] + 99, 267, 1);
+            var1.drawScaledImage(this.textTextures[5], this.getWidth() / 2 - 99 + this.gy * var2 + this.eh[0] + 99, 267, 1);
          }
       }
 
@@ -18092,11 +18087,11 @@ public class AppInstance extends Game {
          this.aG[0].a(this.aH[0], this.fQ[0]);
          var1.setTextures(this.aG[0], this.eh[2] + 774 + this.excessWidth, 470);
          var1.setColor(0, 0, 0);
-         var1.drawScaledImage(this.ag[2], this.eh[2] + 653 + this.excessWidth, 351);
-         var1.drawScaledImage(this.ag[3], this.eh[2] + 653 + this.excessWidth, 381);
+         var1.drawScaledImage(this.textTextures[2], this.eh[2] + 653 + this.excessWidth, 351);
+         var1.drawScaledImage(this.textTextures[3], this.eh[2] + 653 + this.excessWidth, 381);
          var1.setColor(255, 255, 255);
-         var1.drawScaledImage(this.ag[2], this.eh[2] + 650 + this.excessWidth, 348);
-         var1.drawScaledImage(this.ag[3], this.eh[2] + 650 + this.excessWidth, 378);
+         var1.drawScaledImage(this.textTextures[2], this.eh[2] + 650 + this.excessWidth, 348);
+         var1.drawScaledImage(this.textTextures[3], this.eh[2] + 650 + this.excessWidth, 378);
       }
 
       var1.setImageOrientation(0);
@@ -18555,9 +18550,9 @@ public class AppInstance extends Game {
          }
       }
 
-      for(var2 = 0; var2 < this.getLength(this.ag); ++var2) {
-         if (this.ag[var2].isLoaded()) {
-            this.ag[var2].reset();
+      for(var2 = 0; var2 < this.getLength(this.textTextures); ++var2) {
+         if (this.textTextures[var2].isLoaded()) {
+            this.textTextures[var2].reset();
          }
       }
 
@@ -18602,7 +18597,7 @@ public class AppInstance extends Game {
             this.aI[this.eQ - 1].load(MyUtility.getString(String.format("i%03d_p.png", this.eQ - 1)), MyUtility.getString(String.format("%03d_p.imgcut", this.eQ - 1)));
          }
 
-         this.aJ.a(String.format("%03d_p.mamodel", this.eQ - 1));
+         this.aJ.load(String.format("%03d_p.mamodel", this.eQ - 1));
 
          for(var2 = 0; var2 < this.getLength(this.aK); ++var2) {
             this.aK[var2].load(String.format("%03d_p%02d.maanim", this.eQ - 1, var2));
@@ -18611,8 +18606,8 @@ public class AppInstance extends Game {
          this.aJ.a(this.aI);
          this.aJ.a();
 
-         for(var2 = var1; var2 < this.getLength(this.dr[this.eQ - 1]); ++var2) {
-            this.ag[var2].a(this.dr[this.eQ - 1][var2], "FONT_SYSTEM_BOLD", 30, 1);
+         for(var2 = var1; var2 < this.getLength(this.giftMessageText[this.eQ - 1]); ++var2) {
+            this.textTextures[var2].drawText(this.giftMessageText[this.eQ - 1][var2], "FONT_SYSTEM_BOLD", 30, 1);
          }
       }
 
@@ -19039,12 +19034,12 @@ public class AppInstance extends Game {
          } else {
             short var23;
             label421: {
-               if (this.p == 0) {
+               if (this.versionCode == 0) {
                   if (this.fQ[7] == 2 || this.fQ[7] == 3 || this.fQ[7] == 6 || this.fQ[7] == 7 || this.fQ[7] == 10 || this.fQ[7] == 11 || this.fQ[7] == 14 || this.fQ[7] == 15 || this.fQ[7] == 18 || this.fQ[7] == 19) {
                      var23 = 308;
                      break label421;
                   }
-               } else if (this.p == 1 && (this.fQ[7] == 2 || this.fQ[7] == 3 || this.fQ[7] == 6 || this.fQ[7] == 7 || this.fQ[7] == 10 || this.fQ[7] == 11 || this.fQ[7] == 14 || this.fQ[7] == 15)) {
+               } else if (this.versionCode == 1 && (this.fQ[7] == 2 || this.fQ[7] == 3 || this.fQ[7] == 6 || this.fQ[7] == 7 || this.fQ[7] == 10 || this.fQ[7] == 11 || this.fQ[7] == 14 || this.fQ[7] == 15)) {
                   var23 = 308;
                   break label421;
                }
@@ -19053,7 +19048,7 @@ public class AppInstance extends Game {
             }
 
             if (this.fQ[7] >= 2) {
-               if (this.p == 0) {
+               if (this.versionCode == 0) {
                   if (this.fQ[7] - 2 == 0) {
                      var1.drawScaledImageI(this.ae[5], this.excessWidth / 2 - 28, -1, 504, 504, 0);
                   } else if (this.fQ[7] - 2 == 1) {
@@ -19063,7 +19058,7 @@ public class AppInstance extends Game {
                   } else if (this.fQ[7] - 2 >= 3) {
                      var1.drawScaledImageI(this.ae[5], this.excessWidth / 2 + 161, 188, 126, 126, 0);
                   }
-               } else if (this.p == 1) {
+               } else if (this.versionCode == 1) {
                   if (this.fQ[7] - 2 == 0) {
                      var1.drawScaledImageI(this.ae[5], this.excessWidth / 2 - 244, -1, 980, 504, 0);
                   } else if (this.fQ[7] - 2 == 1) {
@@ -19077,7 +19072,7 @@ public class AppInstance extends Game {
             }
 
             if (this.fQ[7] >= 6) {
-               if (this.p == 0) {
+               if (this.versionCode == 0) {
                   if (this.fQ[7] - 6 == 0) {
                      var1.drawScaledImageI(this.ae[5], this.excessWidth / 2 + 100, -1, 504, 504, 1);
                   } else if (this.fQ[7] - 6 == 1) {
@@ -19087,7 +19082,7 @@ public class AppInstance extends Game {
                   } else if (this.fQ[7] - 6 >= 3) {
                      var1.drawScaledImageI(this.ae[5], this.excessWidth / 2 + 289, 188, 126, 126, 1);
                   }
-               } else if (this.p == 1) {
+               } else if (this.versionCode == 1) {
                   if (this.fQ[7] - 6 == 0) {
                      var1.drawScaledImageI(this.ae[5], this.excessWidth / 2 - 191, -1, 1500, 504, 1);
                   } else if (this.fQ[7] - 6 == 1) {
@@ -19101,7 +19096,7 @@ public class AppInstance extends Game {
             }
 
             if (this.fQ[7] >= 10) {
-               if (this.p == 0) {
+               if (this.versionCode == 0) {
                   if (this.fQ[7] - 10 == 0) {
                      var1.drawScaledImageI(this.ae[5], this.excessWidth / 2 + 228, -1, 504, 504, 2);
                   } else if (this.fQ[7] - 10 == 1) {
@@ -19111,7 +19106,7 @@ public class AppInstance extends Game {
                   } else if (this.fQ[7] - 10 >= 3) {
                      var1.drawScaledImageI(this.ae[5], this.excessWidth / 2 + 417, 188, 126, 126, 2);
                   }
-               } else if (this.p == 1) {
+               } else if (this.versionCode == 1) {
                   if (this.fQ[7] - 10 == 0) {
                      var1.drawScaledImageI(this.ae[5], this.excessWidth / 2 + 683, -1, 176, 504, 2);
                   } else if (this.fQ[7] - 10 == 1) {
@@ -19125,7 +19120,7 @@ public class AppInstance extends Game {
             }
 
             if (this.fQ[7] >= 14) {
-               if (this.p == 0) {
+               if (this.versionCode == 0) {
                   if (this.fQ[7] - 14 == 0) {
                      var1.drawScaledImageI(this.ae[5], this.excessWidth / 2 + 356, -1, 504, 504, 3);
                   } else if (this.fQ[7] - 14 == 1) {
@@ -19135,7 +19130,7 @@ public class AppInstance extends Game {
                   } else if (this.fQ[7] - 14 >= 3) {
                      var1.drawScaledImageI(this.ae[5], this.excessWidth / 2 + 545, 188, 126, 126, 3);
                   }
-               } else if (this.p == 1) {
+               } else if (this.versionCode == 1) {
                   if (this.fQ[7] - 14 == 0) {
                      var1.drawScaledImageI(this.ae[5], this.excessWidth / 2 + 727, -1, 176, 504, 3);
                   } else if (this.fQ[7] - 14 == 1) {
@@ -19151,7 +19146,7 @@ public class AppInstance extends Game {
             var5 = var23;
             if (this.fQ[7] >= 18) {
                var5 = var23;
-               if (this.p == 0) {
+               if (this.versionCode == 0) {
                   if (this.fQ[7] - 18 == 0) {
                      var1.drawScaledImageI(this.ae[5], this.excessWidth / 2 + 484, -1, 504, 504, 4);
                      var5 = var23;
@@ -19232,7 +19227,7 @@ public class AppInstance extends Game {
          if (this.ef) {
             var1.drawScaledImageI(this.al, this.excessWidth / 2 + 135, 250, 690, 229, 0);
             var1.setColor(255, 255, 255);
-            var1.drawScaledImage(this.ag[10], this.getWidth() / 2, 295, 1);
+            var1.drawScaledImage(this.textTextures[10], this.getWidth() / 2, 295, 1);
             var3 = this.af[2];
             var4 = dv[this.fC[10]] / 2;
             var1.drawScaledImageI(var3, this.excessWidth / 2 + (251 - var4), 382 - dv[this.fC[10]] / 2, dv[this.fC[10]] + 168, dv[this.fC[10]] + 72, 0);
@@ -19271,8 +19266,8 @@ public class AppInstance extends Game {
       }
 
       var1.drawScaledImageI(this.ae[7], this.eh[0] + 179 + this.fq[2] * this.gy + this.excessWidth / 2, 68, 0);
-      if (this.ag[3].isLoaded()) {
-         var3 = Texture.b(this.cI[this.fq[2]][0], 30) + 30 + Texture.b(String.format("%d", this.bO[this.eQ][this.fq[2]]), 30) + Texture.b(this.cH[8], 30) + Texture.b(this.cH[7], 30);
+      if (this.textTextures[3].isLoaded()) {
+         var3 = Texture.measureText(this.treasure3Text[this.fq[2]][0], 30) + 30 + Texture.measureText(String.format("%d", this.bO[this.eQ][this.fq[2]]), 30) + Texture.measureText(this.treasure2Text[8], 30) + Texture.measureText(this.treasure2Text[7], 30);
       } else {
          var3 = 0;
       }
@@ -19280,20 +19275,20 @@ public class AppInstance extends Game {
       var1.setColor(255, 255, 255);
       int var4;
       int var5;
-      if (this.ag[3].isLoaded()) {
-         var1.drawScaledImage(this.ag[0], this.getWidth() / 2 - var3 / 2 + this.eh[0] + this.fq[2] * this.gy, 75, 0);
+      if (this.textTextures[3].isLoaded()) {
+         var1.drawScaledImage(this.textTextures[0], this.getWidth() / 2 - var3 / 2 + this.eh[0] + this.fq[2] * this.gy, 75, 0);
          var4 = this.getWidth() / 2;
          var3 /= 2;
-         var5 = Texture.b(this.cI[this.fq[2]][0], 30);
+         var5 = Texture.measureText(this.treasure3Text[this.fq[2]][0], 30);
          var1.setColor(255, 255, 0);
-         var1.drawScaledImage(this.ag[3], var4 - var3 + var5 + 30 + this.eh[0] + this.fq[2] * this.gy, 75, 0);
+         var1.drawScaledImage(this.textTextures[3], var4 - var3 + var5 + 30 + this.eh[0] + this.fq[2] * this.gy, 75, 0);
       } else {
-         var1.drawScaledImage(this.ag[0], this.getWidth() / 2 + this.eh[0] + this.fq[2] * this.gy, 75, 1);
+         var1.drawScaledImage(this.textTextures[0], this.getWidth() / 2 + this.eh[0] + this.fq[2] * this.gy, 75, 1);
       }
 
       var1.setColor(255, 255, 255);
-      var1.drawScaledImage(this.ag[1], this.getWidth() / 2 + this.eh[0] + this.fq[2] * this.gy, 232, 1);
-      var1.drawScaledImage(this.ag[2], this.getWidth() / 2 + this.eh[0] + this.fq[2] * this.gy, 268, 1);
+      var1.drawScaledImage(this.textTextures[1], this.getWidth() / 2 + this.eh[0] + this.fq[2] * this.gy, 232, 1);
+      var1.drawScaledImage(this.textTextures[2], this.getWidth() / 2 + this.eh[0] + this.fq[2] * this.gy, 268, 1);
 
       for(var3 = 0; var3 < this.getLength(cy); ++var3) {
          for(var4 = 0; var4 < cy[var3]; ++var4) {
@@ -19319,126 +19314,126 @@ public class AppInstance extends Game {
          }
       }
 
-      if (this.p == 0) {
+      if (this.versionCode == 0) {
          if (this.bs[this.eQ][cz[this.fq[2]][this.fq[3]]] == 0) {
-            var4 = Texture.b(this.cH[3], 30) + 15 + Texture.b(this.cG[48], 30);
+            var4 = Texture.measureText(this.treasure2Text[3], 30) + 15 + Texture.measureText(this.treasure1Text[48], 30);
             var1.setColor(255, 255, 0);
-            var1.drawScaledImage(this.ag[this.fq[3] * 3 + 4 + 0], this.getWidth() / 2 - var4 / 2 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
+            var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 0], this.getWidth() / 2 - var4 / 2 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
             var3 = this.getWidth() / 2;
             var4 /= 2;
-            var5 = Texture.b(this.cH[3], 30);
+            var5 = Texture.measureText(this.treasure2Text[3], 30);
             var1.setColor(255, 255, 255);
-            var1.drawScaledImage(this.ag[this.fq[3] * 3 + 4 + 1], var3 - var4 + var5 + 15 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
+            var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 1], var3 - var4 + var5 + 15 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
             if (this.fq[2] != 10) {
-               var4 = Texture.b(this.cF[cz[this.fq[2]][this.fq[3]]], 30);
-               var3 = Texture.b(this.cH[9], 30);
-               var1.drawScaledImage(this.ag[this.fq[3] * 3 + 4 + 2], this.getWidth() / 2 - (var4 + var3) / 2 + this.eh[0] + this.fq[2] * this.gy, 541, 0);
+               var4 = Texture.measureText(this.stageNamesText[cz[this.fq[2]][this.fq[3]]], 30);
+               var3 = Texture.measureText(this.treasure2Text[9], 30);
+               var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 2], this.getWidth() / 2 - (var4 + var3) / 2 + this.eh[0] + this.fq[2] * this.gy, 541, 0);
             }
          } else if (this.bs[this.eQ][cz[this.fq[2]][this.fq[3]]] == 1) {
-            var4 = Texture.b(this.cH[3], 30) + 15 + Texture.b(this.cH[0], 30) + Texture.b(this.cG[cz[this.fq[2]][this.fq[3]]], 30);
+            var4 = Texture.measureText(this.treasure2Text[3], 30) + 15 + Texture.measureText(this.treasure2Text[0], 30) + Texture.measureText(this.treasure1Text[cz[this.fq[2]][this.fq[3]]], 30);
             var1.setColor(255, 255, 0);
-            var1.drawScaledImage(this.ag[this.fq[3] * 3 + 4 + 0], this.getWidth() / 2 - var4 / 2 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
+            var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 0], this.getWidth() / 2 - var4 / 2 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
             var3 = this.getWidth() / 2;
             var4 /= 2;
-            var5 = Texture.b(this.cH[3], 30);
+            var5 = Texture.measureText(this.treasure2Text[3], 30);
             var1.setColor(255, 255, 255);
-            var1.drawScaledImage(this.ag[this.fq[3] * 3 + 4 + 1], var3 - var4 + var5 + 15 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
-            var3 = Texture.b(this.cF[cz[this.fq[2]][this.fq[3]]], 30);
-            var4 = Texture.b(this.cH[4], 30);
-            var1.drawScaledImage(this.ag[this.fq[3] * 3 + 4 + 2], this.getWidth() / 2 - (var3 + var4) / 2 + this.eh[0] + this.fq[2] * this.gy, 541, 0);
+            var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 1], var3 - var4 + var5 + 15 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
+            var3 = Texture.measureText(this.stageNamesText[cz[this.fq[2]][this.fq[3]]], 30);
+            var4 = Texture.measureText(this.treasure2Text[4], 30);
+            var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 2], this.getWidth() / 2 - (var3 + var4) / 2 + this.eh[0] + this.fq[2] * this.gy, 541, 0);
          } else if (this.bs[this.eQ][cz[this.fq[2]][this.fq[3]]] == 2) {
-            var4 = Texture.b(this.cH[3], 30) + 15 + Texture.b(this.cH[1], 30) + Texture.b(this.cG[cz[this.fq[2]][this.fq[3]]], 30);
+            var4 = Texture.measureText(this.treasure2Text[3], 30) + 15 + Texture.measureText(this.treasure2Text[1], 30) + Texture.measureText(this.treasure1Text[cz[this.fq[2]][this.fq[3]]], 30);
             var1.setColor(255, 255, 0);
-            var1.drawScaledImage(this.ag[this.fq[3] * 3 + 4 + 0], this.getWidth() / 2 - var4 / 2 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
+            var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 0], this.getWidth() / 2 - var4 / 2 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
             var3 = this.getWidth() / 2;
             var5 = var4 / 2;
-            var4 = Texture.b(this.cH[3], 30);
+            var4 = Texture.measureText(this.treasure2Text[3], 30);
             var1.setColor(255, 255, 255);
-            var1.drawScaledImage(this.ag[this.fq[3] * 3 + 4 + 1], var3 - var5 + var4 + 15 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
-            var3 = Texture.b(this.cF[cz[this.fq[2]][this.fq[3]]], 30);
-            var4 = Texture.b(this.cH[4], 30);
-            var1.drawScaledImage(this.ag[this.fq[3] * 3 + 4 + 2], this.getWidth() / 2 - (var3 + var4) / 2 + this.eh[0] + this.fq[2] * this.gy, 541, 0);
+            var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 1], var3 - var5 + var4 + 15 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
+            var3 = Texture.measureText(this.stageNamesText[cz[this.fq[2]][this.fq[3]]], 30);
+            var4 = Texture.measureText(this.treasure2Text[4], 30);
+            var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 2], this.getWidth() / 2 - (var3 + var4) / 2 + this.eh[0] + this.fq[2] * this.gy, 541, 0);
          } else if (this.bs[this.eQ][cz[this.fq[2]][this.fq[3]]] == 3) {
-            var4 = Texture.b(this.cH[3], 30) + 15 + Texture.b(this.cH[2], 30) + Texture.b(this.cG[cz[this.fq[2]][this.fq[3]]], 30);
+            var4 = Texture.measureText(this.treasure2Text[3], 30) + 15 + Texture.measureText(this.treasure2Text[2], 30) + Texture.measureText(this.treasure1Text[cz[this.fq[2]][this.fq[3]]], 30);
             var1.setColor(255, 255, 0);
-            var1.drawScaledImage(this.ag[this.fq[3] * 3 + 4 + 0], this.getWidth() / 2 - var4 / 2 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
+            var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 0], this.getWidth() / 2 - var4 / 2 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
             var3 = this.getWidth() / 2;
             var5 = var4 / 2;
-            var4 = Texture.b(this.cH[3], 30);
+            var4 = Texture.measureText(this.treasure2Text[3], 30);
             var1.setColor(255, 255, 255);
-            var1.drawScaledImage(this.ag[this.fq[3] * 3 + 4 + 1], var3 - var5 + var4 + 15 + this.eh[0] + this.fq[2] * this.gy, 505);
-            var4 = Texture.b(this.cF[cz[this.fq[2]][this.fq[3]]], 30);
-            var3 = Texture.b(this.cH[4], 30);
-            var1.drawScaledImage(this.ag[this.fq[3] * 3 + 4 + 2], this.getWidth() / 2 - (var4 + var3) / 2 + this.eh[0] + this.fq[2] * this.gy, 541, 0);
+            var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 1], var3 - var5 + var4 + 15 + this.eh[0] + this.fq[2] * this.gy, 505);
+            var4 = Texture.measureText(this.stageNamesText[cz[this.fq[2]][this.fq[3]]], 30);
+            var3 = Texture.measureText(this.treasure2Text[4], 30);
+            var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 2], this.getWidth() / 2 - (var4 + var3) / 2 + this.eh[0] + this.fq[2] * this.gy, 541, 0);
          }
-      } else if (this.p == 1) {
+      } else if (this.versionCode == 1) {
          int var6;
          if (this.bs[this.eQ][cz[this.fq[2]][this.fq[3]]] == 0) {
-            var4 = Texture.b(this.cH[3], 30) + Texture.b(String.format(" "), 30) + Texture.b(this.cG[48], 30);
+            var4 = Texture.measureText(this.treasure2Text[3], 30) + Texture.measureText(String.format(" "), 30) + Texture.measureText(this.treasure1Text[48], 30);
             var1.setColor(255, 255, 0);
-            var1.drawScaledImage(this.ag[this.fq[3] * 3 + 4 + 0], this.getWidth() / 2 - var4 / 2 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
+            var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 0], this.getWidth() / 2 - var4 / 2 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
             var3 = this.getWidth() / 2;
             var5 = var4 / 2;
-            var4 = Texture.b(this.cH[3], 30);
-            var6 = Texture.b(String.format(" "), 30);
+            var4 = Texture.measureText(this.treasure2Text[3], 30);
+            var6 = Texture.measureText(String.format(" "), 30);
             var1.setColor(255, 255, 255);
-            var1.drawScaledImage(this.ag[this.fq[3] * 3 + 4 + 1], var3 - var5 + var4 + var6 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
+            var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 1], var3 - var5 + var4 + var6 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
             if (this.fq[2] != 10) {
-               var3 = Texture.b(String.format("%s %s", this.cH[4], this.cF[cz[this.fq[2]][this.fq[3]] + 49]), 30);
-               var1.drawScaledImage(this.ag[this.fq[3] * 3 + 4 + 2], this.getWidth() / 2 - var3 / 2 + this.eh[0] + this.fq[2] * this.gy, 541, 0);
+               var3 = Texture.measureText(String.format("%s %s", this.treasure2Text[4], this.stageNamesText[cz[this.fq[2]][this.fq[3]] + 49]), 30);
+               var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 2], this.getWidth() / 2 - var3 / 2 + this.eh[0] + this.fq[2] * this.gy, 541, 0);
             }
          } else if (this.bs[this.eQ][cz[this.fq[2]][this.fq[3]]] == 1) {
-            var4 = Texture.b(this.cH[10], 30) + Texture.b(String.format(" "), 30) + Texture.b(this.cH[0], 30) + Texture.b(String.format(" "), 30) + Texture.b(this.cG[cz[this.fq[2]][this.fq[3]]], 30);
+            var4 = Texture.measureText(this.treasure2Text[10], 30) + Texture.measureText(String.format(" "), 30) + Texture.measureText(this.treasure2Text[0], 30) + Texture.measureText(String.format(" "), 30) + Texture.measureText(this.treasure1Text[cz[this.fq[2]][this.fq[3]]], 30);
             var1.setColor(255, 255, 255);
-            var1.drawScaledImage(this.ag[this.fq[3] * 3 + 4 + 0], this.getWidth() / 2 - var4 / 2 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
+            var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 0], this.getWidth() / 2 - var4 / 2 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
             var3 = this.getWidth() / 2;
             var4 /= 2;
-            var6 = Texture.b(this.cH[10], 30);
-            var5 = Texture.b(String.format(" "), 30);
+            var6 = Texture.measureText(this.treasure2Text[10], 30);
+            var5 = Texture.measureText(String.format(" "), 30);
             var1.setColor(255, 255, 0);
-            var1.drawScaledImage(this.ag[this.fq[3] * 3 + 4 + 1], var3 - var4 + var6 + var5 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
+            var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 1], var3 - var4 + var6 + var5 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
             var1.setColor(255, 255, 255);
-            var3 = Texture.b(String.format("%s %s", this.cH[4], this.cF[cz[this.fq[2]][this.fq[3]] + 49]), 30);
-            var1.drawScaledImage(this.ag[this.fq[3] * 3 + 4 + 2], this.getWidth() / 2 - var3 / 2 + this.eh[0] + this.fq[2] * this.gy, 541, 0);
+            var3 = Texture.measureText(String.format("%s %s", this.treasure2Text[4], this.stageNamesText[cz[this.fq[2]][this.fq[3]] + 49]), 30);
+            var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 2], this.getWidth() / 2 - var3 / 2 + this.eh[0] + this.fq[2] * this.gy, 541, 0);
          } else if (this.bs[this.eQ][cz[this.fq[2]][this.fq[3]]] == 2) {
-            var4 = Texture.b(this.cH[10], 30) + Texture.b(String.format(" "), 30) + Texture.b(this.cH[1], 30) + Texture.b(String.format(" "), 30) + Texture.b(this.cG[cz[this.fq[2]][this.fq[3]]], 30);
+            var4 = Texture.measureText(this.treasure2Text[10], 30) + Texture.measureText(String.format(" "), 30) + Texture.measureText(this.treasure2Text[1], 30) + Texture.measureText(String.format(" "), 30) + Texture.measureText(this.treasure1Text[cz[this.fq[2]][this.fq[3]]], 30);
             var1.setColor(255, 255, 255);
-            var1.drawScaledImage(this.ag[this.fq[3] * 3 + 4 + 0], this.getWidth() / 2 - var4 / 2 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
+            var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 0], this.getWidth() / 2 - var4 / 2 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
             var3 = this.getWidth() / 2;
             var5 = var4 / 2;
-            var4 = Texture.b(this.cH[10], 30);
-            var6 = Texture.b(String.format(" "), 30);
+            var4 = Texture.measureText(this.treasure2Text[10], 30);
+            var6 = Texture.measureText(String.format(" "), 30);
             var1.setColor(255, 255, 0);
-            var1.drawScaledImage(this.ag[this.fq[3] * 3 + 4 + 1], var3 - var5 + var4 + var6 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
+            var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 1], var3 - var5 + var4 + var6 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
             var1.setColor(255, 255, 255);
-            var3 = Texture.b(String.format("%s %s", this.cH[4], this.cF[cz[this.fq[2]][this.fq[3]] + 49]), 30);
-            var1.drawScaledImage(this.ag[this.fq[3] * 3 + 4 + 2], this.getWidth() / 2 - var3 / 2 + this.eh[0] + this.fq[2] * this.gy, 541, 0);
+            var3 = Texture.measureText(String.format("%s %s", this.treasure2Text[4], this.stageNamesText[cz[this.fq[2]][this.fq[3]] + 49]), 30);
+            var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 2], this.getWidth() / 2 - var3 / 2 + this.eh[0] + this.fq[2] * this.gy, 541, 0);
          } else if (this.bs[this.eQ][cz[this.fq[2]][this.fq[3]]] == 3) {
-            var4 = Texture.b(this.cH[10], 30) + Texture.b(String.format(" "), 30) + Texture.b(this.cH[2], 30) + Texture.b(String.format(" "), 30) + Texture.b(this.cG[cz[this.fq[2]][this.fq[3]]], 30);
+            var4 = Texture.measureText(this.treasure2Text[10], 30) + Texture.measureText(String.format(" "), 30) + Texture.measureText(this.treasure2Text[2], 30) + Texture.measureText(String.format(" "), 30) + Texture.measureText(this.treasure1Text[cz[this.fq[2]][this.fq[3]]], 30);
             var1.setColor(255, 255, 255);
-            var1.drawScaledImage(this.ag[this.fq[3] * 3 + 4 + 0], this.getWidth() / 2 - var4 / 2 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
+            var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 0], this.getWidth() / 2 - var4 / 2 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
             var3 = this.getWidth() / 2;
             var5 = var4 / 2;
-            var6 = Texture.b(this.cH[10], 30);
-            var4 = Texture.b(String.format(" "), 30);
+            var6 = Texture.measureText(this.treasure2Text[10], 30);
+            var4 = Texture.measureText(String.format(" "), 30);
             var1.setColor(255, 255, 0);
-            var1.drawScaledImage(this.ag[this.fq[3] * 3 + 4 + 1], var3 - var5 + var6 + var4 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
+            var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 1], var3 - var5 + var6 + var4 + this.eh[0] + this.fq[2] * this.gy, 505, 0);
             var1.setColor(255, 255, 255);
-            var3 = Texture.b(String.format("%s %s", this.cH[4], this.cF[cz[this.fq[2]][this.fq[3]] + 49]), 30);
-            var1.drawScaledImage(this.ag[this.fq[3] * 3 + 4 + 2], this.getWidth() / 2 - var3 / 2 + this.eh[0] + this.fq[2] * this.gy, 541, 0);
+            var3 = Texture.measureText(String.format("%s %s", this.treasure2Text[4], this.stageNamesText[cz[this.fq[2]][this.fq[3]] + 49]), 30);
+            var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 2], this.getWidth() / 2 - var3 / 2 + this.eh[0] + this.fq[2] * this.gy, 541, 0);
          }
       }
 
       if (this.bs[this.eQ][cz[this.fq[2]][this.fq[3]]] == 0) {
-         if (this.p != 0) {
+         if (this.versionCode != 0) {
          }
       } else if (this.bs[this.eQ][cz[this.fq[2]][this.fq[3]]] == 1) {
-         if (this.p != 0) {
+         if (this.versionCode != 0) {
          }
       } else if (this.bs[this.eQ][cz[this.fq[2]][this.fq[3]]] == 2) {
-         if (this.p != 0) {
+         if (this.versionCode != 0) {
          }
-      } else if (this.bs[this.eQ][cz[this.fq[2]][this.fq[3]]] == 3 && this.p != 0) {
+      } else if (this.bs[this.eQ][cz[this.fq[2]][this.fq[3]]] == 3 && this.versionCode != 0) {
       }
 
       var1.setImageAlpha(127);
@@ -20674,16 +20669,16 @@ public class AppInstance extends Game {
             this.hc[1] = 1;
             this.he[0] = -100;
 
-            for(var3 = 0; var3 < this.getLength(this.ag); ++var3) {
-               if (this.ag[var3].isLoaded()) {
-                  this.ag[var3].reset();
+            for(var3 = 0; var3 < this.getLength(this.textTextures); ++var3) {
+               if (this.textTextures[var3].isLoaded()) {
+                  this.textTextures[var3].reset();
                }
             }
 
             this.hc[3] = 300;
-            this.ag[0].a(this.dh[0][0], "FONT_SYSTEM_BOLD", 30, 1);
-            this.ag[1].a(this.dh[0][1], "FONT_SYSTEM_BOLD", 30, 1);
-            this.ag[2].a(this.dl, "FONT_SYSTEM_BOLD", 30, 1);
+            this.textTextures[0].drawText(this.god1Text[0][0], "FONT_SYSTEM_BOLD", 30, 1);
+            this.textTextures[1].drawText(this.god1Text[0][1], "FONT_SYSTEM_BOLD", 30, 1);
+            this.textTextures[2].drawText(this.godNameText, "FONT_SYSTEM_BOLD", 30, 1);
          }
       } else if (this.hc[1] == 1) {
          var13 = this.hg;
@@ -20743,13 +20738,13 @@ public class AppInstance extends Game {
                   this.ha[1] = true;
                   if (this.bB[9] >= 3 && this.aL < ab[this.hl]) {
                      this.hc[3] = 300;
-                     this.ag[0].a(this.dj[0][0], "FONT_SYSTEM_BOLD", 30, 1);
-                     this.ag[1].a(this.dj[0][1], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[0].drawText(this.god3Text[0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[1].drawText(this.god3Text[0][1], "FONT_SYSTEM_BOLD", 30, 1);
                   }
 
-                  this.ag[3].a(this.dm[this.hl], "FONT_SYSTEM_BOLD", 30, 1);
-                  this.ag[4].a(this.dn[this.hl][0], "FONT_SYSTEM_BOLD", 30, 1);
-                  this.ag[5].a(this.dn[this.hl][1], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[3].drawText(this.godItemNameText[this.hl], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[4].drawText(this.godItemExplanationText[this.hl][0], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[5].drawText(this.godItemExplanationText[this.hl][1], "FONT_SYSTEM_BOLD", 30, 1);
                }
             } else if (this.hk[2] >= 1) {
                var13 = this.hk;
@@ -20760,13 +20755,13 @@ public class AppInstance extends Game {
                   this.ha[1] = true;
                   if (this.bB[9] >= 3 && this.aL < ab[this.hl]) {
                      this.hc[3] = 300;
-                     this.ag[0].a(this.dj[0][0], "FONT_SYSTEM_BOLD", 30, 1);
-                     this.ag[1].a(this.dj[0][1], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[0].drawText(this.god3Text[0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[1].drawText(this.god3Text[0][1], "FONT_SYSTEM_BOLD", 30, 1);
                   }
 
-                  this.ag[3].a(this.dm[this.hl], "FONT_SYSTEM_BOLD", 30, 1);
-                  this.ag[4].a(this.dn[this.hl][0], "FONT_SYSTEM_BOLD", 30, 1);
-                  this.ag[5].a(this.dn[this.hl][1], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[3].drawText(this.godItemNameText[this.hl], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[4].drawText(this.godItemExplanationText[this.hl][0], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[5].drawText(this.godItemExplanationText[this.hl][1], "FONT_SYSTEM_BOLD", 30, 1);
                }
             } else if (this.hk[3] >= 1) {
                var13 = this.hk;
@@ -20777,13 +20772,13 @@ public class AppInstance extends Game {
                   this.ha[1] = true;
                   if (this.bB[9] >= 3 && this.aL < ab[this.hl]) {
                      this.hc[3] = 300;
-                     this.ag[0].a(this.dj[0][0], "FONT_SYSTEM_BOLD", 30, 1);
-                     this.ag[1].a(this.dj[0][1], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[0].drawText(this.god3Text[0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[1].drawText(this.god3Text[0][1], "FONT_SYSTEM_BOLD", 30, 1);
                   }
 
-                  this.ag[3].a(this.dm[this.hl], "FONT_SYSTEM_BOLD", 30, 1);
-                  this.ag[4].a(this.dn[this.hl][0], "FONT_SYSTEM_BOLD", 30, 1);
-                  this.ag[5].a(this.dn[this.hl][1], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[3].drawText(this.godItemNameText[this.hl], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[4].drawText(this.godItemExplanationText[this.hl][0], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[5].drawText(this.godItemExplanationText[this.hl][1], "FONT_SYSTEM_BOLD", 30, 1);
                }
             } else if (this.hk[4] >= 1) {
                var13 = this.hk;
@@ -20794,13 +20789,13 @@ public class AppInstance extends Game {
                   this.ha[1] = true;
                   if (this.bB[9] >= 3 && this.aL < ab[this.hl]) {
                      this.hc[3] = 300;
-                     this.ag[0].a(this.dj[0][0], "FONT_SYSTEM_BOLD", 30, 1);
-                     this.ag[1].a(this.dj[0][1], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[0].drawText(this.god3Text[0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[1].drawText(this.god3Text[0][1], "FONT_SYSTEM_BOLD", 30, 1);
                   }
 
-                  this.ag[3].a(this.dm[this.hl], "FONT_SYSTEM_BOLD", 30, 1);
-                  this.ag[4].a(this.dn[this.hl][0], "FONT_SYSTEM_BOLD", 30, 1);
-                  this.ag[5].a(this.dn[this.hl][1], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[3].drawText(this.godItemNameText[this.hl], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[4].drawText(this.godItemExplanationText[this.hl][0], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[5].drawText(this.godItemExplanationText[this.hl][1], "FONT_SYSTEM_BOLD", 30, 1);
                }
             } else if (this.hk[5] >= 1) {
                var13 = this.hk;
@@ -20845,19 +20840,19 @@ public class AppInstance extends Game {
                      this.hb[var3] = 0.0F;
                   }
 
-                  for(var3 = 0; var3 < this.getLength(this.ag); ++var3) {
-                     if (this.ag[var3].isLoaded()) {
-                        this.ag[var3].reset();
+                  for(var3 = 0; var3 < this.getLength(this.textTextures); ++var3) {
+                     if (this.textTextures[var3].isLoaded()) {
+                        this.textTextures[var3].reset();
                      }
                   }
 
-                  this.ag[0].a(this.cD[5], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[0].drawText(this.warning1Text[5], "FONT_SYSTEM_BOLD", 30, 1);
 
                   for(var3 = 0; var3 < 4; ++var3) {
-                     this.ag[var3 + 1].a(this.cW[0][var3], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[var3 + 1].drawText(this.stageFirstMessageText[0][var3], "FONT_SYSTEM_BOLD", 30, 1);
                   }
 
-                  this.ag[10].a(this.db[1], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[10].drawText(this.optionText[1], "FONT_SYSTEM_BOLD", 30, 1);
                   this.eH[0] = 0;
 
                   for(var3 = 0; var3 < 10; ++var3) {
@@ -20899,8 +20894,8 @@ public class AppInstance extends Game {
                      }
 
                      this.aL -= ab[this.hl];
-                     this.ag[0].a(this.dk[0][0], "FONT_SYSTEM_BOLD", 30, 1);
-                     this.ag[1].a(this.dk[0][1], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[0].drawText(this.god4Text[0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[1].drawText(this.god4Text[0][1], "FONT_SYSTEM_BOLD", 30, 1);
                      this.ha[1] = false;
                      this.hc[1] = 4;
                      if (this.hl < this.getLength(this.hE)) {
@@ -20914,8 +20909,8 @@ public class AppInstance extends Game {
 
                      this.ac();
                   } else {
-                     this.ag[0].a(this.dk[0][0], "FONT_SYSTEM_BOLD", 30, 1);
-                     this.ag[1].a(this.dk[0][1], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[0].drawText(this.god4Text[0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[1].drawText(this.god4Text[0][1], "FONT_SYSTEM_BOLD", 30, 1);
                      this.bB[9] = 3;
                      this.ha[1] = false;
                      this.hc[1] = 4;
@@ -20929,9 +20924,9 @@ public class AppInstance extends Game {
                   this.hk[7] = 0;
                   this.ha[1] = false;
                   if (this.bB[9] >= 3 && this.aL < ab[this.hl]) {
-                     var3 = aMath.rand(this.getLength(this.di));
-                     this.ag[0].a(this.di[var3][0], "FONT_SYSTEM_BOLD", 30, 1);
-                     this.ag[1].a(this.di[var3][1], "FONT_SYSTEM_BOLD", 30, 1);
+                     var3 = aMath.rand(this.getLength(this.god2Text));
+                     this.textTextures[0].drawText(this.god2Text[var3][0], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[1].drawText(this.god2Text[var3][1], "FONT_SYSTEM_BOLD", 30, 1);
                   }
                }
             } else if (this.fx[14] >= 1) {
@@ -21139,19 +21134,19 @@ public class AppInstance extends Game {
                            this.hb[var3] = 0.0F;
                         }
 
-                        for(var3 = 0; var3 < this.getLength(this.ag); ++var3) {
-                           if (this.ag[var3].isLoaded()) {
-                              this.ag[var3].reset();
+                        for(var3 = 0; var3 < this.getLength(this.textTextures); ++var3) {
+                           if (this.textTextures[var3].isLoaded()) {
+                              this.textTextures[var3].reset();
                            }
                         }
 
-                        this.ag[0].a(this.cD[5], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[0].drawText(this.warning1Text[5], "FONT_SYSTEM_BOLD", 30, 1);
 
                         for(var3 = 0; var3 < 4; ++var3) {
-                           this.ag[var3 + 1].a(this.cW[0][var3], "FONT_SYSTEM_BOLD", 30, 1);
+                           this.textTextures[var3 + 1].drawText(this.stageFirstMessageText[0][var3], "FONT_SYSTEM_BOLD", 30, 1);
                         }
 
-                        this.ag[10].a(this.db[1], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[10].drawText(this.optionText[1], "FONT_SYSTEM_BOLD", 30, 1);
                         this.eH[0] = 0;
 
                         for(var3 = 0; var3 < 10; ++var3) {
@@ -21184,9 +21179,9 @@ public class AppInstance extends Game {
                            this.hk[7] = 0;
                            this.ha[1] = false;
                            if (this.aL < ab[this.hl]) {
-                              var3 = aMath.rand(this.getLength(this.di));
-                              this.ag[0].a(this.di[var3][0], "FONT_SYSTEM_BOLD", 30, 1);
-                              this.ag[1].a(this.di[var3][1], "FONT_SYSTEM_BOLD", 30, 1);
+                              var3 = aMath.rand(this.getLength(this.god2Text));
+                              this.textTextures[0].drawText(this.god2Text[var3][0], "FONT_SYSTEM_BOLD", 30, 1);
+                              this.textTextures[1].drawText(this.god2Text[var3][1], "FONT_SYSTEM_BOLD", 30, 1);
                            }
                         }
                      } else if (this.S() && this.b(this.fw[14][0], this.fw[14][1], this.fw[14][2], this.fw[14][3])) {
@@ -21202,9 +21197,9 @@ public class AppInstance extends Game {
                var13 = this.hc;
                var10002 = var13[3]--;
                if (this.hc[3] <= 0) {
-                  var3 = aMath.rand(this.getLength(this.di));
-                  this.ag[0].a(this.di[var3][0], "FONT_SYSTEM_BOLD", 30, 1);
-                  this.ag[1].a(this.di[var3][1], "FONT_SYSTEM_BOLD", 30, 1);
+                  var3 = aMath.rand(this.getLength(this.god2Text));
+                  this.textTextures[0].drawText(this.god2Text[var3][0], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[1].drawText(this.god2Text[var3][1], "FONT_SYSTEM_BOLD", 30, 1);
                   this.hc[3] = 300;
                }
             } else if (this.bB[9] >= 3) {
@@ -21212,9 +21207,9 @@ public class AppInstance extends Game {
                   var13 = this.hc;
                   var10002 = var13[3]--;
                   if (this.hc[3] <= 0) {
-                     var3 = aMath.rand(this.getLength(this.di));
-                     this.ag[0].a(this.di[var3][0], "FONT_SYSTEM_BOLD", 30, 1);
-                     this.ag[1].a(this.di[var3][1], "FONT_SYSTEM_BOLD", 30, 1);
+                     var3 = aMath.rand(this.getLength(this.god2Text));
+                     this.textTextures[0].drawText(this.god2Text[var3][0], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[1].drawText(this.god2Text[var3][1], "FONT_SYSTEM_BOLD", 30, 1);
                      this.hc[3] = 300;
                   }
                }
@@ -21222,9 +21217,9 @@ public class AppInstance extends Game {
                var13 = this.hc;
                var10002 = var13[3]--;
                if (this.hc[3] <= 0) {
-                  var3 = aMath.rand(this.getLength(this.di));
-                  this.ag[0].a(this.di[var3][0], "FONT_SYSTEM_BOLD", 30, 1);
-                  this.ag[1].a(this.di[var3][1], "FONT_SYSTEM_BOLD", 30, 1);
+                  var3 = aMath.rand(this.getLength(this.god2Text));
+                  this.textTextures[0].drawText(this.god2Text[var3][0], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[1].drawText(this.god2Text[var3][1], "FONT_SYSTEM_BOLD", 30, 1);
                   this.hc[3] = 300;
                }
             }
@@ -21806,17 +21801,17 @@ public class AppInstance extends Game {
                         this.hi[var3] = 0;
                      }
 
-                     for(var3 = 0; var3 < this.getLength(this.ag); ++var3) {
-                        if (this.ag[var3].isLoaded()) {
-                           this.ag[var3].reset();
+                     for(var3 = 0; var3 < this.getLength(this.textTextures); ++var3) {
+                        if (this.textTextures[var3].isLoaded()) {
+                           this.textTextures[var3].reset();
                         }
                      }
 
                      for(var3 = 0; var3 < 4; ++var3) {
-                        this.ag[var3 + 1].a(this.cW[0][var3], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[var3 + 1].drawText(this.stageFirstMessageText[0][var3], "FONT_SYSTEM_BOLD", 30, 1);
                      }
 
-                     this.ag[10].a(this.db[1], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[10].drawText(this.optionText[1], "FONT_SYSTEM_BOLD", 30, 1);
                      if (aB[this.hl] == 0 || aB[this.hl] == 1 || aB[this.hl] == 3) {
                         this.hm[aB[this.hl]] = 1;
                      }
@@ -21998,9 +21993,9 @@ public class AppInstance extends Game {
       this.fw[14][2] = 88;
       this.fw[14][3] = 88;
 
-      for(var1 = 0; var1 < this.getLength(this.ag); ++var1) {
-         if (this.ag[var1].isLoaded()) {
-            this.ag[var1].reset();
+      for(var1 = 0; var1 < this.getLength(this.textTextures); ++var1) {
+         if (this.textTextures[var1].isLoaded()) {
+            this.textTextures[var1].reset();
          }
       }
 
@@ -22008,21 +22003,21 @@ public class AppInstance extends Game {
          this.gA[var1] = 0;
       }
 
-      for(var1 = 0; var1 < this.getLength(this.dc); ++var1) {
-         this.ag[var1].a(this.dc[var1], "FONT_SYSTEM_BOLD", 30, 1);
+      for(var1 = 0; var1 < this.getLength(this.itemNameText); ++var1) {
+         this.textTextures[var1].drawText(this.itemNameText[var1], "FONT_SYSTEM_BOLD", 30, 1);
          this.gA[0] = var1 + 1;
       }
 
       if (this.gP[2] < this.gB[0]) {
-         this.ag[this.gA[0]].a(this.cY[6], "FONT_SYSTEM_BOLD", 30, 1);
+         this.textTextures[this.gA[0]].drawText(this.pageNameText[6], "FONT_SYSTEM_BOLD", 30, 1);
       } else {
-         this.ag[this.gA[0]].a(this.cY[8], "FONT_SYSTEM_BOLD", 30, 1);
+         this.textTextures[this.gA[0]].drawText(this.pageNameText[8], "FONT_SYSTEM_BOLD", 30, 1);
       }
 
       this.gA[1] = this.gA[0] + 1;
 
       for(var1 = this.gA[1]; var1 < this.gA[1] + 3; ++var1) {
-         this.ag[var1].a(this.dd[this.gP[2]][var1 - this.gA[1]], "FONT_SYSTEM_BOLD", 30, 1);
+         this.textTextures[var1].drawText(this.itemExplanationText[this.gP[2]][var1 - this.gA[1]], "FONT_SYSTEM_BOLD", 30, 1);
       }
 
       if (this.ae[6].isLoaded()) {
@@ -22081,7 +22076,7 @@ public class AppInstance extends Game {
       var1.drawScaledImageI(this.ae[7], this.excessWidth / 2 + 176, 90, 11);
       var1.drawScaledImageI(this.ae[8], 0, 287, 48);
       if (this.ff[2] >= 0 && this.ff[2] <= this.gC[1]) {
-         var1.drawScaledImage(this.ag[this.gA[4]], 146, 291, 1);
+         var1.drawScaledImage(this.textTextures[this.gA[4]], 146, 291, 1);
       }
 
       Texture var2;
@@ -22251,8 +22246,8 @@ public class AppInstance extends Game {
          if (var4 - this.gC[0] >= 0 && var4 - this.gC[0] <= this.gC[1]) {
             if (this.bq[this.bJ[this.bK[var4 - this.gC[0]]][15]] < this.bJ[this.bK[var4 - this.gC[0]]][0]) {
                var1.setColor(255, 255, 255);
-               var3 = this.ag[var4 - this.gC[0]].a();
-               var1.drawScaledImage(this.ag[var4 - this.gC[0]], (float)this.getWidth() / 2.0F - (float)this.go[var4][0] / 2.0F + (float)(this.gy * var4) + (float)this.eh[0] + var11 + 328.0F * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F - (float)var3 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F + (float)var3 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F / 2.0F, 559.0F - 254.0F * ((float)this.go[var4][1] * 10000.0F / 263.0F) / 10000.0F, (float)var3 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F - (float)var3 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F, 30.0F * ((float)this.go[var4][1] * 10000.0F / 263.0F) / 10000.0F);
+               var3 = this.textTextures[var4 - this.gC[0]].getImgWidth();
+               var1.drawScaledImage(this.textTextures[var4 - this.gC[0]], (float)this.getWidth() / 2.0F - (float)this.go[var4][0] / 2.0F + (float)(this.gy * var4) + (float)this.eh[0] + var11 + 328.0F * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F - (float)var3 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F + (float)var3 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F / 2.0F, 559.0F - 254.0F * ((float)this.go[var4][1] * 10000.0F / 263.0F) / 10000.0F, (float)var3 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F - (float)var3 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F, 30.0F * ((float)this.go[var4][1] * 10000.0F / 263.0F) / 10000.0F);
                var2 = this.ae[8];
                var18 = (float)this.getWidth() / 2.0F;
                var20 = (float)this.go[var4][0] / 2.0F;
@@ -22272,8 +22267,8 @@ public class AppInstance extends Game {
                }
             } else if (this.bu[this.bK[var4 - this.gC[0]]] == 0) {
                var1.setColor(255, 255, 255);
-               var3 = this.ag[var4 - this.gC[0]].a();
-               var1.drawScaledImage(this.ag[var4 - this.gC[0]], (float)this.getWidth() / 2.0F - (float)this.go[var4][0] / 2.0F + (float)(this.gy * var4) + (float)this.eh[0] + var11 + 328.0F * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F - (float)var3 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F + (float)var3 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F / 2.0F, 559.0F - 254.0F * ((float)this.go[var4][1] * 10000.0F / 263.0F) / 10000.0F, (float)var3 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F - (float)var3 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F, 30.0F * ((float)this.go[var4][1] * 10000.0F / 263.0F) / 10000.0F);
+               var3 = this.textTextures[var4 - this.gC[0]].getImgWidth();
+               var1.drawScaledImage(this.textTextures[var4 - this.gC[0]], (float)this.getWidth() / 2.0F - (float)this.go[var4][0] / 2.0F + (float)(this.gy * var4) + (float)this.eh[0] + var11 + 328.0F * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F - (float)var3 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F + (float)var3 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F / 2.0F, 559.0F - 254.0F * ((float)this.go[var4][1] * 10000.0F / 263.0F) / 10000.0F, (float)var3 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F - (float)var3 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F, 30.0F * ((float)this.go[var4][1] * 10000.0F / 263.0F) / 10000.0F);
                var2 = this.ae[8];
                var21 = (float)this.getWidth() / 2.0F;
                var19 = (float)this.go[var4][0] / 2.0F;
@@ -22293,8 +22288,8 @@ public class AppInstance extends Game {
                }
             } else {
                var1.setColor(255, 255, 255);
-               var3 = this.ag[var4 - this.gC[0]].a();
-               var1.drawScaledImage(this.ag[var4 - this.gC[0]], (float)this.getWidth() / 2.0F - (float)this.go[var4][0] / 2.0F + (float)(this.gy * var4) + (float)this.eh[0] + var11 + 328.0F * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F - (float)var3 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F + (float)var3 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F / 2.0F, 559.0F - 254.0F * ((float)this.go[var4][1] * 10000.0F / 263.0F) / 10000.0F, (float)var3 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F - (float)var3 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F, 30.0F * ((float)this.go[var4][1] * 10000.0F / 263.0F) / 10000.0F);
+               var3 = this.textTextures[var4 - this.gC[0]].getImgWidth();
+               var1.drawScaledImage(this.textTextures[var4 - this.gC[0]], (float)this.getWidth() / 2.0F - (float)this.go[var4][0] / 2.0F + (float)(this.gy * var4) + (float)this.eh[0] + var11 + 328.0F * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F - (float)var3 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F / 2.0F + (float)var3 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F / 2.0F, 559.0F - 254.0F * ((float)this.go[var4][1] * 10000.0F / 263.0F) / 10000.0F, (float)var3 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F - (float)var3 * ((float)this.go[var4][0] * 10000.0F / 328.0F) / 10000.0F * (float)cC[this.eH[0]] / 100.0F, 30.0F * ((float)this.go[var4][1] * 10000.0F / 263.0F) / 10000.0F);
             }
 
             var2 = this.ae[var4 + 11 - this.gC[0]];
@@ -22573,11 +22568,11 @@ public class AppInstance extends Game {
          var1.setColor(255, 255, 255);
          if (this.gK >= this.getLength(eO) - 1 && this.ff[2] >= 0 && this.ff[2] <= this.gC[1]) {
             if (this.bq[this.bJ[this.bK[this.ff[2]]][15]] < this.bJ[this.bK[this.ff[2]]][0]) {
-               var1.drawScaledImage(this.ag[this.gA[0] + 1], this.getWidth() / 2, 123, 1);
-               var1.drawScaledImage(this.ag[this.gA[0] + 2], this.getWidth() / 2, 159, 1);
+               var1.drawScaledImage(this.textTextures[this.gA[0] + 1], this.getWidth() / 2, 123, 1);
+               var1.drawScaledImage(this.textTextures[this.gA[0] + 2], this.getWidth() / 2, 159, 1);
             } else if (this.bu[this.bK[this.ff[2]]] != 0) {
                for(var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-                  var1.drawScaledImage(this.ag[var3], this.getWidth() / 2, (var3 - this.gA[3]) * 36 + 128 - 5, 1);
+                  var1.drawScaledImage(this.textTextures[var3], this.getWidth() / 2, (var3 - this.gA[3]) * 36 + 128 - 5, 1);
                }
             }
          }
@@ -22614,8 +22609,8 @@ public class AppInstance extends Game {
          var9 = this.go[this.ff[0] + this.eH[0]][0] * (this.fo[0] - 55) / 100;
          var4 = this.go[this.ff[0] + this.eH[0]][1];
          var1.drawScaledImageI(var2, var3 - var5, var6 - var7, var9 + var8, this.go[this.ff[0] + this.eH[0]][1] * (this.fo[1] - 55) / 100 + var4, 47);
-         var3 = this.ag[this.ff[2]].a();
-         var2 = this.ag[this.ff[2]];
+         var3 = this.textTextures[this.ff[2]].getImgWidth();
+         var2 = this.textTextures[this.ff[2]];
          var10 = (float)this.eh[1];
          var11 = ((float)this.go[this.ff[0] + this.eH[0]][0] + (float)(this.go[this.ff[0] + this.eH[0]][0] * (this.fo[0] - 55)) / 100.0F) / 2.0F;
          var12 = (float)this.go[this.ff[0] + this.eH[0]][0] / 2.0F;
@@ -22995,13 +22990,13 @@ public class AppInstance extends Game {
             this.gP[2] = this.gP[0] + 1 - this.gC[0];
             if (this.gP[2] >= 0 && this.gP[2] <= this.gC[1]) {
                if (this.gP[2] < this.gB[0]) {
-                  this.ag[this.gA[0]].a(this.cY[6], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[this.gA[0]].drawText(this.pageNameText[6], "FONT_SYSTEM_BOLD", 30, 1);
                } else {
-                  this.ag[this.gA[0]].a(this.cY[8], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[this.gA[0]].drawText(this.pageNameText[8], "FONT_SYSTEM_BOLD", 30, 1);
                }
 
                for(var3 = this.gA[1]; var3 < this.gA[1] + 3; ++var3) {
-                  this.ag[var3].a(this.dd[this.gP[2]][var3 - this.gA[1]], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[var3].drawText(this.itemExplanationText[this.gP[2]][var3 - this.gA[1]], "FONT_SYSTEM_BOLD", 30, 1);
                }
             }
          }
@@ -23009,13 +23004,13 @@ public class AppInstance extends Game {
          this.gP[2] = this.gP[0] - this.gC[0];
          if (this.gP[2] >= 0 && this.gP[2] <= this.gC[1]) {
             if (this.gP[2] < this.gB[0]) {
-               this.ag[this.gA[0]].a(this.cY[6], "FONT_SYSTEM_BOLD", 30, 1);
+               this.textTextures[this.gA[0]].drawText(this.pageNameText[6], "FONT_SYSTEM_BOLD", 30, 1);
             } else {
-               this.ag[this.gA[0]].a(this.cY[8], "FONT_SYSTEM_BOLD", 30, 1);
+               this.textTextures[this.gA[0]].drawText(this.pageNameText[8], "FONT_SYSTEM_BOLD", 30, 1);
             }
 
             for(var3 = this.gA[1]; var3 < this.gA[1] + 3; ++var3) {
-               this.ag[var3].a(this.dd[this.gP[2]][var3 - this.gA[1]], "FONT_SYSTEM_BOLD", 30, 1);
+               this.textTextures[var3].drawText(this.itemExplanationText[this.gP[2]][var3 - this.gA[1]], "FONT_SYSTEM_BOLD", 30, 1);
             }
          }
       }
@@ -23356,11 +23351,11 @@ public class AppInstance extends Game {
    void catBaseLoad() {
       //jp.co.ponos.library.a.a.b().f();
 
-      int var1;
-      int var2;
-      for(var1 = 0; var1 < this.getLength(this.fw); ++var1) {
-         for(var2 = 0; var2 < this.getLength(this.fw[var1]); ++var2) {
-            this.fw[var1][var2] = 0;
+      int quoteCount2;
+      int quoteCount;
+      for(quoteCount2 = 0; quoteCount2 < this.getLength(this.fw); ++quoteCount2) {
+         for(quoteCount = 0; quoteCount < this.getLength(this.fw[quoteCount2]); ++quoteCount) {
+            this.fw[quoteCount2][quoteCount] = 0;
          }
       }
 
@@ -23386,13 +23381,13 @@ public class AppInstance extends Game {
       this.fw[15][2] = 88;
       this.fw[15][3] = 88;
 
-      for(var1 = 0; var1 < this.getLength(this.gc); ++var1) {
-         this.gc[var1] = 450;
+      for(quoteCount2 = 0; quoteCount2 < this.getLength(this.gc); ++quoteCount2) {
+         this.gc[quoteCount2] = 450;
       }
 
-      for(var1 = 0; var1 < this.getLength(this.ag); ++var1) {
-         if (this.ag[var1].isLoaded()) {
-            this.ag[var1].reset();
+      for(quoteCount2 = 0; quoteCount2 < this.getLength(this.textTextures); ++quoteCount2) {
+         if (this.textTextures[quoteCount2].isLoaded()) {
+            this.textTextures[quoteCount2].reset();
          }
       }
 
@@ -23410,52 +23405,52 @@ public class AppInstance extends Game {
                var4 = 0;
             }
 
-            var2 = this.getLength(this.cL) - var4 + 0;
+            quoteCount = this.getLength(this.mainMenuWText) - var4 + 0;
          } else {
-            var2 = 0;
+            quoteCount = 0;
          }
 
-         var1 = var2;
+         quoteCount2 = quoteCount;
          if (this.bz[1] >= 2) {
-            var1 = var2 + this.getLength(this.cM);
+            quoteCount2 = quoteCount + this.getLength(this.mainMenuPText);
          }
 
-         var2 = var1;
+         quoteCount = quoteCount2;
          if (this.bz[2] >= 2) {
-            var2 = var1 + this.getLength(this.cN);
+            quoteCount = quoteCount2 + this.getLength(this.mainMenuUText);
          }
 
-         var1 = var2;
+         quoteCount2 = quoteCount;
          if (this.bz[3] >= 2) {
-            var1 = var2 + this.getLength(this.cO);
+            quoteCount2 = quoteCount + this.getLength(this.mainMenuTText);
          }
 
-         var2 = var1;
+         quoteCount = quoteCount2;
          if (this.bz[4] >= 2) {
-            var2 = var1 + this.getLength(this.cP);
+            quoteCount = quoteCount2 + this.getLength(this.mainMenuBText);
          }
 
-         this.fJ = aMath.rand(var2);
+         this.qouteIndex = aMath.rand(quoteCount);
          if (this.aX == 0) {
             var4 = 2;
          } else {
             var4 = 0;
          }
 
-         if (this.fJ >= 0 && this.bz[0] == 0) {
-            this.fJ += this.getLength(this.cL) - var4;
+         if (this.qouteIndex >= 0 && this.bz[0] == 0) {
+            this.qouteIndex += this.getLength(this.mainMenuWText) - var4;
          }
 
-         if (this.fJ >= this.getLength(this.cL) - var4 && this.bz[1] == 0) {
-            this.fJ += this.getLength(this.cM);
+         if (this.qouteIndex >= this.getLength(this.mainMenuWText) - var4 && this.bz[1] == 0) {
+            this.qouteIndex += this.getLength(this.mainMenuPText);
          }
 
-         if (this.fJ >= this.getLength(this.cL) - var4 + this.getLength(this.cM) && this.bz[2] == 0) {
-            this.fJ += this.getLength(this.cN);
+         if (this.qouteIndex >= this.getLength(this.mainMenuWText) - var4 + this.getLength(this.mainMenuPText) && this.bz[2] == 0) {
+            this.qouteIndex += this.getLength(this.mainMenuUText);
          }
 
-         if (this.fJ >= this.getLength(this.cL) - var4 + this.getLength(this.cM) + this.getLength(this.cN) && this.bz[3] == 0) {
-            this.fJ += this.getLength(this.cO);
+         if (this.qouteIndex >= this.getLength(this.mainMenuWText) - var4 + this.getLength(this.mainMenuPText) + this.getLength(this.mainMenuUText) && this.bz[3] == 0) {
+            this.qouteIndex += this.getLength(this.mainMenuTText);
          }
 
          if (this.aX == 0) {
@@ -23464,18 +23459,18 @@ public class AppInstance extends Game {
             var4 = 0;
          }
 
-         for(var2 = 0; var2 < 5; ++var2) {
-            if (!this.ag[var2].isLoaded()) {
-               if (this.fJ < this.getLength(this.cL) - var4) {
-                  this.ag[var2].a(this.cL[this.fJ][var2], "FONT_SYSTEM_BOLD", 30, 1);
-               } else if (this.fJ < this.getLength(this.cL) - var4 + this.getLength(this.cM)) {
-                  this.ag[var2].a(this.cM[this.fJ - (this.getLength(this.cL) - var4)][var2], "FONT_SYSTEM_BOLD", 30, 1);
-               } else if (this.fJ < this.getLength(this.cL) - var4 + this.getLength(this.cM) + this.getLength(this.cN)) {
-                  this.ag[var2].a(this.cN[this.fJ - (this.getLength(this.cL) - var4) - this.getLength(this.cM)][var2], "FONT_SYSTEM_BOLD", 30, 1);
-               } else if (this.fJ < this.getLength(this.cL) - var4 + this.getLength(this.cM) + this.getLength(this.cN) + this.getLength(this.cO)) {
-                  this.ag[var2].a(this.cO[this.fJ - (this.getLength(this.cL) - var4) - this.getLength(this.cM) - this.getLength(this.cN)][var2], "FONT_SYSTEM_BOLD", 30, 1);
+         for(quoteCount = 0; quoteCount < 5; ++quoteCount) {
+            if (!this.textTextures[quoteCount].isLoaded()) {
+               if (this.qouteIndex < this.getLength(this.mainMenuWText) - var4) {
+                  this.textTextures[quoteCount].drawText(this.mainMenuWText[this.qouteIndex][quoteCount], "FONT_SYSTEM_BOLD", 30, 1);
+               } else if (this.qouteIndex < this.getLength(this.mainMenuWText) - var4 + this.getLength(this.mainMenuPText)) {
+                  this.textTextures[quoteCount].drawText(this.mainMenuPText[this.qouteIndex - (this.getLength(this.mainMenuWText) - var4)][quoteCount], "FONT_SYSTEM_BOLD", 30, 1);
+               } else if (this.qouteIndex < this.getLength(this.mainMenuWText) - var4 + this.getLength(this.mainMenuPText) + this.getLength(this.mainMenuUText)) {
+                  this.textTextures[quoteCount].drawText(this.mainMenuUText[this.qouteIndex - (this.getLength(this.mainMenuWText) - var4) - this.getLength(this.mainMenuPText)][quoteCount], "FONT_SYSTEM_BOLD", 30, 1);
+               } else if (this.qouteIndex < this.getLength(this.mainMenuWText) - var4 + this.getLength(this.mainMenuPText) + this.getLength(this.mainMenuUText) + this.getLength(this.mainMenuTText)) {
+                  this.textTextures[quoteCount].drawText(this.mainMenuTText[this.qouteIndex - (this.getLength(this.mainMenuWText) - var4) - this.getLength(this.mainMenuPText) - this.getLength(this.mainMenuUText)][quoteCount], "FONT_SYSTEM_BOLD", 30, 1);
                } else {
-                  this.ag[var2].a(this.cP[this.fJ - (this.getLength(this.cL) - var4) - this.getLength(this.cM) - this.getLength(this.cN) - this.getLength(this.cO)][var2], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[quoteCount].drawText(this.mainMenuBText[this.qouteIndex - (this.getLength(this.mainMenuWText) - var4) - this.getLength(this.mainMenuPText) - this.getLength(this.mainMenuUText) - this.getLength(this.mainMenuTText)][quoteCount], "FONT_SYSTEM_BOLD", 30, 1);
                }
             }
          }
@@ -23488,15 +23483,15 @@ public class AppInstance extends Game {
             this.by[0] = 1;
          }
 
-         for(var1 = 0; var1 < this.getLength(this.ag); ++var1) {
-            if (this.ag[var1].isLoaded()) {
-               this.ag[var1].reset();
+         for(quoteCount2 = 0; quoteCount2 < this.getLength(this.textTextures); ++quoteCount2) {
+            if (this.textTextures[quoteCount2].isLoaded()) {
+               this.textTextures[quoteCount2].reset();
             }
          }
 
-         for(var1 = 0; var1 < this.getLength(this.cL[0]); ++var1) {
-            if (!this.ag[var1].isLoaded()) {
-               this.ag[var1].a(this.cL[0][var1], "FONT_SYSTEM_BOLD", 30, 1);
+         for(quoteCount2 = 0; quoteCount2 < this.getLength(this.mainMenuWText[0]); ++quoteCount2) {
+            if (!this.textTextures[quoteCount2].isLoaded()) {
+               this.textTextures[quoteCount2].drawText(this.mainMenuWText[0][quoteCount2], "FONT_SYSTEM_BOLD", 30, 1);
             }
          }
       }
@@ -23505,15 +23500,15 @@ public class AppInstance extends Game {
          this.fK = 1;
          this.hp = 1;
 
-         for(var1 = 0; var1 < this.getLength(this.ag); ++var1) {
-            if (this.ag[var1].isLoaded()) {
-               this.ag[var1].reset();
+         for(quoteCount2 = 0; quoteCount2 < this.getLength(this.textTextures); ++quoteCount2) {
+            if (this.textTextures[quoteCount2].isLoaded()) {
+               this.textTextures[quoteCount2].reset();
             }
          }
 
-         for(var1 = 0; var1 < 5; ++var1) {
-            if (!this.ag[var1].isLoaded()) {
-               this.ag[var1].a(this.cM[0][var1], "FONT_SYSTEM_BOLD", 30, 1);
+         for(quoteCount2 = 0; quoteCount2 < 5; ++quoteCount2) {
+            if (!this.textTextures[quoteCount2].isLoaded()) {
+               this.textTextures[quoteCount2].drawText(this.mainMenuPText[0][quoteCount2], "FONT_SYSTEM_BOLD", 30, 1);
             }
          }
 
@@ -23527,15 +23522,15 @@ public class AppInstance extends Game {
          this.fK = 2;
          this.hp = 2;
 
-         for(var1 = 0; var1 < this.getLength(this.ag); ++var1) {
-            if (this.ag[var1].isLoaded()) {
-               this.ag[var1].reset();
+         for(quoteCount2 = 0; quoteCount2 < this.getLength(this.textTextures); ++quoteCount2) {
+            if (this.textTextures[quoteCount2].isLoaded()) {
+               this.textTextures[quoteCount2].reset();
             }
          }
 
-         for(var1 = 0; var1 < 5; ++var1) {
-            if (!this.ag[var1].isLoaded()) {
-               this.ag[var1].a(this.cN[0][var1], "FONT_SYSTEM_BOLD", 30, 1);
+         for(quoteCount2 = 0; quoteCount2 < 5; ++quoteCount2) {
+            if (!this.textTextures[quoteCount2].isLoaded()) {
+               this.textTextures[quoteCount2].drawText(this.mainMenuUText[0][quoteCount2], "FONT_SYSTEM_BOLD", 30, 1);
             }
          }
 
@@ -23549,15 +23544,15 @@ public class AppInstance extends Game {
          this.hp = 3;
          this.fK = 3;
 
-         for(var1 = 0; var1 < this.getLength(this.ag); ++var1) {
-            if (this.ag[var1].isLoaded()) {
-               this.ag[var1].reset();
+         for(quoteCount2 = 0; quoteCount2 < this.getLength(this.textTextures); ++quoteCount2) {
+            if (this.textTextures[quoteCount2].isLoaded()) {
+               this.textTextures[quoteCount2].reset();
             }
          }
 
-         for(var1 = 0; var1 < 5; ++var1) {
-            if (!this.ag[var1].isLoaded()) {
-               this.ag[var1].a(this.cO[0][var1], "FONT_SYSTEM_BOLD", 30, 1);
+         for(quoteCount2 = 0; quoteCount2 < 5; ++quoteCount2) {
+            if (!this.textTextures[quoteCount2].isLoaded()) {
+               this.textTextures[quoteCount2].drawText(this.mainMenuTText[0][quoteCount2], "FONT_SYSTEM_BOLD", 30, 1);
             }
          }
 
@@ -23571,15 +23566,15 @@ public class AppInstance extends Game {
          this.hp = 4;
          this.fK = 4;
 
-         for(var1 = 0; var1 < this.getLength(this.ag); ++var1) {
-            if (this.ag[var1].isLoaded()) {
-               this.ag[var1].reset();
+         for(quoteCount2 = 0; quoteCount2 < this.getLength(this.textTextures); ++quoteCount2) {
+            if (this.textTextures[quoteCount2].isLoaded()) {
+               this.textTextures[quoteCount2].reset();
             }
          }
 
-         for(var1 = 0; var1 < 5; ++var1) {
-            if (!this.ag[var1].isLoaded()) {
-               this.ag[var1].a(this.cP[0][var1], "FONT_SYSTEM_BOLD", 30, 1);
+         for(quoteCount2 = 0; quoteCount2 < 5; ++quoteCount2) {
+            if (!this.textTextures[quoteCount2].isLoaded()) {
+               this.textTextures[quoteCount2].drawText(this.mainMenuBText[0][quoteCount2], "FONT_SYSTEM_BOLD", 30, 1);
             }
          }
 
@@ -23589,88 +23584,88 @@ public class AppInstance extends Game {
          }
       }
 
-      for(var1 = 0; var1 < this.getLength(this.eh); ++var1) {
-         this.eh[var1] = 0;
+      for(quoteCount2 = 0; quoteCount2 < this.getLength(this.eh); ++quoteCount2) {
+         this.eh[quoteCount2] = 0;
       }
 
-      for(var1 = 0; var1 < this.getLength(this.eE); ++var1) {
-         this.eE[var1] = false;
+      for(quoteCount2 = 0; quoteCount2 < this.getLength(this.eE); ++quoteCount2) {
+         this.eE[quoteCount2] = false;
       }
 
       this.eE[2] = true;
 
-      for(var1 = 0; var1 < this.getLength(this.fQ); ++var1) {
-         this.fQ[var1] = 0;
+      for(quoteCount2 = 0; quoteCount2 < this.getLength(this.fQ); ++quoteCount2) {
+         this.fQ[quoteCount2] = 0;
       }
 
-      for(var1 = 0; var1 < this.getLength(this.gm); ++var1) {
-         this.gm[var1] = 0;
+      for(quoteCount2 = 0; quoteCount2 < this.getLength(this.gm); ++quoteCount2) {
+         this.gm[quoteCount2] = 0;
       }
 
-      for(var1 = 0; var1 < this.getLength(this.fx); ++var1) {
-         this.fx[var1] = 0;
+      for(quoteCount2 = 0; quoteCount2 < this.getLength(this.fx); ++quoteCount2) {
+         this.fx[quoteCount2] = 0;
       }
 
-      for(var1 = 0; var1 < this.getLength(this.eK); ++var1) {
-         this.eK[var1] = 0;
+      for(quoteCount2 = 0; quoteCount2 < this.getLength(this.eK); ++quoteCount2) {
+         this.eK[quoteCount2] = 0;
       }
 
-      for(var1 = 0; var1 < this.getLength(this.hk); ++var1) {
-         this.hk[var1] = 0;
+      for(quoteCount2 = 0; quoteCount2 < this.getLength(this.hk); ++quoteCount2) {
+         this.hk[quoteCount2] = 0;
       }
 
-      for(var1 = 0; var1 < this.getLength(this.fC); ++var1) {
-         this.fC[var1] = 0;
+      for(quoteCount2 = 0; quoteCount2 < this.getLength(this.fC); ++quoteCount2) {
+         this.fC[quoteCount2] = 0;
       }
 
-      for(var1 = 0; var1 < this.getLength(this.fy); ++var1) {
-         this.fy[var1] = 0;
+      for(quoteCount2 = 0; quoteCount2 < this.getLength(this.fy); ++quoteCount2) {
+         this.fy[quoteCount2] = 0;
       }
 
-      for(var1 = 0; var1 < this.getLength(this.fz); ++var1) {
-         this.fz[var1] = 0;
+      for(quoteCount2 = 0; quoteCount2 < this.getLength(this.fz); ++quoteCount2) {
+         this.fz[quoteCount2] = 0;
       }
 
-      for(var1 = 0; var1 < this.getLength(this.gZ); ++var1) {
-         this.gZ[var1] = 0;
+      for(quoteCount2 = 0; quoteCount2 < this.getLength(this.gZ); ++quoteCount2) {
+         this.gZ[quoteCount2] = 0;
       }
 
-      for(var1 = 6; var1 < this.getLength(this.ae) - 6; ++var1) {
-         if (this.ae[var1].isLoaded()) {
-            this.ae[var1].reset();
+      for(quoteCount2 = 6; quoteCount2 < this.getLength(this.ae) - 6; ++quoteCount2) {
+         if (this.ae[quoteCount2].isLoaded()) {
+            this.ae[quoteCount2].reset();
          }
       }
 
-      for(var1 = 0; var1 < this.getLength(this.ek); ++var1) {
-         this.ek[var1] = 0;
+      for(quoteCount2 = 0; quoteCount2 < this.getLength(this.ek); ++quoteCount2) {
+         this.ek[quoteCount2] = 0;
       }
 
       this.resetTextures();
 
-      for(var1 = 0; var1 < this.getLength(this.gp); ++var1) {
-         this.gp[var1] = false;
+      for(quoteCount2 = 0; quoteCount2 < this.getLength(this.gp); ++quoteCount2) {
+         this.gp[quoteCount2] = false;
       }
 
       this.fL = 0;
 
-      for(var1 = 0; var1 < this.getLength(this.by); ++var1) {
-         int var10000 = this.by[var1];
+      for(quoteCount2 = 0; quoteCount2 < this.getLength(this.by); ++quoteCount2) {
+         int var10000 = this.by[quoteCount2];
       }
 
       this.fL = 5;
       int var3 = 0;
 
-      for(var1 = 0; var1 < this.getLength(this.by); var3 = var2) {
-         var2 = var3;
-         if (this.by[var1] >= 1) {
-            this.fw[var1][0] = 20;
-            this.fw[var1][1] = var3 * 72 + 67 + var3 * 20;
-            this.fw[var1][2] = 381;
-            this.fw[var1][3] = 88;
-            var2 = var3 + 1;
+      for(quoteCount2 = 0; quoteCount2 < this.getLength(this.by); var3 = quoteCount) {
+         quoteCount = var3;
+         if (this.by[quoteCount2] >= 1) {
+            this.fw[quoteCount2][0] = 20;
+            this.fw[quoteCount2][1] = var3 * 72 + 67 + var3 * 20;
+            this.fw[quoteCount2][2] = 381;
+            this.fw[quoteCount2][3] = 88;
+            quoteCount = var3 + 1;
          }
 
-         ++var1;
+         ++quoteCount2;
       }
 
       //if (this.bo == 0 && jp.co.ponos.library.a.a.b().i() && jp.co.ponos.library.a.a.b().j() - this.aQ >= 86400.0) {
@@ -23678,8 +23673,8 @@ public class AppInstance extends Game {
       //   this.aV = 2;
       //}
 
-      for(var1 = 0; var1 < this.getLength(this.bE); ++var1) {
-         if (this.bE[var1] == 0) {
+      for(quoteCount2 = 0; quoteCount2 < this.getLength(this.bE); ++quoteCount2) {
+         if (this.bE[quoteCount2] == 0) {
             if (this.aV >= 1 && this.a.get(1) * 600 + this.a.get(2) * 40 + this.a.get(5) > this.aN[1] * 600 + this.aO[1] * 40 + this.aP[1]) {
                this.aN[1] = this.a.get(1);
                this.aO[1] = this.a.get(2);
@@ -24163,9 +24158,9 @@ public class AppInstance extends Game {
          }
       }
 
-      for(var1 = 0; var1 < this.getLength(this.ag); ++var1) {
-         if (this.ag[var1].isLoaded()) {
-            this.ag[var1].reset();
+      for(var1 = 0; var1 < this.getLength(this.textTextures); ++var1) {
+         if (this.textTextures[var1].isLoaded()) {
+            this.textTextures[var1].reset();
          }
       }
 
@@ -24173,8 +24168,8 @@ public class AppInstance extends Game {
          this.gA[var1] = 0;
       }
 
-      for(var1 = 0; var1 < this.getLength(this.cE[1]); ++var1) {
-         this.ag[var1 + 10].a(this.cE[1][var1], "FONT_SYSTEM_BOLD", 30, 1);
+      for(var1 = 0; var1 < this.getLength(this.warning2Text[1]); ++var1) {
+         this.textTextures[var1 + 10].drawText(this.warning2Text[1][var1], "FONT_SYSTEM_BOLD", 30, 1);
       }
 
       if (this.ae[6].isLoaded()) {
@@ -24996,24 +24991,24 @@ public class AppInstance extends Game {
                   this.ct = 0;
                   this.dV = true;
 
-                  for(var2 = 0; var2 < this.getLength(this.ag); ++var2) {
-                     if (this.ag[var2].isLoaded()) {
-                        this.ag[var2].reset();
+                  for(var2 = 0; var2 < this.getLength(this.textTextures); ++var2) {
+                     if (this.textTextures[var2].isLoaded()) {
+                        this.textTextures[var2].reset();
                      }
                   }
 
-                  this.ag[0].a(this.dc[this.dW], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[0].drawText(this.itemNameText[this.dW], "FONT_SYSTEM_BOLD", 30, 1);
 
                   for(var2 = 0; var2 < 3; ++var2) {
-                     this.ag[var2 + 1].a(this.dd[this.dW][var2], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[var2 + 1].drawText(this.itemExplanationText[this.dW][var2], "FONT_SYSTEM_BOLD", 30, 1);
                   }
 
-                  for(var2 = 0; var2 < this.getLength(this.cE[1]); ++var2) {
-                     this.ag[var2 + 10].a(this.cE[1][var2], "FONT_SYSTEM_BOLD", 30, 1);
+                  for(var2 = 0; var2 < this.getLength(this.warning2Text[1]); ++var2) {
+                     this.textTextures[var2 + 10].drawText(this.warning2Text[1][var2], "FONT_SYSTEM_BOLD", 30, 1);
                   }
 
-                  for(var2 = 0; var2 < this.getLength(this.cE[15]); ++var2) {
-                     this.ag[var2 + 20].a(this.cE[15][var2], "FONT_SYSTEM_BOLD", 30, 1);
+                  for(var2 = 0; var2 < this.getLength(this.warning2Text[15]); ++var2) {
+                     this.textTextures[var2 + 20].drawText(this.warning2Text[15][var2], "FONT_SYSTEM_BOLD", 30, 1);
                   }
 
                   this.gA[0] = 5;
@@ -25188,24 +25183,24 @@ public class AppInstance extends Game {
                if (this.R() && this.b(this.eJ[var2][0], this.eJ[var2][1], this.eJ[var2][2], this.eJ[var2][3]) && this.dW != var2) {
                   this.dW = var2;
 
-                  for(var4 = 0; var4 < this.getLength(this.ag); ++var4) {
-                     if (this.ag[var4].isLoaded()) {
-                        this.ag[var4].reset();
+                  for(var4 = 0; var4 < this.getLength(this.textTextures); ++var4) {
+                     if (this.textTextures[var4].isLoaded()) {
+                        this.textTextures[var4].reset();
                      }
                   }
 
-                  this.ag[0].a(this.dc[this.dW], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[0].drawText(this.itemNameText[this.dW], "FONT_SYSTEM_BOLD", 30, 1);
 
                   for(var4 = 0; var4 < 3; ++var4) {
-                     this.ag[var4 + 1].a(this.dd[this.dW][var4], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[var4 + 1].drawText(this.itemExplanationText[this.dW][var4], "FONT_SYSTEM_BOLD", 30, 1);
                   }
 
-                  for(var4 = 0; var4 < this.getLength(this.cE[1]); ++var4) {
-                     this.ag[var4 + 10].a(this.cE[1][var4], "FONT_SYSTEM_BOLD", 30, 1);
+                  for(var4 = 0; var4 < this.getLength(this.warning2Text[1]); ++var4) {
+                     this.textTextures[var4 + 10].drawText(this.warning2Text[1][var4], "FONT_SYSTEM_BOLD", 30, 1);
                   }
 
-                  for(var4 = 0; var4 < this.getLength(this.cE[15]); ++var4) {
-                     this.ag[var4 + 20].a(this.cE[15][var4], "FONT_SYSTEM_BOLD", 30, 1);
+                  for(var4 = 0; var4 < this.getLength(this.warning2Text[15]); ++var4) {
+                     this.textTextures[var4 + 20].drawText(this.warning2Text[15][var4], "FONT_SYSTEM_BOLD", 30, 1);
                   }
                }
 
@@ -25515,12 +25510,12 @@ public class AppInstance extends Game {
                         var7 = 0;
 
                         while(true) {
-                           if (var7 >= this.getLength(this.dg[0]) || aString.equals(this.dg[0][var7], "＠")) {
+                           if (var7 >= this.getLength(this.endingMessageText[0]) || aString.equals(this.endingMessageText[0][var7], "＠")) {
                               break label1231;
                            }
 
                            if (!this.ah[var7].isLoaded()) {
-                              this.ah[var7].a(this.dg[0][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                              this.ah[var7].drawText(this.endingMessageText[0][var7], "FONT_SYSTEM_BOLD", 30, 1);
                            }
 
                            ++var7;
@@ -25529,12 +25524,12 @@ public class AppInstance extends Game {
                         var7 = 0;
 
                         while(true) {
-                           if (var7 >= this.getLength(this.dg[1]) || aString.equals(this.dg[1][var7], "＠")) {
+                           if (var7 >= this.getLength(this.endingMessageText[1]) || aString.equals(this.endingMessageText[1][var7], "＠")) {
                               break label1231;
                            }
 
                            if (!this.ah[var7].isLoaded()) {
-                              this.ah[var7].a(this.dg[1][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                              this.ah[var7].drawText(this.endingMessageText[1][var7], "FONT_SYSTEM_BOLD", 30, 1);
                            }
 
                            ++var7;
@@ -25543,45 +25538,45 @@ public class AppInstance extends Game {
                         var7 = 0;
 
                         while(true) {
-                           if (var7 >= this.getLength(this.cX)) {
+                           if (var7 >= this.getLength(this.challengeModeText)) {
                               break label1231;
                            }
 
-                           this.ah[var7].a(this.cX[var7], "FONT_SYSTEM_BOLD", 30, 1);
+                           this.ah[var7].drawText(this.challengeModeText[var7], "FONT_SYSTEM_BOLD", 30, 1);
                            ++var7;
                         }
                      } else {
                         if (this.gx == 999) {
-                           this.ah[0].a(this.do1[0][0], "FONT_SYSTEM_BOLD", 30, 1);
-                           this.ah[1].a(this.do1[0][1], "FONT_SYSTEM_BOLD", 30, 1);
+                           this.ah[0].drawText(this.popUpMessageText[0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                           this.ah[1].drawText(this.popUpMessageText[0][1], "FONT_SYSTEM_BOLD", 30, 1);
                         } else if (this.gx == 1000) {
-                           this.ah[0].a(String.format("%s", this.do1[1][0]), "FONT_SYSTEM_BOLD", 30, 1);
-                           this.ah[1].a(String.format("%s%s%s", this.do1[1][1], this.cT[this.bM[32]][0][0], this.do1[1][2]), "FONT_SYSTEM_BOLD", 30, 1);
-                           this.ah[2].a(String.format("%s", this.do1[1][3]), "FONT_SYSTEM_BOLD", 30, 1);
+                           this.ah[0].drawText(String.format("%s", this.popUpMessageText[1][0]), "FONT_SYSTEM_BOLD", 30, 1);
+                           this.ah[1].drawText(String.format("%s%s%s", this.popUpMessageText[1][1], this.unitExplanationText[this.bM[32]][0][0], this.popUpMessageText[1][2]), "FONT_SYSTEM_BOLD", 30, 1);
+                           this.ah[2].drawText(String.format("%s", this.popUpMessageText[1][3]), "FONT_SYSTEM_BOLD", 30, 1);
                         }
                         break;
                      }
                   case 100:
                      if (this.screen == 0) {
                         if (!this.ah[0].isLoaded()) {
-                           this.ah[0].a(this.db[2], "FONT_SYSTEM_BOLD", 30, 1);
+                           this.ah[0].drawText(this.optionText[2], "FONT_SYSTEM_BOLD", 30, 1);
                         }
                      } else if (this.screen != 7) {
                         if (this.screen == 3 && !this.ah[0].isLoaded()) {
-                           this.ah[0].a(this.cD[8], "FONT_SYSTEM_BOLD", 30, 1);
+                           this.ah[0].drawText(this.warning1Text[8], "FONT_SYSTEM_BOLD", 30, 1);
                         }
                      } else if (this.gx == 0) {
-                        for(var7 = 0; var7 < this.getLength(this.de[1]) && !aString.equals(this.de[1][var7], "＠"); ++var7) {
+                        for(var7 = 0; var7 < this.getLength(this.mainMenuPopUpText[1]) && !aString.equals(this.mainMenuPopUpText[1][var7], "＠"); ++var7) {
                            if (!this.ah[var7].isLoaded()) {
-                              this.ah[var7].a(this.de[1][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                              this.ah[var7].drawText(this.mainMenuPopUpText[1][var7], "FONT_SYSTEM_BOLD", 30, 1);
                            }
                         }
 
                         this.bz[2] = 1;
                      } else if (this.gx == 1 && this.bd == 0) {
-                        for(var7 = 0; var7 < this.getLength(this.de[6]) && !aString.equals(this.de[6][var7], "＠"); ++var7) {
+                        for(var7 = 0; var7 < this.getLength(this.mainMenuPopUpText[6]) && !aString.equals(this.mainMenuPopUpText[6][var7], "＠"); ++var7) {
                            if (!this.ah[var7].isLoaded()) {
-                              this.ah[var7].a(this.de[6][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                              this.ah[var7].drawText(this.mainMenuPopUpText[6][var7], "FONT_SYSTEM_BOLD", 30, 1);
                            }
                         }
 
@@ -25591,9 +25586,9 @@ public class AppInstance extends Game {
                   case 300:
                      if (this.gx == 1) {
                         if (this.bz[1] == 0) {
-                           for(var7 = 0; var7 < this.getLength(this.de[0]) && !aString.equals(this.de[0][var7], "＠"); ++var7) {
+                           for(var7 = 0; var7 < this.getLength(this.mainMenuPopUpText[0]) && !aString.equals(this.mainMenuPopUpText[0][var7], "＠"); ++var7) {
                               if (!this.ah[var7].isLoaded()) {
-                                 this.ah[var7].a(this.de[0][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                 this.ah[var7].drawText(this.mainMenuPopUpText[0][var7], "FONT_SYSTEM_BOLD", 30, 1);
                               }
                            }
 
@@ -25601,9 +25596,9 @@ public class AppInstance extends Game {
                         }
                      } else if (this.gx == 2) {
                         if (this.bz[3] == 0) {
-                           for(var7 = 0; var7 < this.getLength(this.de[2]) && !aString.equals(this.de[2][var7], "＠"); ++var7) {
+                           for(var7 = 0; var7 < this.getLength(this.mainMenuPopUpText[2]) && !aString.equals(this.mainMenuPopUpText[2][var7], "＠"); ++var7) {
                               if (!this.ah[var7].isLoaded()) {
-                                 this.ah[var7].a(this.de[2][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                 this.ah[var7].drawText(this.mainMenuPopUpText[2][var7], "FONT_SYSTEM_BOLD", 30, 1);
                               }
                            }
 
@@ -25611,9 +25606,9 @@ public class AppInstance extends Game {
                         }
                      } else if (this.gx == 3) {
                         if (this.bz[4] == 0) {
-                           for(var7 = 0; var7 < this.getLength(this.de[3]) && !aString.equals(this.de[3][var7], "＠"); ++var7) {
+                           for(var7 = 0; var7 < this.getLength(this.mainMenuPopUpText[3]) && !aString.equals(this.mainMenuPopUpText[3][var7], "＠"); ++var7) {
                               if (!this.ah[var7].isLoaded()) {
-                                 this.ah[var7].a(this.de[3][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                 this.ah[var7].drawText(this.mainMenuPopUpText[3][var7], "FONT_SYSTEM_BOLD", 30, 1);
                               }
                            }
 
@@ -25621,9 +25616,9 @@ public class AppInstance extends Game {
                         }
                      } else if (this.gx == 4) {
                         if (this.be == 0) {
-                           for(var7 = 0; var7 < this.getLength(this.de[4]) && !aString.equals(this.de[4][var7], "＠"); ++var7) {
+                           for(var7 = 0; var7 < this.getLength(this.mainMenuPopUpText[4]) && !aString.equals(this.mainMenuPopUpText[4][var7], "＠"); ++var7) {
                               if (!this.ah[var7].isLoaded()) {
-                                 this.ah[var7].a(this.de[4][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                 this.ah[var7].drawText(this.mainMenuPopUpText[4][var7], "FONT_SYSTEM_BOLD", 30, 1);
                               }
                            }
 
@@ -25631,9 +25626,9 @@ public class AppInstance extends Game {
                         }
                      } else if (this.gx == 5) {
                         if (this.bf == 0) {
-                           for(var7 = 0; var7 < this.getLength(this.de[5]) && !aString.equals(this.de[5][var7], "＠"); ++var7) {
+                           for(var7 = 0; var7 < this.getLength(this.mainMenuPopUpText[5]) && !aString.equals(this.mainMenuPopUpText[5][var7], "＠"); ++var7) {
                               if (!this.ah[var7].isLoaded()) {
-                                 this.ah[var7].a(this.de[5][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                 this.ah[var7].drawText(this.mainMenuPopUpText[5][var7], "FONT_SYSTEM_BOLD", 30, 1);
                               }
                            }
 
@@ -25641,25 +25636,25 @@ public class AppInstance extends Game {
                         }
                      } else if (this.gx != 6) {
                         if (this.gx == 10) {
-                           this.ah[0].a(this.cT[0][0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                           this.ah[0].drawText(this.unitExplanationText[0][0][0], "FONT_SYSTEM_BOLD", 30, 1);
                         } else if (this.gx == 11) {
-                           for(var7 = 0; var7 < this.getLength(this.de[7]); ++var7) {
+                           for(var7 = 0; var7 < this.getLength(this.mainMenuPopUpText[7]); ++var7) {
                               if (!this.ah[var7].isLoaded()) {
-                                 if (aString.equals(this.de[7][var7], "＠")) {
+                                 if (aString.equals(this.mainMenuPopUpText[7][var7], "＠")) {
                                     break;
                                  }
 
-                                 this.ah[var7].a(this.de[7][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                 this.ah[var7].drawText(this.mainMenuPopUpText[7][var7], "FONT_SYSTEM_BOLD", 30, 1);
                               }
                            }
                         } else if (this.gx == 999) {
-                           this.ah[0].a(this.do1[0][0], "FONT_SYSTEM_BOLD", 30, 1);
-                           this.ah[1].a(this.do1[0][1], "FONT_SYSTEM_BOLD", 30, 1);
+                           this.ah[0].drawText(this.popUpMessageText[0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                           this.ah[1].drawText(this.popUpMessageText[0][1], "FONT_SYSTEM_BOLD", 30, 1);
                         }
                      } else if (this.bd == 0) {
-                        for(var7 = 0; var7 < this.getLength(this.de[6]) && !aString.equals(this.de[6][var7], "＠"); ++var7) {
+                        for(var7 = 0; var7 < this.getLength(this.mainMenuPopUpText[6]) && !aString.equals(this.mainMenuPopUpText[6][var7], "＠"); ++var7) {
                            if (!this.ah[var7].isLoaded()) {
-                              this.ah[var7].a(this.de[6][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                              this.ah[var7].drawText(this.mainMenuPopUpText[6][var7], "FONT_SYSTEM_BOLD", 30, 1);
                            }
                         }
 
@@ -25677,9 +25672,9 @@ public class AppInstance extends Game {
                   this.fA[1][2] = 168;
                   this.fA[1][3] = 88;
 
-                  for(var7 = 0; var7 < this.getLength(this.cE[3]); ++var7) {
+                  for(var7 = 0; var7 < this.getLength(this.warning2Text[3]); ++var7) {
                      if (!this.ah[var7].isLoaded()) {
-                        this.ah[var7].a(this.cE[3][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.ah[var7].drawText(this.warning2Text[3][var7], "FONT_SYSTEM_BOLD", 30, 1);
                      }
                   }
                } else if (this.gw != 3 && this.gw != 4) {
@@ -25694,16 +25689,16 @@ public class AppInstance extends Game {
                         this.fA[1][2] = 168;
                         this.fA[1][3] = 88;
 
-                        for(var7 = 0; var7 < this.getLength(this.cE[7]); ++var7) {
+                        for(var7 = 0; var7 < this.getLength(this.warning2Text[7]); ++var7) {
                            if (!this.ah[var7].isLoaded()) {
-                              this.ah[var7].a(this.cE[8][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                              this.ah[var7].drawText(this.warning2Text[8][var7], "FONT_SYSTEM_BOLD", 30, 1);
                            }
                         }
                      } else if (this.gw != 9999) {
                         if (this.gw == 10000) {
-                           for(var7 = 0; var7 < this.getLength(this.cE[14]); ++var7) {
+                           for(var7 = 0; var7 < this.getLength(this.warning2Text[14]); ++var7) {
                               if (!this.ah[var7].isLoaded()) {
-                                 this.ah[var7].a(this.cE[14][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                 this.ah[var7].drawText(this.warning2Text[14][var7], "FONT_SYSTEM_BOLD", 30, 1);
                               }
                            }
                         }
@@ -25712,7 +25707,7 @@ public class AppInstance extends Game {
                         this.fA[0][1] = 453;
                         this.fA[0][2] = 168;
                         this.fA[0][3] = 88;
-                        this.ah[0].a(String.format("%s%d%s", this.dq[5], this.bl + 1, this.dq[6]), "FONT_SYSTEM_BOLD", 30, 1);
+                        this.ah[0].drawText(String.format("%s%d%s", this.stampMessageText[5], this.bl + 1, this.stampMessageText[6]), "FONT_SYSTEM_BOLD", 30, 1);
                         if (this.bl == 29 && this.bn != 0) {
                            var9 = 1;
                         } else {
@@ -25721,7 +25716,7 @@ public class AppInstance extends Game {
 
                         if (this.ho[this.bl + var9][0] != 0 && this.ho[this.bl + var9][0] != 6) {
                            if (this.ho[this.bl + var9][0] == 1) {
-                              this.ah[1].a(String.format("%s%s%s%d%s%s", this.dq[7], this.dq[14], this.dq[9], this.ho[var9 + this.bl][1], this.dq[8], this.dq[10]), "FONT_SYSTEM_BOLD", 30, 1);
+                              this.ah[1].drawText(String.format("%s%s%s%d%s%s", this.stampMessageText[7], this.stampMessageText[14], this.stampMessageText[9], this.ho[var9 + this.bl][1], this.stampMessageText[8], this.stampMessageText[10]), "FONT_SYSTEM_BOLD", 30, 1);
                            } else if (this.ho[this.bl + var9][0] >= 2 && this.ho[this.bl + var9][0] <= 6) {
                               if (this.ho[this.bl + var9][0] == 2) {
                                  var10 = 0;
@@ -25735,49 +25730,49 @@ public class AppInstance extends Game {
                                  var10 = 0;
                               }
 
-                              if (this.p == 0) {
-                                 this.ah[1].a(String.format("%s%s%s%d%s%s", this.dq[7], this.dc[var10], this.dq[9], this.ho[var9 + this.bl][1], this.dq[8], this.dq[10]), "FONT_SYSTEM_BOLD", 30, 1);
-                              } else if (this.p == 1) {
-                                 this.ah[1].a(String.format("%s%s%s%d%s%s", this.dq[7], this.dc[var10], this.dq[19], this.ho[var9 + this.bl][1], this.dq[8], this.dq[10]), "FONT_SYSTEM_BOLD", 30, 1);
+                              if (this.versionCode == 0) {
+                                 this.ah[1].drawText(String.format("%s%s%s%d%s%s", this.stampMessageText[7], this.itemNameText[var10], this.stampMessageText[9], this.ho[var9 + this.bl][1], this.stampMessageText[8], this.stampMessageText[10]), "FONT_SYSTEM_BOLD", 30, 1);
+                              } else if (this.versionCode == 1) {
+                                 this.ah[1].drawText(String.format("%s%s%s%d%s%s", this.stampMessageText[7], this.itemNameText[var10], this.stampMessageText[19], this.ho[var9 + this.bl][1], this.stampMessageText[8], this.stampMessageText[10]), "FONT_SYSTEM_BOLD", 30, 1);
                               }
                            } else if (this.ho[var9 + this.bl][0] == 7 && this.bn == 0) {
-                              this.ah[1].a(String.format("%s%s%s%s%s", this.dq[11], this.dq[7], this.cT[17][0][0], this.dq[8], this.dq[15]), "FONT_SYSTEM_BOLD", 30, 1);
-                              this.ah[2].a(String.format("%s", this.dq[12]), "FONT_SYSTEM_BOLD", 30, 1);
+                              this.ah[1].drawText(String.format("%s%s%s%s%s", this.stampMessageText[11], this.stampMessageText[7], this.unitExplanationText[17][0][0], this.stampMessageText[8], this.stampMessageText[15]), "FONT_SYSTEM_BOLD", 30, 1);
+                              this.ah[2].drawText(String.format("%s", this.stampMessageText[12]), "FONT_SYSTEM_BOLD", 30, 1);
                            }
                         } else {
-                           this.ah[1].a(String.format("%s%s%s%d%s%s", this.dq[7], this.dq[13], this.dq[9], this.ho[var9 + this.bl][1], this.dq[8], this.dq[10]), "FONT_SYSTEM_BOLD", 30, 1);
+                           this.ah[1].drawText(String.format("%s%s%s%d%s%s", this.stampMessageText[7], this.stampMessageText[13], this.stampMessageText[9], this.ho[var9 + this.bl][1], this.stampMessageText[8], this.stampMessageText[10]), "FONT_SYSTEM_BOLD", 30, 1);
                         }
                      }
                   } else if (this.gw == 5) {
-                     for(var7 = 0; var7 < this.getLength(this.cE[6]); ++var7) {
+                     for(var7 = 0; var7 < this.getLength(this.warning2Text[6]); ++var7) {
                         if (!this.ah[var7].isLoaded()) {
-                           this.ah[var7].a(this.cE[6][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                           this.ah[var7].drawText(this.warning2Text[6][var7], "FONT_SYSTEM_BOLD", 30, 1);
                         }
                      }
                   } else if (this.gw != 6) {
                      if (this.gw == 8) {
-                        for(var7 = 0; var7 < this.getLength(this.cE[9]); ++var7) {
+                        for(var7 = 0; var7 < this.getLength(this.warning2Text[9]); ++var7) {
                            if (!this.ah[var7].isLoaded()) {
-                              this.ah[var7].a(this.cE[9][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                              this.ah[var7].drawText(this.warning2Text[9][var7], "FONT_SYSTEM_BOLD", 30, 1);
                            }
                         }
                      } else if (this.gw == 9) {
-                        for(var7 = 0; var7 < this.getLength(this.cE[10]); ++var7) {
+                        for(var7 = 0; var7 < this.getLength(this.warning2Text[10]); ++var7) {
                            if (!this.ah[var7].isLoaded()) {
-                              this.ah[var7].a(this.cE[10][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                              this.ah[var7].drawText(this.warning2Text[10][var7], "FONT_SYSTEM_BOLD", 30, 1);
                            }
                         }
                      } else if (this.gw == 10) {
-                        for(var7 = 0; var7 < this.getLength(this.cE[11]); ++var7) {
+                        for(var7 = 0; var7 < this.getLength(this.warning2Text[11]); ++var7) {
                            if (!this.ah[var7].isLoaded()) {
-                              this.ah[var7].a(this.cE[11][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                              this.ah[var7].drawText(this.warning2Text[11][var7], "FONT_SYSTEM_BOLD", 30, 1);
                            }
                         }
                      }
                   } else {
-                     for(var7 = 0; var7 < this.getLength(this.cE[7]); ++var7) {
+                     for(var7 = 0; var7 < this.getLength(this.warning2Text[7]); ++var7) {
                         if (!this.ah[var7].isLoaded()) {
-                           this.ah[var7].a(this.cE[7][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                           this.ah[var7].drawText(this.warning2Text[7][var7], "FONT_SYSTEM_BOLD", 30, 1);
                         }
                      }
 
@@ -25788,10 +25783,10 @@ public class AppInstance extends Game {
                      }
 
                      var4 = ad[10] + this.bx[10] * 10 + var7 - this.aM;
-                     if (this.p == 0) {
-                        this.ah[this.getLength(this.cE[7]) + 1].a(String.format("%s%s%d%s%d%s%d%s%s", this.cD[9], this.cD[10], this.aM, this.cD[11], var7 + ad[10] + this.bx[10] * 10, this.cD[12], var4, this.cD[13], this.cD[14]), "FONT_SYSTEM_BOLD", 30, 1);
-                     } else if (this.p == 1) {
-                        this.ah[this.getLength(this.cE[7]) + 1].a(String.format("%s%d%s", this.cD[12], var4, this.cD[13]), "FONT_SYSTEM_BOLD", 30, 1);
+                     if (this.versionCode == 0) {
+                        this.ah[this.getLength(this.warning2Text[7]) + 1].drawText(String.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.aM, this.warning1Text[11], var7 + ad[10] + this.bx[10] * 10, this.warning1Text[12], var4, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
+                     } else if (this.versionCode == 1) {
+                        this.ah[this.getLength(this.warning2Text[7]) + 1].drawText(String.format("%s%d%s", this.warning1Text[12], var4, this.warning1Text[13]), "FONT_SYSTEM_BOLD", 30, 1);
                      }
                   }
                } else {
@@ -25804,9 +25799,9 @@ public class AppInstance extends Game {
                   this.fA[1][2] = 168;
                   this.fA[1][3] = 88;
                   if (this.gw == 3) {
-                     for(var7 = 0; var7 < this.getLength(this.cE[4]); ++var7) {
+                     for(var7 = 0; var7 < this.getLength(this.warning2Text[4]); ++var7) {
                         if (!this.ah[var7].isLoaded()) {
-                           this.ah[var7].a(this.cE[4][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                           this.ah[var7].drawText(this.warning2Text[4][var7], "FONT_SYSTEM_BOLD", 30, 1);
                         }
                      }
 
@@ -25817,15 +25812,15 @@ public class AppInstance extends Game {
                      }
 
                      var4 = ad[10] + this.bx[10] * 10 + var7 - this.aM;
-                     if (this.p == 0) {
-                        this.ah[this.getLength(this.cE[4]) + 1].a(String.format("%s%s%d%s%d%s%d%s%s", this.cD[9], this.cD[10], this.aM, this.cD[11], var7 + ad[10] + this.bx[10] * 10, this.cD[12], var4, this.cD[13], this.cD[14]), "FONT_SYSTEM_BOLD", 30, 1);
-                     } else if (this.p == 1) {
-                        this.ah[this.getLength(this.cE[4]) + 1].a(String.format("%s%d%s", this.cD[12], var4, this.cD[13]), "FONT_SYSTEM_BOLD", 30, 1);
+                     if (this.versionCode == 0) {
+                        this.ah[this.getLength(this.warning2Text[4]) + 1].drawText(String.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.aM, this.warning1Text[11], var7 + ad[10] + this.bx[10] * 10, this.warning1Text[12], var4, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
+                     } else if (this.versionCode == 1) {
+                        this.ah[this.getLength(this.warning2Text[4]) + 1].drawText(String.format("%s%d%s", this.warning1Text[12], var4, this.warning1Text[13]), "FONT_SYSTEM_BOLD", 30, 1);
                      }
                   } else if (this.gw == 4) {
-                     for(var7 = 0; var7 < this.getLength(this.cE[5]); ++var7) {
+                     for(var7 = 0; var7 < this.getLength(this.warning2Text[5]); ++var7) {
                         if (!this.ah[var7].isLoaded()) {
-                           this.ah[var7].a(this.cE[5][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                           this.ah[var7].drawText(this.warning2Text[5][var7], "FONT_SYSTEM_BOLD", 30, 1);
                         }
                      }
 
@@ -25836,10 +25831,10 @@ public class AppInstance extends Game {
                      }
 
                      var4 = ad[10] + this.bx[10] * 10 + var7 - this.aM;
-                     if (this.p == 0) {
-                        this.ah[this.getLength(this.cE[5]) + 1].a(String.format("%s%s%d%s%d%s%d%s%s", this.cD[9], this.cD[10], this.aM, this.cD[11], var7 + ad[10] + this.bx[10] * 10, this.cD[12], var4, this.cD[13], this.cD[14]), "FONT_SYSTEM_BOLD", 30, 1);
-                     } else if (this.p == 1) {
-                        this.ah[this.getLength(this.cE[5]) + 1].a(String.format("%s%d%s", this.cD[12], var4, this.cD[13]), "FONT_SYSTEM_BOLD", 30, 1);
+                     if (this.versionCode == 0) {
+                        this.ah[this.getLength(this.warning2Text[5]) + 1].drawText(String.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.aM, this.warning1Text[11], var7 + ad[10] + this.bx[10] * 10, this.warning1Text[12], var4, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
+                     } else if (this.versionCode == 1) {
+                        this.ah[this.getLength(this.warning2Text[5]) + 1].drawText(String.format("%s%d%s", this.warning1Text[12], var4, this.warning1Text[13]), "FONT_SYSTEM_BOLD", 30, 1);
                      }
                   }
                }
@@ -25860,9 +25855,9 @@ public class AppInstance extends Game {
                   var10 = 0;
                }
 
-               for(var4 = 0; var4 < this.getLength(this.cE[var10]); ++var4) {
+               for(var4 = 0; var4 < this.getLength(this.warning2Text[var10]); ++var4) {
                   if (!this.ah[var4].isLoaded()) {
-                     this.ah[var4].a(this.cE[var10][var4], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.ah[var4].drawText(this.warning2Text[var10][var4], "FONT_SYSTEM_BOLD", 30, 1);
                   }
                }
             }
@@ -26636,9 +26631,9 @@ public class AppInstance extends Game {
          this.eE[11] = false;
       }
 
-      for(var1 = 0; var1 < this.getLength(this.ag); ++var1) {
-         if (this.ag[var1].isLoaded()) {
-            this.ag[var1].reset();
+      for(var1 = 0; var1 < this.getLength(this.textTextures); ++var1) {
+         if (this.textTextures[var1].isLoaded()) {
+            this.textTextures[var1].reset();
          }
       }
 
@@ -26768,7 +26763,7 @@ public class AppInstance extends Game {
 
       if (this.fS[3] == 1) {
          this.gB[1] = 1;
-         this.ag[0].a(this.cU[0], "FONT_SYSTEM_BOLD", 30, 1);
+         this.textTextures[0].drawText(this.godExplanationText[0], "FONT_SYSTEM_BOLD", 30, 1);
          this.gB[0] = 0;
          this.gA[0] = 1;
          this.gC[1] = 0;
@@ -26781,9 +26776,9 @@ public class AppInstance extends Game {
       for(var2 = 0; var2 < 26; ++var2) {
          if (this.bK[var2] != -1) {
             if (this.bw[this.bK[var2]] == 0) {
-               this.ag[var1].a(this.cT[this.bK[var2]][0][0], "FONT_SYSTEM_BOLD", 30, 1);
+               this.textTextures[var1].drawText(this.unitExplanationText[this.bK[var2]][0][0], "FONT_SYSTEM_BOLD", 30, 1);
             } else if (this.bw[this.bK[var2]] == 1) {
-               this.ag[var1].a(this.cT[this.bK[var2]][1][0], "FONT_SYSTEM_BOLD", 30, 1);
+               this.textTextures[var1].drawText(this.unitExplanationText[this.bK[var2]][1][0], "FONT_SYSTEM_BOLD", 30, 1);
             }
 
             this.gB[0] = var1 + 1;
@@ -26797,8 +26792,8 @@ public class AppInstance extends Game {
       }
 
       if (this.fS[3] == 0) {
-         for(var2 = var1; var2 < this.getLength(this.cV) + var1; this.gC[1] = var2++) {
-            this.ag[var2].a(this.cV[var2 - var1][0], "FONT_SYSTEM_BOLD", 30, 1);
+         for(var2 = var1; var2 < this.getLength(this.catExplanationText) + var1; this.gC[1] = var2++) {
+            this.textTextures[var2].drawText(this.catExplanationText[var2 - var1][0], "FONT_SYSTEM_BOLD", 30, 1);
             this.gA[0] = var2 + 1;
          }
       }
@@ -26809,8 +26804,8 @@ public class AppInstance extends Game {
       var6[1] = var1;
       var5[2] = var1;
 
-      for(var1 = this.gA[2]; var1 < this.getLength(this.cD) + this.gA[2]; ++var1) {
-         this.ag[var1].a(this.cD[var1 - this.gA[2]], "FONT_SYSTEM_BOLD", 30, 1);
+      for(var1 = this.gA[2]; var1 < this.getLength(this.warning1Text) + this.gA[2]; ++var1) {
+         this.textTextures[var1].drawText(this.warning1Text[var1 - this.gA[2]], "FONT_SYSTEM_BOLD", 30, 1);
          this.gA[3] = var1 + 1;
       }
 
@@ -26819,19 +26814,19 @@ public class AppInstance extends Game {
             if (this.fS[2] >= this.gB[1] && this.fS[2] < this.gB[0]) {
                for(var1 = this.gA[3]; var1 < this.gA[3] + 3; ++var1) {
                   if (this.bw[this.fS[2]] == 0) {
-                     if (this.fS[2] >= 0 && this.fS[2] <= this.gC[1] && !this.ag[var1].isLoaded()) {
-                        this.ag[var1].a(this.cT[this.bK[this.fS[2] - this.gB[1]]][0][var1 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                     if (this.fS[2] >= 0 && this.fS[2] <= this.gC[1] && !this.textTextures[var1].isLoaded()) {
+                        this.textTextures[var1].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][0][var1 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                      }
-                  } else if (this.bw[this.fS[2]] == 1 && this.fS[2] >= 0 && this.fS[2] <= this.gC[1] && !this.ag[var1].isLoaded()) {
-                     this.ag[var1].a(this.cT[this.bK[this.fS[2] - this.gB[1]]][1][var1 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                  } else if (this.bw[this.fS[2]] == 1 && this.fS[2] >= 0 && this.fS[2] <= this.gC[1] && !this.textTextures[var1].isLoaded()) {
+                     this.textTextures[var1].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][1][var1 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                   }
 
                   this.gA[4] = var1 + 1;
                }
             } else if (this.fS[2] - this.gB[0] >= 0) {
                for(var1 = this.gA[3]; var1 < this.gA[3] + 3; ++var1) {
-                  if (!this.ag[var1].isLoaded()) {
-                     this.ag[var1].a(this.cV[this.fS[2] - this.gB[0]][var1 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                  if (!this.textTextures[var1].isLoaded()) {
+                     this.textTextures[var1].drawText(this.catExplanationText[this.fS[2] - this.gB[0]][var1 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                   }
 
                   this.gA[4] = var1 + 1;
@@ -26839,19 +26834,19 @@ public class AppInstance extends Game {
             }
          } else if (this.fS[3] == 0) {
             for(var1 = this.gA[3]; var1 < this.gA[3] + 3; ++var1) {
-               this.ag[var1].a(this.dp[0][var1 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+               this.textTextures[var1].drawText(this.categoryExplanationText[0][var1 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
             }
          } else {
             for(var1 = this.gA[3]; var1 < this.gA[3] + 3; ++var1) {
-               this.ag[var1].a(this.dp[1][var1 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+               this.textTextures[var1].drawText(this.categoryExplanationText[1][var1 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
             }
          }
       } else if (this.fS[3] >= 1) {
          if (this.fS[2] > -1 && this.fS[2] < this.gC[1] + 1) {
             if (this.fS[2] < this.gB[1]) {
                for(var1 = this.gA[3]; var1 < this.gA[3] + 3; ++var1) {
-                  if (this.fS[2] >= 0 && this.fS[2] <= this.gC[1] && !this.ag[var1].isLoaded()) {
-                     this.ag[var1].a(this.cU[var1 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                  if (this.fS[2] >= 0 && this.fS[2] <= this.gC[1] && !this.textTextures[var1].isLoaded()) {
+                     this.textTextures[var1].drawText(this.godExplanationText[var1 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                   }
 
                   this.gA[4] = var1 + 1;
@@ -26860,11 +26855,11 @@ public class AppInstance extends Game {
                for(var1 = this.gA[3]; var1 < this.gA[3] + 3; ++var1) {
                   if (this.fS[2] >= 0 && this.fS[2] <= this.gC[1]) {
                      if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 0) {
-                        if (!this.ag[var1].isLoaded()) {
-                           this.ag[var1].a(this.cT[this.bK[this.fS[2] - this.gB[1]]][0][var1 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                        if (!this.textTextures[var1].isLoaded()) {
+                           this.textTextures[var1].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][0][var1 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                         }
-                     } else if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 1 && !this.ag[var1].isLoaded()) {
-                        this.ag[var1].a(this.cT[this.bK[this.fS[2] - this.gB[1]]][1][var1 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                     } else if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 1 && !this.textTextures[var1].isLoaded()) {
+                        this.textTextures[var1].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][1][var1 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                      }
                   }
 
@@ -26873,38 +26868,38 @@ public class AppInstance extends Game {
             }
          } else if (this.fS[3] == 0) {
             for(var1 = this.gA[3]; var1 < this.gA[3] + 3; ++var1) {
-               this.ag[var1].a(this.dp[0][var1 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+               this.textTextures[var1].drawText(this.categoryExplanationText[0][var1 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
             }
          } else {
             for(var1 = this.gA[3]; var1 < this.gA[3] + 3; ++var1) {
-               this.ag[var1].a(this.dp[1][var1 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+               this.textTextures[var1].drawText(this.categoryExplanationText[1][var1 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
             }
          }
       }
 
-      if (!this.ag[this.gA[4]].isLoaded()) {
+      if (!this.textTextures[this.gA[4]].isLoaded()) {
          if (this.fS[3] == 0) {
             if (this.fS[2] < this.gB[0]) {
-               this.ag[this.gA[4]].a(this.cY[0], "FONT_SYSTEM_BOLD", 30, 1);
+               this.textTextures[this.gA[4]].drawText(this.pageNameText[0], "FONT_SYSTEM_BOLD", 30, 1);
             } else if (this.fS[2] - this.gB[0] >= 0 && this.fS[2] - this.gB[0] <= 2) {
-               this.ag[this.gA[4]].a(this.cY[1], "FONT_SYSTEM_BOLD", 30, 1);
+               this.textTextures[this.gA[4]].drawText(this.pageNameText[1], "FONT_SYSTEM_BOLD", 30, 1);
             } else if (this.fS[2] - this.gB[0] >= 3 && this.fS[2] - this.gB[0] <= 4) {
-               this.ag[this.gA[4]].a(this.cY[2], "FONT_SYSTEM_BOLD", 30, 1);
+               this.textTextures[this.gA[4]].drawText(this.pageNameText[2], "FONT_SYSTEM_BOLD", 30, 1);
             } else if (this.fS[2] - this.gB[0] == 5) {
-               this.ag[this.gA[4]].a(this.cY[3], "FONT_SYSTEM_BOLD", 30, 1);
+               this.textTextures[this.gA[4]].drawText(this.pageNameText[3], "FONT_SYSTEM_BOLD", 30, 1);
             } else {
-               this.ag[this.gA[4]].a(this.cY[4], "FONT_SYSTEM_BOLD", 30, 1);
+               this.textTextures[this.gA[4]].drawText(this.pageNameText[4], "FONT_SYSTEM_BOLD", 30, 1);
             }
          } else if (this.fS[2] < this.gB[1]) {
-            this.ag[this.gA[4]].a(this.cY[7], "FONT_SYSTEM_BOLD", 30, 1);
+            this.textTextures[this.gA[4]].drawText(this.pageNameText[7], "FONT_SYSTEM_BOLD", 30, 1);
          } else {
-            this.ag[this.gA[4]].a(this.cY[5], "FONT_SYSTEM_BOLD", 30, 1);
+            this.textTextures[this.gA[4]].drawText(this.pageNameText[5], "FONT_SYSTEM_BOLD", 30, 1);
          }
       }
 
       this.gA[5] = this.gA[4] + 1;
-      if (!this.ag[this.gA[5]].isLoaded()) {
-         this.ag[this.gA[5]].a(this.cD[6], "FONT_SYSTEM_BOLD", 30, 1);
+      if (!this.textTextures[this.gA[5]].isLoaded()) {
+         this.textTextures[this.gA[5]].drawText(this.warning1Text[6], "FONT_SYSTEM_BOLD", 30, 1);
       }
 
       this.ct = 0;
@@ -27152,48 +27147,48 @@ public class AppInstance extends Game {
             if (this.fS[2] >= 0 && this.fS[2] <= this.gC[1]) {
                if (this.fS[2] < this.gB[1]) {
                   for(var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-                     this.ag[var3].a(this.cU[var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[var3].drawText(this.godExplanationText[var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                   }
 
-                  this.ag[this.gA[4]].a(this.cY[7], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[this.gA[4]].drawText(this.pageNameText[7], "FONT_SYSTEM_BOLD", 30, 1);
                } else if (this.fS[2] < this.gB[0]) {
                   for(var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
                      if (this.fS[2] >= 0 && this.fS[2] <= this.gC[1]) {
                         if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 0) {
-                           this.ag[var3].a(this.cT[this.bK[this.fS[2] - this.gB[1]]][0][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                           this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][0][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                         } else if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 1) {
-                           this.ag[var3].a(this.cT[this.bK[this.fS[2] - this.gB[1]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                           this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                         }
                      }
                   }
 
                   if (this.fS[3] == 0) {
-                     this.ag[this.gA[4]].a(this.cY[0], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[this.gA[4]].drawText(this.pageNameText[0], "FONT_SYSTEM_BOLD", 30, 1);
                   } else if (this.fS[3] >= 1) {
-                     this.ag[this.gA[4]].a(this.cY[5], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[this.gA[4]].drawText(this.pageNameText[5], "FONT_SYSTEM_BOLD", 30, 1);
                   }
                } else {
                   for(var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-                     this.ag[var3].a(this.cV[this.fS[2] - this.gB[0]][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[var3].drawText(this.catExplanationText[this.fS[2] - this.gB[0]][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                   }
 
                   if (this.fS[2] - this.gB[0] >= 0 && this.fS[2] - this.gB[0] <= 2) {
-                     this.ag[this.gA[4]].a(this.cY[1], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[this.gA[4]].drawText(this.pageNameText[1], "FONT_SYSTEM_BOLD", 30, 1);
                   } else if (this.fS[2] - this.gB[0] >= 3 && this.fS[2] - this.gB[0] <= 4) {
-                     this.ag[this.gA[4]].a(this.cY[2], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[this.gA[4]].drawText(this.pageNameText[2], "FONT_SYSTEM_BOLD", 30, 1);
                   } else if (this.fS[2] - this.gB[0] == 5) {
-                     this.ag[this.gA[4]].a(this.cY[3], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[this.gA[4]].drawText(this.pageNameText[3], "FONT_SYSTEM_BOLD", 30, 1);
                   } else {
-                     this.ag[this.gA[4]].a(this.cY[4], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[this.gA[4]].drawText(this.pageNameText[4], "FONT_SYSTEM_BOLD", 30, 1);
                   }
                }
             } else if (this.fS[3] == 0) {
                for(var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-                  this.ag[var3].a(this.dp[0][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[var3].drawText(this.categoryExplanationText[0][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
                }
             } else {
                for(var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-                  this.ag[var3].a(this.dp[1][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[var3].drawText(this.categoryExplanationText[1][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
                }
             }
          }
@@ -27202,48 +27197,48 @@ public class AppInstance extends Game {
          if (this.fS[2] >= 0 && this.fS[2] <= this.gC[1]) {
             if (this.fS[2] < this.gB[1]) {
                for(var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-                  this.ag[var3].a(this.cU[var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[var3].drawText(this.godExplanationText[var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                }
 
-               this.ag[this.gA[4]].a(this.cY[7], "FONT_SYSTEM_BOLD", 30, 1);
+               this.textTextures[this.gA[4]].drawText(this.pageNameText[7], "FONT_SYSTEM_BOLD", 30, 1);
             } else if (this.fS[2] < this.gB[0]) {
                for(var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
                   if (this.fS[2] >= 0 && this.fS[2] <= this.gC[1]) {
                      if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 0) {
-                        this.ag[var3].a(this.cT[this.bK[this.fS[2] - this.gB[1]]][0][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][0][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                      } else if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 1) {
-                        this.ag[var3].a(this.cT[this.bK[this.fS[2] - this.gB[1]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                      }
                   }
                }
 
                if (this.fS[3] == 0) {
-                  this.ag[this.gA[4]].a(this.cY[0], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[this.gA[4]].drawText(this.pageNameText[0], "FONT_SYSTEM_BOLD", 30, 1);
                } else if (this.fS[3] >= 1) {
-                  this.ag[this.gA[4]].a(this.cY[5], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[this.gA[4]].drawText(this.pageNameText[5], "FONT_SYSTEM_BOLD", 30, 1);
                }
             } else {
                for(var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-                  this.ag[var3].a(this.cV[this.fS[2] - this.gB[0]][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[var3].drawText(this.catExplanationText[this.fS[2] - this.gB[0]][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                }
 
                if (this.fS[2] - this.gB[0] >= 0 && this.fS[2] - this.gB[0] <= 2) {
-                  this.ag[this.gA[4]].a(this.cY[1], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[this.gA[4]].drawText(this.pageNameText[1], "FONT_SYSTEM_BOLD", 30, 1);
                } else if (this.fS[2] - this.gB[0] >= 3 && this.fS[2] - this.gB[0] <= 4) {
-                  this.ag[this.gA[4]].a(this.cY[2], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[this.gA[4]].drawText(this.pageNameText[2], "FONT_SYSTEM_BOLD", 30, 1);
                } else if (this.fS[2] - this.gB[0] == 5) {
-                  this.ag[this.gA[4]].a(this.cY[3], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[this.gA[4]].drawText(this.pageNameText[3], "FONT_SYSTEM_BOLD", 30, 1);
                } else {
-                  this.ag[this.gA[4]].a(this.cY[4], "FONT_SYSTEM_BOLD", 30, 1);
+                  this.textTextures[this.gA[4]].drawText(this.pageNameText[4], "FONT_SYSTEM_BOLD", 30, 1);
                }
             }
          } else if (this.fS[3] == 0) {
             for(var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-               this.ag[var3].a(this.dp[0][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+               this.textTextures[var3].drawText(this.categoryExplanationText[0][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
             }
          } else {
             for(var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-               this.ag[var3].a(this.dp[1][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+               this.textTextures[var3].drawText(this.categoryExplanationText[1][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
             }
          }
       }
@@ -27415,11 +27410,11 @@ public class AppInstance extends Game {
                                  }
                               }
 
-                              this.ag[this.fS[2]].a(this.cT[this.bK[this.fS[2] - this.gB[1]]][1][0], "FONT_SYSTEM_BOLD", 30, 1);
+                              this.textTextures[this.fS[2]].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][1][0], "FONT_SYSTEM_BOLD", 30, 1);
 
                               for(var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
                                  if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 1) {
-                                    this.ag[var3].a(this.cT[this.bK[this.fS[2] - this.gB[1]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                                    this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                                  }
                               }
 
@@ -27896,11 +27891,11 @@ public class AppInstance extends Game {
          if (cC[this.gH] == 100 && this.fS[2] >= 0 && this.fS[2] <= this.gC[1]) {
             if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 0) {
                this.bw[this.bK[this.fS[2] - this.gB[1]]] = 1;
-               this.ag[this.fS[2]].a(this.cT[this.bK[this.fS[2] - this.gB[1]]][1][0], "FONT_SYSTEM_BOLD", 30, 1);
+               this.textTextures[this.fS[2]].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][1][0], "FONT_SYSTEM_BOLD", 30, 1);
 
                for(var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
                   if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 1) {
-                     this.ag[var3].a(this.cT[this.bK[this.fS[2] - this.gB[1]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                   }
                }
 
@@ -27911,11 +27906,11 @@ public class AppInstance extends Game {
                }
             } else if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 1) {
                this.bw[this.bK[this.fS[2] - this.gB[1]]] = 0;
-               this.ag[this.fS[2]].a(this.cT[this.bK[this.fS[2] - this.gB[1]]][0][0], "FONT_SYSTEM_BOLD", 30, 1);
+               this.textTextures[this.fS[2]].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][0][0], "FONT_SYSTEM_BOLD", 30, 1);
 
                for(var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
                   if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 0) {
-                     this.ag[var3].a(this.cT[this.bK[this.fS[2] - this.gB[1]]][0][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                     this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][0][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                   }
                }
 
