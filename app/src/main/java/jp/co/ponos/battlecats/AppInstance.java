@@ -10205,12 +10205,12 @@ public class AppInstance extends Game {
       int[] var4;
       int[] var5;
       int var6;
-      switch (this.getScene2()) {
-         case 4:
+      switch (this.getScene2Type()) {
+         case ERROR:
             textureRenderer.setColor(0, 0, 0);
             textureRenderer.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
             break;
-         case 98:
+         case OPENING:
             var2 = (float)((this.getWidth() / 960 * 720 - 640) / 2);
             textureRenderer.setColor(0, 0, 0);
             textureRenderer.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
@@ -10286,7 +10286,7 @@ public class AppInstance extends Game {
 
             this.a(textureRenderer, this.ed);
             break;
-         case 99:
+         case ENDING:
             textureRenderer.setColor(100, 100, 100);
             textureRenderer.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
             var2 = (float)((this.getWidth() / 960 * 720 - 640) / 2);
@@ -10370,7 +10370,7 @@ public class AppInstance extends Game {
 
             this.a(textureRenderer, this.ed);
             break;
-         case 100:
+         case MAIN:
             textureRenderer.setColor(255, 255, 255);
             textureRenderer.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
             if (this.screen == 0) {
@@ -10419,7 +10419,7 @@ public class AppInstance extends Game {
 
             this.a(textureRenderer, this.ed);
             break;
-         case 300:
+         case BATTLE:
             if (this.hl == 0) {
                for(var3 = 0; var3 < 3; ++var3) {
                   if (this.hc[var3 + 7] == 32) {
@@ -15700,12 +15700,12 @@ public class AppInstance extends Game {
                var2 = this.al;
                var3 = eO[this.gv[0]] * 690 / 100 / 2;
                var1.drawScaledImageI(var2, this.excessWidth / 2 + (480 - var3), 364 - eO[this.gv[0]] * 229 / 100 / 2, eO[this.gv[0]] * 690 / 100, eO[this.gv[0]] * 229 / 100, 0);
-               switch (this.getScene2()) {
-                  case 98:
-                  case 99:
+               switch (this.getScene2Type()) {
+                  case OPENING:
+                  case ENDING:
                   default:
                      break;
-                  case 100:
+                  case MAIN:
                      var2 = this.uiTextures[0];
                      var4 = dv[this.fx[14]] / 2;
                      var3 = this.scrollOffset[2];
@@ -15794,12 +15794,12 @@ public class AppInstance extends Game {
             var1.drawScaledImageI(var2, this.excessWidth / 2 + (480 - var3), 364 - eO[this.gv[0]] * 229 / 100 / 2, eO[this.gv[0]] * 690 / 100, eO[this.gv[0]] * 229 / 100, 0);
             if (this.gw == 1) {
                label1068: {
-                  switch (this.getScene2()) {
-                     case 98:
-                     case 99:
+                  switch (this.getScene2Type()) {
+                     case OPENING:
+                     case ENDING:
                      default:
                         break label1068;
-                     case 100:
+                     case MAIN:
                         var2 = this.uiTextures[0];
                         var3 = dv[this.fx[14]] / 2;
                         var4 = this.scrollOffset[2];
@@ -15824,7 +15824,7 @@ public class AppInstance extends Game {
                               break label1068;
                            }
                         }
-                     case 300:
+                     case BATTLE:
                         var2 = this.uiTextures[21];
                         var3 = dv[this.fx[14]] / 2;
                         var1.drawScaledImageI(var2, this.excessWidth + (688 - var3), 593 - dv[this.fx[14]] / 2, dv[this.fx[14]] + 55, dv[this.fx[14]] + 42, 21);
@@ -15846,12 +15846,12 @@ public class AppInstance extends Game {
                }
             } else if (this.gw == 99) {
                label1118: {
-                  switch (this.getScene2()) {
-                     case 98:
-                     case 99:
+                  switch (this.getScene2Type()) {
+                     case OPENING:
+                     case ENDING:
                      default:
                         break label1118;
-                     case 100:
+                     case MAIN:
                         var1.drawScaledImageI(this.uiTextures[5], 570, 17, 10);
                         var3 = this.aY;
                         var4 = 0;
@@ -15878,11 +15878,11 @@ public class AppInstance extends Game {
 
          if (this.gv[0] >= this.getLength(eO) - 1) {
             if (this.gw == 0) {
-               switch (this.getScene2()) {
-                  case 98:
+               switch (this.getScene2Type()) {
+                  case OPENING:
                   default:
                      break;
-                  case 99:
+                  case ENDING:
                      if (this.gx == 999) {
                         var4 = 0;
 
@@ -16010,7 +16010,7 @@ public class AppInstance extends Game {
                            break;
                         }
                      }
-                  case 100:
+                  case MAIN:
                      var3 = 0;
                      byte var7 = 0;
                      if (this.screen == 0) {
@@ -16056,7 +16056,7 @@ public class AppInstance extends Game {
                         }
                      }
                      break;
-                  case 300:
+                  case BATTLE:
                      if (this.gx == 999) {
                         var4 = -1;
 
@@ -16122,12 +16122,12 @@ public class AppInstance extends Game {
                         var4 += 2;
                      }
 
-                     switch (this.getScene2()) {
-                        case 98:
-                        case 99:
+                     switch (this.getScene2Type()) {
+                        case OPENING:
+                        case ENDING:
                         default:
                            break;
-                        case 100:
+                        case MAIN:
                            var2 = this.af[2];
                            var4 = dv[this.fz[0]] / 2;
                            var1.drawScaledImageI(var2, this.excessWidth / 2 + (251 - var4), 382 - dv[this.fz[0]] / 2, dv[this.fz[0]] + 168, dv[this.fz[0]] + 72, 0);
@@ -16177,7 +16177,7 @@ public class AppInstance extends Game {
                            var1.drawScaledImageI(this.uiTextures[0], this.excessWidth / 2 + (642 - var3 * 29), 208, 55, 42, 21);
                            var1.drawScaledImage(this.uiTextures[5], (float)(593 - var3 * 29 + this.excessWidth / 2), 222.0F, 47.0F, 28.0F, 15);
                            break;
-                        case 300:
+                        case BATTLE:
                            var1.setColor(255, 255, 255);
 
                            for(var3 = 0; var3 < 4; ++var3) {
@@ -16480,12 +16480,12 @@ public class AppInstance extends Game {
 
                      var1.drawScaledImageI(this.uiTextures[0], this.excessWidth / 2 + (642 - var3 * 29), 208, 55, 42, 21);
                      var1.drawScaledImage(this.uiTextures[5], (float)(593 - var3 * 29 + this.excessWidth / 2), 222.0F, 47.0F, 28.0F, 15);
-                     switch (this.getScene2()) {
-                        case 98:
-                        case 99:
+                     switch (this.getScene2Type()) {
+                        case OPENING:
+                        case ENDING:
                         default:
                            break;
-                        case 100:
+                        case MAIN:
                            var2 = this.af[2];
                            var3 = dv[this.fz[0]] / 2;
                            var1.drawScaledImageI(var2, this.excessWidth / 2 + (251 - var3), 382 - dv[this.fz[0]] / 2, dv[this.fz[0]] + 168, dv[this.fz[0]] + 72, 0);
@@ -16525,12 +16525,12 @@ public class AppInstance extends Game {
                      var5 += 2;
                   }
 
-                  switch (this.getScene2()) {
-                     case 98:
-                     case 99:
+                  switch (this.getScene2Type()) {
+                     case OPENING:
+                     case ENDING:
                      default:
                         break;
-                     case 100:
+                     case MAIN:
                         var2 = this.af[2];
                         var3 = dv[this.fz[0]] / 2;
                         var1.drawScaledImageI(var2, this.excessWidth / 2 + (251 - var3), 382 - dv[this.fz[0]] / 2, dv[this.fz[0]] + 168, dv[this.fz[0]] + 72, 0);
@@ -16644,7 +16644,7 @@ public class AppInstance extends Game {
                            var1.drawScaledImage(this.uiTextures[5], (float)(593 - var3 * 29 + this.excessWidth / 2), 222.0F, 47.0F, 28.0F, 15);
                         }
                         break;
-                     case 300:
+                     case BATTLE:
                         var2 = this.uiTextures[21];
                         var3 = dv[this.fz[0]] / 2;
                         var1.drawScaledImageI(var2, this.excessWidth / 2 + (251 - var3), 382 - dv[this.fz[0]] / 2, dv[this.fz[0]] + 168, dv[this.fz[0]] + 72, 2);
@@ -19470,8 +19470,8 @@ public class AppInstance extends Game {
       int var5;
       int var6;
       Texture var12;
-      switch (this.getScene2()) {
-         case 100:
+      switch (this.getScene2Type()) {
+         case MAIN:
             if (this.bB[6] == 1) {
                var1.setColor(0, 0, 0, 204);
                var1.drawRectangle(0, 0 - this.eZ, this.getWidth(), this.getHeight());
@@ -19635,7 +19635,7 @@ public class AppInstance extends Game {
                }
             }
             break;
-         case 300:
+         case BATTLE:
             int[] var2;
             byte var13;
             if (this.hH == 1) {
