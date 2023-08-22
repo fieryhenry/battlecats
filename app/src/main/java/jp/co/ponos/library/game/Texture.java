@@ -5,99 +5,98 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Typeface;
-import android.graphics.Bitmap.Config;
 import android.graphics.drawable.BitmapDrawable;
 import android.opengl.GLUtils;
 import java.io.InputStream;
 
+import javax.microedition.khronos.opengles.GL10;
+
 import jp.co.ponos.library.game.stream.AssetTextStream;
 
 public class Texture {
-   static Paint h;
-   int a;
+   static Paint paint;
+   int textureID;
    int imgWidth;
    int imgHeight;
-   int d;
-   int e;
+   int pow2Width;
+   int pow2Height;
    int f;
    Rect[] rects;
 
-   static void a(String var0, int var1) {
-      if (h == null) {
-         h = new Paint();
+   static void setFont(String var0, int var1) {
+      if (paint == null) {
+         paint = new Paint();
       }
 
-      h.setAntiAlias(true);
-      h.setColor(-1);
+      paint.setAntiAlias(true);
+      paint.setColor(-1);
       if (var0.equals("FONT_SYSTEM_BOLD")) {
-         h.setTypeface(Typeface.DEFAULT_BOLD);
+         paint.setTypeface(Typeface.DEFAULT_BOLD);
       } else if (var0.equals("FONT_SYSTEM_ITALIC")) {
-         h.setTypeface(Typeface.create(Typeface.SERIF, Typeface.ITALIC));
+         paint.setTypeface(Typeface.create(Typeface.SERIF, Typeface.ITALIC));
       } else {
-         h.setTypeface((Typeface)null);
+         paint.setTypeface((Typeface)null);
       }
 
-      h.setTextSize((float)var1);
+      paint.setTextSize((float)var1);
    }
 
-   public static int b(String var0, int var1) {
-      return b(var0, "FONT_SYSTEM", var1);
+   public static int measureText(String var0, int var1) {
+      return measureText(var0, "FONT_SYSTEM", var1);
    }
 
-   public static int b(String var0, String var1, int var2) {
-      a(var1, var2);
-      return (int)h.measureText(var0);
+   public static int measureText(String var0, String var1, int var2) {
+      setFont(var1, var2);
+      return (int) paint.measureText(var0);
    }
 
-   public int a() {
+   public int getImgWidth() {
       return this.imgWidth;
    }
 
-   public Rect a(int var1) {
+   public Rect getRect(int var1) {
       return this.rects[var1];
    }
 
-   void a(Bitmap var1, int var2) {
-      int[] var3 = new int[1];
-      int var4 = var1.getWidth();
-      this.imgWidth = var4;
-      int var5 = var1.getHeight();
-      this.imgHeight = var5;
-
-      int var6;
-      for(var6 = 1; var6 < var4; var6 *= 2) {
+   void drawImage(Bitmap bitmap, int i) {
+      int[] textureIds = new int[1];
+      int width = bitmap.getWidth();
+      this.imgWidth = width;
+      int height = bitmap.getHeight();
+      this.imgHeight = height;
+      int pow2Width = 1;
+      while (pow2Width < width) {
+         pow2Width *= 2;
       }
-
-      this.d = var6;
-
-      for(var6 = 1; var6 < var5; var6 *= 2) {
+      this.pow2Width = pow2Width;
+      int pow2Height = 1;
+      while (pow2Height < height) {
+         pow2Height *= 2;
       }
-
-      this.e = var6;
-      Bitmap var7 = Bitmap.createBitmap(this.d, this.e, Config.ARGB_8888);
-      Canvas var8 = new Canvas(var7);
-      BitmapDrawable var9 = new BitmapDrawable(var1);
-      var9.setBounds(0, 0, var4, var5);
-      var9.draw(var8);
-      Global.instance.gl10.glGenTextures(1, var3, 0);
-      Global.instance.gl10.glBindTexture(3553, var3[0]);
-      if ((var2 & 8) != 0) {
-         Global.instance.gl10.glTexParameterf(3553, 10241, 9728.0F);
-         Global.instance.gl10.glTexParameterf(3553, 10240, 9728.0F);
+      this.pow2Height = pow2Height;
+      Bitmap createBitmap = Bitmap.createBitmap(this.pow2Width, this.pow2Height, Bitmap.Config.ARGB_8888);
+      Canvas canvas = new Canvas(createBitmap);
+      BitmapDrawable bitmapDrawable = new BitmapDrawable(bitmap);
+      bitmapDrawable.setBounds(0, 0, width, height);
+      bitmapDrawable.draw(canvas);
+      Global.instance.gl10.glGenTextures(1, textureIds, 0);
+      Global.instance.gl10.glBindTexture(GL10.GL_TEXTURE_2D, textureIds[0]);
+      if ((i & 8) != 0) {
+         Global.instance.gl10.glTexParameterf(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MIN_FILTER, GL10.GL_NEAREST);
+         Global.instance.gl10.glTexParameterf(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MAG_FILTER, GL10.GL_NEAREST);
       } else {
-         Global.instance.gl10.glTexParameterf(3553, 10241, 9729.0F);
-         Global.instance.gl10.glTexParameterf(3553, 10240, 9729.0F);
+         Global.instance.gl10.glTexParameterf(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MIN_FILTER, GL10.GL_LINEAR);
+         Global.instance.gl10.glTexParameterf(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MAG_FILTER, GL10.GL_LINEAR);
       }
-
-      GLUtils.texImage2D(3553, 0, var7, 0);
-      this.a = var3[0];
+      GLUtils.texImage2D(GL10.GL_TEXTURE_2D, 0, createBitmap, 0);
+      this.textureID = textureIds[0];
    }
 
    public boolean load(String var1, String var2) {
-      return this.a(var1, var2, 0);
+      return this.load(var1, var2, 0);
    }
 
-   public boolean a(String var1, String var2, int var3) {
+   public boolean load(String var1, String var2, int var3) {
       boolean var4 = false;
 
       boolean var6;
@@ -239,7 +238,7 @@ public class Texture {
             }
 
             try {
-               this.a(BitmapFactory.decodeStream((InputStream)var25), var3);
+               this.drawImage(BitmapFactory.decodeStream((InputStream)var25), var3);
                ((InputStream)var25).close();
             } catch (Exception var12) {
                var10001 = false;
@@ -277,39 +276,35 @@ public class Texture {
       return var6;
    }
 
-   public boolean a(String var1, String var2, int var3, int var4) {
-      return this.a(var1, var2, var3, var4, 0, 0);
+   public boolean drawText(String var1, String var2, int var3, int var4) {
+      return this.drawText(var1, var2, var3, var4, 0, 0);
    }
 
-   public boolean a(String var1, String var2, int var3, int var4, int var5, int var6) {
-      String var7 = var1;
-      if (var1.length() == 0) {
-         var7 = " ";
+   public boolean drawText(String str, String str2, int i, int i2, int i3, int i4) {
+      if (str.length() == 0) {
+         str = " ";
       }
-
-      a(var2, var3);
-      var5 = (int)h.measureText(var7);
-
-      for(var3 = 1; var3 < var5; var3 *= 2) {
+      setFont(str2, i);
+      int i5 = 1;
+      while (i5 < ((int) paint.measureText(str))) {
+         i5 *= 2;
       }
-
-      Bitmap var8 = Bitmap.createBitmap(var3, (int)(h.descent() - h.ascent()), Config.ARGB_8888);
-      Canvas var9 = new Canvas(var8);
-      if (var4 == 0) {
-         var9.drawText(var7, 0.0F, (float)((int)(-h.ascent())), h);
-      } else if (var4 == 1) {
-         var9.drawText(var7, (float)((var3 - var5) / 2), (float)((int)(-h.ascent())), h);
+      Bitmap createBitmap = Bitmap.createBitmap(i5, (int) (paint.descent() - paint.ascent()), Bitmap.Config.ARGB_8888);
+      Canvas canvas = new Canvas(createBitmap);
+      if (i2 == 0) {
+         canvas.drawText(str, 0.0f, (int) (-paint.ascent()), paint);
+      } else if (i2 == 1) {
+         canvas.drawText(str, (i5 - paint.measureText(str)) / 2, (int) (-paint.ascent()), paint);
       } else {
-         var9.drawText(var7, (float)(var3 - var5), (float)((int)(-h.ascent())), h);
+         canvas.drawText(str, i5 - paint.measureText(str), (int) (-paint.ascent()), paint);
       }
-
-      this.a((Bitmap)var8, 0);
+      drawImage(createBitmap, 0);
       return true;
    }
 
    public boolean isLoaded() {
       boolean var1;
-      if (this.a != 0) {
+      if (this.textureID != 0) {
          var1 = true;
       } else {
          var1 = false;
@@ -319,9 +314,9 @@ public class Texture {
    }
 
    public void reset() {
-      if (this.a != 0) {
-         Global.instance.gl10.glDeleteTextures(1, new int[]{this.a}, 0);
-         this.a = 0;
+      if (this.textureID != 0) {
+         Global.instance.gl10.glDeleteTextures(1, new int[]{this.textureID}, 0);
+         this.textureID = 0;
       }
 
    }

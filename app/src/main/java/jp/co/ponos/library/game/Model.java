@@ -198,7 +198,7 @@ public class Model {
       this.a = var1;
    }
 
-   public boolean a(String var1) {
+   public boolean load(String var1) {
       boolean var2 = false;
       AssetTextStream var3 = new AssetTextStream();
       this.d();

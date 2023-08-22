@@ -109,7 +109,7 @@ public class Game extends MyApplicationBase {
     int aZ;
     Texture[] ae = new Texture[30];
     Texture[] af = new Texture[4];
-    Texture[] ag = new Texture[100];
+    Texture[] textTextures = new Texture[100];
     Texture[] ah = new Texture[15];
     Texture[] ai = new Texture[8];
     Texture[] aj = new Texture[1];
@@ -183,29 +183,29 @@ public class Game extends MyApplicationBase {
     int[] by = new int[5];
     int[] bz = new int[5];
     MyPresentRenderer c = new MyPresentRenderer();
-    String[] cD = new String[15];
-    String[][] cE = new String[18][4];
-    String[] cF = new String[100];
-    String[] cG = new String[49];
-    String[] cH = new String[11];
-    String[][] cI = new String[23][3];
-    String[] cJ = new String[73];
-    String[] cK = new String[77];
-    String[][] cL = new String[10][5];
-    String[][] cM = new String[2][5];
-    String[][] cN = new String[5][5];
-    String[][] cO = new String[2][5];
-    String[][] cP = new String[4][5];
-    String[][] cQ = new String[30][5];
-    String[] cR = new String[5];
-    String[][] cS = new String[2][4];
-    String[][][] cT = new String[26][2][4];
-    String[] cU = new String[4];
-    String[][] cV = new String[10][4];
-    String[][] cW = new String[3][4];
-    String[] cX = new String[4];
-    String[] cY = new String[9];
-    String[] cZ = new String[2];
+    String[] warning1Text = new String[15];
+    String[][] warning2Text = new String[18][4];
+    String[] stageNamesText = new String[100];
+    String[] treasure1Text = new String[49];
+    String[] treasure2Text = new String[11];
+    String[][] treasure3Text = new String[23][3];
+    String[] openingText = new String[73];
+    String[] endingText = new String[77];
+    String[][] mainMenuWText = new String[10][5];
+    String[][] mainMenuPText = new String[2][5];
+    String[][] mainMenuUText = new String[5][5];
+    String[][] mainMenuTText = new String[2][5];
+    String[][] mainMenuBText = new String[4][5];
+    String[][] enemyPictureBookText = new String[30][5];
+    String[] enemyPictureBookQuestionText = new String[5];
+    String[][] unitExplanationOffText = new String[2][4];
+    String[][][] unitExplanationText = new String[26][2][4];
+    String[] godExplanationText = new String[4];
+    String[][] catExplanationText = new String[10][4];
+    String[][] stageFirstMessageText = new String[3][4];
+    String[] challengeModeText = new String[4];
+    String[] pageNameText = new String[9];
+    String[] firstLoseText = new String[2];
     int ca;
     int[] cb = new int[2];
     int[][] cc = new int[100][5];
@@ -244,24 +244,24 @@ public class Game extends MyApplicationBase {
     int dX;
     int dY;
     int dZ;
-    String[][][] da = new String[3][1][4];
-    String[] db = new String[3];
-    String[] dc = new String[11];
-    String[][] dd = new String[11][3];
-    String[][] de = new String[8][4];
-    String[][] df = new String[10][12];
-    String[][] dg = new String[2][4];
-    String[][] dh = new String[2][2];
-    String[][] di = new String[33][2];
-    String[][] dj = new String[1][2];
-    String[][] dk = new String[1][2];
-    String dl;
-    String[] dm = new String[4];
-    String[][] dn = new String[4][2];
-    String[][] do1 = new String[3][10];
-    String[][] dp = new String[2][4];
-    String[] dq = new String[20];
-    String[][] dr = new String[2][4];
+    String[][][] loseText = new String[3][1][4];
+    String[] optionText = new String[3];
+    String[] itemNameText = new String[11];
+    String[][] itemExplanationText = new String[11][3];
+    String[][] mainMenuPopUpText = new String[8][4];
+    String[][] tutorialText = new String[10][12];
+    String[][] endingMessageText = new String[2][4];
+    String[][] god1Text = new String[2][2];
+    String[][] god2Text = new String[33][2];
+    String[][] god3Text = new String[1][2];
+    String[][] god4Text = new String[1][2];
+    String godNameText;
+    String[] godItemNameText = new String[4];
+    String[][] godItemExplanationText = new String[4][2];
+    String[][] popUpMessageText = new String[3][10];
+    String[][] categoryExplanationText = new String[2][4];
+    String[] stampMessageText = new String[20];
+    String[][] giftMessageText = new String[2][4];
     int[] dw = new int[2];
     int dx;
     int dy;
@@ -327,7 +327,7 @@ public class Game extends MyApplicationBase {
     int[] fG = new int[4];
     int[] fH = new int[3];
     int fI;
-    int fJ;
+    int qouteIndex;
     int fK;
     int fL;
     int fP;
@@ -461,7 +461,7 @@ public class Game extends MyApplicationBase {
     String[] k = new String[8];
     boolean n;
     boolean o;
-    int p;
+    int versionCode;
     int q;
     AlertAppli r = new AlertAppli();
     AlertAppli s = new AlertAppli();
@@ -1086,13 +1086,13 @@ public class Game extends MyApplicationBase {
 
         if (!this.aC[0].isLoaded()) {
             this.aC[0].load(MyUtility.getString(String.format("i%03d_a.png", 0)), MyUtility.getString(String.format("%03d_a.imgcut", 0)));
-            this.aD[0].a(MyUtility.getString(String.format("%03d_a.mamodel", 0)));
+            this.aD[0].load(MyUtility.getString(String.format("%03d_a.mamodel", 0)));
 
             for (var1 = 0; var1 < 1; ++var1) {
                 this.aE[0][var1].load(MyUtility.getString(String.format("%03d_a%02d.maanim", 0, var1)));
             }
 
-            this.aD[1].a(MyUtility.getString(String.format("%03d_a.mamodel", 1)));
+            this.aD[1].load(MyUtility.getString(String.format("%03d_a.mamodel", 1)));
 
             for (var1 = 0; var1 < 2; ++var1) {
                 this.aE[1][var1].load(MyUtility.getString(String.format("%03d_a%02d.maanim", 1, var1)));
@@ -1200,31 +1200,31 @@ public class Game extends MyApplicationBase {
             this.ay[0].load(MyUtility.getString(String.format("i%03d_g.png", 0)), MyUtility.getString(String.format("%03d_g.imgcut", 0)));
         }
 
-        this.az[0][0].a(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 0, 1)));
+        this.az[0][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 0, 1)));
         this.aA[0][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 0, 1)));
         this.az[0][0].a(this.ay);
         this.az[0][0].a();
-        this.az[0][1].a(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 0, 2)));
+        this.az[0][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 0, 2)));
         this.aA[0][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 0, 2)));
         this.az[0][1].a(this.ay);
         this.az[0][1].a();
-        this.az[1][0].a(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 1, 1)));
+        this.az[1][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 1, 1)));
         this.aA[1][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 1, 1)));
         this.az[1][0].a(this.ay);
         this.az[1][0].a();
-        this.az[1][1].a(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 1, 2)));
+        this.az[1][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 1, 2)));
         this.aA[1][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 1, 2)));
         this.az[1][1].a(this.ay);
         this.az[1][1].a();
-        this.az[2][0].a(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 2, 1)));
+        this.az[2][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 2, 1)));
         this.aA[2][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 2, 1)));
         this.az[2][0].a(this.ay);
         this.az[2][0].a();
-        this.az[2][1].a(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 2, 2)));
+        this.az[2][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 2, 2)));
         this.aA[2][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 2, 2)));
         this.az[2][1].a(this.ay);
         this.az[2][1].a();
-        this.az[3][0].a(MyUtility.getString(String.format("%03d_g%02d.mamodel", 0, 3)));
+        this.az[3][0].load(MyUtility.getString(String.format("%03d_g%02d.mamodel", 0, 3)));
         this.aA[3][0].load(MyUtility.getString(String.format("%03d_g%02d.maanim", 0, 3)));
         this.az[3][0].a(this.ay);
         this.az[3][0].a();
@@ -1264,7 +1264,7 @@ public class Game extends MyApplicationBase {
                 if (this.eV[var1] == 0) {
                     if (!this.ar[this.bk[var1] - 2].isLoaded()) {
                         this.ar[this.bk[var1] - 2].load(MyUtility.getString(String.format("i%03d_f.png", this.bk[var1] - 2)), MyUtility.getString(String.format("%03d_f.imgcut", this.bk[var1] - 2)));
-                        this.at[var1].a(MyUtility.getString(String.format("%03d_f.mamodel", this.bk[var1] - 2)));
+                        this.at[var1].load(MyUtility.getString(String.format("%03d_f.mamodel", this.bk[var1] - 2)));
 
                         for (var2 = 0; var2 < this.getLength(this.au[var1]); ++var2) {
                             this.au[var1][var2].load(MyUtility.getString(String.format("%03d_f%02d.maanim", this.bk[var1] - 2, var2)));
@@ -1275,7 +1275,7 @@ public class Game extends MyApplicationBase {
                     }
                 } else if (this.eV[var1] == 1 && !this.as[this.bk[var1] - 2].isLoaded()) {
                     this.as[this.bk[var1] - 2].load(MyUtility.getString(String.format("i%03d_c.png", this.bk[var1] - 2)), MyUtility.getString(String.format("%03d_c.imgcut", this.bk[var1] - 2)));
-                    this.at[var1].a(MyUtility.getString(String.format("%03d_c.mamodel", this.bk[var1] - 2)));
+                    this.at[var1].load(MyUtility.getString(String.format("%03d_c.mamodel", this.bk[var1] - 2)));
 
                     for (var2 = 0; var2 < this.getLength(this.au[var1]); ++var2) {
                         this.au[var1][var2].load(MyUtility.getString(String.format("%03d_c%02d.maanim", this.bk[var1] - 2, var2)));
@@ -1314,7 +1314,7 @@ public class Game extends MyApplicationBase {
                     this.av[this.eU[var1] - 2].load(MyUtility.getString(String.format("i%03d_e.png", this.eU[var1] - 2)), MyUtility.getString(String.format("%03d_e.imgcut", this.eU[var1] - 2)));
                 }
 
-                this.aw[var1].a(MyUtility.getString(String.format("%03d_e.mamodel", this.eU[var1] - 2)));
+                this.aw[var1].load(MyUtility.getString(String.format("%03d_e.mamodel", this.eU[var1] - 2)));
 
                 for (var2 = 0; var2 < this.getLength(this.ax[var1]); ++var2) {
                     this.ax[var1][var2].load(MyUtility.getString(String.format("%03d_e%02d.maanim", this.eU[var1] - 2, var2)));
@@ -1325,9 +1325,9 @@ public class Game extends MyApplicationBase {
             }
         }
 
-        for (var1 = 0; var1 < this.getLength(this.ag); ++var1) {
-            if (this.ag[var1].isLoaded()) {
-                this.ag[var1].reset();
+        for (var1 = 0; var1 < this.getLength(this.textTextures); ++var1) {
+            if (this.textTextures[var1].isLoaded()) {
+                this.textTextures[var1].reset();
             }
         }
 
@@ -1341,13 +1341,13 @@ public class Game extends MyApplicationBase {
             this.gA[var1] = 0;
         }
 
-        this.aj[0].a(this.cD[5], "FONT_SYSTEM_BOLD", 30, 1);
+        this.aj[0].drawText(this.warning1Text[5], "FONT_SYSTEM_BOLD", 30, 1);
 
         for (var1 = 0; var1 < 4; ++var1) {
-            this.ag[var1 + 1].a(this.cW[0][var1], "FONT_SYSTEM_BOLD", 30, 1);
+            this.textTextures[var1 + 1].drawText(this.stageFirstMessageText[0][var1], "FONT_SYSTEM_BOLD", 30, 1);
         }
 
-        this.ag[10].a(this.db[1], "FONT_SYSTEM_BOLD", 30, 1);
+        this.textTextures[10].drawText(this.optionText[1], "FONT_SYSTEM_BOLD", 30, 1);
         this.gA[0] = 20;
         this.fw[0][0] = this.excessWidth + 814;
         this.fw[0][1] = this.eZ + 510;
@@ -2687,26 +2687,26 @@ public class Game extends MyApplicationBase {
                     }
                 }
 
-                for (var1 = 0; var1 < this.getLength(this.ag); ++var1) {
-                    if (this.ag[var1].isLoaded()) {
-                        this.ag[var1].reset();
+                for (var1 = 0; var1 < this.getLength(this.textTextures); ++var1) {
+                    if (this.textTextures[var1].isLoaded()) {
+                        this.textTextures[var1].reset();
                     }
                 }
 
-                for (var1 = 0; var1 < this.getLength(this.cJ); ++var1) {
-                    if (!this.ag[var1].isLoaded()) {
-                        if (this.p == 0) {
+                for (var1 = 0; var1 < this.getLength(this.openingText); ++var1) {
+                    if (!this.textTextures[var1].isLoaded()) {
+                        if (this.versionCode == 0) {
                             if (var1 == 0) {
-                                this.ag[var1].a(String.format("%d%s", this.fv, this.cJ[var1]), "FONT_SYSTEM_BOLD", 30, 1);
+                                this.textTextures[var1].drawText(String.format("%d%s", this.fv, this.openingText[var1]), "FONT_SYSTEM_BOLD", 30, 1);
                             } else {
-                                this.ag[var1].a(this.cJ[var1], "FONT_SYSTEM_BOLD", 30, 1);
+                                this.textTextures[var1].drawText(this.openingText[var1], "FONT_SYSTEM_BOLD", 30, 1);
                             }
-                        } else if (this.p == 1) {
+                        } else if (this.versionCode == 1) {
                             if (var1 == 2) {
-                                String var3 = String.format(this.cJ[var1], this.fv);
-                                this.ag[var1].a(String.format("%s", var3), "FONT_SYSTEM_BOLD", 30, 1);
+                                String var3 = String.format(this.openingText[var1], this.fv);
+                                this.textTextures[var1].drawText(String.format("%s", var3), "FONT_SYSTEM_BOLD", 30, 1);
                             } else {
-                                this.ag[var1].a(this.cJ[var1], "FONT_SYSTEM_BOLD", 30, 1);
+                                this.textTextures[var1].drawText(this.openingText[var1], "FONT_SYSTEM_BOLD", 30, 1);
                             }
                         }
                     }
@@ -2773,7 +2773,7 @@ public class Game extends MyApplicationBase {
                     this.ao[0].load(MyUtility.getString(String.format("img%03d.png", 13)), MyUtility.getString(String.format("000_img%03d.imgcut", 13)));
                 }
 
-                this.ap[0].a(MyUtility.getString(String.format("opening.mamodel")));
+                this.ap[0].load(MyUtility.getString(String.format("opening.mamodel")));
                 this.aq[0].load(MyUtility.getString(String.format("opening.maanim")));
                 this.ap[0].a(this.ao);
                 this.ap[0].a();
@@ -2796,15 +2796,15 @@ public class Game extends MyApplicationBase {
                     this.gp[var1] = false;
                 }
 
-                for (var1 = 0; var1 < this.getLength(this.ag); ++var1) {
-                    if (this.ag[var1].isLoaded()) {
-                        this.ag[var1].reset();
+                for (var1 = 0; var1 < this.getLength(this.textTextures); ++var1) {
+                    if (this.textTextures[var1].isLoaded()) {
+                        this.textTextures[var1].reset();
                     }
                 }
 
-                for (var1 = 0; var1 < this.getLength(this.cK); ++var1) {
-                    if (!this.ag[var1].isLoaded()) {
-                        this.ag[var1].a(this.cK[var1], "FONT_SYSTEM_BOLD", 30, 1);
+                for (var1 = 0; var1 < this.getLength(this.endingText); ++var1) {
+                    if (!this.textTextures[var1].isLoaded()) {
+                        this.textTextures[var1].drawText(this.endingText[var1], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 }
 

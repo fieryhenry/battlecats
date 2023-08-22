@@ -166,7 +166,7 @@ class MyPresentRenderer extends WebClientViewer {
                MyUtility.getInstance().runFunction("setDefaultText('" + var3 + "')");
             }
          } else if (aString.indexOf(var1, "type=facebook") >= 0) {
-            var1 = aString.format(MyUtility.getString("facebook_txt1"), A.a().cF[Game.cm[A.a().bM[0]]], MyUtility.getString("url_abbr"));
+            var1 = aString.format(MyUtility.getString("facebook_txt1"), A.a().stageNamesText[Game.cm[A.a().bM[0]]], MyUtility.getString("url_abbr"));
             MyUtility.getInstance().runFunction("setDefaultText('" + var1 + "')");
          }
       } else if (A.a().menuType == 6 && aString.indexOf(var1, "type=line") >= 0) {

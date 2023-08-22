@@ -147,8 +147,8 @@ public class TextureRenderer {
       this.vertexCoordinatesI[7] = top + height;
 
       for(left = 0; left < 4; ++left) {
-         this.vertexCoordinatesI[left * 2] = 65536 * this.vertexCoordinatesI[left * 2] / var1.d;
-         this.vertexCoordinatesI[left * 2 + 1] = 65536 * this.vertexCoordinatesI[left * 2 + 1] / var1.e;
+         this.vertexCoordinatesI[left * 2] = 65536 * this.vertexCoordinatesI[left * 2] / var1.pow2Width;
+         this.vertexCoordinatesI[left * 2 + 1] = 65536 * this.vertexCoordinatesI[left * 2 + 1] / var1.pow2Height;
       }
 
       this.intBuffer.clear();
@@ -167,7 +167,7 @@ public class TextureRenderer {
          Global.instance.gl10.glColor4f((float)this.imageRed / 255.0F, (float)this.imageGreen / 255.0F, (float)this.imageBlue / 255.0F, (float)this.imageAlpha / 255.0F);
       }
 
-      Global.instance.gl10.glBindTexture(3553, var1.a);
+      Global.instance.gl10.glBindTexture(3553, var1.textureID);
       Global.instance.gl10.glVertexPointer(2, 5126, 0, this.floatBuffer);
       Global.instance.gl10.glTexCoordPointer(2, 5132, 0, this.intBuffer);
       Global.instance.gl10.glDrawArrays(5, 0, 4);
@@ -254,8 +254,8 @@ public class TextureRenderer {
       this.vertexCoordinatesI[7] = rectY + rectHeight;
 
       for(rectX = 0; rectX < 4; ++rectX) {
-         this.vertexCoordinatesI[rectX * 2] = 65536 * this.vertexCoordinatesI[rectX * 2] / texture.d;
-         this.vertexCoordinatesI[rectX * 2 + 1] = 65536 * this.vertexCoordinatesI[rectX * 2 + 1] / texture.e;
+         this.vertexCoordinatesI[rectX * 2] = 65536 * this.vertexCoordinatesI[rectX * 2] / texture.pow2Width;
+         this.vertexCoordinatesI[rectX * 2 + 1] = 65536 * this.vertexCoordinatesI[rectX * 2 + 1] / texture.pow2Height;
       }
 
       this.intBuffer.clear();
@@ -274,7 +274,7 @@ public class TextureRenderer {
          Global.instance.gl10.glColor4f((float)this.imageRed / 255.0F, (float)this.imageGreen / 255.0F, (float)this.imageBlue / 255.0F, (float)this.imageAlpha / 255.0F);
       }
 
-      Global.instance.gl10.glBindTexture(3553, texture.a);
+      Global.instance.gl10.glBindTexture(3553, texture.textureID);
       Global.instance.gl10.glVertexPointer(2, 5126, 0, this.floatBuffer);
       Global.instance.gl10.glTexCoordPointer(2, 5132, 0, this.intBuffer);
       Global.instance.gl10.glDrawArrays(5, 0, 4);
@@ -398,8 +398,8 @@ public class TextureRenderer {
       this.vertexCoordinatesI[7] = texture.imgHeight;
 
       for(x = 0; x < 4; ++x) {
-         this.vertexCoordinatesI[x * 2] = 65536 * this.vertexCoordinatesI[x * 2] / texture.d;
-         this.vertexCoordinatesI[x * 2 + 1] = 65536 * this.vertexCoordinatesI[x * 2 + 1] / texture.e;
+         this.vertexCoordinatesI[x * 2] = 65536 * this.vertexCoordinatesI[x * 2] / texture.pow2Width;
+         this.vertexCoordinatesI[x * 2 + 1] = 65536 * this.vertexCoordinatesI[x * 2 + 1] / texture.pow2Height;
       }
 
       this.intBuffer.clear();
@@ -408,7 +408,7 @@ public class TextureRenderer {
       Global.instance.gl10.glEnable(3553);
       Global.instance.gl10.glBlendFunc(this.blendSFactor, this.blendDFactor);
       Global.instance.gl10.glColor4f((float)this.red / 255.0F, (float)this.green / 255.0F, (float)this.blue / 255.0F, (float)this.alpha / 255.0F);
-      Global.instance.gl10.glBindTexture(3553, texture.a);
+      Global.instance.gl10.glBindTexture(3553, texture.textureID);
       Global.instance.gl10.glVertexPointer(2, 5122, 0, this.shortBuffer);
       Global.instance.gl10.glTexCoordPointer(2, 5132, 0, this.intBuffer);
       Global.instance.gl10.glDrawArrays(5, 0, 4);
@@ -495,8 +495,8 @@ public class TextureRenderer {
       this.vertexCoordinatesI[7] = rectY + rectHeight;
 
       for(x = 0; x < 4; ++x) {
-         this.vertexCoordinatesI[x * 2] = 65536 * this.vertexCoordinatesI[x * 2] / texture.d;
-         this.vertexCoordinatesI[x * 2 + 1] = 65536 * this.vertexCoordinatesI[x * 2 + 1] / texture.e;
+         this.vertexCoordinatesI[x * 2] = 65536 * this.vertexCoordinatesI[x * 2] / texture.pow2Width;
+         this.vertexCoordinatesI[x * 2 + 1] = 65536 * this.vertexCoordinatesI[x * 2 + 1] / texture.pow2Height;
       }
 
       this.intBuffer.clear();
@@ -515,7 +515,7 @@ public class TextureRenderer {
          Global.instance.gl10.glColor4f((float)this.imageRed / 255.0F, (float)this.imageGreen / 255.0F, (float)this.imageBlue / 255.0F, (float)this.imageAlpha / 255.0F);
       }
 
-      Global.instance.gl10.glBindTexture(3553, texture.a);
+      Global.instance.gl10.glBindTexture(3553, texture.textureID);
       Global.instance.gl10.glVertexPointer(2, 5122, 0, this.shortBuffer);
       Global.instance.gl10.glTexCoordPointer(2, 5132, 0, this.intBuffer);
       Global.instance.gl10.glDrawArrays(5, 0, 4);
@@ -628,8 +628,8 @@ public class TextureRenderer {
       this.vertexCoordinatesI[7] = rectY + rectHeight;
 
       for(x1 = 0; x1 < 4; ++x1) {
-         this.vertexCoordinatesI[x1 * 2] = 65536 * this.vertexCoordinatesI[x1 * 2] / texture.d;
-         this.vertexCoordinatesI[x1 * 2 + 1] = 65536 * this.vertexCoordinatesI[x1 * 2 + 1] / texture.e;
+         this.vertexCoordinatesI[x1 * 2] = 65536 * this.vertexCoordinatesI[x1 * 2] / texture.pow2Width;
+         this.vertexCoordinatesI[x1 * 2 + 1] = 65536 * this.vertexCoordinatesI[x1 * 2 + 1] / texture.pow2Height;
       }
 
       this.intBuffer.clear();
@@ -648,7 +648,7 @@ public class TextureRenderer {
          Global.instance.gl10.glColor4f((float)this.imageRed / 255.0F, (float)this.imageGreen / 255.0F, (float)this.imageBlue / 255.0F, (float)this.imageAlpha / 255.0F);
       }
 
-      Global.instance.gl10.glBindTexture(3553, texture.a);
+      Global.instance.gl10.glBindTexture(3553, texture.textureID);
       Global.instance.gl10.glVertexPointer(2, 5122, 0, this.shortBuffer);
       Global.instance.gl10.glTexCoordPointer(2, 5132, 0, this.intBuffer);
       Global.instance.gl10.glDrawArrays(5, 0, 4);

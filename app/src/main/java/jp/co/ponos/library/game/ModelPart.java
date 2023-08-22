@@ -71,7 +71,7 @@ public class ModelPart {
          var4 = this.E;
          var5 = this.E;
          var6 = this.E[0];
-         var2 = var2 * var1.a[this.d + this.e].a(this.f + this.g).width / var1.f + var6;
+         var2 = var2 * var1.a[this.d + this.e].getRect(this.f + this.g).width / var1.f + var6;
          var5[6] = var2;
          var4[4] = var2;
          var4 = this.E;
@@ -82,7 +82,7 @@ public class ModelPart {
          var4 = this.E;
          var5 = this.E;
          var2 = this.E[1];
-         var3 = var3 * var1.a[this.d + this.e].a(this.f + this.g).height / var1.f + var2;
+         var3 = var3 * var1.a[this.d + this.e].getRect(this.f + this.g).height / var1.f + var2;
          var5[5] = var3;
          var4[3] = var3;
       }
