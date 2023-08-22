@@ -40,7 +40,7 @@ public class Sound {
 
    }
 
-   void play(int var1, PlayOption var2, boolean var3) {
+   void play(int soundID, PlayOption playOption, boolean changeVolume) {
       boolean var4 = false;
       byte var5 = -1;
 
@@ -48,8 +48,8 @@ public class Sound {
       label124: {
          label125: {
             try {
-               if ((this.soundTypes[var1] & 1) != 0 && !this.mutedbgm) {
-                  this.stop(-1);
+               if ((this.soundTypes[soundID] & 1) != 0 && !this.mutedbgm) {
+                  this.stop(SoundType.ALL);
                   break label125;
                }
             } catch (Exception var21) {
@@ -58,33 +58,33 @@ public class Sound {
             }
 
             try {
-               if ((this.soundTypes[var1] & 2) == 0 || this.mutedse) {
+               if ((this.soundTypes[soundID] & 2) == 0 || this.mutedse) {
                   break label124;
                }
 
-               if (!this.soundEffectLoaded[var1]) {
+               if (!this.soundEffectLoaded[soundID]) {
                   return;
                }
 
-               if (this.soundEffects[var1] != 0) {
-                  this.soundEffectPool.stop(this.soundEffects[var1]);
+               if (this.soundEffects[soundID] != 0) {
+                  this.soundEffectPool.stop(this.soundEffects[soundID]);
                }
             } catch (Exception var20) {
                var10001 = false;
                return;
             }
 
-            if (!var3) {
-               if (var2 == null) {
+            if (!changeVolume) {
+               if (playOption == null) {
                   try {
-                     this.volumes[var1] = 100;
+                     this.volumes[soundID] = 100;
                   } catch (Exception var17) {
                      var10001 = false;
                      return;
                   }
                } else {
                   try {
-                     this.volumes[var1] = var2.getVolume();
+                     this.volumes[soundID] = playOption.getVolume();
                   } catch (Exception var16) {
                      var10001 = false;
                      return;
@@ -105,10 +105,10 @@ public class Sound {
 
                   var22 = this.soundEffects;
                   var6 = this.soundEffectPool;
-                  var7 = this.loadedSoundEffects[var1];
-                  var8 = (float)(this.p * this.volumes[var1]) / 10000.0F;
-                  var9 = (float)(this.p * this.volumes[var1]) / 10000.0F;
-                  if ((this.soundTypes[var1] & 4) != 0) {
+                  var7 = this.loadedSoundEffects[soundID];
+                  var8 = (float)(this.p * this.volumes[soundID]) / 10000.0F;
+                  var9 = (float)(this.p * this.volumes[soundID]) / 10000.0F;
+                  if ((this.soundTypes[soundID] & 4) != 0) {
                      break label92;
                   }
                } catch (Exception var18) {
@@ -120,7 +120,7 @@ public class Sound {
             }
 
             try {
-               var22[var1] = var6.play(var7, var8, var9, 1, var5, 1.0F);
+               var22[soundID] = var6.play(var7, var8, var9, 1, var5, 1.0F);
                break label124;
             } catch (Exception var15) {
                var10001 = false;
@@ -128,8 +128,8 @@ public class Sound {
             }
          }
 
-         if (!var3) {
-            if (var2 == null) {
+         if (!changeVolume) {
+            if (playOption == null) {
                try {
                   this.volume = 100;
                } catch (Exception var14) {
@@ -138,7 +138,7 @@ public class Sound {
                }
             } else {
                try {
-                  this.volume = var2.getVolume();
+                  this.volume = playOption.getVolume();
                } catch (Exception var13) {
                   var10001 = false;
                   return;
@@ -148,18 +148,18 @@ public class Sound {
 
          MediaPlayer var23;
          try {
-            this.bgmMediaPlayer = MediaPlayer.create(Global.instance.context, this.soundFiles[var1]);
+            this.bgmMediaPlayer = MediaPlayer.create(Global.instance.context, this.soundFiles[soundID]);
             var23 = this.bgmMediaPlayer;
          } catch (Exception var12) {
             var10001 = false;
             return;
          }
 
-         var3 = var4;
+         changeVolume = var4;
 
          label98: {
             try {
-               if ((this.soundTypes[var1] & 4) == 0) {
+               if ((this.soundTypes[soundID] & 4) == 0) {
                   break label98;
                }
             } catch (Exception var19) {
@@ -167,11 +167,11 @@ public class Sound {
                return;
             }
 
-            var3 = true;
+            changeVolume = true;
          }
 
          try {
-            var23.setLooping(var3);
+            var23.setLooping(changeVolume);
             this.bgmMediaPlayer.setVolume((float)(this.o * this.volume) / 10000.0F, (float)(this.o * this.volume) / 10000.0F);
             if (MyApplicationBase.getInstance().isGameOpen()) {
                this.bgmMediaPlayer.start();
@@ -183,8 +183,8 @@ public class Sound {
       }
 
       try {
-         if ((this.soundTypes[var1] & 4) != 0) {
-            this.soundEffectIsPlaying[var1] = true;
+         if ((this.soundTypes[soundID] & 4) != 0) {
+            this.soundEffectIsPlaying[soundID] = true;
          }
       } catch (Exception var10) {
          var10001 = false;
@@ -241,26 +241,30 @@ public class Sound {
    public void resume() {
    }
 
-   public void play(int var1) {
-      this.play(var1, (PlayOption)null, false);
+   public void play(int soundID) {
+      this.play(soundID, null, false);
+   }
+
+   public void play(SoundType soundType) {
+      this.play(soundType.soundID, null, false);
    }
 
    public void d() {
    }
 
-   public void stop(int var1) {
+   public void stop(int soundID) {
       boolean var10001;
       byte var2;
       int var3;
       label100: {
          var2 = 0;
-         if (var1 != -1 && var1 != -4) {
-            if (var1 < 0) {
+         if (soundID != -1 && soundID != -4) {
+            if (soundID < 0) {
                break label100;
             }
 
             try {
-               if ((this.soundTypes[var1] & 1) == 0) {
+               if ((this.soundTypes[soundID] & 1) == 0) {
                   break label100;
                }
             } catch (Exception var9) {
@@ -304,13 +308,13 @@ public class Sound {
       }
 
       var3 = var2;
-      if (var1 != -2) {
-         if (var1 != -4) {
-            if (var1 >= 0) {
+      if (soundID != -2) {
+         if (soundID != -4) {
+            if (soundID >= 0) {
                try {
-                  if ((this.soundTypes[var1] & 2) != 0 && this.soundEffectLoaded[var1] && this.soundEffects[var1] != 0) {
-                     this.soundEffectPool.stop(this.soundEffects[var1]);
-                     this.soundEffectIsPlaying[var1] = false;
+                  if ((this.soundTypes[soundID] & 2) != 0 && this.soundEffectLoaded[soundID] && this.soundEffects[soundID] != 0) {
+                     this.soundEffectPool.stop(this.soundEffects[soundID]);
+                     this.soundEffectIsPlaying[soundID] = false;
                      return;
                   }
                } catch (Exception var5) {
@@ -349,6 +353,10 @@ public class Sound {
          ++var3;
       }
 
+   }
+
+   public void stop(SoundType soundType) {
+      this.stop(soundType.soundID);
    }
 
    public void stopAll() {

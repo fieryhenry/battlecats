@@ -1,6 +1,7 @@
 package jp.co.ponos.battlecats;
 
 //import com.tapjoy.ab;
+import jp.co.ponos.library.game.SoundType;
 import jp.co.ponos.library.game.aString;
 import jp.co.ponos.library.game.WebClientViewer;
 import jp.co.ponos.library.game.Sound;
@@ -34,7 +35,7 @@ class MyPresentRenderer extends WebClientViewer {
          A.a().i = 0;
          A.a().menuType = -1;
          if (var1) {
-            Sound.getInstance().play(11);
+            Sound.getInstance().play(SoundType.BUTTON_PRESS);
          }
 
          MyUtility.getInstance().addWebClient();
@@ -42,7 +43,7 @@ class MyPresentRenderer extends WebClientViewer {
          A.a().i = 0;
          A.a().menuType = -1;
          if (var1) {
-            Sound.getInstance().play(11);
+            Sound.getInstance().play(SoundType.BUTTON_PRESS);
          }
 
          MyUtility.getInstance().addWebClient();
@@ -54,16 +55,16 @@ class MyPresentRenderer extends WebClientViewer {
             var2 = aString.format("%s/battlecats/friend.php?%s&check=%s", MyUtility.getAppli(), var2, MyUtility.md5(aString.format("%s&check=adlmn", var2)));
             MyUtility.getInstance().addAssetGetter(var2);
             if (var1) {
-               Sound.getInstance().play(11);
+               Sound.getInstance().play(SoundType.BUTTON_PRESS);
             }
          } else {
             MyUtility.getInstance().addWebClient();
             A.a().i = 0;
             A.a().menuType = -1;
-            int var3 = A.a().getScene();
+            SceneType sceneType = A.a().getSceneType();
             A.a();
-            if (var3 == 100) {
-               var3 = A.a().screen;
+            if (sceneType == SceneType.MAIN) {
+               int var3 = A.a().screen;
                A.a();
                if (var3 == 0) {
                   //jp.co.ponos.library.a.a.b().d();
@@ -71,66 +72,66 @@ class MyPresentRenderer extends WebClientViewer {
             }
 
             if (var1) {
-               Sound.getInstance().play(11);
+               Sound.getInstance().play(SoundType.BUTTON_PRESS);
             }
          }
       } else if (A.a().menuType == 2) {
          A.a().i = 0;
          A.a().menuType = -1;
-         if (A.a().getScene() == 100 && A.a().screen == 0) {
+         if (A.a().getSceneType() == SceneType.MAIN && A.a().screen == 0) {
             //jp.co.ponos.library.a.a.b().d();
          }
 
          if (var1) {
-            Sound.getInstance().play(11);
+            Sound.getInstance().play(SoundType.BUTTON_PRESS);
          }
 
          MyUtility.getInstance().addWebClient();
       } else if (A.a().menuType == 3) {
          A.a().i = 0;
          A.a().menuType = -1;
-         if (A.a().getScene() == 100 && A.a().screen == 0) {
+         if (A.a().getSceneType() == SceneType.MAIN && A.a().screen == 0) {
             //jp.co.ponos.library.a.a.b().d();
          }
 
          if (var1) {
-            Sound.getInstance().play(11);
+            Sound.getInstance().play(SoundType.BUTTON_PRESS);
          }
 
          MyUtility.getInstance().addWebClient();
       } else if (A.a().menuType == 4) {
          A.a().i = 0;
          A.a().menuType = -1;
-         if (A.a().getScene() == 100 && A.a().screen == 0) {
+         if (A.a().getSceneType() == SceneType.MAIN && A.a().screen == 0) {
             //jp.co.ponos.library.a.a.b().d();
          }
 
          if (var1) {
-            Sound.getInstance().play(11);
+            Sound.getInstance().play(SoundType.BUTTON_PRESS);
          }
 
          MyUtility.getInstance().addWebClient();
       } else if (A.a().menuType == 5) {
          A.a().i = 0;
          A.a().menuType = -1;
-         if (A.a().getScene() == 100 && A.a().screen == 0) {
+         if (A.a().getSceneType() == SceneType.MAIN && A.a().screen == 0) {
             //jp.co.ponos.library.a.a.b().d();
          }
 
          if (var1) {
-            Sound.getInstance().play(11);
+            Sound.getInstance().play(SoundType.BUTTON_PRESS);
          }
 
          MyUtility.getInstance().addWebClient();
       } else if (A.a().menuType == 6) {
          A.a().i = 0;
          A.a().menuType = -1;
-         if (A.a().getScene() == 100 && A.a().screen == 0) {
+         if (A.a().getSceneType() == SceneType.MAIN && A.a().screen == 0) {
             //jp.co.ponos.library.a.a.b().d();
          }
 
          if (var1) {
-            Sound.getInstance().play(11);
+            Sound.getInstance().play(SoundType.BUTTON_PRESS);
          }
 
          MyUtility.getInstance().addWebClient();
