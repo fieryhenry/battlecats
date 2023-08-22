@@ -60,7 +60,7 @@ public class MyActivity extends Activity { //implements ab, ac, com.tapjoy.q {
       var1 = MyUtility.getString("catfoodtapjoy_txt");
       if ((A.a().getSceneType() != SceneType.BATTLE || A.a().bM[14] != 1) && A.a().getSceneType() != SceneType.ENDING && (A.a().getSceneType() != SceneType.MAIN || A.a().getScreenType() != ScreenType.STAMP) && var2 > 0) {
          AppInstance var3 = A.a();
-         var3.aL += var2;
+         var3.catfood += var2;
          MyUtility.getInstance().addButton(String.format(var1, var2));
          //com.tapjoy.g.a().a(var2, this);
          A.a().ac();
@@ -86,7 +86,7 @@ public class MyActivity extends Activity { //implements ab, ac, com.tapjoy.q {
       super.onCreate(var1);
       Global.setInstance(new Global());
       Global.getInstance().setContext((Context)this);
-      MySettings.a(new MySettings());
+      MySettings.setInstance(new MySettings());
       l.setInstance(new l());
       AppInstance.setInstance((MyApplicationBase)(new AppInstance()));
       Global.getInstance().setBackKeyController((BackKeyController)(new MyBackKeyController()));
@@ -138,6 +138,16 @@ public class MyActivity extends Activity { //implements ab, ac, com.tapjoy.q {
       //com.tapjoy.g.a().a((ab)this);
       //com.tapjoy.g.a().a((com.tapjoy.q)this);
       A.a().onCreate();
+
+      if (MySettings.getInstance().dev) { // dev mode (not in original game)
+         this.dev();
+      }
+
+   }
+   public void dev() {
+      A.a().catfood = 999999;
+      A.a().xp = 99999999;
+      A.a().battleItems = new int[]{999, 999, 999, 999, 999, 999};
    }
    @Override
    protected Dialog onCreateDialog(int var1) {

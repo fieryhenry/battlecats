@@ -14,5 +14,6 @@ public class MySettings extends Settings {
       this.packageName = "battlecats";
       this.j = true;
       this.fps = 30;
+      this.dev = false;
    }
 }

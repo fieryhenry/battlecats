@@ -1,7 +1,7 @@
 package jp.co.ponos.library.game;
 
 public abstract class Settings {
-   static Settings m;
+   static Settings settings;
    public boolean a;
    public boolean b;
    public boolean c;
@@ -14,16 +14,17 @@ public abstract class Settings {
    public boolean j;
    public String packageName;
    public int fps;
+   public boolean dev;
 
    public static Settings getInstance() {
-      return m;
+      return settings;
    }
 
-   public static void a(Settings var0) {
-      m = var0;
+   public static void setInstance(Settings settings) {
+      Settings.settings = settings;
    }
 
-   public String a(String var1) {
+   public String getSetting(String var1) {
       return var1;
    }
 }
