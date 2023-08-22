@@ -1,26 +1,23 @@
 package jp.co.ponos.library.game;
 
-/* renamed from: jp.co.ponos.library.b.ah */
-/* loaded from: classes.dex */
-class BackHandler extends aBackKeyController {
-    final /* synthetic */ aUtility a;
+class BackHandler extends BackKeyController {
+   // $FF: synthetic field
+   final Utility utility;
 
-    /* JADX INFO: Access modifiers changed from: package-private */
-    public BackHandler(aUtility autility) {
-        this.a = autility;
-    }
+   BackHandler(Utility var1) {
+      this.utility = var1;
+   }
 
-    @Override // jp.co.ponos.library.game.aBackKeyController
-    public boolean a() {
-        if (this.a.b != null && !this.a.j) {
-            this.a.b.a(this.a.getURL());
-            return true;
-        } else if (this.a.canGoBack()) {
-            this.a.goBack();
-            return true;
-        } else {
-            this.a.addWebClient();
-            return true;
-        }
-    }
+   @Override
+   public boolean isBackPressValid() {
+      if (this.utility.webClientViewer != null && !this.utility.j) {
+         this.utility.webClientViewer.canGoBack(this.utility.getURL());
+      } else if (this.utility.canGoBack()) {
+         this.utility.goBack();
+      } else {
+         this.utility.addWebClient();
+      }
+
+      return true;
+   }
 }

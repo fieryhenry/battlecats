@@ -1,73 +1,116 @@
 package jp.co.ponos.library.game;
 
-/* renamed from: jp.co.ponos.library.b.ad */
-/* loaded from: classes.dex */
 public class AnimTransformer {
-    float[] matrix = new float[9];
+   float[] a = new float[9];
 
-    public AnimTransformer() {
-        init();
-    }
+   public AnimTransformer() {
+      this.a();
+   }
 
-    public void init() {
-        this.matrix[0] = 1.0f;
-        this.matrix[1] = 0.0f;
-        this.matrix[2] = 0.0f;
-        this.matrix[3] = 0.0f;
-        this.matrix[4] = 1.0f;
-        this.matrix[5] = 0.0f;
-        this.matrix[6] = 0.0f;
-        this.matrix[7] = 0.0f;
-        this.matrix[8] = 1.0f;
-    }
+   public void a() {
+      this.a[0] = 1.0F;
+      this.a[1] = 0.0F;
+      this.a[2] = 0.0F;
+      this.a[3] = 0.0F;
+      this.a[4] = 1.0F;
+      this.a[5] = 0.0F;
+      this.a[6] = 0.0F;
+      this.a[7] = 0.0F;
+      this.a[8] = 1.0F;
+   }
 
-    public void scale(float xScale, float yScale) {
-        this.matrix[0] = xScale / 100.0f;
-        this.matrix[1] = 0.0f;
-        this.matrix[2] = 0.0f;
-        this.matrix[3] = 0.0f;
-        this.matrix[4] = yScale / 100.0f;
-        this.matrix[5] = 0.0f;
-        this.matrix[6] = 0.0f;
-        this.matrix[7] = 0.0f;
-        this.matrix[8] = 1.0f;
-    }
+   public void a(float var1, float var2) {
+      this.a[0] = var1 / 100.0F;
+      this.a[1] = 0.0F;
+      this.a[2] = 0.0F;
+      this.a[3] = 0.0F;
+      this.a[4] = var2 / 100.0F;
+      this.a[5] = 0.0F;
+      this.a[6] = 0.0F;
+      this.a[7] = 0.0F;
+      this.a[8] = 1.0F;
+   }
 
-    public void applyTransformation(int x, int y, aPoint result) {
-        result.x = (int) ((this.matrix[0] * x) + (this.matrix[1] * y) + this.matrix[2]);
-        result.y = (int) ((this.matrix[3] * x) + (this.matrix[4] * y) + this.matrix[5]);
-    }
+   public void a(int var1, int var2, Point var3) {
+      var3.x = (int)(this.a[0] * (float)var1 + this.a[1] * (float)var2 + this.a[2]);
+      var3.y = (int)(this.a[3] * (float)var1 + this.a[4] * (float)var2 + this.a[5]);
+   }
 
-    public void merge(AnimTransformer other) {
-        float f = (this.matrix[0] * other.matrix[0]) + (this.matrix[1] * other.matrix[3]) + (this.matrix[2] * other.matrix[6]);
-        float f2 = (this.matrix[0] * other.matrix[1]) + (this.matrix[1] * other.matrix[4]) + (this.matrix[2] * other.matrix[7]);
-        float f3 = (this.matrix[0] * other.matrix[2]) + (this.matrix[1] * other.matrix[5]) + (this.matrix[2] * other.matrix[8]);
-        float f4 = (this.matrix[3] * other.matrix[0]) + (this.matrix[4] * other.matrix[3]) + (this.matrix[5] * other.matrix[6]);
-        float f5 = (this.matrix[3] * other.matrix[1]) + (this.matrix[4] * other.matrix[4]) + (this.matrix[5] * other.matrix[7]);
-        float f6 = (this.matrix[3] * other.matrix[2]) + (this.matrix[4] * other.matrix[5]) + (this.matrix[5] * other.matrix[8]);
-        float f7 = (this.matrix[6] * other.matrix[0]) + (this.matrix[7] * other.matrix[3]) + (this.matrix[8] * other.matrix[6]);
-        float f8 = (this.matrix[6] * other.matrix[1]) + (this.matrix[7] * other.matrix[4]) + (this.matrix[8] * other.matrix[7]);
-        float f9 = (this.matrix[6] * other.matrix[2]) + (this.matrix[7] * other.matrix[5]) + (this.matrix[8] * other.matrix[8]);
-        this.matrix[0] = f;
-        this.matrix[1] = f2;
-        this.matrix[2] = f3;
-        this.matrix[3] = f4;
-        this.matrix[4] = f5;
-        this.matrix[5] = f6;
-        this.matrix[6] = f7;
-        this.matrix[7] = f8;
-        this.matrix[8] = f9;
-    }
+   public void a(AnimTransformer var1) {
+      float var2 = this.a[0];
+      float var3 = var1.a[0];
+      float var4 = this.a[1];
+      float var5 = var1.a[3];
+      float var6 = this.a[2];
+      float var7 = var1.a[6];
+      float var8 = this.a[0];
+      float var9 = var1.a[1];
+      float var10 = this.a[1];
+      float var11 = var1.a[4];
+      float var12 = this.a[2];
+      float var13 = var1.a[7];
+      float var14 = this.a[0];
+      float var15 = var1.a[2];
+      float var16 = this.a[1];
+      float var17 = var1.a[5];
+      float var18 = this.a[2];
+      float var19 = var1.a[8];
+      float var20 = this.a[3];
+      float var21 = var1.a[0];
+      float var22 = this.a[4];
+      float var23 = var1.a[3];
+      float var24 = this.a[5];
+      float var25 = var1.a[6];
+      float var26 = this.a[3];
+      float var27 = var1.a[1];
+      float var28 = this.a[4];
+      float var29 = var1.a[4];
+      float var30 = this.a[5];
+      float var31 = var1.a[7];
+      float var32 = this.a[3];
+      float var33 = var1.a[2];
+      float var34 = this.a[4];
+      float var35 = var1.a[5];
+      float var36 = this.a[5];
+      float var37 = var1.a[8];
+      float var38 = this.a[6];
+      float var39 = var1.a[0];
+      float var40 = this.a[7];
+      float var41 = var1.a[3];
+      float var42 = this.a[8];
+      float var43 = var1.a[6];
+      float var44 = this.a[6];
+      float var45 = var1.a[1];
+      float var46 = this.a[7];
+      float var47 = var1.a[4];
+      float var48 = this.a[8];
+      float var49 = var1.a[7];
+      float var50 = this.a[6];
+      float var51 = var1.a[2];
+      float var52 = this.a[7];
+      float var53 = var1.a[5];
+      float var54 = this.a[8];
+      float var55 = var1.a[8];
+      this.a[0] = var2 * var3 + var4 * var5 + var6 * var7;
+      this.a[1] = var8 * var9 + var10 * var11 + var12 * var13;
+      this.a[2] = var14 * var15 + var16 * var17 + var18 * var19;
+      this.a[3] = var20 * var21 + var22 * var23 + var24 * var25;
+      this.a[4] = var26 * var27 + var28 * var29 + var30 * var31;
+      this.a[5] = var32 * var33 + var34 * var35 + var36 * var37;
+      this.a[6] = var38 * var39 + var40 * var41 + var42 * var43;
+      this.a[7] = var44 * var45 + var46 * var47 + var48 * var49;
+      this.a[8] = var50 * var51 + var52 * var53 + var54 * var55;
+   }
 
-    public void translate(float xOffset, float yOffset) {
-        this.matrix[0] = 1.0f;
-        this.matrix[1] = 0.0f;
-        this.matrix[2] = xOffset;
-        this.matrix[3] = 0.0f;
-        this.matrix[4] = 1.0f;
-        this.matrix[5] = yOffset;
-        this.matrix[6] = 0.0f;
-        this.matrix[7] = 0.0f;
-        this.matrix[8] = 1.0f;
-    }
+   public void b(float var1, float var2) {
+      this.a[0] = 1.0F;
+      this.a[1] = 0.0F;
+      this.a[2] = var1;
+      this.a[3] = 0.0F;
+      this.a[4] = 1.0F;
+      this.a[5] = var2;
+      this.a[6] = 0.0F;
+      this.a[7] = 0.0F;
+      this.a[8] = 1.0F;
+   }
 }

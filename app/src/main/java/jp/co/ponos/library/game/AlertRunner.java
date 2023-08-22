@@ -1,21 +1,22 @@
 package jp.co.ponos.library.game;
 
-/* JADX INFO: Access modifiers changed from: package-private */
-/* renamed from: jp.co.ponos.library.b.aj */
-/* loaded from: classes.dex */
-public class AlertRunner extends DialogFragment {
-    String a;
-    final /* synthetic */ aUtility b;
+class AlertRunner extends DialogFragment {
+   String a;
+   // $FF: synthetic field
+   final Utility utility;
 
-    /* JADX INFO: Access modifiers changed from: package-private */
-    public AlertRunner(aUtility autility, String str) {
-        this.b = autility;
-        this.a = str;
-    }
+   AlertRunner(Utility var1, String var2) {
+      this.utility = var1;
+      this.a = var2;
+   }
 
-    @Override // jp.co.ponos.library.game.DialogFragment
-    public boolean loadURL() {
-        new aAlertRequestHandler(this).execute(this.a);
-        return true;
-    }
+   // $FF: synthetic method
+   static Utility getUtility(AlertRunner var0) {
+      return var0.utility;
+   }
+
+   public boolean loadURL() {
+      (new AlertRequestHandler(this)).execute(new String[]{this.a});
+      return true;
+   }
 }

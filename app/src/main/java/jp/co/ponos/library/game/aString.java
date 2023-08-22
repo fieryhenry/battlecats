@@ -1,31 +1,29 @@
 package jp.co.ponos.library.game;
 
-/* renamed from: jp.co.ponos.library.b.aa */
-/* loaded from: classes.dex */
 public class aString {
-    /* renamed from: a */
-    public static int parseInt(String str) {
-        return Integer.parseInt(str);
-    }
+   public static int parseInt(String var0) {
+      return Integer.parseInt(var0);
+   }
 
-    /* renamed from: a */
-    public static String format(String str, Object... objArr) {
-        return String.format(str, objArr);
-    }
+   public static String format(String var0, Object... var1) {
+      return String.format(var0, var1);
+   }
 
-    /* renamed from: a */
-    public static boolean isEqual(String str, String str2) {
-        return str.equals(str2);
-    }
+   public static boolean equals(String var0, String var1) {
+      return var0.equals(var1);
+   }
 
-    /* renamed from: b */
-    public static int indexOf(String str, String str2) {
-        return str.indexOf(str2);
-    }
+   public static int indexOf(String var0, String var1) {
+      return var0.indexOf(var1);
+   }
 
-    /* renamed from: b */
-    public static String getFileNameWithoutExtension(String str) {
-        int lastIndexOf = str.lastIndexOf(".");
-        return lastIndexOf != -1 ? str.substring(0, lastIndexOf) : str;
-    }
+   public static String getFileNameWithoutExtension(String var0) {
+      int var1 = var0.lastIndexOf(".");
+      String var2 = var0;
+      if (var1 != -1) {
+         var2 = var0.substring(0, var1);
+      }
+
+      return var2;
+   }
 }

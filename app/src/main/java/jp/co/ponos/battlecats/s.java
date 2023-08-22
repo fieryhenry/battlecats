@@ -1,0 +1,47 @@
+package jp.co.ponos.battlecats;
+
+public final class s {
+   public static final int snd000 = 2130903040;
+   public static final int snd001 = 2130903041;
+   public static final int snd002 = 2130903042;
+   public static final int snd003 = 2130903043;
+   public static final int snd004 = 2130903044;
+   public static final int snd005 = 2130903045;
+   public static final int snd006 = 2130903046;
+   public static final int snd007 = 2130903047;
+   public static final int snd008 = 2130903048;
+   public static final int snd009 = 2130903049;
+   public static final int snd010 = 2130903050;
+   public static final int snd011 = 2130903051;
+   public static final int snd012 = 2130903052;
+   public static final int snd013 = 2130903053;
+   public static final int snd014 = 2130903054;
+   public static final int snd015 = 2130903055;
+   public static final int snd016 = 2130903056;
+   public static final int snd017 = 2130903057;
+   public static final int snd018 = 2130903058;
+   public static final int snd019 = 2130903059;
+   public static final int snd020 = 2130903060;
+   public static final int snd021 = 2130903061;
+   public static final int snd022 = 2130903062;
+   public static final int snd023 = 2130903063;
+   public static final int snd024 = 2130903064;
+   public static final int snd025 = 2130903065;
+   public static final int snd026 = 2130903066;
+   public static final int snd027 = 2130903067;
+   public static final int snd028 = 2130903068;
+   public static final int snd029 = 2130903069;
+   public static final int snd030 = 2130903070;
+   public static final int snd031 = 2130903071;
+   public static final int snd032 = 2130903072;
+   public static final int snd033 = 2130903073;
+   public static final int snd034 = 2130903074;
+   public static final int snd035 = 2130903075;
+   public static final int snd036 = 2130903076;
+   public static final int snd037 = 2130903077;
+   public static final int snd038 = 2130903078;
+   public static final int snd039 = 2130903079;
+   public static final int snd040 = 2130903080;
+   public static final int snd041 = 2130903081;
+   public static final int snd042 = 2130903082;
+}

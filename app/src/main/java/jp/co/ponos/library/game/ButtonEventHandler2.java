@@ -2,18 +2,15 @@ package jp.co.ponos.library.game;
 
 import android.content.DialogInterface;
 
-/* renamed from: jp.co.ponos.library.b.ao */
-/* loaded from: classes.dex */
 class ButtonEventHandler2 implements DialogInterface.OnClickListener {
-    final /* synthetic */ ButtonBuilder a;
+   // $FF: synthetic field
+   final ButtonBuilder a;
 
-    /* JADX INFO: Access modifiers changed from: package-private */
-    public ButtonEventHandler2(ButtonBuilder buttonBuilder) {
-        this.a = buttonBuilder;
-    }
+   ButtonEventHandler2(ButtonBuilder var1) {
+      this.a = var1;
+   }
 
-    @Override // android.content.DialogInterface.OnClickListener
-    public void onClick(DialogInterface dialogInterface, int i) {
-        this.a.d.a = 1;
-    }
+   public void onClick(DialogInterface var1, int var2) {
+      this.a.d.a = 1;
+   }
 }

@@ -1,18 +1,18 @@
 package jp.co.ponos.battlecats;
 
-import jp.co.ponos.library.game.aBackKeyController;
+import jp.co.ponos.library.game.BackKeyController;
 
-/* renamed from: jp.co.ponos.battlecats.f */
-/* loaded from: classes.dex */
-public class MyBackKeyController extends aBackKeyController {
-    @Override // jp.co.ponos.library.game.aBackKeyController
-    public boolean a() {
-        if (A.a().getSceneType() == SceneType.MAIN && A.a().getScreenType() == ScreenType.TITLE && A.a().fG[0] == 0 && !A.a().ee) {
-            return false;
-        }
-        A.a().backPressed = true;
-        A.a().i = 0;
-        A.a().menuType = -1;
-        return true;
-    }
+public class MyBackKeyController extends BackKeyController {
+   @Override
+   public boolean isBackPressValid() {
+      boolean var1 = false;
+      if (A.a().getScene() != 100 || A.a().screen != 0 || A.a().fG[0] != 0 || A.a().ee) {
+         A.a().backPressed = true;
+         A.a().i = 0;
+         A.a().menuType = -1;
+         var1 = true;
+      }
+
+      return var1;
+   }
 }

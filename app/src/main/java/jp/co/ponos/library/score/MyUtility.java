@@ -1,32 +1,28 @@
 package jp.co.ponos.library.score;
 
-import jp.co.ponos.library.game.aSettings;
 import jp.co.ponos.library.game.aString;
-import jp.co.ponos.library.game.aUtility;
+import jp.co.ponos.library.game.Utility;
+import jp.co.ponos.library.game.Settings;
 
-/* renamed from: jp.co.ponos.library.d.f */
-/* loaded from: classes.dex */
-public class MyUtility extends aUtility {
-    /* renamed from: r */
-    public static void createInstance() {
-        instance = new MyUtility();
-    }
+public class MyUtility extends Utility {
+   public static void createInstance() {
+      instance = new MyUtility();
+   }
 
-    /* renamed from: s */
-    public static String getAppli() {
-        return aSettings.getInstance().getSetting("http://www.ponos.net/android/appli");
-    }
+   public static String getAppli() {
+      return Settings.getInstance().a(decrypt(md5("a"), "b+rB23dnIvnucgCR1oPbX2IU5sODvhUS1C6t3Tga/+boJbf2dDtLDjb3En8q50TG"));
+   }
 
-    @Override // jp.co.ponos.library.game.aUtility
-    /* renamed from: c */
-    protected String getAppliPage(String str, String str2) {
-        return aString.format("%s/games/link.php?type=1&appli=%s&page=%s&lang=%s&ref=appli_access_%s_%s", getAppli(), str, str2, getString("lang"), aSettings.getInstance().packageName, str2);
-    }
+   protected String getAppliPage(String var1, String var2) {
+      return aString.format(decrypt(md5("b"), "jbZyObXJNA2SKLFCjjy87dmRUVv1EVgf530pUPwP3m8/EWdegkI/je7qjPeagOZTea4ozeoGwV1B8gK6d2buOKJAWY4duhaerFwm+0+3+WI="), getAppli(), var1, var2, getString("lang"), Settings.getInstance().packageName, var2);
+   }
 
-    @Override // jp.co.ponos.library.game.aUtility
-    /* renamed from: g */
-    public String getID() {
-        String f = getDeviceID();
-        return f != null ? f : getUserID();
-    }
+   public String getID() {
+      String var1 = getDeviceID();
+      if (var1 == null) {
+         var1 = this.getUserID();
+      }
+
+      return var1;
+   }
 }

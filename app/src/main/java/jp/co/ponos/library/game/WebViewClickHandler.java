@@ -2,24 +2,18 @@ package jp.co.ponos.library.game;
 
 import android.view.View;
 
-/* renamed from: jp.co.ponos.library.b.ar */
-/* loaded from: classes.dex */
 class WebViewClickHandler implements View.OnClickListener {
-    final /* synthetic */ aJSHandler a;
+   // $FF: synthetic field
+   final JSHandler a;
 
-    /* JADX INFO: Access modifiers changed from: package-private */
-    public WebViewClickHandler(aJSHandler ajshandler) {
-        this.a = ajshandler;
-    }
+   WebViewClickHandler(JSHandler var1) {
+      this.a = var1;
+   }
 
-    @Override // android.view.View.OnClickListener
-    public void onClick(View view) {
-        aUtility autility;
-        aUtility autility2;
-        autility = this.a.e;
-        if (autility.b != null) {
-            autility2 = this.a.e;
-            autility2.b.a(((aJSButton) view).a);
-        }
-    }
+   public void onClick(View var1) {
+      if (JSHandler.a(this.a).webClientViewer != null) {
+         JSHandler.a(this.a).webClientViewer.a(((JSButton)var1).a);
+      }
+
+   }
 }

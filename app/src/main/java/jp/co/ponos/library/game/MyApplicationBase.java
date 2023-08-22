@@ -1,38 +1,35 @@
 package jp.co.ponos.library.game;
 
-/* renamed from: jp.co.ponos.library.b.a */
-/* loaded from: classes.dex */
 public abstract class MyApplicationBase {
-    static MyApplicationBase instance;
+   static MyApplicationBase instance;
 
-    public static void setInstance(MyApplicationBase myApplicationBase) {
-        instance = myApplicationBase;
-    }
+   public static void setInstance(MyApplicationBase instance) {
+      MyApplicationBase.instance = instance;
+   }
 
-    /* renamed from: af */
-    public static MyApplicationBase getInstance() {
-        return instance;
-    }
+   public static MyApplicationBase getInstance() {
+      return instance;
+   }
 
-    public void setIsGameOpen(boolean z) {
-        aGlobal.instance.isGameOpen = z;
-    }
+   public void setIsGameOpen(boolean isGameOpen) {
+      Global.instance.isGameOpen = isGameOpen;
+   }
 
-    public void ag() {
-    }
+   public void ag() {
+   }
 
-    public int getWidth() {
-        return aGlobal.instance.width;
-    }
+   public int getWidth() {
+      return Global.instance.width;
+   }
 
-    public int getHeight() {
-        return aGlobal.instance.height;
-    }
+   public int getHeight() {
+      return Global.instance.height;
+   }
 
-    public boolean isGameOpen() {
-        return aGlobal.instance.isGameOpen;
-    }
+   public boolean isGameOpen() {
+      return Global.instance.isGameOpen;
+   }
 
-    public void b(boolean z) {
-    }
+   public void b(boolean var1) {
+   }
 }

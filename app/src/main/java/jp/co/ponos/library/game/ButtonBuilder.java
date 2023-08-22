@@ -3,43 +3,41 @@ package jp.co.ponos.library.game;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 
-/* JADX INFO: Access modifiers changed from: package-private */
-/* renamed from: jp.co.ponos.library.b.am */
-/* loaded from: classes.dex */
-public class ButtonBuilder extends DialogFragment {
-    String a;
-    String[] b = null;
-    int c;
-    aUnknown2 d;
-    final /* synthetic */ aUtility e;
+class ButtonBuilder extends DialogFragment {
+   String a;
+   String[] b;
+   int c;
+   AlertAppli d;
+   // $FF: synthetic field
+   final Utility e;
 
-    /* JADX INFO: Access modifiers changed from: package-private */
-    public ButtonBuilder(aUtility autility, String str) {
-        this.e = autility;
-        this.a = str;
-    }
+   ButtonBuilder(Utility var1, String var2) {
+      this.e = var1;
+      this.a = var2;
+      this.b = null;
+   }
 
-    @Override // jp.co.ponos.library.game.DialogFragment
-    public boolean loadURL() {
-        return false;
-    }
+   public boolean loadURL() {
+      return false;
+   }
 
-    @Override // jp.co.ponos.library.game.DialogFragment
-    public AlertDialog.Builder b() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(aGlobal.instance.context);
-        if (this.b == null) {
-            builder.setPositiveButton("OK", (DialogInterface.OnClickListener) null);
-        } else {
-            builder.setPositiveButton(this.b[0], new ButtonEventHandler(this));
-            if (this.c >= 2) {
-                builder.setNeutralButton(this.b[1], new ButtonEventHandler2(this));
-            }
-            if (this.c >= 3) {
-                builder.setNegativeButton(this.b[2], new ButtonEventHandler3(this));
-            }
-        }
-        builder.setMessage(this.a);
-        builder.setCancelable(false);
-        return builder;
-    }
+   public AlertDialog.Builder b() {
+      AlertDialog.Builder var1 = new AlertDialog.Builder(Global.instance.context);
+      if (this.b == null) {
+         var1.setPositiveButton("OK", (DialogInterface.OnClickListener)null);
+      } else {
+         var1.setPositiveButton(this.b[0], new ButtonEventHandler(this));
+         if (this.c >= 2) {
+            var1.setNeutralButton(this.b[1], new ButtonEventHandler2(this));
+         }
+
+         if (this.c >= 3) {
+            var1.setNegativeButton(this.b[2], new ButtonEventHandler3(this));
+         }
+      }
+
+      var1.setMessage(this.a);
+      var1.setCancelable(false);
+      return var1;
+   }
 }

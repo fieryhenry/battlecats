@@ -1,31 +1,28 @@
 package jp.co.ponos.battlecats;
 
 import jp.co.ponos.library.score.MyUtility;
-import jp.co.ponos.library.score.aScore;
-import jp.co.ponos.library.score.aScoreUploader;
+import jp.co.ponos.library.score.Score;
 
-/* JADX INFO: Access modifiers changed from: package-private */
-/* renamed from: jp.co.ponos.battlecats.g */
-/* loaded from: classes.dex */
-public class MyScore extends aScore {
-    @Override // jp.co.ponos.library.score.aScore
-    public void a(String str, int i, int i2) {
-        if (i2 == 1) {
-            MyUtility.getInstance().addProgressDialog(MyUtility.getString("connecting"));
-        } else {
-            MyUtility.getInstance().addButton(MyUtility.getString("network_unavailable"));
-        }
-    }
+class MyScore extends Score {
+   @Override
+   public void a(String var1, int var2, int var3) {
+      if (var3 == 1) {
+         MyUtility.getInstance().addProgressDialog(MyUtility.getString("connecting"));
+      } else {
+         MyUtility.getInstance().addButton(MyUtility.getString("network_unavailable"));
+      }
 
-    @Override // jp.co.ponos.library.score.aScore
-    public void b(String str, int i, int i2) {
-        MyUtility.getInstance().addAlertCloser();
-        if (i2 != 1) {
-            MyUtility.getInstance().addButton(MyUtility.getString("network_unavailable"));
-            return;
-        }
-        aScoreUploader.getInstance().viewLeaderboard("battlecats_score");
-        A.a().aW = 0;
-        A.a().aSave();
-    }
+   }
+   @Override
+   public void b(String var1, int var2, int var3) {
+      MyUtility.getInstance().addAlertCloser();
+      if (var3 == 1) {
+         jp.co.ponos.library.score.a.b().a("battlecats_score");
+         A.a().aW = 0;
+         A.a().ac();
+      } else {
+         MyUtility.getInstance().addButton(MyUtility.getString("network_unavailable"));
+      }
+
+   }
 }

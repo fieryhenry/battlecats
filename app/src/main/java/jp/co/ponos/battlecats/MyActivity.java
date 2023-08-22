@@ -1,6 +1,7 @@
 package jp.co.ponos.battlecats;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.KeyguardManager;
 import android.content.BroadcastReceiver;
@@ -8,202 +9,213 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.KeyEvent;
 import android.widget.FrameLayout;
+//import com.tapjoy.ab;
+//import com.tapjoy.ac;
 
-//import jp.co.ponos.library.ads.aAd;
-//import jp.co.ponos.library.facebook.aFacebook;
+import jp.co.ponos.library.game.BackKeyController;
 import jp.co.ponos.library.game.DialogFragment;
-import jp.co.ponos.library.game.aGlobal;
-import jp.co.ponos.library.game.aSound;
-import jp.co.ponos.library.game.aTextureRenderer;
-import jp.co.ponos.library.purchase.Inapp;
+import jp.co.ponos.library.game.JSInterfaceBase;
+import jp.co.ponos.library.game.MyApplicationBase;
+import jp.co.ponos.library.game.Sound;
+import jp.co.ponos.library.game.Global;
+import jp.co.ponos.library.game.TextureRenderer;
+import jp.co.ponos.library.purchase.w;
+import jp.co.ponos.library.purchase.PurchaseDelegate;
 import jp.co.ponos.library.score.MyUtility;
-import jp.co.ponos.library.score.aScoreUploader;
-import jp.co.ponos.library.twitter.aTwitter;
+import jp.co.ponos.library.twitter.Twitter;
 
-/* loaded from: classes.dex */
-public class MyActivity extends Activity {
-    MyHandler handler;
-    MyFLSurfaceView b;
-    FrameLayout c;
-    boolean d = false;
-    BroadcastReceiver e = new MyBroadcastReceiver(this);
+public class MyActivity extends Activity { //implements ab, ac, com.tapjoy.q {
+   MyHandler handler;
+   MyFLSurfaceView surfaceView;
+   FrameLayout frameLayout;
+   boolean d = false;
+   BroadcastReceiver broadcastReceiver = new MyBroadcastReceiver(this);
 
-    /* JADX INFO: Access modifiers changed from: package-private */
-    public void a() {
-        int i;
-        if (A.a().isGameOpen()) {
-            int i2 = 0;
-            while (aGlobal.getInstance().getDialogs().size() > 0) {
-                if (((DialogFragment) aGlobal.getInstance().getDialogs().get(0)).loadURL()) {
-                    i = i2;
-                } else {
-                    removeDialog(i2);
-                    showDialog(i2);
-                    i = i2 + 1;
-                }
-                aGlobal.getInstance().getDialogs().remove(0);
-                i2 = i;
+   void a() {
+      if (A.a().isGameOpen()) {
+         for(int var1 = 0; Global.getInstance().getDialogs().size() > 0; Global.getInstance().getDialogs().remove(0)) {
+            if (!((DialogFragment) Global.getInstance().getDialogs().get(0)).loadURL()) {
+               this.removeDialog(var1);
+               this.showDialog(var1);
+               ++var1;
             }
-            this.b.requestRender();
-            this.handler.getMessages(1000 / MySettings.getInstance().fps);
-        }
-    }
+         }
 
-    public void a(int i) {
-    }
+         this.surfaceView.requestRender();
+         this.handler.getMessages(1000 / MySettings.getInstance().fps);
+      }
 
-    public void a(String str) {
-    }
+   }
 
-    public void a(String str, int i) {
-        String a = MyUtility.getString("catfoodtapjoy_txt");
-        if ((A.a().getSceneType() == SceneType.BATTLE && A.a().battleData[14] == 1) || A.a().getSceneType() == SceneType.ENDING) {
-            return;
-        }
-        if (!(A.a().getSceneType() == SceneType.MAIN && A.a().getScreenType() == ScreenType.STAMP) && i > 0) {
-            A.a().catfood += i;
-            MyUtility.getInstance().addButton(String.format(a, Integer.valueOf(i)));
-            A.a().aSave();
-        }
-    }
+   public void a(int var1) {
+   }
 
-    public void b(String str) {
-    }
+   public void a(String var1) {
+   }
 
-    public void b(String str, int i) {
-    }
+   public void a(String var1, int var2) {
+      var1 = MyUtility.getString("catfoodtapjoy_txt");
+      if ((A.a().getScene() != 300 || A.a().bM[14] != 1) && A.a().getScene() != 99 && (A.a().getScene() != 100 || A.a().screen != 9999) && var2 > 0) {
+         AppInstance var3 = A.a();
+         var3.aL += var2;
+         MyUtility.getInstance().addButton(String.format(var1, var2));
+         //com.tapjoy.g.a().a(var2, this);
+         A.a().ac();
+      }
 
-    @Override // android.app.Activity
-    public void onActivityResult(int i, int i2, Intent intent) {
-        super.onActivityResult(i, i2, intent);
-        if (MySettings.getInstance().facebookEnable) {
-            //aFacebook.getInstance().a(i, i2, intent);
-        }
-    }
+   }
 
-    @Override // android.app.Activity
-    public void onCreate(Bundle bundle) {
-        super.onCreate(bundle);
-        aGlobal.setInstance(new aGlobal());
-        aGlobal.getInstance().a(this);
-        MySettings.setInstance(new MySettings());
-        MyAssetLoader.getDrawable(new MyAssetLoader());
-        AppInstance.setInstance(new AppInstance());
-        aGlobal.getInstance().a(new MyBackKeyController());
-        aScoreUploader.createInstance();
-        aTextureRenderer.createInstance();
-        aSound.a();
-        MyUtility.createInstance();
-        MyUtility.getInstance().setJSInterface(new ExternalConnections());
-        if (MySettings.getInstance().a) {
-            //aAd.a();
-            //aAd.b().c();
-        }
-        if (MySettings.getInstance().facebookEnable) {
-            //aFacebook.setInstance();
-        }
-        if (MySettings.getInstance().h) {
-            Inapp.a();
-            Inapp.b().a(new MyPurchaseDelegate());
-            Inapp.b().c();
-        }
-        if (MySettings.getInstance().i) {
-            aTwitter.createInstance();
-        }
-        getWindow().addFlags(1024);
-        getWindow().addFlags(128);
-        requestWindowFeature(1);
-        setVolumeControlStream(3);
-        this.handler = new MyHandler(this);
-        aGlobal.getInstance().a(this.handler);
-        this.c = new FrameLayout(this);
-        aGlobal.getInstance().a(this.c);
-        this.b = new MyFLSurfaceView(this);
-        this.b.setFocusableInTouchMode(true);
-        this.b.setRenderMode(0);
-        this.c.addView(this.b);
-        setContentView(this.c);
-        try {
-            registerReceiver(this.e, new IntentFilter("android.intent.action.USER_PRESENT"));
-        } catch (RuntimeException e) {
-        }
-        A.a().onCreate();
-    }
+   public void b(String var1) {
+   }
 
-    @Override // android.app.Activity
-    protected Dialog onCreateDialog(int i) {
-        if (aGlobal.getInstance().getDialogs().size() > 0) {
-            return ((DialogFragment) aGlobal.getInstance().getDialogs().get(0)).b().create();
-        }
-        return null;
-    }
+   public void b(String var1, int var2) {
+   }
+   @Override
+   public void onActivityResult(int var1, int var2, Intent var3) {
+      super.onActivityResult(var1, var2, var3);
+      if (MySettings.getInstance().f) {
+         //jp.co.ponos.library.c.a.b().a(var1, var2, var3);
+      }
 
-    @Override // android.app.Activity
-    public void onDestroy() {
-        super.onDestroy();
-        unregisterReceiver(this.e);
-        if (MySettings.getInstance().h) {
-            Inapp.b().f();
-        }
-    }
+   }
+   @Override
+   public void onCreate(Bundle var1) {
+      super.onCreate(var1);
+      Global.setInstance(new Global());
+      Global.getInstance().setContext((Context)this);
+      MySettings.a(new MySettings());
+      l.setInstance(new l());
+      AppInstance.setInstance((MyApplicationBase)(new AppInstance()));
+      Global.getInstance().setBackKeyController((BackKeyController)(new MyBackKeyController()));
+      jp.co.ponos.library.score.a.a();
+      TextureRenderer.createInstance();
+      Sound.createInstance();
+      MyUtility.createInstance();
+      MyUtility.getInstance().setJSInterface((JSInterfaceBase)(new h()));
+      if (MySettings.getInstance().a) {
+         //jp.co.ponos.library.a.a.a();
+         //jp.co.ponos.library.a.a.b().c();
+      }
 
-    @Override // android.app.Activity, android.view.KeyEvent.Callback
-    public boolean onKeyDown(int i, KeyEvent keyEvent) {
-        if (keyEvent.getRepeatCount() == 0) {
-            switch (i) {
-                case 4:
-                    if (aGlobal.getInstance().f().a()) {
-                        return true;
-                    }
-                    break;
-            }
-        }
-        return super.onKeyDown(i, keyEvent);
-    }
+      if (MySettings.getInstance().f) {
+         //jp.co.ponos.library.c.a.a();
+      }
 
-    @Override // android.app.Activity
-    public void onPause() {
-        super.onPause();
-        A.a().setIsGameOpen(false);
-        A.a().d();
-    }
+      if (MySettings.getInstance().h) {
+         w.a();
+         w.b().a((PurchaseDelegate)(new MyPurchaseDelegate()));
+         w.b().c();
+      }
 
-    @Override // android.app.Activity
-    public void onRestart() {
-        super.onRestart();
-        A.a().b();
-    }
+      if (MySettings.getInstance().i) {
+         Twitter.createInstance();
+      }
 
-    @Override // android.app.Activity
-    public void onResume() {
-        super.onResume();
-        getWindow().addFlags(1024);
-        if (((KeyguardManager) aGlobal.getInstance().getContext().getSystemService(Context.KEYGUARD_SERVICE)).inKeyguardRestrictedInputMode()) {
-            this.d = true;
-            return;
-        }
-        this.d = false;
-        A.a().setIsGameOpen(true);
-        this.handler.getMessages(0);
-        A.a().onResume();
-    }
+      this.getWindow().addFlags(1024);
+      this.getWindow().addFlags(128);
+      this.requestWindowFeature(1);
+      this.setVolumeControlStream(3);
+      this.handler = new MyHandler(this);
+      Global.getInstance().setHandler((Handler)this.handler);
+      this.frameLayout = new FrameLayout(this);
+      Global.getInstance().setFrameLayout(this.frameLayout);
+      this.surfaceView = new MyFLSurfaceView(this);
+      this.surfaceView.setFocusableInTouchMode(true);
+      this.surfaceView.setRenderMode(0);
+      this.frameLayout.addView(this.surfaceView);
+      this.setContentView(this.frameLayout);
+      IntentFilter var3 = new IntentFilter("android.intent.action.USER_PRESENT");
 
-    @Override // android.app.Activity
-    public void onStart() {
-        super.onStart();
-        if (MySettings.getInstance().h) {
-            Inapp.b().d();
-        }
-    }
+      try {
+         this.registerReceiver(this.broadcastReceiver, var3);
+      } catch (RuntimeException var2) {
+      }
 
-    @Override // android.app.Activity
-    public void onStop() {
-        super.onStop();
-        if (MySettings.getInstance().h) {
-            Inapp.b().e();
-        }
-    }
+      //com.tapjoy.g.a(this, "44779599-c0d7-458a-9bd6-c743581e8bf7", "qswMlwAS3AaxYQ54v2pJ");
+      //com.tapjoy.g.a().a((ab)this);
+      //com.tapjoy.g.a().a((com.tapjoy.q)this);
+      A.a().onCreate();
+   }
+   @Override
+   protected Dialog onCreateDialog(int var1) {
+      AlertDialog var2;
+      if (Global.getInstance().getDialogs().size() > 0) {
+         var2 = ((DialogFragment) Global.getInstance().getDialogs().get(0)).b().create();
+      } else {
+         var2 = null;
+      }
 
+      return var2;
+   }
+   @Override
+   public void onDestroy() {
+      super.onDestroy();
+      this.unregisterReceiver(this.broadcastReceiver);
+      if (MySettings.getInstance().h) {
+         w.b().f();
+      }
+
+   }
+   @Override
+   public boolean onKeyDown(int var1, KeyEvent var2) {
+      boolean var3;
+      if (var2.getRepeatCount() == 0) {
+         switch (var1) {
+            case 4:
+               if (Global.getInstance().f().isBackPressValid()) {
+                  var3 = true;
+                  return var3;
+               }
+         }
+      }
+
+      var3 = super.onKeyDown(var1, var2);
+      return var3;
+   }
+   @Override
+   public void onPause() {
+      super.onPause();
+      A.a().setIsGameOpen(false);
+      A.a().onPause();
+   }
+   @Override
+   public void onRestart() {
+      super.onRestart();
+      //com.tapjoy.g.a().a((ab)this);
+      //com.tapjoy.g.a().a((com.tapjoy.q)this);
+      A.a().onRestart();
+   }
+   @Override
+   public void onResume() {
+      super.onResume();
+      this.getWindow().addFlags(1024);
+      if (!((KeyguardManager) Global.getInstance().getContext().getSystemService(Context.KEYGUARD_SERVICE)).inKeyguardRestrictedInputMode()) {
+         this.d = false;
+         A.a().setIsGameOpen(true);
+         this.handler.getMessages(0);
+         A.a().onResume();
+      } else {
+         this.d = true;
+      }
+
+   }
+   @Override
+   public void onStart() {
+      super.onStart();
+      if (MySettings.getInstance().h) {
+         w.b().d();
+      }
+
+   }
+   @Override
+   public void onStop() {
+      super.onStop();
+      if (MySettings.getInstance().h) {
+         w.b().e();
+      }
+
+   }
 }

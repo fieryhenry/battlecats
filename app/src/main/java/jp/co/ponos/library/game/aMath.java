@@ -1,40 +1,37 @@
 package jp.co.ponos.library.game;
 
-/* renamed from: jp.co.ponos.library.b.k */
-/* loaded from: classes.dex */
 public class aMath {
-    /* renamed from: a */
-    public static float sin(float f) {
-        return (float) Math.sin((3.141592653589793d * f) / 180.0d);
-    }
+   public static float sin(float var0) {
+      return (float)Math.sin(Math.PI * (double)var0 / 180.0);
+   }
 
-    /* renamed from: a */
-    public static float atan2(float f, float f2) {
-        return f >= 0.0f ? (float) ((Math.atan2(f, f2) * 180.0d) / 3.141592653589793d) : (float) (((Math.atan2(f, f2) * 180.0d) / 3.141592653589793d) + 360.0d);
-    }
+   public static float atan2(float var0, float var1) {
+      if (var0 >= 0.0F) {
+         var0 = (float)(Math.atan2((double)var0, (double)var1) * 180.0 / Math.PI);
+      } else {
+         var0 = (float)(Math.atan2((double)var0, (double)var1) * 180.0 / Math.PI + 360.0);
+      }
 
-    /* renamed from: a */
-    public static int rand() {
-        return Math.abs(aGlobal.instance.b.nextInt());
-    }
+      return var0;
+   }
 
-    /* renamed from: a */
-    public static int rand(int bound) {
-        return aGlobal.instance.b.nextInt(bound);
-    }
+   public static int rand() {
+      return Math.abs(Global.instance.b.nextInt());
+   }
 
-    /* renamed from: b */
-    public static float cos(float f) {
-        return (float) Math.cos((3.141592653589793d * f) / 180.0d);
-    }
+   public static int rand(int var0) {
+      return Global.instance.b.nextInt(var0);
+   }
 
-    /* renamed from: b */
-    public static float pow(float f, float f2) {
-        return (float) Math.pow(f, f2);
-    }
+   public static float cos(float var0) {
+      return (float)Math.cos(Math.PI * (double)var0 / 180.0);
+   }
 
-    /* renamed from: c */
-    public static float sqrt(float f) {
-        return (float) Math.sqrt(f);
-    }
+   public static float pow(float var0, float var1) {
+      return (float)Math.pow((double)var0, (double)var1);
+   }
+
+   public static float sqrt(float var0) {
+      return (float)Math.sqrt((double)var0);
+   }
 }
