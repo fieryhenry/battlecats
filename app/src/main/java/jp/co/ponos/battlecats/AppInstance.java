@@ -3737,7 +3737,7 @@ public class AppInstance extends Game {
                         var4 = 0;
 
                         for (var5 = 0; var5 < 10; ++var5) {
-                            var4 += cB[6] * this.bO[var5][6] / 100;
+                            var4 += initialTreasureBonuses[6] * this.treasureMultValues[var5][6] / 100;
                         }
 
                         var8 = this.deployedUnits[var1][var7];
@@ -3750,7 +3750,7 @@ public class AppInstance extends Game {
                         var3 = 0;
 
                         for (var4 = 0; var4 < 10; ++var4) {
-                            var3 += cB[7] * this.bO[var4][7] / 100;
+                            var3 += initialTreasureBonuses[7] * this.treasureMultValues[var4][7] / 100;
                         }
 
                         var8 = this.deployedUnits[var1][var7];
@@ -4304,8 +4304,8 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        this.a = Calendar.getInstance();
-        this.fv = this.a.get(1);
+        this.calendar = Calendar.getInstance();
+        this.fv = this.calendar.get(1);
 
         for (var1 = 0; var1 < this.getLength(this.battleStats); ++var1) {
             this.battleStats[var1] = 0;
@@ -4459,20 +4459,20 @@ public class AppInstance extends Game {
             if (this.aZ == 0) {
                 this.aV = 2;
                 this.currentEnergy = 100;
-                this.a = Calendar.getInstance();
+                this.calendar = Calendar.getInstance();
 
                 for (var1 = 0; var1 < 2; ++var1) {
-                    this.aN[var1] = this.a.get(1);
-                    this.aO[var1] = this.a.get(2);
-                    this.aP[var1] = this.a.get(5);
+                    this.years[var1] = this.calendar.get(1);
+                    this.months[var1] = this.calendar.get(2);
+                    this.days[var1] = this.calendar.get(5);
                 }
 
-                this.aN[1] = 0;
-                this.aO[1] = 0;
-                this.aP[1] = 0;
-                this.aR = this.a.get(11);
-                this.aS = this.a.get(12);
-                this.aT = this.a.get(13);
+                this.years[1] = 0;
+                this.months[1] = 0;
+                this.days[1] = 0;
+                this.hour = this.calendar.get(11);
+                this.minute = this.calendar.get(12);
+                this.second = this.calendar.get(13);
                 this.currentStamp = 0;
 
                 for (var1 = 0; var1 < this.getLength(this.stampClaimFlags); ++var1) {
@@ -5324,11 +5324,11 @@ public class AppInstance extends Game {
 
     }
 
-    int b(int var1, int var2, int var3, int var4, int var5, int var6) {
-        Calendar var7 = Calendar.getInstance();
-        var7.clear();
-        var7.set(var1, var2, var3, var4, var5, var6);
-        return (int)(var7.getTime().getTime() / 1000L);
+    int getTimeStamp(int year, int month, int day, int hour, int minute, int second) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.clear();
+        calendar.set(year, month, day, hour, minute, second);
+        return (int)(calendar.getTime().getTime() / 1000L);
     }
 
     @Override
@@ -5568,10 +5568,10 @@ public class AppInstance extends Game {
             this.fU = 0;
             this.battleStats[10] -= this.unitStats[this.slotCatIDs[slotID]][this.eV[slotID]][6] + this.unitStats[this.slotCatIDs[slotID]][this.eV[slotID]][6] * this.eQ * 50 / 100;
             this.rechargeTimes[slotID] = this.unitStats[this.slotCatIDs[slotID]][this.eV[slotID]][7];
-            this.rechargeTimes[slotID] -= ad[7] + this.baseSpecialSkillLevels[7] * 6;
+            this.rechargeTimes[slotID] -= initialSkillValues[7] + this.baseSpecialSkillLevels[7] * 6;
 
             for (int var3 = 0; var3 < 10; ++var3) {
-                this.rechargeTimes[slotID] -= cB[2] * this.bO[var3][2] / 100;
+                this.rechargeTimes[slotID] -= initialTreasureBonuses[2] * this.treasureMultValues[var3][2] / 100;
             }
 
             if (this.rechargeTimes[slotID] <= 60) {
@@ -5720,37 +5720,36 @@ public class AppInstance extends Game {
 
     }
 
-    boolean c(int var1, int var2, int var3, int var4, int var5, int var6) {
-        int var7 = this.b(this.aN[0], this.aO[0] + 1, this.aP[0], this.aR, this.aS, this.aT);
-        var7 = this.b(var1, var2 + 1, var3, var4, var5, var6) - var7;
-        if (var7 >= 60) {
-            this.aN[0] = var1;
-            this.aO[0] = var2;
-            this.aP[0] = var3;
-            this.aR = var4;
-            this.aS = var5;
-            this.aT = var6;
-            var1 = this.currentEnergy;
-            this.currentEnergy = var7 / 60 + var1;
-            var2 = 0;
+    boolean updateEnergy(int currentYear, int currentMonth, int currentDay, int currentHour, int currentMinute, int currentSecond) {
+        int previousTimeStamp = this.getTimeStamp(this.years[0], this.months[0] + 1, this.days[0], this.hour, this.minute, this.second);
+        int timeStampDelta = this.getTimeStamp(currentYear, currentMonth + 1, currentDay, currentHour, currentMinute, currentSecond) - previousTimeStamp;
+        if (timeStampDelta >= 60) {
+            this.years[0] = currentYear;
+            this.months[0] = currentMonth;
+            this.days[0] = currentDay;
+            this.hour = currentHour;
+            this.minute = currentMinute;
+            this.second = currentSecond;
+            this.currentEnergy += timeStampDelta / 60;
 
-            for (var1 = 0; var1 < 10; ++var1) {
-                var2 += cB[10] * this.bO[var1][10] / 100;
+            int treasureEnergyBonus = 0;
+            for (int treasureID = 0; treasureID < 10; ++treasureID) {
+                treasureEnergyBonus += initialTreasureBonuses[10] * this.treasureMultValues[treasureID][10] / 100;
             }
 
-            if (this.currentEnergy >= ad[10] + this.baseSpecialSkillLevels[10] * 10 + var2) {
-                this.currentEnergy = var2 + ad[10] + this.baseSpecialSkillLevels[10] * 10;
+            if (this.currentEnergy >= initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10 + treasureEnergyBonus) {
+                this.currentEnergy = treasureEnergyBonus + initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10;
             }
-        } else if (var7 <= -1 && var7 < -86400) {
-            Calendar var10 = Calendar.getInstance();
-            var10.set(var1, var2, var3, var4, var5, var6);
-            var10.add(5, 1);
-            this.aN[0] = var10.get(1);
-            this.aO[0] = var10.get(2);
-            this.aP[0] = var10.get(5);
-            this.aR = var10.get(11);
-            this.aS = var10.get(12);
-            this.aT = var10.get(13);
+        } else if (timeStampDelta < -86400) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(currentYear, currentMonth, currentDay, currentHour, currentMinute, currentSecond);
+            calendar.add(5, 1);
+            this.years[0] = calendar.get(1);
+            this.months[0] = calendar.get(2);
+            this.days[0] = calendar.get(5);
+            this.hour = calendar.get(11);
+            this.minute = calendar.get(12);
+            this.second = calendar.get(13);
         }
 
         return true;
@@ -6115,9 +6114,9 @@ public class AppInstance extends Game {
                         jp.co.ponos.battlecats.A.a().ac();
                     }
                 } else {
-                    this.a = Calendar.getInstance();
+                    this.calendar = Calendar.getInstance();
                     if (!this.gu) {
-                        this.c(this.a.get(1), this.a.get(2), this.a.get(5), this.a.get(11), this.a.get(12), this.a.get(13));
+                        this.updateEnergy(this.calendar.get(1), this.calendar.get(2), this.calendar.get(5), this.calendar.get(11), this.calendar.get(12), this.calendar.get(13));
                     }
 
                     ++this.hs;
@@ -6925,13 +6924,13 @@ public class AppInstance extends Game {
                                 this.battleStats[9] = this.battleStats[7] * (this.bN[0] * 5 + 10) / 10;
 
                                 for (var1 = 0; var1 < 10; ++var1) {
-                                    this.battleStats[9] += cB[1] * this.bO[var1][1] / 100;
+                                    this.battleStats[9] += initialTreasureBonuses[1] * this.treasureMultValues[var1][1] / 100;
                                 }
 
                                 this.battleStats[8] = this.battleStats[6] * (this.bN[0] + 10) / 10;
 
                                 for (var1 = 0; var1 < 10; ++var1) {
-                                    this.battleStats[8] += cB[0] * this.bO[var1][0] / 100;
+                                    this.battleStats[8] += initialTreasureBonuses[0] * this.treasureMultValues[var1][0] / 100;
                                 }
 
                                 this.battleStats[25] = 14;
@@ -6974,13 +6973,13 @@ public class AppInstance extends Game {
                                 this.battleStats[9] = this.battleStats[7] * (this.bN[0] * 5 + 10) / 10;
 
                                 for (var1 = 0; var1 < 10; ++var1) {
-                                    this.battleStats[9] += cB[1] * this.bO[var1][1] / 100;
+                                    this.battleStats[9] += initialTreasureBonuses[1] * this.treasureMultValues[var1][1] / 100;
                                 }
 
                                 this.battleStats[8] = this.battleStats[6] * (this.bN[0] + 10) / 10;
 
                                 for (var1 = 0; var1 < 10; ++var1) {
-                                    this.battleStats[8] += cB[0] * this.bO[var1][0] / 100;
+                                    this.battleStats[8] += initialTreasureBonuses[0] * this.treasureMultValues[var1][0] / 100;
                                 }
 
                                 this.battleStats[25] = 14;
@@ -7093,13 +7092,13 @@ public class AppInstance extends Game {
                                         this.battleStats[9] = this.battleStats[7] * (this.bN[0] * 5 + 10) / 10;
 
                                         for (var1 = 0; var1 < 10; ++var1) {
-                                            this.battleStats[9] += cB[1] * this.bO[var1][1] / 100;
+                                            this.battleStats[9] += initialTreasureBonuses[1] * this.treasureMultValues[var1][1] / 100;
                                         }
 
                                         this.battleStats[8] = this.battleStats[6] * (this.bN[0] + 10) / 10;
 
                                         for (var1 = 0; var1 < 10; ++var1) {
-                                            this.battleStats[8] += cB[0] * this.bO[var1][0] / 100;
+                                            this.battleStats[8] += initialTreasureBonuses[0] * this.treasureMultValues[var1][0] / 100;
                                         }
 
                                         this.battleStats[25] = 14;
@@ -7116,13 +7115,13 @@ public class AppInstance extends Game {
                                     this.battleStats[9] = this.battleStats[7] * (this.bN[0] * 5 + 10) / 10;
 
                                     for (var1 = 0; var1 < 10; ++var1) {
-                                        this.battleStats[9] += cB[1] * this.bO[var1][1] / 100;
+                                        this.battleStats[9] += initialTreasureBonuses[1] * this.treasureMultValues[var1][1] / 100;
                                     }
 
                                     this.battleStats[8] = this.battleStats[6] * (this.bN[0] + 10) / 10;
 
                                     for (var1 = 0; var1 < 10; ++var1) {
-                                        this.battleStats[8] += cB[0] * this.bO[var1][0] / 100;
+                                        this.battleStats[8] += initialTreasureBonuses[0] * this.treasureMultValues[var1][0] / 100;
                                     }
 
                                     this.battleStats[25] = 14;
@@ -7803,10 +7802,10 @@ public class AppInstance extends Game {
                                             var8 = 0;
 
                                             for (var1 = 0; var8 < 10; ++var8) {
-                                                var1 += cB[5] * this.bO[var8][5] / 100;
+                                                var1 += initialTreasureBonuses[5] * this.treasureMultValues[var8][5] / 100;
                                             }
 
-                                            var10 = ad[8];
+                                            var10 = initialSkillValues[8];
                                             var11 = this.baseSpecialSkillLevels[8];
                                             var8 = this.battleStats[10];
                                             this.battleStats[10] = (var10 + var11 * 5 + var1) * var9 / 100 + var8;
@@ -8291,10 +8290,10 @@ public class AppInstance extends Game {
                                                     var10 = 0;
 
                                                     for (var8 = 0; var10 < 10; ++var10) {
-                                                        var8 += cB[3] * this.bO[var10][3] / 100;
+                                                        var8 += initialTreasureBonuses[3] * this.treasureMultValues[var10][3] / 100;
                                                     }
 
-                                                    var11 = ad[9];
+                                                    var11 = initialSkillValues[9];
                                                     var10 = this.baseSpecialSkillLevels[9];
                                                     this.battleStats[17] = (var11 + var10 * 5 + var8) * this.battleStats[17] / 100;
                                                     if (this.eL[4] == 1) {
@@ -12635,7 +12634,7 @@ public class AppInstance extends Game {
                                 this.battleStats[15] = 0;
                                 this.battleStats[14] = 3;
                                 this.deployedUnits[0][0][1] = 0;
-                                this.deployedUnits[0][0][7] = ad[6] + this.baseSpecialSkillLevels[6] * 1000;
+                                this.deployedUnits[0][0][7] = initialSkillValues[6] + this.baseSpecialSkillLevels[6] * 1000;
                                 if (this.baseSpecialSkillLevels[6] >= 4 && this.baseSpecialSkillLevels[6] <= 7) {
                                     this.deployedUnits[0][0][7] = (this.baseSpecialSkillLevels[6] - 4) * 2000 + 6000;
                                 } else if (this.baseSpecialSkillLevels[6] >= 8) {
@@ -12645,7 +12644,7 @@ public class AppInstance extends Game {
                                 int[] var7;
                                 for (var1 = 0; var1 < 10; ++var1) {
                                     var7 = this.deployedUnits[0][0];
-                                    var7[7] += cB[4] * this.bO[var1][4] / 100;
+                                    var7[7] += initialTreasureBonuses[4] * this.treasureMultValues[var1][4] / 100;
                                 }
 
                                 this.deployedUnits[0][0][8] = this.deployedUnits[0][0][7];
@@ -12948,10 +12947,10 @@ public class AppInstance extends Game {
             if (var2) {
                 if (this.versionCode == 0) {
                     if (!this.textTextures[3].isLoaded()) {
-                        this.textTextures[3].drawText(String.format("%d%s%s", this.bO[this.eQ][var1], this.treasure2Text[8], this.treasure2Text[7]), "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[3].drawText(String.format("%d%s%s", this.treasureMultValues[this.eQ][var1], this.treasure2Text[8], this.treasure2Text[7]), "FONT_SYSTEM_BOLD", 30, 0);
                     }
                 } else if (this.versionCode == 1 && !this.textTextures[3].isLoaded()) {
-                    this.textTextures[3].drawText(String.format("%s%d%s", this.treasure2Text[7], this.bO[this.eQ][var1], this.treasure2Text[8]), "FONT_SYSTEM_BOLD", 30, 0);
+                    this.textTextures[3].drawText(String.format("%s%d%s", this.treasure2Text[7], this.treasureMultValues[this.eQ][var1], this.treasure2Text[8]), "FONT_SYSTEM_BOLD", 30, 0);
                 }
             }
 
@@ -13438,9 +13437,9 @@ public class AppInstance extends Game {
                             ++var3;
                         }
 
-                        if (var5 >= 0 && this.bO[this.eQ][var5] == 0) {
+                        if (var5 >= 0 && this.treasureMultValues[this.eQ][var5] == 0) {
                             this.U();
-                            if (this.bO[this.eQ][var5] != 0) {
+                            if (this.treasureMultValues[this.eQ][var5] != 0) {
                                 this.battleStats[19] = var5;
                             } else {
                                 this.U();
@@ -14822,11 +14821,11 @@ public class AppInstance extends Game {
             var2 = 0;
 
             for (var5 = 0; var5 < 10; ++var5) {
-                var2 += cB[10] * this.bO[var5][10] / 100;
+                var2 += initialTreasureBonuses[10] * this.treasureMultValues[var5][10] / 100;
             }
 
             var5 = this.currentEnergy;
-            if (var5 >= var2 + ad[10] + this.baseSpecialSkillLevels[10] * 10) {
+            if (var5 >= var2 + initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10) {
                 var1.setImageColor(128, 255, 0);
             } else {
                 var1.setImageColor(255, 255, 255);
@@ -19052,7 +19051,7 @@ public class AppInstance extends Game {
 
         var1.drawScaledImageI(this.uiTextures[7], this.scrollOffset[0] + 179 + this.fq[2] * this.boxScale + this.excessWidth / 2, 68, 0);
         if (this.textTextures[3].isLoaded()) {
-            var3 = Texture.measureText(this.treasure3Text[this.fq[2]][0], 30) + 30 + Texture.measureText(String.format("%d", this.bO[this.eQ][this.fq[2]]), 30) + Texture.measureText(this.treasure2Text[8], 30) + Texture.measureText(this.treasure2Text[7], 30);
+            var3 = Texture.measureText(this.treasure3Text[this.fq[2]][0], 30) + 30 + Texture.measureText(String.format("%d", this.treasureMultValues[this.eQ][this.fq[2]]), 30) + Texture.measureText(this.treasure2Text[8], 30) + Texture.measureText(this.treasure2Text[7], 30);
         } else {
             var3 = 0;
         }
@@ -21515,14 +21514,14 @@ public class AppInstance extends Game {
 
                                         for (var3 = 0; var3 < 10; ++var3) {
                                             var13 = this.battleStats;
-                                            var13[9] += cB[1] * this.bO[var3][1] / 100;
+                                            var13[9] += initialTreasureBonuses[1] * this.treasureMultValues[var3][1] / 100;
                                         }
 
                                         this.battleStats[8] = this.battleStats[6] * (this.bN[0] + 10) / 10;
 
                                         for (var3 = 0; var3 < 10; ++var3) {
                                             var13 = this.battleStats;
-                                            var13[8] += cB[0] * this.bO[var3][0] / 100;
+                                            var13[8] += initialTreasureBonuses[0] * this.treasureMultValues[var3][0] / 100;
                                         }
 
                                         this.battleStats[25] = 14;
@@ -21535,14 +21534,14 @@ public class AppInstance extends Game {
 
                                         for (var3 = 0; var3 < 10; ++var3) {
                                             var13 = this.battleStats;
-                                            var13[9] += cB[1] * this.bO[var3][1] / 100;
+                                            var13[9] += initialTreasureBonuses[1] * this.treasureMultValues[var3][1] / 100;
                                         }
 
                                         this.battleStats[8] = this.battleStats[6] * (this.bN[0] + 10) / 10;
 
                                         for (var3 = 0; var3 < 10; ++var3) {
                                             var13 = this.battleStats;
-                                            var13[8] += cB[0] * this.bO[var3][0] / 100;
+                                            var13[8] += initialTreasureBonuses[0] * this.treasureMultValues[var3][0] / 100;
                                         }
 
                                         this.battleStats[25] = 14;
@@ -23465,10 +23464,10 @@ public class AppInstance extends Game {
 
         for (quoteCount2 = 0; quoteCount2 < this.getLength(this.bE); ++quoteCount2) {
             if (this.bE[quoteCount2] == 0) {
-                if (this.aV >= 1 && this.a.get(1) * 600 + this.a.get(2) * 40 + this.a.get(5) > this.aN[1] * 600 + this.aO[1] * 40 + this.aP[1]) {
-                    this.aN[1] = this.a.get(1);
-                    this.aO[1] = this.a.get(2);
-                    this.aP[1] = this.a.get(5);
+                if (this.aV >= 1 && this.calendar.get(1) * 600 + this.calendar.get(2) * 40 + this.calendar.get(5) > this.years[1] * 600 + this.months[1] * 40 + this.days[1]) {
+                    this.years[1] = this.calendar.get(1);
+                    this.months[1] = this.calendar.get(2);
+                    this.days[1] = this.calendar.get(5);
                     this.bo = 1;
                 }
                 break;
@@ -24274,11 +24273,11 @@ public class AppInstance extends Game {
         var2 = 0;
 
         for (var1 = 0; var1 < 10; ++var1) {
-            var2 += cB[10] * this.bO[var1][10] / 100;
+            var2 += initialTreasureBonuses[10] * this.treasureMultValues[var1][10] / 100;
         }
 
-        if (this.currentEnergy >= ad[10] + this.baseSpecialSkillLevels[10] * 10 + var2) {
-            this.currentEnergy = var2 + ad[10] + this.baseSpecialSkillLevels[10] * 10;
+        if (this.currentEnergy >= initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10 + var2) {
+            this.currentEnergy = var2 + initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10;
         }
 
         for (var1 = 0; var1 < this.getLength(this.go); ++var1) {
@@ -24498,11 +24497,11 @@ public class AppInstance extends Game {
                         var2 = 0;
 
                         for (var4 = 0; var4 < 10; ++var4) {
-                            var2 += cB[10] * this.bO[var4][10] / 100;
+                            var2 += initialTreasureBonuses[10] * this.treasureMultValues[var4][10] / 100;
                         }
 
                         if (this.br[this.eQ][this.dI[2]] >= 1) {
-                            int var5 = ad[10];
+                            int var5 = initialSkillValues[10];
                             int var6 = this.baseSpecialSkillLevels[10];
                             int var7 = this.bG[this.dI[2]];
                             int var8 = X[this.eQ];
@@ -24534,7 +24533,7 @@ public class AppInstance extends Game {
                                 this.gw = 5;
                                 return var1;
                             }
-                        } else if (var2 + ad[10] + this.baseSpecialSkillLevels[10] * 10 >= this.bG[this.dI[2]] + X[this.eQ]) {
+                        } else if (var2 + initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10 >= this.bG[this.dI[2]] + X[this.eQ]) {
                             if (this.fx[0] > this.getLength(dv) - 1) {
                                 this.fx[0] = 0;
                                 this.screenTransition();
@@ -24629,10 +24628,10 @@ public class AppInstance extends Game {
                         var4 = 0;
 
                         for (var2 = 0; var2 < 10; ++var2) {
-                            var4 += cB[10] * this.bO[var2][10] / 100;
+                            var4 += initialTreasureBonuses[10] * this.treasureMultValues[var2][10] / 100;
                         }
 
-                        if (this.currentEnergy >= var4 + ad[10] + this.baseSpecialSkillLevels[10] * 10) {
+                        if (this.currentEnergy >= var4 + initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10) {
                             this.fx[16] = 0;
                             this.screenTransition();
                             this.gu = true;
@@ -25569,12 +25568,12 @@ public class AppInstance extends Game {
                             var7 = 0;
 
                             for (var4 = 0; var4 < 10; ++var4) {
-                                var7 += cB[10] * this.bO[var4][10] / 100;
+                                var7 += initialTreasureBonuses[10] * this.treasureMultValues[var4][10] / 100;
                             }
 
-                            var4 = ad[10] + this.baseSpecialSkillLevels[10] * 10 + var7 - this.currentEnergy;
+                            var4 = initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10 + var7 - this.currentEnergy;
                             if (this.versionCode == 0) {
-                                this.ah[this.getLength(this.warning2Text[7]) + 1].drawText(String.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.currentEnergy, this.warning1Text[11], var7 + ad[10] + this.baseSpecialSkillLevels[10] * 10, this.warning1Text[12], var4, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
+                                this.ah[this.getLength(this.warning2Text[7]) + 1].drawText(String.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.currentEnergy, this.warning1Text[11], var7 + initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10, this.warning1Text[12], var4, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
                             } else if (this.versionCode == 1) {
                                 this.ah[this.getLength(this.warning2Text[7]) + 1].drawText(String.format("%s%d%s", this.warning1Text[12], var4, this.warning1Text[13]), "FONT_SYSTEM_BOLD", 30, 1);
                             }
@@ -25598,12 +25597,12 @@ public class AppInstance extends Game {
                             var7 = 0;
 
                             for (var4 = 0; var4 < 10; ++var4) {
-                                var7 += cB[10] * this.bO[var4][10] / 100;
+                                var7 += initialTreasureBonuses[10] * this.treasureMultValues[var4][10] / 100;
                             }
 
-                            var4 = ad[10] + this.baseSpecialSkillLevels[10] * 10 + var7 - this.currentEnergy;
+                            var4 = initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10 + var7 - this.currentEnergy;
                             if (this.versionCode == 0) {
-                                this.ah[this.getLength(this.warning2Text[4]) + 1].drawText(String.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.currentEnergy, this.warning1Text[11], var7 + ad[10] + this.baseSpecialSkillLevels[10] * 10, this.warning1Text[12], var4, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
+                                this.ah[this.getLength(this.warning2Text[4]) + 1].drawText(String.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.currentEnergy, this.warning1Text[11], var7 + initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10, this.warning1Text[12], var4, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
                             } else if (this.versionCode == 1) {
                                 this.ah[this.getLength(this.warning2Text[4]) + 1].drawText(String.format("%s%d%s", this.warning1Text[12], var4, this.warning1Text[13]), "FONT_SYSTEM_BOLD", 30, 1);
                             }
@@ -25617,12 +25616,12 @@ public class AppInstance extends Game {
                             var7 = 0;
 
                             for (var4 = 0; var4 < 10; ++var4) {
-                                var7 += cB[10] * this.bO[var4][10] / 100;
+                                var7 += initialTreasureBonuses[10] * this.treasureMultValues[var4][10] / 100;
                             }
 
-                            var4 = ad[10] + this.baseSpecialSkillLevels[10] * 10 + var7 - this.currentEnergy;
+                            var4 = initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10 + var7 - this.currentEnergy;
                             if (this.versionCode == 0) {
-                                this.ah[this.getLength(this.warning2Text[5]) + 1].drawText(String.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.currentEnergy, this.warning1Text[11], var7 + ad[10] + this.baseSpecialSkillLevels[10] * 10, this.warning1Text[12], var4, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
+                                this.ah[this.getLength(this.warning2Text[5]) + 1].drawText(String.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.currentEnergy, this.warning1Text[11], var7 + initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10, this.warning1Text[12], var4, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
                             } else if (this.versionCode == 1) {
                                 this.ah[this.getLength(this.warning2Text[5]) + 1].drawText(String.format("%s%d%s", this.warning1Text[12], var4, this.warning1Text[13]), "FONT_SYSTEM_BOLD", 30, 1);
                             }
@@ -26092,10 +26091,10 @@ public class AppInstance extends Game {
                                             var4 = 0;
 
                                             for (var7 = 0; var7 < 10; ++var7) {
-                                                var4 += cB[10] * this.bO[var7][10] / 100;
+                                                var4 += initialTreasureBonuses[10] * this.treasureMultValues[var7][10] / 100;
                                             }
 
-                                            this.currentEnergy = var4 + ad[10] + this.baseSpecialSkillLevels[10] * 10;
+                                            this.currentEnergy = var4 + initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10;
                                             ++this.hG;
                                             if (this.hG >= 999999999) {
                                                 this.hG = 999999999;
@@ -27314,13 +27313,13 @@ public class AppInstance extends Game {
                                 var4 = 0;
 
                                 for (var3 = 0; var3 < 10; ++var3) {
-                                    var4 += cB[10] * this.bO[var3][10] / 100;
+                                    var4 += initialTreasureBonuses[10] * this.treasureMultValues[var3][10] / 100;
                                 }
 
                                 if (this.fS[2] - this.gB[0] + 1 == 10) {
                                     this.currentEnergy += 10;
-                                    if (this.currentEnergy >= ad[10] + this.baseSpecialSkillLevels[10] * 10 + var4) {
-                                        this.currentEnergy = var4 + ad[10] + this.baseSpecialSkillLevels[10] * 10;
+                                    if (this.currentEnergy >= initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10 + var4) {
+                                        this.currentEnergy = var4 + initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10;
                                     }
                                 }
 

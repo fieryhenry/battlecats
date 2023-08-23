@@ -25,9 +25,9 @@ public class Game extends MyApplicationBase {
     static int[] aa = new int[11];
     static int[] ab = new int[4];
     static int[][] ac = new int[10][10];
-    static int[] ad = new int[11];
+    static int[] initialSkillValues = new int[11];
     static int[] cA = new int[11];
-    static int[] cB = new int[11];
+    static int[] initialTreasureBonuses = new int[11];
     static int[] cC = new int[11];
     static int[][] ck = new int[48][4];
     static int[][] cl = new int[48][2];
@@ -81,7 +81,7 @@ public class Game extends MyApplicationBase {
     int scene2;
     int V;
     int W;
-    Calendar a;
+    Calendar calendar;
     ModelAnimation[][] aA = new ModelAnimation[4][2];
     Texture[] aC = new Texture[1];
     Model[] aD = new Model[2];
@@ -94,13 +94,13 @@ public class Game extends MyApplicationBase {
     ModelAnimation[] aK = new ModelAnimation[2];
     int catfood;
     int currentEnergy;
-    int[] aN = new int[2];
-    int[] aO = new int[2];
-    int[] aP = new int[2];
+    int[] years = new int[2];
+    int[] months = new int[2];
+    int[] days = new int[2];
     double aQ;
-    int aR;
-    int aS;
-    int aT;
+    int hour;
+    int minute;
+    int second;
     int aU;
     int aV;
     int aW;
@@ -144,7 +144,7 @@ public class Game extends MyApplicationBase {
     int[] bL = new int[26];
     int[] battleStats = new int[34];
     int[] bN = new int[3];
-    int[][] bO = new int[10][11];
+    int[][] treasureMultValues = new int[10][11];
     int bP;
     int[][] bQ = new int[20][2];
     int[][][] deployedUnits = new int[2][51][38];
@@ -582,8 +582,7 @@ public class Game extends MyApplicationBase {
         var7 = new int[]{500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000};
         var8 = new int[]{500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000};
         ac = new int[][]{{500, 1000, 2000, 4000, 8000, 12000, 16000, 20000, 24000, 28000}, var1, {250, 500, 1000, 2000, 4000, 6000, 8000, 10000, 12000, 15000}, var2, var3, var4, var5, var6, var7, var8};
-        var1 = new int[]{100, 1500, 3, 0, 25, 10000, 1000, 0, 100, 100, 100};
-        ad = var1;
+        initialSkillValues = new int[]{100, 1500, 3, 0, 25, 10000, 1000, 0, 100, 100, 100};
         var1 = new int[]{4, 4, 4, 4, 3, 3, 2, 2, 1, 1, 0, 0};
         cx = var1;
         cy = new int[]{7, 4, 5, 7, 3, 3, 3, 7, 6, 1, 2};
@@ -600,7 +599,7 @@ public class Game extends MyApplicationBase {
         cz = new int[][]{var2, var3, var4, var5, var6, var7, var8, {13, 12, 11, 10, 9, 8, 7}, var9, var1, var10};
         var1 = new int[]{9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 10};
         cA = var1;
-        cB = new int[]{100, 100000, 30, 50, 7000, 50, 50, 50, 500, 150, 60};
+        initialTreasureBonuses = new int[]{100, 100000, 30, 50, 7000, 50, 50, 50, 500, 150, 60};
         var1 = new int[]{-960, -960, -448, -415, -382, -319, -256, -192, -128, -64, 0, -8, -16, -18, -20, -18, -16, -8, 0, 0, -4, -4, 0, 0};
         ds = var1;
         dt = new int[]{2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 11, 16, 12, 17, 24, 13, 14, 20, 18, 19, 23, 25, 26};
@@ -720,7 +719,7 @@ public class Game extends MyApplicationBase {
     void U() {
         for (int var1 = 0; var1 < 10; ++var1) {
             for (int var2 = 0; var2 < this.getLength(cz); ++var2) {
-                this.bO[var1][var2] = 0;
+                this.treasureMultValues[var1][var2] = 0;
                 int var3 = 0;
                 int var4 = 0;
 
@@ -746,7 +745,7 @@ public class Game extends MyApplicationBase {
                 }
 
                 if (var5 != 0) {
-                    this.bO[var1][var2] = var5 * 100 / (cy[var2] * 3);
+                    this.treasureMultValues[var1][var2] = var5 * 100 / (cy[var2] * 3);
                 }
             }
         }
@@ -913,8 +912,8 @@ public class Game extends MyApplicationBase {
 
         this.battleStats[14] = 3;
         this.battleStats[11] = this.baseSpecialSkillLevels[4];
-        this.battleStats[6] = ad[4] + this.battleStats[11] * 10;
-        this.battleStats[7] = ad[5] + this.baseSpecialSkillLevels[5] * 10000;
+        this.battleStats[6] = initialSkillValues[4] + this.battleStats[11] * 10;
+        this.battleStats[7] = initialSkillValues[5] + this.baseSpecialSkillLevels[5] * 10000;
 
         for (var1 = 0; var1 < this.getLength(this.bN); ++var1) {
             this.bN[var1] = 0;
@@ -928,14 +927,14 @@ public class Game extends MyApplicationBase {
 
         for (var1 = 0; var1 < 10; ++var1) {
             var4 = this.battleStats;
-            var4[9] += cB[1] * this.bO[var1][1] / 100;
+            var4[9] += initialTreasureBonuses[1] * this.treasureMultValues[var1][1] / 100;
         }
 
         this.battleStats[8] = this.battleStats[6] * (this.bN[0] + 10) / 10;
 
         for (var1 = 0; var1 < 10; ++var1) {
             var4 = this.battleStats;
-            var4[8] += cB[0] * this.bO[var1][0] / 100;
+            var4[8] += initialTreasureBonuses[0] * this.treasureMultValues[var1][0] / 100;
         }
 
         int var3;
@@ -953,8 +952,8 @@ public class Game extends MyApplicationBase {
         this.deployedUnits[0][0][3] = this.bV[0] - 3200;
         this.deployedUnits[0][0][4] = 4400;
         this.deployedUnits[0][0][5] = 0;
-        this.deployedUnits[0][0][6] = ad[2] + this.baseSpecialSkillLevels[2] * 1;
-        this.deployedUnits[0][0][7] = ad[6] + this.baseSpecialSkillLevels[6] * 1000;
+        this.deployedUnits[0][0][6] = initialSkillValues[2] + this.baseSpecialSkillLevels[2] * 1;
+        this.deployedUnits[0][0][7] = initialSkillValues[6] + this.baseSpecialSkillLevels[6] * 1000;
         if (this.baseSpecialSkillLevels[6] >= 4 && this.baseSpecialSkillLevels[6] <= 7) {
             this.deployedUnits[0][0][7] = (this.baseSpecialSkillLevels[6] - 4) * 2000 + 6000;
         } else if (this.baseSpecialSkillLevels[6] >= 8) {
@@ -963,17 +962,17 @@ public class Game extends MyApplicationBase {
 
         for (var1 = 0; var1 < 10; ++var1) {
             var4 = this.deployedUnits[0][0];
-            var4[7] += cB[4] * this.bO[var1][4] / 100;
+            var4[7] += initialTreasureBonuses[4] * this.treasureMultValues[var1][4] / 100;
         }
 
         this.deployedUnits[0][0][8] = this.deployedUnits[0][0][7];
         this.deployedUnits[0][0][9] = 0;
         this.deployedUnits[0][0][10] = 0;
-        this.deployedUnits[0][0][11] = ad[1] + this.baseSpecialSkillLevels[1] * 50 - (ad[3] + this.baseSpecialSkillLevels[3] * 50) + this.eQ * 450;
+        this.deployedUnits[0][0][11] = initialSkillValues[1] + this.baseSpecialSkillLevels[1] * 50 - (initialSkillValues[3] + this.baseSpecialSkillLevels[3] * 50) + this.eQ * 450;
 
         for (var1 = 0; var1 < 10; ++var1) {
             var4 = this.deployedUnits[0][0];
-            var4[11] -= cB[9] * this.bO[var1][9] / 100;
+            var4[11] -= initialTreasureBonuses[9] * this.treasureMultValues[var1][9] / 100;
         }
 
         if (this.deployedUnits[0][0][11] <= 60) {
@@ -984,11 +983,11 @@ public class Game extends MyApplicationBase {
         this.deployedUnits[0][0][13] = 0;
         this.deployedUnits[0][0][14] = 0;
         this.deployedUnits[0][0][15] = 1800;
-        this.deployedUnits[0][0][16] = ad[0] + this.baseSpecialSkillLevels[0] * 50;
+        this.deployedUnits[0][0][16] = initialSkillValues[0] + this.baseSpecialSkillLevels[0] * 50;
 
         for (var1 = 0; var1 < 10; ++var1) {
             var4 = this.deployedUnits[0][0];
-            var4[16] += cB[8] * this.bO[var1][8] / 100;
+            var4[16] += initialTreasureBonuses[8] * this.treasureMultValues[var1][8] / 100;
         }
 
         this.deployedUnits[1][0][0] = 1;
@@ -1906,11 +1905,11 @@ public class Game extends MyApplicationBase {
     void a(TextureRenderer var1, int var2, int var3, int var4) {
         this.eH[2] = this.unitStats[this.slotCatIDs[var2]][this.eV[var2]][7];
         int[] var5 = this.eH;
-        var5[2] -= ad[7] + this.baseSpecialSkillLevels[7] * 6;
+        var5[2] -= initialSkillValues[7] + this.baseSpecialSkillLevels[7] * 6;
 
         for (int var6 = 0; var6 < 10; ++var6) {
             var5 = this.eH;
-            var5[2] -= cB[2] * this.bO[var6][2] / 100;
+            var5[2] -= initialTreasureBonuses[2] * this.treasureMultValues[var6][2] / 100;
         }
 
         if (this.eH[2] <= 60) {
@@ -2201,22 +2200,22 @@ public class Game extends MyApplicationBase {
                 this.currentEnergy = stream.readInt();
 
                 int var4;
-                for (var4 = 0; var4 < this.getLength(this.aN); ++var4) {
-                    this.aN[var4] = stream.readInt();
+                for (var4 = 0; var4 < this.getLength(this.years); ++var4) {
+                    this.years[var4] = stream.readInt();
                 }
 
-                for (var4 = 0; var4 < this.getLength(this.aO); ++var4) {
-                    this.aO[var4] = stream.readInt();
+                for (var4 = 0; var4 < this.getLength(this.months); ++var4) {
+                    this.months[var4] = stream.readInt();
                 }
 
-                for (var4 = 0; var4 < this.getLength(this.aP); ++var4) {
-                    this.aP[var4] = stream.readInt();
+                for (var4 = 0; var4 < this.getLength(this.days); ++var4) {
+                    this.days[var4] = stream.readInt();
                 }
 
                 this.aQ = stream.readDouble();
-                this.aR = stream.readInt();
-                this.aS = stream.readInt();
-                this.aT = stream.readInt();
+                this.hour = stream.readInt();
+                this.minute = stream.readInt();
+                this.second = stream.readInt();
                 this.aU = stream.readInt();
                 this.aV = stream.readInt();
                 this.aW = stream.readInt();
@@ -2368,22 +2367,22 @@ public class Game extends MyApplicationBase {
             var2.writeInt(this.currentEnergy);
 
             int var3;
-            for (var3 = 0; var3 < this.getLength(this.aN); ++var3) {
-                var2.writeInt(this.aN[var3]);
+            for (var3 = 0; var3 < this.getLength(this.years); ++var3) {
+                var2.writeInt(this.years[var3]);
             }
 
-            for (var3 = 0; var3 < this.getLength(this.aO); ++var3) {
-                var2.writeInt(this.aO[var3]);
+            for (var3 = 0; var3 < this.getLength(this.months); ++var3) {
+                var2.writeInt(this.months[var3]);
             }
 
-            for (var3 = 0; var3 < this.getLength(this.aP); ++var3) {
-                var2.writeInt(this.aP[var3]);
+            for (var3 = 0; var3 < this.getLength(this.days); ++var3) {
+                var2.writeInt(this.days[var3]);
             }
 
             var2.writeDouble(this.aQ);
-            var2.writeInt(this.aR);
-            var2.writeInt(this.aS);
-            var2.writeInt(this.aT);
+            var2.writeInt(this.hour);
+            var2.writeInt(this.minute);
+            var2.writeInt(this.second);
             var2.writeInt(this.aU);
             var2.writeInt(this.aV);
             var2.writeInt(this.aW);
