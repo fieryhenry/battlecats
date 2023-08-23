@@ -1,6 +1,5 @@
 package jp.co.ponos.battlecats;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import jp.co.ponos.library.game.Model;
@@ -429,9 +428,7 @@ public class Game extends MyApplicationBase {
     int hG;
     int hH;
     boolean isScrolling;
-    SimpleDateFormat hJ = new SimpleDateFormat("yyyyMMddHHmmss");
-    SimpleDateFormat hK = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-    int[] hL = new int[]{5, 5, 5, 5, 5, 1, 5, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 5, 5, 5, 5, 5, 2, 2, 2, 2, 2, 2, 2, 2};
+    int[] hJ = new int[]{5, 5, 5, 5, 5, 1, 5, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 5, 5, 5, 5, 5, 2, 2, 2, 2, 2, 2, 2, 2};
     boolean[] ha = new boolean[2];
     float[] hb = new float[3];
     int[] hc = new int[29];

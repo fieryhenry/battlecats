@@ -1,10 +1,6 @@
 package jp.co.ponos.battlecats;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.ParsePosition;
 import java.util.Calendar;
-import java.util.Date;
 
 import jp.co.ponos.library.game.BrowserOption;
 import jp.co.ponos.library.game.Model;
@@ -3794,10 +3790,6 @@ public class AppInstance extends Game {
         return var7;
     }
 
-    int a(Date var1) {
-        return (int) (var1.getTime() / 1000L);
-    }
-
     String a(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int[] var13, int var14, int var15, int var16, int[] var17, int[] var18) {
         aStringBuffer var19 = new aStringBuffer();
         var19.append(String.format("log=1&l=%s&sts=%d&rd=%d&ps=%d&aris=%d&cfrd=%d&cfps=%d&gf=%d&inv=%d&fb=%d&tw=%d&ln=%d&rv=%d", MyUtility.getString("lang"), var1, var2 + 1, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12));
@@ -3839,7 +3831,7 @@ public class AppInstance extends Game {
             this.versionCode = 1;
         }
 
-        Sound.getInstance().loadMany(this.hL, 43);
+        Sound.getInstance().loadMany(this.hJ, 43);
         AssetTextStream stream = new AssetTextStream();
         if (stream.openRead(String.format("OP_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.openingText); ++var1) {
@@ -5333,14 +5325,10 @@ public class AppInstance extends Game {
     }
 
     int b(int var1, int var2, int var3, int var4, int var5, int var6) {
-        String var7 = String.format("%04d%02d%02d%02d%02d%02d", var1, var2, var3, var4, var5, var6);
-        Date var8 = this.hJ.parse(var7, new ParsePosition(0));
-        var7 = this.hK.format(var8);
-        try {
-            return this.a(DateFormat.getDateTimeInstance().parse(var7));
-        } catch (ParseException exc) {
-            throw new RuntimeException(exc);
-        }
+        Calendar var7 = Calendar.getInstance();
+        var7.clear();
+        var7.set(var1, var2, var3, var4, var5, var6);
+        return (int)(var7.getTime().getTime() / 1000L);
     }
 
     @Override
@@ -5733,43 +5721,8 @@ public class AppInstance extends Game {
     }
 
     boolean c(int var1, int var2, int var3, int var4, int var5, int var6) {
-        int var7 = 0;
-
-        int var8;
-        int var9;
-        label45:
-        {
-            label44:
-            {
-                label49:
-                {
-                    boolean var10001;
-                    try {
-                        var8 = this.b(this.aN[0], this.aO[0] + 1, this.aP[0], this.aR, this.aS, this.aT);
-                    } catch (Exception var12) {
-                        var10001 = false;
-                        break label49;
-                    }
-
-                    var7 = var8;
-
-                    try {
-                        var9 = this.b(var1, var2 + 1, var3, var4, var5, var6);
-                        break label44;
-                    } catch (Exception var11) {
-                        var10001 = false;
-                    }
-                }
-
-                var9 = 0;
-                var8 = var7;
-                break label45;
-            }
-
-            var9 = var9;
-        }
-
-        var7 = var9 - var8;
+        int var7 = this.b(this.aN[0], this.aO[0] + 1, this.aP[0], this.aR, this.aS, this.aT);
+        var7 = this.b(var1, var2 + 1, var3, var4, var5, var6) - var7;
         if (var7 >= 60) {
             this.aN[0] = var1;
             this.aO[0] = var2;
