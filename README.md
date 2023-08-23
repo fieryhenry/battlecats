@@ -7,14 +7,16 @@ decompilation. [JADX](https://github.com/skylot/jadx) was used to fill in some
 of the gaps in the decompilation as well as to create the initial Gradle
 project.
 
-Original APK: <https://apkfree.com/download/battle-cats-1.0.0>. It is a 999999
-cat food APK, but all of that code has been removed
+Original 1.0.0 APK: <https://apkfree.com/download/battle-cats-1.0.0>. It is a
+999999 cat food APK, but all of that code has been removed
 
-Current Version: `JP 1.0.0`
+Original 1.0.1 APK: <https://apkfree.com/download/battle-cats-1.0.1>
 
-Version is 1.0.0 because it has the least amount of code and so it is the
-easiest version to get a compiling and functional app. Once this version is
-fully working we can move on to adding code for later versions.
+Current Version: `JP 1.0.1`
+
+APKs started from version 1.0.0 because it had the least amount of code and so
+it was the easiest version to get a compiling and functional app. Once each
+version is fully working we can move on to adding code for later versions.
 
 Discord: <https://discord.gg/DvmMgvn5ZB> (The server is the same one which is
 used for save editing as I haven't made a modding/decompilation specific one
