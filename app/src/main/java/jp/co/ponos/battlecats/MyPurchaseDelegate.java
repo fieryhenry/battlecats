@@ -16,7 +16,7 @@ public class MyPurchaseDelegate extends PurchaseDelegate {
       boolean var3;
       if (A.a().getSceneType() == SceneType.BATTLE) {
          var3 = var2;
-         if (A.a().bM[14] == 1) {
+         if (A.a().battleStats[14] == 1) {
             return var3;
          }
       }

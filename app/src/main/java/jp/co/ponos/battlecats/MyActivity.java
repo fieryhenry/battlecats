@@ -58,7 +58,7 @@ public class MyActivity extends Activity { //implements ab, ac, com.tapjoy.q {
 
    public void a(String var1, int var2) {
       var1 = MyUtility.getString("catfoodtapjoy_txt");
-      if ((A.a().getSceneType() != SceneType.BATTLE || A.a().bM[14] != 1) && A.a().getSceneType() != SceneType.ENDING && (A.a().getSceneType() != SceneType.MAIN || A.a().getScreenType() != ScreenType.STAMP) && var2 > 0) {
+      if ((A.a().getSceneType() != SceneType.BATTLE || A.a().battleStats[14] != 1) && A.a().getSceneType() != SceneType.ENDING && (A.a().getSceneType() != SceneType.MAIN || A.a().getScreenType() != ScreenType.STAMP) && var2 > 0) {
          AppInstance var3 = A.a();
          var3.catfood += var2;
          MyUtility.getInstance().addButton(String.format(var1, var2));

@@ -161,13 +161,13 @@ class MyPresentRenderer extends WebClientViewer {
             MyUtility.getInstance().runFunction("setDefaultText('" + var1 + "')");
          }
       } else if (A.a().menuType == 5) {
-         if (A.a().bM[0] >= 48) {
+         if (A.a().battleStats[0] >= 48) {
             String var3 = aString.format("%s\\n%s", MyUtility.getString("facebook_txt2"), MyUtility.getString("url_abbr"));
             if (aString.indexOf(var1, "type=facebook") >= 0) {
                MyUtility.getInstance().runFunction("setDefaultText('" + var3 + "')");
             }
          } else if (aString.indexOf(var1, "type=facebook") >= 0) {
-            var1 = aString.format(MyUtility.getString("facebook_txt1"), A.a().stageNamesText[Game.cm[A.a().bM[0]]], MyUtility.getString("url_abbr"));
+            var1 = aString.format(MyUtility.getString("facebook_txt1"), A.a().stageNamesText[Game.cm[A.a().battleStats[0]]], MyUtility.getString("url_abbr"));
             MyUtility.getInstance().runFunction("setDefaultText('" + var1 + "')");
          }
       } else if (A.a().menuType == 6 && aString.indexOf(var1, "type=line") >= 0) {

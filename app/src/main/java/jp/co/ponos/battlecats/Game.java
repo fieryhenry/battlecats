@@ -143,18 +143,18 @@ public class Game extends MyApplicationBase {
     int[][] bJ = new int[26][16];
     int[] bK = new int[26];
     int[] bL = new int[26];
-    int[] bM = new int[34];
+    int[] battleStats = new int[34];
     int[] bN = new int[3];
     int[][] bO = new int[10][11];
     int bP;
     int[][] bQ = new int[20][2];
-    int[][][] bR = new int[2][51][38];
+    int[][][] deployedUnits = new int[2][51][38];
     int[][][] bS = new int[2][56][3];
     int[][] bT = new int[6][5];
     int[] bU = new int[2];
     int[] bV = new int[6];
     int[][] bW = new int[20][8];
-    int[][][] bX = new int[28][2][14];
+    int[][][] unitStats = new int[28][2][14];
     int[][] bY = new int[32][13];
     int[][] bZ = new int[52][2];
     int ba;
@@ -167,7 +167,7 @@ public class Game extends MyApplicationBase {
     int bh;
     int bi;
     int bj;
-    int[] bk = new int[10];
+    int[] slotCatIDs = new int[10];
     int currentStamp;
     int[] stampClaimFlags = new int[30];
     int bn;
@@ -288,7 +288,7 @@ public class Game extends MyApplicationBase {
     int eS;
     int[] eU = new int[10];
     int[] eV = new int[10];
-    int[] eW = new int[10];
+    int[] rechargeTimes = new int[10];
     boolean eX;
     int pointerID;
     int eZ;
@@ -444,7 +444,7 @@ public class Game extends MyApplicationBase {
     int[][] hj = new int[10][4];
     int[] hk = new int[10];
     int hl;
-    int[] hm = new int[4];
+    int[] catGodFlags = new int[4];
     int[][] ho = new int[31][2];
     int hp;
     int[] hq = new int[4];
@@ -777,8 +777,8 @@ public class Game extends MyApplicationBase {
         this.gM = 0;
 
         for (var1 = 0; var1 < 10; ++var1) {
-            if (this.bk[var1] - 2 >= 0) {
-                this.eV[var1] = this.bw[this.bk[var1] - 2];
+            if (this.slotCatIDs[var1] - 2 >= 0) {
+                this.eV[var1] = this.bw[this.slotCatIDs[var1] - 2];
             } else {
                 this.eV[var1] = 0;
             }
@@ -787,7 +787,7 @@ public class Game extends MyApplicationBase {
         int var2 = 0;
 
         for (var1 = 0; var1 < 10; ++var1) {
-            if (this.bk[var1] != -1) {
+            if (this.slotCatIDs[var1] != -1) {
                 ++var2;
             }
         }
@@ -813,8 +813,8 @@ public class Game extends MyApplicationBase {
             this.shouldPlayButtonSelect[var1] = false;
         }
 
-        for (var1 = 0; var1 < this.getLength(this.bM); ++var1) {
-            this.bM[var1] = 0;
+        for (var1 = 0; var1 < this.getLength(this.battleStats); ++var1) {
+            this.battleStats[var1] = 0;
         }
 
         for (var1 = 0; var1 < this.getLength(this.eH); ++var1) {
@@ -885,39 +885,39 @@ public class Game extends MyApplicationBase {
             this.bp[this.eQ] = this.dH;
         }
 
-        this.bM[0] = this.dH;
+        this.battleStats[0] = this.dH;
         byte var5;
-        if (this.eQ == 1 && this.bM[0] == 47) {
+        if (this.eQ == 1 && this.battleStats[0] == 47) {
             var5 = 2;
-        } else if (this.eQ == 2 && this.bM[0] == 47) {
+        } else if (this.eQ == 2 && this.battleStats[0] == 47) {
             var5 = 3;
         } else {
             var5 = 0;
         }
 
-        this.loadStageStats(var5 + this.bM[0]);
-        this.bM[20] = cm[this.bM[0]];
-        this.bM[5] = this.bV[0] - 9600;
-        this.bM[15] = 0;
+        this.loadStageStats(var5 + this.battleStats[0]);
+        this.battleStats[20] = cm[this.battleStats[0]];
+        this.battleStats[5] = this.bV[0] - 9600;
+        this.battleStats[15] = 0;
 
         for (var1 = 100; var1 >= 0; --var1) {
             if (this.bV[0] * var1 / 100 < 9600) {
-                this.bM[28] = var1 + 1;
+                this.battleStats[28] = var1 + 1;
                 break;
             }
         }
 
         this.z = 10000;
-        this.bM[10] = 0;
+        this.battleStats[10] = 0;
 
-        for (var1 = 0; var1 < this.getLength(this.eW); ++var1) {
-            this.eW[var1] = 0;
+        for (var1 = 0; var1 < this.getLength(this.rechargeTimes); ++var1) {
+            this.rechargeTimes[var1] = 0;
         }
 
-        this.bM[14] = 3;
-        this.bM[11] = this.baseSpecialSkillLevels[4];
-        this.bM[6] = ad[4] + this.bM[11] * 10;
-        this.bM[7] = ad[5] + this.baseSpecialSkillLevels[5] * 10000;
+        this.battleStats[14] = 3;
+        this.battleStats[11] = this.baseSpecialSkillLevels[4];
+        this.battleStats[6] = ad[4] + this.battleStats[11] * 10;
+        this.battleStats[7] = ad[5] + this.baseSpecialSkillLevels[5] * 10000;
 
         for (var1 = 0; var1 < this.getLength(this.bN); ++var1) {
             this.bN[var1] = 0;
@@ -927,83 +927,83 @@ public class Game extends MyApplicationBase {
             this.bN[0] = 7;
         }
 
-        this.bM[9] = this.bM[7] * (this.bN[0] * 5 + 10) / 10;
+        this.battleStats[9] = this.battleStats[7] * (this.bN[0] * 5 + 10) / 10;
 
         for (var1 = 0; var1 < 10; ++var1) {
-            var4 = this.bM;
+            var4 = this.battleStats;
             var4[9] += cB[1] * this.bO[var1][1] / 100;
         }
 
-        this.bM[8] = this.bM[6] * (this.bN[0] + 10) / 10;
+        this.battleStats[8] = this.battleStats[6] * (this.bN[0] + 10) / 10;
 
         for (var1 = 0; var1 < 10; ++var1) {
-            var4 = this.bM;
+            var4 = this.battleStats;
             var4[8] += cB[0] * this.bO[var1][0] / 100;
         }
 
         int var3;
-        for (var1 = 0; var1 < this.getLength(this.bR); ++var1) {
-            for (var2 = 0; var2 < this.getLength(this.bR[var1]); ++var2) {
-                for (var3 = 0; var3 < this.getLength(this.bR[var1][var2]); ++var3) {
-                    this.bR[var1][var2][var3] = 0;
+        for (var1 = 0; var1 < this.getLength(this.deployedUnits); ++var1) {
+            for (var2 = 0; var2 < this.getLength(this.deployedUnits[var1]); ++var2) {
+                for (var3 = 0; var3 < this.getLength(this.deployedUnits[var1][var2]); ++var3) {
+                    this.deployedUnits[var1][var2][var3] = 0;
                 }
             }
         }
 
-        this.bR[0][0][0] = 1;
-        this.bR[0][0][1] = 0;
-        this.bR[0][0][2] = 0;
-        this.bR[0][0][3] = this.bV[0] - 3200;
-        this.bR[0][0][4] = 4400;
-        this.bR[0][0][5] = 0;
-        this.bR[0][0][6] = ad[2] + this.baseSpecialSkillLevels[2] * 1;
-        this.bR[0][0][7] = ad[6] + this.baseSpecialSkillLevels[6] * 1000;
+        this.deployedUnits[0][0][0] = 1;
+        this.deployedUnits[0][0][1] = 0;
+        this.deployedUnits[0][0][2] = 0;
+        this.deployedUnits[0][0][3] = this.bV[0] - 3200;
+        this.deployedUnits[0][0][4] = 4400;
+        this.deployedUnits[0][0][5] = 0;
+        this.deployedUnits[0][0][6] = ad[2] + this.baseSpecialSkillLevels[2] * 1;
+        this.deployedUnits[0][0][7] = ad[6] + this.baseSpecialSkillLevels[6] * 1000;
         if (this.baseSpecialSkillLevels[6] >= 4 && this.baseSpecialSkillLevels[6] <= 7) {
-            this.bR[0][0][7] = (this.baseSpecialSkillLevels[6] - 4) * 2000 + 6000;
+            this.deployedUnits[0][0][7] = (this.baseSpecialSkillLevels[6] - 4) * 2000 + 6000;
         } else if (this.baseSpecialSkillLevels[6] >= 8) {
-            this.bR[0][0][7] = (this.baseSpecialSkillLevels[6] - 8) * 3000 + 15000;
+            this.deployedUnits[0][0][7] = (this.baseSpecialSkillLevels[6] - 8) * 3000 + 15000;
         }
 
         for (var1 = 0; var1 < 10; ++var1) {
-            var4 = this.bR[0][0];
+            var4 = this.deployedUnits[0][0];
             var4[7] += cB[4] * this.bO[var1][4] / 100;
         }
 
-        this.bR[0][0][8] = this.bR[0][0][7];
-        this.bR[0][0][9] = 0;
-        this.bR[0][0][10] = 0;
-        this.bR[0][0][11] = ad[1] + this.baseSpecialSkillLevels[1] * 50 - (ad[3] + this.baseSpecialSkillLevels[3] * 50) + this.eQ * 450;
+        this.deployedUnits[0][0][8] = this.deployedUnits[0][0][7];
+        this.deployedUnits[0][0][9] = 0;
+        this.deployedUnits[0][0][10] = 0;
+        this.deployedUnits[0][0][11] = ad[1] + this.baseSpecialSkillLevels[1] * 50 - (ad[3] + this.baseSpecialSkillLevels[3] * 50) + this.eQ * 450;
 
         for (var1 = 0; var1 < 10; ++var1) {
-            var4 = this.bR[0][0];
+            var4 = this.deployedUnits[0][0];
             var4[11] -= cB[9] * this.bO[var1][9] / 100;
         }
 
-        if (this.bR[0][0][11] <= 60) {
-            this.bR[0][0][11] = 60;
+        if (this.deployedUnits[0][0][11] <= 60) {
+            this.deployedUnits[0][0][11] = 60;
         }
 
-        this.bR[0][0][12] = this.bR[0][0][11];
-        this.bR[0][0][13] = 0;
-        this.bR[0][0][14] = 0;
-        this.bR[0][0][15] = 1800;
-        this.bR[0][0][16] = ad[0] + this.baseSpecialSkillLevels[0] * 50;
+        this.deployedUnits[0][0][12] = this.deployedUnits[0][0][11];
+        this.deployedUnits[0][0][13] = 0;
+        this.deployedUnits[0][0][14] = 0;
+        this.deployedUnits[0][0][15] = 1800;
+        this.deployedUnits[0][0][16] = ad[0] + this.baseSpecialSkillLevels[0] * 50;
 
         for (var1 = 0; var1 < 10; ++var1) {
-            var4 = this.bR[0][0];
+            var4 = this.deployedUnits[0][0];
             var4[16] += cB[8] * this.bO[var1][8] / 100;
         }
 
-        this.bR[1][0][0] = 1;
-        this.bR[1][0][1] = 0;
-        this.bR[1][0][2] = 0;
-        this.bR[1][0][3] = 3200;
-        this.bR[1][0][4] = 4400;
-        this.bR[1][0][5] = 0;
-        this.bR[1][0][7] = this.bV[1] * (this.eQ + 1);
-        this.bR[1][0][8] = this.bR[1][0][7];
-        this.bR[1][0][14] = 0;
-        this.bR[1][0][15] = 1800;
+        this.deployedUnits[1][0][0] = 1;
+        this.deployedUnits[1][0][1] = 0;
+        this.deployedUnits[1][0][2] = 0;
+        this.deployedUnits[1][0][3] = 3200;
+        this.deployedUnits[1][0][4] = 4400;
+        this.deployedUnits[1][0][5] = 0;
+        this.deployedUnits[1][0][7] = this.bV[1] * (this.eQ + 1);
+        this.deployedUnits[1][0][8] = this.deployedUnits[1][0][7];
+        this.deployedUnits[1][0][14] = 0;
+        this.deployedUnits[1][0][15] = 1800;
         this.bP = aMath.rand(this.bV[3] - this.bV[2] + 1) + this.bV[2];
 
         for (var1 = 0; var1 < this.getLength(this.bW); ++var1) {
@@ -1035,7 +1035,7 @@ public class Game extends MyApplicationBase {
         if (this.bV[4] == 2) {
             for (var1 = 0; var1 < this.getLength(this.cc); ++var1) {
                 this.cc[var1][0] = (var1 * 192 + aMath.rand(192)) % (this.bV[0] / 10 + this.excessWidth * 4);
-                this.cc[var1][1] = aMath.rand((100 - this.bM[28]) * 20 + 200) - (100 - this.bM[28]) * 20;
+                this.cc[var1][1] = aMath.rand((100 - this.battleStats[28]) * 20 + 200) - (100 - this.battleStats[28]) * 20;
                 this.cc[var1][2] = 0;
                 this.cc[var1][3] = aMath.rand(20) + 5;
                 this.cc[var1][4] = aMath.rand(7);
@@ -1043,7 +1043,7 @@ public class Game extends MyApplicationBase {
         } else if (this.bV[4] == 3) {
             for (var1 = 0; var1 < this.getLength(this.ce); ++var1) {
                 this.ce[var1][0] = ((var1 * 56 + aMath.rand(56)) % (this.bV[0] / 10) + this.excessWidth * 4) * 100;
-                this.ce[var1][1] = (aMath.rand((100 - this.bM[28]) * 20 + 640) - (100 - this.bM[28]) * 20) * 100;
+                this.ce[var1][1] = (aMath.rand((100 - this.battleStats[28]) * 20 + 640) - (100 - this.battleStats[28]) * 20) * 100;
                 this.ce[var1][2] = 175 - aMath.rand(85);
                 this.ce[var1][3] = aMath.rand(600) + 200;
             }
@@ -1078,7 +1078,7 @@ public class Game extends MyApplicationBase {
         }
 
         if (!this.uiTextures[2].isLoaded()) {
-            this.uiTextures[2].load(MyUtility.getString(String.format("ec%03d.png", this.bM[20])), MyUtility.getString(String.format("ec%03d.imgcut", this.bM[20])));
+            this.uiTextures[2].load(MyUtility.getString(String.format("ec%03d.png", this.battleStats[20])), MyUtility.getString(String.format("ec%03d.imgcut", this.battleStats[20])));
         }
 
         if (this.aC[0].isLoaded()) {
@@ -1126,7 +1126,7 @@ public class Game extends MyApplicationBase {
         }
 
         if (!this.uiTextures[16].isLoaded()) {
-            this.uiTextures[16].load(MyUtility.getString(String.format("ec%03d_s.png", this.bM[20])), MyUtility.getString(String.format("ec%03d_s.imgcut", this.bM[20])));
+            this.uiTextures[16].load(MyUtility.getString(String.format("ec%03d_s.png", this.battleStats[20])), MyUtility.getString(String.format("ec%03d_s.imgcut", this.battleStats[20])));
         }
 
         if (this.uiTextures[17].isLoaded()) {
@@ -1134,7 +1134,7 @@ public class Game extends MyApplicationBase {
         }
 
         if (!this.uiTextures[17].isLoaded()) {
-            this.uiTextures[17].load(MyUtility.getString(String.format("ec%03d_n_%s.png", this.bM[20], MyUtility.getString("lang"))), MyUtility.getString(String.format("ec%03d_n_%s.imgcut", this.bM[20], MyUtility.getString("lang"))));
+            this.uiTextures[17].load(MyUtility.getString(String.format("ec%03d_n_%s.png", this.battleStats[20], MyUtility.getString("lang"))), MyUtility.getString(String.format("ec%03d_n_%s.imgcut", this.battleStats[20], MyUtility.getString("lang"))));
         }
 
         if (this.uiTextures[18].isLoaded()) {
@@ -1249,37 +1249,37 @@ public class Game extends MyApplicationBase {
         }
 
         for (var1 = 0; var1 < 10; ++var1) {
-            if (this.bk[var1] == -1) {
+            if (this.slotCatIDs[var1] == -1) {
                 this.uiTextures[var1 + 5].load(MyUtility.getString(String.format("uni.png")), MyUtility.getString(String.format("uni.imgcut")));
             } else if (this.eV[var1] == 0) {
                 if (!this.uiTextures[var1 + 5].isLoaded()) {
-                    this.uiTextures[var1 + 5].load(MyUtility.getString(String.format("uni%03d_f%02d.png", this.bk[var1] - 2, 0)), MyUtility.getString(String.format("uni%03d_f%02d.imgcut", this.bk[var1] - 2, 0)));
+                    this.uiTextures[var1 + 5].load(MyUtility.getString(String.format("uni%03d_f%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(String.format("uni%03d_f%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
                 }
             } else if (this.eV[var1] == 1 && !this.uiTextures[var1 + 5].isLoaded()) {
-                this.uiTextures[var1 + 5].load(MyUtility.getString(String.format("uni%03d_c%02d.png", this.bk[var1] - 2, 0)), MyUtility.getString(String.format("uni%03d_c%02d.imgcut", this.bk[var1] - 2, 0)));
+                this.uiTextures[var1 + 5].load(MyUtility.getString(String.format("uni%03d_c%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(String.format("uni%03d_c%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
             }
         }
 
         for (var1 = 0; var1 < 10; ++var1) {
-            if (this.bk[var1] != -1) {
+            if (this.slotCatIDs[var1] != -1) {
                 if (this.eV[var1] == 0) {
-                    if (!this.ar[this.bk[var1] - 2].isLoaded()) {
-                        this.ar[this.bk[var1] - 2].load(MyUtility.getString(String.format("i%03d_f.png", this.bk[var1] - 2)), MyUtility.getString(String.format("%03d_f.imgcut", this.bk[var1] - 2)));
-                        this.at[var1].load(MyUtility.getString(String.format("%03d_f.mamodel", this.bk[var1] - 2)));
+                    if (!this.ar[this.slotCatIDs[var1] - 2].isLoaded()) {
+                        this.ar[this.slotCatIDs[var1] - 2].load(MyUtility.getString(String.format("i%03d_f.png", this.slotCatIDs[var1] - 2)), MyUtility.getString(String.format("%03d_f.imgcut", this.slotCatIDs[var1] - 2)));
+                        this.at[var1].load(MyUtility.getString(String.format("%03d_f.mamodel", this.slotCatIDs[var1] - 2)));
 
                         for (var2 = 0; var2 < this.getLength(this.au[var1]); ++var2) {
-                            this.au[var1][var2].load(MyUtility.getString(String.format("%03d_f%02d.maanim", this.bk[var1] - 2, var2)));
+                            this.au[var1][var2].load(MyUtility.getString(String.format("%03d_f%02d.maanim", this.slotCatIDs[var1] - 2, var2)));
                         }
 
                         this.at[var1].setTextures(this.ar);
                         this.at[var1].setAction();
                     }
-                } else if (this.eV[var1] == 1 && !this.as[this.bk[var1] - 2].isLoaded()) {
-                    this.as[this.bk[var1] - 2].load(MyUtility.getString(String.format("i%03d_c.png", this.bk[var1] - 2)), MyUtility.getString(String.format("%03d_c.imgcut", this.bk[var1] - 2)));
-                    this.at[var1].load(MyUtility.getString(String.format("%03d_c.mamodel", this.bk[var1] - 2)));
+                } else if (this.eV[var1] == 1 && !this.as[this.slotCatIDs[var1] - 2].isLoaded()) {
+                    this.as[this.slotCatIDs[var1] - 2].load(MyUtility.getString(String.format("i%03d_c.png", this.slotCatIDs[var1] - 2)), MyUtility.getString(String.format("%03d_c.imgcut", this.slotCatIDs[var1] - 2)));
+                    this.at[var1].load(MyUtility.getString(String.format("%03d_c.mamodel", this.slotCatIDs[var1] - 2)));
 
                     for (var2 = 0; var2 < this.getLength(this.au[var1]); ++var2) {
-                        this.au[var1][var2].load(MyUtility.getString(String.format("%03d_c%02d.maanim", this.bk[var1] - 2, var2)));
+                        this.au[var1][var2].load(MyUtility.getString(String.format("%03d_c%02d.maanim", this.slotCatIDs[var1] - 2, var2)));
                     }
 
                     this.at[var1].setTextures(this.as);
@@ -1409,7 +1409,7 @@ public class Game extends MyApplicationBase {
             this.el[var1] = 0;
         }
 
-        this.bM[12] = 0;
+        this.battleStats[12] = 0;
         this.eG = 1;
         this.eX = false;
         this.fa = 0;
@@ -1421,12 +1421,12 @@ public class Game extends MyApplicationBase {
         }
 
         this.gW = 0;
-        this.fX = aMath.rand(this.bM[9]);
+        this.fX = aMath.rand(this.battleStats[9]);
         Sound.getInstance().stop(SoundType.ALL);
         this.eH[0] = 0;
 
         for (var1 = 0; var1 < 10; ++var1) {
-            if (this.eQ == var1 && this.bM[0] == 47) {
+            if (this.eQ == var1 && this.battleStats[0] == 47) {
                 this.eH[0] = var1;
                 break;
             }
@@ -1437,7 +1437,7 @@ public class Game extends MyApplicationBase {
             var10002 = var4[0]++;
         }
 
-        Sound.getInstance().play(cn[(this.bM[0] + this.eH[0]) * 3]);
+        Sound.getInstance().play(cn[(this.battleStats[0] + this.eH[0]) * 3]);
         this.eH[0] = 0;
 
         for (var1 = 0; var1 < this.getLength(this.buttonCoordinatesSettings); ++var1) {
@@ -1790,8 +1790,8 @@ public class Game extends MyApplicationBase {
         this.resetTextures();
 
         for (var1 = 0; var1 < 10; ++var1) {
-            if (this.bk[var1] - 2 >= 0) {
-                this.eV[var1] = this.bw[this.bk[var1] - 2];
+            if (this.slotCatIDs[var1] - 2 >= 0) {
+                this.eV[var1] = this.bw[this.slotCatIDs[var1] - 2];
             } else {
                 this.eV[var1] = 0;
             }
@@ -1799,12 +1799,12 @@ public class Game extends MyApplicationBase {
 
         for (var1 = 0; var1 < 10; ++var1) {
             if (!this.ak[var1].isLoaded()) {
-                if (this.bk[var1] == -1) {
+                if (this.slotCatIDs[var1] == -1) {
                     this.ak[var1].load(MyUtility.getString(String.format("uni.png")), MyUtility.getString(String.format("uni.imgcut")));
                 } else if (this.eV[var1] == 0) {
-                    this.ak[var1].load(MyUtility.getString(String.format("uni%03d_f%02d.png", this.bk[var1] - 2, 0)), MyUtility.getString(String.format("uni%03d_f%02d.imgcut", this.bk[var1] - 2, 0)));
+                    this.ak[var1].load(MyUtility.getString(String.format("uni%03d_f%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(String.format("uni%03d_f%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
                 } else if (this.eV[var1] == 1) {
-                    this.ak[var1].load(MyUtility.getString(String.format("uni%03d_c%02d.png", this.bk[var1] - 2, 0)), MyUtility.getString(String.format("uni%03d_c%02d.imgcut", this.bk[var1] - 2, 0)));
+                    this.ak[var1].load(MyUtility.getString(String.format("uni%03d_c%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(String.format("uni%03d_c%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
                 }
             }
         }
@@ -1907,7 +1907,7 @@ public class Game extends MyApplicationBase {
     }
 
     void a(TextureRenderer var1, int var2, int var3, int var4) {
-        this.eH[2] = this.bX[this.bk[var2]][this.eV[var2]][7];
+        this.eH[2] = this.unitStats[this.slotCatIDs[var2]][this.eV[var2]][7];
         int[] var5 = this.eH;
         var5[2] -= ad[7] + this.baseSpecialSkillLevels[7] * 6;
 
@@ -1920,7 +1920,7 @@ public class Game extends MyApplicationBase {
             this.eH[2] = 60;
         }
 
-        this.eH[3] = (this.eH[2] - this.eW[var2]) * 93 / this.eH[2];
+        this.eH[3] = (this.eH[2] - this.rechargeTimes[var2]) * 93 / this.eH[2];
         if (this.eH[3] > 93) {
             this.eH[3] = 93;
         }
@@ -2242,8 +2242,8 @@ public class Game extends MyApplicationBase {
                 this.bi = stream.readInt();
                 this.bj = stream.readInt();
 
-                for (var4 = 0; var4 < this.getLength(this.bk); ++var4) {
-                    this.bk[var4] = stream.readInt();
+                for (var4 = 0; var4 < this.getLength(this.slotCatIDs); ++var4) {
+                    this.slotCatIDs[var4] = stream.readInt();
                 }
 
                 this.currentStamp = stream.readInt();
@@ -2409,8 +2409,8 @@ public class Game extends MyApplicationBase {
             var2.writeInt(this.bi);
             var2.writeInt(this.bj);
 
-            for (var3 = 0; var3 < this.getLength(this.bk); ++var3) {
-                var2.writeInt(this.bk[var3]);
+            for (var3 = 0; var3 < this.getLength(this.slotCatIDs); ++var3) {
+                var2.writeInt(this.slotCatIDs[var3]);
             }
 
             var2.writeInt(this.currentStamp);
@@ -2919,10 +2919,10 @@ public class Game extends MyApplicationBase {
                     this.shouldPlayButtonSelect[sceneID] = false;
                 }
 
-                for (sceneID = 0; sceneID < this.getLength(this.bR); ++sceneID) {
-                    for (var2 = 0; var2 < this.getLength(this.bR[sceneID]); ++var2) {
-                        for (int var4 = 0; var4 < this.getLength(this.bR[sceneID][var2]); ++var4) {
-                            this.bR[sceneID][var2][var4] = 0;
+                for (sceneID = 0; sceneID < this.getLength(this.deployedUnits); ++sceneID) {
+                    for (var2 = 0; var2 < this.getLength(this.deployedUnits[sceneID]); ++var2) {
+                        for (int var4 = 0; var4 < this.getLength(this.deployedUnits[sceneID][var2]); ++var4) {
+                            this.deployedUnits[sceneID][var2][var4] = 0;
                         }
                     }
                 }
@@ -2985,12 +2985,12 @@ public class Game extends MyApplicationBase {
             var3 = 0;
 
             for (var2 = 0; var2 < 10; ++var2) {
-                if (this.bk[var2] != -1) {
+                if (this.slotCatIDs[var2] != -1) {
                     var1.drawScaledImageI(this.ak[var2], var2 % 5 * 121 + 111 - this.scrollOffset[0], var2 / 5 * 119 + 134, 110, 85, 0);
-                    if (this.bv[this.bk[var2] - 2] + 1 >= this.bi) {
+                    if (this.bv[this.slotCatIDs[var2] - 2] + 1 >= this.bi) {
                         var1.drawScaledImageI(this.uiTextures[6], var2 % 5 * 121 + 176 - this.scrollOffset[0], var2 / 5 * 119 + 109, 18);
                     } else {
-                        var3 = this.bv[this.bk[var2] - 2] + 1;
+                        var3 = this.bv[this.slotCatIDs[var2] - 2] + 1;
                         var9 = 0;
 
                         do {
