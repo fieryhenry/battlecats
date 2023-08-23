@@ -63,14 +63,14 @@ public class Game extends MyApplicationBase {
     AnimTransformer B = new AnimTransformer();
     MyScore C = new MyScore();
     int D;
-    int currentYTouch;
-    int touchY;
-    int G;
-    int previousYTouch;
     int currentXTouch;
     int touchX;
-    int K;
+    int G;
     int previousXTouch;
+    int currentYTouch;
+    int touchY;
+    int K;
+    int previousYTouch;
     boolean pointerDownNow;
     boolean isPressEvent;
     boolean pointerDown;
@@ -296,7 +296,7 @@ public class Game extends MyApplicationBase {
     boolean eb;
     int ec;
     int ed;
-    boolean ee;
+    boolean isSettingsOpen;
     boolean ef;
     int eg;
     int[] scrollOffset = new int[5];
@@ -320,11 +320,11 @@ public class Game extends MyApplicationBase {
     int ez;
     String f;
     int[][] fA = new int[2][4];
-    int[][] fB = new int[13][4];
-    int[] fC = new int[13];
+    int[][] buttonCoordinatesSettings = new int[13][4];
+    int[] buttonDelay = new int[13];
     int screen;
     int fE;
-    int fF;
+    int screenLoadState;
     int[] fG = new int[4];
     int[] fH = new int[3];
     int fI;
@@ -680,12 +680,12 @@ public class Game extends MyApplicationBase {
         m = var1;
     }
 
-    int K() {
-        return this.currentYTouch;
+    int getCurrentX() {
+        return this.currentXTouch;
     }
 
-    int L() {
-        return this.currentXTouch;
+    int getCurrentY() {
+        return this.currentYTouch;
     }
 
     int M() {
@@ -696,23 +696,23 @@ public class Game extends MyApplicationBase {
         return this.K;
     }
 
-    int O() {
-        return this.previousYTouch;
-    }
-
-    int P() {
+    int getPreviousX() {
         return this.previousXTouch;
     }
 
-    boolean Q() {
+    int getPreviousY() {
+        return this.previousYTouch;
+    }
+
+    boolean isPointerDownNow() {
         return this.pointerDownNow;
     }
 
-    boolean R() {
+    boolean isPointerDown() {
         return this.pointerDown;
     }
 
-    boolean S() {
+    boolean isPointerUp() {
         return this.pointerUp;
     }
 
@@ -798,7 +798,7 @@ public class Game extends MyApplicationBase {
             this.gO = false;
         }
 
-        this.ee = false;
+        this.isSettingsOpen = false;
         this.ef = false;
 
         for (var1 = 0; var1 < this.getLength(this.ha); ++var1) {
@@ -1440,68 +1440,68 @@ public class Game extends MyApplicationBase {
         Sound.getInstance().play(cn[(this.bM[0] + this.eH[0]) * 3]);
         this.eH[0] = 0;
 
-        for (var1 = 0; var1 < this.getLength(this.fB); ++var1) {
-            for (var2 = 0; var2 < this.getLength(this.fB[var1]); ++var2) {
-                this.fB[var1][var2] = 0;
+        for (var1 = 0; var1 < this.getLength(this.buttonCoordinatesSettings); ++var1) {
+            for (var2 = 0; var2 < this.getLength(this.buttonCoordinatesSettings[var1]); ++var2) {
+                this.buttonCoordinatesSettings[var1][var2] = 0;
             }
         }
 
-        for (var1 = 0; var1 < this.getLength(this.fC); ++var1) {
-            this.fC[var1] = 0;
+        for (var1 = 0; var1 < this.getLength(this.buttonDelay); ++var1) {
+            this.buttonDelay[var1] = 0;
         }
 
-        this.fB[0][0] = this.excessWidth / 2 + 280;
-        this.fB[0][1] = 80;
-        this.fB[0][2] = 88;
-        this.fB[0][3] = 88;
-        this.fB[1][0] = 0;
-        this.fB[1][1] = 0;
-        this.fB[1][2] = 0;
-        this.fB[1][3] = 0;
-        this.fB[2][0] = this.excessWidth / 2 + 535;
-        this.fB[2][1] = 276;
-        this.fB[2][2] = 106;
-        this.fB[2][3] = 88;
-        this.fB[3][0] = this.excessWidth / 2 + 248 + 252 - 2;
-        this.fB[3][1] = 371;
-        this.fB[3][2] = 88;
-        this.fB[3][3] = 88;
-        this.fB[4][0] = this.excessWidth / 2 + 248 + 356 - 2;
-        this.fB[4][1] = 371;
-        this.fB[4][2] = 88;
-        this.fB[4][3] = 88;
-        this.fB[5][0] = this.excessWidth / 2 + 248 + 404;
-        this.fB[5][1] = 48;
-        this.fB[5][2] = 95;
-        this.fB[5][3] = 95;
-        this.fB[6][0] = this.excessWidth / 2 + 248 + 40;
-        this.fB[6][1] = 456;
-        this.fB[6][2] = 381;
-        this.fB[6][3] = 88;
-        this.fB[7][0] = this.excessWidth / 2 + 248 + 40;
-        this.fB[7][1] = 189;
-        this.fB[7][2] = 168;
-        this.fB[7][3] = 88;
-        this.fB[8][0] = this.excessWidth / 2 + 309;
-        this.fB[8][1] = 284;
-        this.fB[8][2] = 131;
-        this.fB[8][3] = 131;
-        this.fB[9][0] = this.excessWidth / 2 + 288;
-        this.fB[9][1] = 363;
-        this.fB[9][2] = 168;
-        this.fB[9][3] = 88;
-        this.fB[10][0] = this.excessWidth / 2 + 251;
-        this.fB[10][1] = 374;
-        this.fB[10][2] = 168;
-        this.fB[10][3] = 88;
-        this.fB[11][0] = this.excessWidth / 2 + 541;
-        this.fB[11][1] = 374;
-        this.fB[11][2] = 168;
-        this.fB[11][3] = 88;
-        this.fB[12][0] = this.excessWidth / 2 + 500;
-        this.fB[12][1] = 191;
-        this.fB[12][2] = 172;
-        this.fB[12][3] = 88;
+        this.buttonCoordinatesSettings[0][0] = this.excessWidth / 2 + 280;
+        this.buttonCoordinatesSettings[0][1] = 80;
+        this.buttonCoordinatesSettings[0][2] = 88;
+        this.buttonCoordinatesSettings[0][3] = 88;
+        this.buttonCoordinatesSettings[1][0] = 0;
+        this.buttonCoordinatesSettings[1][1] = 0;
+        this.buttonCoordinatesSettings[1][2] = 0;
+        this.buttonCoordinatesSettings[1][3] = 0;
+        this.buttonCoordinatesSettings[2][0] = this.excessWidth / 2 + 535;
+        this.buttonCoordinatesSettings[2][1] = 276;
+        this.buttonCoordinatesSettings[2][2] = 106;
+        this.buttonCoordinatesSettings[2][3] = 88;
+        this.buttonCoordinatesSettings[3][0] = this.excessWidth / 2 + 248 + 252 - 2;
+        this.buttonCoordinatesSettings[3][1] = 371;
+        this.buttonCoordinatesSettings[3][2] = 88;
+        this.buttonCoordinatesSettings[3][3] = 88;
+        this.buttonCoordinatesSettings[4][0] = this.excessWidth / 2 + 248 + 356 - 2;
+        this.buttonCoordinatesSettings[4][1] = 371;
+        this.buttonCoordinatesSettings[4][2] = 88;
+        this.buttonCoordinatesSettings[4][3] = 88;
+        this.buttonCoordinatesSettings[5][0] = this.excessWidth / 2 + 248 + 404;
+        this.buttonCoordinatesSettings[5][1] = 48;
+        this.buttonCoordinatesSettings[5][2] = 95;
+        this.buttonCoordinatesSettings[5][3] = 95;
+        this.buttonCoordinatesSettings[6][0] = this.excessWidth / 2 + 248 + 40;
+        this.buttonCoordinatesSettings[6][1] = 456;
+        this.buttonCoordinatesSettings[6][2] = 381;
+        this.buttonCoordinatesSettings[6][3] = 88;
+        this.buttonCoordinatesSettings[7][0] = this.excessWidth / 2 + 248 + 40;
+        this.buttonCoordinatesSettings[7][1] = 189;
+        this.buttonCoordinatesSettings[7][2] = 168;
+        this.buttonCoordinatesSettings[7][3] = 88;
+        this.buttonCoordinatesSettings[8][0] = this.excessWidth / 2 + 309;
+        this.buttonCoordinatesSettings[8][1] = 284;
+        this.buttonCoordinatesSettings[8][2] = 131;
+        this.buttonCoordinatesSettings[8][3] = 131;
+        this.buttonCoordinatesSettings[9][0] = this.excessWidth / 2 + 288;
+        this.buttonCoordinatesSettings[9][1] = 363;
+        this.buttonCoordinatesSettings[9][2] = 168;
+        this.buttonCoordinatesSettings[9][3] = 88;
+        this.buttonCoordinatesSettings[10][0] = this.excessWidth / 2 + 251;
+        this.buttonCoordinatesSettings[10][1] = 374;
+        this.buttonCoordinatesSettings[10][2] = 168;
+        this.buttonCoordinatesSettings[10][3] = 88;
+        this.buttonCoordinatesSettings[11][0] = this.excessWidth / 2 + 541;
+        this.buttonCoordinatesSettings[11][1] = 374;
+        this.buttonCoordinatesSettings[11][2] = 168;
+        this.buttonCoordinatesSettings[11][3] = 88;
+        this.buttonCoordinatesSettings[12][0] = this.excessWidth / 2 + 500;
+        this.buttonCoordinatesSettings[12][1] = 191;
+        this.buttonCoordinatesSettings[12][2] = 172;
+        this.buttonCoordinatesSettings[12][3] = 88;
 
         for (var1 = 0; var1 < this.getLength(this.hb); ++var1) {
             this.hb[var1] = 0.0F;
@@ -2065,13 +2065,13 @@ public class Game extends MyApplicationBase {
                         this.screenTransition();
                         this.fP = 0;
                         this.setScreenType(ScreenType.MAP);
-                        this.fF = -1;
+                        this.screenLoadState = -1;
                         this.frameCounter[2] = 0;
                         this.eE[1] = false;
                         return var1;
                     }
                 } else {
-                    if (this.R() && this.b(this.buttonCoordinates1[0][0], this.buttonCoordinates1[0][1], this.buttonCoordinates1[0][2], this.buttonCoordinates1[0][3])) {
+                    if (this.isPointerDown() && this.isTouching(this.buttonCoordinates1[0][0], this.buttonCoordinates1[0][1], this.buttonCoordinates1[0][2], this.buttonCoordinates1[0][3])) {
                         if (!this.shouldPlayButtonSelect[0]) {
                             Sound.getInstance().play(SoundType.BUTTON_SELECT);
                             this.shouldPlayButtonSelect[0] = true;
@@ -2080,7 +2080,7 @@ public class Game extends MyApplicationBase {
                         this.shouldPlayButtonSelect[0] = false;
                     }
 
-                    if (this.R() && this.b(this.buttonCoordinates1[5][0], this.buttonCoordinates1[5][1], this.buttonCoordinates1[5][2], this.buttonCoordinates1[5][3])) {
+                    if (this.isPointerDown() && this.isTouching(this.buttonCoordinates1[5][0], this.buttonCoordinates1[5][1], this.buttonCoordinates1[5][2], this.buttonCoordinates1[5][3])) {
                         if (!this.shouldPlayButtonSelect[5]) {
                             Sound.getInstance().play(SoundType.BUTTON_SELECT);
                             this.shouldPlayButtonSelect[5] = true;
@@ -2089,11 +2089,11 @@ public class Game extends MyApplicationBase {
                         this.shouldPlayButtonSelect[5] = false;
                     }
 
-                    if (this.S() && this.b(this.buttonCoordinates1[0][0], this.buttonCoordinates1[0][1], this.buttonCoordinates1[0][2], this.buttonCoordinates1[0][3])) {
+                    if (this.isPointerUp() && this.isTouching(this.buttonCoordinates1[0][0], this.buttonCoordinates1[0][1], this.buttonCoordinates1[0][2], this.buttonCoordinates1[0][3])) {
                         var2 = this.fx;
                         var10002 = var2[0]++;
                         Sound.getInstance().play(SoundType.BUTTON_PRESS);
-                    } else if (this.S() && this.b(this.buttonCoordinates1[5][0], this.buttonCoordinates1[5][1], this.buttonCoordinates1[5][2], this.buttonCoordinates1[5][3])) {
+                    } else if (this.isPointerUp() && this.isTouching(this.buttonCoordinates1[5][0], this.buttonCoordinates1[5][1], this.buttonCoordinates1[5][2], this.buttonCoordinates1[5][3])) {
                         var2 = this.fx;
                         var10002 = var2[5]++;
                         Sound.getInstance().play(SoundType.BUTTON_PRESS);
@@ -2134,7 +2134,7 @@ public class Game extends MyApplicationBase {
                     this.screenTransition();
                     this.fP = 0;
                     this.setScreenType(ScreenType.MAP);
-                    this.fF = -1;
+                    this.screenLoadState = -1;
                     this.eE[1] = false;
                     return var1;
                 }
@@ -2615,15 +2615,15 @@ public class Game extends MyApplicationBase {
     public void onRestart() {
     }
 
-    boolean b(int var1, int var2, int var3, int var4) {
-        boolean var5;
-        if (this.K() >= var1 && this.K() <= var3 + var1 && this.L() >= var2 && this.L() <= var4 + var2) {
-            var5 = true;
+    public boolean isTouching(int x, int y, int width, int height) {
+        boolean isTouching;
+        if (this.getCurrentX() >= x && this.getCurrentX() <= width + x && this.getCurrentY() >= y && this.getCurrentY() <= height + y) {
+            isTouching = true;
         } else {
-            var5 = false;
+            isTouching = false;
         }
 
-        return var5;
+        return isTouching;
     }
 
     public void onResume() {
@@ -2772,7 +2772,7 @@ public class Game extends MyApplicationBase {
                 this.buttonCoordinates1[0][1] = this.eZ + 556;
                 this.buttonCoordinates1[0][2] = 168;
                 this.buttonCoordinates1[0][3] = 88;
-                this.fF = -1;
+                this.screenLoadState = -1;
                 this.setScreenType(ScreenType.TITLE);
 
                 for (sceneID = 0; sceneID < this.getLength(this.frameCounter); ++sceneID) {
@@ -2904,7 +2904,7 @@ public class Game extends MyApplicationBase {
                 this.dE = 0;
                 this.dF = 0;
                 this.dG = 0;
-                this.fF = -1;
+                this.screenLoadState = -1;
                 this.setScreenType(ScreenType.TITLE);
                 this.buttonCoordinates1[0][0] = this.excessWidth + 788;
                 this.buttonCoordinates1[0][1] = this.eZ + 556;
@@ -2949,7 +2949,7 @@ public class Game extends MyApplicationBase {
         this.scene2 = scene.sceneID;
     }
 
-    void s(TextureRenderer var1) {
+    void map2Draw(TextureRenderer var1) {
         var1.drawScaledImageI(this.uiTextures[6], 0, 42, 0);
         var1.setColor(0, 0, 0);
         int var2;
