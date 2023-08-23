@@ -180,7 +180,7 @@ public class Game extends MyApplicationBase {
     int[] bu = new int[26];
     int[] bv = new int[26];
     int[] bw = new int[26];
-    int[] bx = new int[11];
+    int[] baseSpecialSkillLevels = new int[11];
     int[] by = new int[5];
     int[] bz = new int[5];
     MyPresentRenderer c = new MyPresentRenderer();
@@ -915,9 +915,9 @@ public class Game extends MyApplicationBase {
         }
 
         this.bM[14] = 3;
-        this.bM[11] = this.bx[4];
+        this.bM[11] = this.baseSpecialSkillLevels[4];
         this.bM[6] = ad[4] + this.bM[11] * 10;
-        this.bM[7] = ad[5] + this.bx[5] * 10000;
+        this.bM[7] = ad[5] + this.baseSpecialSkillLevels[5] * 10000;
 
         for (var1 = 0; var1 < this.getLength(this.bN); ++var1) {
             this.bN[var1] = 0;
@@ -956,12 +956,12 @@ public class Game extends MyApplicationBase {
         this.bR[0][0][3] = this.bV[0] - 3200;
         this.bR[0][0][4] = 4400;
         this.bR[0][0][5] = 0;
-        this.bR[0][0][6] = ad[2] + this.bx[2] * 1;
-        this.bR[0][0][7] = ad[6] + this.bx[6] * 1000;
-        if (this.bx[6] >= 4 && this.bx[6] <= 7) {
-            this.bR[0][0][7] = (this.bx[6] - 4) * 2000 + 6000;
-        } else if (this.bx[6] >= 8) {
-            this.bR[0][0][7] = (this.bx[6] - 8) * 3000 + 15000;
+        this.bR[0][0][6] = ad[2] + this.baseSpecialSkillLevels[2] * 1;
+        this.bR[0][0][7] = ad[6] + this.baseSpecialSkillLevels[6] * 1000;
+        if (this.baseSpecialSkillLevels[6] >= 4 && this.baseSpecialSkillLevels[6] <= 7) {
+            this.bR[0][0][7] = (this.baseSpecialSkillLevels[6] - 4) * 2000 + 6000;
+        } else if (this.baseSpecialSkillLevels[6] >= 8) {
+            this.bR[0][0][7] = (this.baseSpecialSkillLevels[6] - 8) * 3000 + 15000;
         }
 
         for (var1 = 0; var1 < 10; ++var1) {
@@ -972,7 +972,7 @@ public class Game extends MyApplicationBase {
         this.bR[0][0][8] = this.bR[0][0][7];
         this.bR[0][0][9] = 0;
         this.bR[0][0][10] = 0;
-        this.bR[0][0][11] = ad[1] + this.bx[1] * 50 - (ad[3] + this.bx[3] * 50) + this.eQ * 450;
+        this.bR[0][0][11] = ad[1] + this.baseSpecialSkillLevels[1] * 50 - (ad[3] + this.baseSpecialSkillLevels[3] * 50) + this.eQ * 450;
 
         for (var1 = 0; var1 < 10; ++var1) {
             var4 = this.bR[0][0];
@@ -987,7 +987,7 @@ public class Game extends MyApplicationBase {
         this.bR[0][0][13] = 0;
         this.bR[0][0][14] = 0;
         this.bR[0][0][15] = 1800;
-        this.bR[0][0][16] = ad[0] + this.bx[0] * 50;
+        this.bR[0][0][16] = ad[0] + this.baseSpecialSkillLevels[0] * 50;
 
         for (var1 = 0; var1 < 10; ++var1) {
             var4 = this.bR[0][0];
@@ -1909,7 +1909,7 @@ public class Game extends MyApplicationBase {
     void a(TextureRenderer var1, int var2, int var3, int var4) {
         this.eH[2] = this.bX[this.bk[var2]][this.eV[var2]][7];
         int[] var5 = this.eH;
-        var5[2] -= ad[7] + this.bx[7] * 6;
+        var5[2] -= ad[7] + this.baseSpecialSkillLevels[7] * 6;
 
         for (int var6 = 0; var6 < 10; ++var6) {
             var5 = this.eH;
@@ -2291,8 +2291,8 @@ public class Game extends MyApplicationBase {
                             this.bw[var4] = stream.readInt();
                         }
 
-                        for (var4 = 0; var4 < this.getLength(this.bx); ++var4) {
-                            this.bx[var4] = stream.readInt();
+                        for (var4 = 0; var4 < this.getLength(this.baseSpecialSkillLevels); ++var4) {
+                            this.baseSpecialSkillLevels[var4] = stream.readInt();
                         }
 
                         for (var4 = 0; var4 < this.getLength(this.by); ++var4) {
@@ -2459,8 +2459,8 @@ public class Game extends MyApplicationBase {
                 var2.writeInt(this.bw[var3]);
             }
 
-            for (var3 = 0; var3 < this.getLength(this.bx); ++var3) {
-                var2.writeInt(this.bx[var3]);
+            for (var3 = 0; var3 < this.getLength(this.baseSpecialSkillLevels); ++var3) {
+                var2.writeInt(this.baseSpecialSkillLevels[var3]);
             }
 
             for (var3 = 0; var3 < this.getLength(this.by); ++var3) {
@@ -3010,39 +3010,39 @@ public class Game extends MyApplicationBase {
             for (var4 = 0; var4 < 9; ++var4) {
                 if (var4 == 0) {
                     var11 = 108;
-                    var3 = this.bx[0] + 1;
+                    var3 = this.baseSpecialSkillLevels[0] + 1;
                     this.eH[0] = this.bi;
                 } else if (var4 == 1) {
                     var11 = 140;
-                    var3 = this.bx[2] + 1;
+                    var3 = this.baseSpecialSkillLevels[2] + 1;
                     this.eH[0] = 10;
                 } else if (var4 == 2) {
                     var11 = 172;
-                    var3 = this.bx[3] + 1;
+                    var3 = this.baseSpecialSkillLevels[3] + 1;
                     this.eH[0] = this.bi;
                 } else if (var4 == 3) {
                     var11 = 298;
-                    var3 = this.bx[4] + 1;
+                    var3 = this.baseSpecialSkillLevels[4] + 1;
                     this.eH[0] = this.bi;
                 } else if (var4 == 4) {
                     var11 = 330;
-                    var3 = this.bx[5] + 1;
+                    var3 = this.baseSpecialSkillLevels[5] + 1;
                     this.eH[0] = this.bi;
                 } else if (var4 == 5) {
                     var11 = 204;
-                    var3 = this.bx[6] + 1;
+                    var3 = this.baseSpecialSkillLevels[6] + 1;
                     this.eH[0] = this.bi;
                 } else if (var4 == 6) {
                     var11 = 362;
-                    var3 = this.bx[7] + 1;
+                    var3 = this.baseSpecialSkillLevels[7] + 1;
                     this.eH[0] = this.bi;
                 } else if (var4 == 7) {
                     var11 = 394;
-                    var3 = this.bx[8] + 1;
+                    var3 = this.baseSpecialSkillLevels[8] + 1;
                     this.eH[0] = this.bi;
                 } else if (var4 == 8) {
                     var11 = 426;
-                    var3 = this.bx[9] + 1;
+                    var3 = this.baseSpecialSkillLevels[9] + 1;
                     this.eH[0] = this.bi;
                 }
 

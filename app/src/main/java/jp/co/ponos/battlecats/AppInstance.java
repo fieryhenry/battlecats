@@ -4546,8 +4546,8 @@ public class AppInstance extends Game {
                             this.bw[var1] = 0;
                         }
 
-                        for (var1 = 0; var1 < this.getLength(this.bx); ++var1) {
-                            this.bx[var1] = 0;
+                        for (var1 = 0; var1 < this.getLength(this.baseSpecialSkillLevels); ++var1) {
+                            this.baseSpecialSkillLevels[var1] = 0;
                         }
 
                         this.bh = 0;
@@ -5582,7 +5582,7 @@ public class AppInstance extends Game {
             var2[10] -= this.bX[this.bk[var1]][this.eV[var1]][6] + this.bX[this.bk[var1]][this.eV[var1]][6] * this.eQ * 50 / 100;
             this.eW[var1] = this.bX[this.bk[var1]][this.eV[var1]][7];
             var2 = this.eW;
-            var2[var1] -= ad[7] + this.bx[7] * 6;
+            var2[var1] -= ad[7] + this.baseSpecialSkillLevels[7] * 6;
 
             for (int var3 = 0; var3 < 10; ++var3) {
                 var2 = this.eW;
@@ -5788,8 +5788,8 @@ public class AppInstance extends Game {
                 var2 += cB[10] * this.bO[var1][10] / 100;
             }
 
-            if (this.currentEnergy >= ad[10] + this.bx[10] * 10 + var2) {
-                this.currentEnergy = var2 + ad[10] + this.bx[10] * 10;
+            if (this.currentEnergy >= ad[10] + this.baseSpecialSkillLevels[10] * 10 + var2) {
+                this.currentEnergy = var2 + ad[10] + this.baseSpecialSkillLevels[10] * 10;
             }
         } else if (var7 <= -1 && var7 < -86400) {
             Calendar var10 = Calendar.getInstance();
@@ -7857,7 +7857,7 @@ public class AppInstance extends Game {
                                             }
 
                                             var10 = ad[8];
-                                            var11 = this.bx[8];
+                                            var11 = this.baseSpecialSkillLevels[8];
                                             var8 = this.bM[10];
                                             this.bM[10] = (var10 + var11 * 5 + var1) * var9 / 100 + var8;
                                             if (this.bM[10] > this.bM[9]) {
@@ -8345,7 +8345,7 @@ public class AppInstance extends Game {
                                                     }
 
                                                     var11 = ad[9];
-                                                    var10 = this.bx[9];
+                                                    var10 = this.baseSpecialSkillLevels[9];
                                                     this.bM[17] = (var11 + var10 * 5 + var8) * this.bM[17] / 100;
                                                     if (this.eL[4] == 1) {
                                                         this.bM[17] = this.bM[17] * 15 / 10;
@@ -9745,7 +9745,7 @@ public class AppInstance extends Game {
                             this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_c.png", this.bK[var1 - this.gB[1]])), MyUtility.getString(String.format("udi%03d_c.imgcut", this.bK[var1 - this.gB[1]])));
                         }
                     }
-                } else if (var1 - this.gB[0] == 0 && this.bx[0] + 1 < this.bi) {
+                } else if (var1 - this.gB[0] == 0 && this.baseSpecialSkillLevels[0] + 1 < this.bi) {
                     if (!this.uiTextures[var1 + 11].isLoaded()) {
                         this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_s_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_s_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
                     }
@@ -9753,7 +9753,7 @@ public class AppInstance extends Game {
                     if (!this.uiTextures[var1 + 11].isLoaded()) {
                         this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_sg_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_sg_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
                     }
-                } else if (var1 - this.gB[0] == 1 && this.bx[2] + 1 < 10) {
+                } else if (var1 - this.gB[0] == 1 && this.baseSpecialSkillLevels[2] + 1 < 10) {
                     if (!this.uiTextures[var1 + 11].isLoaded()) {
                         this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_s_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_s_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
                     }
@@ -9761,7 +9761,7 @@ public class AppInstance extends Game {
                     if (!this.uiTextures[var1 + 11].isLoaded()) {
                         this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_sg_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_sg_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
                     }
-                } else if (this.bx[var1 - this.gB[0] + 1] + 1 < this.bi) {
+                } else if (this.baseSpecialSkillLevels[var1 - this.gB[0] + 1] + 1 < this.bi) {
                     if (!this.uiTextures[var1 + 11].isLoaded()) {
                         this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_s_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_s_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
                     }
@@ -12685,11 +12685,11 @@ public class AppInstance extends Game {
                                 this.bM[15] = 0;
                                 this.bM[14] = 3;
                                 this.bR[0][0][1] = 0;
-                                this.bR[0][0][7] = ad[6] + this.bx[6] * 1000;
-                                if (this.bx[6] >= 4 && this.bx[6] <= 7) {
-                                    this.bR[0][0][7] = (this.bx[6] - 4) * 2000 + 6000;
-                                } else if (this.bx[6] >= 8) {
-                                    this.bR[0][0][7] = (this.bx[6] - 8) * 3000 + 15000;
+                                this.bR[0][0][7] = ad[6] + this.baseSpecialSkillLevels[6] * 1000;
+                                if (this.baseSpecialSkillLevels[6] >= 4 && this.baseSpecialSkillLevels[6] <= 7) {
+                                    this.bR[0][0][7] = (this.baseSpecialSkillLevels[6] - 4) * 2000 + 6000;
+                                } else if (this.baseSpecialSkillLevels[6] >= 8) {
+                                    this.bR[0][0][7] = (this.baseSpecialSkillLevels[6] - 8) * 3000 + 15000;
                                 }
 
                                 int[] var7;
@@ -14876,7 +14876,7 @@ public class AppInstance extends Game {
             }
 
             var5 = this.currentEnergy;
-            if (var5 >= var2 + ad[10] + this.bx[10] * 10) {
+            if (var5 >= var2 + ad[10] + this.baseSpecialSkillLevels[10] * 10) {
                 var1.setImageColor(128, 255, 0);
             } else {
                 var1.setImageColor(255, 255, 255);
@@ -16537,12 +16537,12 @@ public class AppInstance extends Game {
                                                     }
 
                                                     if (this.fS[2] - this.gB[1] - this.gB[0] == 0) {
-                                                        var3 = ac[0][(this.bx[0] + 1) % 10] * ((this.bx[0] + 1) / 10 + 1);
+                                                        var3 = ac[0][(this.baseSpecialSkillLevels[0] + 1) % 10] * ((this.baseSpecialSkillLevels[0] + 1) / 10 + 1);
                                                         break label602;
                                                     }
 
                                                     if (this.fS[2] - this.gB[1] - this.gB[0] >= 1) {
-                                                        var3 = ac[this.fS[2] - this.gB[1] - this.gB[0]][(this.bx[this.fS[2] - this.gB[1] - this.gB[0] + 1] + 1) % 10] * ((this.bx[this.fS[2] - this.gB[1] - this.gB[0] + 1] + 1) / 10 + 1);
+                                                        var3 = ac[this.fS[2] - this.gB[1] - this.gB[0]][(this.baseSpecialSkillLevels[this.fS[2] - this.gB[1] - this.gB[0] + 1] + 1) % 10] * ((this.baseSpecialSkillLevels[this.fS[2] - this.gB[1] - this.gB[0] + 1] + 1) / 10 + 1);
                                                         break label602;
                                                     }
                                                 }
@@ -16905,14 +16905,14 @@ public class AppInstance extends Game {
                     }
                 }
             } else if (this.fS[2] - this.gB[0] == 0) {
-                if (this.bx[0] + 1 < this.bi) {
+                if (this.baseSpecialSkillLevels[0] + 1 < this.bi) {
                     var6 = this.uiTextures[7];
                     var3 = dv[this.fx[0]] / 2;
                     var4 = dv[this.fx[0]] / 2;
                     var2 = dv[this.fx[0]];
                     var1.drawScaledImageI(var6, 4 - var3, 367 - var4, dv[this.fx[0]] + (383 - var2), dv[this.fx[0]] + 85, 2);
                     var1.drawScaledImageI(this.uiTextures[7], 43 - dv[this.fx[0]] / 2, 378 - dv[this.fx[0]] / 2, dv[this.fx[0]] + 292, dv[this.fx[0]] + 62, 3);
-                    if (this.xp < ac[0][(this.bx[0] + 1) % 10] * ((this.bx[0] + 1) / 10 + 1)) {
+                    if (this.xp < ac[0][(this.baseSpecialSkillLevels[0] + 1) % 10] * ((this.baseSpecialSkillLevels[0] + 1) / 10 + 1)) {
                         var1.setImageColor(0, 0, 0);
                         var1.setImageAlpha(127);
                         var1.drawScaledImageI(this.af[3], 4 - dv[this.fx[0]] / 2, 367 - dv[this.fx[0]] / 2, dv[this.fx[0]] + 383, dv[this.fx[0]] + 85, 3);
@@ -16928,14 +16928,14 @@ public class AppInstance extends Game {
                 }
             } else if (this.fS[2] - this.gB[0] >= 1) {
                 if (this.fS[2] - this.gB[0] == 1) {
-                    if (this.bx[this.fS[2] - this.gB[0] + 1] + 1 < 10) {
+                    if (this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1 < 10) {
                         var6 = this.uiTextures[7];
                         var3 = dv[this.fx[0]] / 2;
                         var4 = dv[this.fx[0]] / 2;
                         var2 = dv[this.fx[0]];
                         var1.drawScaledImageI(var6, 4 - var3, 367 - var4, dv[this.fx[0]] + (383 - var2), dv[this.fx[0]] + 85, 2);
                         var1.drawScaledImageI(this.uiTextures[7], 43 - dv[this.fx[0]] / 2, 378 - dv[this.fx[0]] / 2, dv[this.fx[0]] + 292, dv[this.fx[0]] + 62, 3);
-                        if (this.xp < ac[this.fS[2] - this.gB[0]][(this.bx[this.fS[2] - this.gB[0] + 1] + 1) % 10] * ((this.bx[this.fS[2] - this.gB[0] + 1] + 1) / 10 + 1)) {
+                        if (this.xp < ac[this.fS[2] - this.gB[0]][(this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1) % 10] * ((this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1) / 10 + 1)) {
                             var1.setImageColor(0, 0, 0);
                             var1.setImageAlpha(127);
                             var1.drawScaledImageI(this.af[3], 4 - dv[this.fx[0]] / 2, 367 - dv[this.fx[0]] / 2, dv[this.fx[0]] + 383, dv[this.fx[0]] + 85, 3);
@@ -16949,14 +16949,14 @@ public class AppInstance extends Game {
                             var1.drawScaledImageI(this.af[3], 4, 367, 383, 85, 4);
                         }
                     }
-                } else if (this.bx[this.fS[2] - this.gB[0] + 1] + 1 < this.bi) {
+                } else if (this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1 < this.bi) {
                     var6 = this.uiTextures[7];
                     var3 = dv[this.fx[0]] / 2;
                     var2 = dv[this.fx[0]] / 2;
                     var4 = dv[this.fx[0]];
                     var1.drawScaledImageI(var6, 4 - var3, 367 - var2, dv[this.fx[0]] + (383 - var4), dv[this.fx[0]] + 85, 2);
                     var1.drawScaledImageI(this.uiTextures[7], 43 - dv[this.fx[0]] / 2, 378 - dv[this.fx[0]] / 2, dv[this.fx[0]] + 292, dv[this.fx[0]] + 62, 3);
-                    if (this.xp < ac[this.fS[2] - this.gB[0]][(this.bx[this.fS[2] - this.gB[0] + 1] + 1) % 10] * ((this.bx[this.fS[2] - this.gB[0] + 1] + 1) / 10 + 1)) {
+                    if (this.xp < ac[this.fS[2] - this.gB[0]][(this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1) % 10] * ((this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1) / 10 + 1)) {
                         var1.setImageColor(0, 0, 0);
                         var1.setImageAlpha(127);
                         var1.drawScaledImageI(this.af[3], 4 - dv[this.fx[0]] / 2, 367 - dv[this.fx[0]] / 2, dv[this.fx[0]] + 383, dv[this.fx[0]] + 85, 3);
@@ -16982,15 +16982,15 @@ public class AppInstance extends Game {
                     this.eH[0] = 1;
                 }
             } else if (this.fS[2] - this.gB[0] == 0) {
-                if (this.bx[0] + 1 < this.bi) {
+                if (this.baseSpecialSkillLevels[0] + 1 < this.bi) {
                     this.eH[0] = 1;
                 }
             } else if (this.fS[2] - this.gB[0] >= 1) {
                 if (this.fS[2] - this.gB[0] == 1) {
-                    if (this.bx[this.fS[2] - this.gB[0] + 1] + 1 < 10) {
+                    if (this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1 < 10) {
                         this.eH[0] = 1;
                     }
-                } else if (this.bx[this.fS[2] - this.gB[0] + 1] + 1 < this.bi) {
+                } else if (this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1 < this.bi) {
                     this.eH[0] = 1;
                 }
             }
@@ -17321,12 +17321,12 @@ public class AppInstance extends Game {
                     }
                 } else if (var3 - this.gC[0] - this.gB[0] >= 0) {
                     if (var3 - this.gC[0] - this.gB[0] == 0) {
-                        var2 = ac[0][(this.bx[0] + 1) % 10];
-                        var4 = (this.bx[0] + 1) / 10;
+                        var2 = ac[0][(this.baseSpecialSkillLevels[0] + 1) % 10];
+                        var4 = (this.baseSpecialSkillLevels[0] + 1) / 10;
                         this.eH[1] = 1;
                         var2 *= var4 + 1;
                     } else {
-                        var2 = ac[var3 - this.gC[0] - this.gB[0]][(this.bx[var3 - this.gC[0] - this.gB[0] + 1] + 1) % 10] * ((this.bx[var3 - this.gC[0] - this.gB[0] + 1] + 1) / 10 + 1);
+                        var2 = ac[var3 - this.gC[0] - this.gB[0]][(this.baseSpecialSkillLevels[var3 - this.gC[0] - this.gB[0] + 1] + 1) % 10] * ((this.baseSpecialSkillLevels[var3 - this.gC[0] - this.gB[0] + 1] + 1) / 10 + 1);
                         this.eH[1] = 1;
                     }
                 }
@@ -17347,9 +17347,9 @@ public class AppInstance extends Game {
                     }
                 } else {
                     if (var3 - this.gC[0] - this.gB[0] == 0) {
-                        var4 = this.bx[var3 - this.gC[0] - this.gB[0]] + 1;
+                        var4 = this.baseSpecialSkillLevels[var3 - this.gC[0] - this.gB[0]] + 1;
                     } else {
-                        var4 = this.bx[var3 + 1 - this.gC[0] - this.gB[0]] + 1;
+                        var4 = this.baseSpecialSkillLevels[var3 + 1 - this.gC[0] - this.gB[0]] + 1;
                     }
 
                     if (var3 - this.gC[0] - this.gB[0] == 1) {
@@ -17520,10 +17520,10 @@ public class AppInstance extends Game {
                     }
                 } else if (var3 - this.gC[0] - this.gB[0] >= 0) {
                     if (var3 - this.gC[0] - this.gB[0] == 0) {
-                        var2 = this.bx[var3 - this.gC[0] - this.gB[0]] + 1;
+                        var2 = this.baseSpecialSkillLevels[var3 - this.gC[0] - this.gB[0]] + 1;
                         this.eH[1] = 1;
                     } else {
-                        var2 = this.bx[var3 + 1 - this.gC[0] - this.gB[0]] + 1;
+                        var2 = this.baseSpecialSkillLevels[var3 + 1 - this.gC[0] - this.gB[0]] + 1;
                         this.eH[1] = 1;
                     }
                 } else {
@@ -24327,8 +24327,8 @@ public class AppInstance extends Game {
             var2 += cB[10] * this.bO[var1][10] / 100;
         }
 
-        if (this.currentEnergy >= ad[10] + this.bx[10] * 10 + var2) {
-            this.currentEnergy = var2 + ad[10] + this.bx[10] * 10;
+        if (this.currentEnergy >= ad[10] + this.baseSpecialSkillLevels[10] * 10 + var2) {
+            this.currentEnergy = var2 + ad[10] + this.baseSpecialSkillLevels[10] * 10;
         }
 
         for (var1 = 0; var1 < this.getLength(this.go); ++var1) {
@@ -24553,7 +24553,7 @@ public class AppInstance extends Game {
 
                         if (this.br[this.eQ][this.dI[2]] >= 1) {
                             int var5 = ad[10];
-                            int var6 = this.bx[10];
+                            int var6 = this.baseSpecialSkillLevels[10];
                             int var7 = this.bG[this.dI[2]];
                             int var8 = X[this.eQ];
                             if (this.br[this.eQ][this.dI[2]] + 1 > 8) {
@@ -24584,7 +24584,7 @@ public class AppInstance extends Game {
                                 this.gw = 5;
                                 return var1;
                             }
-                        } else if (var2 + ad[10] + this.bx[10] * 10 >= this.bG[this.dI[2]] + X[this.eQ]) {
+                        } else if (var2 + ad[10] + this.baseSpecialSkillLevels[10] * 10 >= this.bG[this.dI[2]] + X[this.eQ]) {
                             if (this.fx[0] > this.getLength(dv) - 1) {
                                 this.fx[0] = 0;
                                 this.screenTransition();
@@ -24682,7 +24682,7 @@ public class AppInstance extends Game {
                             var4 += cB[10] * this.bO[var2][10] / 100;
                         }
 
-                        if (this.currentEnergy >= var4 + ad[10] + this.bx[10] * 10) {
+                        if (this.currentEnergy >= var4 + ad[10] + this.baseSpecialSkillLevels[10] * 10) {
                             this.fx[16] = 0;
                             this.screenTransition();
                             this.gu = true;
@@ -25622,9 +25622,9 @@ public class AppInstance extends Game {
                                 var7 += cB[10] * this.bO[var4][10] / 100;
                             }
 
-                            var4 = ad[10] + this.bx[10] * 10 + var7 - this.currentEnergy;
+                            var4 = ad[10] + this.baseSpecialSkillLevels[10] * 10 + var7 - this.currentEnergy;
                             if (this.versionCode == 0) {
-                                this.ah[this.getLength(this.warning2Text[7]) + 1].drawText(String.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.currentEnergy, this.warning1Text[11], var7 + ad[10] + this.bx[10] * 10, this.warning1Text[12], var4, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
+                                this.ah[this.getLength(this.warning2Text[7]) + 1].drawText(String.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.currentEnergy, this.warning1Text[11], var7 + ad[10] + this.baseSpecialSkillLevels[10] * 10, this.warning1Text[12], var4, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
                             } else if (this.versionCode == 1) {
                                 this.ah[this.getLength(this.warning2Text[7]) + 1].drawText(String.format("%s%d%s", this.warning1Text[12], var4, this.warning1Text[13]), "FONT_SYSTEM_BOLD", 30, 1);
                             }
@@ -25651,9 +25651,9 @@ public class AppInstance extends Game {
                                 var7 += cB[10] * this.bO[var4][10] / 100;
                             }
 
-                            var4 = ad[10] + this.bx[10] * 10 + var7 - this.currentEnergy;
+                            var4 = ad[10] + this.baseSpecialSkillLevels[10] * 10 + var7 - this.currentEnergy;
                             if (this.versionCode == 0) {
-                                this.ah[this.getLength(this.warning2Text[4]) + 1].drawText(String.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.currentEnergy, this.warning1Text[11], var7 + ad[10] + this.bx[10] * 10, this.warning1Text[12], var4, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
+                                this.ah[this.getLength(this.warning2Text[4]) + 1].drawText(String.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.currentEnergy, this.warning1Text[11], var7 + ad[10] + this.baseSpecialSkillLevels[10] * 10, this.warning1Text[12], var4, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
                             } else if (this.versionCode == 1) {
                                 this.ah[this.getLength(this.warning2Text[4]) + 1].drawText(String.format("%s%d%s", this.warning1Text[12], var4, this.warning1Text[13]), "FONT_SYSTEM_BOLD", 30, 1);
                             }
@@ -25670,9 +25670,9 @@ public class AppInstance extends Game {
                                 var7 += cB[10] * this.bO[var4][10] / 100;
                             }
 
-                            var4 = ad[10] + this.bx[10] * 10 + var7 - this.currentEnergy;
+                            var4 = ad[10] + this.baseSpecialSkillLevels[10] * 10 + var7 - this.currentEnergy;
                             if (this.versionCode == 0) {
-                                this.ah[this.getLength(this.warning2Text[5]) + 1].drawText(String.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.currentEnergy, this.warning1Text[11], var7 + ad[10] + this.bx[10] * 10, this.warning1Text[12], var4, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
+                                this.ah[this.getLength(this.warning2Text[5]) + 1].drawText(String.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.currentEnergy, this.warning1Text[11], var7 + ad[10] + this.baseSpecialSkillLevels[10] * 10, this.warning1Text[12], var4, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
                             } else if (this.versionCode == 1) {
                                 this.ah[this.getLength(this.warning2Text[5]) + 1].drawText(String.format("%s%d%s", this.warning1Text[12], var4, this.warning1Text[13]), "FONT_SYSTEM_BOLD", 30, 1);
                             }
@@ -26145,7 +26145,7 @@ public class AppInstance extends Game {
                                                 var4 += cB[10] * this.bO[var7][10] / 100;
                                             }
 
-                                            this.currentEnergy = var4 + ad[10] + this.bx[10] * 10;
+                                            this.currentEnergy = var4 + ad[10] + this.baseSpecialSkillLevels[10] * 10;
                                             ++this.hG;
                                             if (this.hG >= 999999999) {
                                                 this.hG = 999999999;
@@ -26867,7 +26867,7 @@ public class AppInstance extends Game {
                         this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_c.png", this.bK[var1 - this.gB[1]])), MyUtility.getString(String.format("udi%03d_c.imgcut", this.bK[var1 - this.gB[1]])));
                     }
                 }
-            } else if (var1 - this.gB[0] == 0 && this.bx[0] + 1 < this.bi) {
+            } else if (var1 - this.gB[0] == 0 && this.baseSpecialSkillLevels[0] + 1 < this.bi) {
                 if (!this.uiTextures[var1 + 11].isLoaded()) {
                     this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_s_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_s_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
                 }
@@ -26875,7 +26875,7 @@ public class AppInstance extends Game {
                 if (!this.uiTextures[var1 + 11].isLoaded()) {
                     this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_sg_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_sg_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
                 }
-            } else if (var1 - this.gB[0] == 1 && this.bx[2] + 1 < 10) {
+            } else if (var1 - this.gB[0] == 1 && this.baseSpecialSkillLevels[2] + 1 < 10) {
                 if (!this.uiTextures[var1 + 11].isLoaded()) {
                     this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_s_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_s_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
                 }
@@ -26883,7 +26883,7 @@ public class AppInstance extends Game {
                 if (!this.uiTextures[var1 + 11].isLoaded()) {
                     this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_sg_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_sg_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
                 }
-            } else if (this.bx[var1 - this.gB[0] + 1] + 1 < this.bi) {
+            } else if (this.baseSpecialSkillLevels[var1 - this.gB[0] + 1] + 1 < this.bi) {
                 if (!this.uiTextures[var1 + 11].isLoaded()) {
                     this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_s_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_s_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
                 }
@@ -27287,13 +27287,13 @@ public class AppInstance extends Game {
                                 }
                             }
                         } else if (this.fS[2] - this.gB[0] == 0) {
-                            if (this.xp >= ac[0][(this.bx[0] + 1) % 10] * ((this.bx[0] + 1) / 10 + 1)) {
-                                this.xp -= ac[0][(this.bx[0] + 1) % 10] * ((this.bx[0] + 1) / 10 + 1);
-                                var2 = this.bx;
+                            if (this.xp >= ac[0][(this.baseSpecialSkillLevels[0] + 1) % 10] * ((this.baseSpecialSkillLevels[0] + 1) / 10 + 1)) {
+                                this.xp -= ac[0][(this.baseSpecialSkillLevels[0] + 1) % 10] * ((this.baseSpecialSkillLevels[0] + 1) / 10 + 1);
+                                var2 = this.baseSpecialSkillLevels;
                                 var10002 = var2[0]++;
-                                var2 = this.bx;
+                                var2 = this.baseSpecialSkillLevels;
                                 var10002 = var2[1]++;
-                                if (this.bx[0] + 1 >= this.bi) {
+                                if (this.baseSpecialSkillLevels[0] + 1 >= this.bi) {
                                     if (this.uiTextures[this.fS[2] + 11].isLoaded()) {
                                         this.uiTextures[this.fS[2] + 11].reset();
                                     }
@@ -27317,13 +27317,13 @@ public class AppInstance extends Game {
                             }
                         } else if (this.fS[2] - this.gB[0] >= 1) {
                             if (this.fS[2] - this.gB[0] == 1) {
-                                if (this.bx[2] + 1 < 10) {
-                                    if (this.xp >= ac[this.fS[2] - this.gB[0]][(this.bx[this.fS[2] - this.gB[0] + 1] + 1) % 10] * ((this.bx[this.fS[2] - this.gB[0] + 1] + 1) / 10 + 1)) {
-                                        this.xp -= ac[this.fS[2] - this.gB[0]][(this.bx[this.fS[2] - this.gB[0] + 1] + 1) % 10] * ((this.bx[this.fS[2] - this.gB[0] + 1] + 1) / 10 + 1);
-                                        var2 = this.bx;
+                                if (this.baseSpecialSkillLevels[2] + 1 < 10) {
+                                    if (this.xp >= ac[this.fS[2] - this.gB[0]][(this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1) % 10] * ((this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1) / 10 + 1)) {
+                                        this.xp -= ac[this.fS[2] - this.gB[0]][(this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1) % 10] * ((this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1) / 10 + 1);
+                                        var2 = this.baseSpecialSkillLevels;
                                         var3 = this.fS[2] - this.gB[0] + 1;
                                         var10002 = var2[var3]++;
-                                        if (this.bx[this.fS[2] - this.gB[0] + 1] + 1 >= 10) {
+                                        if (this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1 >= 10) {
                                             if (this.uiTextures[this.fS[2] + 11].isLoaded()) {
                                                 this.uiTextures[this.fS[2] + 11].reset();
                                             }
@@ -27346,12 +27346,12 @@ public class AppInstance extends Game {
                                         return var1;
                                     }
                                 }
-                            } else if (this.xp >= ac[this.fS[2] - this.gB[0]][(this.bx[this.fS[2] - this.gB[0] + 1] + 1) % 10] * ((this.bx[this.fS[2] - this.gB[0] + 1] + 1) / 10 + 1)) {
-                                this.xp -= ac[this.fS[2] - this.gB[0]][(this.bx[this.fS[2] - this.gB[0] + 1] + 1) % 10] * ((this.bx[this.fS[2] - this.gB[0] + 1] + 1) / 10 + 1);
-                                var2 = this.bx;
+                            } else if (this.xp >= ac[this.fS[2] - this.gB[0]][(this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1) % 10] * ((this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1) / 10 + 1)) {
+                                this.xp -= ac[this.fS[2] - this.gB[0]][(this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1) % 10] * ((this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1) / 10 + 1);
+                                var2 = this.baseSpecialSkillLevels;
                                 var3 = this.fS[2] - this.gB[0] + 1;
                                 var10002 = var2[var3]++;
-                                if (this.bx[this.fS[2] - this.gB[0] + 1] + 1 >= this.bi) {
+                                if (this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1 >= this.bi) {
                                     if (this.uiTextures[this.fS[2] + 11].isLoaded()) {
                                         this.uiTextures[this.fS[2] + 11].reset();
                                     }
@@ -27369,8 +27369,8 @@ public class AppInstance extends Game {
 
                                 if (this.fS[2] - this.gB[0] + 1 == 10) {
                                     this.currentEnergy += 10;
-                                    if (this.currentEnergy >= ad[10] + this.bx[10] * 10 + var4) {
-                                        this.currentEnergy = var4 + ad[10] + this.bx[10] * 10;
+                                    if (this.currentEnergy >= ad[10] + this.baseSpecialSkillLevels[10] * 10 + var4) {
+                                        this.currentEnergy = var4 + ad[10] + this.baseSpecialSkillLevels[10] * 10;
                                     }
                                 }
 
@@ -27479,16 +27479,16 @@ public class AppInstance extends Game {
                                 this.shouldPlayButtonSelect[0] = true;
                             }
                         } else if (this.fS[2] - this.gB[0] == 0) {
-                            if (this.bx[0] + 1 < this.bi) {
+                            if (this.baseSpecialSkillLevels[0] + 1 < this.bi) {
                                 Sound.getInstance().play(SoundType.BUTTON_SELECT);
                                 this.shouldPlayButtonSelect[0] = true;
                             }
                         } else if (this.fS[2] - this.gB[0] == 1) {
-                            if (this.bx[this.fS[2] - this.gB[0] + 1] + 1 < 10) {
+                            if (this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1 < 10) {
                                 Sound.getInstance().play(SoundType.BUTTON_SELECT);
                                 this.shouldPlayButtonSelect[0] = true;
                             }
-                        } else if (this.bx[this.fS[2] - this.gB[0] + 1] + 1 < this.bi) {
+                        } else if (this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1 < this.bi) {
                             Sound.getInstance().play(SoundType.BUTTON_SELECT);
                             this.shouldPlayButtonSelect[0] = true;
                         }
@@ -27593,8 +27593,8 @@ public class AppInstance extends Game {
                                 }
                             }
                         } else if (this.fS[2] - this.gB[0] == 0) {
-                            if (this.bx[0] + 1 < this.bi) {
-                                if (this.xp >= ac[0][(this.bx[0] + 1) % 10] * ((this.bx[0] + 1) / 10 + 1)) {
+                            if (this.baseSpecialSkillLevels[0] + 1 < this.bi) {
+                                if (this.xp >= ac[0][(this.baseSpecialSkillLevels[0] + 1) % 10] * ((this.baseSpecialSkillLevels[0] + 1) / 10 + 1)) {
                                     Sound.getInstance().play(SoundType.UPGRADE);
                                 } else {
                                     Sound.getInstance().play(SoundType.CANT_PRESS);
@@ -27606,8 +27606,8 @@ public class AppInstance extends Game {
                             }
                         } else if (this.fS[2] - this.gB[0] >= 1) {
                             if (this.fS[2] - this.gB[0] == 1) {
-                                if (this.bx[this.fS[2] - this.gB[0] + 1] + 1 < 10) {
-                                    if (this.xp >= ac[this.fS[2] - this.gB[0]][(this.bx[this.fS[2] - this.gB[0] + 1] + 1) % 10] * ((this.bx[this.fS[2] - this.gB[0] + 1] + 1) / 10 + 1)) {
+                                if (this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1 < 10) {
+                                    if (this.xp >= ac[this.fS[2] - this.gB[0]][(this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1) % 10] * ((this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1) / 10 + 1)) {
                                         Sound.getInstance().play(SoundType.UPGRADE);
                                     } else {
                                         Sound.getInstance().play(SoundType.CANT_PRESS);
@@ -27617,8 +27617,8 @@ public class AppInstance extends Game {
                                     var2 = this.fx;
                                     var10002 = var2[0]++;
                                 }
-                            } else if (this.bx[this.fS[2] - this.gB[0] + 1] + 1 < this.bi) {
-                                if (this.xp >= ac[this.fS[2] - this.gB[0]][(this.bx[this.fS[2] - this.gB[0] + 1] + 1) % 10] * ((this.bx[this.fS[2] - this.gB[0] + 1] + 1) / 10 + 1)) {
+                            } else if (this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1 < this.bi) {
+                                if (this.xp >= ac[this.fS[2] - this.gB[0]][(this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1) % 10] * ((this.baseSpecialSkillLevels[this.fS[2] - this.gB[0] + 1] + 1) / 10 + 1)) {
                                     Sound.getInstance().play(SoundType.UPGRADE);
                                 } else {
                                     Sound.getInstance().play(SoundType.CANT_PRESS);
@@ -27715,9 +27715,9 @@ public class AppInstance extends Game {
                     this.gz = this.bJ[this.bK[this.fS[2] - this.gB[1]]][(this.bv[this.bK[this.fS[2] - this.gB[1]]] + 1) % 10 + 2] * ((this.bv[this.bK[this.fS[2] - this.gB[1]]] + 1) / 10 + 1);
                 }
             } else if (this.fS[2] - this.gB[1] - this.gB[0] == 0) {
-                this.gz = ac[0][(this.bx[0] + 1) % 10] * ((this.bx[0] + 1) / 10 + 1);
+                this.gz = ac[0][(this.baseSpecialSkillLevels[0] + 1) % 10] * ((this.baseSpecialSkillLevels[0] + 1) / 10 + 1);
             } else if (this.fS[2] - this.gB[1] - this.gB[0] >= 1) {
-                this.gz = ac[this.fS[2] - this.gB[1] - this.gB[0]][(this.bx[this.fS[2] - this.gB[1] - this.gB[0] + 1] + 1) % 10] * ((this.bx[this.fS[2] - this.gB[1] - this.gB[0] + 1] + 1) / 10 + 1);
+                this.gz = ac[this.fS[2] - this.gB[1] - this.gB[0]][(this.baseSpecialSkillLevels[this.fS[2] - this.gB[1] - this.gB[0] + 1] + 1) % 10] * ((this.baseSpecialSkillLevels[this.fS[2] - this.gB[1] - this.gB[0] + 1] + 1) / 10 + 1);
             }
         }
 
