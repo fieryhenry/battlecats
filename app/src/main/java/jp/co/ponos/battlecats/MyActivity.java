@@ -148,6 +148,7 @@ public class MyActivity extends Activity { //implements ab, ac, com.tapjoy.q {
       A.a().catfood = 999999;
       A.a().xp = 99999999;
       A.a().battleItems = new int[]{999, 999, 999, 999, 999, 999};
+      A.a().baseSpecialSkillLevels = new int[]{100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100};
    }
    @Override
    protected Dialog onCreateDialog(int var1) {
