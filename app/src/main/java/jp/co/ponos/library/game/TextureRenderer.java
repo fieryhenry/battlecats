@@ -6,6 +6,8 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.nio.ShortBuffer;
 
+import jp.co.ponos.battlecats.A;
+
 public class TextureRenderer {
    static TextureRenderer textureRenderer;
    int imageOrientation;
@@ -804,6 +806,27 @@ public class TextureRenderer {
       this.imageAlpha = imageAlpha;
    }
 
+   public void drawRectButton(int[] buttonCoordinates) {
+      this.drawRectangle(buttonCoordinates[0], buttonCoordinates[1], buttonCoordinates[2], buttonCoordinates[3]);
+   }
+   public void drawRectButtons(int[][] buttonCoordinates) { // purely for dev stuff
+      for(int i = 0; i < buttonCoordinates.length; i++) {
+         if (buttonCoordinates[i][2] == 0 || buttonCoordinates[i][3] == 0) {
+            continue;
+         }
+         if (!A.a().isTouching(buttonCoordinates[i][0], buttonCoordinates[i][1], buttonCoordinates[i][2], buttonCoordinates[i][3])) {
+            this.setColor(100, 100, 100, 150);
+         }
+         else {
+            this.setColor(254, 0, 0, 150);
+         }
+         Texture texture = new Texture();
+         String buttonText = aString.format("%d", i);
+         texture.drawText(buttonText, "FONT_SYSTEM_BOLD", 30, 1);
+         this.drawScaledImageI(texture, buttonCoordinates[i][0], buttonCoordinates[i][1], texture.imgWidth, texture.imgHeight);
+         this.drawRectangle(buttonCoordinates[i][0], buttonCoordinates[i][1], buttonCoordinates[i][2], buttonCoordinates[i][3]);
+      }
+   }
    public void drawRectangle(int x, int y, int width, int height) {
       x += this.xOffsetI;
       y += this.yOffsetI;
