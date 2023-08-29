@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = 'にゃんこ大戦争'
+rootProject.name = 'Battle Cats Remake'
