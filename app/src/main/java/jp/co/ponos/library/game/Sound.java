@@ -213,7 +213,7 @@ public class Sound {
 
       for(this.volumes = new int[var2]; var3 < var2; ++var3) {
          try {
-            this.soundFiles[var3] = AssetLoader.assetLoader.getRaw(String.format("snd%03d", var3));
+            this.soundFiles[var3] = AssetLoader.assetLoader.getRaw(aString.format("snd%03d", var3));
             this.volumes[var3] = 100;
          } catch (Exception var4) {
          }

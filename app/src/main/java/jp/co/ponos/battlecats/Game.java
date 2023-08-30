@@ -12,6 +12,7 @@ import jp.co.ponos.library.game.Sound;
 import jp.co.ponos.library.game.MyApplicationBase;
 import jp.co.ponos.library.game.Texture;
 import jp.co.ponos.library.game.AnimTransformer;
+import jp.co.ponos.library.game.aString;
 import jp.co.ponos.library.game.stream.AssetTextStream;
 import jp.co.ponos.library.game.stream.FileStream;
 import jp.co.ponos.library.game.AlertAppli;
@@ -1050,7 +1051,7 @@ public class Game extends MyApplicationBase {
         }
 
         if (!this.af[1].isLoaded()) {
-            this.af[1].load(MyUtility.getString(String.format("img%03d.png", 100)), MyUtility.getString(String.format("img%03d.imgcut", 100)));
+            this.af[1].load(MyUtility.getString(aString.format("img%03d.png", 100)), MyUtility.getString(aString.format("img%03d.imgcut", 100)));
         }
 
         if (this.uiTextures[0].isLoaded()) {
@@ -1058,7 +1059,7 @@ public class Game extends MyApplicationBase {
         }
 
         if (!this.uiTextures[0].isLoaded()) {
-            this.uiTextures[0].load(MyUtility.getString(String.format("bg%03d.png", this.bV[4] + 0)), MyUtility.getString(String.format("bg%03d.imgcut", this.bV[4])));
+            this.uiTextures[0].load(MyUtility.getString(aString.format("bg%03d.png", this.bV[4] + 0)), MyUtility.getString(aString.format("bg%03d.imgcut", this.bV[4])));
         }
 
         if (this.uiTextures[1].isLoaded()) {
@@ -1066,7 +1067,7 @@ public class Game extends MyApplicationBase {
         }
 
         if (!this.uiTextures[1].isLoaded()) {
-            this.uiTextures[1].load(MyUtility.getString(String.format("fc%03d.png", 0)), MyUtility.getString(String.format("fc%03d.imgcut", 0)));
+            this.uiTextures[1].load(MyUtility.getString(aString.format("fc%03d.png", 0)), MyUtility.getString(aString.format("fc%03d.imgcut", 0)));
         }
 
         if (this.uiTextures[2].isLoaded()) {
@@ -1074,7 +1075,7 @@ public class Game extends MyApplicationBase {
         }
 
         if (!this.uiTextures[2].isLoaded()) {
-            this.uiTextures[2].load(MyUtility.getString(String.format("ec%03d.png", this.battleStats[20])), MyUtility.getString(String.format("ec%03d.imgcut", this.battleStats[20])));
+            this.uiTextures[2].load(MyUtility.getString(aString.format("ec%03d.png", this.battleStats[20])), MyUtility.getString(aString.format("ec%03d.imgcut", this.battleStats[20])));
         }
 
         if (this.aC[0].isLoaded()) {
@@ -1082,17 +1083,17 @@ public class Game extends MyApplicationBase {
         }
 
         if (!this.aC[0].isLoaded()) {
-            this.aC[0].load(MyUtility.getString(String.format("i%03d_a.png", 0)), MyUtility.getString(String.format("%03d_a.imgcut", 0)));
-            this.aD[0].load(MyUtility.getString(String.format("%03d_a.mamodel", 0)));
+            this.aC[0].load(MyUtility.getString(aString.format("i%03d_a.png", 0)), MyUtility.getString(aString.format("%03d_a.imgcut", 0)));
+            this.aD[0].load(MyUtility.getString(aString.format("%03d_a.mamodel", 0)));
 
             for (var1 = 0; var1 < 1; ++var1) {
-                this.aE[0][var1].load(MyUtility.getString(String.format("%03d_a%02d.maanim", 0, var1)));
+                this.aE[0][var1].load(MyUtility.getString(aString.format("%03d_a%02d.maanim", 0, var1)));
             }
 
-            this.aD[1].load(MyUtility.getString(String.format("%03d_a.mamodel", 1)));
+            this.aD[1].load(MyUtility.getString(aString.format("%03d_a.mamodel", 1)));
 
             for (var1 = 0; var1 < 2; ++var1) {
-                this.aE[1][var1].load(MyUtility.getString(String.format("%03d_a%02d.maanim", 1, var1)));
+                this.aE[1][var1].load(MyUtility.getString(aString.format("%03d_a%02d.maanim", 1, var1)));
             }
 
             for (var1 = 0; var1 < 2; ++var1) {
@@ -1106,7 +1107,7 @@ public class Game extends MyApplicationBase {
         }
 
         if (!this.uiTextures[4].isLoaded()) {
-            this.uiTextures[4].load(MyUtility.getString(String.format("img%03d.png", 1)), MyUtility.getString(String.format("img%03d.imgcut", 1)));
+            this.uiTextures[4].load(MyUtility.getString(aString.format("img%03d.png", 1)), MyUtility.getString(aString.format("img%03d.imgcut", 1)));
         }
 
         if (this.uiTextures[15].isLoaded()) {
@@ -1114,7 +1115,7 @@ public class Game extends MyApplicationBase {
         }
 
         if (!this.uiTextures[15].isLoaded()) {
-            this.uiTextures[15].load(MyUtility.getString(String.format("img%03d.png", 2)), MyUtility.getString(String.format("img%03d.imgcut", 2)));
+            this.uiTextures[15].load(MyUtility.getString(aString.format("img%03d.png", 2)), MyUtility.getString(aString.format("img%03d.imgcut", 2)));
         }
 
         if (this.uiTextures[16].isLoaded()) {
@@ -1122,7 +1123,7 @@ public class Game extends MyApplicationBase {
         }
 
         if (!this.uiTextures[16].isLoaded()) {
-            this.uiTextures[16].load(MyUtility.getString(String.format("ec%03d_s.png", this.battleStats[20])), MyUtility.getString(String.format("ec%03d_s.imgcut", this.battleStats[20])));
+            this.uiTextures[16].load(MyUtility.getString(aString.format("ec%03d_s.png", this.battleStats[20])), MyUtility.getString(aString.format("ec%03d_s.imgcut", this.battleStats[20])));
         }
 
         if (this.uiTextures[17].isLoaded()) {
@@ -1130,7 +1131,7 @@ public class Game extends MyApplicationBase {
         }
 
         if (!this.uiTextures[17].isLoaded()) {
-            this.uiTextures[17].load(MyUtility.getString(String.format("ec%03d_n_%s.png", this.battleStats[20], MyUtility.getString("lang"))), MyUtility.getString(String.format("ec%03d_n_%s.imgcut", this.battleStats[20], MyUtility.getString("lang"))));
+            this.uiTextures[17].load(MyUtility.getString(aString.format("ec%03d_n_%s.png", this.battleStats[20], MyUtility.getString("lang"))), MyUtility.getString(aString.format("ec%03d_n_%s.imgcut", this.battleStats[20], MyUtility.getString("lang"))));
         }
 
         if (this.uiTextures[18].isLoaded()) {
@@ -1138,7 +1139,7 @@ public class Game extends MyApplicationBase {
         }
 
         if (!this.uiTextures[18].isLoaded()) {
-            this.uiTextures[18].load(MyUtility.getString(String.format("img%03d.png", 3)), MyUtility.getString(String.format("img%03d.imgcut", 3)));
+            this.uiTextures[18].load(MyUtility.getString(aString.format("img%03d.png", 3)), MyUtility.getString(aString.format("img%03d.imgcut", 3)));
         }
 
         if (this.uiTextures[19].isLoaded()) {
@@ -1146,7 +1147,7 @@ public class Game extends MyApplicationBase {
         }
 
         if (!this.uiTextures[19].isLoaded()) {
-            this.uiTextures[19].load(MyUtility.getString(String.format("img%03d.png", 4)), MyUtility.getString(String.format("img%03d.imgcut", 4)));
+            this.uiTextures[19].load(MyUtility.getString(aString.format("img%03d.png", 4)), MyUtility.getString(aString.format("img%03d.imgcut", 4)));
         }
 
         if (this.uiTextures[20].isLoaded()) {
@@ -1154,7 +1155,7 @@ public class Game extends MyApplicationBase {
         }
 
         if (!this.uiTextures[20].isLoaded()) {
-            this.uiTextures[20].load(MyUtility.getString(String.format("img%03d.png", 43)), MyUtility.getString(String.format("img%03d.imgcut", 43)));
+            this.uiTextures[20].load(MyUtility.getString(aString.format("img%03d.png", 43)), MyUtility.getString(aString.format("img%03d.imgcut", 43)));
         }
 
         if (this.uiTextures[21].isLoaded()) {
@@ -1162,7 +1163,7 @@ public class Game extends MyApplicationBase {
         }
 
         if (!this.uiTextures[21].isLoaded()) {
-            this.uiTextures[21].load(MyUtility.getString(String.format("img%03d.png", 6)), MyUtility.getString(String.format("img%03d.imgcut", 6)));
+            this.uiTextures[21].load(MyUtility.getString(aString.format("img%03d.png", 6)), MyUtility.getString(aString.format("img%03d.imgcut", 6)));
         }
 
         if (this.uiTextures[23].isLoaded()) {
@@ -1170,7 +1171,7 @@ public class Game extends MyApplicationBase {
         }
 
         if (!this.uiTextures[23].isLoaded()) {
-            this.uiTextures[23].load(MyUtility.getString(String.format("img%03d.png", 40)), MyUtility.getString(String.format("img%03d.imgcut", 40)));
+            this.uiTextures[23].load(MyUtility.getString(aString.format("img%03d.png", 40)), MyUtility.getString(aString.format("img%03d.imgcut", 40)));
         }
 
         if (this.uiTextures[24].isLoaded()) {
@@ -1178,7 +1179,7 @@ public class Game extends MyApplicationBase {
         }
 
         if (!this.uiTextures[24].isLoaded()) {
-            this.uiTextures[24].load(MyUtility.getString(String.format("img%03d.png", 41)), MyUtility.getString(String.format("img%03d.imgcut", 41)));
+            this.uiTextures[24].load(MyUtility.getString(aString.format("img%03d.png", 41)), MyUtility.getString(aString.format("img%03d.imgcut", 41)));
         }
 
         if (this.uiTextures[25].isLoaded()) {
@@ -1186,7 +1187,7 @@ public class Game extends MyApplicationBase {
         }
 
         if (!this.uiTextures[25].isLoaded()) {
-            this.uiTextures[25].load(MyUtility.getString(String.format("img%03d.png", 42)), MyUtility.getString(String.format("img%03d.imgcut", 42)));
+            this.uiTextures[25].load(MyUtility.getString(aString.format("img%03d.png", 42)), MyUtility.getString(aString.format("img%03d.imgcut", 42)));
         }
 
         if (this.ay[0].isLoaded()) {
@@ -1194,35 +1195,35 @@ public class Game extends MyApplicationBase {
         }
 
         if (!this.ay[0].isLoaded()) {
-            this.ay[0].load(MyUtility.getString(String.format("i%03d_g.png", 0)), MyUtility.getString(String.format("%03d_g.imgcut", 0)));
+            this.ay[0].load(MyUtility.getString(aString.format("i%03d_g.png", 0)), MyUtility.getString(aString.format("%03d_g.imgcut", 0)));
         }
 
-        this.az[0][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 0, 1)));
-        this.aA[0][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 0, 1)));
+        this.az[0][0].load(MyUtility.getString(aString.format("%03d_g%02d_%d.mamodel", 0, 0, 1)));
+        this.aA[0][0].load(MyUtility.getString(aString.format("%03d_g%02d_%d.maanim", 0, 0, 1)));
         this.az[0][0].setTextures(this.ay);
         this.az[0][0].setAction();
-        this.az[0][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 0, 2)));
-        this.aA[0][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 0, 2)));
+        this.az[0][1].load(MyUtility.getString(aString.format("%03d_g%02d_%d.mamodel", 0, 0, 2)));
+        this.aA[0][1].load(MyUtility.getString(aString.format("%03d_g%02d_%d.maanim", 0, 0, 2)));
         this.az[0][1].setTextures(this.ay);
         this.az[0][1].setAction();
-        this.az[1][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 1, 1)));
-        this.aA[1][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 1, 1)));
+        this.az[1][0].load(MyUtility.getString(aString.format("%03d_g%02d_%d.mamodel", 0, 1, 1)));
+        this.aA[1][0].load(MyUtility.getString(aString.format("%03d_g%02d_%d.maanim", 0, 1, 1)));
         this.az[1][0].setTextures(this.ay);
         this.az[1][0].setAction();
-        this.az[1][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 1, 2)));
-        this.aA[1][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 1, 2)));
+        this.az[1][1].load(MyUtility.getString(aString.format("%03d_g%02d_%d.mamodel", 0, 1, 2)));
+        this.aA[1][1].load(MyUtility.getString(aString.format("%03d_g%02d_%d.maanim", 0, 1, 2)));
         this.az[1][1].setTextures(this.ay);
         this.az[1][1].setAction();
-        this.az[2][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 2, 1)));
-        this.aA[2][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 2, 1)));
+        this.az[2][0].load(MyUtility.getString(aString.format("%03d_g%02d_%d.mamodel", 0, 2, 1)));
+        this.aA[2][0].load(MyUtility.getString(aString.format("%03d_g%02d_%d.maanim", 0, 2, 1)));
         this.az[2][0].setTextures(this.ay);
         this.az[2][0].setAction();
-        this.az[2][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 2, 2)));
-        this.aA[2][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 2, 2)));
+        this.az[2][1].load(MyUtility.getString(aString.format("%03d_g%02d_%d.mamodel", 0, 2, 2)));
+        this.aA[2][1].load(MyUtility.getString(aString.format("%03d_g%02d_%d.maanim", 0, 2, 2)));
         this.az[2][1].setTextures(this.ay);
         this.az[2][1].setAction();
-        this.az[3][0].load(MyUtility.getString(String.format("%03d_g%02d.mamodel", 0, 3)));
-        this.aA[3][0].load(MyUtility.getString(String.format("%03d_g%02d.maanim", 0, 3)));
+        this.az[3][0].load(MyUtility.getString(aString.format("%03d_g%02d.mamodel", 0, 3)));
+        this.aA[3][0].load(MyUtility.getString(aString.format("%03d_g%02d.maanim", 0, 3)));
         this.az[3][0].setTextures(this.ay);
         this.az[3][0].setAction();
 
@@ -1246,13 +1247,13 @@ public class Game extends MyApplicationBase {
 
         for (var1 = 0; var1 < 10; ++var1) {
             if (this.slotCatIDs[var1] == -1) {
-                this.uiTextures[var1 + 5].load(MyUtility.getString(String.format("uni.png")), MyUtility.getString(String.format("uni.imgcut")));
+                this.uiTextures[var1 + 5].load(MyUtility.getString(aString.format("uni.png")), MyUtility.getString(aString.format("uni.imgcut")));
             } else if (this.eV[var1] == 0) {
                 if (!this.uiTextures[var1 + 5].isLoaded()) {
-                    this.uiTextures[var1 + 5].load(MyUtility.getString(String.format("uni%03d_f%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(String.format("uni%03d_f%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
+                    this.uiTextures[var1 + 5].load(MyUtility.getString(aString.format("uni%03d_f%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(aString.format("uni%03d_f%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
                 }
             } else if (this.eV[var1] == 1 && !this.uiTextures[var1 + 5].isLoaded()) {
-                this.uiTextures[var1 + 5].load(MyUtility.getString(String.format("uni%03d_c%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(String.format("uni%03d_c%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
+                this.uiTextures[var1 + 5].load(MyUtility.getString(aString.format("uni%03d_c%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(aString.format("uni%03d_c%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
             }
         }
 
@@ -1260,22 +1261,22 @@ public class Game extends MyApplicationBase {
             if (this.slotCatIDs[var1] != -1) {
                 if (this.eV[var1] == 0) {
                     if (!this.ar[this.slotCatIDs[var1] - 2].isLoaded()) {
-                        this.ar[this.slotCatIDs[var1] - 2].load(MyUtility.getString(String.format("i%03d_f.png", this.slotCatIDs[var1] - 2)), MyUtility.getString(String.format("%03d_f.imgcut", this.slotCatIDs[var1] - 2)));
-                        this.at[var1].load(MyUtility.getString(String.format("%03d_f.mamodel", this.slotCatIDs[var1] - 2)));
+                        this.ar[this.slotCatIDs[var1] - 2].load(MyUtility.getString(aString.format("i%03d_f.png", this.slotCatIDs[var1] - 2)), MyUtility.getString(aString.format("%03d_f.imgcut", this.slotCatIDs[var1] - 2)));
+                        this.at[var1].load(MyUtility.getString(aString.format("%03d_f.mamodel", this.slotCatIDs[var1] - 2)));
 
                         for (var2 = 0; var2 < this.getLength(this.au[var1]); ++var2) {
-                            this.au[var1][var2].load(MyUtility.getString(String.format("%03d_f%02d.maanim", this.slotCatIDs[var1] - 2, var2)));
+                            this.au[var1][var2].load(MyUtility.getString(aString.format("%03d_f%02d.maanim", this.slotCatIDs[var1] - 2, var2)));
                         }
 
                         this.at[var1].setTextures(this.ar);
                         this.at[var1].setAction();
                     }
                 } else if (this.eV[var1] == 1 && !this.as[this.slotCatIDs[var1] - 2].isLoaded()) {
-                    this.as[this.slotCatIDs[var1] - 2].load(MyUtility.getString(String.format("i%03d_c.png", this.slotCatIDs[var1] - 2)), MyUtility.getString(String.format("%03d_c.imgcut", this.slotCatIDs[var1] - 2)));
-                    this.at[var1].load(MyUtility.getString(String.format("%03d_c.mamodel", this.slotCatIDs[var1] - 2)));
+                    this.as[this.slotCatIDs[var1] - 2].load(MyUtility.getString(aString.format("i%03d_c.png", this.slotCatIDs[var1] - 2)), MyUtility.getString(aString.format("%03d_c.imgcut", this.slotCatIDs[var1] - 2)));
+                    this.at[var1].load(MyUtility.getString(aString.format("%03d_c.mamodel", this.slotCatIDs[var1] - 2)));
 
                     for (var2 = 0; var2 < this.getLength(this.au[var1]); ++var2) {
-                        this.au[var1][var2].load(MyUtility.getString(String.format("%03d_c%02d.maanim", this.slotCatIDs[var1] - 2, var2)));
+                        this.au[var1][var2].load(MyUtility.getString(aString.format("%03d_c%02d.maanim", this.slotCatIDs[var1] - 2, var2)));
                     }
 
                     this.at[var1].setTextures(this.as);
@@ -1306,15 +1307,15 @@ public class Game extends MyApplicationBase {
         for (var1 = 0; var1 < 10; ++var1) {
             if (this.eU[var1] != -1 && this.eU[var1] > 0 && !this.av[this.eU[var1] - 2].isLoaded()) {
                 if (this.eU[var1] - 2 == 21) {
-                    this.av[this.eU[var1] - 2].load(MyUtility.getString(String.format("i%03d_e.png", this.eU[var1] - 2)), MyUtility.getString(String.format("i%03d_e.imgcut", this.eU[var1] - 2)));
+                    this.av[this.eU[var1] - 2].load(MyUtility.getString(aString.format("i%03d_e.png", this.eU[var1] - 2)), MyUtility.getString(aString.format("i%03d_e.imgcut", this.eU[var1] - 2)));
                 } else {
-                    this.av[this.eU[var1] - 2].load(MyUtility.getString(String.format("i%03d_e.png", this.eU[var1] - 2)), MyUtility.getString(String.format("%03d_e.imgcut", this.eU[var1] - 2)));
+                    this.av[this.eU[var1] - 2].load(MyUtility.getString(aString.format("i%03d_e.png", this.eU[var1] - 2)), MyUtility.getString(aString.format("%03d_e.imgcut", this.eU[var1] - 2)));
                 }
 
-                this.aw[var1].load(MyUtility.getString(String.format("%03d_e.mamodel", this.eU[var1] - 2)));
+                this.aw[var1].load(MyUtility.getString(aString.format("%03d_e.mamodel", this.eU[var1] - 2)));
 
                 for (var2 = 0; var2 < this.getLength(this.ax[var1]); ++var2) {
-                    this.ax[var1][var2].load(MyUtility.getString(String.format("%03d_e%02d.maanim", this.eU[var1] - 2, var2)));
+                    this.ax[var1][var2].load(MyUtility.getString(aString.format("%03d_e%02d.maanim", this.eU[var1] - 2, var2)));
                 }
 
                 this.aw[var1].setTextures(this.av);
@@ -1338,13 +1339,13 @@ public class Game extends MyApplicationBase {
             this.gA[var1] = 0;
         }
 
-        this.aj[0].drawText(this.warning1Text[5], "FONT_SYSTEM_BOLD", 30, 1);
+        this.aj[0].loadText(this.warning1Text[5], "FONT_SYSTEM_BOLD", 30, 1);
 
         for (var1 = 0; var1 < 4; ++var1) {
-            this.textTextures[var1 + 1].drawText(this.stageFirstMessageText[0][var1], "FONT_SYSTEM_BOLD", 30, 1);
+            this.textTextures[var1 + 1].loadText(this.stageFirstMessageText[0][var1], "FONT_SYSTEM_BOLD", 30, 1);
         }
 
-        this.textTextures[10].drawText(this.optionText[1], "FONT_SYSTEM_BOLD", 30, 1);
+        this.textTextures[10].loadText(this.optionText[1], "FONT_SYSTEM_BOLD", 30, 1);
         this.gA[0] = 20;
         this.buttonCoordinates1[0][0] = this.excessWidth + 814;
         this.buttonCoordinates1[0][1] = this.eZ + 510;
@@ -1796,11 +1797,11 @@ public class Game extends MyApplicationBase {
         for (var1 = 0; var1 < 10; ++var1) {
             if (!this.ak[var1].isLoaded()) {
                 if (this.slotCatIDs[var1] == -1) {
-                    this.ak[var1].load(MyUtility.getString(String.format("uni.png")), MyUtility.getString(String.format("uni.imgcut")));
+                    this.ak[var1].load(MyUtility.getString(aString.format("uni.png")), MyUtility.getString(aString.format("uni.imgcut")));
                 } else if (this.eV[var1] == 0) {
-                    this.ak[var1].load(MyUtility.getString(String.format("uni%03d_f%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(String.format("uni%03d_f%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
+                    this.ak[var1].load(MyUtility.getString(aString.format("uni%03d_f%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(aString.format("uni%03d_f%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
                 } else if (this.eV[var1] == 1) {
-                    this.ak[var1].load(MyUtility.getString(String.format("uni%03d_c%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(String.format("uni%03d_c%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
+                    this.ak[var1].load(MyUtility.getString(aString.format("uni%03d_c%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(aString.format("uni%03d_c%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
                 }
             }
         }
@@ -1810,7 +1811,7 @@ public class Game extends MyApplicationBase {
         }
 
         if (!this.uiTextures[6].isLoaded()) {
-            this.uiTextures[6].load(MyUtility.getString(String.format("img%03d.png", 32)), MyUtility.getString(String.format("img%03d.imgcut", 32)));
+            this.uiTextures[6].load(MyUtility.getString(aString.format("img%03d.png", 32)), MyUtility.getString(aString.format("img%03d.imgcut", 32)));
         }
 
         if (this.uiTextures[7].isLoaded()) {
@@ -1818,7 +1819,7 @@ public class Game extends MyApplicationBase {
         }
 
         if (!this.uiTextures[7].isLoaded()) {
-            this.uiTextures[7].load(MyUtility.getString(String.format("img%03d.png", 19)), MyUtility.getString(String.format("img%03d.imgcut", 19)));
+            this.uiTextures[7].load(MyUtility.getString(aString.format("img%03d.png", 19)), MyUtility.getString(aString.format("img%03d.imgcut", 19)));
         }
 
         if (this.uiTextures[8].isLoaded()) {
@@ -1826,7 +1827,7 @@ public class Game extends MyApplicationBase {
         }
 
         if (!this.uiTextures[8].isLoaded()) {
-            this.uiTextures[8].load(MyUtility.getString(String.format("img%03d.png", 33)), MyUtility.getString(String.format("img%03d.imgcut", 33)));
+            this.uiTextures[8].load(MyUtility.getString(aString.format("img%03d.png", 33)), MyUtility.getString(aString.format("img%03d.imgcut", 33)));
         }
 
         if (this.uiTextures[9].isLoaded()) {
@@ -2646,12 +2647,12 @@ public class Game extends MyApplicationBase {
     }
 
     void loadStageStats(int stageID) {
-        //if (!jp.co.ponos.library.b.aa.equals(jp.co.ponos.library.b.stream.b.d(String.format("stage%02d.csv", stageID)), (new String[]{"345b93370a81c18c3e1ca485064c8105", "7eeb12db6cf61e975062554f2c2d5c47", "fbae56844862035ecac67dd840b163fe", "94519b25bf5f93710325a5f8ab0f0ec4", "3d0ca160ebad6570d113a7885259daf4", "385e19a0e69d5f11fc54e768f3de1d59", "386921150764335e057e770852656c60", "f72af96ebba61a4b5bb95b93c55c797c", "7a3eab28e914ddb5c5a7f7340d766079", "b8f2d0edc156bbb3eb184fd14e5cce52", "d88a1db9e289697124393a5361b410ca", "adc6425e4106bff2184ad1942da28765", "1aeddcbb0d534bb231ffdf60862d17f4", "54993a929642e6382ab479a7e6f96c8c", "0756993b94f5dcc37b5addaf3b3ae71f", "312987a22171ab38999b36dda3e43b37", "fd4267af7dd24ca6e33fea3eaebf3a3f", "d9fabf55cea824cf5cce990b55de3be7", "845beeee5c9adbdc21339ca2e8f98281", "cd0000479b0b70c6027886745abb4fe0", "91a863f669ecd4be900532e9fe4cde0d", "e7b42c80357526613831951245fdafdb", "e89c4c39c161560737dd467a9cce9e5e", "3119fd83734e199eade1372402c6d4b5", "e0c58745696c32a8ec03932d38c0e10c", "8213572ce0b7f006155528589a075ca4", "69595179dbf85559b386b69b668340f9", "5a5f04742ef5406fa1282068dd146d42", "53df5ec4d09b4797efcbbcf68f5fcc55", "941e6851b52e48c2b19c96fcb567e55b", "08f0eb6b5a35035569037d5a34eec92f", "efd0471c05bb8c352b45653737a0342c", "d74ced49669c5c93cd1528daf373df6f", "bdae74443acdb58b3d213c19d1994279", "420469b948ad3134999ddba7d11d0f72", "c217325fb3c462ff500f35d5dba8d6dd", "1f923af4c242703437a78ae6fed900a2", "bab2c03bdff10ca11d29317ee08f35e2", "30a1e1225661123fcdcfd2c080618bab", "0e2afa9fea9646dbc070408535687932", "8bc82c0f20d610d0dcb3730d706944e3", "8233d1ede2ca26dfb53fa31feb6c9356", "3dffa6ddaaadd924152cd2c9a101ad73", "1e43ffe66844c8abf330e59c2e3c5351", "727678b0f67daf70c867feab8b6445a2", "a04cc9b171fe4edeac9377f5605d112d", "a440aa434573dd1479e2fbca9b7a4446", "4f1b17f0b6047839cea04800097db840", "3f2cb30ef9b6c82fa5c083febf35d110", "b16cf2453de33589d886e1b39de8635e", "aaa4e070b70806c33d01fe218426a0a3"})[stageID])) {
+        //if (!jp.co.ponos.library.b.aa.equals(jp.co.ponos.library.b.stream.b.d(aString.format("stage%02d.csv", stageID)), (new String[]{"345b93370a81c18c3e1ca485064c8105", "7eeb12db6cf61e975062554f2c2d5c47", "fbae56844862035ecac67dd840b163fe", "94519b25bf5f93710325a5f8ab0f0ec4", "3d0ca160ebad6570d113a7885259daf4", "385e19a0e69d5f11fc54e768f3de1d59", "386921150764335e057e770852656c60", "f72af96ebba61a4b5bb95b93c55c797c", "7a3eab28e914ddb5c5a7f7340d766079", "b8f2d0edc156bbb3eb184fd14e5cce52", "d88a1db9e289697124393a5361b410ca", "adc6425e4106bff2184ad1942da28765", "1aeddcbb0d534bb231ffdf60862d17f4", "54993a929642e6382ab479a7e6f96c8c", "0756993b94f5dcc37b5addaf3b3ae71f", "312987a22171ab38999b36dda3e43b37", "fd4267af7dd24ca6e33fea3eaebf3a3f", "d9fabf55cea824cf5cce990b55de3be7", "845beeee5c9adbdc21339ca2e8f98281", "cd0000479b0b70c6027886745abb4fe0", "91a863f669ecd4be900532e9fe4cde0d", "e7b42c80357526613831951245fdafdb", "e89c4c39c161560737dd467a9cce9e5e", "3119fd83734e199eade1372402c6d4b5", "e0c58745696c32a8ec03932d38c0e10c", "8213572ce0b7f006155528589a075ca4", "69595179dbf85559b386b69b668340f9", "5a5f04742ef5406fa1282068dd146d42", "53df5ec4d09b4797efcbbcf68f5fcc55", "941e6851b52e48c2b19c96fcb567e55b", "08f0eb6b5a35035569037d5a34eec92f", "efd0471c05bb8c352b45653737a0342c", "d74ced49669c5c93cd1528daf373df6f", "bdae74443acdb58b3d213c19d1994279", "420469b948ad3134999ddba7d11d0f72", "c217325fb3c462ff500f35d5dba8d6dd", "1f923af4c242703437a78ae6fed900a2", "bab2c03bdff10ca11d29317ee08f35e2", "30a1e1225661123fcdcfd2c080618bab", "0e2afa9fea9646dbc070408535687932", "8bc82c0f20d610d0dcb3730d706944e3", "8233d1ede2ca26dfb53fa31feb6c9356", "3dffa6ddaaadd924152cd2c9a101ad73", "1e43ffe66844c8abf330e59c2e3c5351", "727678b0f67daf70c867feab8b6445a2", "a04cc9b171fe4edeac9377f5605d112d", "a440aa434573dd1479e2fbca9b7a4446", "4f1b17f0b6047839cea04800097db840", "3f2cb30ef9b6c82fa5c083febf35d110", "b16cf2453de33589d886e1b39de8635e", "aaa4e070b70806c33d01fe218426a0a3"})[stageID])) {
         //   this.D = 0;
         //   this.j(4);
         //} else {
         AssetTextStream stream = new AssetTextStream();
-        stream.openRead(String.format("stage%02d.csv", stageID));
+        stream.openRead(aString.format("stage%02d.csv", stageID));
         stream.readLine();
 
         for (stageID = 0; stageID < this.getLength(this.bV); ++stageID) {
@@ -2718,16 +2719,16 @@ public class Game extends MyApplicationBase {
                     if (!this.textTextures[sceneID].isLoaded()) {
                         if (this.versionCode == 0) {
                             if (sceneID == 0) {
-                                this.textTextures[sceneID].drawText(String.format("%d%s", this.fv, this.openingText[sceneID]), "FONT_SYSTEM_BOLD", 30, 1);
+                                this.textTextures[sceneID].loadText(aString.format("%d%s", this.fv, this.openingText[sceneID]), "FONT_SYSTEM_BOLD", 30, 1);
                             } else {
-                                this.textTextures[sceneID].drawText(this.openingText[sceneID], "FONT_SYSTEM_BOLD", 30, 1);
+                                this.textTextures[sceneID].loadText(this.openingText[sceneID], "FONT_SYSTEM_BOLD", 30, 1);
                             }
                         } else if (this.versionCode == 1) {
                             if (sceneID == 2) {
-                                String var3 = String.format(this.openingText[sceneID], this.fv);
-                                this.textTextures[sceneID].drawText(String.format("%s", var3), "FONT_SYSTEM_BOLD", 30, 1);
+                                String var3 = aString.format(this.openingText[sceneID], this.fv);
+                                this.textTextures[sceneID].loadText(aString.format("%s", var3), "FONT_SYSTEM_BOLD", 30, 1);
                             } else {
-                                this.textTextures[sceneID].drawText(this.openingText[sceneID], "FONT_SYSTEM_BOLD", 30, 1);
+                                this.textTextures[sceneID].loadText(this.openingText[sceneID], "FONT_SYSTEM_BOLD", 30, 1);
                             }
                         }
                     }
@@ -2791,11 +2792,11 @@ public class Game extends MyApplicationBase {
                 }
 
                 if (!this.ao[0].isLoaded()) {
-                    this.ao[0].load(MyUtility.getString(String.format("img%03d.png", 13)), MyUtility.getString(String.format("000_img%03d.imgcut", 13)));
+                    this.ao[0].load(MyUtility.getString(aString.format("img%03d.png", 13)), MyUtility.getString(aString.format("000_img%03d.imgcut", 13)));
                 }
 
-                this.ap[0].load(MyUtility.getString(String.format("opening.mamodel")));
-                this.aq[0].load(MyUtility.getString(String.format("opening.maanim")));
+                this.ap[0].load(MyUtility.getString(aString.format("opening.mamodel")));
+                this.aq[0].load(MyUtility.getString(aString.format("opening.maanim")));
                 this.ap[0].setTextures(this.ao);
                 this.ap[0].setAction();
                 if (!this.uiTextures[2].isLoaded()) {
@@ -2803,7 +2804,7 @@ public class Game extends MyApplicationBase {
                 }
 
                 if (!this.uiTextures[2].isLoaded()) {
-                    this.uiTextures[2].load(MyUtility.getString(String.format("img%03d.png", 6)), MyUtility.getString(String.format("img%03d.imgcut", 6)));
+                    this.uiTextures[2].load(MyUtility.getString(aString.format("img%03d.png", 6)), MyUtility.getString(aString.format("img%03d.imgcut", 6)));
                 }
 
                 this.z = 10000;
@@ -2825,7 +2826,7 @@ public class Game extends MyApplicationBase {
 
                 for (sceneID = 0; sceneID < this.getLength(this.endingText); ++sceneID) {
                     if (!this.textTextures[sceneID].isLoaded()) {
-                        this.textTextures[sceneID].drawText(this.endingText[sceneID], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[sceneID].loadText(this.endingText[sceneID], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 }
 
@@ -2870,7 +2871,7 @@ public class Game extends MyApplicationBase {
                 }
 
                 if (!this.uiTextures[0].isLoaded()) {
-                    this.uiTextures[0].load(MyUtility.getString(String.format("img%03d.png", 35)), MyUtility.getString(String.format("img%03d.imgcut", 35)));
+                    this.uiTextures[0].load(MyUtility.getString(aString.format("img%03d.png", 35)), MyUtility.getString(aString.format("img%03d.imgcut", 35)));
                 }
 
                 if (this.uiTextures[1].isLoaded()) {
@@ -2878,7 +2879,7 @@ public class Game extends MyApplicationBase {
                 }
 
                 if (!this.uiTextures[1].isLoaded()) {
-                    this.uiTextures[1].load(MyUtility.getString(String.format("img%03d.png", 7)), MyUtility.getString(String.format("img%03d.imgcut", 7)));
+                    this.uiTextures[1].load(MyUtility.getString(aString.format("img%03d.png", 7)), MyUtility.getString(aString.format("img%03d.imgcut", 7)));
                 }
 
                 if (this.uiTextures[2].isLoaded()) {
@@ -2886,7 +2887,7 @@ public class Game extends MyApplicationBase {
                 }
 
                 if (!this.uiTextures[2].isLoaded()) {
-                    this.uiTextures[2].load(MyUtility.getString(String.format("img%03d.png", 6)), MyUtility.getString(String.format("img%03d.imgcut", 6)));
+                    this.uiTextures[2].load(MyUtility.getString(aString.format("img%03d.png", 6)), MyUtility.getString(aString.format("img%03d.imgcut", 6)));
                 }
 
                 if (this.uiTextures[3].isLoaded()) {
@@ -2894,7 +2895,7 @@ public class Game extends MyApplicationBase {
                 }
 
                 if (!this.uiTextures[3].isLoaded()) {
-                    this.uiTextures[3].load(MyUtility.getString(String.format("img%03d.png", 36)), MyUtility.getString(String.format("img%03d.imgcut", 36)));
+                    this.uiTextures[3].load(MyUtility.getString(aString.format("img%03d.png", 36)), MyUtility.getString(aString.format("img%03d.imgcut", 36)));
                 }
 
                 this.dE = 0;

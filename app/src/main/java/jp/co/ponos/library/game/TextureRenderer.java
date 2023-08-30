@@ -822,7 +822,7 @@ public class TextureRenderer {
          }
          Texture texture = new Texture();
          String buttonText = aString.format("%d", i);
-         texture.drawText(buttonText, "FONT_SYSTEM_BOLD", 30, 1);
+         texture.loadText(buttonText, "FONT_SYSTEM_BOLD", 30, 1);
          this.drawScaledImageI(texture, buttonCoordinates[i][0], buttonCoordinates[i][1], texture.imgWidth, texture.imgHeight);
          this.drawRectangle(buttonCoordinates[i][0], buttonCoordinates[i][1], buttonCoordinates[i][2], buttonCoordinates[i][3]);
       }
