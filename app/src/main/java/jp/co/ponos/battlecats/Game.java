@@ -57,6 +57,7 @@ public class Game extends MyApplicationBase {
     static int[] fb = new int[10];
     static int[][] fe = new int[49][3];
     static int hn = 2000;
+    String errorText = "F99";
     static int[] l = new int[8];
     static int[] m = new int[8];
     AnimTransformer A = new AnimTransformer();
@@ -2188,6 +2189,7 @@ public class Game extends MyApplicationBase {
             stream.enableMD5();
             //if (!var2.e()) {
             //   var2.f();
+            //   this.errorText = "F06";
             //   this.j(4);
             //   this.D = 0;
             //   return var1;
@@ -2356,146 +2358,148 @@ public class Game extends MyApplicationBase {
         return var1;
     }
 
-    void ac() {
-        byte var1 = 0;
-        FileStream var2 = new FileStream();
-        if (var2.openWrite("SAVE_DATA")) {
-            var2.enableMD5();
-            var2.writeInt(1);
-            var2.writeBoolean(Sound.getInstance().isMutedBGM());
-            var2.writeBoolean(Sound.getInstance().isMutedSE());
-            var2.writeInt(this.catfood);
-            var2.writeInt(this.currentEnergy);
+    public synchronized void ac() {
+        synchronized (this) {
+            byte var1 = 0;
+            FileStream var2 = new FileStream();
+            if (var2.openWrite("SAVE_DATA")) {
+                var2.enableMD5();
+                var2.writeInt(1);
+                var2.writeBoolean(Sound.getInstance().isMutedBGM());
+                var2.writeBoolean(Sound.getInstance().isMutedSE());
+                var2.writeInt(this.catfood);
+                var2.writeInt(this.currentEnergy);
 
-            int var3;
-            for (var3 = 0; var3 < this.getLength(this.years); ++var3) {
-                var2.writeInt(this.years[var3]);
-            }
-
-            for (var3 = 0; var3 < this.getLength(this.months); ++var3) {
-                var2.writeInt(this.months[var3]);
-            }
-
-            for (var3 = 0; var3 < this.getLength(this.days); ++var3) {
-                var2.writeInt(this.days[var3]);
-            }
-
-            var2.writeDouble(this.aQ);
-            var2.writeInt(this.hour);
-            var2.writeInt(this.minute);
-            var2.writeInt(this.second);
-            var2.writeInt(this.aU);
-            var2.writeInt(this.aV);
-            var2.writeInt(this.aW);
-            var2.writeInt(this.aX);
-            var2.writeInt(this.xp);
-            var2.writeInt(this.aZ);
-            var2.writeInt(this.ba);
-            var2.writeInt(this.bb);
-
-            for (var3 = 0; var3 < this.getLength(this.bc); ++var3) {
-                var2.writeInt(this.bc[var3]);
-            }
-
-            var2.writeInt(this.bd);
-            var2.writeInt(this.be);
-            var2.writeInt(this.bf);
-            var2.writeBoolean(this.u);
-            var2.writeInt(this.bg);
-            var2.writeInt(this.bh);
-            var2.writeInt(this.bi);
-            var2.writeInt(this.bj);
-
-            for (var3 = 0; var3 < this.getLength(this.slotCatIDs); ++var3) {
-                var2.writeInt(this.slotCatIDs[var3]);
-            }
-
-            var2.writeInt(this.currentStamp);
-
-            for (var3 = 0; var3 < this.getLength(this.stampClaimFlags); ++var3) {
-                var2.writeInt(this.stampClaimFlags[var3]);
-            }
-
-            var2.writeInt(this.bn);
-            var2.writeInt(this.bo);
-
-            for (var3 = 0; var3 < this.getLength(this.bp); ++var3) {
-                var2.writeInt(this.bp[var3]);
-            }
-
-            for (var3 = 0; var3 < this.getLength(this.bq); ++var3) {
-                var2.writeInt(this.bq[var3]);
-            }
-
-            int var4;
-            for (var3 = 0; var3 < this.getLength(this.br); ++var3) {
-                for (var4 = 0; var4 < this.getLength(this.br[var3]); ++var4) {
-                    var2.writeInt(this.br[var3][var4]);
+                int var3;
+                for (var3 = 0; var3 < this.getLength(this.years); ++var3) {
+                    var2.writeInt(this.years[var3]);
                 }
-            }
 
-            for (var3 = 0; var3 < this.getLength(this.bs); ++var3) {
-                for (var4 = 0; var4 < this.getLength(this.bs[var3]); ++var4) {
-                    var2.writeInt(this.bs[var3][var4]);
+                for (var3 = 0; var3 < this.getLength(this.months); ++var3) {
+                    var2.writeInt(this.months[var3]);
                 }
+
+                for (var3 = 0; var3 < this.getLength(this.days); ++var3) {
+                    var2.writeInt(this.days[var3]);
+                }
+
+                var2.writeDouble(this.aQ);
+                var2.writeInt(this.hour);
+                var2.writeInt(this.minute);
+                var2.writeInt(this.second);
+                var2.writeInt(this.aU);
+                var2.writeInt(this.aV);
+                var2.writeInt(this.aW);
+                var2.writeInt(this.aX);
+                var2.writeInt(this.xp);
+                var2.writeInt(this.aZ);
+                var2.writeInt(this.ba);
+                var2.writeInt(this.bb);
+
+                for (var3 = 0; var3 < this.getLength(this.bc); ++var3) {
+                    var2.writeInt(this.bc[var3]);
+                }
+
+                var2.writeInt(this.bd);
+                var2.writeInt(this.be);
+                var2.writeInt(this.bf);
+                var2.writeBoolean(this.u);
+                var2.writeInt(this.bg);
+                var2.writeInt(this.bh);
+                var2.writeInt(this.bi);
+                var2.writeInt(this.bj);
+
+                for (var3 = 0; var3 < this.getLength(this.slotCatIDs); ++var3) {
+                    var2.writeInt(this.slotCatIDs[var3]);
+                }
+
+                var2.writeInt(this.currentStamp);
+
+                for (var3 = 0; var3 < this.getLength(this.stampClaimFlags); ++var3) {
+                    var2.writeInt(this.stampClaimFlags[var3]);
+                }
+
+                var2.writeInt(this.bn);
+                var2.writeInt(this.bo);
+
+                for (var3 = 0; var3 < this.getLength(this.bp); ++var3) {
+                    var2.writeInt(this.bp[var3]);
+                }
+
+                for (var3 = 0; var3 < this.getLength(this.bq); ++var3) {
+                    var2.writeInt(this.bq[var3]);
+                }
+
+                int var4;
+                for (var3 = 0; var3 < this.getLength(this.br); ++var3) {
+                    for (var4 = 0; var4 < this.getLength(this.br[var3]); ++var4) {
+                        var2.writeInt(this.br[var3][var4]);
+                    }
+                }
+
+                for (var3 = 0; var3 < this.getLength(this.bs); ++var3) {
+                    for (var4 = 0; var4 < this.getLength(this.bs[var3]); ++var4) {
+                        var2.writeInt(this.bs[var3][var4]);
+                    }
+                }
+
+                for (var3 = 0; var3 < this.getLength(this.bt); ++var3) {
+                    var2.writeInt(this.bt[var3]);
+                }
+
+                for (var3 = 0; var3 < this.getLength(this.bu); ++var3) {
+                    var2.writeInt(this.bu[var3]);
+                }
+
+                for (var3 = 0; var3 < this.getLength(this.bv); ++var3) {
+                    var2.writeInt(this.bv[var3]);
+                }
+
+                for (var3 = 0; var3 < this.getLength(this.bw); ++var3) {
+                    var2.writeInt(this.bw[var3]);
+                }
+
+                for (var3 = 0; var3 < this.getLength(this.baseSpecialSkillLevels); ++var3) {
+                    var2.writeInt(this.baseSpecialSkillLevels[var3]);
+                }
+
+                for (var3 = 0; var3 < this.getLength(this.by); ++var3) {
+                    var2.writeInt(this.by[var3]);
+                }
+
+                for (var3 = 0; var3 < this.getLength(this.bz); ++var3) {
+                    var2.writeInt(this.bz[var3]);
+                }
+
+                for (var3 = 0; var3 < this.getLength(this.battleItems); ++var3) {
+                    var2.writeInt(this.battleItems[var3]);
+                }
+
+                for (var3 = 0; var3 < this.getLength(this.bB); ++var3) {
+                    var2.writeInt(this.bB[var3]);
+                }
+
+                for (var3 = 0; var3 < this.getLength(this.bC); ++var3) {
+                    var2.writeInt(this.bC[var3]);
+                }
+
+                for (var3 = 0; var3 < this.getLength(this.bD); ++var3) {
+                    var2.writeInt(this.bD[var3]);
+                }
+
+                for (var3 = 0; var3 < this.getLength(this.bE); ++var3) {
+                    var2.writeInt(this.bE[var3]);
+                }
+
+                for (var3 = var1; var3 < this.getLength(this.bF); ++var3) {
+                    var2.writeBoolean(this.bF[var3]);
+                }
+
+                var2.close();
             }
 
-            for (var3 = 0; var3 < this.getLength(this.bt); ++var3) {
-                var2.writeInt(this.bt[var3]);
-            }
-
-            for (var3 = 0; var3 < this.getLength(this.bu); ++var3) {
-                var2.writeInt(this.bu[var3]);
-            }
-
-            for (var3 = 0; var3 < this.getLength(this.bv); ++var3) {
-                var2.writeInt(this.bv[var3]);
-            }
-
-            for (var3 = 0; var3 < this.getLength(this.bw); ++var3) {
-                var2.writeInt(this.bw[var3]);
-            }
-
-            for (var3 = 0; var3 < this.getLength(this.baseSpecialSkillLevels); ++var3) {
-                var2.writeInt(this.baseSpecialSkillLevels[var3]);
-            }
-
-            for (var3 = 0; var3 < this.getLength(this.by); ++var3) {
-                var2.writeInt(this.by[var3]);
-            }
-
-            for (var3 = 0; var3 < this.getLength(this.bz); ++var3) {
-                var2.writeInt(this.bz[var3]);
-            }
-
-            for (var3 = 0; var3 < this.getLength(this.battleItems); ++var3) {
-                var2.writeInt(this.battleItems[var3]);
-            }
-
-            for (var3 = 0; var3 < this.getLength(this.bB); ++var3) {
-                var2.writeInt(this.bB[var3]);
-            }
-
-            for (var3 = 0; var3 < this.getLength(this.bC); ++var3) {
-                var2.writeInt(this.bC[var3]);
-            }
-
-            for (var3 = 0; var3 < this.getLength(this.bD); ++var3) {
-                var2.writeInt(this.bD[var3]);
-            }
-
-            for (var3 = 0; var3 < this.getLength(this.bE); ++var3) {
-                var2.writeInt(this.bE[var3]);
-            }
-
-            for (var3 = var1; var3 < this.getLength(this.bF); ++var3) {
-                var2.writeBoolean(this.bF[var3]);
-            }
-
-            var2.close();
+            this.ae();
         }
-
-        this.ae();
     }
 
     boolean ad() {
@@ -2505,6 +2509,7 @@ public class Game extends MyApplicationBase {
         if (var3.openRead("SAVE_DATA2")) {
             var3.enableMD5();
             //if (!var3.e()) {
+            //   this.errorText = "F07";
             //   this.j(4);
             //   this.D = 0;
             //   var3.f();
@@ -2559,54 +2564,56 @@ public class Game extends MyApplicationBase {
         return var1;
     }
 
-    void ae() {
-        byte var1 = 0;
-        FileStream var2 = new FileStream();
-        if (var2.openWrite("SAVE_DATA2")) {
-            var2.enableMD5();
-            var2.writeInt(0);
+    public synchronized void ae() {
+        synchronized (this) {
+            byte var1 = 0;
+            FileStream var2 = new FileStream();
+            if (var2.openWrite("SAVE_DATA2")) {
+                var2.enableMD5();
+                var2.writeInt(0);
 
-            int var3;
-            for (var3 = 0; var3 < this.getLength(this.ht); ++var3) {
-                var2.writeInt(this.ht[var3]);
+                int var3;
+                for (var3 = 0; var3 < this.getLength(this.ht); ++var3) {
+                    var2.writeInt(this.ht[var3]);
+                }
+
+                for (var3 = 0; var3 < this.getLength(this.hu); ++var3) {
+                    var2.writeInt(this.hu[var3]);
+                }
+
+                var2.writeInt(this.hv);
+
+                for (var3 = 0; var3 < this.getLength(this.hw); ++var3) {
+                    var2.writeInt(this.hw[var3]);
+                }
+
+                for (var3 = 0; var3 < this.getLength(this.hx); ++var3) {
+                    var2.writeInt(this.hx[var3]);
+                }
+
+                var2.writeInt(this.hy);
+                var2.writeInt(this.hz);
+                var2.writeInt(this.hA);
+                var2.writeInt(this.hB);
+
+                for (var3 = 0; var3 < this.getLength(this.hC); ++var3) {
+                    var2.writeInt(this.hC[var3]);
+                }
+
+                for (var3 = 0; var3 < this.getLength(this.hD); ++var3) {
+                    var2.writeInt(this.hD[var3]);
+                }
+
+                for (var3 = var1; var3 < this.getLength(this.hE); ++var3) {
+                    var2.writeInt(this.hE[var3]);
+                }
+
+                var2.writeInt(this.hF);
+                var2.writeInt(this.hG);
+                var2.close();
             }
 
-            for (var3 = 0; var3 < this.getLength(this.hu); ++var3) {
-                var2.writeInt(this.hu[var3]);
-            }
-
-            var2.writeInt(this.hv);
-
-            for (var3 = 0; var3 < this.getLength(this.hw); ++var3) {
-                var2.writeInt(this.hw[var3]);
-            }
-
-            for (var3 = 0; var3 < this.getLength(this.hx); ++var3) {
-                var2.writeInt(this.hx[var3]);
-            }
-
-            var2.writeInt(this.hy);
-            var2.writeInt(this.hz);
-            var2.writeInt(this.hA);
-            var2.writeInt(this.hB);
-
-            for (var3 = 0; var3 < this.getLength(this.hC); ++var3) {
-                var2.writeInt(this.hC[var3]);
-            }
-
-            for (var3 = 0; var3 < this.getLength(this.hD); ++var3) {
-                var2.writeInt(this.hD[var3]);
-            }
-
-            for (var3 = var1; var3 < this.getLength(this.hE); ++var3) {
-                var2.writeInt(this.hE[var3]);
-            }
-
-            var2.writeInt(this.hF);
-            var2.writeInt(this.hG);
-            var2.close();
         }
-
     }
 
     public void onRestart() {
@@ -2649,6 +2656,7 @@ public class Game extends MyApplicationBase {
     void loadStageStats(int stageID) {
         //if (!jp.co.ponos.library.b.aa.equals(jp.co.ponos.library.b.stream.b.d(aString.format("stage%02d.csv", stageID)), (new String[]{"345b93370a81c18c3e1ca485064c8105", "7eeb12db6cf61e975062554f2c2d5c47", "fbae56844862035ecac67dd840b163fe", "94519b25bf5f93710325a5f8ab0f0ec4", "3d0ca160ebad6570d113a7885259daf4", "385e19a0e69d5f11fc54e768f3de1d59", "386921150764335e057e770852656c60", "f72af96ebba61a4b5bb95b93c55c797c", "7a3eab28e914ddb5c5a7f7340d766079", "b8f2d0edc156bbb3eb184fd14e5cce52", "d88a1db9e289697124393a5361b410ca", "adc6425e4106bff2184ad1942da28765", "1aeddcbb0d534bb231ffdf60862d17f4", "54993a929642e6382ab479a7e6f96c8c", "0756993b94f5dcc37b5addaf3b3ae71f", "312987a22171ab38999b36dda3e43b37", "fd4267af7dd24ca6e33fea3eaebf3a3f", "d9fabf55cea824cf5cce990b55de3be7", "845beeee5c9adbdc21339ca2e8f98281", "cd0000479b0b70c6027886745abb4fe0", "91a863f669ecd4be900532e9fe4cde0d", "e7b42c80357526613831951245fdafdb", "e89c4c39c161560737dd467a9cce9e5e", "3119fd83734e199eade1372402c6d4b5", "e0c58745696c32a8ec03932d38c0e10c", "8213572ce0b7f006155528589a075ca4", "69595179dbf85559b386b69b668340f9", "5a5f04742ef5406fa1282068dd146d42", "53df5ec4d09b4797efcbbcf68f5fcc55", "941e6851b52e48c2b19c96fcb567e55b", "08f0eb6b5a35035569037d5a34eec92f", "efd0471c05bb8c352b45653737a0342c", "d74ced49669c5c93cd1528daf373df6f", "bdae74443acdb58b3d213c19d1994279", "420469b948ad3134999ddba7d11d0f72", "c217325fb3c462ff500f35d5dba8d6dd", "1f923af4c242703437a78ae6fed900a2", "bab2c03bdff10ca11d29317ee08f35e2", "30a1e1225661123fcdcfd2c080618bab", "0e2afa9fea9646dbc070408535687932", "8bc82c0f20d610d0dcb3730d706944e3", "8233d1ede2ca26dfb53fa31feb6c9356", "3dffa6ddaaadd924152cd2c9a101ad73", "1e43ffe66844c8abf330e59c2e3c5351", "727678b0f67daf70c867feab8b6445a2", "a04cc9b171fe4edeac9377f5605d112d", "a440aa434573dd1479e2fbca9b7a4446", "4f1b17f0b6047839cea04800097db840", "3f2cb30ef9b6c82fa5c083febf35d110", "b16cf2453de33589d886e1b39de8635e", "aaa4e070b70806c33d01fe218426a0a3"})[stageID])) {
         //   this.D = 0;
+        //   this.errorText = "F05" + aString.format("%02d", Integer.valueOf(stageID));
         //   this.j(4);
         //} else {
         AssetTextStream stream = new AssetTextStream();
@@ -2693,7 +2701,7 @@ public class Game extends MyApplicationBase {
         int var2;
         switch (this.getSceneType()) {
             case ERROR:
-                MyUtility.getInstance().addButton(MyUtility.getString("err_txt"));
+                MyUtility.getInstance().addButton(MyUtility.getString("err_txt") + "\u3000" + this.errorText);
                 Sound.getInstance().stop(SoundType.ALL);
                 break;
             case OPENING:
