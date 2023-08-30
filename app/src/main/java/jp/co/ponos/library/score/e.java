@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import jp.co.ponos.library.game.Global;
 import jp.co.ponos.library.game.JSInterfaceBase;
@@ -108,7 +109,7 @@ public class e extends JSInterfaceBase {
          }
 
          try {
-            ArrayList var21 = Global.getInstance().getDialogs();
+            Vector var21 = Global.getInstance().getDialogs();
             a var9 = a.b();
             var9.getClass();
             b var8 = new b(var9, MyUtility.decrypt(MyUtility.md5("q"), "Uh7ZhyOPKQVrg15k9Qgev7dUpYMimG7lU8MtFdl11Dg="), var1, var4, var24, var18);
@@ -120,7 +121,7 @@ public class e extends JSInterfaceBase {
          }
       }
 
-      ArrayList var20 = Global.getInstance().getDialogs();
+      Vector var20 = Global.getInstance().getDialogs();
       a var22 = a.b();
       var22.getClass();
       var20.add(new b(var22, MyUtility.decrypt(MyUtility.md5("q"), "Uh7ZhyOPKQVrg15k9Qgev7dUpYMimG7lU8MtFdl11Dg="), var1, var4, (int[])null, (int[])null));

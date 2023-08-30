@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.widget.FrameLayout;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Vector;
+
 import javax.microedition.khronos.opengles.GL10;
 
 public class Global {
@@ -23,7 +25,7 @@ public class Global {
    boolean isGameOpen;
    FrameLayout frameLayout;
    GL10 gl10;
-   ArrayList dialogs = new ArrayList();
+   Vector dialogs = new Vector();
    BackKeyController q;
    BackKeyController r;
 
@@ -90,7 +92,7 @@ public class Global {
       return this.frameLayout;
    }
 
-   public ArrayList getDialogs() {
+   public Vector getDialogs() {
       return this.dialogs;
    }
 
