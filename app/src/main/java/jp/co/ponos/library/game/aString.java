@@ -1,12 +1,14 @@
 package jp.co.ponos.library.game;
 
+import java.util.Locale;
+
 public class aString {
    public static int parseInt(String var0) {
       return Integer.parseInt(var0);
    }
 
    public static String format(String var0, Object... var1) {
-      return String.format(var0, var1);
+      return String.format(Locale.ENGLISH, var0, var1);
    }
 
    public static boolean equals(String var0, String var1) {
