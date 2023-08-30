@@ -2,10 +2,15 @@ package jp.co.ponos.battlecats;
 
 import android.content.Context;
 import android.opengl.GLSurfaceView;
+
+import java.util.Iterator;
+
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import jp.co.ponos.library.game.Global;
+import jp.co.ponos.library.game.TexturesLoader;
+import jp.co.ponos.library.game.Texture;
 import jp.co.ponos.library.game.TextureRenderer;
 
 class MyGLSurfaceRenderer implements GLSurfaceView.Renderer {
@@ -51,5 +56,9 @@ class MyGLSurfaceRenderer implements GLSurfaceView.Renderer {
       }
 
       TextureRenderer.getInstance().setupGL();
+      Iterator it = TexturesLoader.getInstance().getTextures().iterator();
+      while (it.hasNext()) {
+         ((Texture) it.next()).loadUnknown();
+      }
    }
 }
