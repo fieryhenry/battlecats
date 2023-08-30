@@ -16,11 +16,13 @@ import android.widget.FrameLayout;
 //import com.tapjoy.ac;
 
 import jp.co.ponos.library.game.BackKeyController;
+import jp.co.ponos.library.game.ButtonBuilder;
 import jp.co.ponos.library.game.DialogFragment;
 import jp.co.ponos.library.game.JSInterfaceBase;
 import jp.co.ponos.library.game.MyApplicationBase;
 import jp.co.ponos.library.game.Sound;
 import jp.co.ponos.library.game.Global;
+import jp.co.ponos.library.game.TexturesLoader;
 import jp.co.ponos.library.game.TextureRenderer;
 import jp.co.ponos.library.purchase.w;
 import jp.co.ponos.library.purchase.PurchaseDelegate;
@@ -28,6 +30,7 @@ import jp.co.ponos.library.score.MyUtility;
 import jp.co.ponos.library.twitter.Twitter;
 
 public class MyActivity extends Activity { //implements ab, ac, com.tapjoy.q {
+   Handler otherHandler;
    MyHandler handler;
    MyFLSurfaceView surfaceView;
    FrameLayout frameLayout;
@@ -50,22 +53,8 @@ public class MyActivity extends Activity { //implements ab, ac, com.tapjoy.q {
 
    }
 
-   public void a(int var1) {
-   }
-
-   public void a(String var1) {
-   }
-
    public void a(String var1, int var2) {
-      var1 = MyUtility.getString("catfoodtapjoy_txt");
-      if ((A.a().getSceneType() != SceneType.BATTLE || A.a().battleStats[14] != 1) && A.a().getSceneType() != SceneType.ENDING && (A.a().getSceneType() != SceneType.MAIN || A.a().getScreenType() != ScreenType.STAMP) && var2 > 0) {
-         AppInstance var3 = A.a();
-         var3.catfood += var2;
-         MyUtility.getInstance().addButton(String.format(var1, var2));
-         //com.tapjoy.g.a().a(var2, this);
-         A.a().ac();
-      }
-
+      this.otherHandler.post(new TapJoyCatfood(this, var2));
    }
 
    public void b(String var1) {
@@ -93,6 +82,7 @@ public class MyActivity extends Activity { //implements ab, ac, com.tapjoy.q {
       jp.co.ponos.library.score.a.a();
       TextureRenderer.createInstance();
       Sound.createInstance();
+      TexturesLoader.createInstance();
       MyUtility.createInstance();
       MyUtility.getInstance().setJSInterface((JSInterfaceBase)(new h()));
       if (MySettings.getInstance().a) {
@@ -118,6 +108,7 @@ public class MyActivity extends Activity { //implements ab, ac, com.tapjoy.q {
       this.getWindow().addFlags(128);
       this.requestWindowFeature(1);
       this.setVolumeControlStream(3);
+      this.otherHandler = new Handler();
       this.handler = new MyHandler(this);
       Global.getInstance().setHandler((Handler)this.handler);
       this.frameLayout = new FrameLayout(this);
@@ -153,7 +144,7 @@ public class MyActivity extends Activity { //implements ab, ac, com.tapjoy.q {
    @Override
    protected Dialog onCreateDialog(int var1) {
       AlertDialog var2;
-      if (Global.getInstance().getDialogs().size() > 0) {
+      if (Global.getInstance().getDialogs().size() > 0 && ((ButtonBuilder)Global.getInstance().getDialogs().get(0)).b() != null) {
          var2 = ((DialogFragment) Global.getInstance().getDialogs().get(0)).b().create();
       } else {
          var2 = null;
@@ -189,6 +180,7 @@ public class MyActivity extends Activity { //implements ab, ac, com.tapjoy.q {
    @Override
    public void onPause() {
       super.onPause();
+      this.surfaceView.onPause();
       A.a().setIsGameOpen(false);
       A.a().onPause();
    }
@@ -202,6 +194,7 @@ public class MyActivity extends Activity { //implements ab, ac, com.tapjoy.q {
    @Override
    public void onResume() {
       super.onResume();
+      this.surfaceView.onResume();
       this.getWindow().addFlags(1024);
       if (!((KeyguardManager) Global.getInstance().getContext().getSystemService(Context.KEYGUARD_SERVICE)).inKeyguardRestrictedInputMode()) {
          this.d = false;
