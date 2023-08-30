@@ -54,18 +54,18 @@ public class AppInstance extends Game {
             this.shouldPlayButtonSelect[var1] = false;
         }
 
-        this.textTextures[0].drawText(this.stampMessageText[0], "FONT_SYSTEM_BOLD", 46, 0);
-        this.textTextures[1].drawText(this.stampMessageText[1], "FONT_SYSTEM_BOLD", 24, 0);
+        this.textTextures[0].loadText(this.stampMessageText[0], "FONT_SYSTEM_BOLD", 46, 0);
+        this.textTextures[1].loadText(this.stampMessageText[1], "FONT_SYSTEM_BOLD", 24, 0);
         if (this.versionCode == 0) {
-            this.textTextures[2].drawText(this.stampMessageText[2], "FONT_SYSTEM_BOLD", 24, 0);
-            this.textTextures[3].drawText(String.format("%s%d%s", this.stampMessageText[3], 30 - (this.currentStamp + 1), this.stampMessageText[4]), "FONT_SYSTEM_BOLD", 24, 0);
+            this.textTextures[2].loadText(this.stampMessageText[2], "FONT_SYSTEM_BOLD", 24, 0);
+            this.textTextures[3].loadText(aString.format("%s%d%s", this.stampMessageText[3], 30 - (this.currentStamp + 1), this.stampMessageText[4]), "FONT_SYSTEM_BOLD", 24, 0);
         } else if (this.versionCode == 1) {
-            this.textTextures[2].drawText(String.format("%s %d %s", this.stampMessageText[2], 30 - (this.currentStamp + 1), this.stampMessageText[18]), "FONT_SYSTEM_BOLD", 24, 0);
-            this.textTextures[3].drawText(String.format("%s", this.stampMessageText[3]), "FONT_SYSTEM_BOLD", 24, 0);
+            this.textTextures[2].loadText(aString.format("%s %d %s", this.stampMessageText[2], 30 - (this.currentStamp + 1), this.stampMessageText[18]), "FONT_SYSTEM_BOLD", 24, 0);
+            this.textTextures[3].loadText(aString.format("%s", this.stampMessageText[3]), "FONT_SYSTEM_BOLD", 24, 0);
         }
 
-        this.textTextures[4].drawText(this.stampMessageText[16], "FONT_SYSTEM_BOLD", 22, 1);
-        this.textTextures[5].drawText(this.stampMessageText[17], "FONT_SYSTEM_BOLD", 22, 1);
+        this.textTextures[4].loadText(this.stampMessageText[16], "FONT_SYSTEM_BOLD", 22, 1);
+        this.textTextures[5].loadText(this.stampMessageText[17], "FONT_SYSTEM_BOLD", 22, 1);
         this.buttonCoordinates1[0][0] = this.excessWidth / 2 + 225;
         this.buttonCoordinates1[0][1] = 485;
         this.buttonCoordinates1[0][2] = 381;
@@ -78,11 +78,11 @@ public class AppInstance extends Game {
         }
 
         if (!this.stampTextures[0].isLoaded()) {
-            this.stampTextures[0].load(MyUtility.getString(String.format("i%03d_stamp_f.png", 0)), MyUtility.getString(String.format("%03d_stamp_f.imgcut", 0)));
+            this.stampTextures[0].load(MyUtility.getString(aString.format("i%03d_stamp_f.png", 0)), MyUtility.getString(aString.format("%03d_stamp_f.imgcut", 0)));
         }
 
-        this.stampModels[0].load(MyUtility.getString(String.format("%03d_stamp_f.mamodel", 0)));
-        this.stampAnims[0].load(MyUtility.getString(String.format("%03d_stamp_f00.maanim", 0)));
+        this.stampModels[0].load(MyUtility.getString(aString.format("%03d_stamp_f.mamodel", 0)));
+        this.stampAnims[0].load(MyUtility.getString(aString.format("%03d_stamp_f00.maanim", 0)));
         this.stampModels[0].setTextures(this.stampTextures);
         this.stampModels[0].setAction();
         if (this.stampTextures[1].isLoaded()) {
@@ -90,11 +90,11 @@ public class AppInstance extends Game {
         }
 
         if (!this.stampTextures[1].isLoaded()) {
-            this.stampTextures[1].load(MyUtility.getString(String.format("i%03d_img044.png", 1)), MyUtility.getString(String.format("i%03d_img044.imgcut", 1)));
+            this.stampTextures[1].load(MyUtility.getString(aString.format("i%03d_img044.png", 1)), MyUtility.getString(aString.format("i%03d_img044.imgcut", 1)));
         }
 
-        this.stampModels[1].load(MyUtility.getString(String.format("%03d_img044.mamodel", 1)));
-        this.stampAnims[1].load(MyUtility.getString(String.format("stamp.maanim")));
+        this.stampModels[1].load(MyUtility.getString(aString.format("%03d_img044.mamodel", 1)));
+        this.stampAnims[1].load(MyUtility.getString(aString.format("stamp.maanim")));
         this.stampModels[1].setTextures(this.stampTextures);
         this.stampModels[1].setAction();
         if (this.uiTextures[10].isLoaded()) {
@@ -102,7 +102,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[10].isLoaded()) {
-            this.uiTextures[10].load(MyUtility.getString(String.format("img%03d.png", 25)), MyUtility.getString(String.format("img%03d.imgcut", 25)));
+            this.uiTextures[10].load(MyUtility.getString(aString.format("img%03d.png", 25)), MyUtility.getString(aString.format("img%03d.imgcut", 25)));
         }
 
         if (this.currentStamp >= 29) {
@@ -309,7 +309,7 @@ public class AppInstance extends Game {
             this.buttonDelay[var1] = 0;
         }
 
-        this.textTextures[0].drawText(this.optionText[0], "FONT_SYSTEM_BOLD", 30, 1);
+        this.textTextures[0].loadText(this.optionText[0], "FONT_SYSTEM_BOLD", 30, 1);
         this.resetTextures();
 
         for (var1 = 0; var1 < this.getLength(this.uiTextures); ++var1) {
@@ -323,47 +323,47 @@ public class AppInstance extends Game {
         }
 
         if (!this.af[1].isLoaded()) {
-            this.af[1].load(MyUtility.getString(String.format("img%03d.png", 100)), MyUtility.getString(String.format("img%03d.imgcut", 100)));
+            this.af[1].load(MyUtility.getString(aString.format("img%03d.png", 100)), MyUtility.getString(aString.format("img%03d.imgcut", 100)));
         }
 
         if (!this.uiTextures[0].isLoaded()) {
-            this.uiTextures[0].load(MyUtility.getString(String.format("img%03d.png", 12)), MyUtility.getString(String.format("img%03d.imgcut", 12)));
+            this.uiTextures[0].load(MyUtility.getString(aString.format("img%03d.png", 12)), MyUtility.getString(aString.format("img%03d.imgcut", 12)));
         }
 
         if (!this.uiTextures[1].isLoaded()) {
-            this.uiTextures[1].load(MyUtility.getString(String.format("img%03d.png", 11)), MyUtility.getString(String.format("img%03d.imgcut", 11)));
+            this.uiTextures[1].load(MyUtility.getString(aString.format("img%03d.png", 11)), MyUtility.getString(aString.format("img%03d.imgcut", 11)));
         }
 
         if (!this.uiTextures[2].isLoaded()) {
-            this.uiTextures[2].load(MyUtility.getString(String.format("img%03d.png", 6)), MyUtility.getString(String.format("img%03d.imgcut", 6)));
+            this.uiTextures[2].load(MyUtility.getString(aString.format("img%03d.png", 6)), MyUtility.getString(aString.format("img%03d.imgcut", 6)));
         }
 
         if (!this.uiTextures[3].isLoaded()) {
-            this.uiTextures[3].load(MyUtility.getString(String.format("img%03d.png", 25)), MyUtility.getString(String.format("img%03d.imgcut", 25)));
+            this.uiTextures[3].load(MyUtility.getString(aString.format("img%03d.png", 25)), MyUtility.getString(aString.format("img%03d.imgcut", 25)));
         }
 
         if (!this.uiTextures[4].isLoaded()) {
-            this.uiTextures[4].load(MyUtility.getString(String.format("img%03d.png", 7)), MyUtility.getString(String.format("img%03d.imgcut", 7)));
+            this.uiTextures[4].load(MyUtility.getString(aString.format("img%03d.png", 7)), MyUtility.getString(aString.format("img%03d.imgcut", 7)));
         }
 
         if (!this.uiTextures[5].isLoaded()) {
-            this.uiTextures[5].load(MyUtility.getString(String.format("img%03d.png", 33)), MyUtility.getString(String.format("img%03d.imgcut", 33)));
+            this.uiTextures[5].load(MyUtility.getString(aString.format("img%03d.png", 33)), MyUtility.getString(aString.format("img%03d.imgcut", 33)));
         }
 
         if (!this.uiTextures[6].isLoaded()) {
-            this.uiTextures[6].load(MyUtility.getString(String.format("img%03d.png", 1)), MyUtility.getString(String.format("img%03d.imgcut", 1)));
+            this.uiTextures[6].load(MyUtility.getString(aString.format("img%03d.png", 1)), MyUtility.getString(aString.format("img%03d.imgcut", 1)));
         }
 
         if (!this.uiTextures[7].isLoaded()) {
-            this.uiTextures[7].load(MyUtility.getString(String.format("img%03d.png", 2)), MyUtility.getString(String.format("img%03d.imgcut", 2)));
+            this.uiTextures[7].load(MyUtility.getString(aString.format("img%03d.png", 2)), MyUtility.getString(aString.format("img%03d.imgcut", 2)));
         }
 
         if (!this.uiTextures[8].isLoaded()) {
-            this.uiTextures[8].load(MyUtility.getString(String.format("img%03d.png", 19)), MyUtility.getString(String.format("img%03d.imgcut", 19)));
+            this.uiTextures[8].load(MyUtility.getString(aString.format("img%03d.png", 19)), MyUtility.getString(aString.format("img%03d.imgcut", 19)));
         }
 
         if (!this.uiTextures[9].isLoaded()) {
-            this.uiTextures[9].load(MyUtility.getString(String.format("img%03d.png", 31)), MyUtility.getString(String.format("img%03d.imgcut", 31)));
+            this.uiTextures[9].load(MyUtility.getString(aString.format("img%03d.png", 31)), MyUtility.getString(aString.format("img%03d.imgcut", 31)));
         }
 
         for (var1 = 0; var1 < this.getLength(this.eE); ++var1) {
@@ -1389,7 +1389,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[6].isLoaded()) {
-            this.uiTextures[6].load(MyUtility.getString(String.format("img%03d.png", 17)), MyUtility.getString(String.format("img%03d.imgcut", 17)));
+            this.uiTextures[6].load(MyUtility.getString(aString.format("img%03d.png", 17)), MyUtility.getString(aString.format("img%03d.imgcut", 17)));
         }
 
         if (this.uiTextures[8].isLoaded()) {
@@ -1397,7 +1397,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[8].isLoaded()) {
-            this.uiTextures[8].load(MyUtility.getString(String.format("ot%03d_c.png", 11)), MyUtility.getString(String.format("ot%03d_c.imgcut", 11)));
+            this.uiTextures[8].load(MyUtility.getString(aString.format("ot%03d_c.png", 11)), MyUtility.getString(aString.format("ot%03d_c.imgcut", 11)));
         }
 
         for (var1 = 0; var1 < this.getLength(this.eE); ++var1) {
@@ -1812,7 +1812,7 @@ public class AppInstance extends Game {
                             break;
                         }
 
-                        this.ai[var2].drawText(this.stageFirstMessageText[this.gW + 1][var2], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.ai[var2].loadText(this.stageFirstMessageText[this.gW + 1][var2], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 }
             } else if (this.bB[0] == 1) {
@@ -1822,7 +1822,7 @@ public class AppInstance extends Game {
                             break;
                         }
 
-                        this.ai[var2].drawText(this.tutorialText[0][this.gW * 4 + var2], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.ai[var2].loadText(this.tutorialText[0][this.gW * 4 + var2], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 }
             } else if (this.bB[1] == 1) {
@@ -1832,7 +1832,7 @@ public class AppInstance extends Game {
                             break;
                         }
 
-                        this.ai[var2].drawText(this.tutorialText[1][this.gW * 4 + var2], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.ai[var2].loadText(this.tutorialText[1][this.gW * 4 + var2], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 }
             } else if (this.bB[2] == 1) {
@@ -1842,7 +1842,7 @@ public class AppInstance extends Game {
                             break;
                         }
 
-                        this.ai[var2].drawText(this.tutorialText[2][this.gW * 4 + var2], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.ai[var2].loadText(this.tutorialText[2][this.gW * 4 + var2], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 }
             } else if (this.bB[3] == 1) {
@@ -1854,7 +1854,7 @@ public class AppInstance extends Game {
                             break;
                         }
 
-                        this.ai[var2].drawText(this.tutorialText[3][this.gW * 4 + var2], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.ai[var2].loadText(this.tutorialText[3][this.gW * 4 + var2], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 }
             } else if (this.bB[4] == 1) {
@@ -1864,7 +1864,7 @@ public class AppInstance extends Game {
                             break;
                         }
 
-                        this.ai[var2].drawText(this.tutorialText[4][var2], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.ai[var2].loadText(this.tutorialText[4][var2], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 }
             } else if (this.bB[5] == 1) {
@@ -1874,7 +1874,7 @@ public class AppInstance extends Game {
                             break;
                         }
 
-                        this.ai[var2].drawText(this.tutorialText[5][var2], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.ai[var2].loadText(this.tutorialText[5][var2], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 }
             } else if (this.bB[6] == 1) {
@@ -1884,7 +1884,7 @@ public class AppInstance extends Game {
                             break;
                         }
 
-                        this.ai[var2].drawText(this.tutorialText[6][this.gW * 4 + var2], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.ai[var2].loadText(this.tutorialText[6][this.gW * 4 + var2], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 }
             } else if (this.bB[7] == 1) {
@@ -1894,7 +1894,7 @@ public class AppInstance extends Game {
                             break;
                         }
 
-                        this.ai[var2].drawText(this.tutorialText[7][var2], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.ai[var2].loadText(this.tutorialText[7][var2], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 }
             } else if (this.bB[8] == 1) {
@@ -1904,7 +1904,7 @@ public class AppInstance extends Game {
                             break;
                         }
 
-                        this.ai[var2].drawText(this.tutorialText[8][this.gW * 4 + var2], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.ai[var2].loadText(this.tutorialText[8][this.gW * 4 + var2], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 }
             } else if (this.bB[9] == 1) {
@@ -1914,7 +1914,7 @@ public class AppInstance extends Game {
                             break;
                         }
 
-                        this.ai[var2].drawText(this.tutorialText[9][var2], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.ai[var2].loadText(this.tutorialText[9][var2], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 }
             }
@@ -2323,9 +2323,9 @@ public class AppInstance extends Game {
         for (var1 = 0; var1 < this.getLength(this.bK); ++var1) {
             if (this.bK[var1] != -1) {
                 if (this.bw[this.bK[var1]] == 0) {
-                    this.textTextures[var4].drawText(this.unitExplanationText[this.bK[var1]][0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[var4].loadText(this.unitExplanationText[this.bK[var1]][0][0], "FONT_SYSTEM_BOLD", 30, 1);
                 } else if (this.bw[this.bK[var1]] == 1) {
-                    this.textTextures[var4].drawText(this.unitExplanationText[this.bK[var1]][1][0], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[var4].loadText(this.unitExplanationText[this.bK[var1]][1][0], "FONT_SYSTEM_BOLD", 30, 1);
                 }
 
                 this.gA[0] = var4 + 1;
@@ -2340,7 +2340,7 @@ public class AppInstance extends Game {
         var5[2] = var1;
 
         for (var1 = this.gA[2]; var1 < this.getLength(this.warning1Text) + this.gA[2]; ++var1) {
-            this.textTextures[var1].drawText(this.warning1Text[var1 - this.gA[2]], "FONT_SYSTEM_BOLD", 30, 1);
+            this.textTextures[var1].loadText(this.warning1Text[var1 - this.gA[2]], "FONT_SYSTEM_BOLD", 30, 1);
             this.gA[3] = var1 + 1;
         }
 
@@ -2349,7 +2349,7 @@ public class AppInstance extends Game {
                 if (this.bw[this.bK[this.ff[2]]] == 0) {
                     var1 = var4;
                     if (!this.textTextures[var4].isLoaded()) {
-                        this.textTextures[var4].drawText(this.unitExplanationText[this.bK[this.ff[2]]][0][var4 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[var4].loadText(this.unitExplanationText[this.bK[this.ff[2]]][0][var4 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                         var1 = var4;
                     }
                 } else {
@@ -2357,7 +2357,7 @@ public class AppInstance extends Game {
                     if (this.bw[this.bK[this.ff[2]]] == 1) {
                         var1 = var4;
                         if (!this.textTextures[var4].isLoaded()) {
-                            this.textTextures[var4].drawText(this.unitExplanationText[this.bK[this.ff[2]]][1][var4 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[var4].loadText(this.unitExplanationText[this.bK[this.ff[2]]][1][var4 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                             var1 = var4;
                         }
                     }
@@ -2371,7 +2371,7 @@ public class AppInstance extends Game {
                         break;
                     }
 
-                    this.textTextures[var4].drawText(this.categoryExplanationText[0][var4 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[var4].loadText(this.categoryExplanationText[0][var4 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
                     ++var4;
                 }
             } else {
@@ -2383,7 +2383,7 @@ public class AppInstance extends Game {
                         break;
                     }
 
-                    this.textTextures[var4].drawText(this.categoryExplanationText[1][var4 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[var4].loadText(this.categoryExplanationText[1][var4 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
                     ++var4;
                 }
             }
@@ -2393,20 +2393,20 @@ public class AppInstance extends Game {
 
         if (!this.textTextures[this.gA[4]].isLoaded()) {
             if (this.ff[3] == 0) {
-                this.textTextures[this.gA[4]].drawText(this.pageNameText[0], "FONT_SYSTEM_BOLD", 30, 1);
+                this.textTextures[this.gA[4]].loadText(this.pageNameText[0], "FONT_SYSTEM_BOLD", 30, 1);
             } else {
-                this.textTextures[this.gA[4]].drawText(this.pageNameText[5], "FONT_SYSTEM_BOLD", 30, 1);
+                this.textTextures[this.gA[4]].loadText(this.pageNameText[5], "FONT_SYSTEM_BOLD", 30, 1);
             }
         }
 
         for (var1 = 0; var1 < 10; ++var1) {
             if (!this.ak[var1].isLoaded()) {
                 if (this.slotCatIDs[var1] == -1) {
-                    this.ak[var1].load(MyUtility.getString(String.format("uni.png")), MyUtility.getString(String.format("uni.imgcut")));
+                    this.ak[var1].load(MyUtility.getString(aString.format("uni.png")), MyUtility.getString(aString.format("uni.imgcut")));
                 } else if (this.eV[var1] == 0) {
-                    this.ak[var1].load(MyUtility.getString(String.format("uni%03d_f%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(String.format("uni%03d_f%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
+                    this.ak[var1].load(MyUtility.getString(aString.format("uni%03d_f%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(aString.format("uni%03d_f%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
                 } else if (this.eV[var1] == 1) {
-                    this.ak[var1].load(MyUtility.getString(String.format("uni%03d_c%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(String.format("uni%03d_c%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
+                    this.ak[var1].load(MyUtility.getString(aString.format("uni%03d_c%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(aString.format("uni%03d_c%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
                 }
             }
         }
@@ -2416,7 +2416,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[6].isLoaded()) {
-            this.uiTextures[6].load(MyUtility.getString(String.format("img%03d.png", 21)), MyUtility.getString(String.format("img%03d.imgcut", 21)));
+            this.uiTextures[6].load(MyUtility.getString(aString.format("img%03d.png", 21)), MyUtility.getString(aString.format("img%03d.imgcut", 21)));
         }
 
         if (this.uiTextures[7].isLoaded()) {
@@ -2424,7 +2424,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[7].isLoaded()) {
-            this.uiTextures[7].load(MyUtility.getString(String.format("img%03d.png", 29)), MyUtility.getString(String.format("img%03d.imgcut", 29)));
+            this.uiTextures[7].load(MyUtility.getString(aString.format("img%03d.png", 29)), MyUtility.getString(aString.format("img%03d.imgcut", 29)));
         }
 
         if (this.ff[3] == 0) {
@@ -2433,7 +2433,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[8].isLoaded()) {
-                this.uiTextures[8].load(MyUtility.getString(String.format("img%03d.png", 23)), MyUtility.getString(String.format("img%03d.imgcut", 23)));
+                this.uiTextures[8].load(MyUtility.getString(aString.format("img%03d.png", 23)), MyUtility.getString(aString.format("img%03d.imgcut", 23)));
             }
         } else if (this.ff[3] >= 1) {
             if (this.uiTextures[8].isLoaded()) {
@@ -2441,7 +2441,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[8].isLoaded()) {
-                this.uiTextures[8].load(MyUtility.getString(String.format("img%03d.png", 27)), MyUtility.getString(String.format("img%03d.imgcut", 27)));
+                this.uiTextures[8].load(MyUtility.getString(aString.format("img%03d.png", 27)), MyUtility.getString(aString.format("img%03d.imgcut", 27)));
             }
         }
 
@@ -2450,7 +2450,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[9].isLoaded()) {
-            this.uiTextures[9].load(MyUtility.getString(String.format("img%03d.png", 28)), MyUtility.getString(String.format("img%03d.imgcut", 28)));
+            this.uiTextures[9].load(MyUtility.getString(aString.format("img%03d.png", 28)), MyUtility.getString(aString.format("img%03d.imgcut", 28)));
         }
 
         if (!this.uiTextures[10].isLoaded()) {
@@ -2458,7 +2458,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[10].isLoaded()) {
-            this.uiTextures[10].load(MyUtility.getString(String.format("img%03d.png", 25)), MyUtility.getString(String.format("img%03d.imgcut", 25)));
+            this.uiTextures[10].load(MyUtility.getString(aString.format("img%03d.png", 25)), MyUtility.getString(aString.format("img%03d.imgcut", 25)));
         }
 
         for (var1 = 0; var1 < this.gC[1] + 1; ++var1) {
@@ -2468,9 +2468,9 @@ public class AppInstance extends Game {
 
             if (!this.uiTextures[var1 + 11].isLoaded()) {
                 if (this.bw[this.bK[var1]] == 0) {
-                    this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_f.png", this.bK[var1])), MyUtility.getString(String.format("udi%03d_f.imgcut", this.bK[var1])));
+                    this.uiTextures[var1 + 11].load(MyUtility.getString(aString.format("udi%03d_f.png", this.bK[var1])), MyUtility.getString(aString.format("udi%03d_f.imgcut", this.bK[var1])));
                 } else {
-                    this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_c.png", this.bK[var1])), MyUtility.getString(String.format("udi%03d_c.imgcut", this.bK[var1])));
+                    this.uiTextures[var1 + 11].load(MyUtility.getString(aString.format("udi%03d_c.png", this.bK[var1])), MyUtility.getString(aString.format("udi%03d_c.imgcut", this.bK[var1])));
                 }
             }
         }
@@ -2638,19 +2638,19 @@ public class AppInstance extends Game {
                         for (var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
                             if (this.ff[2] >= 0 && this.ff[2] <= this.gC[1]) {
                                 if (this.bw[this.bK[this.ff[2]]] == 0) {
-                                    this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.ff[2]]][0][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                                    this.textTextures[var3].loadText(this.unitExplanationText[this.bK[this.ff[2]]][0][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                                 } else if (this.bw[this.bK[this.ff[2]]] == 1) {
-                                    this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.ff[2]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                                    this.textTextures[var3].loadText(this.unitExplanationText[this.bK[this.ff[2]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                                 }
                             }
                         }
                     } else if (this.ff[3] == 0) {
                         for (var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-                            this.textTextures[var3].drawText(this.categoryExplanationText[0][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[var3].loadText(this.categoryExplanationText[0][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
                         }
                     } else {
                         for (var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-                            this.textTextures[var3].drawText(this.categoryExplanationText[1][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[var3].loadText(this.categoryExplanationText[1][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
                         }
                     }
                 }
@@ -2659,18 +2659,18 @@ public class AppInstance extends Game {
                 if (this.ff[2] >= 0 && this.ff[2] <= this.gC[1]) {
                     for (var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
                         if (this.bw[this.bK[this.ff[2]]] == 0) {
-                            this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.ff[2]]][0][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[var3].loadText(this.unitExplanationText[this.bK[this.ff[2]]][0][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                         } else if (this.bw[this.bK[this.ff[2]]] == 1) {
-                            this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.ff[2]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[var3].loadText(this.unitExplanationText[this.bK[this.ff[2]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                         }
                     }
                 } else if (this.ff[3] == 0) {
                     for (var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-                        this.textTextures[var3].drawText(this.categoryExplanationText[0][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[var3].loadText(this.categoryExplanationText[0][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 } else {
                     for (var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-                        this.textTextures[var3].drawText(this.categoryExplanationText[1][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[var3].loadText(this.categoryExplanationText[1][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 }
             }
@@ -3023,11 +3023,11 @@ public class AppInstance extends Game {
 
                             if (!this.ak[var3].isLoaded()) {
                                 if (this.slotCatIDs[var3] == -1) {
-                                    this.ak[var3].load(MyUtility.getString(String.format("uni.png")), MyUtility.getString(String.format("uni.imgcut")));
+                                    this.ak[var3].load(MyUtility.getString(aString.format("uni.png")), MyUtility.getString(aString.format("uni.imgcut")));
                                 } else if (this.eV[var3] == 0) {
-                                    this.ak[var3].load(MyUtility.getString(String.format("uni%03d_f%02d.png", this.slotCatIDs[var3] - 2, 0)), MyUtility.getString(String.format("uni%03d_f%02d.imgcut", this.slotCatIDs[var3] - 2, 0)));
+                                    this.ak[var3].load(MyUtility.getString(aString.format("uni%03d_f%02d.png", this.slotCatIDs[var3] - 2, 0)), MyUtility.getString(aString.format("uni%03d_f%02d.imgcut", this.slotCatIDs[var3] - 2, 0)));
                                 } else if (this.eV[var3] == 1) {
-                                    this.ak[var3].load(MyUtility.getString(String.format("uni%03d_c%02d.png", this.slotCatIDs[var3] - 2, 0)), MyUtility.getString(String.format("uni%03d_c%02d.imgcut", this.slotCatIDs[var3] - 2, 0)));
+                                    this.ak[var3].load(MyUtility.getString(aString.format("uni%03d_c%02d.png", this.slotCatIDs[var3] - 2, 0)), MyUtility.getString(aString.format("uni%03d_c%02d.imgcut", this.slotCatIDs[var3] - 2, 0)));
                                 }
                             }
                             break;
@@ -3123,11 +3123,11 @@ public class AppInstance extends Game {
 
                             if (!this.ak[var3].isLoaded()) {
                                 if (this.slotCatIDs[var3] == -1) {
-                                    this.ak[var3].load(MyUtility.getString(String.format("uni.png")), MyUtility.getString(String.format("uni.imgcut")));
+                                    this.ak[var3].load(MyUtility.getString(aString.format("uni.png")), MyUtility.getString(aString.format("uni.imgcut")));
                                 } else if (this.eV[var3] == 0) {
-                                    this.ak[var3].load(MyUtility.getString(String.format("uni%03d_f%02d.png", this.slotCatIDs[var3] - 2, 0)), MyUtility.getString(String.format("uni%03d_f%02d.imgcut", this.slotCatIDs[var3] - 2, 0)));
+                                    this.ak[var3].load(MyUtility.getString(aString.format("uni%03d_f%02d.png", this.slotCatIDs[var3] - 2, 0)), MyUtility.getString(aString.format("uni%03d_f%02d.imgcut", this.slotCatIDs[var3] - 2, 0)));
                                 } else if (this.eV[var3] == 1) {
-                                    this.ak[var3].load(MyUtility.getString(String.format("uni%03d_c%02d.png", this.slotCatIDs[var3] - 2, 0)), MyUtility.getString(String.format("uni%03d_c%02d.imgcut", this.slotCatIDs[var3] - 2, 0)));
+                                    this.ak[var3].load(MyUtility.getString(aString.format("uni%03d_c%02d.png", this.slotCatIDs[var3] - 2, 0)), MyUtility.getString(aString.format("uni%03d_c%02d.imgcut", this.slotCatIDs[var3] - 2, 0)));
                                 }
                             }
                         }
@@ -3564,11 +3564,11 @@ public class AppInstance extends Game {
                 if (cC[this.gH] == 100 && this.ff[2] >= 0 && this.ff[2] <= this.gC[1]) {
                     if (this.bw[this.bK[this.ff[2]]] == 0) {
                         this.bw[this.bK[this.ff[2]]] = 1;
-                        this.textTextures[this.ff[2]].drawText(this.unitExplanationText[this.bK[this.ff[2]]][1][0], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[this.ff[2]].loadText(this.unitExplanationText[this.bK[this.ff[2]]][1][0], "FONT_SYSTEM_BOLD", 30, 1);
 
                         for (var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
                             if (this.bw[this.bK[this.ff[2]]] == 1) {
-                                this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.ff[2]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                                this.textTextures[var3].loadText(this.unitExplanationText[this.bK[this.ff[2]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                             }
                         }
 
@@ -3581,22 +3581,22 @@ public class AppInstance extends Game {
 
                                 if (!this.ak[var3].isLoaded()) {
                                     if (this.slotCatIDs[var3] == -1) {
-                                        this.ak[var3].load(MyUtility.getString(String.format("uni.png")), MyUtility.getString(String.format("uni.imgcut")));
+                                        this.ak[var3].load(MyUtility.getString(aString.format("uni.png")), MyUtility.getString(aString.format("uni.imgcut")));
                                     } else if (this.eV[var3] == 0) {
-                                        this.ak[var3].load(MyUtility.getString(String.format("uni%03d_f%02d.png", this.slotCatIDs[var3] - 2, 0)), MyUtility.getString(String.format("uni%03d_f%02d.imgcut", this.slotCatIDs[var3] - 2, 0)));
+                                        this.ak[var3].load(MyUtility.getString(aString.format("uni%03d_f%02d.png", this.slotCatIDs[var3] - 2, 0)), MyUtility.getString(aString.format("uni%03d_f%02d.imgcut", this.slotCatIDs[var3] - 2, 0)));
                                     } else if (this.eV[var3] == 1) {
-                                        this.ak[var3].load(MyUtility.getString(String.format("uni%03d_c%02d.png", this.slotCatIDs[var3] - 2, 0)), MyUtility.getString(String.format("uni%03d_c%02d.imgcut", this.slotCatIDs[var3] - 2, 0)));
+                                        this.ak[var3].load(MyUtility.getString(aString.format("uni%03d_c%02d.png", this.slotCatIDs[var3] - 2, 0)), MyUtility.getString(aString.format("uni%03d_c%02d.imgcut", this.slotCatIDs[var3] - 2, 0)));
                                     }
                                 }
                             }
                         }
                     } else if (this.bw[this.bK[this.ff[2]]] == 1) {
                         this.bw[this.bK[this.ff[2]]] = 0;
-                        this.textTextures[this.ff[2]].drawText(this.unitExplanationText[this.bK[this.ff[2]]][0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[this.ff[2]].loadText(this.unitExplanationText[this.bK[this.ff[2]]][0][0], "FONT_SYSTEM_BOLD", 30, 1);
 
                         for (var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
                             if (this.bw[this.bK[this.ff[2]]] == 0) {
-                                this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.ff[2]]][0][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                                this.textTextures[var3].loadText(this.unitExplanationText[this.bK[this.ff[2]]][0][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                             }
                         }
 
@@ -3609,11 +3609,11 @@ public class AppInstance extends Game {
 
                                 if (!this.ak[var3].isLoaded()) {
                                     if (this.slotCatIDs[var3] == -1) {
-                                        this.ak[var3].load(MyUtility.getString(String.format("uni.png")), MyUtility.getString(String.format("uni.imgcut")));
+                                        this.ak[var3].load(MyUtility.getString(aString.format("uni.png")), MyUtility.getString(aString.format("uni.imgcut")));
                                     } else if (this.eV[var3] == 0) {
-                                        this.ak[var3].load(MyUtility.getString(String.format("uni%03d_f%02d.png", this.slotCatIDs[var3] - 2, 0)), MyUtility.getString(String.format("uni%03d_f%02d.imgcut", this.slotCatIDs[var3] - 2, 0)));
+                                        this.ak[var3].load(MyUtility.getString(aString.format("uni%03d_f%02d.png", this.slotCatIDs[var3] - 2, 0)), MyUtility.getString(aString.format("uni%03d_f%02d.imgcut", this.slotCatIDs[var3] - 2, 0)));
                                     } else if (this.eV[var3] == 1) {
-                                        this.ak[var3].load(MyUtility.getString(String.format("uni%03d_c%02d.png", this.slotCatIDs[var3] - 2, 0)), MyUtility.getString(String.format("uni%03d_c%02d.imgcut", this.slotCatIDs[var3] - 2, 0)));
+                                        this.ak[var3].load(MyUtility.getString(aString.format("uni%03d_c%02d.png", this.slotCatIDs[var3] - 2, 0)), MyUtility.getString(aString.format("uni%03d_c%02d.imgcut", this.slotCatIDs[var3] - 2, 0)));
                                     }
                                 }
                             }
@@ -3630,9 +3630,9 @@ public class AppInstance extends Game {
 
                     if (!this.uiTextures[this.ff[2] + 11].isLoaded()) {
                         if (this.bw[this.bK[this.ff[2]]] == 0) {
-                            this.uiTextures[this.ff[2] + 11].load(MyUtility.getString(String.format("udi%03d_f.png", this.bK[this.ff[2]])), MyUtility.getString(String.format("udi%03d_f.imgcut", this.bK[this.ff[2]])));
+                            this.uiTextures[this.ff[2] + 11].load(MyUtility.getString(aString.format("udi%03d_f.png", this.bK[this.ff[2]])), MyUtility.getString(aString.format("udi%03d_f.imgcut", this.bK[this.ff[2]])));
                         } else {
-                            this.uiTextures[this.ff[2] + 11].load(MyUtility.getString(String.format("udi%03d_c.png", this.bK[this.ff[2]])), MyUtility.getString(String.format("udi%03d_c.imgcut", this.bK[this.ff[2]])));
+                            this.uiTextures[this.ff[2] + 11].load(MyUtility.getString(aString.format("udi%03d_c.png", this.bK[this.ff[2]])), MyUtility.getString(aString.format("udi%03d_c.imgcut", this.bK[this.ff[2]])));
                         }
                     }
                 }
@@ -3792,20 +3792,20 @@ public class AppInstance extends Game {
 
     String a(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int[] var13, int var14, int var15, int var16, int[] var17, int[] var18) {
         aStringBuffer var19 = new aStringBuffer();
-        var19.append(String.format("log=1&l=%s&sts=%d&rd=%d&ps=%d&aris=%d&cfrd=%d&cfps=%d&gf=%d&inv=%d&fb=%d&tw=%d&ln=%d&rv=%d", MyUtility.getString("lang"), var1, var2 + 1, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12));
+        var19.append(aString.format("log=1&l=%s&sts=%d&rd=%d&ps=%d&aris=%d&cfrd=%d&cfps=%d&gf=%d&inv=%d&fb=%d&tw=%d&ln=%d&rv=%d", MyUtility.getString("lang"), var1, var2 + 1, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12));
 
         for (var1 = 0; var1 < 8; ++var1) {
-            var19.append(String.format("&cf%d=%d", var1, var13[var1]));
+            var19.append(aString.format("&cf%d=%d", var1, var13[var1]));
         }
 
-        var19.append(String.format("&ucu=%d&uco=%d&uch=%d", var14, var15, var16));
+        var19.append(aString.format("&ucu=%d&uco=%d&uch=%d", var14, var15, var16));
 
         for (var1 = 0; var1 < 11; ++var1) {
-            var19.append(String.format("&uit%d=%d", var1, var17[var1]));
+            var19.append(aString.format("&uit%d=%d", var1, var17[var1]));
         }
 
         for (var1 = 0; var1 < 4; ++var1) {
-            var19.append(String.format("&ugo%d=%d", var1, var18[var1]));
+            var19.append(aString.format("&ugo%d=%d", var1, var18[var1]));
         }
 
         return var19.toString();
@@ -3833,7 +3833,7 @@ public class AppInstance extends Game {
 
         Sound.getInstance().loadMany(this.hJ, 43);
         AssetTextStream stream = new AssetTextStream();
-        if (stream.openRead(String.format("OP_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("OP_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.openingText); ++var1) {
                 if (this.versionCode == 0) {
                     stream.readLine();
@@ -3846,7 +3846,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("ED_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("ED_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.endingText); ++var1) {
                 if (this.versionCode == 0) {
                     stream.readLine();
@@ -3860,7 +3860,7 @@ public class AppInstance extends Game {
 
         stream.close();
         int var3;
-        if (stream.openRead(String.format("EnemyPictureBook_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("EnemyPictureBook_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.enemyPictureBookText); ++var1) {
                 if (this.versionCode == 0) {
                     stream.readLine();
@@ -3875,7 +3875,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("EnemyPictureBookQuestion_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("EnemyPictureBookQuestion_%s.csv", MyUtility.getString("lang")))) {
             stream.readLine();
 
             for (var1 = 0; var1 < this.getLength(this.enemyPictureBookQuestionText); ++var1) {
@@ -3884,7 +3884,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("StageName_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("StageName_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.stageNamesText); ++var1) {
                 stream.readLine();
                 this.stageNamesText[var1] = stream.getLine(0);
@@ -3892,7 +3892,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("Treasure1_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("Treasure1_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.treasure1Text); ++var1) {
                 stream.readLine();
                 this.treasure1Text[var1] = stream.getLine(0);
@@ -3900,7 +3900,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("Treasure2_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("Treasure2_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.treasure2Text); ++var1) {
                 stream.readLine();
                 this.treasure2Text[var1] = stream.getLine(0);
@@ -3908,7 +3908,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("Treasure3_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("Treasure3_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.treasure3Text); ++var1) {
                 stream.readLine();
 
@@ -3919,7 +3919,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("Warning1_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("Warning1_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.warning1Text); ++var1) {
                 stream.readLine();
                 this.warning1Text[var1] = stream.getLine(0);
@@ -3927,7 +3927,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("Warning2_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("Warning2_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.warning2Text); ++var1) {
                 if (this.versionCode == 0) {
                     stream.readLine();
@@ -3941,7 +3941,7 @@ public class AppInstance extends Game {
             }
         }
 
-        if (stream.openRead(String.format("MainMenuW_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("MainMenuW_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.mainMenuWText); ++var1) {
                 if (this.versionCode == 0) {
                     stream.readLine();
@@ -3956,7 +3956,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("MainMenuP_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("MainMenuP_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.mainMenuPText); ++var1) {
                 if (this.versionCode == 0) {
                     stream.readLine();
@@ -3971,7 +3971,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("MainMenuU_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("MainMenuU_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.mainMenuUText); ++var1) {
                 if (this.versionCode == 0) {
                     stream.readLine();
@@ -3986,7 +3986,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("MainMenuT_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("MainMenuT_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.mainMenuTText); ++var1) {
                 if (this.versionCode == 0) {
                     stream.readLine();
@@ -4001,7 +4001,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("MainMenuB_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("MainMenuB_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.mainMenuBText); ++var1) {
                 if (this.versionCode == 0) {
                     stream.readLine();
@@ -4016,7 +4016,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("Unit_Explanation_Off_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("Unit_Explanation_Off_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.unitExplanationOffText); ++var1) {
                 stream.readLine();
 
@@ -4030,7 +4030,7 @@ public class AppInstance extends Game {
 
         int var4;
         for (var1 = 0; var1 < 26; ++var1) {
-            if (stream.openRead(String.format("Unit_Explanation%d_%s.csv", var1 + 1, MyUtility.getString("lang")))) {
+            if (stream.openRead(aString.format("Unit_Explanation%d_%s.csv", var1 + 1, MyUtility.getString("lang")))) {
                 for (var3 = 0; var3 < this.getLength(this.unitExplanationText[var1]); ++var3) {
                     stream.readLine();
 
@@ -4042,7 +4042,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("God_Explanation_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("God_Explanation_%s.csv", MyUtility.getString("lang")))) {
             stream.readLine();
 
             for (var1 = 0; var1 < this.getLength(this.godExplanationText); ++var1) {
@@ -4051,7 +4051,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("StageFirstMessage_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("StageFirstMessage_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.stageFirstMessageText); ++var1) {
                 stream.readLine();
 
@@ -4064,7 +4064,7 @@ public class AppInstance extends Game {
         stream.close();
 
         for (var1 = 0; var1 < this.getLength(this.catExplanationText); ++var1) {
-            if (stream.openRead(String.format("Cat_Explanation%d_%s.csv", var1 + 1, MyUtility.getString("lang")))) {
+            if (stream.openRead(aString.format("Cat_Explanation%d_%s.csv", var1 + 1, MyUtility.getString("lang")))) {
                 stream.readLine();
 
                 for (var3 = 0; var3 < this.getLength(this.catExplanationText[var1]); ++var3) {
@@ -4074,7 +4074,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("ChallengeMode_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("ChallengeMode_%s.csv", MyUtility.getString("lang")))) {
             stream.readLine();
 
             for (var1 = 0; var1 < this.getLength(this.challengeModeText); ++var1) {
@@ -4083,7 +4083,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("PageName_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("PageName_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.pageNameText); ++var1) {
                 stream.readLine();
                 this.pageNameText[var1] = stream.getLine(0);
@@ -4091,7 +4091,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("FirstLose_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("FirstLose_%s.csv", MyUtility.getString("lang")))) {
             stream.readLine();
 
             for (var1 = 0; var1 < this.getLength(this.firstLoseText); ++var1) {
@@ -4102,7 +4102,7 @@ public class AppInstance extends Game {
         stream.close();
 
         for (var1 = 0; var1 < this.getLength(this.loseText); ++var1) {
-            if (stream.openRead(String.format("Lose%d_%s.csv", var1 + 1, MyUtility.getString("lang")))) {
+            if (stream.openRead(aString.format("Lose%d_%s.csv", var1 + 1, MyUtility.getString("lang")))) {
                 for (var3 = 0; var3 < this.getLength(this.loseText[var1]); ++var3) {
                     if (this.versionCode == 0) {
                         stream.readLine();
@@ -4118,14 +4118,14 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("Option_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("Option_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.optionText); ++var1) {
                 stream.readLine();
                 this.optionText[var1] = stream.getLine(0);
             }
         }
 
-        if (stream.openRead(String.format("ItemName_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("ItemName_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.itemNameText); ++var1) {
                 stream.readLine();
                 this.itemNameText[var1] = stream.getLine(0);
@@ -4133,7 +4133,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("Item_Explanation_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("Item_Explanation_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.itemExplanationText); ++var1) {
                 stream.readLine();
 
@@ -4144,7 +4144,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("MainMenuPopUp_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("MainMenuPopUp_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.mainMenuPopUpText); ++var1) {
                 if (this.versionCode == 0) {
                     stream.readLine();
@@ -4159,7 +4159,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("Tutorial_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("Tutorial_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.tutorialText); ++var1) {
                 if (this.versionCode == 0) {
                     stream.readLine();
@@ -4174,7 +4174,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("God1_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("God1_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.god1Text); ++var1) {
                 stream.readLine();
 
@@ -4185,7 +4185,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("God2_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("God2_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.god2Text); ++var1) {
                 if (this.versionCode == 0) {
                     stream.readLine();
@@ -4200,7 +4200,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("God3_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("God3_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.god3Text); ++var1) {
                 stream.readLine();
 
@@ -4211,7 +4211,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("God4_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("God4_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.god4Text); ++var1) {
                 stream.readLine();
 
@@ -4222,13 +4222,13 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("GodName_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("GodName_%s.csv", MyUtility.getString("lang")))) {
             stream.readLine();
             this.godNameText = stream.getLine(0);
         }
 
         stream.close();
-        if (stream.openRead(String.format("GodItemName_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("GodItemName_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.godItemNameText); ++var1) {
                 stream.readLine();
                 this.godItemNameText[var1] = stream.getLine(0);
@@ -4236,7 +4236,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("GodItemExplanation_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("GodItemExplanation_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.godItemExplanationText); ++var1) {
                 stream.readLine();
 
@@ -4247,7 +4247,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("ED_Message_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("ED_Message_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.endingMessageText); ++var1) {
                 stream.readLine();
 
@@ -4258,7 +4258,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("PopUpMessage_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("PopUpMessage_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.popUpMessageText); ++var1) {
                 stream.readLine();
 
@@ -4269,7 +4269,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("Category_Explanation_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("Category_Explanation_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.categoryExplanationText); ++var1) {
                 stream.readLine();
 
@@ -4280,7 +4280,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("StampMessage_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("StampMessage_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.stampMessageText); ++var1) {
                 if (this.versionCode == 0) {
                     stream.readLine();
@@ -4293,7 +4293,7 @@ public class AppInstance extends Game {
         }
 
         stream.close();
-        if (stream.openRead(String.format("GiftMessage_%s.csv", MyUtility.getString("lang")))) {
+        if (stream.openRead(aString.format("GiftMessage_%s.csv", MyUtility.getString("lang")))) {
             for (var1 = 0; var1 < this.getLength(this.giftMessageText); ++var1) {
                 stream.readLine();
 
@@ -4625,7 +4625,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.al.isLoaded()) {
-                this.al.load(MyUtility.getString(String.format("img%03d.png", 5)), MyUtility.getString(String.format("img%03d.imgcut", 5)));
+                this.al.load(MyUtility.getString(aString.format("img%03d.png", 5)), MyUtility.getString(aString.format("img%03d.imgcut", 5)));
             }
 
             if (this.am.isLoaded()) {
@@ -4633,7 +4633,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.am.isLoaded()) {
-                this.am.load(MyUtility.getString(String.format("img%03d.png", 34)), MyUtility.getString(String.format("img%03d.imgcut", 34)));
+                this.am.load(MyUtility.getString(aString.format("img%03d.png", 34)), MyUtility.getString(aString.format("img%03d.imgcut", 34)));
             }
 
             if (this.an.isLoaded()) {
@@ -4641,14 +4641,14 @@ public class AppInstance extends Game {
             }
 
             if (!this.an.isLoaded()) {
-                this.an.load(MyUtility.getString(String.format("img%03d.png", 39)), MyUtility.getString(String.format("img%03d.imgcut", 39)));
+                this.an.load(MyUtility.getString(aString.format("img%03d.png", 39)), MyUtility.getString(aString.format("img%03d.imgcut", 39)));
             }
 
             MyUtility.getInstance().setWebClientViewer(this.c);
             this.U();
             this.D = 2;
             stream = new AssetTextStream();
-            if (stream.openRead(String.format("stage.csv"))) {
+            if (stream.openRead(aString.format("stage.csv"))) {
                 for (var1 = 0; var1 < this.getLength(this.bG); ++var1) {
                     stream.readLine();
                     this.bG[var1] = stream.getInt(0);
@@ -4656,7 +4656,7 @@ public class AppInstance extends Game {
             }
 
             stream.close();
-            if (stream.openRead(String.format("StampData.csv"))) {
+            if (stream.openRead(aString.format("StampData.csv"))) {
                 for (var1 = 0; var1 < this.getLength(this.ho); ++var1) {
                     stream.readLine();
 
@@ -4757,7 +4757,7 @@ public class AppInstance extends Game {
                                 }
 
                                 if (!this.textTextures[var1].isLoaded()) {
-                                    this.textTextures[var1].drawText(this.enemyPictureBookQuestionText[var1], "FONT_SYSTEM_BOLD", 30, 0);
+                                    this.textTextures[var1].loadText(this.enemyPictureBookQuestionText[var1], "FONT_SYSTEM_BOLD", 30, 0);
                                 }
 
                                 ++var1;
@@ -4770,15 +4770,15 @@ public class AppInstance extends Game {
 
                         if (!this.av[dt[var2] - 2].isLoaded()) {
                             if (dt[var2] - 2 == 21) {
-                                this.av[dt[var2] - 2].load(MyUtility.getString(String.format("i%03d_e.png", dt[var2] - 2)), MyUtility.getString(String.format("i%03d_e.imgcut", dt[var2] - 2)));
+                                this.av[dt[var2] - 2].load(MyUtility.getString(aString.format("i%03d_e.png", dt[var2] - 2)), MyUtility.getString(aString.format("i%03d_e.imgcut", dt[var2] - 2)));
                             } else {
-                                this.av[dt[var2] - 2].load(MyUtility.getString(String.format("i%03d_e.png", dt[var2] - 2)), MyUtility.getString(String.format("%03d_e.imgcut", dt[var2] - 2)));
+                                this.av[dt[var2] - 2].load(MyUtility.getString(aString.format("i%03d_e.png", dt[var2] - 2)), MyUtility.getString(aString.format("%03d_e.imgcut", dt[var2] - 2)));
                             }
 
-                            this.aw[0].load(String.format("%03d_e.mamodel", dt[var2] - 2));
+                            this.aw[0].load(aString.format("%03d_e.mamodel", dt[var2] - 2));
 
                             for (var1 = 0; var1 < this.getLength(this.ax[0]); ++var1) {
-                                this.ax[0][var1].load(String.format("%03d_e%02d.maanim", dt[var2] - 2, var1));
+                                this.ax[0][var1].load(aString.format("%03d_e%02d.maanim", dt[var2] - 2, var1));
                             }
 
                             this.aw[0].setTextures(this.av);
@@ -4793,7 +4793,7 @@ public class AppInstance extends Game {
                             }
 
                             if (!this.textTextures[var1].isLoaded()) {
-                                this.textTextures[var1].drawText(this.enemyPictureBookText[dt[var2] - 2][var1], "FONT_SYSTEM_BOLD", 30, 0);
+                                this.textTextures[var1].loadText(this.enemyPictureBookText[dt[var2] - 2][var1], "FONT_SYSTEM_BOLD", 30, 0);
                             }
 
                             ++var1;
@@ -5775,12 +5775,12 @@ public class AppInstance extends Game {
 
     void d(int var1) {
         int var2 = 0;
-        //if (!jp.co.ponos.library.b.aa.equals(jp.co.ponos.library.b.stream.b.d(String.format("unitbuy%03d.csv", var1 + 1)), (new String[]{"804ffc7cbfb735e79d355538117f602a", "da00d88cc9c3127e88a999879e203a80", "3cf141900d9b21d99811dc850408f901", "4960b382d7171aa0340ae7559f380bea", "47b5dc4ab2521d191b92c7b2f9a5ba2c", "8f9a611bb43e9252e7469274eba48ecb", "1dc60dd4e820a3367da711966904ffbf", "d0cba580b0d3ef8dd3c084912ffd437a", "83d503725ab63f834afda0f11b7027ba", "1e7c9194142f634fc2b7cd01cdef3ef4", "553afaf8a7b6d47304269a93c9f76636", "fb9fe18da89f1b96f739adbe931c7fe0", "3d260bfb7d74ab43f9f31495a257b5f1", "bd06858427bdea0199d2d7e12c24e903", "9761b3638597a99b9dfef46d097d0ed2", "61a2e033ae724d6ae337294ed3db38cd", "3591f4ee40440ed4e73494b4c9eef85a", "74330d071ce91eb822951f64104d1b30", "dab38fe098106d2ac187fa410c978486", "22f151fe39ffa40b088f2d64a182c9e5", "191afdccc437d2917500675ced12fb3f", "fd09308a974adeaf7db94cc205f6b10b", "30bb912a4cf7b19c23136af2f3804cbd", "d6ea2f2b783d3ba4ba9cee5caa92550b", "363076546cdfe5f0f6448844f571e353", "e49bd23022e28870bee5cf9315df487d"})[var1])) {
+        //if (!jp.co.ponos.library.b.aa.equals(jp.co.ponos.library.b.stream.b.d(aString.format("unitbuy%03d.csv", var1 + 1)), (new String[]{"804ffc7cbfb735e79d355538117f602a", "da00d88cc9c3127e88a999879e203a80", "3cf141900d9b21d99811dc850408f901", "4960b382d7171aa0340ae7559f380bea", "47b5dc4ab2521d191b92c7b2f9a5ba2c", "8f9a611bb43e9252e7469274eba48ecb", "1dc60dd4e820a3367da711966904ffbf", "d0cba580b0d3ef8dd3c084912ffd437a", "83d503725ab63f834afda0f11b7027ba", "1e7c9194142f634fc2b7cd01cdef3ef4", "553afaf8a7b6d47304269a93c9f76636", "fb9fe18da89f1b96f739adbe931c7fe0", "3d260bfb7d74ab43f9f31495a257b5f1", "bd06858427bdea0199d2d7e12c24e903", "9761b3638597a99b9dfef46d097d0ed2", "61a2e033ae724d6ae337294ed3db38cd", "3591f4ee40440ed4e73494b4c9eef85a", "74330d071ce91eb822951f64104d1b30", "dab38fe098106d2ac187fa410c978486", "22f151fe39ffa40b088f2d64a182c9e5", "191afdccc437d2917500675ced12fb3f", "fd09308a974adeaf7db94cc205f6b10b", "30bb912a4cf7b19c23136af2f3804cbd", "d6ea2f2b783d3ba4ba9cee5caa92550b", "363076546cdfe5f0f6448844f571e353", "e49bd23022e28870bee5cf9315df487d"})[var1])) {
         //   this.D = 0;
         //   this.j(4);
         //} else {
         AssetTextStream var3 = new AssetTextStream();
-        var3.openRead(String.format("unitbuy%03d.csv", var1 + 1));
+        var3.openRead(aString.format("unitbuy%03d.csv", var1 + 1));
         var3.readLine();
 
         while (var2 < this.getLength(this.bJ[var1])) {
@@ -5892,7 +5892,7 @@ public class AppInstance extends Game {
                 }
 
                 if (!this.al.isLoaded()) {
-                    this.al.load(MyUtility.getString(String.format("img%03d.png", 5)), MyUtility.getString(String.format("img%03d.imgcut", 5)));
+                    this.al.load(MyUtility.getString(aString.format("img%03d.png", 5)), MyUtility.getString(aString.format("img%03d.imgcut", 5)));
                 }
 
                 if (this.am.isLoaded()) {
@@ -5900,7 +5900,7 @@ public class AppInstance extends Game {
                 }
 
                 if (!this.am.isLoaded()) {
-                    this.am.load(MyUtility.getString(String.format("img%03d.png", 34)), MyUtility.getString(String.format("img%03d.imgcut", 34)));
+                    this.am.load(MyUtility.getString(aString.format("img%03d.png", 34)), MyUtility.getString(aString.format("img%03d.imgcut", 34)));
                 }
 
                 if (this.an.isLoaded()) {
@@ -5908,7 +5908,7 @@ public class AppInstance extends Game {
                 }
 
                 if (!this.an.isLoaded()) {
-                    this.an.load(MyUtility.getString(String.format("img%03d.png", 39)), MyUtility.getString(String.format("img%03d.imgcut", 39)));
+                    this.an.load(MyUtility.getString(aString.format("img%03d.png", 39)), MyUtility.getString(aString.format("img%03d.imgcut", 39)));
                 }
 
                 if (this.af[2].isLoaded()) {
@@ -5916,7 +5916,7 @@ public class AppInstance extends Game {
                 }
 
                 if (!this.af[2].isLoaded()) {
-                    this.af[2].load(MyUtility.getString(String.format("img%03d.png", 101)), MyUtility.getString(String.format("img%03d.imgcut", 101)));
+                    this.af[2].load(MyUtility.getString(aString.format("img%03d.png", 101)), MyUtility.getString(aString.format("img%03d.imgcut", 101)));
                 }
 
                 if (this.af[3].isLoaded()) {
@@ -5924,7 +5924,7 @@ public class AppInstance extends Game {
                 }
 
                 if (!this.af[3].isLoaded()) {
-                    this.af[3].load(MyUtility.getString(String.format("img%03d.png", 102)), MyUtility.getString(String.format("img%03d.imgcut", 102)));
+                    this.af[3].load(MyUtility.getString(aString.format("img%03d.png", 102)), MyUtility.getString(aString.format("img%03d.imgcut", 102)));
                 }
 
                 switch (this.getSceneType()) {
@@ -6031,7 +6031,7 @@ public class AppInstance extends Game {
                             }
 
                             this.i = 1;
-                            var4 = String.format("%s/battlecats/%s/help.html", MyUtility.getAppli(), MyUtility.getString("lang"));
+                            var4 = aString.format("%s/battlecats/%s/help.html", MyUtility.getAppli(), MyUtility.getString("lang"));
                             var3 = new BrowserOption();
                             var3.a(1, 0, "button_iphone4.png");
                             var3.a("bar_iphone4.png");
@@ -6044,7 +6044,7 @@ public class AppInstance extends Game {
                             }
 
                             this.i = 1;
-                            String var13 = String.format("%s/battlecats/%s/credit.html", MyUtility.getAppli(), MyUtility.getString("lang"));
+                            String var13 = aString.format("%s/battlecats/%s/credit.html", MyUtility.getAppli(), MyUtility.getString("lang"));
                             BrowserOption var15 = new BrowserOption();
                             var15.a(1, 0, "button_iphone4.png");
                             var15.a("bar_iphone4.png");
@@ -6057,7 +6057,7 @@ public class AppInstance extends Game {
                             }
 
                             this.i = 1;
-                            var4 = String.format("%s/battlecats/page.php?type=facebook&lang=%s", MyUtility.getAppli(), MyUtility.getString("lang"));
+                            var4 = aString.format("%s/battlecats/page.php?type=facebook&lang=%s", MyUtility.getAppli(), MyUtility.getString("lang"));
                             var3 = new BrowserOption();
                             var3.a(1, 0, "button_iphone4.png");
                             var3.a("bar_iphone4.png");
@@ -7020,10 +7020,10 @@ public class AppInstance extends Game {
                             if (this.isPointerDown() && this.isTouching(this.eJ[var1][0], this.eJ[var1][1], this.eJ[var1][2], this.eJ[var1][3]) && this.eM[var1]) {
                                 if (this.dW != var1 || !this.dV) {
                                     this.dW = var1;
-                                    this.textTextures[this.gA[0] + 0].drawText(this.itemNameText[this.dW], "FONT_SYSTEM_BOLD", 30, 1);
+                                    this.textTextures[this.gA[0] + 0].loadText(this.itemNameText[this.dW], "FONT_SYSTEM_BOLD", 30, 1);
 
                                     for (var2 = this.gA[0]; var2 < this.gA[0] + 3; ++var2) {
-                                        this.textTextures[var2 + 1].drawText(this.itemExplanationText[this.dW][var2 - this.gA[0]], "FONT_SYSTEM_BOLD", 30, 1);
+                                        this.textTextures[var2 + 1].loadText(this.itemExplanationText[this.dW][var2 - this.gA[0]], "FONT_SYSTEM_BOLD", 30, 1);
                                     }
                                 }
 
@@ -9164,7 +9164,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.af[1].isLoaded()) {
-            this.af[1].load(MyUtility.getString(String.format("img%03d.png", 100)), MyUtility.getString(String.format("img%03d.imgcut", 100)));
+            this.af[1].load(MyUtility.getString(aString.format("img%03d.png", 100)), MyUtility.getString(aString.format("img%03d.imgcut", 100)));
         }
 
         if (this.uiTextures[0].isLoaded()) {
@@ -9172,7 +9172,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[0].isLoaded()) {
-            this.uiTextures[0].load(MyUtility.getString(String.format("bg%03d.png", this.bV[4] + 0)), MyUtility.getString(String.format("bg%03d.imgcut", this.bV[4])));
+            this.uiTextures[0].load(MyUtility.getString(aString.format("bg%03d.png", this.bV[4] + 0)), MyUtility.getString(aString.format("bg%03d.imgcut", this.bV[4])));
         }
 
         if (this.uiTextures[1].isLoaded()) {
@@ -9180,7 +9180,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[1].isLoaded()) {
-            this.uiTextures[1].load(MyUtility.getString(String.format("fc%03d.png", 0)), MyUtility.getString(String.format("fc%03d.imgcut", 0)));
+            this.uiTextures[1].load(MyUtility.getString(aString.format("fc%03d.png", 0)), MyUtility.getString(aString.format("fc%03d.imgcut", 0)));
         }
 
         if (this.uiTextures[2].isLoaded()) {
@@ -9188,7 +9188,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[2].isLoaded()) {
-            this.uiTextures[2].load(MyUtility.getString(String.format("ec%03d.png", this.battleStats[20])), MyUtility.getString(String.format("ec%03d.imgcut", this.battleStats[20])));
+            this.uiTextures[2].load(MyUtility.getString(aString.format("ec%03d.png", this.battleStats[20])), MyUtility.getString(aString.format("ec%03d.imgcut", this.battleStats[20])));
         }
 
         if (this.aC[0].isLoaded()) {
@@ -9196,17 +9196,17 @@ public class AppInstance extends Game {
         }
 
         if (!this.aC[0].isLoaded()) {
-            this.aC[0].load(MyUtility.getString(String.format("i%03d_a.png", 0)), MyUtility.getString(String.format("%03d_a.imgcut", 0)));
-            this.aD[0].load(MyUtility.getString(String.format("%03d_a.mamodel", 0)));
+            this.aC[0].load(MyUtility.getString(aString.format("i%03d_a.png", 0)), MyUtility.getString(aString.format("%03d_a.imgcut", 0)));
+            this.aD[0].load(MyUtility.getString(aString.format("%03d_a.mamodel", 0)));
 
             for (var1 = 0; var1 < 1; ++var1) {
-                this.aE[0][var1].load(MyUtility.getString(String.format("%03d_a%02d.maanim", 0, var1)));
+                this.aE[0][var1].load(MyUtility.getString(aString.format("%03d_a%02d.maanim", 0, var1)));
             }
 
-            this.aD[1].load(MyUtility.getString(String.format("%03d_a.mamodel", 1)));
+            this.aD[1].load(MyUtility.getString(aString.format("%03d_a.mamodel", 1)));
 
             for (var1 = 0; var1 < 2; ++var1) {
-                this.aE[1][var1].load(MyUtility.getString(String.format("%03d_a%02d.maanim", 1, var1)));
+                this.aE[1][var1].load(MyUtility.getString(aString.format("%03d_a%02d.maanim", 1, var1)));
             }
 
             for (var1 = 0; var1 < 2; ++var1) {
@@ -9220,7 +9220,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[4].isLoaded()) {
-            this.uiTextures[4].load(MyUtility.getString(String.format("img%03d.png", 1)), MyUtility.getString(String.format("img%03d.imgcut", 1)));
+            this.uiTextures[4].load(MyUtility.getString(aString.format("img%03d.png", 1)), MyUtility.getString(aString.format("img%03d.imgcut", 1)));
         }
 
         if (this.uiTextures[15].isLoaded()) {
@@ -9228,7 +9228,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[15].isLoaded()) {
-            this.uiTextures[15].load(MyUtility.getString(String.format("img%03d.png", 2)), MyUtility.getString(String.format("img%03d.imgcut", 2)));
+            this.uiTextures[15].load(MyUtility.getString(aString.format("img%03d.png", 2)), MyUtility.getString(aString.format("img%03d.imgcut", 2)));
         }
 
         if (this.uiTextures[16].isLoaded()) {
@@ -9236,7 +9236,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[16].isLoaded()) {
-            this.uiTextures[16].load(MyUtility.getString(String.format("ec%03d_s.png", this.battleStats[20])), MyUtility.getString(String.format("ec%03d_s.imgcut", this.battleStats[20])));
+            this.uiTextures[16].load(MyUtility.getString(aString.format("ec%03d_s.png", this.battleStats[20])), MyUtility.getString(aString.format("ec%03d_s.imgcut", this.battleStats[20])));
         }
 
         if (this.uiTextures[17].isLoaded()) {
@@ -9244,7 +9244,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[17].isLoaded()) {
-            this.uiTextures[17].load(MyUtility.getString(String.format("ec%03d_n_%s.png", this.battleStats[20], MyUtility.getString("lang"))), MyUtility.getString(String.format("ec%03d_n_%s.imgcut", this.battleStats[20], MyUtility.getString("lang"))));
+            this.uiTextures[17].load(MyUtility.getString(aString.format("ec%03d_n_%s.png", this.battleStats[20], MyUtility.getString("lang"))), MyUtility.getString(aString.format("ec%03d_n_%s.imgcut", this.battleStats[20], MyUtility.getString("lang"))));
         }
 
         if (this.uiTextures[18].isLoaded()) {
@@ -9252,7 +9252,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[18].isLoaded()) {
-            this.uiTextures[18].load(MyUtility.getString(String.format("img%03d.png", 3)), MyUtility.getString(String.format("img%03d.imgcut", 3)));
+            this.uiTextures[18].load(MyUtility.getString(aString.format("img%03d.png", 3)), MyUtility.getString(aString.format("img%03d.imgcut", 3)));
         }
 
         if (this.uiTextures[19].isLoaded()) {
@@ -9260,7 +9260,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[19].isLoaded()) {
-            this.uiTextures[19].load(MyUtility.getString(String.format("img%03d.png", 4)), MyUtility.getString(String.format("img%03d.imgcut", 4)));
+            this.uiTextures[19].load(MyUtility.getString(aString.format("img%03d.png", 4)), MyUtility.getString(aString.format("img%03d.imgcut", 4)));
         }
 
         if (this.uiTextures[20].isLoaded()) {
@@ -9268,7 +9268,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[20].isLoaded()) {
-            this.uiTextures[20].load(MyUtility.getString(String.format("img%03d.png", 43)), MyUtility.getString(String.format("img%03d.imgcut", 43)));
+            this.uiTextures[20].load(MyUtility.getString(aString.format("img%03d.png", 43)), MyUtility.getString(aString.format("img%03d.imgcut", 43)));
         }
 
         if (this.uiTextures[21].isLoaded()) {
@@ -9276,7 +9276,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[21].isLoaded()) {
-            this.uiTextures[21].load(MyUtility.getString(String.format("img%03d.png", 6)), MyUtility.getString(String.format("img%03d.imgcut", 6)));
+            this.uiTextures[21].load(MyUtility.getString(aString.format("img%03d.png", 6)), MyUtility.getString(aString.format("img%03d.imgcut", 6)));
         }
 
         if (this.uiTextures[23].isLoaded()) {
@@ -9284,7 +9284,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[23].isLoaded()) {
-            this.uiTextures[23].load(MyUtility.getString(String.format("img%03d.png", 40)), MyUtility.getString(String.format("img%03d.imgcut", 40)));
+            this.uiTextures[23].load(MyUtility.getString(aString.format("img%03d.png", 40)), MyUtility.getString(aString.format("img%03d.imgcut", 40)));
         }
 
         if (this.uiTextures[24].isLoaded()) {
@@ -9292,7 +9292,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[24].isLoaded()) {
-            this.uiTextures[24].load(MyUtility.getString(String.format("img%03d.png", 41)), MyUtility.getString(String.format("img%03d.imgcut", 41)));
+            this.uiTextures[24].load(MyUtility.getString(aString.format("img%03d.png", 41)), MyUtility.getString(aString.format("img%03d.imgcut", 41)));
         }
 
         if (this.uiTextures[25].isLoaded()) {
@@ -9300,7 +9300,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[25].isLoaded()) {
-            this.uiTextures[25].load(MyUtility.getString(String.format("img%03d.png", 42)), MyUtility.getString(String.format("img%03d.imgcut", 42)));
+            this.uiTextures[25].load(MyUtility.getString(aString.format("img%03d.png", 42)), MyUtility.getString(aString.format("img%03d.imgcut", 42)));
         }
 
         if (this.ay[0].isLoaded()) {
@@ -9308,35 +9308,35 @@ public class AppInstance extends Game {
         }
 
         if (!this.ay[0].isLoaded()) {
-            this.ay[0].load(MyUtility.getString(String.format("i%03d_g.png", 0)), MyUtility.getString(String.format("%03d_g.imgcut", 0)));
+            this.ay[0].load(MyUtility.getString(aString.format("i%03d_g.png", 0)), MyUtility.getString(aString.format("%03d_g.imgcut", 0)));
         }
 
-        this.az[0][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 0, 1)));
-        this.aA[0][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 0, 1)));
+        this.az[0][0].load(MyUtility.getString(aString.format("%03d_g%02d_%d.mamodel", 0, 0, 1)));
+        this.aA[0][0].load(MyUtility.getString(aString.format("%03d_g%02d_%d.maanim", 0, 0, 1)));
         this.az[0][0].setTextures(this.ay);
         this.az[0][0].setAction();
-        this.az[0][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 0, 2)));
-        this.aA[0][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 0, 2)));
+        this.az[0][1].load(MyUtility.getString(aString.format("%03d_g%02d_%d.mamodel", 0, 0, 2)));
+        this.aA[0][1].load(MyUtility.getString(aString.format("%03d_g%02d_%d.maanim", 0, 0, 2)));
         this.az[0][1].setTextures(this.ay);
         this.az[0][1].setAction();
-        this.az[1][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 1, 1)));
-        this.aA[1][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 1, 1)));
+        this.az[1][0].load(MyUtility.getString(aString.format("%03d_g%02d_%d.mamodel", 0, 1, 1)));
+        this.aA[1][0].load(MyUtility.getString(aString.format("%03d_g%02d_%d.maanim", 0, 1, 1)));
         this.az[1][0].setTextures(this.ay);
         this.az[1][0].setAction();
-        this.az[1][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 1, 2)));
-        this.aA[1][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 1, 2)));
+        this.az[1][1].load(MyUtility.getString(aString.format("%03d_g%02d_%d.mamodel", 0, 1, 2)));
+        this.aA[1][1].load(MyUtility.getString(aString.format("%03d_g%02d_%d.maanim", 0, 1, 2)));
         this.az[1][1].setTextures(this.ay);
         this.az[1][1].setAction();
-        this.az[2][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 2, 1)));
-        this.aA[2][0].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 2, 1)));
+        this.az[2][0].load(MyUtility.getString(aString.format("%03d_g%02d_%d.mamodel", 0, 2, 1)));
+        this.aA[2][0].load(MyUtility.getString(aString.format("%03d_g%02d_%d.maanim", 0, 2, 1)));
         this.az[2][0].setTextures(this.ay);
         this.az[2][0].setAction();
-        this.az[2][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.mamodel", 0, 2, 2)));
-        this.aA[2][1].load(MyUtility.getString(String.format("%03d_g%02d_%d.maanim", 0, 2, 2)));
+        this.az[2][1].load(MyUtility.getString(aString.format("%03d_g%02d_%d.mamodel", 0, 2, 2)));
+        this.aA[2][1].load(MyUtility.getString(aString.format("%03d_g%02d_%d.maanim", 0, 2, 2)));
         this.az[2][1].setTextures(this.ay);
         this.az[2][1].setAction();
-        this.az[3][0].load(MyUtility.getString(String.format("%03d_g%02d.mamodel", 0, 3)));
-        this.aA[3][0].load(MyUtility.getString(String.format("%03d_g%02d.maanim", 0, 3)));
+        this.az[3][0].load(MyUtility.getString(aString.format("%03d_g%02d.mamodel", 0, 3)));
+        this.aA[3][0].load(MyUtility.getString(aString.format("%03d_g%02d.maanim", 0, 3)));
         this.az[3][0].setTextures(this.ay);
         this.az[3][0].setAction();
 
@@ -9348,13 +9348,13 @@ public class AppInstance extends Game {
 
         for (var1 = 0; var1 < 10; ++var1) {
             if (this.slotCatIDs[var1] == -1) {
-                this.uiTextures[var1 + 5].load(MyUtility.getString(String.format("uni.png")), MyUtility.getString(String.format("uni.imgcut")));
+                this.uiTextures[var1 + 5].load(MyUtility.getString(aString.format("uni.png")), MyUtility.getString(aString.format("uni.imgcut")));
             } else if (this.eV[var1] == 0) {
                 if (!this.uiTextures[var1 + 5].isLoaded()) {
-                    this.uiTextures[var1 + 5].load(MyUtility.getString(String.format("uni%03d_f%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(String.format("uni%03d_f%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
+                    this.uiTextures[var1 + 5].load(MyUtility.getString(aString.format("uni%03d_f%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(aString.format("uni%03d_f%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
                 }
             } else if (this.eV[var1] == 1 && !this.uiTextures[var1 + 5].isLoaded()) {
-                this.uiTextures[var1 + 5].load(MyUtility.getString(String.format("uni%03d_c%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(String.format("uni%03d_c%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
+                this.uiTextures[var1 + 5].load(MyUtility.getString(aString.format("uni%03d_c%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(aString.format("uni%03d_c%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
             }
         }
 
@@ -9362,22 +9362,22 @@ public class AppInstance extends Game {
             if (this.slotCatIDs[var1] != -1) {
                 if (this.eV[var1] == 0) {
                     if (!this.ar[this.slotCatIDs[var1] - 2].isLoaded()) {
-                        this.ar[this.slotCatIDs[var1] - 2].load(MyUtility.getString(String.format("i%03d_f.png", this.slotCatIDs[var1] - 2)), MyUtility.getString(String.format("%03d_f.imgcut", this.slotCatIDs[var1] - 2)));
-                        this.at[var1].load(MyUtility.getString(String.format("%03d_f.mamodel", this.slotCatIDs[var1] - 2)));
+                        this.ar[this.slotCatIDs[var1] - 2].load(MyUtility.getString(aString.format("i%03d_f.png", this.slotCatIDs[var1] - 2)), MyUtility.getString(aString.format("%03d_f.imgcut", this.slotCatIDs[var1] - 2)));
+                        this.at[var1].load(MyUtility.getString(aString.format("%03d_f.mamodel", this.slotCatIDs[var1] - 2)));
 
                         for (var2 = 0; var2 < this.getLength(this.au[var1]); ++var2) {
-                            this.au[var1][var2].load(MyUtility.getString(String.format("%03d_f%02d.maanim", this.slotCatIDs[var1] - 2, var2)));
+                            this.au[var1][var2].load(MyUtility.getString(aString.format("%03d_f%02d.maanim", this.slotCatIDs[var1] - 2, var2)));
                         }
 
                         this.at[var1].setTextures(this.ar);
                         this.at[var1].setAction();
                     }
                 } else if (this.eV[var1] == 1 && !this.as[this.slotCatIDs[var1] - 2].isLoaded()) {
-                    this.as[this.slotCatIDs[var1] - 2].load(MyUtility.getString(String.format("i%03d_c.png", this.slotCatIDs[var1] - 2)), MyUtility.getString(String.format("%03d_c.imgcut", this.slotCatIDs[var1] - 2)));
-                    this.at[var1].load(MyUtility.getString(String.format("%03d_c.mamodel", this.slotCatIDs[var1] - 2)));
+                    this.as[this.slotCatIDs[var1] - 2].load(MyUtility.getString(aString.format("i%03d_c.png", this.slotCatIDs[var1] - 2)), MyUtility.getString(aString.format("%03d_c.imgcut", this.slotCatIDs[var1] - 2)));
+                    this.at[var1].load(MyUtility.getString(aString.format("%03d_c.mamodel", this.slotCatIDs[var1] - 2)));
 
                     for (var2 = 0; var2 < this.getLength(this.au[var1]); ++var2) {
-                        this.au[var1][var2].load(MyUtility.getString(String.format("%03d_c%02d.maanim", this.slotCatIDs[var1] - 2, var2)));
+                        this.au[var1][var2].load(MyUtility.getString(aString.format("%03d_c%02d.maanim", this.slotCatIDs[var1] - 2, var2)));
                     }
 
                     this.at[var1].setTextures(this.as);
@@ -9395,15 +9395,15 @@ public class AppInstance extends Game {
         for (var1 = 0; var1 < 10; ++var1) {
             if (this.eU[var1] != -1 && this.eU[var1] > 0 && !this.av[this.eU[var1] - 2].isLoaded()) {
                 if (this.eU[var1] - 2 == 21) {
-                    this.av[this.eU[var1] - 2].load(MyUtility.getString(String.format("i%03d_e.png", this.eU[var1] - 2)), MyUtility.getString(String.format("i%03d_e.imgcut", this.eU[var1] - 2)));
+                    this.av[this.eU[var1] - 2].load(MyUtility.getString(aString.format("i%03d_e.png", this.eU[var1] - 2)), MyUtility.getString(aString.format("i%03d_e.imgcut", this.eU[var1] - 2)));
                 } else {
-                    this.av[this.eU[var1] - 2].load(MyUtility.getString(String.format("i%03d_e.png", this.eU[var1] - 2)), MyUtility.getString(String.format("%03d_e.imgcut", this.eU[var1] - 2)));
+                    this.av[this.eU[var1] - 2].load(MyUtility.getString(aString.format("i%03d_e.png", this.eU[var1] - 2)), MyUtility.getString(aString.format("%03d_e.imgcut", this.eU[var1] - 2)));
                 }
 
-                this.aw[var1].load(MyUtility.getString(String.format("%03d_e.mamodel", this.eU[var1] - 2)));
+                this.aw[var1].load(MyUtility.getString(aString.format("%03d_e.mamodel", this.eU[var1] - 2)));
 
                 for (var2 = 0; var2 < this.getLength(this.ax[var1]); ++var2) {
-                    this.ax[var1][var2].load(MyUtility.getString(String.format("%03d_e%02d.maanim", this.eU[var1] - 2, var2)));
+                    this.ax[var1][var2].load(MyUtility.getString(aString.format("%03d_e%02d.maanim", this.eU[var1] - 2, var2)));
                 }
 
                 this.aw[var1].setTextures(this.av);
@@ -9420,47 +9420,47 @@ public class AppInstance extends Game {
             }
 
             if (!this.af[1].isLoaded()) {
-                this.af[1].load(MyUtility.getString(String.format("img%03d.png", 100)), MyUtility.getString(String.format("img%03d.imgcut", 100)));
+                this.af[1].load(MyUtility.getString(aString.format("img%03d.png", 100)), MyUtility.getString(aString.format("img%03d.imgcut", 100)));
             }
 
             if (!this.uiTextures[0].isLoaded()) {
-                this.uiTextures[0].load(MyUtility.getString(String.format("img%03d.png", 12)), MyUtility.getString(String.format("img%03d.imgcut", 12)));
+                this.uiTextures[0].load(MyUtility.getString(aString.format("img%03d.png", 12)), MyUtility.getString(aString.format("img%03d.imgcut", 12)));
             }
 
             if (!this.uiTextures[1].isLoaded()) {
-                this.uiTextures[1].load(MyUtility.getString(String.format("img%03d.png", 11)), MyUtility.getString(String.format("img%03d.imgcut", 11)));
+                this.uiTextures[1].load(MyUtility.getString(aString.format("img%03d.png", 11)), MyUtility.getString(aString.format("img%03d.imgcut", 11)));
             }
 
             if (!this.uiTextures[2].isLoaded()) {
-                this.uiTextures[2].load(MyUtility.getString(String.format("img%03d.png", 6)), MyUtility.getString(String.format("img%03d.imgcut", 6)));
+                this.uiTextures[2].load(MyUtility.getString(aString.format("img%03d.png", 6)), MyUtility.getString(aString.format("img%03d.imgcut", 6)));
             }
 
             if (!this.uiTextures[3].isLoaded()) {
-                this.uiTextures[3].load(MyUtility.getString(String.format("img%03d.png", 25)), MyUtility.getString(String.format("img%03d.imgcut", 25)));
+                this.uiTextures[3].load(MyUtility.getString(aString.format("img%03d.png", 25)), MyUtility.getString(aString.format("img%03d.imgcut", 25)));
             }
 
             if (!this.uiTextures[4].isLoaded()) {
-                this.uiTextures[4].load(MyUtility.getString(String.format("img%03d.png", 7)), MyUtility.getString(String.format("img%03d.imgcut", 7)));
+                this.uiTextures[4].load(MyUtility.getString(aString.format("img%03d.png", 7)), MyUtility.getString(aString.format("img%03d.imgcut", 7)));
             }
 
             if (!this.uiTextures[5].isLoaded()) {
-                this.uiTextures[5].load(MyUtility.getString(String.format("img%03d.png", 33)), MyUtility.getString(String.format("img%03d.imgcut", 33)));
+                this.uiTextures[5].load(MyUtility.getString(aString.format("img%03d.png", 33)), MyUtility.getString(aString.format("img%03d.imgcut", 33)));
             }
 
             if (!this.uiTextures[6].isLoaded()) {
-                this.uiTextures[6].load(MyUtility.getString(String.format("img%03d.png", 1)), MyUtility.getString(String.format("img%03d.imgcut", 1)));
+                this.uiTextures[6].load(MyUtility.getString(aString.format("img%03d.png", 1)), MyUtility.getString(aString.format("img%03d.imgcut", 1)));
             }
 
             if (!this.uiTextures[7].isLoaded()) {
-                this.uiTextures[7].load(MyUtility.getString(String.format("img%03d.png", 2)), MyUtility.getString(String.format("img%03d.imgcut", 2)));
+                this.uiTextures[7].load(MyUtility.getString(aString.format("img%03d.png", 2)), MyUtility.getString(aString.format("img%03d.imgcut", 2)));
             }
 
             if (!this.uiTextures[8].isLoaded()) {
-                this.uiTextures[8].load(MyUtility.getString(String.format("img%03d.png", 19)), MyUtility.getString(String.format("img%03d.imgcut", 19)));
+                this.uiTextures[8].load(MyUtility.getString(aString.format("img%03d.png", 19)), MyUtility.getString(aString.format("img%03d.imgcut", 19)));
             }
 
             if (!this.uiTextures[9].isLoaded()) {
-                this.uiTextures[9].load(MyUtility.getString(String.format("img%03d.png", 31)), MyUtility.getString(String.format("img%03d.imgcut", 31)));
+                this.uiTextures[9].load(MyUtility.getString(aString.format("img%03d.png", 31)), MyUtility.getString(aString.format("img%03d.imgcut", 31)));
             }
         }
 
@@ -9470,7 +9470,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.af[0].isLoaded()) {
-                this.af[0].load(MyUtility.getString(String.format("img%03d_%d.png", 9, this.eQ + 3)), MyUtility.getString(String.format("img%03d_%d.imgcut", 9, this.eQ + 3)));
+                this.af[0].load(MyUtility.getString(aString.format("img%03d_%d.png", 9, this.eQ + 3)), MyUtility.getString(aString.format("img%03d_%d.imgcut", 9, this.eQ + 3)));
             }
 
             if (this.uiTextures[0].isLoaded()) {
@@ -9478,7 +9478,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[0].isLoaded()) {
-                this.uiTextures[0].load(MyUtility.getString(String.format("img%03d.png", 6)), MyUtility.getString(String.format("img%03d.imgcut", 6)));
+                this.uiTextures[0].load(MyUtility.getString(aString.format("img%03d.png", 6)), MyUtility.getString(aString.format("img%03d.imgcut", 6)));
             }
 
             if (this.uiTextures[1].isLoaded()) {
@@ -9486,7 +9486,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[1].isLoaded()) {
-                this.uiTextures[1].load(MyUtility.getString(String.format("img%03d.png", 7)), MyUtility.getString(String.format("img%03d.imgcut", 7)));
+                this.uiTextures[1].load(MyUtility.getString(aString.format("img%03d.png", 7)), MyUtility.getString(aString.format("img%03d.imgcut", 7)));
             }
 
             if (this.uiTextures[2].isLoaded()) {
@@ -9494,7 +9494,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[2].isLoaded()) {
-                this.uiTextures[2].load(MyUtility.getString(String.format("img%03d.png", 8)), MyUtility.getString(String.format("img%03d.imgcut", 8)));
+                this.uiTextures[2].load(MyUtility.getString(aString.format("img%03d.png", 8)), MyUtility.getString(aString.format("img%03d.imgcut", 8)));
             }
 
             if (this.uiTextures[3].isLoaded()) {
@@ -9502,7 +9502,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[3].isLoaded()) {
-                this.uiTextures[3].load(MyUtility.getString(String.format("img%03d_%d.png", 9, 0)), MyUtility.getString(String.format("img%03d.imgcut", 9)));
+                this.uiTextures[3].load(MyUtility.getString(aString.format("img%03d_%d.png", 9, 0)), MyUtility.getString(aString.format("img%03d.imgcut", 9)));
             }
 
             if (this.uiTextures[4].isLoaded()) {
@@ -9510,7 +9510,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[4].isLoaded()) {
-                this.uiTextures[4].load(MyUtility.getString(String.format("img%03d.png", 10)), MyUtility.getString(String.format("img%03d.imgcut", 10)));
+                this.uiTextures[4].load(MyUtility.getString(aString.format("img%03d.png", 10)), MyUtility.getString(aString.format("img%03d.imgcut", 10)));
             }
 
             if (this.uiTextures[5].isLoaded()) {
@@ -9518,7 +9518,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[5].isLoaded()) {
-                this.uiTextures[5].load(MyUtility.getString(String.format("img%03d.png", 24)), MyUtility.getString(String.format("img%03d.imgcut", 24)));
+                this.uiTextures[5].load(MyUtility.getString(aString.format("img%03d.png", 24)), MyUtility.getString(aString.format("img%03d.imgcut", 24)));
             }
         }
 
@@ -9526,11 +9526,11 @@ public class AppInstance extends Game {
             for (var1 = 0; var1 < 10; ++var1) {
                 if (!this.ak[var1].isLoaded()) {
                     if (this.slotCatIDs[var1] == -1) {
-                        this.ak[var1].load(MyUtility.getString(String.format("uni.png")), MyUtility.getString(String.format("uni.imgcut")));
+                        this.ak[var1].load(MyUtility.getString(aString.format("uni.png")), MyUtility.getString(aString.format("uni.imgcut")));
                     } else if (this.eV[var1] == 0) {
-                        this.ak[var1].load(MyUtility.getString(String.format("uni%03d_f%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(String.format("uni%03d_f%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
+                        this.ak[var1].load(MyUtility.getString(aString.format("uni%03d_f%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(aString.format("uni%03d_f%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
                     } else if (this.eV[var1] == 1) {
-                        this.ak[var1].load(MyUtility.getString(String.format("uni%03d_c%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(String.format("uni%03d_c%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
+                        this.ak[var1].load(MyUtility.getString(aString.format("uni%03d_c%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(aString.format("uni%03d_c%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
                     }
                 }
             }
@@ -9540,7 +9540,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[6].isLoaded()) {
-                this.uiTextures[6].load(MyUtility.getString(String.format("img%03d.png", 32)), MyUtility.getString(String.format("img%03d.imgcut", 32)));
+                this.uiTextures[6].load(MyUtility.getString(aString.format("img%03d.png", 32)), MyUtility.getString(aString.format("img%03d.imgcut", 32)));
             }
 
             if (this.uiTextures[7].isLoaded()) {
@@ -9548,7 +9548,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[7].isLoaded()) {
-                this.uiTextures[7].load(MyUtility.getString(String.format("img%03d.png", 19)), MyUtility.getString(String.format("img%03d.imgcut", 19)));
+                this.uiTextures[7].load(MyUtility.getString(aString.format("img%03d.png", 19)), MyUtility.getString(aString.format("img%03d.imgcut", 19)));
             }
 
             if (this.uiTextures[8].isLoaded()) {
@@ -9556,7 +9556,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[8].isLoaded()) {
-                this.uiTextures[8].load(MyUtility.getString(String.format("img%03d.png", 33)), MyUtility.getString(String.format("img%03d.imgcut", 33)));
+                this.uiTextures[8].load(MyUtility.getString(aString.format("img%03d.png", 33)), MyUtility.getString(aString.format("img%03d.imgcut", 33)));
             }
         }
 
@@ -9566,7 +9566,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[6].isLoaded()) {
-                this.uiTextures[6].load(MyUtility.getString(String.format("img%03d.png", 18)), MyUtility.getString(String.format("img%03d.imgcut", 18)));
+                this.uiTextures[6].load(MyUtility.getString(aString.format("img%03d.png", 18)), MyUtility.getString(aString.format("img%03d.imgcut", 18)));
             }
 
             if (this.uiTextures[7].isLoaded()) {
@@ -9574,7 +9574,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[7].isLoaded()) {
-                this.uiTextures[7].load(MyUtility.getString(String.format("img%03d.png", 19)), MyUtility.getString(String.format("img%03d.imgcut", 19)));
+                this.uiTextures[7].load(MyUtility.getString(aString.format("img%03d.png", 19)), MyUtility.getString(aString.format("img%03d.imgcut", 19)));
             }
 
             if (this.uiTextures[9].isLoaded()) {
@@ -9582,7 +9582,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[9].isLoaded()) {
-                this.uiTextures[9].load(MyUtility.getString(String.format("img%03d.png", 31)), MyUtility.getString(String.format("img%03d.imgcut", 31)));
+                this.uiTextures[9].load(MyUtility.getString(aString.format("img%03d.png", 31)), MyUtility.getString(aString.format("img%03d.imgcut", 31)));
             }
 
             if (this.uiTextures[10].isLoaded()) {
@@ -9590,7 +9590,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[10].isLoaded()) {
-                this.uiTextures[10].load(MyUtility.getString(String.format("img%03d.png", 25)), MyUtility.getString(String.format("img%03d.imgcut", 25)));
+                this.uiTextures[10].load(MyUtility.getString(aString.format("img%03d.png", 25)), MyUtility.getString(aString.format("img%03d.imgcut", 25)));
             }
 
             if (this.uiTextures[11].isLoaded()) {
@@ -9598,7 +9598,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[11].isLoaded()) {
-                this.uiTextures[11].load(MyUtility.getString(String.format("img%03d.png", 30)), MyUtility.getString(String.format("img%03d.imgcut", 30)));
+                this.uiTextures[11].load(MyUtility.getString(aString.format("img%03d.png", 30)), MyUtility.getString(aString.format("img%03d.imgcut", 30)));
             }
 
             if (this.uiTextures[12].isLoaded()) {
@@ -9606,7 +9606,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[12].isLoaded()) {
-                this.uiTextures[12].load(MyUtility.getString(String.format("img%03d.png", 33)), MyUtility.getString(String.format("img%03d.imgcut", 33)));
+                this.uiTextures[12].load(MyUtility.getString(aString.format("img%03d.png", 33)), MyUtility.getString(aString.format("img%03d.imgcut", 33)));
             }
 
             if (this.uiTextures[13].isLoaded()) {
@@ -9614,7 +9614,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[13].isLoaded()) {
-                this.uiTextures[13].load(MyUtility.getString(String.format("img%03d.png", 1)), MyUtility.getString(String.format("img%03d.imgcut", 1)));
+                this.uiTextures[13].load(MyUtility.getString(aString.format("img%03d.png", 1)), MyUtility.getString(aString.format("img%03d.imgcut", 1)));
             }
         }
 
@@ -9624,7 +9624,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[6].isLoaded()) {
-                this.uiTextures[6].load(MyUtility.getString(String.format("img%03d.png", 21)), MyUtility.getString(String.format("img%03d.imgcut", 21)));
+                this.uiTextures[6].load(MyUtility.getString(aString.format("img%03d.png", 21)), MyUtility.getString(aString.format("img%03d.imgcut", 21)));
             }
 
             if (this.fS[3] == 0) {
@@ -9633,7 +9633,7 @@ public class AppInstance extends Game {
                 }
 
                 if (!this.uiTextures[7].isLoaded()) {
-                    this.uiTextures[7].load(MyUtility.getString(String.format("img%03d.png", 22)), MyUtility.getString(String.format("img%03d.imgcut", 22)));
+                    this.uiTextures[7].load(MyUtility.getString(aString.format("img%03d.png", 22)), MyUtility.getString(aString.format("img%03d.imgcut", 22)));
                 }
 
                 if (this.uiTextures[8].isLoaded()) {
@@ -9641,7 +9641,7 @@ public class AppInstance extends Game {
                 }
 
                 if (!this.uiTextures[8].isLoaded()) {
-                    this.uiTextures[8].load(MyUtility.getString(String.format("img%03d.png", 23)), MyUtility.getString(String.format("img%03d.imgcut", 23)));
+                    this.uiTextures[8].load(MyUtility.getString(aString.format("img%03d.png", 23)), MyUtility.getString(aString.format("img%03d.imgcut", 23)));
                 }
             } else if (this.fS[3] >= 1) {
                 if (this.uiTextures[7].isLoaded()) {
@@ -9649,7 +9649,7 @@ public class AppInstance extends Game {
                 }
 
                 if (!this.uiTextures[7].isLoaded()) {
-                    this.uiTextures[7].load(MyUtility.getString(String.format("img%03d.png", 26)), MyUtility.getString(String.format("img%03d.imgcut", 26)));
+                    this.uiTextures[7].load(MyUtility.getString(aString.format("img%03d.png", 26)), MyUtility.getString(aString.format("img%03d.imgcut", 26)));
                 }
 
                 if (this.uiTextures[8].isLoaded()) {
@@ -9657,7 +9657,7 @@ public class AppInstance extends Game {
                 }
 
                 if (!this.uiTextures[8].isLoaded()) {
-                    this.uiTextures[8].load(MyUtility.getString(String.format("img%03d.png", 27)), MyUtility.getString(String.format("img%03d.imgcut", 27)));
+                    this.uiTextures[8].load(MyUtility.getString(aString.format("img%03d.png", 27)), MyUtility.getString(aString.format("img%03d.imgcut", 27)));
                 }
             }
 
@@ -9666,7 +9666,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[9].isLoaded()) {
-                this.uiTextures[9].load(MyUtility.getString(String.format("img%03d.png", 28)), MyUtility.getString(String.format("img%03d.imgcut", 28)));
+                this.uiTextures[9].load(MyUtility.getString(aString.format("img%03d.png", 28)), MyUtility.getString(aString.format("img%03d.imgcut", 28)));
             }
 
             if (!this.uiTextures[10].isLoaded()) {
@@ -9674,7 +9674,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[10].isLoaded()) {
-                this.uiTextures[10].load(MyUtility.getString(String.format("img%03d.png", 25)), MyUtility.getString(String.format("img%03d.imgcut", 25)));
+                this.uiTextures[10].load(MyUtility.getString(aString.format("img%03d.png", 25)), MyUtility.getString(aString.format("img%03d.imgcut", 25)));
             }
 
             for (var1 = 0; var1 < this.gC[1] + 1; ++var1) {
@@ -9684,38 +9684,38 @@ public class AppInstance extends Game {
 
                 if (var1 < this.gB[1]) {
                     if (!this.uiTextures[var1 + 11].isLoaded()) {
-                        this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_g.png", 0)), MyUtility.getString(String.format("udi%03d_g.imgcut", 0)));
+                        this.uiTextures[var1 + 11].load(MyUtility.getString(aString.format("udi%03d_g.png", 0)), MyUtility.getString(aString.format("udi%03d_g.imgcut", 0)));
                     }
                 } else if (var1 < this.gB[0]) {
                     if (!this.uiTextures[var1 + 11].isLoaded()) {
                         if (this.bw[this.bK[var1 - this.gB[1]]] == 0) {
-                            this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_f.png", this.bK[var1 - this.gB[1]])), MyUtility.getString(String.format("udi%03d_f.imgcut", this.bK[var1 - this.gB[1]])));
+                            this.uiTextures[var1 + 11].load(MyUtility.getString(aString.format("udi%03d_f.png", this.bK[var1 - this.gB[1]])), MyUtility.getString(aString.format("udi%03d_f.imgcut", this.bK[var1 - this.gB[1]])));
                         } else {
-                            this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_c.png", this.bK[var1 - this.gB[1]])), MyUtility.getString(String.format("udi%03d_c.imgcut", this.bK[var1 - this.gB[1]])));
+                            this.uiTextures[var1 + 11].load(MyUtility.getString(aString.format("udi%03d_c.png", this.bK[var1 - this.gB[1]])), MyUtility.getString(aString.format("udi%03d_c.imgcut", this.bK[var1 - this.gB[1]])));
                         }
                     }
                 } else if (var1 - this.gB[0] == 0 && this.baseSpecialSkillLevels[0] + 1 < this.bi) {
                     if (!this.uiTextures[var1 + 11].isLoaded()) {
-                        this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_s_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_s_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
+                        this.uiTextures[var1 + 11].load(MyUtility.getString(aString.format("udi%03d_s_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(aString.format("udi%03d_s_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
                     }
                 } else if (var1 - this.gB[0] == 0) {
                     if (!this.uiTextures[var1 + 11].isLoaded()) {
-                        this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_sg_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_sg_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
+                        this.uiTextures[var1 + 11].load(MyUtility.getString(aString.format("udi%03d_sg_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(aString.format("udi%03d_sg_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
                     }
                 } else if (var1 - this.gB[0] == 1 && this.baseSpecialSkillLevels[2] + 1 < 10) {
                     if (!this.uiTextures[var1 + 11].isLoaded()) {
-                        this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_s_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_s_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
+                        this.uiTextures[var1 + 11].load(MyUtility.getString(aString.format("udi%03d_s_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(aString.format("udi%03d_s_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
                     }
                 } else if (var1 - this.gB[0] == 1) {
                     if (!this.uiTextures[var1 + 11].isLoaded()) {
-                        this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_sg_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_sg_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
+                        this.uiTextures[var1 + 11].load(MyUtility.getString(aString.format("udi%03d_sg_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(aString.format("udi%03d_sg_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
                     }
                 } else if (this.baseSpecialSkillLevels[var1 - this.gB[0] + 1] + 1 < this.bi) {
                     if (!this.uiTextures[var1 + 11].isLoaded()) {
-                        this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_s_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_s_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
+                        this.uiTextures[var1 + 11].load(MyUtility.getString(aString.format("udi%03d_s_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(aString.format("udi%03d_s_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
                     }
                 } else if (!this.uiTextures[var1 + 11].isLoaded()) {
-                    this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_sg_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_sg_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
+                    this.uiTextures[var1 + 11].load(MyUtility.getString(aString.format("udi%03d_sg_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(aString.format("udi%03d_sg_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
                 }
             }
         }
@@ -9724,11 +9724,11 @@ public class AppInstance extends Game {
             for (var1 = 0; var1 < 10; ++var1) {
                 if (!this.ak[var1].isLoaded()) {
                     if (this.slotCatIDs[var1] == -1) {
-                        this.ak[var1].load(MyUtility.getString(String.format("uni.png")), String.format("uni.imgcut"));
+                        this.ak[var1].load(MyUtility.getString(aString.format("uni.png")), aString.format("uni.imgcut"));
                     } else if (this.eV[var1] == 0) {
-                        this.ak[var1].load(MyUtility.getString(String.format("uni%03d_f%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(String.format("uni%03d_f%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
+                        this.ak[var1].load(MyUtility.getString(aString.format("uni%03d_f%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(aString.format("uni%03d_f%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
                     } else if (this.eV[var1] == 1) {
-                        this.ak[var1].load(MyUtility.getString(String.format("uni%03d_c%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(String.format("uni%03d_c%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
+                        this.ak[var1].load(MyUtility.getString(aString.format("uni%03d_c%02d.png", this.slotCatIDs[var1] - 2, 0)), MyUtility.getString(aString.format("uni%03d_c%02d.imgcut", this.slotCatIDs[var1] - 2, 0)));
                     }
                 }
             }
@@ -9738,7 +9738,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[6].isLoaded()) {
-                this.uiTextures[6].load(MyUtility.getString(String.format("img%03d.png", 21)), MyUtility.getString(String.format("img%03d.imgcut", 21)));
+                this.uiTextures[6].load(MyUtility.getString(aString.format("img%03d.png", 21)), MyUtility.getString(aString.format("img%03d.imgcut", 21)));
             }
 
             if (this.uiTextures[7].isLoaded()) {
@@ -9746,7 +9746,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[7].isLoaded()) {
-                this.uiTextures[7].load(MyUtility.getString(String.format("img%03d.png", 29)), MyUtility.getString(String.format("img%03d.imgcut", 29)));
+                this.uiTextures[7].load(MyUtility.getString(aString.format("img%03d.png", 29)), MyUtility.getString(aString.format("img%03d.imgcut", 29)));
             }
 
             if (this.ff[3] == 0) {
@@ -9755,7 +9755,7 @@ public class AppInstance extends Game {
                 }
 
                 if (!this.uiTextures[8].isLoaded()) {
-                    this.uiTextures[8].load(MyUtility.getString(String.format("img%03d.png", 23)), MyUtility.getString(String.format("img%03d.imgcut", 23)));
+                    this.uiTextures[8].load(MyUtility.getString(aString.format("img%03d.png", 23)), MyUtility.getString(aString.format("img%03d.imgcut", 23)));
                 }
             } else if (this.ff[3] >= 1) {
                 if (this.uiTextures[8].isLoaded()) {
@@ -9763,7 +9763,7 @@ public class AppInstance extends Game {
                 }
 
                 if (!this.uiTextures[8].isLoaded()) {
-                    this.uiTextures[8].load(MyUtility.getString(String.format("img%03d.png", 27)), MyUtility.getString(String.format("img%03d.imgcut", 27)));
+                    this.uiTextures[8].load(MyUtility.getString(aString.format("img%03d.png", 27)), MyUtility.getString(aString.format("img%03d.imgcut", 27)));
                 }
             }
 
@@ -9772,7 +9772,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[9].isLoaded()) {
-                this.uiTextures[9].load(MyUtility.getString(String.format("img%03d.png", 28)), MyUtility.getString(String.format("img%03d.imgcut", 28)));
+                this.uiTextures[9].load(MyUtility.getString(aString.format("img%03d.png", 28)), MyUtility.getString(aString.format("img%03d.imgcut", 28)));
             }
 
             if (!this.uiTextures[10].isLoaded()) {
@@ -9780,7 +9780,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[10].isLoaded()) {
-                this.uiTextures[10].load(MyUtility.getString(String.format("img%03d.png", 25)), MyUtility.getString(String.format("img%03d.imgcut", 25)));
+                this.uiTextures[10].load(MyUtility.getString(aString.format("img%03d.png", 25)), MyUtility.getString(aString.format("img%03d.imgcut", 25)));
             }
 
             for (var1 = 0; var1 < this.gC[1] + 1; ++var1) {
@@ -9790,9 +9790,9 @@ public class AppInstance extends Game {
 
                 if (!this.uiTextures[var1 + 11].isLoaded()) {
                     if (this.bw[this.bK[var1]] == 0) {
-                        this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_f.png", this.bK[var1])), MyUtility.getString(String.format("udi%03d_f.imgcut", this.bK[var1])));
+                        this.uiTextures[var1 + 11].load(MyUtility.getString(aString.format("udi%03d_f.png", this.bK[var1])), MyUtility.getString(aString.format("udi%03d_f.imgcut", this.bK[var1])));
                     } else {
-                        this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_c.png", this.bK[var1])), MyUtility.getString(String.format("udi%03d_c.imgcut", this.bK[var1])));
+                        this.uiTextures[var1 + 11].load(MyUtility.getString(aString.format("udi%03d_c.png", this.bK[var1])), MyUtility.getString(aString.format("udi%03d_c.imgcut", this.bK[var1])));
                     }
                 }
             }
@@ -9806,7 +9806,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[6].isLoaded()) {
-                this.uiTextures[6].load(MyUtility.getString(String.format("img%03d.png", 17)), MyUtility.getString(String.format("img%03d.imgcut", 17)));
+                this.uiTextures[6].load(MyUtility.getString(aString.format("img%03d.png", 17)), MyUtility.getString(aString.format("img%03d.imgcut", 17)));
             }
 
             if (this.uiTextures[8].isLoaded()) {
@@ -9814,7 +9814,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[8].isLoaded()) {
-                this.uiTextures[8].load(MyUtility.getString(String.format("ot%03d_c.png", 11)), MyUtility.getString(String.format("ot%03d_c.imgcut", 11)));
+                this.uiTextures[8].load(MyUtility.getString(aString.format("ot%03d_c.png", 11)), MyUtility.getString(aString.format("ot%03d_c.imgcut", 11)));
             }
         }
 
@@ -9824,7 +9824,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[6].isLoaded()) {
-                this.uiTextures[6].load(MyUtility.getString(String.format("img%03d.png", 15)), MyUtility.getString(String.format("img%03d.imgcut", 15)));
+                this.uiTextures[6].load(MyUtility.getString(aString.format("img%03d.png", 15)), MyUtility.getString(aString.format("img%03d.imgcut", 15)));
             }
 
             if (this.uiTextures[7].isLoaded()) {
@@ -9832,7 +9832,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[7].isLoaded()) {
-                this.uiTextures[7].load(MyUtility.getString(String.format("img%03d.png", 16)), MyUtility.getString(String.format("img%03d.imgcut", 16)));
+                this.uiTextures[7].load(MyUtility.getString(aString.format("img%03d.png", 16)), MyUtility.getString(aString.format("img%03d.imgcut", 16)));
             }
 
             if (this.uiTextures[8].isLoaded()) {
@@ -9840,7 +9840,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[8].isLoaded()) {
-                this.uiTextures[8].load(MyUtility.getString(String.format("%03d_a.png", 0)), MyUtility.getString(String.format("%03d_a.imgcut", 0)));
+                this.uiTextures[8].load(MyUtility.getString(aString.format("%03d_a.png", 0)), MyUtility.getString(aString.format("%03d_a.imgcut", 0)));
             }
 
             if (this.uiTextures[9].isLoaded()) {
@@ -9848,7 +9848,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[9].isLoaded()) {
-                this.uiTextures[9].load(MyUtility.getString(String.format("img%03d.png", 21)), MyUtility.getString(String.format("img%03d.imgcut", 21)));
+                this.uiTextures[9].load(MyUtility.getString(aString.format("img%03d.png", 21)), MyUtility.getString(aString.format("img%03d.imgcut", 21)));
             }
 
             this.ft = -1;
@@ -9861,7 +9861,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[6].isLoaded()) {
-                this.uiTextures[6].load(MyUtility.getString(String.format("img%03d.png", 21)), MyUtility.getString(String.format("img%03d.imgcut", 21)));
+                this.uiTextures[6].load(MyUtility.getString(aString.format("img%03d.png", 21)), MyUtility.getString(aString.format("img%03d.imgcut", 21)));
             }
 
             if (this.uiTextures[7].isLoaded()) {
@@ -9869,7 +9869,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[7].isLoaded()) {
-                this.uiTextures[7].load(MyUtility.getString(String.format("img%03d.png", 37)), MyUtility.getString(String.format("img%03d.imgcut", 37)));
+                this.uiTextures[7].load(MyUtility.getString(aString.format("img%03d.png", 37)), MyUtility.getString(aString.format("img%03d.imgcut", 37)));
             }
 
             if (this.uiTextures[8].isLoaded()) {
@@ -9877,7 +9877,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[8].isLoaded()) {
-                this.uiTextures[8].load(MyUtility.getString(String.format("img%03d.png", 38)), MyUtility.getString(String.format("img%03d.imgcut", 38)));
+                this.uiTextures[8].load(MyUtility.getString(aString.format("img%03d.png", 38)), MyUtility.getString(aString.format("img%03d.imgcut", 38)));
             }
 
             if (!this.uiTextures[10].isLoaded()) {
@@ -9885,7 +9885,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[10].isLoaded()) {
-                this.uiTextures[10].load(MyUtility.getString(String.format("img%03d.png", 25)), MyUtility.getString(String.format("img%03d.imgcut", 25)));
+                this.uiTextures[10].load(MyUtility.getString(aString.format("img%03d.png", 25)), MyUtility.getString(aString.format("img%03d.imgcut", 25)));
             }
 
             if (!this.uiTextures[11].isLoaded()) {
@@ -9893,7 +9893,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[11].isLoaded()) {
-                this.uiTextures[11].load(MyUtility.getString(String.format("item%03d.png", 0)), MyUtility.getString(String.format("item%03d.imgcut", 0)));
+                this.uiTextures[11].load(MyUtility.getString(aString.format("item%03d.png", 0)), MyUtility.getString(aString.format("item%03d.imgcut", 0)));
             }
         }
 
@@ -9903,11 +9903,11 @@ public class AppInstance extends Game {
             }
 
             if (!this.stampTextures[0].isLoaded()) {
-                this.stampTextures[0].load(MyUtility.getString(String.format("i%03d_stamp_f.png", 0)), MyUtility.getString(String.format("%03d_stamp_f.imgcut", 0)));
+                this.stampTextures[0].load(MyUtility.getString(aString.format("i%03d_stamp_f.png", 0)), MyUtility.getString(aString.format("%03d_stamp_f.imgcut", 0)));
             }
 
-            this.stampModels[0].load(MyUtility.getString(String.format("%03d_stamp_f.mamodel", 0)));
-            this.stampAnims[0].load(MyUtility.getString(String.format("%03d_stamp_f00.maanim", 0)));
+            this.stampModels[0].load(MyUtility.getString(aString.format("%03d_stamp_f.mamodel", 0)));
+            this.stampAnims[0].load(MyUtility.getString(aString.format("%03d_stamp_f00.maanim", 0)));
             this.stampModels[0].setTextures(this.stampTextures);
             this.stampModels[0].setAction();
             if (this.stampTextures[1].isLoaded()) {
@@ -9915,11 +9915,11 @@ public class AppInstance extends Game {
             }
 
             if (!this.stampTextures[1].isLoaded()) {
-                this.stampTextures[1].load(MyUtility.getString(String.format("i%03d_img044.png", 1)), MyUtility.getString(String.format("i%03d_img044.imgcut", 1)));
+                this.stampTextures[1].load(MyUtility.getString(aString.format("i%03d_img044.png", 1)), MyUtility.getString(aString.format("i%03d_img044.imgcut", 1)));
             }
 
-            this.stampModels[1].load(MyUtility.getString(String.format("%03d_img044.mamodel", 1)));
-            this.stampAnims[1].load(MyUtility.getString(String.format("stamp.maanim")));
+            this.stampModels[1].load(MyUtility.getString(aString.format("%03d_img044.mamodel", 1)));
+            this.stampAnims[1].load(MyUtility.getString(aString.format("stamp.maanim")));
             this.stampModels[1].setTextures(this.stampTextures);
             this.stampModels[1].setAction();
             if (this.uiTextures[10].isLoaded()) {
@@ -9927,28 +9927,28 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[10].isLoaded()) {
-                this.uiTextures[10].load(MyUtility.getString(String.format("img%03d.png", 25)), MyUtility.getString(String.format("img%03d.imgcut", 25)));
+                this.uiTextures[10].load(MyUtility.getString(aString.format("img%03d.png", 25)), MyUtility.getString(aString.format("img%03d.imgcut", 25)));
             }
         }
 
         if (this.getScreenType() == ScreenType.LEGEND) {
             if (!this.uiTextures[0].isLoaded()) {
-                this.uiTextures[0].load(MyUtility.getString(String.format("img_%03d_intro.png", 45)), MyUtility.getString(String.format("img_%03d_intro.imgcut", 45)));
+                this.uiTextures[0].load(MyUtility.getString(aString.format("img_%03d_intro.png", 45)), MyUtility.getString(aString.format("img_%03d_intro.imgcut", 45)));
             }
 
             if (!this.uiTextures[1].isLoaded()) {
-                this.uiTextures[1].load(MyUtility.getString(String.format("img%03d.png", 6)), MyUtility.getString(String.format("img%03d.imgcut", 6)));
+                this.uiTextures[1].load(MyUtility.getString(aString.format("img%03d.png", 6)), MyUtility.getString(aString.format("img%03d.imgcut", 6)));
             }
 
             if (this.eQ >= 1) {
                 if (!this.aI[this.eQ - 1].isLoaded()) {
-                    this.aI[this.eQ - 1].load(MyUtility.getString(String.format("i%03d_p.png", this.eQ - 1)), MyUtility.getString(String.format("%03d_p.imgcut", this.eQ - 1)));
+                    this.aI[this.eQ - 1].load(MyUtility.getString(aString.format("i%03d_p.png", this.eQ - 1)), MyUtility.getString(aString.format("%03d_p.imgcut", this.eQ - 1)));
                 }
 
-                this.aJ.load(MyUtility.getString(String.format("%03d_p.mamodel", this.eQ - 1)));
+                this.aJ.load(MyUtility.getString(aString.format("%03d_p.mamodel", this.eQ - 1)));
 
                 for (var1 = 0; var1 < this.getLength(this.aK); ++var1) {
-                    this.aK[var1].load(MyUtility.getString(String.format("%03d_p%02d.maanim", this.eQ - 1, var1)));
+                    this.aK[var1].load(MyUtility.getString(aString.format("%03d_p%02d.maanim", this.eQ - 1, var1)));
                 }
 
                 this.aJ.setTextures(this.aI);
@@ -9963,7 +9963,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[0].isLoaded()) {
-            this.uiTextures[0].load(MyUtility.getString(String.format("img%03d.png", 35)), MyUtility.getString(String.format("img%03d.imgcut", 35)));
+            this.uiTextures[0].load(MyUtility.getString(aString.format("img%03d.png", 35)), MyUtility.getString(aString.format("img%03d.imgcut", 35)));
         }
 
         if (this.uiTextures[1].isLoaded()) {
@@ -9971,7 +9971,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[1].isLoaded()) {
-            this.uiTextures[1].load(MyUtility.getString(String.format("img%03d.png", 7)), MyUtility.getString(String.format("img%03d.imgcut", 7)));
+            this.uiTextures[1].load(MyUtility.getString(aString.format("img%03d.png", 7)), MyUtility.getString(aString.format("img%03d.imgcut", 7)));
         }
 
         if (this.uiTextures[2].isLoaded()) {
@@ -9979,7 +9979,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[2].isLoaded()) {
-            this.uiTextures[2].load(MyUtility.getString(String.format("img%03d.png", 6)), MyUtility.getString(String.format("img%03d.imgcut", 6)));
+            this.uiTextures[2].load(MyUtility.getString(aString.format("img%03d.png", 6)), MyUtility.getString(aString.format("img%03d.imgcut", 6)));
         }
 
         if (this.uiTextures[3].isLoaded()) {
@@ -9987,7 +9987,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[3].isLoaded()) {
-            this.uiTextures[3].load(MyUtility.getString(String.format("img%03d.png", 36)), MyUtility.getString(String.format("img%03d.imgcut", 36)));
+            this.uiTextures[3].load(MyUtility.getString(aString.format("img%03d.png", 36)), MyUtility.getString(aString.format("img%03d.imgcut", 36)));
         }
     }
 
@@ -9997,11 +9997,11 @@ public class AppInstance extends Game {
         }
 
         if (!this.ao[0].isLoaded()) {
-            this.ao[0].load(MyUtility.getString(String.format("img%03d.png", 13)), MyUtility.getString(String.format("000_img%03d.imgcut", 13)));
+            this.ao[0].load(MyUtility.getString(aString.format("img%03d.png", 13)), MyUtility.getString(aString.format("000_img%03d.imgcut", 13)));
         }
 
-        this.ap[0].load(MyUtility.getString(String.format("opening.mamodel")));
-        this.aq[0].load(MyUtility.getString(String.format("opening.maanim")));
+        this.ap[0].load(MyUtility.getString(aString.format("opening.mamodel")));
+        this.aq[0].load(MyUtility.getString(aString.format("opening.maanim")));
         this.ap[0].setTextures(this.ao);
         this.ap[0].setAction();
         if (this.uiTextures[2].isLoaded()) {
@@ -10009,18 +10009,18 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[2].isLoaded()) {
-            this.uiTextures[2].load(MyUtility.getString(String.format("img%03d.png", 6)), MyUtility.getString(String.format("img%03d.imgcut", 6)));
+            this.uiTextures[2].load(MyUtility.getString(aString.format("img%03d.png", 6)), MyUtility.getString(aString.format("img%03d.imgcut", 6)));
         }
     }
 
     void loadUnitStats(int var1) {
         byte var2 = 0;
-        //if (!jp.co.ponos.library.b.aa.equals(jp.co.ponos.library.b.stream.b.d(String.format("unit%03d.csv", var1 + 1)), (new String[]{"c1270af3244e3bcbee86ee907b6620d6", "5e2d37c28d9e40a9f8782a8e27795f3d", "460611b2de02427382067dcc3d0cc814", "402c64570c5e2c4e8215e4931cf977b2", "b839b84eae1717435ca8f3f2e7e1a854", "4f51f1ddc6d279b46256015a8bf80a4c", "988ce06e07fc9a37a3e5c15f0a28524e", "b9dbe2183b5499818190caa0b9c3f71c", "9b04a3c0dd286686a75278299ffd1a3e", "a31375f8f95246ac8216e68036811d2b", "3d6cb7f95624b4bb8ad7fa2550778882", "aaa281d59c8d7df53f507048492a6cc0", "d96417e8192416632355f20e812aa7bd", "cdc09e9ee36c50c6c4eba2dcb3a3333f", "fb7ecb5101a43146354e1cc05742db04", "d1cb69d162b974483778f35c6f9b6b95", "06259e2354febd4a8f2ec5a790b4cb4d", "ae541a88640505aa18dba6b13dcacf70", "defde8fb3562f29a1439db6904cb1f4d", "09cd101bfb8fd4932177c0a55fc0fe16", "210e495fbe7f5b5df2d08f6754b32e28", "68954abe7e5c084b14876b38a4bcb463", "1550f363ff89f2d491beb020dbc8ac8a", "d1cb69d162b974483778f35c6f9b6b95", "9596d33e9868e98d6f2ffd76a8efac2f", "cc0a57073a5038c5017d11f7077ad570"})[var1])) {
+        //if (!jp.co.ponos.library.b.aa.equals(jp.co.ponos.library.b.stream.b.d(aString.format("unit%03d.csv", var1 + 1)), (new String[]{"c1270af3244e3bcbee86ee907b6620d6", "5e2d37c28d9e40a9f8782a8e27795f3d", "460611b2de02427382067dcc3d0cc814", "402c64570c5e2c4e8215e4931cf977b2", "b839b84eae1717435ca8f3f2e7e1a854", "4f51f1ddc6d279b46256015a8bf80a4c", "988ce06e07fc9a37a3e5c15f0a28524e", "b9dbe2183b5499818190caa0b9c3f71c", "9b04a3c0dd286686a75278299ffd1a3e", "a31375f8f95246ac8216e68036811d2b", "3d6cb7f95624b4bb8ad7fa2550778882", "aaa281d59c8d7df53f507048492a6cc0", "d96417e8192416632355f20e812aa7bd", "cdc09e9ee36c50c6c4eba2dcb3a3333f", "fb7ecb5101a43146354e1cc05742db04", "d1cb69d162b974483778f35c6f9b6b95", "06259e2354febd4a8f2ec5a790b4cb4d", "ae541a88640505aa18dba6b13dcacf70", "defde8fb3562f29a1439db6904cb1f4d", "09cd101bfb8fd4932177c0a55fc0fe16", "210e495fbe7f5b5df2d08f6754b32e28", "68954abe7e5c084b14876b38a4bcb463", "1550f363ff89f2d491beb020dbc8ac8a", "d1cb69d162b974483778f35c6f9b6b95", "9596d33e9868e98d6f2ffd76a8efac2f", "cc0a57073a5038c5017d11f7077ad570"})[var1])) {
         //   this.D = 0;
         //   this.j(4);
         //} else {
         AssetTextStream var3 = new AssetTextStream();
-        var3.openRead(String.format("unit%03d.csv", var1 + 1));
+        var3.openRead(aString.format("unit%03d.csv", var1 + 1));
 
         int var4;
         for (var4 = 0; var4 < this.getLength(this.unitStats[var1 + 2]); ++var4) {
@@ -11662,7 +11662,7 @@ public class AppInstance extends Game {
         //   this.j(4);
         //} else {
         AssetTextStream var2 = new AssetTextStream();
-        var2.openRead(String.format("t_unit.csv"));
+        var2.openRead(aString.format("t_unit.csv"));
 
         int var3;
         for (var3 = 0; var3 < this.getLength(this.bY); ++var3) {
@@ -11813,7 +11813,7 @@ public class AppInstance extends Game {
                                 }
 
                                 if (!this.uiTextures[0].isLoaded()) {
-                                    this.uiTextures[0].load(MyUtility.getString(String.format("img%03d.png", 6)), MyUtility.getString(String.format("img%03d.imgcut", 6)));
+                                    this.uiTextures[0].load(MyUtility.getString(aString.format("img%03d.png", 6)), MyUtility.getString(aString.format("img%03d.imgcut", 6)));
                                 }
 
                                 if (this.uiTextures[1].isLoaded()) {
@@ -11821,7 +11821,7 @@ public class AppInstance extends Game {
                                 }
 
                                 if (!this.uiTextures[1].isLoaded()) {
-                                    this.uiTextures[1].load(MyUtility.getString(String.format("img%03d.png", 7)), MyUtility.getString(String.format("img%03d.imgcut", 7)));
+                                    this.uiTextures[1].load(MyUtility.getString(aString.format("img%03d.png", 7)), MyUtility.getString(aString.format("img%03d.imgcut", 7)));
                                 }
 
                                 if (this.uiTextures[2].isLoaded()) {
@@ -11829,7 +11829,7 @@ public class AppInstance extends Game {
                                 }
 
                                 if (!this.uiTextures[2].isLoaded()) {
-                                    this.uiTextures[2].load(MyUtility.getString(String.format("img%03d.png", 8)), MyUtility.getString(String.format("img%03d.imgcut", 8)));
+                                    this.uiTextures[2].load(MyUtility.getString(aString.format("img%03d.png", 8)), MyUtility.getString(aString.format("img%03d.imgcut", 8)));
                                 }
 
                                 if (this.uiTextures[3].isLoaded()) {
@@ -11837,7 +11837,7 @@ public class AppInstance extends Game {
                                 }
 
                                 if (!this.uiTextures[3].isLoaded()) {
-                                    this.uiTextures[3].load(MyUtility.getString(String.format("img%03d_%d.png", 9, 0)), MyUtility.getString(String.format("img%03d.imgcut", 9)));
+                                    this.uiTextures[3].load(MyUtility.getString(aString.format("img%03d_%d.png", 9, 0)), MyUtility.getString(aString.format("img%03d.imgcut", 9)));
                                 }
 
                                 if (this.uiTextures[4].isLoaded()) {
@@ -11845,7 +11845,7 @@ public class AppInstance extends Game {
                                 }
 
                                 if (!this.uiTextures[4].isLoaded()) {
-                                    this.uiTextures[4].load(MyUtility.getString(String.format("img%03d.png", 10)), MyUtility.getString(String.format("img%03d.imgcut", 10)));
+                                    this.uiTextures[4].load(MyUtility.getString(aString.format("img%03d.png", 10)), MyUtility.getString(aString.format("img%03d.imgcut", 10)));
                                 }
 
                                 if (this.uiTextures[5].isLoaded()) {
@@ -11853,7 +11853,7 @@ public class AppInstance extends Game {
                                 }
 
                                 if (!this.uiTextures[5].isLoaded()) {
-                                    this.uiTextures[5].load(MyUtility.getString(String.format("img%03d.png", 24)), MyUtility.getString(String.format("img%03d.imgcut", 24)));
+                                    this.uiTextures[5].load(MyUtility.getString(aString.format("img%03d.png", 24)), MyUtility.getString(aString.format("img%03d.imgcut", 24)));
                                 }
 
                                 if (this.af[0].isLoaded()) {
@@ -11861,7 +11861,7 @@ public class AppInstance extends Game {
                                 }
 
                                 if (!this.af[0].isLoaded()) {
-                                    this.af[0].load(MyUtility.getString(String.format("img%03d_%d.png", 9, this.eQ + 3)), MyUtility.getString(String.format("img%03d_%d.imgcut", 9, this.eQ + 3)));
+                                    this.af[0].load(MyUtility.getString(aString.format("img%03d_%d.png", 9, this.eQ + 3)), MyUtility.getString(aString.format("img%03d_%d.imgcut", 9, this.eQ + 3)));
                                 }
 
                                 Sound.getInstance().stop(SoundType.ALL);
@@ -12216,7 +12216,7 @@ public class AppInstance extends Game {
                                     }
 
                                     if (!this.uiTextures[0].isLoaded()) {
-                                        this.uiTextures[0].load(MyUtility.getString(String.format("img%03d.png", 6)), MyUtility.getString(String.format("img%03d.imgcut", 6)));
+                                        this.uiTextures[0].load(MyUtility.getString(aString.format("img%03d.png", 6)), MyUtility.getString(aString.format("img%03d.imgcut", 6)));
                                     }
 
                                     if (this.uiTextures[1].isLoaded()) {
@@ -12224,7 +12224,7 @@ public class AppInstance extends Game {
                                     }
 
                                     if (!this.uiTextures[1].isLoaded()) {
-                                        this.uiTextures[1].load(MyUtility.getString(String.format("img%03d.png", 7)), MyUtility.getString(String.format("img%03d.imgcut", 7)));
+                                        this.uiTextures[1].load(MyUtility.getString(aString.format("img%03d.png", 7)), MyUtility.getString(aString.format("img%03d.imgcut", 7)));
                                     }
 
                                     if (this.uiTextures[2].isLoaded()) {
@@ -12232,7 +12232,7 @@ public class AppInstance extends Game {
                                     }
 
                                     if (!this.uiTextures[2].isLoaded()) {
-                                        this.uiTextures[2].load(MyUtility.getString(String.format("img%03d.png", 8)), MyUtility.getString(String.format("img%03d.imgcut", 8)));
+                                        this.uiTextures[2].load(MyUtility.getString(aString.format("img%03d.png", 8)), MyUtility.getString(aString.format("img%03d.imgcut", 8)));
                                     }
 
                                     if (this.uiTextures[3].isLoaded()) {
@@ -12240,7 +12240,7 @@ public class AppInstance extends Game {
                                     }
 
                                     if (!this.uiTextures[3].isLoaded()) {
-                                        this.uiTextures[3].load(MyUtility.getString(String.format("img%03d_%d.png", 9, 0)), MyUtility.getString(String.format("img%03d.imgcut", 9)));
+                                        this.uiTextures[3].load(MyUtility.getString(aString.format("img%03d_%d.png", 9, 0)), MyUtility.getString(aString.format("img%03d.imgcut", 9)));
                                     }
 
                                     if (this.uiTextures[4].isLoaded()) {
@@ -12248,7 +12248,7 @@ public class AppInstance extends Game {
                                     }
 
                                     if (!this.uiTextures[4].isLoaded()) {
-                                        this.uiTextures[4].load(MyUtility.getString(String.format("img%03d.png", 10)), MyUtility.getString(String.format("img%03d.imgcut", 10)));
+                                        this.uiTextures[4].load(MyUtility.getString(aString.format("img%03d.png", 10)), MyUtility.getString(aString.format("img%03d.imgcut", 10)));
                                     }
 
                                     if (this.uiTextures[5].isLoaded()) {
@@ -12256,7 +12256,7 @@ public class AppInstance extends Game {
                                     }
 
                                     if (!this.uiTextures[5].isLoaded()) {
-                                        this.uiTextures[5].load(MyUtility.getString(String.format("img%03d.png", 24)), MyUtility.getString(String.format("img%03d.imgcut", 24)));
+                                        this.uiTextures[5].load(MyUtility.getString(aString.format("img%03d.png", 24)), MyUtility.getString(aString.format("img%03d.imgcut", 24)));
                                     }
 
                                     if (this.af[0].isLoaded()) {
@@ -12264,7 +12264,7 @@ public class AppInstance extends Game {
                                     }
 
                                     if (!this.af[0].isLoaded()) {
-                                        this.af[0].load(MyUtility.getString(String.format("img%03d_%d.png", 9, this.eQ + 3)), MyUtility.getString(String.format("img%03d_%d.imgcut", 9, this.eQ + 3)));
+                                        this.af[0].load(MyUtility.getString(aString.format("img%03d_%d.png", 9, this.eQ + 3)), MyUtility.getString(aString.format("img%03d_%d.imgcut", 9, this.eQ + 3)));
                                     }
 
                                     this.resetTextures();
@@ -12361,7 +12361,7 @@ public class AppInstance extends Game {
                                 }
 
                                 if (!this.uiTextures[0].isLoaded()) {
-                                    this.uiTextures[0].load(MyUtility.getString(String.format("img%03d.png", 6)), MyUtility.getString(String.format("img%03d.imgcut", 6)));
+                                    this.uiTextures[0].load(MyUtility.getString(aString.format("img%03d.png", 6)), MyUtility.getString(aString.format("img%03d.imgcut", 6)));
                                 }
 
                                 if (this.uiTextures[1].isLoaded()) {
@@ -12369,7 +12369,7 @@ public class AppInstance extends Game {
                                 }
 
                                 if (!this.uiTextures[1].isLoaded()) {
-                                    this.uiTextures[1].load(MyUtility.getString(String.format("img%03d.png", 7)), MyUtility.getString(String.format("img%03d.imgcut", 7)));
+                                    this.uiTextures[1].load(MyUtility.getString(aString.format("img%03d.png", 7)), MyUtility.getString(aString.format("img%03d.imgcut", 7)));
                                 }
 
                                 if (this.uiTextures[2].isLoaded()) {
@@ -12377,7 +12377,7 @@ public class AppInstance extends Game {
                                 }
 
                                 if (!this.uiTextures[2].isLoaded()) {
-                                    this.uiTextures[2].load(MyUtility.getString(String.format("img%03d.png", 8)), MyUtility.getString(String.format("img%03d.imgcut", 8)));
+                                    this.uiTextures[2].load(MyUtility.getString(aString.format("img%03d.png", 8)), MyUtility.getString(aString.format("img%03d.imgcut", 8)));
                                 }
 
                                 if (this.uiTextures[3].isLoaded()) {
@@ -12385,7 +12385,7 @@ public class AppInstance extends Game {
                                 }
 
                                 if (!this.uiTextures[3].isLoaded()) {
-                                    this.uiTextures[3].load(MyUtility.getString(String.format("img%03d_%d.png", 9, 0)), MyUtility.getString(String.format("img%03d.imgcut", 9)));
+                                    this.uiTextures[3].load(MyUtility.getString(aString.format("img%03d_%d.png", 9, 0)), MyUtility.getString(aString.format("img%03d.imgcut", 9)));
                                 }
 
                                 if (this.uiTextures[4].isLoaded()) {
@@ -12393,7 +12393,7 @@ public class AppInstance extends Game {
                                 }
 
                                 if (!this.uiTextures[4].isLoaded()) {
-                                    this.uiTextures[4].load(MyUtility.getString(String.format("img%03d.png", 10)), MyUtility.getString(String.format("img%03d.imgcut", 10)));
+                                    this.uiTextures[4].load(MyUtility.getString(aString.format("img%03d.png", 10)), MyUtility.getString(aString.format("img%03d.imgcut", 10)));
                                 }
 
                                 if (this.uiTextures[5].isLoaded()) {
@@ -12401,7 +12401,7 @@ public class AppInstance extends Game {
                                 }
 
                                 if (!this.uiTextures[5].isLoaded()) {
-                                    this.uiTextures[5].load(MyUtility.getString(String.format("img%03d.png", 24)), MyUtility.getString(String.format("img%03d.imgcut", 24)));
+                                    this.uiTextures[5].load(MyUtility.getString(aString.format("img%03d.png", 24)), MyUtility.getString(aString.format("img%03d.imgcut", 24)));
                                 }
 
                                 if (this.af[0].isLoaded()) {
@@ -12409,7 +12409,7 @@ public class AppInstance extends Game {
                                 }
 
                                 if (!this.af[0].isLoaded()) {
-                                    this.af[0].load(MyUtility.getString(String.format("img%03d_%d.png", 9, this.eQ + 3)), MyUtility.getString(String.format("img%03d_%d.imgcut", 9, this.eQ + 3)));
+                                    this.af[0].load(MyUtility.getString(aString.format("img%03d_%d.png", 9, this.eQ + 3)), MyUtility.getString(aString.format("img%03d_%d.imgcut", 9, this.eQ + 3)));
                                 }
 
                                 this.resetTextures();
@@ -12502,7 +12502,7 @@ public class AppInstance extends Game {
                                     }
 
                                     if (!this.uiTextures[0].isLoaded()) {
-                                        this.uiTextures[0].load(MyUtility.getString(String.format("img%03d.png", 6)), MyUtility.getString(String.format("img%03d.imgcut", 6)));
+                                        this.uiTextures[0].load(MyUtility.getString(aString.format("img%03d.png", 6)), MyUtility.getString(aString.format("img%03d.imgcut", 6)));
                                     }
 
                                     if (this.uiTextures[1].isLoaded()) {
@@ -12510,7 +12510,7 @@ public class AppInstance extends Game {
                                     }
 
                                     if (!this.uiTextures[1].isLoaded()) {
-                                        this.uiTextures[1].load(MyUtility.getString(String.format("img%03d.png", 7)), MyUtility.getString(String.format("img%03d.imgcut", 7)));
+                                        this.uiTextures[1].load(MyUtility.getString(aString.format("img%03d.png", 7)), MyUtility.getString(aString.format("img%03d.imgcut", 7)));
                                     }
 
                                     if (this.uiTextures[2].isLoaded()) {
@@ -12518,7 +12518,7 @@ public class AppInstance extends Game {
                                     }
 
                                     if (!this.uiTextures[2].isLoaded()) {
-                                        this.uiTextures[2].load(MyUtility.getString(String.format("img%03d.png", 8)), MyUtility.getString(String.format("img%03d.imgcut", 8)));
+                                        this.uiTextures[2].load(MyUtility.getString(aString.format("img%03d.png", 8)), MyUtility.getString(aString.format("img%03d.imgcut", 8)));
                                     }
 
                                     if (this.uiTextures[3].isLoaded()) {
@@ -12526,7 +12526,7 @@ public class AppInstance extends Game {
                                     }
 
                                     if (!this.uiTextures[3].isLoaded()) {
-                                        this.uiTextures[3].load(MyUtility.getString(String.format("img%03d_%d.png", 9, 0)), MyUtility.getString(String.format("img%03d.imgcut", 9)));
+                                        this.uiTextures[3].load(MyUtility.getString(aString.format("img%03d_%d.png", 9, 0)), MyUtility.getString(aString.format("img%03d.imgcut", 9)));
                                     }
 
                                     if (this.uiTextures[4].isLoaded()) {
@@ -12534,7 +12534,7 @@ public class AppInstance extends Game {
                                     }
 
                                     if (!this.uiTextures[4].isLoaded()) {
-                                        this.uiTextures[4].load(MyUtility.getString(String.format("img%03d.png", 10)), MyUtility.getString(String.format("img%03d.imgcut", 10)));
+                                        this.uiTextures[4].load(MyUtility.getString(aString.format("img%03d.png", 10)), MyUtility.getString(aString.format("img%03d.imgcut", 10)));
                                     }
 
                                     if (this.uiTextures[5].isLoaded()) {
@@ -12542,7 +12542,7 @@ public class AppInstance extends Game {
                                     }
 
                                     if (!this.uiTextures[5].isLoaded()) {
-                                        this.uiTextures[5].load(MyUtility.getString(String.format("img%03d.png", 24)), MyUtility.getString(String.format("img%03d.imgcut", 24)));
+                                        this.uiTextures[5].load(MyUtility.getString(aString.format("img%03d.png", 24)), MyUtility.getString(aString.format("img%03d.imgcut", 24)));
                                     }
 
                                     if (this.af[0].isLoaded()) {
@@ -12550,7 +12550,7 @@ public class AppInstance extends Game {
                                     }
 
                                     if (!this.af[0].isLoaded()) {
-                                        this.af[0].load(MyUtility.getString(String.format("img%03d_%d.png", 9, this.eQ + 3)), MyUtility.getString(String.format("img%03d_%d.imgcut", 9, this.eQ + 3)));
+                                        this.af[0].load(MyUtility.getString(aString.format("img%03d_%d.png", 9, this.eQ + 3)), MyUtility.getString(aString.format("img%03d_%d.imgcut", 9, this.eQ + 3)));
                                     }
 
                                     this.resetTextures();
@@ -12918,10 +12918,10 @@ public class AppInstance extends Game {
 
             if (!var2) {
                 if (!this.uiTextures[7].isLoaded()) {
-                    this.uiTextures[7].load(MyUtility.getString(String.format("ot%03d_c.png", cA[var1])), MyUtility.getString(String.format("ot%03d_c.imgcut", cA[var1])));
+                    this.uiTextures[7].load(MyUtility.getString(aString.format("ot%03d_c.png", cA[var1])), MyUtility.getString(aString.format("ot%03d_c.imgcut", cA[var1])));
                 }
             } else if (!this.uiTextures[7].isLoaded()) {
-                this.uiTextures[7].load(MyUtility.getString(String.format("ot%03d_o.png", cA[var1])), MyUtility.getString(String.format("ot%03d_o.imgcut", cA[var1])));
+                this.uiTextures[7].load(MyUtility.getString(aString.format("ot%03d_o.png", cA[var1])), MyUtility.getString(aString.format("ot%03d_o.imgcut", cA[var1])));
             }
 
             for (var3 = 0; var3 < this.getLength(this.textTextures); ++var3) {
@@ -12933,13 +12933,13 @@ public class AppInstance extends Game {
             for (var3 = 0; var3 < 3; ++var3) {
                 if (!var2) {
                     if (!this.textTextures[var3].isLoaded()) {
-                        this.textTextures[var3].drawText(this.treasure3Text[var1 + 12][var3], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[var3].loadText(this.treasure3Text[var1 + 12][var3], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 } else if (!this.textTextures[var3].isLoaded()) {
                     if (var3 == 0) {
-                        this.textTextures[var3].drawText(this.treasure3Text[var1][var3], "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[var3].loadText(this.treasure3Text[var1][var3], "FONT_SYSTEM_BOLD", 30, 0);
                     } else {
-                        this.textTextures[var3].drawText(this.treasure3Text[var1][var3], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[var3].loadText(this.treasure3Text[var1][var3], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 }
             }
@@ -12947,10 +12947,10 @@ public class AppInstance extends Game {
             if (var2) {
                 if (this.versionCode == 0) {
                     if (!this.textTextures[3].isLoaded()) {
-                        this.textTextures[3].drawText(String.format("%d%s%s", this.treasureMultValues[this.eQ][var1], this.treasure2Text[8], this.treasure2Text[7]), "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[3].loadText(aString.format("%d%s%s", this.treasureMultValues[this.eQ][var1], this.treasure2Text[8], this.treasure2Text[7]), "FONT_SYSTEM_BOLD", 30, 0);
                     }
                 } else if (this.versionCode == 1 && !this.textTextures[3].isLoaded()) {
-                    this.textTextures[3].drawText(String.format("%s%d%s", this.treasure2Text[7], this.treasureMultValues[this.eQ][var1], this.treasure2Text[8]), "FONT_SYSTEM_BOLD", 30, 0);
+                    this.textTextures[3].loadText(aString.format("%s%d%s", this.treasure2Text[7], this.treasureMultValues[this.eQ][var1], this.treasure2Text[8]), "FONT_SYSTEM_BOLD", 30, 0);
                 }
             }
 
@@ -12958,58 +12958,58 @@ public class AppInstance extends Game {
                 if (this.bs[this.eQ][cz[var1][var4]] == 0) {
                     if (this.versionCode == 0) {
                         if (!this.textTextures[var4 * 3 + 4 + 0].isLoaded()) {
-                            this.textTextures[var4 * 3 + 4 + 0].drawText(this.treasure2Text[3], "FONT_SYSTEM_BOLD", 30, 0);
+                            this.textTextures[var4 * 3 + 4 + 0].loadText(this.treasure2Text[3], "FONT_SYSTEM_BOLD", 30, 0);
                         }
 
                         if (!this.textTextures[var4 * 3 + 4 + 1].isLoaded()) {
-                            this.textTextures[var4 * 3 + 4 + 1].drawText(this.treasure1Text[48], "FONT_SYSTEM_BOLD", 30, 0);
+                            this.textTextures[var4 * 3 + 4 + 1].loadText(this.treasure1Text[48], "FONT_SYSTEM_BOLD", 30, 0);
                         }
 
-                        this.textTextures[var4 * 3 + 4 + 2].drawText(String.format("%s%s", this.stageNamesText[cz[var1][var4]], this.treasure2Text[9]), "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[var4 * 3 + 4 + 2].loadText(aString.format("%s%s", this.stageNamesText[cz[var1][var4]], this.treasure2Text[9]), "FONT_SYSTEM_BOLD", 30, 0);
                     } else if (this.versionCode == 1) {
                         if (!this.textTextures[var4 * 3 + 4 + 0].isLoaded()) {
-                            this.textTextures[var4 * 3 + 4 + 0].drawText(this.treasure2Text[3], "FONT_SYSTEM_BOLD", 30, 0);
+                            this.textTextures[var4 * 3 + 4 + 0].loadText(this.treasure2Text[3], "FONT_SYSTEM_BOLD", 30, 0);
                         }
 
                         if (this.fq[2] != 10) {
                             if (!this.textTextures[var4 * 3 + 4 + 1].isLoaded()) {
-                                this.textTextures[var4 * 3 + 4 + 1].drawText(String.format(" %s", this.treasure1Text[48]), "FONT_SYSTEM_BOLD", 30, 0);
+                                this.textTextures[var4 * 3 + 4 + 1].loadText(aString.format(" %s", this.treasure1Text[48]), "FONT_SYSTEM_BOLD", 30, 0);
                             }
                         } else if (!this.textTextures[var4 * 3 + 4 + 1].isLoaded()) {
-                            this.textTextures[var4 * 3 + 4 + 1].drawText(String.format(" %s", this.treasure1Text[48]), "FONT_SYSTEM_BOLD", 30, 0);
+                            this.textTextures[var4 * 3 + 4 + 1].loadText(aString.format(" %s", this.treasure1Text[48]), "FONT_SYSTEM_BOLD", 30, 0);
                         }
 
-                        this.textTextures[var4 * 3 + 4 + 2].drawText(String.format("%s %s", this.treasure2Text[4], this.stageNamesText[cz[var1][var4] + 49]), "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[var4 * 3 + 4 + 2].loadText(aString.format("%s %s", this.treasure2Text[4], this.stageNamesText[cz[var1][var4] + 49]), "FONT_SYSTEM_BOLD", 30, 0);
                     }
                 } else if (this.bs[this.eQ][cz[var1][var4]] == 1) {
                     if (this.versionCode == 0) {
-                        this.textTextures[var4 * 3 + 4 + 0].drawText(this.treasure2Text[3], "FONT_SYSTEM_BOLD", 30, 0);
-                        this.textTextures[var4 * 3 + 4 + 1].drawText(String.format("%s%s", this.treasure2Text[0], this.treasure1Text[cz[var1][var4]]), "FONT_SYSTEM_BOLD", 30, 0);
-                        this.textTextures[var4 * 3 + 4 + 2].drawText(String.format("%s%s", this.stageNamesText[cz[var1][var4]], this.treasure2Text[4]), "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[var4 * 3 + 4 + 0].loadText(this.treasure2Text[3], "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[var4 * 3 + 4 + 1].loadText(aString.format("%s%s", this.treasure2Text[0], this.treasure1Text[cz[var1][var4]]), "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[var4 * 3 + 4 + 2].loadText(aString.format("%s%s", this.stageNamesText[cz[var1][var4]], this.treasure2Text[4]), "FONT_SYSTEM_BOLD", 30, 0);
                     } else if (this.versionCode == 1) {
-                        this.textTextures[var4 * 3 + 4 + 0].drawText(String.format("%s", this.treasure2Text[10]), "FONT_SYSTEM_BOLD", 30, 0);
-                        this.textTextures[var4 * 3 + 4 + 1].drawText(String.format("%s %s", this.treasure2Text[0], this.treasure1Text[cz[var1][var4]]), "FONT_SYSTEM_BOLD", 30, 0);
-                        this.textTextures[var4 * 3 + 4 + 2].drawText(String.format("%s %s", this.treasure2Text[4], this.stageNamesText[cz[var1][var4] + 49]), "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[var4 * 3 + 4 + 0].loadText(aString.format("%s", this.treasure2Text[10]), "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[var4 * 3 + 4 + 1].loadText(aString.format("%s %s", this.treasure2Text[0], this.treasure1Text[cz[var1][var4]]), "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[var4 * 3 + 4 + 2].loadText(aString.format("%s %s", this.treasure2Text[4], this.stageNamesText[cz[var1][var4] + 49]), "FONT_SYSTEM_BOLD", 30, 0);
                     }
                 } else if (this.bs[this.eQ][cz[var1][var4]] == 2) {
                     if (this.versionCode == 0) {
-                        this.textTextures[var4 * 3 + 4 + 0].drawText(this.treasure2Text[3], "FONT_SYSTEM_BOLD", 30, 0);
-                        this.textTextures[var4 * 3 + 4 + 1].drawText(String.format("%s%s", this.treasure2Text[1], this.treasure1Text[cz[var1][var4]]), "FONT_SYSTEM_BOLD", 30, 0);
-                        this.textTextures[var4 * 3 + 4 + 2].drawText(String.format("%s%s", this.stageNamesText[cz[var1][var4]], this.treasure2Text[4]), "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[var4 * 3 + 4 + 0].loadText(this.treasure2Text[3], "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[var4 * 3 + 4 + 1].loadText(aString.format("%s%s", this.treasure2Text[1], this.treasure1Text[cz[var1][var4]]), "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[var4 * 3 + 4 + 2].loadText(aString.format("%s%s", this.stageNamesText[cz[var1][var4]], this.treasure2Text[4]), "FONT_SYSTEM_BOLD", 30, 0);
                     } else if (this.versionCode == 1) {
-                        this.textTextures[var4 * 3 + 4 + 0].drawText(String.format("%s", this.treasure2Text[10]), "FONT_SYSTEM_BOLD", 30, 0);
-                        this.textTextures[var4 * 3 + 4 + 1].drawText(String.format("%s %s", this.treasure2Text[1], this.treasure1Text[cz[var1][var4]]), "FONT_SYSTEM_BOLD", 30, 0);
-                        this.textTextures[var4 * 3 + 4 + 2].drawText(String.format("%s %s", this.treasure2Text[4], this.stageNamesText[cz[var1][var4] + 49]), "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[var4 * 3 + 4 + 0].loadText(aString.format("%s", this.treasure2Text[10]), "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[var4 * 3 + 4 + 1].loadText(aString.format("%s %s", this.treasure2Text[1], this.treasure1Text[cz[var1][var4]]), "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[var4 * 3 + 4 + 2].loadText(aString.format("%s %s", this.treasure2Text[4], this.stageNamesText[cz[var1][var4] + 49]), "FONT_SYSTEM_BOLD", 30, 0);
                     }
                 } else if (this.bs[this.eQ][cz[var1][var4]] == 3) {
                     if (this.versionCode == 0) {
-                        this.textTextures[var4 * 3 + 4 + 0].drawText(this.treasure2Text[3], "FONT_SYSTEM_BOLD", 30, 0);
-                        this.textTextures[var4 * 3 + 4 + 1].drawText(String.format("%s%s", this.treasure2Text[2], this.treasure1Text[cz[var1][var4]]), "FONT_SYSTEM_BOLD", 30, 0);
-                        this.textTextures[var4 * 3 + 4 + 2].drawText(String.format("%s%s", this.stageNamesText[cz[var1][var4]], this.treasure2Text[4]), "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[var4 * 3 + 4 + 0].loadText(this.treasure2Text[3], "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[var4 * 3 + 4 + 1].loadText(aString.format("%s%s", this.treasure2Text[2], this.treasure1Text[cz[var1][var4]]), "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[var4 * 3 + 4 + 2].loadText(aString.format("%s%s", this.stageNamesText[cz[var1][var4]], this.treasure2Text[4]), "FONT_SYSTEM_BOLD", 30, 0);
                     } else if (this.versionCode == 1) {
-                        this.textTextures[var4 * 3 + 4 + 0].drawText(String.format("%s", this.treasure2Text[10]), "FONT_SYSTEM_BOLD", 30, 0);
-                        this.textTextures[var4 * 3 + 4 + 1].drawText(String.format("%s %s", this.treasure2Text[2], this.treasure1Text[cz[var1][var4]]), "FONT_SYSTEM_BOLD", 30, 0);
-                        this.textTextures[var4 * 3 + 4 + 2].drawText(String.format("%s %s", this.treasure2Text[4], this.stageNamesText[cz[var1][var4] + 49]), "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[var4 * 3 + 4 + 0].loadText(aString.format("%s", this.treasure2Text[10]), "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[var4 * 3 + 4 + 1].loadText(aString.format("%s %s", this.treasure2Text[2], this.treasure1Text[cz[var1][var4]]), "FONT_SYSTEM_BOLD", 30, 0);
+                        this.textTextures[var4 * 3 + 4 + 2].loadText(aString.format("%s %s", this.treasure2Text[4], this.stageNamesText[cz[var1][var4] + 49]), "FONT_SYSTEM_BOLD", 30, 0);
                     }
                 }
             }
@@ -13456,12 +13456,12 @@ public class AppInstance extends Game {
                             }
 
                             if (this.versionCode == 0) {
-                                this.textTextures[0].drawText(this.treasure2Text[3], "FONT_SYSTEM_BOLD", 30, 0);
-                                this.textTextures[1].drawText(String.format("%s%s", this.treasure2Text[this.battleStats[18] - 1], this.treasure1Text[this.battleStats[20]]), "FONT_SYSTEM_BOLD", 30, 0);
-                                this.textTextures[2].drawText(this.treasure2Text[6], "FONT_SYSTEM_BOLD", 30, 0);
+                                this.textTextures[0].loadText(this.treasure2Text[3], "FONT_SYSTEM_BOLD", 30, 0);
+                                this.textTextures[1].loadText(aString.format("%s%s", this.treasure2Text[this.battleStats[18] - 1], this.treasure1Text[this.battleStats[20]]), "FONT_SYSTEM_BOLD", 30, 0);
+                                this.textTextures[2].loadText(this.treasure2Text[6], "FONT_SYSTEM_BOLD", 30, 0);
                             } else if (this.versionCode == 1) {
-                                this.textTextures[0].drawText(String.format("%s %s", this.treasure2Text[6], this.treasure2Text[9]), "FONT_SYSTEM_BOLD", 30, 0);
-                                this.textTextures[1].drawText(String.format("%s %s", this.treasure2Text[this.battleStats[18] - 1], this.treasure1Text[this.battleStats[20]]), "FONT_SYSTEM_BOLD", 30, 0);
+                                this.textTextures[0].loadText(aString.format("%s %s", this.treasure2Text[6], this.treasure2Text[9]), "FONT_SYSTEM_BOLD", 30, 0);
+                                this.textTextures[1].loadText(aString.format("%s %s", this.treasure2Text[this.battleStats[18] - 1], this.treasure1Text[this.battleStats[20]]), "FONT_SYSTEM_BOLD", 30, 0);
                             }
                         }
 
@@ -13503,8 +13503,8 @@ public class AppInstance extends Game {
                                     }
                                 }
 
-                                this.textTextures[0].drawText(this.treasure3Text[this.battleStats[19]][0], "FONT_SYSTEM_BOLD", 30, 0);
-                                this.textTextures[1].drawText(this.treasure2Text[5], "FONT_SYSTEM_BOLD", 30, 0);
+                                this.textTextures[0].loadText(this.treasure3Text[this.battleStats[19]][0], "FONT_SYSTEM_BOLD", 30, 0);
+                                this.textTextures[1].loadText(this.treasure2Text[5], "FONT_SYSTEM_BOLD", 30, 0);
                                 Sound.getInstance().play(SoundType.REWARD_GET);
                             }
                         }
@@ -13620,8 +13620,8 @@ public class AppInstance extends Game {
                     var10002 = var2[11]++;
                     if (this.fx[11] > this.getLength(dv) - 1) {
                         this.fx[11] = 0;
-                        String var6 = String.format(MyUtility.getString("twitter_txt1"), this.stageNamesText[cm[this.battleStats[0]]]);
-                        Twitter.getInstance().tweet(String.format("%s %s %s", var6, MyUtility.getString("url_abbr"), MyUtility.getString("twitter_hash")), null, null);
+                        String var6 = aString.format(MyUtility.getString("twitter_txt1"), this.stageNamesText[cm[this.battleStats[0]]]);
+                        Twitter.getInstance().tweet(aString.format("%s %s %s", var6, MyUtility.getString("url_abbr"), MyUtility.getString("twitter_hash")), null, null);
                         this.zoom.reset();
                     }
                 } else {
@@ -14053,7 +14053,7 @@ public class AppInstance extends Game {
                     }
 
                     for (this.battleStats[16] = 0; var1 < this.getLength(this.warning2Text[2]); ++var1) {
-                        this.textTextures[var1].drawText(this.warning2Text[2][var1], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[var1].loadText(this.warning2Text[2][var1], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 } else {
                     var5 = this.ei;
@@ -14069,7 +14069,7 @@ public class AppInstance extends Game {
                         this.battleStats[16] = 0;
 
                         for (var1 = var2; var1 < this.getLength(this.warning2Text[2]); ++var1) {
-                            this.textTextures[var1].drawText(this.warning2Text[2][var1], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[var1].loadText(this.warning2Text[2][var1], "FONT_SYSTEM_BOLD", 30, 1);
                         }
                     }
                 }
@@ -14143,7 +14143,7 @@ public class AppInstance extends Game {
                         this.eS = aMath.rand(var2);
 
                         for (var1 = var3; var1 < this.getLength(this.loseText[this.eQ][this.eS]); ++var1) {
-                            this.textTextures[var1 + 2].drawText(this.loseText[this.eQ][this.eS][var1], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[var1 + 2].loadText(this.loseText[this.eQ][this.eS][var1], "FONT_SYSTEM_BOLD", 30, 1);
                         }
                     }
                 } else if (this.fx[14] >= 1) {
@@ -14632,7 +14632,7 @@ public class AppInstance extends Game {
                         MyUtility.getInstance().addButton(MyUtility.getString("network_unavailable"));
                     } else {
                         String var3 = MyUtility.getString("twitter_txt2");
-                        Twitter.getInstance().tweet(String.format("%s %s %s", var3, MyUtility.getString("url_abbr"), MyUtility.getString("twitter_hash")), null, null);
+                        Twitter.getInstance().tweet(aString.format("%s %s %s", var3, MyUtility.getString("url_abbr"), MyUtility.getString("twitter_hash")), null, null);
                     }
                 }
             } else if (!this.eE[0] && this.ek[0] == 0 && !this.eE[1] && !this.eE[2] && !this.eE[3]) {
@@ -16719,7 +16719,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[6].isLoaded()) {
-            this.uiTextures[6].load(MyUtility.getString(String.format("img%03d.png", 15)), MyUtility.getString(String.format("img%03d.imgcut", 15)));
+            this.uiTextures[6].load(MyUtility.getString(aString.format("img%03d.png", 15)), MyUtility.getString(aString.format("img%03d.imgcut", 15)));
         }
 
         if (this.uiTextures[7].isLoaded()) {
@@ -16727,7 +16727,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[7].isLoaded()) {
-            this.uiTextures[7].load(MyUtility.getString(String.format("img%03d.png", 16)), MyUtility.getString(String.format("img%03d.imgcut", 16)));
+            this.uiTextures[7].load(MyUtility.getString(aString.format("img%03d.png", 16)), MyUtility.getString(aString.format("img%03d.imgcut", 16)));
         }
 
         if (this.uiTextures[8].isLoaded()) {
@@ -16735,7 +16735,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[8].isLoaded()) {
-            this.uiTextures[8].load(MyUtility.getString(String.format("img%03d.png", 0)), MyUtility.getString(String.format("img%03d.imgcut", 0)));
+            this.uiTextures[8].load(MyUtility.getString(aString.format("img%03d.png", 0)), MyUtility.getString(aString.format("img%03d.imgcut", 0)));
         }
 
         if (this.uiTextures[9].isLoaded()) {
@@ -16743,7 +16743,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[9].isLoaded()) {
-            this.uiTextures[9].load(MyUtility.getString(String.format("img%03d.png", 21)), MyUtility.getString(String.format("img%03d.imgcut", 21)));
+            this.uiTextures[9].load(MyUtility.getString(aString.format("img%03d.png", 21)), MyUtility.getString(aString.format("img%03d.imgcut", 21)));
         }
 
         this.frameCounter[6] = 126;
@@ -18368,29 +18368,29 @@ public class AppInstance extends Game {
         this.buttonCoordinates1[0][2] = 168;
         this.buttonCoordinates1[0][3] = 88;
         if (!this.uiTextures[0].isLoaded()) {
-            this.uiTextures[0].load(MyUtility.getString(String.format("img_%03d_intro.png", 45)), MyUtility.getString(String.format("img_%03d_intro.imgcut", 45)));
+            this.uiTextures[0].load(MyUtility.getString(aString.format("img_%03d_intro.png", 45)), MyUtility.getString(aString.format("img_%03d_intro.imgcut", 45)));
         }
 
         if (!this.uiTextures[1].isLoaded()) {
-            this.uiTextures[1].load(MyUtility.getString(String.format("img%03d.png", 6)), MyUtility.getString(String.format("img%03d.imgcut", 6)));
+            this.uiTextures[1].load(MyUtility.getString(aString.format("img%03d.png", 6)), MyUtility.getString(aString.format("img%03d.imgcut", 6)));
         }
 
         if (this.eQ >= 1) {
             if (!this.aI[this.eQ - 1].isLoaded()) {
-                this.aI[this.eQ - 1].load(MyUtility.getString(String.format("i%03d_p.png", this.eQ - 1)), MyUtility.getString(String.format("%03d_p.imgcut", this.eQ - 1)));
+                this.aI[this.eQ - 1].load(MyUtility.getString(aString.format("i%03d_p.png", this.eQ - 1)), MyUtility.getString(aString.format("%03d_p.imgcut", this.eQ - 1)));
             }
 
-            this.aJ.load(String.format("%03d_p.mamodel", this.eQ - 1));
+            this.aJ.load(aString.format("%03d_p.mamodel", this.eQ - 1));
 
             for (var2 = 0; var2 < this.getLength(this.aK); ++var2) {
-                this.aK[var2].load(String.format("%03d_p%02d.maanim", this.eQ - 1, var2));
+                this.aK[var2].load(aString.format("%03d_p%02d.maanim", this.eQ - 1, var2));
             }
 
             this.aJ.setTextures(this.aI);
             this.aJ.setAction();
 
             for (var2 = var1; var2 < this.getLength(this.giftMessageText[this.eQ - 1]); ++var2) {
-                this.textTextures[var2].drawText(this.giftMessageText[this.eQ - 1][var2], "FONT_SYSTEM_BOLD", 30, 1);
+                this.textTextures[var2].loadText(this.giftMessageText[this.eQ - 1][var2], "FONT_SYSTEM_BOLD", 30, 1);
             }
         }
 
@@ -19051,7 +19051,7 @@ public class AppInstance extends Game {
 
         var1.drawScaledImageI(this.uiTextures[7], this.scrollOffset[0] + 179 + this.fq[2] * this.boxScale + this.excessWidth / 2, 68, 0);
         if (this.textTextures[3].isLoaded()) {
-            var3 = Texture.measureText(this.treasure3Text[this.fq[2]][0], 30) + 30 + Texture.measureText(String.format("%d", this.treasureMultValues[this.eQ][this.fq[2]]), 30) + Texture.measureText(this.treasure2Text[8], 30) + Texture.measureText(this.treasure2Text[7], 30);
+            var3 = Texture.measureText(this.treasure3Text[this.fq[2]][0], 30) + 30 + Texture.measureText(aString.format("%d", this.treasureMultValues[this.eQ][this.fq[2]]), 30) + Texture.measureText(this.treasure2Text[8], 30) + Texture.measureText(this.treasure2Text[7], 30);
         } else {
             var3 = 0;
         }
@@ -19153,57 +19153,57 @@ public class AppInstance extends Game {
         } else if (this.versionCode == 1) {
             int var6;
             if (this.bs[this.eQ][cz[this.fq[2]][this.fq[3]]] == 0) {
-                var4 = Texture.measureText(this.treasure2Text[3], 30) + Texture.measureText(String.format(" "), 30) + Texture.measureText(this.treasure1Text[48], 30);
+                var4 = Texture.measureText(this.treasure2Text[3], 30) + Texture.measureText(aString.format(" "), 30) + Texture.measureText(this.treasure1Text[48], 30);
                 var1.setColor(255, 255, 0);
                 var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 0], this.getWidth() / 2 - var4 / 2 + this.scrollOffset[0] + this.fq[2] * this.boxScale, 505, 0);
                 var3 = this.getWidth() / 2;
                 var5 = var4 / 2;
                 var4 = Texture.measureText(this.treasure2Text[3], 30);
-                var6 = Texture.measureText(String.format(" "), 30);
+                var6 = Texture.measureText(aString.format(" "), 30);
                 var1.setColor(255, 255, 255);
                 var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 1], var3 - var5 + var4 + var6 + this.scrollOffset[0] + this.fq[2] * this.boxScale, 505, 0);
                 if (this.fq[2] != 10) {
-                    var3 = Texture.measureText(String.format("%s %s", this.treasure2Text[4], this.stageNamesText[cz[this.fq[2]][this.fq[3]] + 49]), 30);
+                    var3 = Texture.measureText(aString.format("%s %s", this.treasure2Text[4], this.stageNamesText[cz[this.fq[2]][this.fq[3]] + 49]), 30);
                     var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 2], this.getWidth() / 2 - var3 / 2 + this.scrollOffset[0] + this.fq[2] * this.boxScale, 541, 0);
                 }
             } else if (this.bs[this.eQ][cz[this.fq[2]][this.fq[3]]] == 1) {
-                var4 = Texture.measureText(this.treasure2Text[10], 30) + Texture.measureText(String.format(" "), 30) + Texture.measureText(this.treasure2Text[0], 30) + Texture.measureText(String.format(" "), 30) + Texture.measureText(this.treasure1Text[cz[this.fq[2]][this.fq[3]]], 30);
+                var4 = Texture.measureText(this.treasure2Text[10], 30) + Texture.measureText(aString.format(" "), 30) + Texture.measureText(this.treasure2Text[0], 30) + Texture.measureText(aString.format(" "), 30) + Texture.measureText(this.treasure1Text[cz[this.fq[2]][this.fq[3]]], 30);
                 var1.setColor(255, 255, 255);
                 var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 0], this.getWidth() / 2 - var4 / 2 + this.scrollOffset[0] + this.fq[2] * this.boxScale, 505, 0);
                 var3 = this.getWidth() / 2;
                 var4 /= 2;
                 var6 = Texture.measureText(this.treasure2Text[10], 30);
-                var5 = Texture.measureText(String.format(" "), 30);
+                var5 = Texture.measureText(aString.format(" "), 30);
                 var1.setColor(255, 255, 0);
                 var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 1], var3 - var4 + var6 + var5 + this.scrollOffset[0] + this.fq[2] * this.boxScale, 505, 0);
                 var1.setColor(255, 255, 255);
-                var3 = Texture.measureText(String.format("%s %s", this.treasure2Text[4], this.stageNamesText[cz[this.fq[2]][this.fq[3]] + 49]), 30);
+                var3 = Texture.measureText(aString.format("%s %s", this.treasure2Text[4], this.stageNamesText[cz[this.fq[2]][this.fq[3]] + 49]), 30);
                 var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 2], this.getWidth() / 2 - var3 / 2 + this.scrollOffset[0] + this.fq[2] * this.boxScale, 541, 0);
             } else if (this.bs[this.eQ][cz[this.fq[2]][this.fq[3]]] == 2) {
-                var4 = Texture.measureText(this.treasure2Text[10], 30) + Texture.measureText(String.format(" "), 30) + Texture.measureText(this.treasure2Text[1], 30) + Texture.measureText(String.format(" "), 30) + Texture.measureText(this.treasure1Text[cz[this.fq[2]][this.fq[3]]], 30);
+                var4 = Texture.measureText(this.treasure2Text[10], 30) + Texture.measureText(aString.format(" "), 30) + Texture.measureText(this.treasure2Text[1], 30) + Texture.measureText(aString.format(" "), 30) + Texture.measureText(this.treasure1Text[cz[this.fq[2]][this.fq[3]]], 30);
                 var1.setColor(255, 255, 255);
                 var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 0], this.getWidth() / 2 - var4 / 2 + this.scrollOffset[0] + this.fq[2] * this.boxScale, 505, 0);
                 var3 = this.getWidth() / 2;
                 var5 = var4 / 2;
                 var4 = Texture.measureText(this.treasure2Text[10], 30);
-                var6 = Texture.measureText(String.format(" "), 30);
+                var6 = Texture.measureText(aString.format(" "), 30);
                 var1.setColor(255, 255, 0);
                 var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 1], var3 - var5 + var4 + var6 + this.scrollOffset[0] + this.fq[2] * this.boxScale, 505, 0);
                 var1.setColor(255, 255, 255);
-                var3 = Texture.measureText(String.format("%s %s", this.treasure2Text[4], this.stageNamesText[cz[this.fq[2]][this.fq[3]] + 49]), 30);
+                var3 = Texture.measureText(aString.format("%s %s", this.treasure2Text[4], this.stageNamesText[cz[this.fq[2]][this.fq[3]] + 49]), 30);
                 var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 2], this.getWidth() / 2 - var3 / 2 + this.scrollOffset[0] + this.fq[2] * this.boxScale, 541, 0);
             } else if (this.bs[this.eQ][cz[this.fq[2]][this.fq[3]]] == 3) {
-                var4 = Texture.measureText(this.treasure2Text[10], 30) + Texture.measureText(String.format(" "), 30) + Texture.measureText(this.treasure2Text[2], 30) + Texture.measureText(String.format(" "), 30) + Texture.measureText(this.treasure1Text[cz[this.fq[2]][this.fq[3]]], 30);
+                var4 = Texture.measureText(this.treasure2Text[10], 30) + Texture.measureText(aString.format(" "), 30) + Texture.measureText(this.treasure2Text[2], 30) + Texture.measureText(aString.format(" "), 30) + Texture.measureText(this.treasure1Text[cz[this.fq[2]][this.fq[3]]], 30);
                 var1.setColor(255, 255, 255);
                 var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 0], this.getWidth() / 2 - var4 / 2 + this.scrollOffset[0] + this.fq[2] * this.boxScale, 505, 0);
                 var3 = this.getWidth() / 2;
                 var5 = var4 / 2;
                 var6 = Texture.measureText(this.treasure2Text[10], 30);
-                var4 = Texture.measureText(String.format(" "), 30);
+                var4 = Texture.measureText(aString.format(" "), 30);
                 var1.setColor(255, 255, 0);
                 var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 1], var3 - var5 + var6 + var4 + this.scrollOffset[0] + this.fq[2] * this.boxScale, 505, 0);
                 var1.setColor(255, 255, 255);
-                var3 = Texture.measureText(String.format("%s %s", this.treasure2Text[4], this.stageNamesText[cz[this.fq[2]][this.fq[3]] + 49]), 30);
+                var3 = Texture.measureText(aString.format("%s %s", this.treasure2Text[4], this.stageNamesText[cz[this.fq[2]][this.fq[3]] + 49]), 30);
                 var1.drawScaledImage(this.textTextures[this.fq[3] * 3 + 4 + 2], this.getWidth() / 2 - var3 / 2 + this.scrollOffset[0] + this.fq[2] * this.boxScale, 541, 0);
             }
         }
@@ -20460,9 +20460,9 @@ public class AppInstance extends Game {
                 }
 
                 this.hc[3] = 300;
-                this.textTextures[0].drawText(this.god1Text[0][0], "FONT_SYSTEM_BOLD", 30, 1);
-                this.textTextures[1].drawText(this.god1Text[0][1], "FONT_SYSTEM_BOLD", 30, 1);
-                this.textTextures[2].drawText(this.godNameText, "FONT_SYSTEM_BOLD", 30, 1);
+                this.textTextures[0].loadText(this.god1Text[0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                this.textTextures[1].loadText(this.god1Text[0][1], "FONT_SYSTEM_BOLD", 30, 1);
+                this.textTextures[2].loadText(this.godNameText, "FONT_SYSTEM_BOLD", 30, 1);
             }
         } else if (this.hc[1] == 1) {
             var13 = this.hg;
@@ -20522,13 +20522,13 @@ public class AppInstance extends Game {
                         this.ha[1] = true;
                         if (this.bB[9] >= 3 && this.catfood < ab[this.hl]) {
                             this.hc[3] = 300;
-                            this.textTextures[0].drawText(this.god3Text[0][0], "FONT_SYSTEM_BOLD", 30, 1);
-                            this.textTextures[1].drawText(this.god3Text[0][1], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[0].loadText(this.god3Text[0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[1].loadText(this.god3Text[0][1], "FONT_SYSTEM_BOLD", 30, 1);
                         }
 
-                        this.textTextures[3].drawText(this.godItemNameText[this.hl], "FONT_SYSTEM_BOLD", 30, 1);
-                        this.textTextures[4].drawText(this.godItemExplanationText[this.hl][0], "FONT_SYSTEM_BOLD", 30, 1);
-                        this.textTextures[5].drawText(this.godItemExplanationText[this.hl][1], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[3].loadText(this.godItemNameText[this.hl], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[4].loadText(this.godItemExplanationText[this.hl][0], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[5].loadText(this.godItemExplanationText[this.hl][1], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 } else if (this.hk[2] >= 1) {
                     var13 = this.hk;
@@ -20539,13 +20539,13 @@ public class AppInstance extends Game {
                         this.ha[1] = true;
                         if (this.bB[9] >= 3 && this.catfood < ab[this.hl]) {
                             this.hc[3] = 300;
-                            this.textTextures[0].drawText(this.god3Text[0][0], "FONT_SYSTEM_BOLD", 30, 1);
-                            this.textTextures[1].drawText(this.god3Text[0][1], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[0].loadText(this.god3Text[0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[1].loadText(this.god3Text[0][1], "FONT_SYSTEM_BOLD", 30, 1);
                         }
 
-                        this.textTextures[3].drawText(this.godItemNameText[this.hl], "FONT_SYSTEM_BOLD", 30, 1);
-                        this.textTextures[4].drawText(this.godItemExplanationText[this.hl][0], "FONT_SYSTEM_BOLD", 30, 1);
-                        this.textTextures[5].drawText(this.godItemExplanationText[this.hl][1], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[3].loadText(this.godItemNameText[this.hl], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[4].loadText(this.godItemExplanationText[this.hl][0], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[5].loadText(this.godItemExplanationText[this.hl][1], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 } else if (this.hk[3] >= 1) {
                     var13 = this.hk;
@@ -20556,13 +20556,13 @@ public class AppInstance extends Game {
                         this.ha[1] = true;
                         if (this.bB[9] >= 3 && this.catfood < ab[this.hl]) {
                             this.hc[3] = 300;
-                            this.textTextures[0].drawText(this.god3Text[0][0], "FONT_SYSTEM_BOLD", 30, 1);
-                            this.textTextures[1].drawText(this.god3Text[0][1], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[0].loadText(this.god3Text[0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[1].loadText(this.god3Text[0][1], "FONT_SYSTEM_BOLD", 30, 1);
                         }
 
-                        this.textTextures[3].drawText(this.godItemNameText[this.hl], "FONT_SYSTEM_BOLD", 30, 1);
-                        this.textTextures[4].drawText(this.godItemExplanationText[this.hl][0], "FONT_SYSTEM_BOLD", 30, 1);
-                        this.textTextures[5].drawText(this.godItemExplanationText[this.hl][1], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[3].loadText(this.godItemNameText[this.hl], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[4].loadText(this.godItemExplanationText[this.hl][0], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[5].loadText(this.godItemExplanationText[this.hl][1], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 } else if (this.hk[4] >= 1) {
                     var13 = this.hk;
@@ -20573,13 +20573,13 @@ public class AppInstance extends Game {
                         this.ha[1] = true;
                         if (this.bB[9] >= 3 && this.catfood < ab[this.hl]) {
                             this.hc[3] = 300;
-                            this.textTextures[0].drawText(this.god3Text[0][0], "FONT_SYSTEM_BOLD", 30, 1);
-                            this.textTextures[1].drawText(this.god3Text[0][1], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[0].loadText(this.god3Text[0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[1].loadText(this.god3Text[0][1], "FONT_SYSTEM_BOLD", 30, 1);
                         }
 
-                        this.textTextures[3].drawText(this.godItemNameText[this.hl], "FONT_SYSTEM_BOLD", 30, 1);
-                        this.textTextures[4].drawText(this.godItemExplanationText[this.hl][0], "FONT_SYSTEM_BOLD", 30, 1);
-                        this.textTextures[5].drawText(this.godItemExplanationText[this.hl][1], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[3].loadText(this.godItemNameText[this.hl], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[4].loadText(this.godItemExplanationText[this.hl][0], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[5].loadText(this.godItemExplanationText[this.hl][1], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 } else if (this.hk[5] >= 1) {
                     var13 = this.hk;
@@ -20630,13 +20630,13 @@ public class AppInstance extends Game {
                             }
                         }
 
-                        this.textTextures[0].drawText(this.warning1Text[5], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[0].loadText(this.warning1Text[5], "FONT_SYSTEM_BOLD", 30, 1);
 
                         for (var3 = 0; var3 < 4; ++var3) {
-                            this.textTextures[var3 + 1].drawText(this.stageFirstMessageText[0][var3], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[var3 + 1].loadText(this.stageFirstMessageText[0][var3], "FONT_SYSTEM_BOLD", 30, 1);
                         }
 
-                        this.textTextures[10].drawText(this.optionText[1], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[10].loadText(this.optionText[1], "FONT_SYSTEM_BOLD", 30, 1);
                         this.eH[0] = 0;
 
                         for (var3 = 0; var3 < 10; ++var3) {
@@ -20678,8 +20678,8 @@ public class AppInstance extends Game {
                             }
 
                             this.catfood -= ab[this.hl];
-                            this.textTextures[0].drawText(this.god4Text[0][0], "FONT_SYSTEM_BOLD", 30, 1);
-                            this.textTextures[1].drawText(this.god4Text[0][1], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[0].loadText(this.god4Text[0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[1].loadText(this.god4Text[0][1], "FONT_SYSTEM_BOLD", 30, 1);
                             this.ha[1] = false;
                             this.hc[1] = 4;
                             if (this.hl < this.getLength(this.hE)) {
@@ -20693,8 +20693,8 @@ public class AppInstance extends Game {
 
                             this.ac();
                         } else {
-                            this.textTextures[0].drawText(this.god4Text[0][0], "FONT_SYSTEM_BOLD", 30, 1);
-                            this.textTextures[1].drawText(this.god4Text[0][1], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[0].loadText(this.god4Text[0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[1].loadText(this.god4Text[0][1], "FONT_SYSTEM_BOLD", 30, 1);
                             this.bB[9] = 3;
                             this.ha[1] = false;
                             this.hc[1] = 4;
@@ -20709,8 +20709,8 @@ public class AppInstance extends Game {
                         this.ha[1] = false;
                         if (this.bB[9] >= 3 && this.catfood < ab[this.hl]) {
                             var3 = aMath.rand(this.getLength(this.god2Text));
-                            this.textTextures[0].drawText(this.god2Text[var3][0], "FONT_SYSTEM_BOLD", 30, 1);
-                            this.textTextures[1].drawText(this.god2Text[var3][1], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[0].loadText(this.god2Text[var3][0], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[1].loadText(this.god2Text[var3][1], "FONT_SYSTEM_BOLD", 30, 1);
                         }
                     }
                 } else if (this.fx[14] >= 1) {
@@ -20924,13 +20924,13 @@ public class AppInstance extends Game {
                                     }
                                 }
 
-                                this.textTextures[0].drawText(this.warning1Text[5], "FONT_SYSTEM_BOLD", 30, 1);
+                                this.textTextures[0].loadText(this.warning1Text[5], "FONT_SYSTEM_BOLD", 30, 1);
 
                                 for (var3 = 0; var3 < 4; ++var3) {
-                                    this.textTextures[var3 + 1].drawText(this.stageFirstMessageText[0][var3], "FONT_SYSTEM_BOLD", 30, 1);
+                                    this.textTextures[var3 + 1].loadText(this.stageFirstMessageText[0][var3], "FONT_SYSTEM_BOLD", 30, 1);
                                 }
 
-                                this.textTextures[10].drawText(this.optionText[1], "FONT_SYSTEM_BOLD", 30, 1);
+                                this.textTextures[10].loadText(this.optionText[1], "FONT_SYSTEM_BOLD", 30, 1);
                                 this.eH[0] = 0;
 
                                 for (var3 = 0; var3 < 10; ++var3) {
@@ -20964,8 +20964,8 @@ public class AppInstance extends Game {
                                     this.ha[1] = false;
                                     if (this.catfood < ab[this.hl]) {
                                         var3 = aMath.rand(this.getLength(this.god2Text));
-                                        this.textTextures[0].drawText(this.god2Text[var3][0], "FONT_SYSTEM_BOLD", 30, 1);
-                                        this.textTextures[1].drawText(this.god2Text[var3][1], "FONT_SYSTEM_BOLD", 30, 1);
+                                        this.textTextures[0].loadText(this.god2Text[var3][0], "FONT_SYSTEM_BOLD", 30, 1);
+                                        this.textTextures[1].loadText(this.god2Text[var3][1], "FONT_SYSTEM_BOLD", 30, 1);
                                     }
                                 }
                             } else if (this.isPointerUp() && this.isTouching(this.buttonCoordinates1[14][0], this.buttonCoordinates1[14][1], this.buttonCoordinates1[14][2], this.buttonCoordinates1[14][3])) {
@@ -20982,8 +20982,8 @@ public class AppInstance extends Game {
                     var10002 = var13[3]--;
                     if (this.hc[3] <= 0) {
                         var3 = aMath.rand(this.getLength(this.god2Text));
-                        this.textTextures[0].drawText(this.god2Text[var3][0], "FONT_SYSTEM_BOLD", 30, 1);
-                        this.textTextures[1].drawText(this.god2Text[var3][1], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[0].loadText(this.god2Text[var3][0], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[1].loadText(this.god2Text[var3][1], "FONT_SYSTEM_BOLD", 30, 1);
                         this.hc[3] = 300;
                     }
                 } else if (this.bB[9] >= 3) {
@@ -20992,8 +20992,8 @@ public class AppInstance extends Game {
                         var10002 = var13[3]--;
                         if (this.hc[3] <= 0) {
                             var3 = aMath.rand(this.getLength(this.god2Text));
-                            this.textTextures[0].drawText(this.god2Text[var3][0], "FONT_SYSTEM_BOLD", 30, 1);
-                            this.textTextures[1].drawText(this.god2Text[var3][1], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[0].loadText(this.god2Text[var3][0], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[1].loadText(this.god2Text[var3][1], "FONT_SYSTEM_BOLD", 30, 1);
                             this.hc[3] = 300;
                         }
                     }
@@ -21002,8 +21002,8 @@ public class AppInstance extends Game {
                     var10002 = var13[3]--;
                     if (this.hc[3] <= 0) {
                         var3 = aMath.rand(this.getLength(this.god2Text));
-                        this.textTextures[0].drawText(this.god2Text[var3][0], "FONT_SYSTEM_BOLD", 30, 1);
-                        this.textTextures[1].drawText(this.god2Text[var3][1], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[0].loadText(this.god2Text[var3][0], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[1].loadText(this.god2Text[var3][1], "FONT_SYSTEM_BOLD", 30, 1);
                         this.hc[3] = 300;
                     }
                 }
@@ -21594,10 +21594,10 @@ public class AppInstance extends Game {
                             }
 
                             for (var3 = 0; var3 < 4; ++var3) {
-                                this.textTextures[var3 + 1].drawText(this.stageFirstMessageText[0][var3], "FONT_SYSTEM_BOLD", 30, 1);
+                                this.textTextures[var3 + 1].loadText(this.stageFirstMessageText[0][var3], "FONT_SYSTEM_BOLD", 30, 1);
                             }
 
-                            this.textTextures[10].drawText(this.optionText[1], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[10].loadText(this.optionText[1], "FONT_SYSTEM_BOLD", 30, 1);
                             if (aB[this.hl] == 0 || aB[this.hl] == 1 || aB[this.hl] == 3) {
                                 this.catGodFlags[aB[this.hl]] = 1;
                             }
@@ -21790,20 +21790,20 @@ public class AppInstance extends Game {
         }
 
         for (var1 = 0; var1 < this.getLength(this.itemNameText); ++var1) {
-            this.textTextures[var1].drawText(this.itemNameText[var1], "FONT_SYSTEM_BOLD", 30, 1);
+            this.textTextures[var1].loadText(this.itemNameText[var1], "FONT_SYSTEM_BOLD", 30, 1);
             this.gA[0] = var1 + 1;
         }
 
         if (this.gP[2] < this.gB[0]) {
-            this.textTextures[this.gA[0]].drawText(this.pageNameText[6], "FONT_SYSTEM_BOLD", 30, 1);
+            this.textTextures[this.gA[0]].loadText(this.pageNameText[6], "FONT_SYSTEM_BOLD", 30, 1);
         } else {
-            this.textTextures[this.gA[0]].drawText(this.pageNameText[8], "FONT_SYSTEM_BOLD", 30, 1);
+            this.textTextures[this.gA[0]].loadText(this.pageNameText[8], "FONT_SYSTEM_BOLD", 30, 1);
         }
 
         this.gA[1] = this.gA[0] + 1;
 
         for (var1 = this.gA[1]; var1 < this.gA[1] + 3; ++var1) {
-            this.textTextures[var1].drawText(this.itemExplanationText[this.gP[2]][var1 - this.gA[1]], "FONT_SYSTEM_BOLD", 30, 1);
+            this.textTextures[var1].loadText(this.itemExplanationText[this.gP[2]][var1 - this.gA[1]], "FONT_SYSTEM_BOLD", 30, 1);
         }
 
         if (this.uiTextures[6].isLoaded()) {
@@ -21811,7 +21811,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[6].isLoaded()) {
-            this.uiTextures[6].load(MyUtility.getString(String.format("img%03d.png", 21)), MyUtility.getString(String.format("img%03d.imgcut", 21)));
+            this.uiTextures[6].load(MyUtility.getString(aString.format("img%03d.png", 21)), MyUtility.getString(aString.format("img%03d.imgcut", 21)));
         }
 
         if (this.uiTextures[7].isLoaded()) {
@@ -21819,7 +21819,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[7].isLoaded()) {
-            this.uiTextures[7].load(MyUtility.getString(String.format("img%03d.png", 37)), MyUtility.getString(String.format("img%03d.imgcut", 37)));
+            this.uiTextures[7].load(MyUtility.getString(aString.format("img%03d.png", 37)), MyUtility.getString(aString.format("img%03d.imgcut", 37)));
         }
 
         if (this.uiTextures[8].isLoaded()) {
@@ -21827,7 +21827,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[8].isLoaded()) {
-            this.uiTextures[8].load(MyUtility.getString(String.format("img%03d.png", 38)), MyUtility.getString(String.format("img%03d.imgcut", 38)));
+            this.uiTextures[8].load(MyUtility.getString(aString.format("img%03d.png", 38)), MyUtility.getString(aString.format("img%03d.imgcut", 38)));
         }
 
         if (!this.uiTextures[10].isLoaded()) {
@@ -21835,7 +21835,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[10].isLoaded()) {
-            this.uiTextures[10].load(MyUtility.getString(String.format("img%03d.png", 25)), MyUtility.getString(String.format("img%03d.imgcut", 25)));
+            this.uiTextures[10].load(MyUtility.getString(aString.format("img%03d.png", 25)), MyUtility.getString(aString.format("img%03d.imgcut", 25)));
         }
 
         if (!this.uiTextures[11].isLoaded()) {
@@ -21843,7 +21843,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[11].isLoaded()) {
-            this.uiTextures[11].load(MyUtility.getString(String.format("item%03d.png", 0)), MyUtility.getString(String.format("item%03d.imgcut", 0)));
+            this.uiTextures[11].load(MyUtility.getString(aString.format("item%03d.png", 0)), MyUtility.getString(aString.format("item%03d.imgcut", 0)));
         }
 
         for (var1 = 0; var1 < this.getLength(this.gF); ++var1) {
@@ -22778,13 +22778,13 @@ public class AppInstance extends Game {
                 this.gP[2] = this.gP[0] + 1 - this.gC[0];
                 if (this.gP[2] >= 0 && this.gP[2] <= this.gC[1]) {
                     if (this.gP[2] < this.gB[0]) {
-                        this.textTextures[this.gA[0]].drawText(this.pageNameText[6], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[this.gA[0]].loadText(this.pageNameText[6], "FONT_SYSTEM_BOLD", 30, 1);
                     } else {
-                        this.textTextures[this.gA[0]].drawText(this.pageNameText[8], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[this.gA[0]].loadText(this.pageNameText[8], "FONT_SYSTEM_BOLD", 30, 1);
                     }
 
                     for (var3 = this.gA[1]; var3 < this.gA[1] + 3; ++var3) {
-                        this.textTextures[var3].drawText(this.itemExplanationText[this.gP[2]][var3 - this.gA[1]], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[var3].loadText(this.itemExplanationText[this.gP[2]][var3 - this.gA[1]], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 }
             }
@@ -22792,13 +22792,13 @@ public class AppInstance extends Game {
             this.gP[2] = this.gP[0] - this.gC[0];
             if (this.gP[2] >= 0 && this.gP[2] <= this.gC[1]) {
                 if (this.gP[2] < this.gB[0]) {
-                    this.textTextures[this.gA[0]].drawText(this.pageNameText[6], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[this.gA[0]].loadText(this.pageNameText[6], "FONT_SYSTEM_BOLD", 30, 1);
                 } else {
-                    this.textTextures[this.gA[0]].drawText(this.pageNameText[8], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[this.gA[0]].loadText(this.pageNameText[8], "FONT_SYSTEM_BOLD", 30, 1);
                 }
 
                 for (var3 = this.gA[1]; var3 < this.gA[1] + 3; ++var3) {
-                    this.textTextures[var3].drawText(this.itemExplanationText[this.gP[2]][var3 - this.gA[1]], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[var3].loadText(this.itemExplanationText[this.gP[2]][var3 - this.gA[1]], "FONT_SYSTEM_BOLD", 30, 1);
                 }
             }
         }
@@ -23251,15 +23251,15 @@ public class AppInstance extends Game {
             for (quoteCount = 0; quoteCount < 5; ++quoteCount) {
                 if (!this.textTextures[quoteCount].isLoaded()) {
                     if (this.qouteIndex < this.getLength(this.mainMenuWText) - var4) {
-                        this.textTextures[quoteCount].drawText(this.mainMenuWText[this.qouteIndex][quoteCount], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[quoteCount].loadText(this.mainMenuWText[this.qouteIndex][quoteCount], "FONT_SYSTEM_BOLD", 30, 1);
                     } else if (this.qouteIndex < this.getLength(this.mainMenuWText) - var4 + this.getLength(this.mainMenuPText)) {
-                        this.textTextures[quoteCount].drawText(this.mainMenuPText[this.qouteIndex - (this.getLength(this.mainMenuWText) - var4)][quoteCount], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[quoteCount].loadText(this.mainMenuPText[this.qouteIndex - (this.getLength(this.mainMenuWText) - var4)][quoteCount], "FONT_SYSTEM_BOLD", 30, 1);
                     } else if (this.qouteIndex < this.getLength(this.mainMenuWText) - var4 + this.getLength(this.mainMenuPText) + this.getLength(this.mainMenuUText)) {
-                        this.textTextures[quoteCount].drawText(this.mainMenuUText[this.qouteIndex - (this.getLength(this.mainMenuWText) - var4) - this.getLength(this.mainMenuPText)][quoteCount], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[quoteCount].loadText(this.mainMenuUText[this.qouteIndex - (this.getLength(this.mainMenuWText) - var4) - this.getLength(this.mainMenuPText)][quoteCount], "FONT_SYSTEM_BOLD", 30, 1);
                     } else if (this.qouteIndex < this.getLength(this.mainMenuWText) - var4 + this.getLength(this.mainMenuPText) + this.getLength(this.mainMenuUText) + this.getLength(this.mainMenuTText)) {
-                        this.textTextures[quoteCount].drawText(this.mainMenuTText[this.qouteIndex - (this.getLength(this.mainMenuWText) - var4) - this.getLength(this.mainMenuPText) - this.getLength(this.mainMenuUText)][quoteCount], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[quoteCount].loadText(this.mainMenuTText[this.qouteIndex - (this.getLength(this.mainMenuWText) - var4) - this.getLength(this.mainMenuPText) - this.getLength(this.mainMenuUText)][quoteCount], "FONT_SYSTEM_BOLD", 30, 1);
                     } else {
-                        this.textTextures[quoteCount].drawText(this.mainMenuBText[this.qouteIndex - (this.getLength(this.mainMenuWText) - var4) - this.getLength(this.mainMenuPText) - this.getLength(this.mainMenuUText) - this.getLength(this.mainMenuTText)][quoteCount], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[quoteCount].loadText(this.mainMenuBText[this.qouteIndex - (this.getLength(this.mainMenuWText) - var4) - this.getLength(this.mainMenuPText) - this.getLength(this.mainMenuUText) - this.getLength(this.mainMenuTText)][quoteCount], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 }
             }
@@ -23280,7 +23280,7 @@ public class AppInstance extends Game {
 
             for (quoteCount2 = 0; quoteCount2 < this.getLength(this.mainMenuWText[0]); ++quoteCount2) {
                 if (!this.textTextures[quoteCount2].isLoaded()) {
-                    this.textTextures[quoteCount2].drawText(this.mainMenuWText[0][quoteCount2], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[quoteCount2].loadText(this.mainMenuWText[0][quoteCount2], "FONT_SYSTEM_BOLD", 30, 1);
                 }
             }
         }
@@ -23297,7 +23297,7 @@ public class AppInstance extends Game {
 
             for (quoteCount2 = 0; quoteCount2 < 5; ++quoteCount2) {
                 if (!this.textTextures[quoteCount2].isLoaded()) {
-                    this.textTextures[quoteCount2].drawText(this.mainMenuPText[0][quoteCount2], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[quoteCount2].loadText(this.mainMenuPText[0][quoteCount2], "FONT_SYSTEM_BOLD", 30, 1);
                 }
             }
 
@@ -23319,7 +23319,7 @@ public class AppInstance extends Game {
 
             for (quoteCount2 = 0; quoteCount2 < 5; ++quoteCount2) {
                 if (!this.textTextures[quoteCount2].isLoaded()) {
-                    this.textTextures[quoteCount2].drawText(this.mainMenuUText[0][quoteCount2], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[quoteCount2].loadText(this.mainMenuUText[0][quoteCount2], "FONT_SYSTEM_BOLD", 30, 1);
                 }
             }
 
@@ -23341,7 +23341,7 @@ public class AppInstance extends Game {
 
             for (quoteCount2 = 0; quoteCount2 < 5; ++quoteCount2) {
                 if (!this.textTextures[quoteCount2].isLoaded()) {
-                    this.textTextures[quoteCount2].drawText(this.mainMenuTText[0][quoteCount2], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[quoteCount2].loadText(this.mainMenuTText[0][quoteCount2], "FONT_SYSTEM_BOLD", 30, 1);
                 }
             }
 
@@ -23363,7 +23363,7 @@ public class AppInstance extends Game {
 
             for (quoteCount2 = 0; quoteCount2 < 5; ++quoteCount2) {
                 if (!this.textTextures[quoteCount2].isLoaded()) {
-                    this.textTextures[quoteCount2].drawText(this.mainMenuBText[0][quoteCount2], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[quoteCount2].loadText(this.mainMenuBText[0][quoteCount2], "FONT_SYSTEM_BOLD", 30, 1);
                 }
             }
 
@@ -23958,7 +23958,7 @@ public class AppInstance extends Game {
         }
 
         for (var1 = 0; var1 < this.getLength(this.warning2Text[1]); ++var1) {
-            this.textTextures[var1 + 10].drawText(this.warning2Text[1][var1], "FONT_SYSTEM_BOLD", 30, 1);
+            this.textTextures[var1 + 10].loadText(this.warning2Text[1][var1], "FONT_SYSTEM_BOLD", 30, 1);
         }
 
         if (this.uiTextures[6].isLoaded()) {
@@ -23966,7 +23966,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[6].isLoaded()) {
-            this.uiTextures[6].load(MyUtility.getString(String.format("img%03d.png", 18)), MyUtility.getString(String.format("img%03d.imgcut", 18)));
+            this.uiTextures[6].load(MyUtility.getString(aString.format("img%03d.png", 18)), MyUtility.getString(aString.format("img%03d.imgcut", 18)));
         }
 
         if (this.uiTextures[7].isLoaded()) {
@@ -23974,7 +23974,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[7].isLoaded()) {
-            this.uiTextures[7].load(MyUtility.getString(String.format("img%03d.png", 19)), MyUtility.getString(String.format("img%03d.imgcut", 19)));
+            this.uiTextures[7].load(MyUtility.getString(aString.format("img%03d.png", 19)), MyUtility.getString(aString.format("img%03d.imgcut", 19)));
         }
 
         if (this.uiTextures[9].isLoaded()) {
@@ -23982,7 +23982,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[9].isLoaded()) {
-            this.uiTextures[9].load(MyUtility.getString(String.format("img%03d.png", 31)), MyUtility.getString(String.format("img%03d.imgcut", 31)));
+            this.uiTextures[9].load(MyUtility.getString(aString.format("img%03d.png", 31)), MyUtility.getString(aString.format("img%03d.imgcut", 31)));
         }
 
         if (this.uiTextures[10].isLoaded()) {
@@ -23990,7 +23990,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[10].isLoaded()) {
-            this.uiTextures[10].load(MyUtility.getString(String.format("img%03d.png", 25)), MyUtility.getString(String.format("img%03d.imgcut", 25)));
+            this.uiTextures[10].load(MyUtility.getString(aString.format("img%03d.png", 25)), MyUtility.getString(aString.format("img%03d.imgcut", 25)));
         }
 
         if (this.uiTextures[11].isLoaded()) {
@@ -23998,7 +23998,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[11].isLoaded()) {
-            this.uiTextures[11].load(MyUtility.getString(String.format("img%03d.png", 30)), MyUtility.getString(String.format("img%03d.imgcut", 30)));
+            this.uiTextures[11].load(MyUtility.getString(aString.format("img%03d.png", 30)), MyUtility.getString(aString.format("img%03d.imgcut", 30)));
         }
 
         if (this.uiTextures[12].isLoaded()) {
@@ -24006,7 +24006,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[12].isLoaded()) {
-            this.uiTextures[12].load(MyUtility.getString(String.format("img%03d.png", 33)), MyUtility.getString(String.format("img%03d.imgcut", 33)));
+            this.uiTextures[12].load(MyUtility.getString(aString.format("img%03d.png", 33)), MyUtility.getString(aString.format("img%03d.imgcut", 33)));
         }
 
         if (this.uiTextures[13].isLoaded()) {
@@ -24014,7 +24014,7 @@ public class AppInstance extends Game {
         }
 
         if (!this.uiTextures[13].isLoaded()) {
-            this.uiTextures[13].load(MyUtility.getString(String.format("img%03d.png", 1)), MyUtility.getString(String.format("img%03d.imgcut", 1)));
+            this.uiTextures[13].load(MyUtility.getString(aString.format("img%03d.png", 1)), MyUtility.getString(aString.format("img%03d.imgcut", 1)));
         }
 
         this.buttonCoordinates1[0][0] = this.excessWidth + 640;
@@ -24786,18 +24786,18 @@ public class AppInstance extends Game {
                             }
                         }
 
-                        this.textTextures[0].drawText(this.itemNameText[this.dW], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[0].loadText(this.itemNameText[this.dW], "FONT_SYSTEM_BOLD", 30, 1);
 
                         for (var2 = 0; var2 < 3; ++var2) {
-                            this.textTextures[var2 + 1].drawText(this.itemExplanationText[this.dW][var2], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[var2 + 1].loadText(this.itemExplanationText[this.dW][var2], "FONT_SYSTEM_BOLD", 30, 1);
                         }
 
                         for (var2 = 0; var2 < this.getLength(this.warning2Text[1]); ++var2) {
-                            this.textTextures[var2 + 10].drawText(this.warning2Text[1][var2], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[var2 + 10].loadText(this.warning2Text[1][var2], "FONT_SYSTEM_BOLD", 30, 1);
                         }
 
                         for (var2 = 0; var2 < this.getLength(this.warning2Text[15]); ++var2) {
-                            this.textTextures[var2 + 20].drawText(this.warning2Text[15][var2], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[var2 + 20].loadText(this.warning2Text[15][var2], "FONT_SYSTEM_BOLD", 30, 1);
                         }
 
                         this.gA[0] = 5;
@@ -24978,18 +24978,18 @@ public class AppInstance extends Game {
                             }
                         }
 
-                        this.textTextures[0].drawText(this.itemNameText[this.dW], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[0].loadText(this.itemNameText[this.dW], "FONT_SYSTEM_BOLD", 30, 1);
 
                         for (var4 = 0; var4 < 3; ++var4) {
-                            this.textTextures[var4 + 1].drawText(this.itemExplanationText[this.dW][var4], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[var4 + 1].loadText(this.itemExplanationText[this.dW][var4], "FONT_SYSTEM_BOLD", 30, 1);
                         }
 
                         for (var4 = 0; var4 < this.getLength(this.warning2Text[1]); ++var4) {
-                            this.textTextures[var4 + 10].drawText(this.warning2Text[1][var4], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[var4 + 10].loadText(this.warning2Text[1][var4], "FONT_SYSTEM_BOLD", 30, 1);
                         }
 
                         for (var4 = 0; var4 < this.getLength(this.warning2Text[15]); ++var4) {
-                            this.textTextures[var4 + 20].drawText(this.warning2Text[15][var4], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[var4 + 20].loadText(this.warning2Text[15][var4], "FONT_SYSTEM_BOLD", 30, 1);
                         }
                     }
 
@@ -25304,7 +25304,7 @@ public class AppInstance extends Game {
                                     }
 
                                     if (!this.ah[var7].isLoaded()) {
-                                        this.ah[var7].drawText(this.endingMessageText[0][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                        this.ah[var7].loadText(this.endingMessageText[0][var7], "FONT_SYSTEM_BOLD", 30, 1);
                                     }
 
                                     ++var7;
@@ -25318,7 +25318,7 @@ public class AppInstance extends Game {
                                     }
 
                                     if (!this.ah[var7].isLoaded()) {
-                                        this.ah[var7].drawText(this.endingMessageText[1][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                        this.ah[var7].loadText(this.endingMessageText[1][var7], "FONT_SYSTEM_BOLD", 30, 1);
                                     }
 
                                     ++var7;
@@ -25331,33 +25331,33 @@ public class AppInstance extends Game {
                                         break label1231;
                                     }
 
-                                    this.ah[var7].drawText(this.challengeModeText[var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                    this.ah[var7].loadText(this.challengeModeText[var7], "FONT_SYSTEM_BOLD", 30, 1);
                                     ++var7;
                                 }
                             } else {
                                 if (this.gx == 999) {
-                                    this.ah[0].drawText(this.popUpMessageText[0][0], "FONT_SYSTEM_BOLD", 30, 1);
-                                    this.ah[1].drawText(this.popUpMessageText[0][1], "FONT_SYSTEM_BOLD", 30, 1);
+                                    this.ah[0].loadText(this.popUpMessageText[0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                                    this.ah[1].loadText(this.popUpMessageText[0][1], "FONT_SYSTEM_BOLD", 30, 1);
                                 } else if (this.gx == 1000) {
-                                    this.ah[0].drawText(String.format("%s", this.popUpMessageText[1][0]), "FONT_SYSTEM_BOLD", 30, 1);
-                                    this.ah[1].drawText(String.format("%s%s%s", this.popUpMessageText[1][1], this.unitExplanationText[this.battleStats[32]][0][0], this.popUpMessageText[1][2]), "FONT_SYSTEM_BOLD", 30, 1);
-                                    this.ah[2].drawText(String.format("%s", this.popUpMessageText[1][3]), "FONT_SYSTEM_BOLD", 30, 1);
+                                    this.ah[0].loadText(aString.format("%s", this.popUpMessageText[1][0]), "FONT_SYSTEM_BOLD", 30, 1);
+                                    this.ah[1].loadText(aString.format("%s%s%s", this.popUpMessageText[1][1], this.unitExplanationText[this.battleStats[32]][0][0], this.popUpMessageText[1][2]), "FONT_SYSTEM_BOLD", 30, 1);
+                                    this.ah[2].loadText(aString.format("%s", this.popUpMessageText[1][3]), "FONT_SYSTEM_BOLD", 30, 1);
                                 }
                                 break;
                             }
                         case MAIN:
                             if (this.getScreenType() == ScreenType.TITLE) {
                                 if (!this.ah[0].isLoaded()) {
-                                    this.ah[0].drawText(this.optionText[2], "FONT_SYSTEM_BOLD", 30, 1);
+                                    this.ah[0].loadText(this.optionText[2], "FONT_SYSTEM_BOLD", 30, 1);
                                 }
                             } else if (this.getScreenType() != ScreenType.POWER_UP) {
                                 if (this.getScreenType() == ScreenType.EQUIP && !this.ah[0].isLoaded()) {
-                                    this.ah[0].drawText(this.warning1Text[8], "FONT_SYSTEM_BOLD", 30, 1);
+                                    this.ah[0].loadText(this.warning1Text[8], "FONT_SYSTEM_BOLD", 30, 1);
                                 }
                             } else if (this.gx == 0) {
                                 for (var7 = 0; var7 < this.getLength(this.mainMenuPopUpText[1]) && !aString.equals(this.mainMenuPopUpText[1][var7], "＠"); ++var7) {
                                     if (!this.ah[var7].isLoaded()) {
-                                        this.ah[var7].drawText(this.mainMenuPopUpText[1][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                        this.ah[var7].loadText(this.mainMenuPopUpText[1][var7], "FONT_SYSTEM_BOLD", 30, 1);
                                     }
                                 }
 
@@ -25365,7 +25365,7 @@ public class AppInstance extends Game {
                             } else if (this.gx == 1 && this.bd == 0) {
                                 for (var7 = 0; var7 < this.getLength(this.mainMenuPopUpText[6]) && !aString.equals(this.mainMenuPopUpText[6][var7], "＠"); ++var7) {
                                     if (!this.ah[var7].isLoaded()) {
-                                        this.ah[var7].drawText(this.mainMenuPopUpText[6][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                        this.ah[var7].loadText(this.mainMenuPopUpText[6][var7], "FONT_SYSTEM_BOLD", 30, 1);
                                     }
                                 }
 
@@ -25377,7 +25377,7 @@ public class AppInstance extends Game {
                                 if (this.bz[1] == 0) {
                                     for (var7 = 0; var7 < this.getLength(this.mainMenuPopUpText[0]) && !aString.equals(this.mainMenuPopUpText[0][var7], "＠"); ++var7) {
                                         if (!this.ah[var7].isLoaded()) {
-                                            this.ah[var7].drawText(this.mainMenuPopUpText[0][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                            this.ah[var7].loadText(this.mainMenuPopUpText[0][var7], "FONT_SYSTEM_BOLD", 30, 1);
                                         }
                                     }
 
@@ -25387,7 +25387,7 @@ public class AppInstance extends Game {
                                 if (this.bz[3] == 0) {
                                     for (var7 = 0; var7 < this.getLength(this.mainMenuPopUpText[2]) && !aString.equals(this.mainMenuPopUpText[2][var7], "＠"); ++var7) {
                                         if (!this.ah[var7].isLoaded()) {
-                                            this.ah[var7].drawText(this.mainMenuPopUpText[2][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                            this.ah[var7].loadText(this.mainMenuPopUpText[2][var7], "FONT_SYSTEM_BOLD", 30, 1);
                                         }
                                     }
 
@@ -25397,7 +25397,7 @@ public class AppInstance extends Game {
                                 if (this.bz[4] == 0) {
                                     for (var7 = 0; var7 < this.getLength(this.mainMenuPopUpText[3]) && !aString.equals(this.mainMenuPopUpText[3][var7], "＠"); ++var7) {
                                         if (!this.ah[var7].isLoaded()) {
-                                            this.ah[var7].drawText(this.mainMenuPopUpText[3][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                            this.ah[var7].loadText(this.mainMenuPopUpText[3][var7], "FONT_SYSTEM_BOLD", 30, 1);
                                         }
                                     }
 
@@ -25407,7 +25407,7 @@ public class AppInstance extends Game {
                                 if (this.be == 0) {
                                     for (var7 = 0; var7 < this.getLength(this.mainMenuPopUpText[4]) && !aString.equals(this.mainMenuPopUpText[4][var7], "＠"); ++var7) {
                                         if (!this.ah[var7].isLoaded()) {
-                                            this.ah[var7].drawText(this.mainMenuPopUpText[4][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                            this.ah[var7].loadText(this.mainMenuPopUpText[4][var7], "FONT_SYSTEM_BOLD", 30, 1);
                                         }
                                     }
 
@@ -25417,7 +25417,7 @@ public class AppInstance extends Game {
                                 if (this.bf == 0) {
                                     for (var7 = 0; var7 < this.getLength(this.mainMenuPopUpText[5]) && !aString.equals(this.mainMenuPopUpText[5][var7], "＠"); ++var7) {
                                         if (!this.ah[var7].isLoaded()) {
-                                            this.ah[var7].drawText(this.mainMenuPopUpText[5][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                            this.ah[var7].loadText(this.mainMenuPopUpText[5][var7], "FONT_SYSTEM_BOLD", 30, 1);
                                         }
                                     }
 
@@ -25425,7 +25425,7 @@ public class AppInstance extends Game {
                                 }
                             } else if (this.gx != 6) {
                                 if (this.gx == 10) {
-                                    this.ah[0].drawText(this.unitExplanationText[0][0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                                    this.ah[0].loadText(this.unitExplanationText[0][0][0], "FONT_SYSTEM_BOLD", 30, 1);
                                 } else if (this.gx == 11) {
                                     for (var7 = 0; var7 < this.getLength(this.mainMenuPopUpText[7]); ++var7) {
                                         if (!this.ah[var7].isLoaded()) {
@@ -25433,17 +25433,17 @@ public class AppInstance extends Game {
                                                 break;
                                             }
 
-                                            this.ah[var7].drawText(this.mainMenuPopUpText[7][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                            this.ah[var7].loadText(this.mainMenuPopUpText[7][var7], "FONT_SYSTEM_BOLD", 30, 1);
                                         }
                                     }
                                 } else if (this.gx == 999) {
-                                    this.ah[0].drawText(this.popUpMessageText[0][0], "FONT_SYSTEM_BOLD", 30, 1);
-                                    this.ah[1].drawText(this.popUpMessageText[0][1], "FONT_SYSTEM_BOLD", 30, 1);
+                                    this.ah[0].loadText(this.popUpMessageText[0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                                    this.ah[1].loadText(this.popUpMessageText[0][1], "FONT_SYSTEM_BOLD", 30, 1);
                                 }
                             } else if (this.bd == 0) {
                                 for (var7 = 0; var7 < this.getLength(this.mainMenuPopUpText[6]) && !aString.equals(this.mainMenuPopUpText[6][var7], "＠"); ++var7) {
                                     if (!this.ah[var7].isLoaded()) {
-                                        this.ah[var7].drawText(this.mainMenuPopUpText[6][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                        this.ah[var7].loadText(this.mainMenuPopUpText[6][var7], "FONT_SYSTEM_BOLD", 30, 1);
                                     }
                                 }
 
@@ -25463,7 +25463,7 @@ public class AppInstance extends Game {
 
                         for (var7 = 0; var7 < this.getLength(this.warning2Text[3]); ++var7) {
                             if (!this.ah[var7].isLoaded()) {
-                                this.ah[var7].drawText(this.warning2Text[3][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                this.ah[var7].loadText(this.warning2Text[3][var7], "FONT_SYSTEM_BOLD", 30, 1);
                             }
                         }
                     } else if (this.gw != 3 && this.gw != 4) {
@@ -25480,14 +25480,14 @@ public class AppInstance extends Game {
 
                                 for (var7 = 0; var7 < this.getLength(this.warning2Text[7]); ++var7) {
                                     if (!this.ah[var7].isLoaded()) {
-                                        this.ah[var7].drawText(this.warning2Text[8][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                        this.ah[var7].loadText(this.warning2Text[8][var7], "FONT_SYSTEM_BOLD", 30, 1);
                                     }
                                 }
                             } else if (this.gw != 9999) {
                                 if (this.gw == 10000) {
                                     for (var7 = 0; var7 < this.getLength(this.warning2Text[14]); ++var7) {
                                         if (!this.ah[var7].isLoaded()) {
-                                            this.ah[var7].drawText(this.warning2Text[14][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                            this.ah[var7].loadText(this.warning2Text[14][var7], "FONT_SYSTEM_BOLD", 30, 1);
                                         }
                                     }
                                 }
@@ -25496,7 +25496,7 @@ public class AppInstance extends Game {
                                 this.fA[0][1] = 453;
                                 this.fA[0][2] = 168;
                                 this.fA[0][3] = 88;
-                                this.ah[0].drawText(String.format("%s%d%s", this.stampMessageText[5], this.currentStamp + 1, this.stampMessageText[6]), "FONT_SYSTEM_BOLD", 30, 1);
+                                this.ah[0].loadText(aString.format("%s%d%s", this.stampMessageText[5], this.currentStamp + 1, this.stampMessageText[6]), "FONT_SYSTEM_BOLD", 30, 1);
                                 if (this.currentStamp == 29 && this.bn != 0) {
                                     var9 = 1;
                                 } else {
@@ -25505,7 +25505,7 @@ public class AppInstance extends Game {
 
                                 if (this.ho[this.currentStamp + var9][0] != 0 && this.ho[this.currentStamp + var9][0] != 6) {
                                     if (this.ho[this.currentStamp + var9][0] == 1) {
-                                        this.ah[1].drawText(String.format("%s%s%s%d%s%s", this.stampMessageText[7], this.stampMessageText[14], this.stampMessageText[9], this.ho[var9 + this.currentStamp][1], this.stampMessageText[8], this.stampMessageText[10]), "FONT_SYSTEM_BOLD", 30, 1);
+                                        this.ah[1].loadText(aString.format("%s%s%s%d%s%s", this.stampMessageText[7], this.stampMessageText[14], this.stampMessageText[9], this.ho[var9 + this.currentStamp][1], this.stampMessageText[8], this.stampMessageText[10]), "FONT_SYSTEM_BOLD", 30, 1);
                                     } else if (this.ho[this.currentStamp + var9][0] >= 2 && this.ho[this.currentStamp + var9][0] <= 6) {
                                         if (this.ho[this.currentStamp + var9][0] == 2) {
                                             var10 = 0;
@@ -25520,48 +25520,48 @@ public class AppInstance extends Game {
                                         }
 
                                         if (this.versionCode == 0) {
-                                            this.ah[1].drawText(String.format("%s%s%s%d%s%s", this.stampMessageText[7], this.itemNameText[var10], this.stampMessageText[9], this.ho[var9 + this.currentStamp][1], this.stampMessageText[8], this.stampMessageText[10]), "FONT_SYSTEM_BOLD", 30, 1);
+                                            this.ah[1].loadText(aString.format("%s%s%s%d%s%s", this.stampMessageText[7], this.itemNameText[var10], this.stampMessageText[9], this.ho[var9 + this.currentStamp][1], this.stampMessageText[8], this.stampMessageText[10]), "FONT_SYSTEM_BOLD", 30, 1);
                                         } else if (this.versionCode == 1) {
-                                            this.ah[1].drawText(String.format("%s%s%s%d%s%s", this.stampMessageText[7], this.itemNameText[var10], this.stampMessageText[19], this.ho[var9 + this.currentStamp][1], this.stampMessageText[8], this.stampMessageText[10]), "FONT_SYSTEM_BOLD", 30, 1);
+                                            this.ah[1].loadText(aString.format("%s%s%s%d%s%s", this.stampMessageText[7], this.itemNameText[var10], this.stampMessageText[19], this.ho[var9 + this.currentStamp][1], this.stampMessageText[8], this.stampMessageText[10]), "FONT_SYSTEM_BOLD", 30, 1);
                                         }
                                     } else if (this.ho[var9 + this.currentStamp][0] == 7 && this.bn == 0) {
-                                        this.ah[1].drawText(String.format("%s%s%s%s%s", this.stampMessageText[11], this.stampMessageText[7], this.unitExplanationText[17][0][0], this.stampMessageText[8], this.stampMessageText[15]), "FONT_SYSTEM_BOLD", 30, 1);
-                                        this.ah[2].drawText(String.format("%s", this.stampMessageText[12]), "FONT_SYSTEM_BOLD", 30, 1);
+                                        this.ah[1].loadText(aString.format("%s%s%s%s%s", this.stampMessageText[11], this.stampMessageText[7], this.unitExplanationText[17][0][0], this.stampMessageText[8], this.stampMessageText[15]), "FONT_SYSTEM_BOLD", 30, 1);
+                                        this.ah[2].loadText(aString.format("%s", this.stampMessageText[12]), "FONT_SYSTEM_BOLD", 30, 1);
                                     }
                                 } else {
-                                    this.ah[1].drawText(String.format("%s%s%s%d%s%s", this.stampMessageText[7], this.stampMessageText[13], this.stampMessageText[9], this.ho[var9 + this.currentStamp][1], this.stampMessageText[8], this.stampMessageText[10]), "FONT_SYSTEM_BOLD", 30, 1);
+                                    this.ah[1].loadText(aString.format("%s%s%s%d%s%s", this.stampMessageText[7], this.stampMessageText[13], this.stampMessageText[9], this.ho[var9 + this.currentStamp][1], this.stampMessageText[8], this.stampMessageText[10]), "FONT_SYSTEM_BOLD", 30, 1);
                                 }
                             }
                         } else if (this.gw == 5) {
                             for (var7 = 0; var7 < this.getLength(this.warning2Text[6]); ++var7) {
                                 if (!this.ah[var7].isLoaded()) {
-                                    this.ah[var7].drawText(this.warning2Text[6][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                    this.ah[var7].loadText(this.warning2Text[6][var7], "FONT_SYSTEM_BOLD", 30, 1);
                                 }
                             }
                         } else if (this.gw != 6) {
                             if (this.gw == 8) {
                                 for (var7 = 0; var7 < this.getLength(this.warning2Text[9]); ++var7) {
                                     if (!this.ah[var7].isLoaded()) {
-                                        this.ah[var7].drawText(this.warning2Text[9][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                        this.ah[var7].loadText(this.warning2Text[9][var7], "FONT_SYSTEM_BOLD", 30, 1);
                                     }
                                 }
                             } else if (this.gw == 9) {
                                 for (var7 = 0; var7 < this.getLength(this.warning2Text[10]); ++var7) {
                                     if (!this.ah[var7].isLoaded()) {
-                                        this.ah[var7].drawText(this.warning2Text[10][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                        this.ah[var7].loadText(this.warning2Text[10][var7], "FONT_SYSTEM_BOLD", 30, 1);
                                     }
                                 }
                             } else if (this.gw == 10) {
                                 for (var7 = 0; var7 < this.getLength(this.warning2Text[11]); ++var7) {
                                     if (!this.ah[var7].isLoaded()) {
-                                        this.ah[var7].drawText(this.warning2Text[11][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                        this.ah[var7].loadText(this.warning2Text[11][var7], "FONT_SYSTEM_BOLD", 30, 1);
                                     }
                                 }
                             }
                         } else {
                             for (var7 = 0; var7 < this.getLength(this.warning2Text[7]); ++var7) {
                                 if (!this.ah[var7].isLoaded()) {
-                                    this.ah[var7].drawText(this.warning2Text[7][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                    this.ah[var7].loadText(this.warning2Text[7][var7], "FONT_SYSTEM_BOLD", 30, 1);
                                 }
                             }
 
@@ -25573,9 +25573,9 @@ public class AppInstance extends Game {
 
                             var4 = initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10 + var7 - this.currentEnergy;
                             if (this.versionCode == 0) {
-                                this.ah[this.getLength(this.warning2Text[7]) + 1].drawText(String.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.currentEnergy, this.warning1Text[11], var7 + initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10, this.warning1Text[12], var4, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
+                                this.ah[this.getLength(this.warning2Text[7]) + 1].loadText(aString.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.currentEnergy, this.warning1Text[11], var7 + initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10, this.warning1Text[12], var4, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
                             } else if (this.versionCode == 1) {
-                                this.ah[this.getLength(this.warning2Text[7]) + 1].drawText(String.format("%s%d%s", this.warning1Text[12], var4, this.warning1Text[13]), "FONT_SYSTEM_BOLD", 30, 1);
+                                this.ah[this.getLength(this.warning2Text[7]) + 1].loadText(aString.format("%s%d%s", this.warning1Text[12], var4, this.warning1Text[13]), "FONT_SYSTEM_BOLD", 30, 1);
                             }
                         }
                     } else {
@@ -25590,7 +25590,7 @@ public class AppInstance extends Game {
                         if (this.gw == 3) {
                             for (var7 = 0; var7 < this.getLength(this.warning2Text[4]); ++var7) {
                                 if (!this.ah[var7].isLoaded()) {
-                                    this.ah[var7].drawText(this.warning2Text[4][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                    this.ah[var7].loadText(this.warning2Text[4][var7], "FONT_SYSTEM_BOLD", 30, 1);
                                 }
                             }
 
@@ -25602,14 +25602,14 @@ public class AppInstance extends Game {
 
                             var4 = initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10 + var7 - this.currentEnergy;
                             if (this.versionCode == 0) {
-                                this.ah[this.getLength(this.warning2Text[4]) + 1].drawText(String.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.currentEnergy, this.warning1Text[11], var7 + initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10, this.warning1Text[12], var4, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
+                                this.ah[this.getLength(this.warning2Text[4]) + 1].loadText(aString.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.currentEnergy, this.warning1Text[11], var7 + initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10, this.warning1Text[12], var4, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
                             } else if (this.versionCode == 1) {
-                                this.ah[this.getLength(this.warning2Text[4]) + 1].drawText(String.format("%s%d%s", this.warning1Text[12], var4, this.warning1Text[13]), "FONT_SYSTEM_BOLD", 30, 1);
+                                this.ah[this.getLength(this.warning2Text[4]) + 1].loadText(aString.format("%s%d%s", this.warning1Text[12], var4, this.warning1Text[13]), "FONT_SYSTEM_BOLD", 30, 1);
                             }
                         } else if (this.gw == 4) {
                             for (var7 = 0; var7 < this.getLength(this.warning2Text[5]); ++var7) {
                                 if (!this.ah[var7].isLoaded()) {
-                                    this.ah[var7].drawText(this.warning2Text[5][var7], "FONT_SYSTEM_BOLD", 30, 1);
+                                    this.ah[var7].loadText(this.warning2Text[5][var7], "FONT_SYSTEM_BOLD", 30, 1);
                                 }
                             }
 
@@ -25621,9 +25621,9 @@ public class AppInstance extends Game {
 
                             var4 = initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10 + var7 - this.currentEnergy;
                             if (this.versionCode == 0) {
-                                this.ah[this.getLength(this.warning2Text[5]) + 1].drawText(String.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.currentEnergy, this.warning1Text[11], var7 + initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10, this.warning1Text[12], var4, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
+                                this.ah[this.getLength(this.warning2Text[5]) + 1].loadText(aString.format("%s%s%d%s%d%s%d%s%s", this.warning1Text[9], this.warning1Text[10], this.currentEnergy, this.warning1Text[11], var7 + initialSkillValues[10] + this.baseSpecialSkillLevels[10] * 10, this.warning1Text[12], var4, this.warning1Text[13], this.warning1Text[14]), "FONT_SYSTEM_BOLD", 30, 1);
                             } else if (this.versionCode == 1) {
-                                this.ah[this.getLength(this.warning2Text[5]) + 1].drawText(String.format("%s%d%s", this.warning1Text[12], var4, this.warning1Text[13]), "FONT_SYSTEM_BOLD", 30, 1);
+                                this.ah[this.getLength(this.warning2Text[5]) + 1].loadText(aString.format("%s%d%s", this.warning1Text[12], var4, this.warning1Text[13]), "FONT_SYSTEM_BOLD", 30, 1);
                             }
                         }
                     }
@@ -25646,7 +25646,7 @@ public class AppInstance extends Game {
 
                     for (var4 = 0; var4 < this.getLength(this.warning2Text[var10]); ++var4) {
                         if (!this.ah[var4].isLoaded()) {
-                            this.ah[var4].drawText(this.warning2Text[var10][var4], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.ah[var4].loadText(this.warning2Text[var10][var4], "FONT_SYSTEM_BOLD", 30, 1);
                         }
                     }
                 }
@@ -26552,7 +26552,7 @@ public class AppInstance extends Game {
 
         if (this.fS[3] == 1) {
             this.gB[1] = 1;
-            this.textTextures[0].drawText(this.godExplanationText[0], "FONT_SYSTEM_BOLD", 30, 1);
+            this.textTextures[0].loadText(this.godExplanationText[0], "FONT_SYSTEM_BOLD", 30, 1);
             this.gB[0] = 0;
             this.gA[0] = 1;
             this.gC[1] = 0;
@@ -26565,9 +26565,9 @@ public class AppInstance extends Game {
         for (var2 = 0; var2 < 26; ++var2) {
             if (this.bK[var2] != -1) {
                 if (this.bw[this.bK[var2]] == 0) {
-                    this.textTextures[var1].drawText(this.unitExplanationText[this.bK[var2]][0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[var1].loadText(this.unitExplanationText[this.bK[var2]][0][0], "FONT_SYSTEM_BOLD", 30, 1);
                 } else if (this.bw[this.bK[var2]] == 1) {
-                    this.textTextures[var1].drawText(this.unitExplanationText[this.bK[var2]][1][0], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[var1].loadText(this.unitExplanationText[this.bK[var2]][1][0], "FONT_SYSTEM_BOLD", 30, 1);
                 }
 
                 this.gB[0] = var1 + 1;
@@ -26582,7 +26582,7 @@ public class AppInstance extends Game {
 
         if (this.fS[3] == 0) {
             for (var2 = var1; var2 < this.getLength(this.catExplanationText) + var1; this.gC[1] = var2++) {
-                this.textTextures[var2].drawText(this.catExplanationText[var2 - var1][0], "FONT_SYSTEM_BOLD", 30, 1);
+                this.textTextures[var2].loadText(this.catExplanationText[var2 - var1][0], "FONT_SYSTEM_BOLD", 30, 1);
                 this.gA[0] = var2 + 1;
             }
         }
@@ -26594,7 +26594,7 @@ public class AppInstance extends Game {
         var5[2] = var1;
 
         for (var1 = this.gA[2]; var1 < this.getLength(this.warning1Text) + this.gA[2]; ++var1) {
-            this.textTextures[var1].drawText(this.warning1Text[var1 - this.gA[2]], "FONT_SYSTEM_BOLD", 30, 1);
+            this.textTextures[var1].loadText(this.warning1Text[var1 - this.gA[2]], "FONT_SYSTEM_BOLD", 30, 1);
             this.gA[3] = var1 + 1;
         }
 
@@ -26604,10 +26604,10 @@ public class AppInstance extends Game {
                     for (var1 = this.gA[3]; var1 < this.gA[3] + 3; ++var1) {
                         if (this.bw[this.fS[2]] == 0) {
                             if (this.fS[2] >= 0 && this.fS[2] <= this.gC[1] && !this.textTextures[var1].isLoaded()) {
-                                this.textTextures[var1].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][0][var1 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                                this.textTextures[var1].loadText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][0][var1 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                             }
                         } else if (this.bw[this.fS[2]] == 1 && this.fS[2] >= 0 && this.fS[2] <= this.gC[1] && !this.textTextures[var1].isLoaded()) {
-                            this.textTextures[var1].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][1][var1 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[var1].loadText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][1][var1 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                         }
 
                         this.gA[4] = var1 + 1;
@@ -26615,7 +26615,7 @@ public class AppInstance extends Game {
                 } else if (this.fS[2] - this.gB[0] >= 0) {
                     for (var1 = this.gA[3]; var1 < this.gA[3] + 3; ++var1) {
                         if (!this.textTextures[var1].isLoaded()) {
-                            this.textTextures[var1].drawText(this.catExplanationText[this.fS[2] - this.gB[0]][var1 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[var1].loadText(this.catExplanationText[this.fS[2] - this.gB[0]][var1 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                         }
 
                         this.gA[4] = var1 + 1;
@@ -26623,11 +26623,11 @@ public class AppInstance extends Game {
                 }
             } else if (this.fS[3] == 0) {
                 for (var1 = this.gA[3]; var1 < this.gA[3] + 3; ++var1) {
-                    this.textTextures[var1].drawText(this.categoryExplanationText[0][var1 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[var1].loadText(this.categoryExplanationText[0][var1 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
                 }
             } else {
                 for (var1 = this.gA[3]; var1 < this.gA[3] + 3; ++var1) {
-                    this.textTextures[var1].drawText(this.categoryExplanationText[1][var1 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[var1].loadText(this.categoryExplanationText[1][var1 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
                 }
             }
         } else if (this.fS[3] >= 1) {
@@ -26635,7 +26635,7 @@ public class AppInstance extends Game {
                 if (this.fS[2] < this.gB[1]) {
                     for (var1 = this.gA[3]; var1 < this.gA[3] + 3; ++var1) {
                         if (this.fS[2] >= 0 && this.fS[2] <= this.gC[1] && !this.textTextures[var1].isLoaded()) {
-                            this.textTextures[var1].drawText(this.godExplanationText[var1 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[var1].loadText(this.godExplanationText[var1 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                         }
 
                         this.gA[4] = var1 + 1;
@@ -26645,10 +26645,10 @@ public class AppInstance extends Game {
                         if (this.fS[2] >= 0 && this.fS[2] <= this.gC[1]) {
                             if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 0) {
                                 if (!this.textTextures[var1].isLoaded()) {
-                                    this.textTextures[var1].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][0][var1 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                                    this.textTextures[var1].loadText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][0][var1 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                                 }
                             } else if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 1 && !this.textTextures[var1].isLoaded()) {
-                                this.textTextures[var1].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][1][var1 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                                this.textTextures[var1].loadText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][1][var1 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                             }
                         }
 
@@ -26657,11 +26657,11 @@ public class AppInstance extends Game {
                 }
             } else if (this.fS[3] == 0) {
                 for (var1 = this.gA[3]; var1 < this.gA[3] + 3; ++var1) {
-                    this.textTextures[var1].drawText(this.categoryExplanationText[0][var1 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[var1].loadText(this.categoryExplanationText[0][var1 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
                 }
             } else {
                 for (var1 = this.gA[3]; var1 < this.gA[3] + 3; ++var1) {
-                    this.textTextures[var1].drawText(this.categoryExplanationText[1][var1 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[var1].loadText(this.categoryExplanationText[1][var1 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
                 }
             }
         }
@@ -26669,26 +26669,26 @@ public class AppInstance extends Game {
         if (!this.textTextures[this.gA[4]].isLoaded()) {
             if (this.fS[3] == 0) {
                 if (this.fS[2] < this.gB[0]) {
-                    this.textTextures[this.gA[4]].drawText(this.pageNameText[0], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[this.gA[4]].loadText(this.pageNameText[0], "FONT_SYSTEM_BOLD", 30, 1);
                 } else if (this.fS[2] - this.gB[0] >= 0 && this.fS[2] - this.gB[0] <= 2) {
-                    this.textTextures[this.gA[4]].drawText(this.pageNameText[1], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[this.gA[4]].loadText(this.pageNameText[1], "FONT_SYSTEM_BOLD", 30, 1);
                 } else if (this.fS[2] - this.gB[0] >= 3 && this.fS[2] - this.gB[0] <= 4) {
-                    this.textTextures[this.gA[4]].drawText(this.pageNameText[2], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[this.gA[4]].loadText(this.pageNameText[2], "FONT_SYSTEM_BOLD", 30, 1);
                 } else if (this.fS[2] - this.gB[0] == 5) {
-                    this.textTextures[this.gA[4]].drawText(this.pageNameText[3], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[this.gA[4]].loadText(this.pageNameText[3], "FONT_SYSTEM_BOLD", 30, 1);
                 } else {
-                    this.textTextures[this.gA[4]].drawText(this.pageNameText[4], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[this.gA[4]].loadText(this.pageNameText[4], "FONT_SYSTEM_BOLD", 30, 1);
                 }
             } else if (this.fS[2] < this.gB[1]) {
-                this.textTextures[this.gA[4]].drawText(this.pageNameText[7], "FONT_SYSTEM_BOLD", 30, 1);
+                this.textTextures[this.gA[4]].loadText(this.pageNameText[7], "FONT_SYSTEM_BOLD", 30, 1);
             } else {
-                this.textTextures[this.gA[4]].drawText(this.pageNameText[5], "FONT_SYSTEM_BOLD", 30, 1);
+                this.textTextures[this.gA[4]].loadText(this.pageNameText[5], "FONT_SYSTEM_BOLD", 30, 1);
             }
         }
 
         this.gA[5] = this.gA[4] + 1;
         if (!this.textTextures[this.gA[5]].isLoaded()) {
-            this.textTextures[this.gA[5]].drawText(this.warning1Text[6], "FONT_SYSTEM_BOLD", 30, 1);
+            this.textTextures[this.gA[5]].loadText(this.warning1Text[6], "FONT_SYSTEM_BOLD", 30, 1);
         }
 
         this.ct = 0;
@@ -26743,7 +26743,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[6].isLoaded()) {
-                this.uiTextures[6].load(MyUtility.getString(String.format("img%03d.png", 21)), MyUtility.getString(String.format("img%03d.imgcut", 21)));
+                this.uiTextures[6].load(MyUtility.getString(aString.format("img%03d.png", 21)), MyUtility.getString(aString.format("img%03d.imgcut", 21)));
             }
         }
 
@@ -26753,7 +26753,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[7].isLoaded()) {
-                this.uiTextures[7].load(MyUtility.getString(String.format("img%03d.png", 22)), MyUtility.getString(String.format("img%03d.imgcut", 22)));
+                this.uiTextures[7].load(MyUtility.getString(aString.format("img%03d.png", 22)), MyUtility.getString(aString.format("img%03d.imgcut", 22)));
             }
 
             if (this.uiTextures[8].isLoaded()) {
@@ -26761,7 +26761,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[8].isLoaded()) {
-                this.uiTextures[8].load(MyUtility.getString(String.format("img%03d.png", 23)), MyUtility.getString(String.format("img%03d.imgcut", 23)));
+                this.uiTextures[8].load(MyUtility.getString(aString.format("img%03d.png", 23)), MyUtility.getString(aString.format("img%03d.imgcut", 23)));
             }
         } else if (this.fS[3] >= 1) {
             if (this.uiTextures[7].isLoaded()) {
@@ -26769,7 +26769,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[7].isLoaded()) {
-                this.uiTextures[7].load(MyUtility.getString(String.format("img%03d.png", 26)), MyUtility.getString(String.format("img%03d.imgcut", 26)));
+                this.uiTextures[7].load(MyUtility.getString(aString.format("img%03d.png", 26)), MyUtility.getString(aString.format("img%03d.imgcut", 26)));
             }
 
             if (this.uiTextures[8].isLoaded()) {
@@ -26777,7 +26777,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[8].isLoaded()) {
-                this.uiTextures[8].load(MyUtility.getString(String.format("img%03d.png", 27)), MyUtility.getString(String.format("img%03d.imgcut", 27)));
+                this.uiTextures[8].load(MyUtility.getString(aString.format("img%03d.png", 27)), MyUtility.getString(aString.format("img%03d.imgcut", 27)));
             }
         }
 
@@ -26787,7 +26787,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[9].isLoaded()) {
-                this.uiTextures[9].load(MyUtility.getString(String.format("img%03d.png", 28)), MyUtility.getString(String.format("img%03d.imgcut", 28)));
+                this.uiTextures[9].load(MyUtility.getString(aString.format("img%03d.png", 28)), MyUtility.getString(aString.format("img%03d.imgcut", 28)));
             }
 
             if (!this.uiTextures[10].isLoaded()) {
@@ -26795,7 +26795,7 @@ public class AppInstance extends Game {
             }
 
             if (!this.uiTextures[10].isLoaded()) {
-                this.uiTextures[10].load(MyUtility.getString(String.format("img%03d.png", 25)), MyUtility.getString(String.format("img%03d.imgcut", 25)));
+                this.uiTextures[10].load(MyUtility.getString(aString.format("img%03d.png", 25)), MyUtility.getString(aString.format("img%03d.imgcut", 25)));
             }
         }
 
@@ -26806,38 +26806,38 @@ public class AppInstance extends Game {
 
             if (var1 < this.gB[1]) {
                 if (!this.uiTextures[var1 + 11].isLoaded()) {
-                    this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_g.png", 0)), MyUtility.getString(String.format("udi%03d_g.imgcut", 0)));
+                    this.uiTextures[var1 + 11].load(MyUtility.getString(aString.format("udi%03d_g.png", 0)), MyUtility.getString(aString.format("udi%03d_g.imgcut", 0)));
                 }
             } else if (var1 < this.gB[0]) {
                 if (!this.uiTextures[var1 + 11].isLoaded()) {
                     if (this.bw[this.bK[var1 - this.gB[1]]] == 0) {
-                        this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_f.png", this.bK[var1 - this.gB[1]])), MyUtility.getString(String.format("udi%03d_f.imgcut", this.bK[var1 - this.gB[1]])));
+                        this.uiTextures[var1 + 11].load(MyUtility.getString(aString.format("udi%03d_f.png", this.bK[var1 - this.gB[1]])), MyUtility.getString(aString.format("udi%03d_f.imgcut", this.bK[var1 - this.gB[1]])));
                     } else {
-                        this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_c.png", this.bK[var1 - this.gB[1]])), MyUtility.getString(String.format("udi%03d_c.imgcut", this.bK[var1 - this.gB[1]])));
+                        this.uiTextures[var1 + 11].load(MyUtility.getString(aString.format("udi%03d_c.png", this.bK[var1 - this.gB[1]])), MyUtility.getString(aString.format("udi%03d_c.imgcut", this.bK[var1 - this.gB[1]])));
                     }
                 }
             } else if (var1 - this.gB[0] == 0 && this.baseSpecialSkillLevels[0] + 1 < this.bi) {
                 if (!this.uiTextures[var1 + 11].isLoaded()) {
-                    this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_s_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_s_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
+                    this.uiTextures[var1 + 11].load(MyUtility.getString(aString.format("udi%03d_s_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(aString.format("udi%03d_s_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
                 }
             } else if (var1 - this.gB[0] == 0) {
                 if (!this.uiTextures[var1 + 11].isLoaded()) {
-                    this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_sg_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_sg_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
+                    this.uiTextures[var1 + 11].load(MyUtility.getString(aString.format("udi%03d_sg_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(aString.format("udi%03d_sg_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
                 }
             } else if (var1 - this.gB[0] == 1 && this.baseSpecialSkillLevels[2] + 1 < 10) {
                 if (!this.uiTextures[var1 + 11].isLoaded()) {
-                    this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_s_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_s_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
+                    this.uiTextures[var1 + 11].load(MyUtility.getString(aString.format("udi%03d_s_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(aString.format("udi%03d_s_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
                 }
             } else if (var1 - this.gB[0] == 1) {
                 if (!this.uiTextures[var1 + 11].isLoaded()) {
-                    this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_sg_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_sg_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
+                    this.uiTextures[var1 + 11].load(MyUtility.getString(aString.format("udi%03d_sg_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(aString.format("udi%03d_sg_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
                 }
             } else if (this.baseSpecialSkillLevels[var1 - this.gB[0] + 1] + 1 < this.bi) {
                 if (!this.uiTextures[var1 + 11].isLoaded()) {
-                    this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_s_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_s_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
+                    this.uiTextures[var1 + 11].load(MyUtility.getString(aString.format("udi%03d_s_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(aString.format("udi%03d_s_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
                 }
             } else if (!this.uiTextures[var1 + 11].isLoaded()) {
-                this.uiTextures[var1 + 11].load(MyUtility.getString(String.format("udi%03d_sg_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_sg_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
+                this.uiTextures[var1 + 11].load(MyUtility.getString(aString.format("udi%03d_sg_%s.png", var1 - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(aString.format("udi%03d_sg_%s.imgcut", var1 - this.gB[0], MyUtility.getString("lang"))));
             }
         }
 
@@ -26936,48 +26936,48 @@ public class AppInstance extends Game {
                 if (this.fS[2] >= 0 && this.fS[2] <= this.gC[1]) {
                     if (this.fS[2] < this.gB[1]) {
                         for (var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-                            this.textTextures[var3].drawText(this.godExplanationText[var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[var3].loadText(this.godExplanationText[var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                         }
 
-                        this.textTextures[this.gA[4]].drawText(this.pageNameText[7], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[this.gA[4]].loadText(this.pageNameText[7], "FONT_SYSTEM_BOLD", 30, 1);
                     } else if (this.fS[2] < this.gB[0]) {
                         for (var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
                             if (this.fS[2] >= 0 && this.fS[2] <= this.gC[1]) {
                                 if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 0) {
-                                    this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][0][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                                    this.textTextures[var3].loadText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][0][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                                 } else if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 1) {
-                                    this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                                    this.textTextures[var3].loadText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                                 }
                             }
                         }
 
                         if (this.fS[3] == 0) {
-                            this.textTextures[this.gA[4]].drawText(this.pageNameText[0], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[this.gA[4]].loadText(this.pageNameText[0], "FONT_SYSTEM_BOLD", 30, 1);
                         } else if (this.fS[3] >= 1) {
-                            this.textTextures[this.gA[4]].drawText(this.pageNameText[5], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[this.gA[4]].loadText(this.pageNameText[5], "FONT_SYSTEM_BOLD", 30, 1);
                         }
                     } else {
                         for (var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-                            this.textTextures[var3].drawText(this.catExplanationText[this.fS[2] - this.gB[0]][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[var3].loadText(this.catExplanationText[this.fS[2] - this.gB[0]][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                         }
 
                         if (this.fS[2] - this.gB[0] >= 0 && this.fS[2] - this.gB[0] <= 2) {
-                            this.textTextures[this.gA[4]].drawText(this.pageNameText[1], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[this.gA[4]].loadText(this.pageNameText[1], "FONT_SYSTEM_BOLD", 30, 1);
                         } else if (this.fS[2] - this.gB[0] >= 3 && this.fS[2] - this.gB[0] <= 4) {
-                            this.textTextures[this.gA[4]].drawText(this.pageNameText[2], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[this.gA[4]].loadText(this.pageNameText[2], "FONT_SYSTEM_BOLD", 30, 1);
                         } else if (this.fS[2] - this.gB[0] == 5) {
-                            this.textTextures[this.gA[4]].drawText(this.pageNameText[3], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[this.gA[4]].loadText(this.pageNameText[3], "FONT_SYSTEM_BOLD", 30, 1);
                         } else {
-                            this.textTextures[this.gA[4]].drawText(this.pageNameText[4], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[this.gA[4]].loadText(this.pageNameText[4], "FONT_SYSTEM_BOLD", 30, 1);
                         }
                     }
                 } else if (this.fS[3] == 0) {
                     for (var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-                        this.textTextures[var3].drawText(this.categoryExplanationText[0][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[var3].loadText(this.categoryExplanationText[0][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 } else {
                     for (var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-                        this.textTextures[var3].drawText(this.categoryExplanationText[1][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[var3].loadText(this.categoryExplanationText[1][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 }
             }
@@ -26986,48 +26986,48 @@ public class AppInstance extends Game {
             if (this.fS[2] >= 0 && this.fS[2] <= this.gC[1]) {
                 if (this.fS[2] < this.gB[1]) {
                     for (var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-                        this.textTextures[var3].drawText(this.godExplanationText[var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[var3].loadText(this.godExplanationText[var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                     }
 
-                    this.textTextures[this.gA[4]].drawText(this.pageNameText[7], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[this.gA[4]].loadText(this.pageNameText[7], "FONT_SYSTEM_BOLD", 30, 1);
                 } else if (this.fS[2] < this.gB[0]) {
                     for (var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
                         if (this.fS[2] >= 0 && this.fS[2] <= this.gC[1]) {
                             if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 0) {
-                                this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][0][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                                this.textTextures[var3].loadText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][0][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                             } else if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 1) {
-                                this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                                this.textTextures[var3].loadText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                             }
                         }
                     }
 
                     if (this.fS[3] == 0) {
-                        this.textTextures[this.gA[4]].drawText(this.pageNameText[0], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[this.gA[4]].loadText(this.pageNameText[0], "FONT_SYSTEM_BOLD", 30, 1);
                     } else if (this.fS[3] >= 1) {
-                        this.textTextures[this.gA[4]].drawText(this.pageNameText[5], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[this.gA[4]].loadText(this.pageNameText[5], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 } else {
                     for (var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-                        this.textTextures[var3].drawText(this.catExplanationText[this.fS[2] - this.gB[0]][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[var3].loadText(this.catExplanationText[this.fS[2] - this.gB[0]][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                     }
 
                     if (this.fS[2] - this.gB[0] >= 0 && this.fS[2] - this.gB[0] <= 2) {
-                        this.textTextures[this.gA[4]].drawText(this.pageNameText[1], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[this.gA[4]].loadText(this.pageNameText[1], "FONT_SYSTEM_BOLD", 30, 1);
                     } else if (this.fS[2] - this.gB[0] >= 3 && this.fS[2] - this.gB[0] <= 4) {
-                        this.textTextures[this.gA[4]].drawText(this.pageNameText[2], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[this.gA[4]].loadText(this.pageNameText[2], "FONT_SYSTEM_BOLD", 30, 1);
                     } else if (this.fS[2] - this.gB[0] == 5) {
-                        this.textTextures[this.gA[4]].drawText(this.pageNameText[3], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[this.gA[4]].loadText(this.pageNameText[3], "FONT_SYSTEM_BOLD", 30, 1);
                     } else {
-                        this.textTextures[this.gA[4]].drawText(this.pageNameText[4], "FONT_SYSTEM_BOLD", 30, 1);
+                        this.textTextures[this.gA[4]].loadText(this.pageNameText[4], "FONT_SYSTEM_BOLD", 30, 1);
                     }
                 }
             } else if (this.fS[3] == 0) {
                 for (var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-                    this.textTextures[var3].drawText(this.categoryExplanationText[0][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[var3].loadText(this.categoryExplanationText[0][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
                 }
             } else {
                 for (var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
-                    this.textTextures[var3].drawText(this.categoryExplanationText[1][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[var3].loadText(this.categoryExplanationText[1][var3 - this.gA[3]], "FONT_SYSTEM_BOLD", 30, 1);
                 }
             }
         }
@@ -27193,17 +27193,17 @@ public class AppInstance extends Game {
 
                                         if (!this.uiTextures[this.fS[2] + 11].isLoaded()) {
                                             if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 0) {
-                                                this.uiTextures[this.fS[2] + 11].load(MyUtility.getString(String.format("udi%03d_f.png", this.bK[this.fS[2] - this.gB[1]])), MyUtility.getString(String.format("udi%03d_f.imgcut", this.bK[this.fS[2] - this.gB[1]])));
+                                                this.uiTextures[this.fS[2] + 11].load(MyUtility.getString(aString.format("udi%03d_f.png", this.bK[this.fS[2] - this.gB[1]])), MyUtility.getString(aString.format("udi%03d_f.imgcut", this.bK[this.fS[2] - this.gB[1]])));
                                             } else {
-                                                this.uiTextures[this.fS[2] + 11].load(MyUtility.getString(String.format("udi%03d_c.png", this.bK[this.fS[2] - this.gB[1]])), MyUtility.getString(String.format("udi%03d_c.imgcut", this.bK[this.fS[2] - this.gB[1]])));
+                                                this.uiTextures[this.fS[2] + 11].load(MyUtility.getString(aString.format("udi%03d_c.png", this.bK[this.fS[2] - this.gB[1]])), MyUtility.getString(aString.format("udi%03d_c.imgcut", this.bK[this.fS[2] - this.gB[1]])));
                                             }
                                         }
 
-                                        this.textTextures[this.fS[2]].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][1][0], "FONT_SYSTEM_BOLD", 30, 1);
+                                        this.textTextures[this.fS[2]].loadText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][1][0], "FONT_SYSTEM_BOLD", 30, 1);
 
                                         for (var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
                                             if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 1) {
-                                                this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                                                this.textTextures[var3].loadText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                                             }
                                         }
 
@@ -27248,7 +27248,7 @@ public class AppInstance extends Game {
                                     }
 
                                     if (!this.uiTextures[this.fS[2] + 11].isLoaded()) {
-                                        this.uiTextures[this.fS[2] + 11].load(MyUtility.getString(String.format("udi%03d_sg_%s.png", this.fS[2] - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_sg_%s.imgcut", this.fS[2] - this.gB[0], MyUtility.getString("lang"))));
+                                        this.uiTextures[this.fS[2] + 11].load(MyUtility.getString(aString.format("udi%03d_sg_%s.png", this.fS[2] - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(aString.format("udi%03d_sg_%s.imgcut", this.fS[2] - this.gB[0], MyUtility.getString("lang"))));
                                     }
                                 }
 
@@ -27278,7 +27278,7 @@ public class AppInstance extends Game {
                                             }
 
                                             if (!this.uiTextures[this.fS[2] + 11].isLoaded()) {
-                                                this.uiTextures[this.fS[2] + 11].load(MyUtility.getString(String.format("udi%03d_sg_%s.png", this.fS[2] - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_sg_%s.imgcut", this.fS[2] - this.gB[0], MyUtility.getString("lang"))));
+                                                this.uiTextures[this.fS[2] + 11].load(MyUtility.getString(aString.format("udi%03d_sg_%s.png", this.fS[2] - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(aString.format("udi%03d_sg_%s.imgcut", this.fS[2] - this.gB[0], MyUtility.getString("lang"))));
                                             }
                                         }
 
@@ -27306,7 +27306,7 @@ public class AppInstance extends Game {
                                     }
 
                                     if (!this.uiTextures[this.fS[2] + 11].isLoaded()) {
-                                        this.uiTextures[this.fS[2] + 11].load(MyUtility.getString(String.format("udi%03d_sg_%s.png", this.fS[2] - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(String.format("udi%03d_sg_%s.imgcut", this.fS[2] - this.gB[0], MyUtility.getString("lang"))));
+                                        this.uiTextures[this.fS[2] + 11].load(MyUtility.getString(aString.format("udi%03d_sg_%s.png", this.fS[2] - this.gB[0], MyUtility.getString("lang"))), MyUtility.getString(aString.format("udi%03d_sg_%s.imgcut", this.fS[2] - this.gB[0], MyUtility.getString("lang"))));
                                     }
                                 }
 
@@ -27680,11 +27680,11 @@ public class AppInstance extends Game {
             if (cC[this.gH] == 100 && this.fS[2] >= 0 && this.fS[2] <= this.gC[1]) {
                 if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 0) {
                     this.bw[this.bK[this.fS[2] - this.gB[1]]] = 1;
-                    this.textTextures[this.fS[2]].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][1][0], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[this.fS[2]].loadText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][1][0], "FONT_SYSTEM_BOLD", 30, 1);
 
                     for (var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
                         if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 1) {
-                            this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[var3].loadText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][1][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                         }
                     }
 
@@ -27695,11 +27695,11 @@ public class AppInstance extends Game {
                     }
                 } else if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 1) {
                     this.bw[this.bK[this.fS[2] - this.gB[1]]] = 0;
-                    this.textTextures[this.fS[2]].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][0][0], "FONT_SYSTEM_BOLD", 30, 1);
+                    this.textTextures[this.fS[2]].loadText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][0][0], "FONT_SYSTEM_BOLD", 30, 1);
 
                     for (var3 = this.gA[3]; var3 < this.gA[3] + 3; ++var3) {
                         if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 0) {
-                            this.textTextures[var3].drawText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][0][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
+                            this.textTextures[var3].loadText(this.unitExplanationText[this.bK[this.fS[2] - this.gB[1]]][0][var3 - this.gA[3] + 1], "FONT_SYSTEM_BOLD", 30, 1);
                         }
                     }
 
@@ -27720,9 +27720,9 @@ public class AppInstance extends Game {
 
                 if (!this.uiTextures[this.fS[2] + 11].isLoaded()) {
                     if (this.bw[this.bK[this.fS[2] - this.gB[1]]] == 0) {
-                        this.uiTextures[this.fS[2] + 11].load(MyUtility.getString(String.format("udi%03d_f.png", this.bK[this.fS[2] - this.gB[1]])), MyUtility.getString(String.format("udi%03d_f.imgcut", this.bK[this.fS[2] - this.gB[1]])));
+                        this.uiTextures[this.fS[2] + 11].load(MyUtility.getString(aString.format("udi%03d_f.png", this.bK[this.fS[2] - this.gB[1]])), MyUtility.getString(aString.format("udi%03d_f.imgcut", this.bK[this.fS[2] - this.gB[1]])));
                     } else {
-                        this.uiTextures[this.fS[2] + 11].load(MyUtility.getString(String.format("udi%03d_c.png", this.bK[this.fS[2] - this.gB[1]])), MyUtility.getString(String.format("udi%03d_c.imgcut", this.bK[this.fS[2] - this.gB[1]])));
+                        this.uiTextures[this.fS[2] + 11].load(MyUtility.getString(aString.format("udi%03d_c.png", this.bK[this.fS[2] - this.gB[1]])), MyUtility.getString(aString.format("udi%03d_c.imgcut", this.bK[this.fS[2] - this.gB[1]])));
                     }
                 }
             }
