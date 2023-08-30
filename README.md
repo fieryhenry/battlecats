@@ -12,7 +12,7 @@ Original 1.0.0 APK: <https://apkfree.com/download/battle-cats-1.0.0>. It is a
 
 Original 1.0.1 APK: <https://apkfree.com/download/battle-cats-1.0.1>
 
-Current Version: `JP 1.0.2`
+Current Version: `JP 1.0.4`
 
 APKs started from version 1.0.0 because it had the least amount of code and so
 it was the easiest version to get a compiling and functional app. Once each

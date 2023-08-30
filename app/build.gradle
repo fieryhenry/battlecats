@@ -9,8 +9,8 @@ android {
         applicationId 'jp.co.ponos.battlecatsrm'
         minSdkVersion 8
         targetSdkVersion 31
-        versionCode 3
-        versionName "1.0.2"
+        versionCode 5
+        versionName "1.0.4"
         useLibrary 'org.apache.http.legacy'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
