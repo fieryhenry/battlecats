@@ -5777,6 +5777,7 @@ public class AppInstance extends Game {
         int var2 = 0;
         //if (!jp.co.ponos.library.b.aa.equals(jp.co.ponos.library.b.stream.b.d(aString.format("unitbuy%03d.csv", var1 + 1)), (new String[]{"804ffc7cbfb735e79d355538117f602a", "da00d88cc9c3127e88a999879e203a80", "3cf141900d9b21d99811dc850408f901", "4960b382d7171aa0340ae7559f380bea", "47b5dc4ab2521d191b92c7b2f9a5ba2c", "8f9a611bb43e9252e7469274eba48ecb", "1dc60dd4e820a3367da711966904ffbf", "d0cba580b0d3ef8dd3c084912ffd437a", "83d503725ab63f834afda0f11b7027ba", "1e7c9194142f634fc2b7cd01cdef3ef4", "553afaf8a7b6d47304269a93c9f76636", "fb9fe18da89f1b96f739adbe931c7fe0", "3d260bfb7d74ab43f9f31495a257b5f1", "bd06858427bdea0199d2d7e12c24e903", "9761b3638597a99b9dfef46d097d0ed2", "61a2e033ae724d6ae337294ed3db38cd", "3591f4ee40440ed4e73494b4c9eef85a", "74330d071ce91eb822951f64104d1b30", "dab38fe098106d2ac187fa410c978486", "22f151fe39ffa40b088f2d64a182c9e5", "191afdccc437d2917500675ced12fb3f", "fd09308a974adeaf7db94cc205f6b10b", "30bb912a4cf7b19c23136af2f3804cbd", "d6ea2f2b783d3ba4ba9cee5caa92550b", "363076546cdfe5f0f6448844f571e353", "e49bd23022e28870bee5cf9315df487d"})[var1])) {
         //   this.D = 0;
+        //   this.errorText = "F02" + aString.format("%02d", Integer.valueOf(i + 1));
         //   this.j(4);
         //} else {
         AssetTextStream var3 = new AssetTextStream();
@@ -10017,6 +10018,7 @@ public class AppInstance extends Game {
         byte var2 = 0;
         //if (!jp.co.ponos.library.b.aa.equals(jp.co.ponos.library.b.stream.b.d(aString.format("unit%03d.csv", var1 + 1)), (new String[]{"c1270af3244e3bcbee86ee907b6620d6", "5e2d37c28d9e40a9f8782a8e27795f3d", "460611b2de02427382067dcc3d0cc814", "402c64570c5e2c4e8215e4931cf977b2", "b839b84eae1717435ca8f3f2e7e1a854", "4f51f1ddc6d279b46256015a8bf80a4c", "988ce06e07fc9a37a3e5c15f0a28524e", "b9dbe2183b5499818190caa0b9c3f71c", "9b04a3c0dd286686a75278299ffd1a3e", "a31375f8f95246ac8216e68036811d2b", "3d6cb7f95624b4bb8ad7fa2550778882", "aaa281d59c8d7df53f507048492a6cc0", "d96417e8192416632355f20e812aa7bd", "cdc09e9ee36c50c6c4eba2dcb3a3333f", "fb7ecb5101a43146354e1cc05742db04", "d1cb69d162b974483778f35c6f9b6b95", "06259e2354febd4a8f2ec5a790b4cb4d", "ae541a88640505aa18dba6b13dcacf70", "defde8fb3562f29a1439db6904cb1f4d", "09cd101bfb8fd4932177c0a55fc0fe16", "210e495fbe7f5b5df2d08f6754b32e28", "68954abe7e5c084b14876b38a4bcb463", "1550f363ff89f2d491beb020dbc8ac8a", "d1cb69d162b974483778f35c6f9b6b95", "9596d33e9868e98d6f2ffd76a8efac2f", "cc0a57073a5038c5017d11f7077ad570"})[var1])) {
         //   this.D = 0;
+        //   this.errorText = "F03" + aString.format("%02d", Integer.valueOf(var1 + 1));
         //   this.j(4);
         //} else {
         AssetTextStream var3 = new AssetTextStream();
@@ -11659,6 +11661,7 @@ public class AppInstance extends Game {
         byte var1 = 0;
         //if (!jp.co.ponos.library.b.aa.equals(jp.co.ponos.library.b.stream.b.d("t_unit.csv"), (new String[]{"48ffde5dd85d010a1e497456122afc2e"})[0])) {
         //   this.D = 0;
+        //   this.errorText = "F04";
         //   this.j(4);
         //} else {
         AssetTextStream var2 = new AssetTextStream();
@@ -13620,8 +13623,13 @@ public class AppInstance extends Game {
                     var10002 = var2[11]++;
                     if (this.fx[11] > this.getLength(dv) - 1) {
                         this.fx[11] = 0;
-                        String var6 = aString.format(MyUtility.getString("twitter_txt1"), this.stageNamesText[cm[this.battleStats[0]]]);
-                        Twitter.getInstance().tweet(aString.format("%s %s %s", var6, MyUtility.getString("url_abbr"), MyUtility.getString("twitter_hash")), null, null);
+                        if (MyUtility.isConnected()) {
+                            String var6 = aString.format(MyUtility.getString("twitter_txt1"), this.stageNamesText[cm[this.battleStats[0]]]);
+                            Twitter.getInstance().tweet(aString.format("%s %s %s", var6, MyUtility.getString("url_abbr"), MyUtility.getString("twitter_hash")), null, null);
+                        }
+                        else {
+                            MyUtility.getInstance().addButton(MyUtility.getString("network_unavailable"));
+                        }
                         this.zoom.reset();
                     }
                 } else {
