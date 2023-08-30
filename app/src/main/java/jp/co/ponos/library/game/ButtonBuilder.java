@@ -3,7 +3,7 @@ package jp.co.ponos.library.game;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 
-class ButtonBuilder extends DialogFragment {
+public class ButtonBuilder extends DialogFragment {
    String a;
    String[] b;
    int c;
