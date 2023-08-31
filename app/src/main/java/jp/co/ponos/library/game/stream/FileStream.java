@@ -8,13 +8,14 @@ import jp.co.ponos.library.game.Utility;
 import jp.co.ponos.library.game.Global;
 import jp.co.ponos.library.game.Settings;
 
-public class FileStream {
+public class FileStream extends SaveDataStream {
    DataInputStream dataInputStream;
    DataOutputStream dataOutputStream;
    ByteArrayOutputStream byteArrayOutputStream;
    DataOutputStream dataOutputStream1;
    ByteArrayInputStream e;
 
+   @Override
    public void writeDouble(double var1) {
       try {
          this.dataOutputStream.writeDouble(var1);
@@ -25,7 +26,7 @@ public class FileStream {
       }
 
    }
-
+   @Override
    public void writeInt(int var1) {
       try {
          this.dataOutputStream.writeInt(var1);
@@ -36,6 +37,7 @@ public class FileStream {
       }
 
    }
+   @Override
 
    public void writeBoolean(boolean var1) {
       try {
@@ -47,7 +49,7 @@ public class FileStream {
       }
 
    }
-
+   @Override
    public boolean readBoolean() {
       boolean var1;
       try {
@@ -58,7 +60,7 @@ public class FileStream {
 
       return var1;
    }
-
+   @Override
    public boolean openRead(String var1) {
       boolean var3;
       try {
@@ -72,7 +74,7 @@ public class FileStream {
       var3 = true;
       return var3;
    }
-
+   @Override
    public int readInt() {
       int var1;
       try {
@@ -83,7 +85,7 @@ public class FileStream {
 
       return var1;
    }
-
+   @Override
    public boolean openWrite(String var1) {
 
       try {
@@ -95,7 +97,7 @@ public class FileStream {
 
       return true;
    }
-
+   @Override
    public double readDouble() {
       double var1;
       try {
@@ -106,7 +108,7 @@ public class FileStream {
 
       return var1;
    }
-
+   @Override
    public void writeString(String var1) {
       boolean var10001;
       try {
@@ -134,11 +136,11 @@ public class FileStream {
       }
 
    }
-
+   @Override
    public void enableMD5() {
       this.writeString(Settings.getInstance().packageName);
    }
-
+   @Override
    public boolean verifyMD5() {
       boolean var1 = false;
 
@@ -208,7 +210,7 @@ public class FileStream {
       var5 = var1;
       return var5;
    }
-
+   @Override
    public void close() {
       try {
          if (this.dataInputStream != null) {
