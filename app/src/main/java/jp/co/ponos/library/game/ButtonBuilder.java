@@ -17,6 +17,14 @@ public class ButtonBuilder extends DialogFragment {
       this.b = null;
    }
 
+   ButtonBuilder(Utility var1, String var2, String[] var3, int var4, AlertAppli var5) {
+      this.e = var1;
+      this.a = var2;
+      this.b = var3;
+      this.c = var4;
+      this.d = var5;
+   }
+
    public boolean loadURL() {
       return false;
    }
