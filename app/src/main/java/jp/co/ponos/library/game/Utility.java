@@ -239,6 +239,11 @@ public abstract class Utility {
       Global.instance.dialogs.add(new AlertRunner(this, this.getAppliPage(Settings.getInstance().packageName, var1)));
    }
 
+   public void addButtonAppli(String str, String[] strArr, int i, AlertAppli alertAppli) {
+      Global.instance.dialogs.add(new ButtonBuilder(this, str, strArr, i, alertAppli));
+   }
+
+
    public void setWebClientViewer(WebClientViewer var1) {
       this.webClientViewer = var1;
    }
