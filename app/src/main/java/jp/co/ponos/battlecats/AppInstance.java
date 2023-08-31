@@ -3790,26 +3790,6 @@ public class AppInstance extends Game {
         return var7;
     }
 
-    String a(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int[] var13, int var14, int var15, int var16, int[] var17, int[] var18) {
-        aStringBuffer var19 = new aStringBuffer();
-        var19.append(aString.format("log=1&l=%s&sts=%d&rd=%d&ps=%d&aris=%d&cfrd=%d&cfps=%d&gf=%d&inv=%d&fb=%d&tw=%d&ln=%d&rv=%d", MyUtility.getString("lang"), var1, var2 + 1, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12));
-
-        for (var1 = 0; var1 < 8; ++var1) {
-            var19.append(aString.format("&cf%d=%d", var1, var13[var1]));
-        }
-
-        var19.append(aString.format("&ucu=%d&uco=%d&uch=%d", var14, var15, var16));
-
-        for (var1 = 0; var1 < 11; ++var1) {
-            var19.append(aString.format("&uit%d=%d", var1, var17[var1]));
-        }
-
-        for (var1 = 0; var1 < 4; ++var1) {
-            var19.append(aString.format("&ugo%d=%d", var1, var18[var1]));
-        }
-
-        return var19.toString();
-    }
 
     @Override
     public void onCreate() {
@@ -4670,15 +4650,14 @@ public class AppInstance extends Game {
             this.eQ = 0;
 
             for (var1 = 0; var1 < 26; ++var1) {
-                this.d(var1);
+                this.loadUnitBuy(var1);
             }
 
             for (var1 = 0; var1 < 26; ++var1) {
                 this.loadUnitStats(var1);
             }
 
-            this.g();
-
+            this.loadEnemyStats();
 
         }
 
@@ -5773,26 +5752,7 @@ public class AppInstance extends Game {
         this.pointerDown = false;
     }
 
-    void d(int var1) {
-        int var2 = 0;
-        //if (!jp.co.ponos.library.b.aa.equals(jp.co.ponos.library.b.stream.b.d(aString.format("unitbuy%03d.csv", var1 + 1)), (new String[]{"804ffc7cbfb735e79d355538117f602a", "da00d88cc9c3127e88a999879e203a80", "3cf141900d9b21d99811dc850408f901", "4960b382d7171aa0340ae7559f380bea", "47b5dc4ab2521d191b92c7b2f9a5ba2c", "8f9a611bb43e9252e7469274eba48ecb", "1dc60dd4e820a3367da711966904ffbf", "d0cba580b0d3ef8dd3c084912ffd437a", "83d503725ab63f834afda0f11b7027ba", "1e7c9194142f634fc2b7cd01cdef3ef4", "553afaf8a7b6d47304269a93c9f76636", "fb9fe18da89f1b96f739adbe931c7fe0", "3d260bfb7d74ab43f9f31495a257b5f1", "bd06858427bdea0199d2d7e12c24e903", "9761b3638597a99b9dfef46d097d0ed2", "61a2e033ae724d6ae337294ed3db38cd", "3591f4ee40440ed4e73494b4c9eef85a", "74330d071ce91eb822951f64104d1b30", "dab38fe098106d2ac187fa410c978486", "22f151fe39ffa40b088f2d64a182c9e5", "191afdccc437d2917500675ced12fb3f", "fd09308a974adeaf7db94cc205f6b10b", "30bb912a4cf7b19c23136af2f3804cbd", "d6ea2f2b783d3ba4ba9cee5caa92550b", "363076546cdfe5f0f6448844f571e353", "e49bd23022e28870bee5cf9315df487d"})[var1])) {
-        //   this.D = 0;
-        //   this.errorText = "F02" + aString.format("%02d", Integer.valueOf(i + 1));
-        //   this.j(4);
-        //} else {
-        AssetTextStream var3 = new AssetTextStream();
-        var3.openRead(aString.format("unitbuy%03d.csv", var1 + 1));
-        var3.readLine();
 
-        while (var2 < this.getLength(this.bJ[var1])) {
-            this.bJ[var1][var2] = var3.getInt(var2);
-            ++var2;
-        }
-
-        var3.close();
-        //}
-
-    }
 
     void d(TextureRenderer var1) {
         int var2 = 0;
@@ -6132,6 +6092,8 @@ public class AppInstance extends Game {
                     if (!this.gu && !this.gU) {
                         switch (this.getSceneType()) {
                             case ERROR:
+                                resetSaveData();
+                                break;
                             default:
                                 break;
                             case OPENING:
@@ -10014,41 +9976,7 @@ public class AppInstance extends Game {
         }
     }
 
-    void loadUnitStats(int var1) {
-        byte var2 = 0;
-        //if (!jp.co.ponos.library.b.aa.equals(jp.co.ponos.library.b.stream.b.d(aString.format("unit%03d.csv", var1 + 1)), (new String[]{"c1270af3244e3bcbee86ee907b6620d6", "5e2d37c28d9e40a9f8782a8e27795f3d", "460611b2de02427382067dcc3d0cc814", "402c64570c5e2c4e8215e4931cf977b2", "b839b84eae1717435ca8f3f2e7e1a854", "4f51f1ddc6d279b46256015a8bf80a4c", "988ce06e07fc9a37a3e5c15f0a28524e", "b9dbe2183b5499818190caa0b9c3f71c", "9b04a3c0dd286686a75278299ffd1a3e", "a31375f8f95246ac8216e68036811d2b", "3d6cb7f95624b4bb8ad7fa2550778882", "aaa281d59c8d7df53f507048492a6cc0", "d96417e8192416632355f20e812aa7bd", "cdc09e9ee36c50c6c4eba2dcb3a3333f", "fb7ecb5101a43146354e1cc05742db04", "d1cb69d162b974483778f35c6f9b6b95", "06259e2354febd4a8f2ec5a790b4cb4d", "ae541a88640505aa18dba6b13dcacf70", "defde8fb3562f29a1439db6904cb1f4d", "09cd101bfb8fd4932177c0a55fc0fe16", "210e495fbe7f5b5df2d08f6754b32e28", "68954abe7e5c084b14876b38a4bcb463", "1550f363ff89f2d491beb020dbc8ac8a", "d1cb69d162b974483778f35c6f9b6b95", "9596d33e9868e98d6f2ffd76a8efac2f", "cc0a57073a5038c5017d11f7077ad570"})[var1])) {
-        //   this.D = 0;
-        //   this.errorText = "F03" + aString.format("%02d", Integer.valueOf(var1 + 1));
-        //   this.j(4);
-        //} else {
-        AssetTextStream var3 = new AssetTextStream();
-        var3.openRead(aString.format("unit%03d.csv", var1 + 1));
 
-        int var4;
-        for (var4 = 0; var4 < this.getLength(this.unitStats[var1 + 2]); ++var4) {
-            var3.readLine();
-
-            for (int var5 = 0; var5 < this.getLength(this.unitStats[var1 + 2][var4]); ++var5) {
-                this.unitStats[var1 + 2][var4][var5] = 0;
-                this.unitStats[var1 + 2][var4][var5] = var3.getInt(var5);
-            }
-
-            this.unitStats[var1 + 2][var4][2] = this.unitStats[var1 + 2][var4][2] * 4 / 2;
-            this.unitStats[var1 + 2][var4][4] *= 2;
-            this.unitStats[var1 + 2][var4][5] *= 4;
-            this.unitStats[var1 + 2][var4][7] *= 2;
-            this.unitStats[var1 + 2][var4][9] *= 4;
-        }
-
-        for (var4 = var2; var4 < this.getLength(this.unitStats[var1 + 2]); ++var4) {
-            int[] var6 = this.unitStats[var1 + 2][var4];
-            var6[6] *= 100;
-        }
-
-        var3.close();
-        //}
-
-    }
 
     void e(TextureRenderer var1) {
         int var2;
@@ -11654,41 +11582,6 @@ public class AppInstance extends Game {
             ++var3;
             var2 = var4;
         } while (var4 > 0);
-
-    }
-
-    void g() {
-        byte var1 = 0;
-        //if (!jp.co.ponos.library.b.aa.equals(jp.co.ponos.library.b.stream.b.d("t_unit.csv"), (new String[]{"48ffde5dd85d010a1e497456122afc2e"})[0])) {
-        //   this.D = 0;
-        //   this.errorText = "F04";
-        //   this.j(4);
-        //} else {
-        AssetTextStream var2 = new AssetTextStream();
-        var2.openRead(aString.format("t_unit.csv"));
-
-        int var3;
-        for (var3 = 0; var3 < this.getLength(this.bY); ++var3) {
-            var2.readLine();
-
-            for (int var4 = 0; var4 < this.getLength(this.bY[var3]); ++var4) {
-                this.bY[var3][var4] = 0;
-                this.bY[var3][var4] = var2.getInt(var4);
-            }
-
-            this.bY[var3][2] = this.bY[var3][2] * 4 / 2;
-            this.bY[var3][4] *= 2;
-            this.bY[var3][5] *= 4;
-            this.bY[var3][8] *= 4;
-        }
-
-        for (var3 = var1; var3 < this.getLength(this.bY); ++var3) {
-            int[] var5 = this.bY[var3];
-            var5[6] *= 100;
-        }
-
-        var2.close();
-        //}
 
     }
 
