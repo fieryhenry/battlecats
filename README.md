@@ -10,7 +10,7 @@ project.
 Original 1.0.0 APK: <https://apkfree.com/download/battle-cats-1.0.0>. It is a
 999999 cat food APK, but all of that code has been removed
 
-Current Version: `JP 1.0.4`
+Current Version: `JP 1.0.5`
 
 APKs started from version 1.0.0 because it had the least amount of code and so
 it was the easiest version to get a compiling and functional app. Once each
@@ -24,7 +24,7 @@ yet)
 
 Prebuilt APKs can be found in the
 [Releases](https://github.com/fieryhenry/battlecats/releases) section for the
-major versions once they are working.
+major versions once all content has been added and the APK is working properly.
 
 A debug APK can be found in the artifacts section of the
 [Build APK](https://github.com/fieryhenry/battlecats/actions/workflows/build-apk.yml)
