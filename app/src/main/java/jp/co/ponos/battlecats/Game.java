@@ -2,6 +2,7 @@ package jp.co.ponos.battlecats;
 
 import java.util.Calendar;
 
+import jp.co.ponos.library.game.Global;
 import jp.co.ponos.library.game.Model;
 import jp.co.ponos.library.game.ModelAnimation;
 import jp.co.ponos.library.game.Point;
@@ -13,9 +14,12 @@ import jp.co.ponos.library.game.MyApplicationBase;
 import jp.co.ponos.library.game.Texture;
 import jp.co.ponos.library.game.AnimTransformer;
 import jp.co.ponos.library.game.aString;
+import jp.co.ponos.library.game.aStringBuffer;
 import jp.co.ponos.library.game.stream.AssetTextStream;
+import jp.co.ponos.library.game.stream.FileHandler;
 import jp.co.ponos.library.game.stream.FileStream;
 import jp.co.ponos.library.game.AlertAppli;
+import jp.co.ponos.library.game.stream.SaveDataStream;
 import jp.co.ponos.library.score.MyUtility;
 
 public class Game extends MyApplicationBase {
@@ -57,7 +61,10 @@ public class Game extends MyApplicationBase {
     static int[] fb = new int[10];
     static int[][] fe = new int[49][3];
     static int hn = 2000;
-    String errorText = "F99";
+    int errorCode = 99;
+    String errorText = "G99";
+    AlertAppli errorPage = new AlertAppli();
+    boolean displayedError = false;
     static int[] l = new int[8];
     static int[] m = new int[8];
     AnimTransformer A = new AnimTransformer();
@@ -2183,391 +2190,987 @@ public class Game extends MyApplicationBase {
     }
 
     boolean ab() {
-        boolean var1 = false;
-        FileStream stream = new FileStream();
-        if (stream.openRead("SAVE_DATA")) {
+        if (FileHandler.exists("SAVE_DATA")) {
+            FileStream stream = new FileStream();
+            if (!stream.openRead("SAVE_DATA")) {
+                this.errorCode = 10;
+                stream.close();
+                this.errorText = "G10";
+                this.setScene(SceneType.ERROR);
+                this.D = 0;
+                return false;
+            }
             stream.enableMD5();
-            //if (!var2.e()) {
-            //   var2.f();
-            //   this.errorText = "F06";
-            //   this.j(4);
-            //   this.D = 0;
-            //   return var1;
-            //}
+            if (!stream.verifyMD5()) {
+                this.errorCode = 6;
+                stream.close();
+                this.errorText = "G06";
+                this.setScene(SceneType.ERROR);
+                this.D = 0;
+                return false;
+            }
+            this.parseSave(stream);
+            stream.close();
+        } else {
+            SaveDataStream stream = new SaveDataStream();
+            if (stream.openRead("SAVE_DATA")) {
+                stream.enableMD5();
+                if (!stream.verifyMD5()) {
+                    this.errorCode = 6;
+                    stream.close();
+                    this.errorText = "G06";
+                    this.setScene(SceneType.ERROR);
+                    this.D = 0;
+                    return false;
+                }
+                this.parseSave(stream);
+                stream.close();
+            }
+        }
 
-            int gameVersion = stream.readInt();
-            Sound.getInstance().muteBGM(stream.readBoolean());
-            Sound.getInstance().muteSE(stream.readBoolean());
-            if (gameVersion == 0 || gameVersion == 1) {
-                this.catfood = stream.readInt();
-                this.currentEnergy = stream.readInt();
+        this.ad();
+        return true;
+    }
 
-                int var4;
-                for (var4 = 0; var4 < this.getLength(this.years); ++var4) {
-                    this.years[var4] = stream.readInt();
+    public void resetSaveData() {
+        if (this.errorCode == 6 || this.errorCode == 7) {
+            if (this.errorPage.b() != 0) {
+                if (this.errorPage.b() == 1) {
+                    ((MyActivity) Global.getInstance().getContext()).finish();
+                    this.displayedError = false;
+                    return;
+                }
+                return;
+            }
+            Sound.getInstance().muteBGM(false);
+            Sound.getInstance().muteSE(false);
+            this.catfood = 0;
+            this.currentEnergy = 0;
+
+            for (int var1 = 0; var1 < this.getLength(this.years); ++var1) {
+                this.years[var1] = 0;
+            }
+
+            for (int var1 = 0; var1 < this.getLength(this.months); ++var1) {
+                this.months[var1] = 0;
+            }
+
+            for (int var1 = 0; var1 < this.getLength(this.days); ++var1) {
+                this.days[var1] = 0;
+            }
+
+            this.aQ = 0.0D;
+            this.hour = 0;
+            this.minute = 0;
+            this.second = 0;
+            this.aU = 0;
+            this.aV = 0;
+            this.aW = 0;
+            this.aX = 0;
+            this.xp = 0;
+            this.aZ = 0;
+            this.ba = 0;
+            this.bb = 0;
+
+            for (int var1 = 0; var1 < this.getLength(this.bc); ++var1) {
+                this.bc[var1] = 0;
+            }
+
+            this.bd = 0;
+            this.be = 0;
+            this.bf = 0;
+            this.u = false;
+            this.bg = 0;
+            this.bh = 0;
+            this.bi = 0;
+            this.bj = 0;
+
+            for (int var1 = 0; var1 < this.getLength(this.slotCatIDs); ++var1) {
+                this.slotCatIDs[var1] = 0;
+            }
+
+            this.currentStamp = 0;
+
+            for (int var1 = 0; var1 < this.getLength(this.stampClaimFlags); ++var1) {
+                this.stampClaimFlags[var1] = 0;
+            }
+
+            this.bn = 0;
+            this.bo = 0;
+
+            for (int var1 = 0; var1 < this.getLength(this.bp); ++var1) {
+                this.bp[var1] = 0;
+            }
+
+            for (int var1 = 0; var1 < this.getLength(this.bq); ++var1) {
+                this.bq[var1] = 0;
+            }
+
+            for (int var1 = 0; var1 < this.getLength(this.br); ++var1) {
+                for (int var2 = 0; var2 < this.getLength(this.br[var1]); ++var2) {
+                    this.br[var1][var2] = 0;
+                }
+            }
+
+            for (int var1 = 0; var1 < this.getLength(this.bs); ++var1) {
+                for (int var2 = 0; var2 < this.getLength(this.bs[var1]); ++var2) {
+                    this.bs[var1][var2] = 0;
+                }
+            }
+
+            for (int var1 = 0; var1 < this.getLength(this.bt); ++var1) {
+                this.bt[var1] = 0;
+            }
+
+            for (int var1 = 0; var1 < this.getLength(this.bu); ++var1) {
+                this.bu[var1] = 0;
+            }
+
+            for (int var1 = 0; var1 < this.getLength(this.bv); ++var1) {
+                this.bv[var1] = 0;
+            }
+
+            for (int var1 = 0; var1 < this.getLength(this.bw); ++var1) {
+                this.bw[var1] = 0;
+            }
+
+            for (int var1 = 0; var1 < this.getLength(this.baseSpecialSkillLevels); ++var1) {
+                this.baseSpecialSkillLevels[var1] = 0;
+            }
+
+            for (int var1 = 0; var1 < this.getLength(this.by); ++var1) {
+                this.by[var1] = 0;
+            }
+
+            for (int var1 = 0; var1 < this.getLength(this.bz); ++var1) {
+                this.bz[var1] = 0;
+            }
+
+            for (int var1 = 0; var1 < this.getLength(this.battleItems); ++var1) {
+                this.battleItems[var1] = 0;
+            }
+
+            for (int var1 = 0; var1 < this.getLength(this.bB); ++var1) {
+                this.bB[var1] = 0;
+            }
+
+            for (int var1 = 0; var1 < this.getLength(this.bC); ++var1) {
+                this.bC[var1] = 0;
+            }
+
+            for (int var1 = 0; var1 < this.getLength(this.bD); ++var1) {
+                this.bD[var1] = 0;
+            }
+
+            for (int var1 = 0; var1 < this.getLength(this.bE); ++var1) {
+                this.bE[var1] = 0;
+            }
+
+            for (int var1 = 0; var1 < this.getLength(this.bF); ++var1) {
+                this.bF[var1] = false;
+            }
+
+            for (int var1 = 0; var1 < this.getLength(this.ht); ++var1) {
+                this.ht[var1] = 0;
+            }
+
+            for (int var1 = 0; var1 < this.getLength(this.hu); ++var1) {
+                this.hu[var1] = 0;
+            }
+
+            this.hv = 0;
+
+            for (int var1 = 0; var1 < this.getLength(this.hw); ++var1) {
+                this.hw[var1] = 0;
+            }
+
+            for (int var1 = 0; var1 < this.getLength(this.hx); ++var1) {
+                this.hx[var1] = 0;
+            }
+
+            this.hy = 0;
+            this.hz = 0;
+            this.hA = 0;
+            this.hB = 0;
+
+            for (int i = 0; i < this.getLength(this.hC); ++i) {
+                this.hC[i] = 0;
+            }
+
+            for (int i = 0; i < this.getLength(this.hD); ++i) {
+                this.hD[i] = 0;
+            }
+
+            for (int i = 0; i < this.getLength(this.hE); ++i) {
+                this.hE[i] = 0;
+            }
+
+            this.hF = 0;
+            this.hG = 0;
+            this.catfood = 1000;
+
+            if (this.aZ == 0) {
+                this.aV = 2;
+                this.currentEnergy = 100;
+                this.calendar = Calendar.getInstance();
+
+                int var1;
+                int var3;
+
+                for (var1 = 0; var1 < 2; ++var1) {
+                    this.years[var1] = this.calendar.get(1);
+                    this.months[var1] = this.calendar.get(2);
+                    this.days[var1] = this.calendar.get(5);
                 }
 
-                for (var4 = 0; var4 < this.getLength(this.months); ++var4) {
-                    this.months[var4] = stream.readInt();
+                this.years[1] = 0;
+                this.months[1] = 0;
+                this.days[1] = 0;
+                this.hour = this.calendar.get(11);
+                this.minute = this.calendar.get(12);
+                this.second = this.calendar.get(13);
+                this.currentStamp = 0;
+
+                for (var1 = 0; var1 < this.getLength(this.stampClaimFlags); ++var1) {
+                    this.stampClaimFlags[var1] = 0;
                 }
 
-                for (var4 = 0; var4 < this.getLength(this.days); ++var4) {
-                    this.days[var4] = stream.readInt();
+                this.bn = 0;
+                this.bo = 0;
+                this.aU = 0;
+                this.aW = 0;
+                this.aX = 0;
+                this.xp = 0;
+                this.aZ = 0;
+                this.ba = 0;
+
+                for (var1 = 0; var1 < this.getLength(this.bc); ++var1) {
+                    this.bc[var1] = 0;
                 }
 
-                this.aQ = stream.readDouble();
-                this.hour = stream.readInt();
-                this.minute = stream.readInt();
-                this.second = stream.readInt();
-                this.aU = stream.readInt();
-                this.aV = stream.readInt();
-                this.aW = stream.readInt();
-                this.aX = stream.readInt();
-                this.xp = stream.readInt();
-                this.aZ = stream.readInt();
-                this.ba = stream.readInt();
-                this.bb = stream.readInt();
+                this.bd = 0;
+                this.gQ = 0;
+                this.bf = 0;
 
-                for (var4 = 0; var4 < this.getLength(this.bc); ++var4) {
-                    this.bc[var4] = stream.readInt();
+                for (var1 = 0; var1 < 10; ++var1) {
+                    this.bp[var1] = 0;
                 }
 
-                this.bd = stream.readInt();
-                this.be = stream.readInt();
-                this.bf = stream.readInt();
-                this.u = stream.readBoolean();
-                this.bg = stream.readInt();
-                this.bh = stream.readInt();
-                this.bi = stream.readInt();
-                this.bj = stream.readInt();
-
-                for (var4 = 0; var4 < this.getLength(this.slotCatIDs); ++var4) {
-                    this.slotCatIDs[var4] = stream.readInt();
+                for (var1 = 0; var1 < 10; ++var1) {
+                    this.bq[var1] = 0;
                 }
 
-                this.currentStamp = stream.readInt();
+                var1 = 0;
 
-                for (var4 = 0; var4 < this.getLength(this.stampClaimFlags); ++var4) {
-                    this.stampClaimFlags[var4] = stream.readInt();
-                }
-
-                this.bn = stream.readInt();
-                this.bo = stream.readInt();
-
-                for (var4 = 0; var4 < this.getLength(this.bp); ++var4) {
-                    this.bp[var4] = stream.readInt();
-                }
-
-                for (var4 = 0; var4 < this.getLength(this.bq); ++var4) {
-                    this.bq[var4] = stream.readInt();
-                }
-
-                var4 = 0;
-
-                label193:
                 while (true) {
-                    int var5;
-                    if (var4 >= this.getLength(this.br)) {
-                        for (var4 = 0; var4 < this.getLength(this.bs); ++var4) {
-                            for (var5 = 0; var5 < this.getLength(this.bs[var4]); ++var5) {
-                                this.bs[var4][var5] = stream.readInt();
+                    if (var1 >= 10) {
+                        for (var1 = 0; var1 < 10; ++var1) {
+                            for (var3 = 0; var3 < this.getLength(this.bs[var1]); ++var3) {
+                                this.bs[var1][var3] = 0;
                             }
                         }
 
-                        for (var4 = 0; var4 < this.getLength(this.bt); ++var4) {
-                            this.bt[var4] = stream.readInt();
+                        for (var1 = 0; var1 < 30; ++var1) {
+                            this.bt[var1] = 0;
                         }
 
-                        for (var4 = 0; var4 < this.getLength(this.bu); ++var4) {
-                            this.bu[var4] = stream.readInt();
+                        for (var1 = 0; var1 < 26; ++var1) {
+                            this.bu[var1] = 0;
                         }
 
-                        for (var4 = 0; var4 < this.getLength(this.bv); ++var4) {
-                            this.bv[var4] = stream.readInt();
+                        this.bu[0] = 1;
+
+                        for (var1 = 0; var1 < 26; ++var1) {
+                            this.bv[var1] = 0;
                         }
 
-                        for (var4 = 0; var4 < this.getLength(this.bw); ++var4) {
-                            this.bw[var4] = stream.readInt();
+                        for (var1 = 0; var1 < this.getLength(this.slotCatIDs); ++var1) {
+                            this.slotCatIDs[var1] = -1;
                         }
 
-                        for (var4 = 0; var4 < this.getLength(this.baseSpecialSkillLevels); ++var4) {
-                            this.baseSpecialSkillLevels[var4] = stream.readInt();
+                        this.slotCatIDs[0] = 2;
+
+                        for (var1 = 0; var1 < 26; ++var1) {
+                            this.bw[var1] = 0;
                         }
 
-                        for (var4 = 0; var4 < this.getLength(this.by); ++var4) {
-                            this.by[var4] = stream.readInt();
+                        for (var1 = 0; var1 < this.getLength(this.baseSpecialSkillLevels); ++var1) {
+                            this.baseSpecialSkillLevels[var1] = 0;
                         }
 
-                        for (var4 = 0; var4 < this.getLength(this.bz); ++var4) {
-                            this.bz[var4] = stream.readInt();
+                        this.bh = 0;
+                        this.bi = 10;
+                        this.bj = 0;
+
+                        for (var1 = 0; var1 < this.getLength(this.by); ++var1) {
+                            this.by[var1] = 0;
                         }
 
-                        for (var4 = 0; var4 < this.getLength(this.battleItems); ++var4) {
-                            this.battleItems[var4] = stream.readInt();
+                        for (var1 = 0; var1 < this.getLength(this.bz); ++var1) {
+                            this.bz[var1] = 0;
                         }
 
-                        for (var4 = 0; var4 < this.getLength(this.bB); ++var4) {
-                            this.bB[var4] = stream.readInt();
+                        for (var1 = 0; var1 < this.getLength(this.bB); ++var1) {
+                            this.bB[var1] = 0;
                         }
 
-                        for (var4 = 0; var4 < this.getLength(this.bC); ++var4) {
-                            this.bC[var4] = stream.readInt();
-                        }
-
-                        for (var4 = 0; var4 < this.getLength(this.bD); ++var4) {
-                            this.bD[var4] = stream.readInt();
-                        }
-
-                        for (var4 = 0; var4 < this.getLength(this.bE); ++var4) {
-                            this.bE[var4] = stream.readInt();
-                        }
-
-                        if (gameVersion < 1) {
-                            break;
-                        }
-
-                        var4 = 0;
-
-                        while (true) {
-                            if (var4 >= this.getLength(this.bF)) {
-                                break label193;
-                            }
-
-                            this.bF[var4] = stream.readBoolean();
-                            ++var4;
-                        }
+                        this.bg = 0;
+                        break;
                     }
 
-                    for (var5 = 0; var5 < this.getLength(this.br[var4]); ++var5) {
-                        this.br[var4][var5] = stream.readInt();
+                    for (var3 = 0; var3 < this.getLength(this.br[var1]); ++var3) {
+                        this.br[var1][var3] = 0;
                     }
 
-                    ++var4;
+                    ++var1;
+                }
+            }this.v = false;
+            if (this.ht[1] == 0) {
+                this.ht[0] = (int) MyUtility.getTimeStamp();
+                this.ht[1] = 1;
+                this.hu[1] = (int) MyUtility.getTimeStamp();
+                this.hw[2] = (int) MyUtility.getTimeStamp();
+            } else {
+                int var10002;
+                int[] var5;
+                if ((int) MyUtility.getTimeStamp() - this.hu[1] >= 86400) {
+                    this.hu[1] = (int) MyUtility.getTimeStamp();
+                    var5 = this.hu;
+                    var10002 = var5[0]++;
+                    if (this.hu[0] >= 999999999) {
+                        this.hu[0] = 999999999;
+                    }
+                }
+
+                var5 = this.hw;
+                var5[0] *= this.hw[1];
+                var5 = this.hw;
+                var10002 = var5[1]++;
+                var5 = this.hw;
+                var5[0] += (int) MyUtility.getTimeStamp() - this.hw[2];
+                this.hw[2] = (int) MyUtility.getTimeStamp();
+                var5 = this.hw;
+                var5[0] /= this.hw[1];
+            }
+
+            int var1 = 0;
+            int var3 = 0;
+            int var4 = 0;
+
+            for (var3 = 9; var3 < 26; ++var3) {
+                var1 += this.bu[var3] << var3 - 9;
+            }
+
+            var4 = this.aX;
+            var3 = var4;
+            if (this.aX >= 2) {
+                var3 = var4;
+                if (this.bq[this.aX] >= 48) {
+                    var3 = var4 + 1;
+                }
+            }
+
+            String var6 = this.a(this.ht[0], this.hu[0], this.hv, this.hw[0], this.hy, this.hz, var3, this.hB, this.hC[0], this.hC[1], this.hC[2], this.hC[3], this.hx, this.hG, this.hF, var1, this.hD, this.hE);
+            //jp.co.ponos.library.a.a.b().a(var6);
+            this.ae();
+            this.isScrolling = false;
+            jp.co.ponos.library.score.a.b().a(this.C);
+            jp.co.ponos.library.score.a.b().c();
+            if (this.al.isLoaded()) {
+                this.al.reset();
+            }
+
+            if (!this.al.isLoaded()) {
+                this.al.load(MyUtility.getString(aString.format("img%03d.png", 5)), MyUtility.getString(aString.format("img%03d.imgcut", 5)));
+            }
+
+            if (this.am.isLoaded()) {
+                this.am.reset();
+            }
+
+            if (!this.am.isLoaded()) {
+                this.am.load(MyUtility.getString(aString.format("img%03d.png", 34)), MyUtility.getString(aString.format("img%03d.imgcut", 34)));
+            }
+
+            if (this.an.isLoaded()) {
+                this.an.reset();
+            }
+
+            if (!this.an.isLoaded()) {
+                this.an.load(MyUtility.getString(aString.format("img%03d.png", 39)), MyUtility.getString(aString.format("img%03d.imgcut", 39)));
+            }
+
+            MyUtility.getInstance().setWebClientViewer(this.c);
+            this.U();
+            this.D = 2;
+            AssetTextStream stream = new AssetTextStream();
+            if (stream.openRead(aString.format("stage.csv"))) {
+                for (var1 = 0; var1 < this.getLength(this.bG); ++var1) {
+                    stream.readLine();
+                    this.bG[var1] = stream.getInt(0);
                 }
             }
 
             stream.close();
+            if (stream.openRead(aString.format("StampData.csv"))) {
+                for (var1 = 0; var1 < this.getLength(this.ho); ++var1) {
+                    stream.readLine();
+
+                    for (var3 = 0; var3 < this.getLength(this.ho[var1]); ++var3) {
+                        this.ho[var1][var3] = stream.getInt(var3);
+                    }
+                }
+            }
+
+            stream.close();
+            this.eQ = 0;
+
+            for (var1 = 0; var1 < 26; ++var1) {
+                this.loadUnitBuy(var1);
+            }
+
+            for (var1 = 0; var1 < 26; ++var1) {
+                this.loadUnitStats(var1);
+            }
+
+            this.loadEnemyStats();
+            this.ac();
+
+            this.displayedError = false;
+
+
         }
 
-        if (!this.ad()) {
-            this.D = 0;
-        } else {
-            var1 = true;
+    }
+    void loadEnemyStats() {
+        byte var1 = 0;
+        //if (!jp.co.ponos.library.b.aa.equals(jp.co.ponos.library.b.stream.b.d("t_unit.csv"), (new String[]{"48ffde5dd85d010a1e497456122afc2e"})[0])) {
+        //   this.D = 0;
+        //   this.errorText = "F04";
+        //   this.j(4);
+        //} else {
+        AssetTextStream var2 = new AssetTextStream();
+        var2.openRead(aString.format("t_unit.csv"));
+
+        int var3;
+        for (var3 = 0; var3 < this.getLength(this.bY); ++var3) {
+            var2.readLine();
+
+            for (int var4 = 0; var4 < this.getLength(this.bY[var3]); ++var4) {
+                this.bY[var3][var4] = 0;
+                this.bY[var3][var4] = var2.getInt(var4);
+            }
+
+            this.bY[var3][2] = this.bY[var3][2] * 4 / 2;
+            this.bY[var3][4] *= 2;
+            this.bY[var3][5] *= 4;
+            this.bY[var3][8] *= 4;
         }
 
-        return var1;
+        for (var3 = var1; var3 < this.getLength(this.bY); ++var3) {
+            int[] var5 = this.bY[var3];
+            var5[6] *= 100;
+        }
+
+        var2.close();
+        //}
+
+    }
+    void loadUnitBuy(int var1) {
+        int var2 = 0;
+        //if (!jp.co.ponos.library.b.aa.equals(jp.co.ponos.library.b.stream.b.d(aString.format("unitbuy%03d.csv", var1 + 1)), (new String[]{"804ffc7cbfb735e79d355538117f602a", "da00d88cc9c3127e88a999879e203a80", "3cf141900d9b21d99811dc850408f901", "4960b382d7171aa0340ae7559f380bea", "47b5dc4ab2521d191b92c7b2f9a5ba2c", "8f9a611bb43e9252e7469274eba48ecb", "1dc60dd4e820a3367da711966904ffbf", "d0cba580b0d3ef8dd3c084912ffd437a", "83d503725ab63f834afda0f11b7027ba", "1e7c9194142f634fc2b7cd01cdef3ef4", "553afaf8a7b6d47304269a93c9f76636", "fb9fe18da89f1b96f739adbe931c7fe0", "3d260bfb7d74ab43f9f31495a257b5f1", "bd06858427bdea0199d2d7e12c24e903", "9761b3638597a99b9dfef46d097d0ed2", "61a2e033ae724d6ae337294ed3db38cd", "3591f4ee40440ed4e73494b4c9eef85a", "74330d071ce91eb822951f64104d1b30", "dab38fe098106d2ac187fa410c978486", "22f151fe39ffa40b088f2d64a182c9e5", "191afdccc437d2917500675ced12fb3f", "fd09308a974adeaf7db94cc205f6b10b", "30bb912a4cf7b19c23136af2f3804cbd", "d6ea2f2b783d3ba4ba9cee5caa92550b", "363076546cdfe5f0f6448844f571e353", "e49bd23022e28870bee5cf9315df487d"})[var1])) {
+        //   this.D = 0;
+        //   this.errorText = "F02" + aString.format("%02d", Integer.valueOf(i + 1));
+        //   this.j(4);
+        //} else {
+        AssetTextStream var3 = new AssetTextStream();
+        var3.openRead(aString.format("unitbuy%03d.csv", var1 + 1));
+        var3.readLine();
+
+        while (var2 < this.getLength(this.bJ[var1])) {
+            this.bJ[var1][var2] = var3.getInt(var2);
+            ++var2;
+        }
+
+        var3.close();
+        //}
+
+    }
+    void loadUnitStats(int var1) {
+        byte var2 = 0;
+        //if (!jp.co.ponos.library.b.aa.equals(jp.co.ponos.library.b.stream.b.d(aString.format("unit%03d.csv", var1 + 1)), (new String[]{"c1270af3244e3bcbee86ee907b6620d6", "5e2d37c28d9e40a9f8782a8e27795f3d", "460611b2de02427382067dcc3d0cc814", "402c64570c5e2c4e8215e4931cf977b2", "b839b84eae1717435ca8f3f2e7e1a854", "4f51f1ddc6d279b46256015a8bf80a4c", "988ce06e07fc9a37a3e5c15f0a28524e", "b9dbe2183b5499818190caa0b9c3f71c", "9b04a3c0dd286686a75278299ffd1a3e", "a31375f8f95246ac8216e68036811d2b", "3d6cb7f95624b4bb8ad7fa2550778882", "aaa281d59c8d7df53f507048492a6cc0", "d96417e8192416632355f20e812aa7bd", "cdc09e9ee36c50c6c4eba2dcb3a3333f", "fb7ecb5101a43146354e1cc05742db04", "d1cb69d162b974483778f35c6f9b6b95", "06259e2354febd4a8f2ec5a790b4cb4d", "ae541a88640505aa18dba6b13dcacf70", "defde8fb3562f29a1439db6904cb1f4d", "09cd101bfb8fd4932177c0a55fc0fe16", "210e495fbe7f5b5df2d08f6754b32e28", "68954abe7e5c084b14876b38a4bcb463", "1550f363ff89f2d491beb020dbc8ac8a", "d1cb69d162b974483778f35c6f9b6b95", "9596d33e9868e98d6f2ffd76a8efac2f", "cc0a57073a5038c5017d11f7077ad570"})[var1])) {
+        //   this.D = 0;
+        //   this.errorText = "F03" + aString.format("%02d", Integer.valueOf(var1 + 1));
+        //   this.j(4);
+        //} else {
+        AssetTextStream var3 = new AssetTextStream();
+        var3.openRead(aString.format("unit%03d.csv", var1 + 1));
+
+        int var4;
+        for (var4 = 0; var4 < this.getLength(this.unitStats[var1 + 2]); ++var4) {
+            var3.readLine();
+
+            for (int var5 = 0; var5 < this.getLength(this.unitStats[var1 + 2][var4]); ++var5) {
+                this.unitStats[var1 + 2][var4][var5] = 0;
+                this.unitStats[var1 + 2][var4][var5] = var3.getInt(var5);
+            }
+
+            this.unitStats[var1 + 2][var4][2] = this.unitStats[var1 + 2][var4][2] * 4 / 2;
+            this.unitStats[var1 + 2][var4][4] *= 2;
+            this.unitStats[var1 + 2][var4][5] *= 4;
+            this.unitStats[var1 + 2][var4][7] *= 2;
+            this.unitStats[var1 + 2][var4][9] *= 4;
+        }
+
+        for (var4 = var2; var4 < this.getLength(this.unitStats[var1 + 2]); ++var4) {
+            int[] var6 = this.unitStats[var1 + 2][var4];
+            var6[6] *= 100;
+        }
+
+        var3.close();
+        //}
+
+    }
+    String a(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int[] var13, int var14, int var15, int var16, int[] var17, int[] var18) {
+        aStringBuffer var19 = new aStringBuffer();
+        var19.append(aString.format("log=1&l=%s&sts=%d&rd=%d&ps=%d&aris=%d&cfrd=%d&cfps=%d&gf=%d&inv=%d&fb=%d&tw=%d&ln=%d&rv=%d", MyUtility.getString("lang"), var1, var2 + 1, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12));
+
+        for (var1 = 0; var1 < 8; ++var1) {
+            var19.append(aString.format("&cf%d=%d", var1, var13[var1]));
+        }
+
+        var19.append(aString.format("&ucu=%d&uco=%d&uch=%d", var14, var15, var16));
+
+        for (var1 = 0; var1 < 11; ++var1) {
+            var19.append(aString.format("&uit%d=%d", var1, var17[var1]));
+        }
+
+        for (var1 = 0; var1 < 4; ++var1) {
+            var19.append(aString.format("&ugo%d=%d", var1, var18[var1]));
+        }
+
+        return var19.toString();
+    }
+    private void parseSave(SaveDataStream stream) {
+        int gameVersion = stream.readInt();
+        Sound.getInstance().muteBGM(stream.readBoolean());
+        Sound.getInstance().muteSE(stream.readBoolean());
+        if (gameVersion == 0 || gameVersion == 1) {
+            this.catfood = stream.readInt();
+            this.currentEnergy = stream.readInt();
+
+            int var4;
+            for (var4 = 0; var4 < this.getLength(this.years); ++var4) {
+                this.years[var4] = stream.readInt();
+            }
+
+            for (var4 = 0; var4 < this.getLength(this.months); ++var4) {
+                this.months[var4] = stream.readInt();
+            }
+
+            for (var4 = 0; var4 < this.getLength(this.days); ++var4) {
+                this.days[var4] = stream.readInt();
+            }
+
+            this.aQ = stream.readDouble();
+            this.hour = stream.readInt();
+            this.minute = stream.readInt();
+            this.second = stream.readInt();
+            this.aU = stream.readInt();
+            this.aV = stream.readInt();
+            this.aW = stream.readInt();
+            this.aX = stream.readInt();
+            this.xp = stream.readInt();
+            this.aZ = stream.readInt();
+            this.ba = stream.readInt();
+            this.bb = stream.readInt();
+
+            for (var4 = 0; var4 < this.getLength(this.bc); ++var4) {
+                this.bc[var4] = stream.readInt();
+            }
+
+            this.bd = stream.readInt();
+            this.be = stream.readInt();
+            this.bf = stream.readInt();
+            this.u = stream.readBoolean();
+            this.bg = stream.readInt();
+            this.bh = stream.readInt();
+            this.bi = stream.readInt();
+            this.bj = stream.readInt();
+
+            for (var4 = 0; var4 < this.getLength(this.slotCatIDs); ++var4) {
+                this.slotCatIDs[var4] = stream.readInt();
+            }
+
+            this.currentStamp = stream.readInt();
+
+            for (var4 = 0; var4 < this.getLength(this.stampClaimFlags); ++var4) {
+                this.stampClaimFlags[var4] = stream.readInt();
+            }
+
+            this.bn = stream.readInt();
+            this.bo = stream.readInt();
+
+            for (var4 = 0; var4 < this.getLength(this.bp); ++var4) {
+                this.bp[var4] = stream.readInt();
+            }
+
+            for (var4 = 0; var4 < this.getLength(this.bq); ++var4) {
+                this.bq[var4] = stream.readInt();
+            }
+
+            var4 = 0;
+
+            label193:
+            while (true) {
+                int var5;
+                if (var4 >= this.getLength(this.br)) {
+                    for (var4 = 0; var4 < this.getLength(this.bs); ++var4) {
+                        for (var5 = 0; var5 < this.getLength(this.bs[var4]); ++var5) {
+                            this.bs[var4][var5] = stream.readInt();
+                        }
+                    }
+
+                    for (var4 = 0; var4 < this.getLength(this.bt); ++var4) {
+                        this.bt[var4] = stream.readInt();
+                    }
+
+                    for (var4 = 0; var4 < this.getLength(this.bu); ++var4) {
+                        this.bu[var4] = stream.readInt();
+                    }
+
+                    for (var4 = 0; var4 < this.getLength(this.bv); ++var4) {
+                        this.bv[var4] = stream.readInt();
+                    }
+
+                    for (var4 = 0; var4 < this.getLength(this.bw); ++var4) {
+                        this.bw[var4] = stream.readInt();
+                    }
+
+                    for (var4 = 0; var4 < this.getLength(this.baseSpecialSkillLevels); ++var4) {
+                        this.baseSpecialSkillLevels[var4] = stream.readInt();
+                    }
+
+                    for (var4 = 0; var4 < this.getLength(this.by); ++var4) {
+                        this.by[var4] = stream.readInt();
+                    }
+
+                    for (var4 = 0; var4 < this.getLength(this.bz); ++var4) {
+                        this.bz[var4] = stream.readInt();
+                    }
+
+                    for (var4 = 0; var4 < this.getLength(this.battleItems); ++var4) {
+                        this.battleItems[var4] = stream.readInt();
+                    }
+
+                    for (var4 = 0; var4 < this.getLength(this.bB); ++var4) {
+                        this.bB[var4] = stream.readInt();
+                    }
+
+                    for (var4 = 0; var4 < this.getLength(this.bC); ++var4) {
+                        this.bC[var4] = stream.readInt();
+                    }
+
+                    for (var4 = 0; var4 < this.getLength(this.bD); ++var4) {
+                        this.bD[var4] = stream.readInt();
+                    }
+
+                    for (var4 = 0; var4 < this.getLength(this.bE); ++var4) {
+                        this.bE[var4] = stream.readInt();
+                    }
+
+                    if (gameVersion < 1) {
+                        break;
+                    }
+
+                    var4 = 0;
+
+                    while (true) {
+                        if (var4 >= this.getLength(this.bF)) {
+                            break label193;
+                        }
+
+                        this.bF[var4] = stream.readBoolean();
+                        ++var4;
+                    }
+                }
+
+                for (var5 = 0; var5 < this.getLength(this.br[var4]); ++var5) {
+                    this.br[var4][var5] = stream.readInt();
+                }
+
+                ++var4;
+            }
+        }
     }
 
     public synchronized void ac() {
         synchronized (this) {
             byte var1 = 0;
-            FileStream var2 = new FileStream();
-            if (var2.openWrite("SAVE_DATA")) {
-                var2.enableMD5();
-                var2.writeInt(1);
-                var2.writeBoolean(Sound.getInstance().isMutedBGM());
-                var2.writeBoolean(Sound.getInstance().isMutedSE());
-                var2.writeInt(this.catfood);
-                var2.writeInt(this.currentEnergy);
+            SaveDataStream stream = new SaveDataStream();
+            if (stream.openWrite("SAVE_DATA")) {
+                stream.enableMD5();
+                stream.writeInt(1);
+                stream.writeBoolean(Sound.getInstance().isMutedBGM());
+                stream.writeBoolean(Sound.getInstance().isMutedSE());
+                stream.writeInt(this.catfood);
+                stream.writeInt(this.currentEnergy);
 
                 int var3;
                 for (var3 = 0; var3 < this.getLength(this.years); ++var3) {
-                    var2.writeInt(this.years[var3]);
+                    stream.writeInt(this.years[var3]);
                 }
 
                 for (var3 = 0; var3 < this.getLength(this.months); ++var3) {
-                    var2.writeInt(this.months[var3]);
+                    stream.writeInt(this.months[var3]);
                 }
 
                 for (var3 = 0; var3 < this.getLength(this.days); ++var3) {
-                    var2.writeInt(this.days[var3]);
+                    stream.writeInt(this.days[var3]);
                 }
 
-                var2.writeDouble(this.aQ);
-                var2.writeInt(this.hour);
-                var2.writeInt(this.minute);
-                var2.writeInt(this.second);
-                var2.writeInt(this.aU);
-                var2.writeInt(this.aV);
-                var2.writeInt(this.aW);
-                var2.writeInt(this.aX);
-                var2.writeInt(this.xp);
-                var2.writeInt(this.aZ);
-                var2.writeInt(this.ba);
-                var2.writeInt(this.bb);
+                stream.writeDouble(this.aQ);
+                stream.writeInt(this.hour);
+                stream.writeInt(this.minute);
+                stream.writeInt(this.second);
+                stream.writeInt(this.aU);
+                stream.writeInt(this.aV);
+                stream.writeInt(this.aW);
+                stream.writeInt(this.aX);
+                stream.writeInt(this.xp);
+                stream.writeInt(this.aZ);
+                stream.writeInt(this.ba);
+                stream.writeInt(this.bb);
 
                 for (var3 = 0; var3 < this.getLength(this.bc); ++var3) {
-                    var2.writeInt(this.bc[var3]);
+                    stream.writeInt(this.bc[var3]);
                 }
 
-                var2.writeInt(this.bd);
-                var2.writeInt(this.be);
-                var2.writeInt(this.bf);
-                var2.writeBoolean(this.u);
-                var2.writeInt(this.bg);
-                var2.writeInt(this.bh);
-                var2.writeInt(this.bi);
-                var2.writeInt(this.bj);
+                stream.writeInt(this.bd);
+                stream.writeInt(this.be);
+                stream.writeInt(this.bf);
+                stream.writeBoolean(this.u);
+                stream.writeInt(this.bg);
+                stream.writeInt(this.bh);
+                stream.writeInt(this.bi);
+                stream.writeInt(this.bj);
 
                 for (var3 = 0; var3 < this.getLength(this.slotCatIDs); ++var3) {
-                    var2.writeInt(this.slotCatIDs[var3]);
+                    stream.writeInt(this.slotCatIDs[var3]);
                 }
 
-                var2.writeInt(this.currentStamp);
+                stream.writeInt(this.currentStamp);
 
                 for (var3 = 0; var3 < this.getLength(this.stampClaimFlags); ++var3) {
-                    var2.writeInt(this.stampClaimFlags[var3]);
+                    stream.writeInt(this.stampClaimFlags[var3]);
                 }
 
-                var2.writeInt(this.bn);
-                var2.writeInt(this.bo);
+                stream.writeInt(this.bn);
+                stream.writeInt(this.bo);
 
                 for (var3 = 0; var3 < this.getLength(this.bp); ++var3) {
-                    var2.writeInt(this.bp[var3]);
+                    stream.writeInt(this.bp[var3]);
                 }
 
                 for (var3 = 0; var3 < this.getLength(this.bq); ++var3) {
-                    var2.writeInt(this.bq[var3]);
+                    stream.writeInt(this.bq[var3]);
                 }
 
                 int var4;
                 for (var3 = 0; var3 < this.getLength(this.br); ++var3) {
                     for (var4 = 0; var4 < this.getLength(this.br[var3]); ++var4) {
-                        var2.writeInt(this.br[var3][var4]);
+                        stream.writeInt(this.br[var3][var4]);
                     }
                 }
 
                 for (var3 = 0; var3 < this.getLength(this.bs); ++var3) {
                     for (var4 = 0; var4 < this.getLength(this.bs[var3]); ++var4) {
-                        var2.writeInt(this.bs[var3][var4]);
+                        stream.writeInt(this.bs[var3][var4]);
                     }
                 }
 
                 for (var3 = 0; var3 < this.getLength(this.bt); ++var3) {
-                    var2.writeInt(this.bt[var3]);
+                    stream.writeInt(this.bt[var3]);
                 }
 
                 for (var3 = 0; var3 < this.getLength(this.bu); ++var3) {
-                    var2.writeInt(this.bu[var3]);
+                    stream.writeInt(this.bu[var3]);
                 }
 
                 for (var3 = 0; var3 < this.getLength(this.bv); ++var3) {
-                    var2.writeInt(this.bv[var3]);
+                    stream.writeInt(this.bv[var3]);
                 }
 
                 for (var3 = 0; var3 < this.getLength(this.bw); ++var3) {
-                    var2.writeInt(this.bw[var3]);
+                    stream.writeInt(this.bw[var3]);
                 }
 
                 for (var3 = 0; var3 < this.getLength(this.baseSpecialSkillLevels); ++var3) {
-                    var2.writeInt(this.baseSpecialSkillLevels[var3]);
+                    stream.writeInt(this.baseSpecialSkillLevels[var3]);
                 }
 
                 for (var3 = 0; var3 < this.getLength(this.by); ++var3) {
-                    var2.writeInt(this.by[var3]);
+                    stream.writeInt(this.by[var3]);
                 }
 
                 for (var3 = 0; var3 < this.getLength(this.bz); ++var3) {
-                    var2.writeInt(this.bz[var3]);
+                    stream.writeInt(this.bz[var3]);
                 }
 
                 for (var3 = 0; var3 < this.getLength(this.battleItems); ++var3) {
-                    var2.writeInt(this.battleItems[var3]);
+                    stream.writeInt(this.battleItems[var3]);
                 }
 
                 for (var3 = 0; var3 < this.getLength(this.bB); ++var3) {
-                    var2.writeInt(this.bB[var3]);
+                    stream.writeInt(this.bB[var3]);
                 }
 
                 for (var3 = 0; var3 < this.getLength(this.bC); ++var3) {
-                    var2.writeInt(this.bC[var3]);
+                    stream.writeInt(this.bC[var3]);
                 }
 
                 for (var3 = 0; var3 < this.getLength(this.bD); ++var3) {
-                    var2.writeInt(this.bD[var3]);
+                    stream.writeInt(this.bD[var3]);
                 }
 
                 for (var3 = 0; var3 < this.getLength(this.bE); ++var3) {
-                    var2.writeInt(this.bE[var3]);
+                    stream.writeInt(this.bE[var3]);
                 }
 
                 for (var3 = var1; var3 < this.getLength(this.bF); ++var3) {
-                    var2.writeBoolean(this.bF[var3]);
+                    stream.writeBoolean(this.bF[var3]);
                 }
 
-                var2.close();
+                stream.close();
+                if (FileHandler.exists("SAVE_DATA")) {
+                    FileHandler.rename("SAVE_DATA", "SAVE_DATA_BACKUP");
+                }
             }
 
             this.ae();
         }
     }
 
-    boolean ad() {
-        boolean var1 = false;
-        byte var2 = 0;
-        FileStream var3 = new FileStream();
-        if (var3.openRead("SAVE_DATA2")) {
-            var3.enableMD5();
-            //if (!var3.e()) {
-            //   this.errorText = "F07";
-            //   this.j(4);
-            //   this.D = 0;
-            //   var3.f();
-            //   return var1;
-            //}
+    void ad() {
+        if (!FileHandler.exists("SAVE_DATA2")) {
+            SaveDataStream stream = new SaveDataStream();
 
-            if (var3.readInt() == 0) {
-                int var4;
-                for (var4 = 0; var4 < this.getLength(this.ht); ++var4) {
-                    this.ht[var4] = var3.readInt();
+            if (stream.openRead("SAVE_DATA2")) {
+                stream.enableMD5();
+                if (stream.verifyMD5()) {
+                    this.parseSaveData2(stream);
+                    stream.close();
+                    return;
                 }
-
-                for (var4 = 0; var4 < this.getLength(this.hu); ++var4) {
-                    this.hu[var4] = var3.readInt();
-                }
-
-                this.hv = var3.readInt();
-
-                for (var4 = 0; var4 < this.getLength(this.hw); ++var4) {
-                    this.hw[var4] = var3.readInt();
-                }
-
-                for (var4 = 0; var4 < this.getLength(this.hx); ++var4) {
-                    this.hx[var4] = var3.readInt();
-                }
-
-                this.hy = var3.readInt();
-                this.hz = var3.readInt();
-                this.hA = var3.readInt();
-                this.hB = var3.readInt();
-
-                for (var4 = 0; var4 < this.getLength(this.hC); ++var4) {
-                    this.hC[var4] = var3.readInt();
-                }
-
-                for (var4 = 0; var4 < this.getLength(this.hD); ++var4) {
-                    this.hD[var4] = var3.readInt();
-                }
-
-                for (var4 = var2; var4 < this.getLength(this.hE); ++var4) {
-                    this.hE[var4] = var3.readInt();
-                }
-
-                this.hF = var3.readInt();
-                this.hG = var3.readInt();
+                this.resetSaveData2();
+                stream.close();
+                return;
             }
+            return;
+        }
+        FileStream stream = new FileStream();
+        if (!stream.openRead("SAVE_DATA2")) {
+            this.resetSaveData2();
+            return;
+        }
+        stream.enableMD5();
+        if (stream.verifyMD5()) {
+            this.parseSaveData2(stream);
+            stream.close();
+            return;
+        }
+        this.resetSaveData2();
+        stream.close();
+    }
 
-            var3.close();
+    private void resetSaveData2() {
+        for (int i = 0; i < this.getLength(this.ht); ++i) {
+            this.ht[i] = 0;
         }
 
-        var1 = true;
-        return var1;
+        for (int i = 0; i < this.getLength(this.hu); ++i) {
+            this.hu[i] = 0;
+        }
+
+        this.hv = 0;
+
+        for (int i = 0; i < this.getLength(this.hw); ++i) {
+            this.hw[i] = 0;
+        }
+
+        for (int i = 0; i < this.getLength(this.hx); ++i) {
+            this.hx[i] = 0;
+        }
+
+        this.hy = 0;
+        this.hz = 0;
+        this.hA = 0;
+        this.hB = 0;
+
+        for (int i = 0; i < this.getLength(this.hC); ++i) {
+            this.hC[i] = 0;
+        }
+
+        for (int i = 0; i < this.getLength(this.hD); ++i) {
+            this.hD[i] = 0;
+        }
+
+        for (int i = 0; i < this.getLength(this.hE); ++i) {
+            this.hE[i] = 0;
+        }
+
+        this.hF = 0;
+        this.hG = 0;
+    }
+
+
+    private void parseSaveData2(SaveDataStream var3) {
+        if (var3.readInt() == 0) {
+            int var4;
+            for (var4 = 0; var4 < this.getLength(this.ht); ++var4) {
+                this.ht[var4] = var3.readInt();
+            }
+
+            for (var4 = 0; var4 < this.getLength(this.hu); ++var4) {
+                this.hu[var4] = var3.readInt();
+            }
+
+            this.hv = var3.readInt();
+
+            for (var4 = 0; var4 < this.getLength(this.hw); ++var4) {
+                this.hw[var4] = var3.readInt();
+            }
+
+            for (var4 = 0; var4 < this.getLength(this.hx); ++var4) {
+                this.hx[var4] = var3.readInt();
+            }
+
+            this.hy = var3.readInt();
+            this.hz = var3.readInt();
+            this.hA = var3.readInt();
+            this.hB = var3.readInt();
+
+            for (var4 = 0; var4 < this.getLength(this.hC); ++var4) {
+                this.hC[var4] = var3.readInt();
+            }
+
+            for (var4 = 0; var4 < this.getLength(this.hD); ++var4) {
+                this.hD[var4] = var3.readInt();
+            }
+
+            for (var4 = 0; var4 < this.getLength(this.hE); ++var4) {
+                this.hE[var4] = var3.readInt();
+            }
+
+            this.hF = var3.readInt();
+            this.hG = var3.readInt();
+        }
     }
 
     public synchronized void ae() {
         synchronized (this) {
             byte var1 = 0;
-            FileStream var2 = new FileStream();
+            SaveDataStream var2 = new SaveDataStream();
             if (var2.openWrite("SAVE_DATA2")) {
                 var2.enableMD5();
                 var2.writeInt(0);
@@ -2611,6 +3214,9 @@ public class Game extends MyApplicationBase {
                 var2.writeInt(this.hF);
                 var2.writeInt(this.hG);
                 var2.close();
+                if (FileHandler.exists("SAVE_DATA2")) {
+                    FileHandler.rename("SAVE_DATA2", "SAVE_DATA2_BACKUP");
+                }
             }
 
         }
@@ -2701,8 +3307,18 @@ public class Game extends MyApplicationBase {
         int var2;
         switch (this.getSceneType()) {
             case ERROR:
-                MyUtility.getInstance().addButton(MyUtility.getString("err_txt") + "\u3000" + this.errorText);
+                if (this.displayedError) {
+                    return;
+                }
+                if (this.errorCode != 6 && this.errorCode != 7) {
+                    MyUtility.getInstance().addButton(MyUtility.getString("err_txt") + "\u3000" + this.errorText);
+                } else if (this.versionCode == 0) {
+                    MyUtility.getInstance().addButtonAppli("セーブデータの破損が確認されました。\nゲームをはじめから開始します。\n\nセーブデータ破損の補填として\n次回ゲームスタート時、\n1000ネコカンを付与します。", new String[]{"はじめから", "キャンセル"}, 2, this.errorPage);
+                } else {
+                    MyUtility.getInstance().addButtonAppli("Save data is broken,\ntherefore a new game will start from the beginning.\n1000 Cat Food will be given as compensation for the loss.\n", new String[]{"Start", "Cancel"}, 2, this.errorPage);
+                }
                 Sound.getInstance().stop(SoundType.ALL);
+                this.displayedError = true;
                 break;
             case OPENING:
                 //jp.co.ponos.library.a.a.b().f();
