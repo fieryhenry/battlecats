@@ -77,17 +77,17 @@ class JSHandler extends DialogFragment {
          if (this.d == null) {
             this.e.frameLayout.addView(this.e.webView);
          } else {
-            Display var1 = ((WindowManager) Global.instance.context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
-            float var2 = Global.getInstance().getContext().getResources().getDisplayMetrics().density / 1.7F;
+            Display display = ((WindowManager) Global.instance.context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+            float screenDensity = Global.getInstance().getContext().getResources().getDisplayMetrics().density / 1.7F;
             int var3;
-            if (Settings.getInstance().j) {
+            if (Settings.getInstance().normalScreen) {
                var3 = 64;
             } else {
                var3 = 88;
             }
 
-            this.e.frameLayout.addView(this.e.webView, -1, (int)((float)var1.getHeight() - (float)var3 * var2));
-            FrameLayout.LayoutParams var11 = new FrameLayout.LayoutParams(-1, (int)((float)var3 * var2));
+            this.e.frameLayout.addView(this.e.webView, -1, (int)((float)display.getHeight() - (float)var3 * screenDensity));
+            FrameLayout.LayoutParams var11 = new FrameLayout.LayoutParams(-1, (int)((float)var3 * screenDensity));
             var11.gravity = 80;
             FrameLayout var4 = new FrameLayout(Global.instance.context);
             FrameLayout.LayoutParams var13;
@@ -103,7 +103,7 @@ class JSHandler extends DialogFragment {
                      var5.close();
                      var6.setImageBitmap(var7);
                      var6.setScaleType(ScaleType.CENTER_CROP);
-                     var13 = new FrameLayout.LayoutParams(-1, (int)((float)var7.getHeight() * var2));
+                     var13 = new FrameLayout.LayoutParams(-1, (int)((float)var7.getHeight() * screenDensity));
                   } catch (Exception var10) {
                      break label118;
                   }
@@ -142,7 +142,7 @@ class JSHandler extends DialogFragment {
                         ((ImageButton)var12).setScaleType(ScaleType.CENTER_CROP);
                         WebViewClickHandler2 var16 = new WebViewClickHandler2(this);
                         ((View)var12).setOnClickListener(var16);
-                        var13 = new FrameLayout.LayoutParams((int)((float)var14.getWidth() * var2), (int)((float)var14.getHeight() * var2));
+                        var13 = new FrameLayout.LayoutParams((int)((float)var14.getWidth() * screenDensity), (int)((float)var14.getHeight() * screenDensity));
                      } catch (Exception var8) {
                         continue;
                      }

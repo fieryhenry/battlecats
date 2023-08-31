@@ -10,8 +10,8 @@ public abstract class Settings {
    public boolean f;
    public String g = "";
    public boolean h;
-   public boolean i;
-   public boolean j;
+   public boolean twitterEnable;
+   public boolean normalScreen;
    public String packageName;
    public int fps;
    public boolean dev;

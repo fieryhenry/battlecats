@@ -27,38 +27,23 @@ class MyGLSurfaceRenderer implements GLSurfaceView.Renderer {
    public void onSurfaceChanged(GL10 var1, int var2, int var3) {
    }
    @Override
-   public void onSurfaceCreated(GL10 var1, EGLConfig var2) {
-      int var3 = 960;
-      Global.getInstance().setGL10(var1);
+   public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) {
+      int width = 960;
+      Global.getInstance().setGL10(gl10);
       int var4;
-      if (!MySettings.getInstance().j) {
-         var4 = ((MyActivity) Global.getInstance().getContext()).surfaceView.getWidth() * 640 / ((MyActivity) Global.getInstance().getContext()).surfaceView.getHeight();
-         if (var4 >= 960) {
-            if (var4 > 1136) {
-               var3 = 1136;
-            } else {
-               var3 = var4;
-            }
+      var4 = ((MyActivity) Global.getInstance().getContext()).surfaceView.getWidth() * 640 / ((MyActivity) Global.getInstance().getContext()).surfaceView.getHeight();
+      if (var4 >= 960) {
+         if (var4 > 1136) {
+            width = 1136;
+         } else {
+            width = var4;
          }
-
-         Global.getInstance().a(var3, 640, ((MyActivity) Global.getInstance().getContext()).surfaceView.getWidth(), ((MyActivity) Global.getInstance().getContext()).surfaceView.getHeight());
-      } else {
-         var4 = ((MyActivity) Global.getInstance().getContext()).surfaceView.getWidth() * 640 / ((MyActivity) Global.getInstance().getContext()).surfaceView.getHeight();
-         if (var4 >= 960) {
-            if (var4 > 1136) {
-               var3 = 1136;
-            } else {
-               var3 = var4;
-            }
-         }
-
-         Global.getInstance().a(var3, 640, ((MyActivity) Global.getInstance().getContext()).surfaceView.getWidth(), ((MyActivity) Global.getInstance().getContext()).surfaceView.getHeight());
       }
+      Global.getInstance().setWidthHeight(width, 640, ((MyActivity) Global.getInstance().getContext()).surfaceView.getWidth(), ((MyActivity) Global.getInstance().getContext()).surfaceView.getHeight());
 
       TextureRenderer.getInstance().setupGL();
-      Iterator it = TexturesLoader.getInstance().getTextures().iterator();
-      while (it.hasNext()) {
-         ((Texture) it.next()).loadUnknown();
+      for (Object o : TexturesLoader.getInstance().getTextures()) {
+         ((Texture) o).loadUnknown();
       }
    }
 }

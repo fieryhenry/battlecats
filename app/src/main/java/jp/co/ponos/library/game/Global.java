@@ -3,7 +3,7 @@ package jp.co.ponos.library.game;
 import android.content.Context;
 import android.os.Handler;
 import android.widget.FrameLayout;
-import java.util.ArrayList;
+
 import java.util.Random;
 import java.util.Vector;
 
@@ -12,8 +12,8 @@ import javax.microedition.khronos.opengles.GL10;
 public class Global {
    static Global instance;
    Random b = new Random();
-   int c;
-   int d;
+   int surfaceWidth;
+   int surfaceHeight;
    int viewportX;
    int viewportY;
    int viewportWidth;
@@ -37,20 +37,20 @@ public class Global {
       instance = var0;
    }
 
-   public void a(int var1, int var2, int var3, int var4) {
-      this.c = var3;
-      this.d = var4;
-      this.width = var1;
-      this.height = var2;
-      if (this.c * var2 / var1 <= this.d) {
-         this.viewportWidth = this.c;
-         this.viewportHeight = this.c * var2 / var1;
+   public void setWidthHeight(int screenWidth, int screenHeight, int surfaceWidth, int surfaceHeight) {
+      this.surfaceWidth = surfaceWidth;
+      this.surfaceHeight = surfaceHeight;
+      this.width = screenWidth;
+      this.height = screenHeight;
+      if (this.surfaceWidth * screenHeight / screenWidth <= this.surfaceHeight) {
+         this.viewportWidth = this.surfaceWidth;
+         this.viewportHeight = this.surfaceWidth * screenHeight / screenWidth;
          this.viewportX = 0;
-         this.viewportY = (this.d - this.viewportHeight) / 2;
+         this.viewportY = (this.surfaceHeight - this.viewportHeight) / 2;
       } else {
-         this.viewportWidth = this.d * var1 / var2;
-         this.viewportHeight = this.d;
-         this.viewportX = (this.c - this.viewportWidth) / 2;
+         this.viewportWidth = this.surfaceHeight * screenWidth / screenHeight;
+         this.viewportHeight = this.surfaceHeight;
+         this.viewportX = (this.surfaceWidth - this.viewportWidth) / 2;
          this.viewportY = 0;
       }
 

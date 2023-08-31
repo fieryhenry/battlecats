@@ -10,9 +10,9 @@ public class MySettings extends Settings {
       this.f = true;
       this.g = "172165472917932";
       this.h = true;
-      this.i = true;
+      this.twitterEnable = true;
       this.packageName = "battlecats";
-      this.j = true;
+      this.normalScreen = true;
       this.fps = 30;
       this.dev = false;
    }

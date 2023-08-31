@@ -100,7 +100,7 @@ public class MyActivity extends Activity { //implements ab, ac, com.tapjoy.q {
          w.b().c();
       }
 
-      if (MySettings.getInstance().i) {
+      if (MySettings.getInstance().twitterEnable) {
          Twitter.createInstance();
       }
 
