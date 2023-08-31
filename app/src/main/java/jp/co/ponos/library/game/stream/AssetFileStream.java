@@ -5,7 +5,7 @@ import java.io.DataInputStream;
 import jp.co.ponos.library.game.Utility;
 import jp.co.ponos.library.game.Global;
 
-public class AssetFileStream extends FileStream {
+public class AssetFileStream extends SaveDataStream {
    public static String getHash(String var0) {
       label33: {
          DataInputStream var1;
