@@ -2218,9 +2218,9 @@ public class Game extends MyApplicationBase {
             if (stream.openRead("SAVE_DATA")) {
                 stream.enableMD5();
                 if (!stream.verifyMD5()) {
-                    this.errorCode = 6;
+                    this.errorCode = 99;
                     stream.close();
-                    this.errorText = "G06";
+                    this.errorText = "G99";
                     this.setScene(SceneType.ERROR);
                     this.D = 0;
                     return false;
