@@ -4436,231 +4436,232 @@ public class AppInstance extends Game {
             this.ai[var1] = new Texture();
         }
 
-        if (this.ab()) {
-            if (this.aZ == 0) {
-                this.aV = 2;
-                this.currentEnergy = 100;
-                this.calendar = Calendar.getInstance();
+        if (!this.ab()) {
+            setScene(SceneType.ERROR);
+            return;
+        }
+        if (this.aZ == 0) {
+            this.aV = 2;
+            this.currentEnergy = 100;
+            this.calendar = Calendar.getInstance();
 
-                for (var1 = 0; var1 < 2; ++var1) {
-                    this.years[var1] = this.calendar.get(1);
-                    this.months[var1] = this.calendar.get(2);
-                    this.days[var1] = this.calendar.get(5);
-                }
-
-                this.years[1] = 0;
-                this.months[1] = 0;
-                this.days[1] = 0;
-                this.hour = this.calendar.get(11);
-                this.minute = this.calendar.get(12);
-                this.second = this.calendar.get(13);
-                this.currentStamp = 0;
-
-                for (var1 = 0; var1 < this.getLength(this.stampClaimFlags); ++var1) {
-                    this.stampClaimFlags[var1] = 0;
-                }
-
-                this.bn = 0;
-                this.bo = 0;
-                this.aU = 0;
-                this.aW = 0;
-                this.aX = 0;
-                this.xp = 0;
-                this.aZ = 0;
-                this.ba = 0;
-
-                for (var1 = 0; var1 < this.getLength(this.bc); ++var1) {
-                    this.bc[var1] = 0;
-                }
-
-                this.bd = 0;
-                this.gQ = 0;
-                this.bf = 0;
-
-                for (var1 = 0; var1 < 10; ++var1) {
-                    this.bp[var1] = 0;
-                }
-
-                for (var1 = 0; var1 < 10; ++var1) {
-                    this.bq[var1] = 0;
-                }
-
-                var1 = 0;
-
-                while (true) {
-                    if (var1 >= 10) {
-                        for (var1 = 0; var1 < 10; ++var1) {
-                            for (var3 = 0; var3 < this.getLength(this.bs[var1]); ++var3) {
-                                this.bs[var1][var3] = 0;
-                            }
-                        }
-
-                        for (var1 = 0; var1 < 30; ++var1) {
-                            this.bt[var1] = 0;
-                        }
-
-                        for (var1 = 0; var1 < 26; ++var1) {
-                            this.bu[var1] = 0;
-                        }
-
-                        this.bu[0] = 1;
-
-                        for (var1 = 0; var1 < 26; ++var1) {
-                            this.bv[var1] = 0;
-                        }
-
-                        for (var1 = 0; var1 < this.getLength(this.slotCatIDs); ++var1) {
-                            this.slotCatIDs[var1] = -1;
-                        }
-
-                        this.slotCatIDs[0] = 2;
-
-                        for (var1 = 0; var1 < 26; ++var1) {
-                            this.bw[var1] = 0;
-                        }
-
-                        for (var1 = 0; var1 < this.getLength(this.baseSpecialSkillLevels); ++var1) {
-                            this.baseSpecialSkillLevels[var1] = 0;
-                        }
-
-                        this.bh = 0;
-                        this.bi = 10;
-                        this.bj = 0;
-
-                        for (var1 = 0; var1 < this.getLength(this.by); ++var1) {
-                            this.by[var1] = 0;
-                        }
-
-                        for (var1 = 0; var1 < this.getLength(this.bz); ++var1) {
-                            this.bz[var1] = 0;
-                        }
-
-                        for (var1 = 0; var1 < this.getLength(this.bB); ++var1) {
-                            this.bB[var1] = 0;
-                        }
-
-                        this.bg = 0;
-                        break;
-                    }
-
-                    for (var3 = 0; var3 < this.getLength(this.br[var1]); ++var3) {
-                        this.br[var1][var3] = 0;
-                    }
-
-                    ++var1;
-                }
+            for (var1 = 0; var1 < 2; ++var1) {
+                this.years[var1] = this.calendar.get(1);
+                this.months[var1] = this.calendar.get(2);
+                this.days[var1] = this.calendar.get(5);
             }
 
-            this.v = false;
-            if (this.ht[1] == 0) {
-                this.ht[0] = (int) MyUtility.getTimeStamp();
-                this.ht[1] = 1;
-                this.hu[1] = (int) MyUtility.getTimeStamp();
-                this.hw[2] = (int) MyUtility.getTimeStamp();
-            } else {
-                int var10002;
-                int[] var5;
-                if ((int) MyUtility.getTimeStamp() - this.hu[1] >= 86400) {
-                    this.hu[1] = (int) MyUtility.getTimeStamp();
-                    var5 = this.hu;
-                    var10002 = var5[0]++;
-                    if (this.hu[0] >= 999999999) {
-                        this.hu[0] = 999999999;
-                    }
-                }
+            this.years[1] = 0;
+            this.months[1] = 0;
+            this.days[1] = 0;
+            this.hour = this.calendar.get(11);
+            this.minute = this.calendar.get(12);
+            this.second = this.calendar.get(13);
+            this.currentStamp = 0;
 
-                var5 = this.hw;
-                var5[0] *= this.hw[1];
-                var5 = this.hw;
-                var10002 = var5[1]++;
-                var5 = this.hw;
-                var5[0] += (int) MyUtility.getTimeStamp() - this.hw[2];
-                this.hw[2] = (int) MyUtility.getTimeStamp();
-                var5 = this.hw;
-                var5[0] /= this.hw[1];
+            for (var1 = 0; var1 < this.getLength(this.stampClaimFlags); ++var1) {
+                this.stampClaimFlags[var1] = 0;
+            }
+
+            this.bn = 0;
+            this.bo = 0;
+            this.aU = 0;
+            this.aW = 0;
+            this.aX = 0;
+            this.xp = 0;
+            this.aZ = 0;
+            this.ba = 0;
+
+            for (var1 = 0; var1 < this.getLength(this.bc); ++var1) {
+                this.bc[var1] = 0;
+            }
+
+            this.bd = 0;
+            this.gQ = 0;
+            this.bf = 0;
+
+            for (var1 = 0; var1 < 10; ++var1) {
+                this.bp[var1] = 0;
+            }
+
+            for (var1 = 0; var1 < 10; ++var1) {
+                this.bq[var1] = 0;
             }
 
             var1 = 0;
 
-            for (var3 = 9; var3 < 26; ++var3) {
-                var1 += this.bu[var3] << var3 - 9;
-            }
-
-            var4 = this.aX;
-            var3 = var4;
-            if (this.aX >= 2) {
-                var3 = var4;
-                if (this.bq[this.aX] >= 48) {
-                    var3 = var4 + 1;
-                }
-            }
-
-            String var6 = this.a(this.ht[0], this.hu[0], this.hv, this.hw[0], this.hy, this.hz, var3, this.hB, this.hC[0], this.hC[1], this.hC[2], this.hC[3], this.hx, this.hG, this.hF, var1, this.hD, this.hE);
-            //jp.co.ponos.library.a.a.b().a(var6);
-            this.ae();
-            this.isScrolling = false;
-            jp.co.ponos.library.score.a.b().a(this.C);
-            jp.co.ponos.library.score.a.b().c();
-            if (this.al.isLoaded()) {
-                this.al.reset();
-            }
-
-            if (!this.al.isLoaded()) {
-                this.al.load(MyUtility.getString(aString.format("img%03d.png", 5)), MyUtility.getString(aString.format("img%03d.imgcut", 5)));
-            }
-
-            if (this.am.isLoaded()) {
-                this.am.reset();
-            }
-
-            if (!this.am.isLoaded()) {
-                this.am.load(MyUtility.getString(aString.format("img%03d.png", 34)), MyUtility.getString(aString.format("img%03d.imgcut", 34)));
-            }
-
-            if (this.an.isLoaded()) {
-                this.an.reset();
-            }
-
-            if (!this.an.isLoaded()) {
-                this.an.load(MyUtility.getString(aString.format("img%03d.png", 39)), MyUtility.getString(aString.format("img%03d.imgcut", 39)));
-            }
-
-            MyUtility.getInstance().setWebClientViewer(this.c);
-            this.U();
-            this.D = 2;
-            stream = new AssetTextStream();
-            if (stream.openRead(aString.format("stage.csv"))) {
-                for (var1 = 0; var1 < this.getLength(this.bG); ++var1) {
-                    stream.readLine();
-                    this.bG[var1] = stream.getInt(0);
-                }
-            }
-
-            stream.close();
-            if (stream.openRead(aString.format("StampData.csv"))) {
-                for (var1 = 0; var1 < this.getLength(this.ho); ++var1) {
-                    stream.readLine();
-
-                    for (var3 = 0; var3 < this.getLength(this.ho[var1]); ++var3) {
-                        this.ho[var1][var3] = stream.getInt(var3);
+            while (true) {
+                if (var1 >= 10) {
+                    for (var1 = 0; var1 < 10; ++var1) {
+                        for (var3 = 0; var3 < this.getLength(this.bs[var1]); ++var3) {
+                            this.bs[var1][var3] = 0;
+                        }
                     }
+
+                    for (var1 = 0; var1 < 30; ++var1) {
+                        this.bt[var1] = 0;
+                    }
+
+                    for (var1 = 0; var1 < 26; ++var1) {
+                        this.bu[var1] = 0;
+                    }
+
+                    this.bu[0] = 1;
+
+                    for (var1 = 0; var1 < 26; ++var1) {
+                        this.bv[var1] = 0;
+                    }
+
+                    for (var1 = 0; var1 < this.getLength(this.slotCatIDs); ++var1) {
+                        this.slotCatIDs[var1] = -1;
+                    }
+
+                    this.slotCatIDs[0] = 2;
+
+                    for (var1 = 0; var1 < 26; ++var1) {
+                        this.bw[var1] = 0;
+                    }
+
+                    for (var1 = 0; var1 < this.getLength(this.baseSpecialSkillLevels); ++var1) {
+                        this.baseSpecialSkillLevels[var1] = 0;
+                    }
+
+                    this.bh = 0;
+                    this.bi = 10;
+                    this.bj = 0;
+
+                    for (var1 = 0; var1 < this.getLength(this.by); ++var1) {
+                        this.by[var1] = 0;
+                    }
+
+                    for (var1 = 0; var1 < this.getLength(this.bz); ++var1) {
+                        this.bz[var1] = 0;
+                    }
+
+                    for (var1 = 0; var1 < this.getLength(this.bB); ++var1) {
+                        this.bB[var1] = 0;
+                    }
+
+                    this.bg = 0;
+                    break;
+                }
+
+                for (var3 = 0; var3 < this.getLength(this.br[var1]); ++var3) {
+                    this.br[var1][var3] = 0;
+                }
+
+                ++var1;
+            }
+        }
+
+        this.v = false;
+        if (this.ht[1] == 0) {
+            this.ht[0] = (int) MyUtility.getTimeStamp();
+            this.ht[1] = 1;
+            this.hu[1] = (int) MyUtility.getTimeStamp();
+            this.hw[2] = (int) MyUtility.getTimeStamp();
+        } else {
+            int var10002;
+            int[] var5;
+            if ((int) MyUtility.getTimeStamp() - this.hu[1] >= 86400) {
+                this.hu[1] = (int) MyUtility.getTimeStamp();
+                var5 = this.hu;
+                var10002 = var5[0]++;
+                if (this.hu[0] >= 999999999) {
+                    this.hu[0] = 999999999;
                 }
             }
 
-            stream.close();
-            this.eQ = 0;
-
-            for (var1 = 0; var1 < 26; ++var1) {
-                this.loadUnitBuy(var1);
-            }
-
-            for (var1 = 0; var1 < 26; ++var1) {
-                this.loadUnitStats(var1);
-            }
-
-            this.loadEnemyStats();
-
+            var5 = this.hw;
+            var5[0] *= this.hw[1];
+            var5 = this.hw;
+            var10002 = var5[1]++;
+            var5 = this.hw;
+            var5[0] += (int) MyUtility.getTimeStamp() - this.hw[2];
+            this.hw[2] = (int) MyUtility.getTimeStamp();
+            var5 = this.hw;
+            var5[0] /= this.hw[1];
         }
+
+        var1 = 0;
+
+        for (var3 = 9; var3 < 26; ++var3) {
+            var1 += this.bu[var3] << var3 - 9;
+        }
+
+        var4 = this.aX;
+        var3 = var4;
+        if (this.aX >= 2) {
+            var3 = var4;
+            if (this.bq[this.aX] >= 48) {
+                var3 = var4 + 1;
+            }
+        }
+
+        String var6 = this.a(this.ht[0], this.hu[0], this.hv, this.hw[0], this.hy, this.hz, var3, this.hB, this.hC[0], this.hC[1], this.hC[2], this.hC[3], this.hx, this.hG, this.hF, var1, this.hD, this.hE);
+        //jp.co.ponos.library.a.a.b().a(var6);
+        this.ae();
+        this.isScrolling = false;
+        jp.co.ponos.library.score.a.b().a(this.C);
+        jp.co.ponos.library.score.a.b().c();
+        if (this.al.isLoaded()) {
+            this.al.reset();
+        }
+
+        if (!this.al.isLoaded()) {
+            this.al.load(MyUtility.getString(aString.format("img%03d.png", 5)), MyUtility.getString(aString.format("img%03d.imgcut", 5)));
+        }
+
+        if (this.am.isLoaded()) {
+            this.am.reset();
+        }
+
+        if (!this.am.isLoaded()) {
+            this.am.load(MyUtility.getString(aString.format("img%03d.png", 34)), MyUtility.getString(aString.format("img%03d.imgcut", 34)));
+        }
+
+        if (this.an.isLoaded()) {
+            this.an.reset();
+        }
+
+        if (!this.an.isLoaded()) {
+            this.an.load(MyUtility.getString(aString.format("img%03d.png", 39)), MyUtility.getString(aString.format("img%03d.imgcut", 39)));
+        }
+
+        MyUtility.getInstance().setWebClientViewer(this.c);
+        this.U();
+        this.D = 2;
+        stream = new AssetTextStream();
+        if (stream.openRead(aString.format("stage.csv"))) {
+            for (var1 = 0; var1 < this.getLength(this.bG); ++var1) {
+                stream.readLine();
+                this.bG[var1] = stream.getInt(0);
+            }
+        }
+
+        stream.close();
+        if (stream.openRead(aString.format("StampData.csv"))) {
+            for (var1 = 0; var1 < this.getLength(this.ho); ++var1) {
+                stream.readLine();
+
+                for (var3 = 0; var3 < this.getLength(this.ho[var1]); ++var3) {
+                    this.ho[var1][var3] = stream.getInt(var3);
+                }
+            }
+        }
+
+        stream.close();
+        this.eQ = 0;
+
+        for (var1 = 0; var1 < 26; ++var1) {
+            this.loadUnitBuy(var1);
+        }
+
+        for (var1 = 0; var1 < 26; ++var1) {
+            this.loadUnitStats(var1);
+        }
+
+        this.loadEnemyStats();
 
     }
 
