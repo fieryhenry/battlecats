@@ -17324,21 +17324,12 @@ public class AppInstance extends Game {
                 }
 
                 if (var3 - this.gC[0] >= this.gB[1] && var3 - this.gC[0] < this.gB[0] && this.bu[this.bK[var3 - this.gC[0] - this.gB[1]]] == 0) {
-                    if (this.fS[3] == 0) {
-                        var6 = this.uiTextures[8];
-                        var17 = (float) this.getWidth() / 2.0F;
-                        var18 = (float) this.go[var3][0] / 2.0F;
-                        var15 = (float) (this.boxScale * var3);
-                        var16 = (float) this.scrollOffset[0];
-                        var1.drawScaledImage(var6, 125.0F * ((float) this.go[var3][0] * 100.0F / 328.0F) / 100.0F + var17 - var18 + var15 + var16 + var10, 347.0F - 146.0F * ((float) this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F, 187.0F * ((float) this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F, 53.0F * ((float) this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F, 58);
-                    } else if (this.catfood >= this.bJ[this.bK[var3 - this.gC[0] - this.gB[1]]][1]) {
-                        var6 = this.uiTextures[8];
-                        var17 = (float) this.getWidth() / 2.0F;
-                        var18 = (float) this.go[var3][0] / 2.0F;
-                        var15 = (float) (this.boxScale * var3);
-                        var16 = (float) this.scrollOffset[0];
-                        var1.drawScaledImage(var6, 125.0F * ((float) this.go[var3][0] * 100.0F / 328.0F) / 100.0F + var17 - var18 + var15 + var16 + var10, 347.0F - 146.0F * ((float) this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F, 187.0F * ((float) this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F, 53.0F * ((float) this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F, 58);
-                    }
+                    var6 = this.uiTextures[8];
+                    var17 = (float) this.getWidth() / 2.0F;
+                    var18 = (float) this.go[var3][0] / 2.0F;
+                    var15 = (float) (this.boxScale * var3);
+                    var16 = (float) this.scrollOffset[0];
+                    var1.drawScaledImage(var6, 125.0F * ((float) this.go[var3][0] * 100.0F / 328.0F) / 100.0F + var17 - var18 + var15 + var16 + var10, 347.0F - 146.0F * ((float) this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F, 187.0F * ((float) this.go[var3][0] * 10000.0F / 328.0F) / 10000.0F, 53.0F * ((float) this.go[var3][1] * 10000.0F / 263.0F) / 10000.0F, 58);
                 }
 
                 var2 = var4;
@@ -23358,7 +23349,7 @@ public class AppInstance extends Game {
             ++quoteCount2;
         }
 
-        //if (this.bo == 0 && jp.co.ponos.library.a.a.b().i() && jp.co.ponos.library.a.a.b().j() - this.aQ >= 86400.0) {
+        //if (jp.co.ponos.library.a.a.b().i() && jp.co.ponos.library.a.a.b().j() - this.aQ >= 86400.0) {
         //   this.aQ = jp.co.ponos.library.a.a.b().j();
         //   this.aV = 2;
         //}
