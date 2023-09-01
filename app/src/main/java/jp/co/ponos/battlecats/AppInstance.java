@@ -5905,7 +5905,11 @@ public class AppInstance extends Game {
 
                 MyUtility.getInstance().addAlertCloser();
                 if (this.D == 2) {
-                    this.setScene(SceneType.OPENING);
+                    if (this.gameVersion == 0 || this.gameVersion == 1 || this.gameVersion == 2) {
+                        this.setScene(SceneType.CF_ENERGY_SCREEN);
+                    } else {
+                        this.setScene(SceneType.OPENING);
+                    }
                 }
 
                 this.D = 0;
@@ -6107,6 +6111,9 @@ public class AppInstance extends Game {
                                 break;
                             case BATTLE:
                                 if (battleProcess()) return;
+                                break;
+                            case CF_ENERGY_SCREEN:
+                                energyScreenProcess();
                                 break;
                         }
                     }
@@ -11226,6 +11233,10 @@ public class AppInstance extends Game {
                 textureRenderer.setBlendMode(0);
                 textureRenderer.setImageAlpha(255);
                 this.a(textureRenderer, this.ed);
+            case CF_ENERGY_SCREEN:
+                textureRenderer.setColor(0, 0, 0);
+                textureRenderer.drawRectangle(0, -this.yOffset, getWidth(), getHeight());
+                break;
         }
 
         textureRenderer.removeAnimTransformer();

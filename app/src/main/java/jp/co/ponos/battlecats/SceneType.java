@@ -7,6 +7,7 @@ public enum SceneType {
     ENDING(99),
     MAIN(100),
     BATTLE(300),
+    CF_ENERGY_SCREEN(1000),
     ;
 
     public final int sceneID;

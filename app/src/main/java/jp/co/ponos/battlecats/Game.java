@@ -3557,8 +3557,33 @@ public class Game extends MyApplicationBase {
                 break;
             case BATTLE:
                 this.V();
+                return;
+            case CF_ENERGY_SCREEN:
+                if (this.displayedError) {
+                    return;
+                }
+                if (this.versionCode == 0) {
+                    MyUtility.getInstance().addButtonAppli("(金)に発生した統率力の不具合により、ご迷惑をおかけしましたことをお詫び申し上げます。運営より「100ネコカン」をお送りさせて頂きます。", new String[]{"ＯＫ", "アプリ終了"}, 2, this.errorPage);
+                } else {
+                    MyUtility.getInstance().addButtonAppli("We apologize for the ENERGY trouble on Feb 1.Please accept 100 Cat Food from us.", new String[]{"OK", "Finish the app"}, 2, this.errorPage);
+                }
+                this.displayedError = true;
+                Sound.getInstance().stop(SoundType.ALL);
+            default:
+                return;
         }
+    }
 
+    public void energyScreenProcess() {
+        if (this.errorPage.b() == 0) {
+            this.catfood += 100;
+            this.ac();
+            setScene(SceneType.OPENING);
+            this.displayedError = false;
+        } else if (this.errorPage.b() == 1) {
+            ((MyActivity) Global.getInstance().getContext()).finish();
+            this.displayedError = false;
+        }
     }
 
     void setScene2(int sceneID) {
