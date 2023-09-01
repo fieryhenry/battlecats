@@ -479,6 +479,7 @@ public class Game extends MyApplicationBase {
     Point x = new Point();
     Zoom zoom = new Zoom();
     int z;
+    int gameVersion = -1;
 
     void setConstants() {
         fb = new int[]{159, 289, 419, 549, 679, 171, 301, 431, 561, 691};
@@ -2202,6 +2203,7 @@ public class Game extends MyApplicationBase {
             }
             stream.enableMD5();
             if (!stream.verifyMD5()) {
+                this.gameVersion = 0;
                 this.errorCode = 6;
                 stream.close();
                 this.errorText = "G06";
@@ -2753,11 +2755,12 @@ public class Game extends MyApplicationBase {
     }
     private void parseSave(SaveDataStream stream) {
         int gameVersion = stream.readInt();
+        this.gameVersion = gameVersion;
         Sound.getInstance().muteBGM(stream.readBoolean());
         Sound.getInstance().muteSE(stream.readBoolean());
         int var5;
         int var4;
-        if (gameVersion == 0 || gameVersion == 1 || gameVersion == 2) {
+        if (gameVersion == 0 || gameVersion == 1 || gameVersion == 2 || gameVersion == 3) {
             this.catfood = stream.readInt();
             this.currentEnergy = stream.readInt();
 
@@ -2886,7 +2889,8 @@ public class Game extends MyApplicationBase {
                 }
             }
         }
-        if (gameVersion == 0 || gameVersion == 1) {
+        if (gameVersion == 0 || gameVersion == 1 || gameVersion == 2) {
+            U();
             this.calendar = Calendar.getInstance();
             this.years[0] = this.calendar.get(1);
             this.months[0] = this.calendar.get(2);
@@ -2909,7 +2913,7 @@ public class Game extends MyApplicationBase {
             SaveDataStream stream = new SaveDataStream();
             if (stream.openWrite("SAVE_DATA")) {
                 stream.enableMD5();
-                stream.writeInt(2);
+                stream.writeInt(3);
                 stream.writeBoolean(Sound.getInstance().isMutedBGM());
                 stream.writeBoolean(Sound.getInstance().isMutedSE());
                 stream.writeInt(this.catfood);

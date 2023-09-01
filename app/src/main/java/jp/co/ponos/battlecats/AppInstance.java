@@ -3794,6 +3794,7 @@ public class AppInstance extends Game {
     @Override
     public void onCreate() {
         this.setConstants();
+        this.gameVersion = -1;
 
         int var1;
         for (var1 = 0; var1 < this.getLength(this.bF); ++var1) {
