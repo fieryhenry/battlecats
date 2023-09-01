@@ -299,7 +299,7 @@ public class Game extends MyApplicationBase {
     int[] rechargeTimes = new int[10];
     boolean eX;
     int pointerID;
-    int eZ;
+    int yScreenOffset;
     int ea;
     boolean eb;
     int ec;
@@ -1357,15 +1357,15 @@ public class Game extends MyApplicationBase {
         this.textTextures[10].loadText(this.optionText[1], "FONT_SYSTEM_BOLD", 30, 1);
         this.gA[0] = 20;
         this.buttonCoordinates1[0][0] = this.excessWidth + 814;
-        this.buttonCoordinates1[0][1] = this.eZ + 510;
+        this.buttonCoordinates1[0][1] = this.yScreenOffset + 510;
         this.buttonCoordinates1[0][2] = 146;
         this.buttonCoordinates1[0][3] = 130;
         this.buttonCoordinates1[1][0] = 0;
-        this.buttonCoordinates1[1][1] = this.eZ + 515;
+        this.buttonCoordinates1[1][1] = this.yScreenOffset + 515;
         this.buttonCoordinates1[1][2] = 146;
         this.buttonCoordinates1[1][3] = 125;
         this.buttonCoordinates1[3][0] = 0;
-        this.buttonCoordinates1[3][1] = 0 - this.eZ;
+        this.buttonCoordinates1[3][1] = 0 - this.yScreenOffset;
         this.buttonCoordinates1[3][2] = 88;
         this.buttonCoordinates1[3][3] = 88;
         var3 = 5;
@@ -1374,7 +1374,7 @@ public class Game extends MyApplicationBase {
             var2 = var3;
             if (this.eL[var1] != 0) {
                 this.eJ[var1][0] = var3 * 88 + 432 + this.excessWidth;
-                this.eJ[var1][1] = 43 - this.eZ;
+                this.eJ[var1][1] = 43 - this.yScreenOffset;
                 this.eJ[var1][2] = 88;
                 this.eJ[var1][3] = 88;
                 var2 = var3 - 1;
@@ -1514,7 +1514,7 @@ public class Game extends MyApplicationBase {
         }
 
         this.hj[0][0] = this.excessWidth / 2 + 246;
-        this.hj[0][1] = 0 - this.eZ;
+        this.hj[0][1] = 0 - this.yScreenOffset;
         this.hj[0][2] = 131;
         this.hj[0][3] = 107;
         this.hj[1][0] = this.excessWidth / 2 + 246;
@@ -1550,11 +1550,11 @@ public class Game extends MyApplicationBase {
         this.hj[8][2] = 88;
         this.hj[8][3] = 88;
         this.buttonCoordinates1[10][0] = this.excessWidth + 701;
-        this.buttonCoordinates1[10][1] = this.eZ + 578;
+        this.buttonCoordinates1[10][1] = this.yScreenOffset + 578;
         this.buttonCoordinates1[10][2] = 88;
         this.buttonCoordinates1[10][3] = 88;
         this.buttonCoordinates1[11][0] = this.excessWidth + 799;
-        this.buttonCoordinates1[11][1] = this.eZ + 578;
+        this.buttonCoordinates1[11][1] = this.yScreenOffset + 578;
         this.buttonCoordinates1[11][2] = 88;
         this.buttonCoordinates1[11][3] = 88;
         this.buttonCoordinates1[13][0] = 197;
@@ -1937,14 +1937,14 @@ public class Game extends MyApplicationBase {
         this.eH[7] = (100 - var4) * 10 / 100;
         if (var3 == 0) {
             var1.setColor(0, 0, 0);
-            var1.drawRectangle(fb[var2] + 6 + this.excessWidth / 2, this.eI[0] + 610 - 4 + this.eZ, 97, 14);
+            var1.drawRectangle(fb[var2] + 6 + this.excessWidth / 2, this.eI[0] + 610 - 4 + this.yScreenOffset, 97, 14);
             var1.setColor(0, 255, 255);
-            var1.drawRectangle(fb[var2] + 8 + this.excessWidth / 2, this.eI[0] + 612 - 4 + this.eZ, this.eH[3], 10);
+            var1.drawRectangle(fb[var2] + 8 + this.excessWidth / 2, this.eI[0] + 612 - 4 + this.yScreenOffset, this.eH[3], 10);
         } else {
             var1.setColor(0, 0, 0);
-            var1.drawRectangle(fb[var2] + 6 + (97 - this.eH[4]) / 2 + this.excessWidth / 2, this.eI[0] + 610 + this.eD[var3] - (14 - this.eH[5]) / 2 + this.eZ, this.eH[4], this.eH[5]);
+            var1.drawRectangle(fb[var2] + 6 + (97 - this.eH[4]) / 2 + this.excessWidth / 2, this.eI[0] + 610 + this.eD[var3] - (14 - this.eH[5]) / 2 + this.yScreenOffset, this.eH[4], this.eH[5]);
             var1.setColor(0, 255, 255);
-            var1.drawRectangle(fb[var2] + 8 + (93 - (100 - var4) * 93 / 100) / 2 + this.excessWidth / 2, this.eI[0] + 612 + this.eD[var3] - (10 - this.eH[7]) / 2 + this.eZ, this.eH[6], this.eH[7]);
+            var1.drawRectangle(fb[var2] + 8 + (93 - (100 - var4) * 93 / 100) / 2 + this.excessWidth / 2, this.eI[0] + 612 + this.eD[var3] - (10 - this.eH[7]) / 2 + this.yScreenOffset, this.eH[6], this.eH[7]);
         }
 
     }
@@ -3389,7 +3389,7 @@ public class Game extends MyApplicationBase {
                 }
 
                 this.buttonCoordinates1[0][0] = this.excessWidth + 788;
-                this.buttonCoordinates1[0][1] = this.eZ + 556;
+                this.buttonCoordinates1[0][1] = this.yScreenOffset + 556;
                 this.buttonCoordinates1[0][2] = 168;
                 this.buttonCoordinates1[0][3] = 88;
                 this.screenLoadState = -1;
@@ -3527,7 +3527,7 @@ public class Game extends MyApplicationBase {
                 this.screenLoadState = -1;
                 this.setScreenType(ScreenType.TITLE);
                 this.buttonCoordinates1[0][0] = this.excessWidth + 788;
-                this.buttonCoordinates1[0][1] = this.eZ + 556;
+                this.buttonCoordinates1[0][1] = this.yScreenOffset + 556;
                 this.buttonCoordinates1[0][2] = 168;
                 this.buttonCoordinates1[0][3] = 88;
                 this.z = 10000;

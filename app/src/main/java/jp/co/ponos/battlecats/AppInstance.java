@@ -4296,9 +4296,9 @@ public class AppInstance extends Game {
         this.z = 10000;
         this.pointerID = -1;
         if (MyUtility.shouldOffsetY()) {
-            this.eZ = 40;
+            this.yScreenOffset = 40;
         } else {
-            this.eZ = 0;
+            this.yScreenOffset = 0;
         }
 
         this.gu = false;
@@ -4867,10 +4867,10 @@ public class AppInstance extends Game {
                         var9 = this.eI[0];
                         var10 = this.eD[2];
                         var11 = (85 - var3) / 2;
-                        var1.drawScaledImageI(var5, var8 + var6 + var7, this.eZ + var9 + 544 + var10 + var11, var2, var3, 0);
+                        var1.drawScaledImageI(var5, var8 + var6 + var7, this.yScreenOffset + var9 + 544 + var10 + var11, var2, var3, 0);
                         var1.setColor(0, 0, 0);
                         var1.setAlpha(100);
-                        var1.drawRectangle(fb[var4 + 5] + (110 - var2) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[2] + (85 - var3) / 2 + this.eZ, var2, var3);
+                        var1.drawRectangle(fb[var4 + 5] + (110 - var2) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[2] + (85 - var3) / 2 + this.yScreenOffset, var2, var3);
                         var1.setAlpha(255);
                     }
 
@@ -4885,10 +4885,10 @@ public class AppInstance extends Game {
                         var6 = this.eI[0];
                         var7 = this.eD[1];
                         var10 = (85 - var2) / 2;
-                        var1.drawScaledImageI(var5, var9 + var8 + var11, this.eZ + var6 + 544 + var7 + var10, var3, var2, 0);
+                        var1.drawScaledImageI(var5, var9 + var8 + var11, this.yScreenOffset + var6 + 544 + var7 + var10, var3, var2, 0);
                         var1.setColor(0, 0, 0);
                         var1.setAlpha(100);
-                        var1.drawRectangle(fb[var4] + (110 - var3) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[1] + (85 - var2) / 2 + this.eZ, var3, var2);
+                        var1.drawRectangle(fb[var4] + (110 - var3) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[1] + (85 - var2) / 2 + this.yScreenOffset, var3, var2);
                         var1.setAlpha(255);
                     }
                 } else {
@@ -4903,10 +4903,10 @@ public class AppInstance extends Game {
                         var6 = this.eI[0];
                         var7 = this.eD[1];
                         var9 = (85 - var2) / 2;
-                        var1.drawScaledImageI(var5, var8 + var11 + var10, this.eZ + var6 + 544 + var7 + var9, var3, var2, 0);
+                        var1.drawScaledImageI(var5, var8 + var11 + var10, this.yScreenOffset + var6 + 544 + var7 + var9, var3, var2, 0);
                         var1.setColor(0, 0, 0);
                         var1.setAlpha(100);
-                        var1.drawRectangle(fb[var4] + (110 - var3) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[1] + (85 - var2) / 2 + this.eZ, var3, var2);
+                        var1.drawRectangle(fb[var4] + (110 - var3) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[1] + (85 - var2) / 2 + this.yScreenOffset, var3, var2);
                         var1.setAlpha(255);
                     }
 
@@ -4921,10 +4921,10 @@ public class AppInstance extends Game {
                         var6 = this.eI[0];
                         var7 = this.eD[2];
                         var9 = (85 - var3) / 2;
-                        var1.drawScaledImageI(var5, var10 + var8 + var11, this.eZ + var6 + 544 + var7 + var9, var2, var3, 0);
+                        var1.drawScaledImageI(var5, var10 + var8 + var11, this.yScreenOffset + var6 + 544 + var7 + var9, var2, var3, 0);
                         var1.setColor(0, 0, 0);
                         var1.setAlpha(100);
-                        var1.drawRectangle(fb[var4 + 5] + (110 - var2) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[2] + (85 - var3) / 2 + this.eZ, var2, var3);
+                        var1.drawRectangle(fb[var4 + 5] + (110 - var2) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[2] + (85 - var3) / 2 + this.yScreenOffset, var2, var3);
                         var1.setAlpha(255);
                     }
                 }
@@ -4941,10 +4941,10 @@ public class AppInstance extends Game {
                         var10 = this.eI[0];
                         var8 = this.eD[2];
                         var6 = (85 - var3) / 2;
-                        var1.drawScaledImageI(var5, var11 + var9 + var7, this.eZ + var10 + 544 + var8 + var6, var2, var3, 0);
+                        var1.drawScaledImageI(var5, var11 + var9 + var7, this.yScreenOffset + var10 + 544 + var8 + var6, var2, var3, 0);
                         var1.setColor(0, 0, 0);
                         var1.setAlpha(100);
-                        var1.drawRectangle(fb[var4] + (110 - var2) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[2] + (85 - var3) / 2 + this.eZ, var2, var3);
+                        var1.drawRectangle(fb[var4] + (110 - var2) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[2] + (85 - var3) / 2 + this.yScreenOffset, var2, var3);
                         var1.setAlpha(255);
                     }
 
@@ -4959,10 +4959,10 @@ public class AppInstance extends Game {
                         var11 = this.eI[0];
                         var8 = this.eD[1];
                         var9 = (85 - var3) / 2;
-                        var1.drawScaledImageI(var5, var6 + var10 + var7, this.eZ + var11 + 544 + var8 + var9, var2, var3, 0);
+                        var1.drawScaledImageI(var5, var6 + var10 + var7, this.yScreenOffset + var11 + 544 + var8 + var9, var2, var3, 0);
                         var1.setColor(0, 0, 0);
                         var1.setAlpha(100);
-                        var1.drawRectangle(fb[var4 + 5] + (110 - var2) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[1] + (85 - var3) / 2 + this.eZ, var2, var3);
+                        var1.drawRectangle(fb[var4 + 5] + (110 - var2) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[1] + (85 - var3) / 2 + this.yScreenOffset, var2, var3);
                         var1.setAlpha(255);
                     }
                 } else {
@@ -4977,10 +4977,10 @@ public class AppInstance extends Game {
                         var8 = this.eI[0];
                         var11 = this.eD[1];
                         var6 = (85 - var3) / 2;
-                        var1.drawScaledImageI(var5, var7 + var10 + var9, this.eZ + var8 + 544 + var11 + var6, var2, var3, 0);
+                        var1.drawScaledImageI(var5, var7 + var10 + var9, this.yScreenOffset + var8 + 544 + var11 + var6, var2, var3, 0);
                         var1.setColor(0, 0, 0);
                         var1.setAlpha(100);
-                        var1.drawRectangle(fb[var4 + 5] + (110 - var2) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[1] + (85 - var3) / 2 + this.eZ, var2, var3);
+                        var1.drawRectangle(fb[var4 + 5] + (110 - var2) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[1] + (85 - var3) / 2 + this.yScreenOffset, var2, var3);
                         var1.setAlpha(255);
                     }
 
@@ -4995,10 +4995,10 @@ public class AppInstance extends Game {
                         var10 = this.eI[0];
                         var11 = this.eD[2];
                         var6 = (85 - var2) / 2;
-                        var1.drawScaledImageI(var5, var9 + var7 + var8, this.eZ + var10 + 544 + var11 + var6, var3, var2, 0);
+                        var1.drawScaledImageI(var5, var9 + var7 + var8, this.yScreenOffset + var10 + 544 + var11 + var6, var3, var2, 0);
                         var1.setColor(0, 0, 0);
                         var1.setAlpha(100);
-                        var1.drawRectangle(fb[var4] + (110 - var3) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[2] + (85 - var2) / 2 + this.eZ, var3, var2);
+                        var1.drawRectangle(fb[var4] + (110 - var3) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[2] + (85 - var2) / 2 + this.yScreenOffset, var3, var2);
                         var1.setAlpha(255);
                     }
                 }
@@ -5012,10 +5012,10 @@ public class AppInstance extends Game {
                         var3 = fb[var4 + 5];
                         var10 = this.excessWidth / 2;
                         var2 = this.eI[0];
-                        var1.drawScaledImageI(var5, var10 + var3, this.eZ + var2 + 544 + 12, 110, 85, 0);
+                        var1.drawScaledImageI(var5, var10 + var3, this.yScreenOffset + var2 + 544 + 12, 110, 85, 0);
                         var1.setColor(0, 0, 0);
                         var1.setAlpha(100);
-                        var1.drawRectangle(fb[var4 + 5] + this.excessWidth / 2, this.eI[0] + 544 + 12 + this.eZ, 110, 85);
+                        var1.drawRectangle(fb[var4 + 5] + this.excessWidth / 2, this.eI[0] + 544 + 12 + this.yScreenOffset, 110, 85);
                         var1.setAlpha(255);
                     }
                 }
@@ -5024,7 +5024,7 @@ public class AppInstance extends Game {
                     var5 = this.uiTextures[var4 + 5];
                     var3 = fb[var4];
                     var2 = dv[this.fy[var4]] / 2;
-                    var1.drawScaledImageI(var5, this.excessWidth / 2 + (var3 - var2), this.eI[0] + 544 + this.eZ - dv[this.fy[var4]] / 2, dv[this.fy[var4]] + 110, dv[this.fy[var4]] + 85, 0);
+                    var1.drawScaledImageI(var5, this.excessWidth / 2 + (var3 - var2), this.eI[0] + 544 + this.yScreenOffset - dv[this.fy[var4]] / 2, dv[this.fy[var4]] + 110, dv[this.fy[var4]] + 85, 0);
                     if (this.slotCatIDs[var4] != -1) {
                         if (this.battleStats[10] >= this.unitStats[this.slotCatIDs[var4]][this.eV[var4]][6] + this.unitStats[this.slotCatIDs[var4]][this.eV[var4]][6] * this.eQ * 50 / 100) {
                             var12 = 0;
@@ -5035,14 +5035,14 @@ public class AppInstance extends Game {
                         if (var12 == 1 || this.rechargeTimes[var4] != 0) {
                             var1.setColor(0, 0, 0);
                             var1.setAlpha(100);
-                            var1.drawRectangle(fb[var4] + this.excessWidth / 2, this.eI[0] + 544 + this.eZ, 110, 85);
+                            var1.drawRectangle(fb[var4] + this.excessWidth / 2, this.eI[0] + 544 + this.yScreenOffset, 110, 85);
                         }
 
                         var1.setAlpha(255);
                         if (this.rechargeTimes[var4] != 0) {
                             this.a(var1, var4, 0, 0);
                         } else if (this.slotCatIDs[var4] != -1) {
-                            this.a(var1, this.unitStats[this.slotCatIDs[var4]][this.eV[var4]][6] / 100 + this.unitStats[this.slotCatIDs[var4]][this.eV[var4]][6] / 100 * this.eQ * 50 / 100, fb[var4] + 90 + this.excessWidth / 2, this.eI[0] + 544 + 50 + this.eZ, var12, 0, 0);
+                            this.a(var1, this.unitStats[this.slotCatIDs[var4]][this.eV[var4]][6] / 100 + this.unitStats[this.slotCatIDs[var4]][this.eV[var4]][6] / 100 * this.eQ * 50 / 100, fb[var4] + 90 + this.excessWidth / 2, this.eI[0] + 544 + 50 + this.yScreenOffset, var12, 0, 0);
                         }
                     }
                 }
@@ -5052,10 +5052,10 @@ public class AppInstance extends Game {
                     var3 = fb[var4];
                     var2 = this.excessWidth / 2;
                     var10 = this.eI[0];
-                    var1.drawScaledImageI(var5, var2 + var3, this.eZ + var10 + 544 + 12, 110, 85, 0);
+                    var1.drawScaledImageI(var5, var2 + var3, this.yScreenOffset + var10 + 544 + 12, 110, 85, 0);
                     var1.setColor(0, 0, 0);
                     var1.setAlpha(100);
-                    var1.drawRectangle(fb[var4] + this.excessWidth / 2, this.eI[0] + 544 + 12 + this.eZ, 110, 85);
+                    var1.drawRectangle(fb[var4] + this.excessWidth / 2, this.eI[0] + 544 + 12 + this.yScreenOffset, 110, 85);
                     var1.setAlpha(255);
                 }
 
@@ -5063,7 +5063,7 @@ public class AppInstance extends Game {
                     var5 = this.uiTextures[var4 + 10];
                     var3 = fb[var4 + 5];
                     var2 = dv[this.fy[var4]] / 2;
-                    var1.drawScaledImageI(var5, this.excessWidth / 2 + (var3 - var2), this.eI[0] + 544 + this.eZ - dv[this.fy[var4]] / 2, dv[this.fy[var4]] + 110, dv[this.fy[var4]] + 85, 0);
+                    var1.drawScaledImageI(var5, this.excessWidth / 2 + (var3 - var2), this.eI[0] + 544 + this.yScreenOffset - dv[this.fy[var4]] / 2, dv[this.fy[var4]] + 110, dv[this.fy[var4]] + 85, 0);
                     if (this.slotCatIDs[var4 + 5] != -1) {
                         if (this.battleStats[10] >= this.unitStats[this.slotCatIDs[var4 + 5]][this.eV[var4 + 5]][6] + this.unitStats[this.slotCatIDs[var4 + 5]][this.eV[var4 + 5]][6] * this.eQ * 50 / 100) {
                             var12 = 0;
@@ -5074,14 +5074,14 @@ public class AppInstance extends Game {
                         if (var12 == 1 || this.rechargeTimes[var4 + 5] != 0) {
                             var1.setColor(0, 0, 0);
                             var1.setAlpha(100);
-                            var1.drawRectangle(fb[var4 + 5] + this.excessWidth / 2, this.eI[0] + 544 + this.eZ, 110, 85);
+                            var1.drawRectangle(fb[var4 + 5] + this.excessWidth / 2, this.eI[0] + 544 + this.yScreenOffset, 110, 85);
                         }
 
                         var1.setAlpha(255);
                         if (this.rechargeTimes[var4 + 5] != 0) {
                             this.a(var1, var4 + 5, 0, 0);
                         } else if (this.slotCatIDs[var4 + 5] != -1) {
-                            this.a(var1, this.unitStats[this.slotCatIDs[var4 + 5]][this.eV[var4 + 5]][6] / 100 + this.unitStats[this.slotCatIDs[var4 + 5]][this.eV[var4 + 5]][6] / 100 * this.eQ * 50 / 100, fb[var4 + 5] + 90 + this.excessWidth / 2, this.eI[0] + 544 + 50 + this.eZ, var12, 0, 0);
+                            this.a(var1, this.unitStats[this.slotCatIDs[var4 + 5]][this.eV[var4 + 5]][6] / 100 + this.unitStats[this.slotCatIDs[var4 + 5]][this.eV[var4 + 5]][6] / 100 * this.eQ * 50 / 100, fb[var4 + 5] + 90 + this.excessWidth / 2, this.eI[0] + 544 + 50 + this.yScreenOffset, var12, 0, 0);
                         }
                     }
                 }
@@ -5102,10 +5102,10 @@ public class AppInstance extends Game {
                 var1.drawScaledImageI(this.uiTextures[15], this.buttonCoordinates1[0][0], this.buttonCoordinates1[0][1] + 22 + 12 + this.eI[0], 18);
                 var1.drawScaledImageI(this.uiTextures[15], this.buttonCoordinates1[0][0], this.buttonCoordinates1[0][1] + 22 + 0 + this.eI[0], 19);
                 var1.drawScaledImageI(this.uiTextures[15], this.buttonCoordinates1[0][0], this.buttonCoordinates1[0][1] + this.eI[0], 20);
-                var1.drawScaledImageI(this.uiTextures[15], this.getWidth() - 125 - 4, this.eI[0] + 581 + this.eZ, 9);
+                var1.drawScaledImageI(this.uiTextures[15], this.getWidth() - 125 - 4, this.eI[0] + 581 + this.yScreenOffset, 9);
             } else {
                 var1.drawScaledImageI(this.uiTextures[15], this.buttonCoordinates1[0][0], this.buttonCoordinates1[0][1] + this.eI[0], 7);
-                var1.drawScaledImageI(this.uiTextures[15], this.getWidth() - 125 - 4, this.eI[0] + 581 + this.eZ, 10);
+                var1.drawScaledImageI(this.uiTextures[15], this.getWidth() - 125 - 4, this.eI[0] + 581 + this.yScreenOffset, 10);
             }
         } else {
             var1.drawScaledImageI(this.uiTextures[15], this.buttonCoordinates1[0][0], this.buttonCoordinates1[0][1] + this.eI[0], 8);
@@ -5150,8 +5150,8 @@ public class AppInstance extends Game {
         if (this.bN[0] == 7) {
             var1.drawScaledImageI(this.uiTextures[15], this.buttonCoordinates1[1][0], this.buttonCoordinates1[1][1] + this.eI[0], 6);
             var1.drawScaledImageI(this.uiTextures[4], this.buttonCoordinates1[1][0] + 4, this.eI[0] + this.buttonCoordinates1[1][1] + 96, 81);
-            var1.drawScaledImageI(this.uiTextures[4], 4, this.eI[0] + 515 - 5 + this.eZ, 13);
-            var1.drawScaledImageI(this.uiTextures[4], 73, this.eI[0] + 515 - 5 + this.eZ, this.bN[0] + 14 + 1);
+            var1.drawScaledImageI(this.uiTextures[4], 4, this.eI[0] + 515 - 5 + this.yScreenOffset, 13);
+            var1.drawScaledImageI(this.uiTextures[4], 73, this.eI[0] + 515 - 5 + this.yScreenOffset, this.bN[0] + 14 + 1);
         } else if (this.battleStats[11] + 1 >= 8) {
             if (this.battleStats[10] >= (this.battleStats[11] + 1 - 7) * 2000 + 10000 + ((this.battleStats[11] + 1 - 7) * 2000 + 10000) * this.bN[0]) {
                 if (this.fc[1] == 0) {
@@ -5161,13 +5161,13 @@ public class AppInstance extends Game {
                 }
 
                 this.a(var1, ((this.battleStats[11] + 1 - 7) * 2000 + 10000 + ((this.battleStats[11] + 1 - 7) * 2000 + 10000) * this.bN[0]) / 100, this.buttonCoordinates1[1][0] + 4, this.eI[0] + this.buttonCoordinates1[1][1] + 96, 2, 0, 0);
-                var1.drawScaledImageI(this.uiTextures[4], 4, this.eI[0] + 515 - 5 + this.eZ, 13);
-                var1.drawScaledImageI(this.uiTextures[4], 73, this.eI[0] + 515 - 5 + this.eZ, this.bN[0] + 14 + 1);
+                var1.drawScaledImageI(this.uiTextures[4], 4, this.eI[0] + 515 - 5 + this.yScreenOffset, 13);
+                var1.drawScaledImageI(this.uiTextures[4], 73, this.eI[0] + 515 - 5 + this.yScreenOffset, this.bN[0] + 14 + 1);
             } else {
                 var1.drawScaledImageI(this.uiTextures[15], this.buttonCoordinates1[1][0], this.buttonCoordinates1[1][1] + this.eI[0], 5);
                 this.a(var1, ((this.battleStats[11] + 1 - 7) * 2000 + 10000 + ((this.battleStats[11] + 1 - 7) * 2000 + 10000) * this.bN[0]) / 100, this.buttonCoordinates1[1][0] + 4, this.eI[0] + this.buttonCoordinates1[1][1] + 96, 3, 0, 0);
-                var1.drawScaledImageI(this.uiTextures[4], 4, this.eI[0] + 515 - 5 + this.eZ, 24);
-                var1.drawScaledImageI(this.uiTextures[4], 73, this.eI[0] + 515 - 5 + this.eZ, this.bN[0] + 25 + 1);
+                var1.drawScaledImageI(this.uiTextures[4], 4, this.eI[0] + 515 - 5 + this.yScreenOffset, 24);
+                var1.drawScaledImageI(this.uiTextures[4], 73, this.eI[0] + 515 - 5 + this.yScreenOffset, this.bN[0] + 25 + 1);
             }
         } else if (this.battleStats[10] >= (this.battleStats[11] + 1) * 1000 + 3000 + ((this.battleStats[11] + 1) * 1000 + 3000) * this.bN[0]) {
             if (this.fc[1] == 0) {
@@ -5177,13 +5177,13 @@ public class AppInstance extends Game {
             }
 
             this.a(var1, ((this.battleStats[11] + 1) * 1000 + 3000 + ((this.battleStats[11] + 1) * 1000 + 3000) * this.bN[0]) / 100, this.buttonCoordinates1[1][0] + 4, this.eI[0] + this.buttonCoordinates1[1][1] + 96, 2, 0, 0);
-            var1.drawScaledImageI(this.uiTextures[4], 4, this.eI[0] + 515 - 5 + this.eZ, 13);
-            var1.drawScaledImageI(this.uiTextures[4], 73, this.eI[0] + 515 - 5 + this.eZ, this.bN[0] + 14 + 1);
+            var1.drawScaledImageI(this.uiTextures[4], 4, this.eI[0] + 515 - 5 + this.yScreenOffset, 13);
+            var1.drawScaledImageI(this.uiTextures[4], 73, this.eI[0] + 515 - 5 + this.yScreenOffset, this.bN[0] + 14 + 1);
         } else {
             var1.drawScaledImageI(this.uiTextures[15], this.buttonCoordinates1[1][0], this.buttonCoordinates1[1][1] + this.eI[0], 5);
             this.a(var1, ((this.battleStats[11] + 1) * 1000 + 3000 + ((this.battleStats[11] + 1) * 1000 + 3000) * this.bN[0]) / 100, this.buttonCoordinates1[1][0] + 4, this.eI[0] + this.buttonCoordinates1[1][1] + 96, 3, 0, 0);
-            var1.drawScaledImageI(this.uiTextures[4], 4, this.eI[0] + 515 - 5 + this.eZ, 24);
-            var1.drawScaledImageI(this.uiTextures[4], 73, this.eI[0] + 515 - 5 + this.eZ, this.bN[0] + 25 + 1);
+            var1.drawScaledImageI(this.uiTextures[4], 4, this.eI[0] + 515 - 5 + this.yScreenOffset, 24);
+            var1.drawScaledImageI(this.uiTextures[4], 73, this.eI[0] + 515 - 5 + this.yScreenOffset, this.bN[0] + 25 + 1);
         }
 
     }
@@ -5207,7 +5207,7 @@ public class AppInstance extends Game {
                     var1.setAlpha(0);
                 }
 
-                var1.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
+                var1.drawRectangle(0, -this.yScreenOffset, this.getWidth(), this.getHeight());
             } else if (var2 == 1) {
                 var1.setColor(0, 0, 0);
                 if (this.ec <= 11) {
@@ -5252,9 +5252,9 @@ public class AppInstance extends Game {
                     }
 
                     var1.setColor(0, 0, 0);
-                    var1.drawRectangle(this.getWidth() - this.ec * this.getWidth() / 10, -this.eZ, this.getWidth() + 110, this.getHeight());
+                    var1.drawRectangle(this.getWidth() - this.ec * this.getWidth() / 10, -this.yScreenOffset, this.getWidth() + 110, this.getHeight());
                     if (this.ec == 11) {
-                        var1.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
+                        var1.drawRectangle(0, -this.yScreenOffset, this.getWidth(), this.getHeight());
                     }
                 } else {
                     for (var2 = 0; var2 < 10; ++var2) {
@@ -5298,7 +5298,7 @@ public class AppInstance extends Game {
                     }
 
                     var1.setColor(0, 0, 0);
-                    var1.drawRectangle(this.getWidth() - (this.ec - 1) * this.getWidth() / 10, -this.eZ, this.getWidth() + 110, this.getHeight());
+                    var1.drawRectangle(this.getWidth() - (this.ec - 1) * this.getWidth() / 10, -this.yScreenOffset, this.getWidth() + 110, this.getHeight());
                 }
             }
         }
@@ -5309,7 +5309,7 @@ public class AppInstance extends Game {
         Calendar calendar = Calendar.getInstance();
         calendar.clear();
         calendar.set(year, month - 1, day, hour, minute, second);
-        return (int)(calendar.getTime().getTime() / 1000L);
+        return (int) (calendar.getTime().getTime() / 1000L);
     }
 
     @Override
@@ -5587,7 +5587,7 @@ public class AppInstance extends Game {
             var2 = var3 * 255 / 80;
             var1.setBlendMode(3);
             var1.setColor(255 - var2, 255 - var2, 255 - var2);
-            var1.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
+            var1.drawRectangle(0, -this.yScreenOffset, this.getWidth(), this.getHeight());
             var1.setBlendMode(0);
         }
 
@@ -5753,7 +5753,6 @@ public class AppInstance extends Game {
         this.pointerUp = false;
         this.pointerDown = false;
     }
-
 
 
     void d(TextureRenderer var1) {
@@ -6961,7 +6960,7 @@ public class AppInstance extends Game {
                     }
 
                     this.eH[1] = (this.bV[0] / 2 - this.battleStats[5]) / 10 - 65 + this.excessWidth / 2;
-                    this.eH[2] = -24 - this.eZ - this.he[0] - dv[this.hk[0]] / 2 - this.eI[0];
+                    this.eH[2] = -24 - this.yScreenOffset - this.he[0] - dv[this.hk[0]] / 2 - this.eI[0];
                     this.A.a(this.eH[1], this.eH[2], this.x);
                     this.eH[3] = this.x.x;
                     this.eH[4] = this.x.y;
@@ -7145,7 +7144,7 @@ public class AppInstance extends Game {
                                             this.eH[0] = 5;
                                         }
 
-                                        if (this.isPointerDown() && this.isTouching(fb[this.eH[0] + 0] + this.excessWidth / 2, this.eZ + 543, 110, 88)) {
+                                        if (this.isPointerDown() && this.isTouching(fb[this.eH[0] + 0] + this.excessWidth / 2, this.yScreenOffset + 543, 110, 88)) {
                                             if (!this.shouldPlayButtonSelect[4]) {
                                                 Sound.getInstance().play(SoundType.BUTTON_SELECT);
                                                 this.shouldPlayButtonSelect[4] = true;
@@ -7154,7 +7153,7 @@ public class AppInstance extends Game {
                                             this.shouldPlayButtonSelect[4] = false;
                                         }
 
-                                        if (this.isPointerDown() && this.isTouching(fb[this.eH[0] + 1] + this.excessWidth / 2, this.eZ + 543, 110, 88)) {
+                                        if (this.isPointerDown() && this.isTouching(fb[this.eH[0] + 1] + this.excessWidth / 2, this.yScreenOffset + 543, 110, 88)) {
                                             if (!this.shouldPlayButtonSelect[5]) {
                                                 Sound.getInstance().play(SoundType.BUTTON_SELECT);
                                                 this.shouldPlayButtonSelect[5] = true;
@@ -7163,7 +7162,7 @@ public class AppInstance extends Game {
                                             this.shouldPlayButtonSelect[5] = false;
                                         }
 
-                                        if (this.isPointerDown() && this.isTouching(fb[this.eH[0] + 2] + this.excessWidth / 2, this.eZ + 543, 110, 88)) {
+                                        if (this.isPointerDown() && this.isTouching(fb[this.eH[0] + 2] + this.excessWidth / 2, this.yScreenOffset + 543, 110, 88)) {
                                             if (!this.shouldPlayButtonSelect[6]) {
                                                 Sound.getInstance().play(SoundType.BUTTON_SELECT);
                                                 this.shouldPlayButtonSelect[6] = true;
@@ -7172,7 +7171,7 @@ public class AppInstance extends Game {
                                             this.shouldPlayButtonSelect[6] = false;
                                         }
 
-                                        if (this.isPointerDown() && this.isTouching(fb[this.eH[0] + 3] + this.excessWidth / 2, this.eZ + 543, 110, 88)) {
+                                        if (this.isPointerDown() && this.isTouching(fb[this.eH[0] + 3] + this.excessWidth / 2, this.yScreenOffset + 543, 110, 88)) {
                                             if (!this.shouldPlayButtonSelect[7]) {
                                                 Sound.getInstance().play(SoundType.BUTTON_SELECT);
                                                 this.shouldPlayButtonSelect[7] = true;
@@ -7181,7 +7180,7 @@ public class AppInstance extends Game {
                                             this.shouldPlayButtonSelect[7] = false;
                                         }
 
-                                        if (this.isPointerDown() && this.isTouching(fb[this.eH[0] + 4] + this.excessWidth / 2, this.eZ + 543, 110, 88)) {
+                                        if (this.isPointerDown() && this.isTouching(fb[this.eH[0] + 4] + this.excessWidth / 2, this.yScreenOffset + 543, 110, 88)) {
                                             if (!this.shouldPlayButtonSelect[8]) {
                                                 Sound.getInstance().play(SoundType.BUTTON_SELECT);
                                                 this.shouldPlayButtonSelect[8] = true;
@@ -7190,31 +7189,31 @@ public class AppInstance extends Game {
                                             this.shouldPlayButtonSelect[8] = false;
                                         }
 
-                                        if (this.isPointerUp() && this.isTouching(fb[this.eH[0] + 0] + this.excessWidth / 2, this.eZ + 543, 110, 88) && !this.dV) {
+                                        if (this.isPointerUp() && this.isTouching(fb[this.eH[0] + 0] + this.excessWidth / 2, this.yScreenOffset + 543, 110, 88) && !this.dV) {
                                             this.gA[1] = 0;
                                             this.dV = false;
                                             this.fy[0]++;
                                         }
 
-                                        if (this.isPointerUp() && this.isTouching(fb[this.eH[0] + 1] + this.excessWidth / 2, this.eZ + 543, 110, 88) && !this.dV) {
+                                        if (this.isPointerUp() && this.isTouching(fb[this.eH[0] + 1] + this.excessWidth / 2, this.yScreenOffset + 543, 110, 88) && !this.dV) {
                                             this.gA[1] = 0;
                                             this.dV = false;
                                             this.fy[1]++;
                                         }
 
-                                        if (this.isPointerUp() && this.isTouching(fb[this.eH[0] + 2] + this.excessWidth / 2, this.eZ + 543, 110, 88) && !this.dV) {
+                                        if (this.isPointerUp() && this.isTouching(fb[this.eH[0] + 2] + this.excessWidth / 2, this.yScreenOffset + 543, 110, 88) && !this.dV) {
                                             this.gA[1] = 0;
                                             this.dV = false;
                                             this.fy[2]++;
                                         }
 
-                                        if (this.isPointerUp() && this.isTouching(fb[this.eH[0] + 3] + this.excessWidth / 2, this.eZ + 543, 110, 88) && !this.dV) {
+                                        if (this.isPointerUp() && this.isTouching(fb[this.eH[0] + 3] + this.excessWidth / 2, this.yScreenOffset + 543, 110, 88) && !this.dV) {
                                             this.gA[1] = 0;
                                             this.dV = false;
                                             this.fy[3]++;
                                         }
 
-                                        if (this.isPointerUp() && this.isTouching(fb[this.eH[0] + 4] + this.excessWidth / 2, this.eZ + 543, 110, 88) && !this.dV) {
+                                        if (this.isPointerUp() && this.isTouching(fb[this.eH[0] + 4] + this.excessWidth / 2, this.yScreenOffset + 543, 110, 88) && !this.dV) {
                                             this.gA[1] = 0;
                                             this.dV = false;
                                             this.fy[4]++;
@@ -8874,7 +8873,7 @@ public class AppInstance extends Game {
                 ++this.dG;
             }
 
-            var1 = this.getLength(this.endingText) * 40 + 640 + this.eZ * 3 - this.dG;
+            var1 = this.getLength(this.endingText) * 40 + 640 + this.yScreenOffset * 3 - this.dG;
             if (var1 <= 230) {
                 this.dG += 230 - var1;
                 this.dE = 2;
@@ -9986,7 +9985,6 @@ public class AppInstance extends Game {
     }
 
 
-
     void e(TextureRenderer var1) {
         int var2;
         int var3;
@@ -10037,7 +10035,7 @@ public class AppInstance extends Game {
         TextureRenderer textureRenderer = TextureRenderer.getInstance();
         textureRenderer.resetProjection();
         textureRenderer.removeAnimTransformer();
-        textureRenderer.setOffset(0, this.eZ);
+        textureRenderer.setOffset(0, this.yScreenOffset);
         float var2;
         int var3;
         int[] var4;
@@ -10046,12 +10044,12 @@ public class AppInstance extends Game {
         switch (this.getScene2Type()) {
             case ERROR:
                 textureRenderer.setColor(0, 0, 0);
-                textureRenderer.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
+                textureRenderer.drawRectangle(0, -this.yScreenOffset, this.getWidth(), this.getHeight());
                 break;
             case OPENING:
                 var2 = (float) ((this.getWidth() / 960 * 720 - 640) / 2);
                 textureRenderer.setColor(0, 0, 0);
-                textureRenderer.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
+                textureRenderer.drawRectangle(0, -this.yScreenOffset, this.getWidth(), this.getHeight());
                 textureRenderer.setColor(0, 0, 0);
                 textureRenderer.setImageAlpha(255);
                 this.ap[0].a(this.aq[0], this.frameCounter[0]);
@@ -10101,24 +10099,24 @@ public class AppInstance extends Game {
                 textureRenderer.a(this.dB, this.dC, this.dD, 4);
                 textureRenderer.setColor(0, 0, 0);
                 textureRenderer.setAlpha(255);
-                textureRenderer.drawRectangle(0, 0 - this.eZ, this.getWidth(), this.eZ + 100);
+                textureRenderer.drawRectangle(0, 0 - this.yScreenOffset, this.getWidth(), this.yScreenOffset + 100);
                 if (this.dz == 0) {
                     textureRenderer.setBlendMode(3);
                     textureRenderer.setColor(this.dA * 255 / 100, this.dA * 255 / 100, this.dA * 255 / 100);
-                    textureRenderer.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
+                    textureRenderer.drawRectangle(0, -this.yScreenOffset, this.getWidth(), this.getHeight());
                     textureRenderer.setBlendMode(0);
                 }
 
-                textureRenderer.drawScaledImageI(this.af[2], 788 - dv[this.fx[0]] / 2 + this.excessWidth, 564 - dv[this.fx[0]] / 2 + this.eZ, dv[this.fx[0]] + 168, dv[this.fx[0]] + 72, 0);
-                textureRenderer.drawScaledImageI(this.uiTextures[2], 797 - dv[this.fx[0]] / 2 + this.excessWidth, 572 - dv[this.fx[0]] / 2 + this.eZ, dv[this.fx[0]] + 150, dv[this.fx[0]] + 55, 10);
+                textureRenderer.drawScaledImageI(this.af[2], 788 - dv[this.fx[0]] / 2 + this.excessWidth, 564 - dv[this.fx[0]] / 2 + this.yScreenOffset, dv[this.fx[0]] + 168, dv[this.fx[0]] + 72, 0);
+                textureRenderer.drawScaledImageI(this.uiTextures[2], 797 - dv[this.fx[0]] / 2 + this.excessWidth, 572 - dv[this.fx[0]] / 2 + this.yScreenOffset, dv[this.fx[0]] + 150, dv[this.fx[0]] + 55, 10);
                 if (this.isPointerDown() && this.isTouching(this.buttonCoordinates1[0][0], this.buttonCoordinates1[0][1], this.buttonCoordinates1[0][2], this.buttonCoordinates1[0][3]) && this.dz <= 1 && !this.eb) {
-                    textureRenderer.drawScaledImageI(this.af[2], this.excessWidth + 788, this.eZ + 564, 168, 72, this.frameCounter[5] % 4 / 2 + 1);
+                    textureRenderer.drawScaledImageI(this.af[2], this.excessWidth + 788, this.yScreenOffset + 564, 168, 72, this.frameCounter[5] % 4 / 2 + 1);
                 }
 
                 if (this.dz == 2) {
                     textureRenderer.setBlendMode(3);
                     textureRenderer.setColor(255 - this.dA * 159 / 100, 255 - this.dA * 159 / 100, 255 - this.dA * 159 / 100);
-                    textureRenderer.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
+                    textureRenderer.drawRectangle(0, -this.yScreenOffset, this.getWidth(), this.getHeight());
                     textureRenderer.setBlendMode(0);
                 }
 
@@ -10126,7 +10124,7 @@ public class AppInstance extends Game {
                 break;
             case ENDING:
                 textureRenderer.setColor(100, 100, 100);
-                textureRenderer.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
+                textureRenderer.drawRectangle(0, -this.yScreenOffset, this.getWidth(), this.getHeight());
                 var2 = (float) ((this.getWidth() / 960 * 720 - 640) / 2);
                 if (this.frameCounter[1] % 16 != 0 && this.frameCounter[1] % 16 != 1 && this.frameCounter[1] % 16 != 2 && this.frameCounter[1] % 16 != 3) {
                     if (this.frameCounter[1] % 16 != 4 && this.frameCounter[1] % 16 != 5 && this.frameCounter[1] % 16 != 6 && this.frameCounter[1] % 16 != 7) {
@@ -10162,12 +10160,12 @@ public class AppInstance extends Game {
 
                 textureRenderer.setImageOrientation(1);
                 textureRenderer.setImageColor(100, 100, 100);
-                textureRenderer.drawScaledImageI(this.uiTextures[1], -58, this.eZ + 379, 355, 355, 0);
+                textureRenderer.drawScaledImageI(this.uiTextures[1], -58, this.yScreenOffset + 379, 355, 355, 0);
                 textureRenderer.setImageColor(255, 255, 255);
                 textureRenderer.setImageOrientation(0);
                 textureRenderer.setColor(0, 0, 0);
                 textureRenderer.setAlpha(255 - this.frameCounter[3]);
-                textureRenderer.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
+                textureRenderer.drawRectangle(0, -this.yScreenOffset, this.getWidth(), this.getHeight());
                 if (this.dE >= 1) {
                     textureRenderer.setColor(255, 255, 255);
 
@@ -10181,36 +10179,36 @@ public class AppInstance extends Game {
                 }
 
                 if (this.bj >= 1 || this.eg == 2) {
-                    textureRenderer.drawScaledImageI(this.af[2], 788 - dv[this.fx[0]] / 2 + this.excessWidth, 564 - dv[this.fx[0]] / 2 + this.eZ, dv[this.fx[0]] + 168, dv[this.fx[0]] + 72, 0);
-                    textureRenderer.drawScaledImageI(this.uiTextures[2], 797 - dv[this.fx[0]] / 2 + this.excessWidth, 572 - dv[this.fx[0]] / 2 + this.eZ, dv[this.fx[0]] + 150, dv[this.fx[0]] + 55, 10);
+                    textureRenderer.drawScaledImageI(this.af[2], 788 - dv[this.fx[0]] / 2 + this.excessWidth, 564 - dv[this.fx[0]] / 2 + this.yScreenOffset, dv[this.fx[0]] + 168, dv[this.fx[0]] + 72, 0);
+                    textureRenderer.drawScaledImageI(this.uiTextures[2], 797 - dv[this.fx[0]] / 2 + this.excessWidth, 572 - dv[this.fx[0]] / 2 + this.yScreenOffset, dv[this.fx[0]] + 150, dv[this.fx[0]] + 55, 10);
                     if (this.dE <= 1 && !this.eE[0] && this.isPointerDown() && this.isTouching(this.buttonCoordinates1[0][0], this.buttonCoordinates1[0][1], this.buttonCoordinates1[0][2], this.buttonCoordinates1[0][3]) && !this.eb) {
-                        textureRenderer.drawScaledImageI(this.af[2], this.excessWidth + 788, this.eZ + 564, 168, 72, this.frameCounter[5] % 4 / 2 + 1);
+                        textureRenderer.drawScaledImageI(this.af[2], this.excessWidth + 788, this.yScreenOffset + 564, 168, 72, this.frameCounter[5] % 4 / 2 + 1);
                     }
                 }
 
                 if ((this.dE == 1 || this.dE == 2) && this.eE[0]) {
                     textureRenderer.setColor(0, 0, 0);
                     textureRenderer.setAlpha(this.frameCounter[0]);
-                    textureRenderer.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
+                    textureRenderer.drawRectangle(0, -this.yScreenOffset, this.getWidth(), this.getHeight());
                 }
 
                 if (this.dE == 3) {
                     textureRenderer.setColor(0, 0, 0);
                     textureRenderer.setAlpha(this.dF);
-                    textureRenderer.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
+                    textureRenderer.drawRectangle(0, -this.yScreenOffset, this.getWidth(), this.getHeight());
                 }
 
                 if (this.dE >= 4) {
                     textureRenderer.setColor(0, 0, 0);
                     textureRenderer.setAlpha(255);
-                    textureRenderer.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
+                    textureRenderer.drawRectangle(0, -this.yScreenOffset, this.getWidth(), this.getHeight());
                 }
 
                 this.a(textureRenderer, this.ed);
                 break;
             case MAIN:
                 textureRenderer.setColor(255, 255, 255);
-                textureRenderer.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
+                textureRenderer.drawRectangle(0, -this.yScreenOffset, this.getWidth(), this.getHeight());
                 if (this.getScreenType() == ScreenType.TITLE) {
                     this.titleDraw(textureRenderer);
                 }
@@ -10261,45 +10259,45 @@ public class AppInstance extends Game {
                 if (this.hl == 0) {
                     for (var3 = 0; var3 < 3; ++var3) {
                         if (this.hc[var3 + 7] == 32) {
-                            textureRenderer.setOffset(0, this.eZ - 40);
+                            textureRenderer.setOffset(0, this.yScreenOffset - 40);
                         } else if (this.hc[var3 + 7] == 34) {
-                            textureRenderer.setOffset(0, this.eZ + 20);
+                            textureRenderer.setOffset(0, this.yScreenOffset + 20);
                         } else if (this.hc[var3 + 7] == 36) {
-                            textureRenderer.setOffset(0, this.eZ - 15);
+                            textureRenderer.setOffset(0, this.yScreenOffset - 15);
                         } else if (this.hc[var3 + 7] == 38) {
-                            textureRenderer.setOffset(0, this.eZ + 10);
+                            textureRenderer.setOffset(0, this.yScreenOffset + 10);
                         } else if (this.hc[var3 + 7] == 40) {
-                            textureRenderer.setOffset(0, this.eZ - 10);
+                            textureRenderer.setOffset(0, this.yScreenOffset - 10);
                         } else if (this.hc[var3 + 7] == 42) {
-                            textureRenderer.setOffset(0, this.eZ + 0);
+                            textureRenderer.setOffset(0, this.yScreenOffset + 0);
                         } else if (this.hc[var3 + 7] == 44) {
-                            textureRenderer.setOffset(0, this.eZ - 10);
+                            textureRenderer.setOffset(0, this.yScreenOffset - 10);
                         } else if (this.hc[var3 + 7] == 46) {
-                            textureRenderer.setOffset(0, this.eZ + 0);
+                            textureRenderer.setOffset(0, this.yScreenOffset + 0);
                         } else if (this.hc[var3 + 7] == 48) {
-                            textureRenderer.setOffset(0, this.eZ - 4);
+                            textureRenderer.setOffset(0, this.yScreenOffset - 4);
                         } else if (this.hc[var3 + 7] == 49) {
-                            textureRenderer.setOffset(0, this.eZ + 0);
+                            textureRenderer.setOffset(0, this.yScreenOffset + 0);
                         } else if (this.hc[var3 + 7] == 50) {
-                            textureRenderer.setOffset(0, this.eZ - 6);
+                            textureRenderer.setOffset(0, this.yScreenOffset - 6);
                         } else if (this.hc[var3 + 7] == 51) {
-                            textureRenderer.setOffset(0, this.eZ + 0);
+                            textureRenderer.setOffset(0, this.yScreenOffset + 0);
                         } else if (this.hc[var3 + 7] == 52) {
-                            textureRenderer.setOffset(0, this.eZ - 4);
+                            textureRenderer.setOffset(0, this.yScreenOffset - 4);
                         } else if (this.hc[var3 + 7] == 53) {
-                            textureRenderer.setOffset(0, this.eZ + 0);
+                            textureRenderer.setOffset(0, this.yScreenOffset + 0);
                         } else if (this.hc[var3 + 7] == 54) {
-                            textureRenderer.setOffset(0, this.eZ - 2);
+                            textureRenderer.setOffset(0, this.yScreenOffset - 2);
                         } else if (this.hc[var3 + 7] == 55) {
-                            textureRenderer.setOffset(0, this.eZ + 0);
+                            textureRenderer.setOffset(0, this.yScreenOffset + 0);
                         } else if (this.hc[var3 + 7] == 56) {
-                            textureRenderer.setOffset(0, this.eZ - 1);
+                            textureRenderer.setOffset(0, this.yScreenOffset - 1);
                         } else if (this.hc[var3 + 7] >= 57) {
-                            textureRenderer.setOffset(0, this.eZ + 0);
+                            textureRenderer.setOffset(0, this.yScreenOffset + 0);
                         }
                     }
                 } else {
-                    textureRenderer.setOffset(0, this.eZ + 0);
+                    textureRenderer.setOffset(0, this.yScreenOffset + 0);
                 }
 
                 textureRenderer.setAnimTransformer(this.A);
@@ -10309,38 +10307,38 @@ public class AppInstance extends Game {
                 this.B.b((float) (-(this.excessWidth / 2 + 0)), -520.0F);
                 this.A.a(this.B);
                 textureRenderer.setColor(0, 0, 0);
-                textureRenderer.drawRectangle(0, 0 - this.eZ, this.getWidth(), this.getHeight());
+                textureRenderer.drawRectangle(0, 0 - this.yScreenOffset, this.getWidth(), this.getHeight());
                 textureRenderer.removeAnimTransformer();
                 if (this.bV[4] == 0) {
                     textureRenderer.setColor(136, 218, 254);
-                    textureRenderer.drawRectangle(0, -this.eZ, this.getWidth(), 520);
+                    textureRenderer.drawRectangle(0, -this.yScreenOffset, this.getWidth(), 520);
                 } else if (this.bV[4] == 1) {
                     textureRenderer.setColor(255, 149, 92);
-                    textureRenderer.drawRectangle(0, -this.eZ, this.getWidth(), 520);
+                    textureRenderer.drawRectangle(0, -this.yScreenOffset, this.getWidth(), 520);
                 } else if (this.bV[4] == 2) {
                     textureRenderer.setColor(31, 41, 153);
-                    textureRenderer.drawRectangle(0, -this.eZ, this.getWidth(), 520);
+                    textureRenderer.drawRectangle(0, -this.yScreenOffset, this.getWidth(), 520);
                 } else if (this.bV[4] == 3) {
                     textureRenderer.setColor(98, 207, 255);
-                    textureRenderer.drawRectangle(0, -this.eZ, this.getWidth(), 520);
+                    textureRenderer.drawRectangle(0, -this.yScreenOffset, this.getWidth(), 520);
                 } else {
-                    textureRenderer.drawScaledImageI(this.uiTextures[0], 0, -this.eZ, this.getWidth(), 520, 1);
+                    textureRenderer.drawScaledImageI(this.uiTextures[0], 0, -this.yScreenOffset, this.getWidth(), 520, 1);
                 }
 
                 if (this.bV[4] == 0) {
                     textureRenderer.setColor(135, 98, 59);
-                    textureRenderer.drawRectangle(0, 520, this.getWidth(), this.eZ + 200 + 40);
+                    textureRenderer.drawRectangle(0, 520, this.getWidth(), this.yScreenOffset + 200 + 40);
                 } else if (this.bV[4] == 1) {
                     textureRenderer.setColor(137, 73, 6);
-                    textureRenderer.drawRectangle(0, 520, this.getWidth(), this.eZ + 200 + 40);
+                    textureRenderer.drawRectangle(0, 520, this.getWidth(), this.yScreenOffset + 200 + 40);
                 } else if (this.bV[4] == 2) {
                     textureRenderer.setColor(93, 77, 60);
-                    textureRenderer.drawRectangle(0, 520, this.getWidth(), this.eZ + 200 + 40);
+                    textureRenderer.drawRectangle(0, 520, this.getWidth(), this.yScreenOffset + 200 + 40);
                 } else if (this.bV[4] == 3) {
                     textureRenderer.setColor(135, 98, 59);
-                    textureRenderer.drawRectangle(0, 520, this.getWidth(), this.eZ + 200 + 40);
+                    textureRenderer.drawRectangle(0, 520, this.getWidth(), this.yScreenOffset + 200 + 40);
                 } else {
-                    textureRenderer.drawScaledImageI(this.uiTextures[0], 0, 520, this.getWidth(), this.eZ + 200, 2);
+                    textureRenderer.drawScaledImageI(this.uiTextures[0], 0, 520, this.getWidth(), this.yScreenOffset + 200, 2);
                 }
 
                 var4 = this.gh;
@@ -10353,12 +10351,12 @@ public class AppInstance extends Game {
                 var5[2] = var3;
                 var4 = this.gi;
                 var5 = this.gi;
-                var3 = -this.eZ - 40;
+                var3 = -this.yScreenOffset - 40;
                 var5[3] = var3;
                 var4[0] = var3;
                 var4 = this.gi;
                 var5 = this.gi;
-                var3 = (520 - this.eZ) * (100 - this.z / 100) / 100;
+                var3 = (520 - this.yScreenOffset) * (100 - this.z / 100) / 100;
                 var5[2] = var3;
                 var4[1] = var3;
                 if (this.bV[4] == 0) {
@@ -10407,7 +10405,7 @@ public class AppInstance extends Game {
                 var5[0] = var3;
                 var5 = this.gi;
                 var4 = this.gi;
-                var3 = this.eZ + 640 + 40;
+                var3 = this.yScreenOffset + 640 + 40;
                 var4[2] = var3;
                 var5[1] = var3;
                 if (this.bV[4] == 0) {
@@ -10906,19 +10904,19 @@ public class AppInstance extends Game {
                 }
 
                 if (this.dH <= 47 && this.bd >= 1) {
-                    textureRenderer.drawScaledImageI(this.uiTextures[15], (this.bV[0] / 2 - this.battleStats[5]) / 10 - 65 - dv[this.hk[0]] / 2 + this.excessWidth / 2, -24 - this.eZ - this.he[0] - dv[this.hk[0]] / 2 - this.eI[0], dv[this.hk[0]] + 131, dv[this.hk[0]] + 131, 0, 0, 0, 5, this.hb[0], 40);
-                    textureRenderer.drawScaledImageI(this.uiTextures[15], (this.bV[0] / 2 - this.battleStats[5]) / 10 + 27 - 65 - dv[this.hk[0]] / 2 + this.excessWidth / 2, 1 - this.he[0] - this.eZ - dv[this.hk[0]] / 2 - this.eI[0], dv[this.hk[0]] + 76, dv[this.hk[0]] + 76, 41);
+                    textureRenderer.drawScaledImageI(this.uiTextures[15], (this.bV[0] / 2 - this.battleStats[5]) / 10 - 65 - dv[this.hk[0]] / 2 + this.excessWidth / 2, -24 - this.yScreenOffset - this.he[0] - dv[this.hk[0]] / 2 - this.eI[0], dv[this.hk[0]] + 131, dv[this.hk[0]] + 131, 0, 0, 0, 5, this.hb[0], 40);
+                    textureRenderer.drawScaledImageI(this.uiTextures[15], (this.bV[0] / 2 - this.battleStats[5]) / 10 + 27 - 65 - dv[this.hk[0]] / 2 + this.excessWidth / 2, 1 - this.he[0] - this.yScreenOffset - dv[this.hk[0]] / 2 - this.eI[0], dv[this.hk[0]] + 76, dv[this.hk[0]] + 76, 41);
                 }
 
                 textureRenderer.removeAnimTransformer();
                 textureRenderer.setAlpha(255);
                 if (this.deployedUnits[0][0][9] == 2 && (this.deployedUnits[0][0][10] == 1 || this.deployedUnits[0][0][10] == 2)) {
                     textureRenderer.setColor(255, 255, 255);
-                    textureRenderer.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
+                    textureRenderer.drawRectangle(0, -this.yScreenOffset, this.getWidth(), this.getHeight());
                 }
 
                 textureRenderer.setImageAlpha(255);
-                textureRenderer.drawScaledImageI(this.uiTextures[17], 62, 10 - this.eZ, 0);
+                textureRenderer.drawScaledImageI(this.uiTextures[17], 62, 10 - this.yScreenOffset, 0);
                 this.eH[3] = 0;
                 if (this.battleStats[25] % 4 == 1 || this.battleStats[25] % 4 == 2) {
                     this.eH[3] = 68;
@@ -10927,25 +10925,25 @@ public class AppInstance extends Game {
                 this.eH[1] = this.getWidth() - 4;
                 var4 = this.eH;
                 var4[1] -= 30;
-                textureRenderer.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.eZ, 30, 42, this.eH[3] + 11);
+                textureRenderer.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.yScreenOffset, 30, 42, this.eH[3] + 11);
                 var4 = this.eH;
                 var4[1] -= 29;
                 var3 = this.battleStats[9] / 100;
 
                 do {
-                    textureRenderer.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.eZ, 30, 42, var3 % 10 + this.eH[3]);
+                    textureRenderer.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.yScreenOffset, 30, 42, var3 % 10 + this.eH[3]);
                     var3 /= 10;
                     var4 = this.eH;
                     var4[1] -= 29;
                 } while (var3 > 0);
 
-                textureRenderer.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.eZ, 29, 42, this.eH[3] + 10);
+                textureRenderer.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.yScreenOffset, 29, 42, this.eH[3] + 10);
                 var4 = this.eH;
                 var4[1] -= 28;
                 var3 = this.battleStats[10] / 100;
 
                 do {
-                    textureRenderer.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.eZ, 30, 42, var3 % 10 + this.eH[3]);
+                    textureRenderer.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.yScreenOffset, 30, 42, var3 % 10 + this.eH[3]);
                     var3 /= 10;
                     var4 = this.eH;
                     var4[1] -= 29;
@@ -10975,13 +10973,13 @@ public class AppInstance extends Game {
 
                     label904:
                     while (true) {
-                        textureRenderer.drawScaledImageI(this.uiTextures[4], this.eH[1], this.eH[2] - this.eZ, 24, 46, var3 % 10 + 83);
+                        textureRenderer.drawScaledImageI(this.uiTextures[4], this.eH[1], this.eH[2] - this.yScreenOffset, 24, 46, var3 % 10 + 83);
                         var3 /= 10;
                         --var6;
                         if (var6 <= 0) {
                             var4 = this.eH;
                             var4[1] += 48;
-                            textureRenderer.drawScaledImageI(this.uiTextures[4], this.eH[1], this.eH[2] - this.eZ, 27, 46, 93);
+                            textureRenderer.drawScaledImageI(this.uiTextures[4], this.eH[1], this.eH[2] - this.yScreenOffset, 27, 46, 93);
                             var4 = this.eH;
                             var4[1] += 27;
                             if (this.eH[3] % 6000 != 0) {
@@ -10993,13 +10991,13 @@ public class AppInstance extends Game {
                             var6 = 2;
 
                             while (true) {
-                                textureRenderer.drawScaledImageI(this.uiTextures[4], this.eH[1], this.eH[2] - this.eZ, 24, 46, var3 % 10 + 83);
+                                textureRenderer.drawScaledImageI(this.uiTextures[4], this.eH[1], this.eH[2] - this.yScreenOffset, 24, 46, var3 % 10 + 83);
                                 var3 /= 10;
                                 --var6;
                                 if (var6 <= 0) {
                                     var4 = this.eH;
                                     var4[1] += 48;
-                                    textureRenderer.drawScaledImage(this.uiTextures[4], (float) this.eH[1], (float) (this.eH[2] - this.eZ + 46) - 38.333332F, 22.5F, 38.333332F, 93);
+                                    textureRenderer.drawScaledImage(this.uiTextures[4], (float) this.eH[1], (float) (this.eH[2] - this.yScreenOffset + 46) - 38.333332F, 22.5F, 38.333332F, 93);
                                     var4 = this.eH;
                                     var4[1] += 22;
                                     var3 = this.eH[3];
@@ -11008,7 +11006,7 @@ public class AppInstance extends Game {
                                     var4[1] += 20;
 
                                     do {
-                                        textureRenderer.drawScaledImage(this.uiTextures[4], (float) this.eH[1], (float) (this.eH[2] - this.eZ + 46) - 38.333332F, 20.0F, 38.333332F, var3 % 10 + 83);
+                                        textureRenderer.drawScaledImage(this.uiTextures[4], (float) this.eH[1], (float) (this.eH[2] - this.yScreenOffset + 46) - 38.333332F, 20.0F, 38.333332F, var3 % 10 + 83);
                                         var3 /= 10;
                                         var7 = var6 - 1;
                                         var4 = this.eH;
@@ -11029,7 +11027,7 @@ public class AppInstance extends Game {
                 }
 
                 textureRenderer.setImageColor(255, 255, 255);
-                textureRenderer.drawScaledImageI(this.uiTextures[15], 4 - this.eI[0] - dv[this.fx[3]] / 2, 4 - this.eZ - dv[this.fx[3]] / 2, dv[this.fx[3]] + 58, dv[this.fx[3]] + 58, 2);
+                textureRenderer.drawScaledImageI(this.uiTextures[15], 4 - this.eI[0] - dv[this.fx[3]] / 2, 4 - this.yScreenOffset - dv[this.fx[3]] / 2, dv[this.fx[3]] + 58, dv[this.fx[3]] + 58, 2);
                 if (this.eD[0] == 0) {
                     this.eH[0] = 0;
                 } else if (this.eD[0] == 1) {
@@ -11041,9 +11039,9 @@ public class AppInstance extends Game {
                 for (var6 = 5; var6 >= 0; --var6) {
                     if (this.eM[var6]) {
                         if (this.eL[var6] == 0) {
-                            textureRenderer.drawScaledImageI(this.uiTextures[15], var3 * 88 + 447 - dv[this.eK[var6]] / 2 + this.excessWidth, 58 - this.eZ - this.eI[0] - dv[this.eK[var6]] / 2, dv[this.eK[var6]] + 58, dv[this.eK[var6]] + 58, var6 + 33);
+                            textureRenderer.drawScaledImageI(this.uiTextures[15], var3 * 88 + 447 - dv[this.eK[var6]] / 2 + this.excessWidth, 58 - this.yScreenOffset - this.eI[0] - dv[this.eK[var6]] / 2, dv[this.eK[var6]] + 58, dv[this.eK[var6]] + 58, var6 + 33);
                         } else {
-                            textureRenderer.drawScaledImageI(this.uiTextures[15], var3 * 88 + 447 - dv[this.eK[var6]] / 2 + this.excessWidth, 58 - this.eZ - this.eI[0] - dv[this.eK[var6]] / 2, dv[this.eK[var6]] + 58, dv[this.eK[var6]] + 58, var6 + 27);
+                            textureRenderer.drawScaledImageI(this.uiTextures[15], var3 * 88 + 447 - dv[this.eK[var6]] / 2 + this.excessWidth, 58 - this.yScreenOffset - this.eI[0] - dv[this.eK[var6]] / 2, dv[this.eK[var6]] + 58, dv[this.eK[var6]] + 58, var6 + 27);
                         }
 
                         --var3;
@@ -11098,16 +11096,16 @@ public class AppInstance extends Game {
                 }
 
                 if (!this.ha[0]) {
-                    textureRenderer.drawScaledImageI(this.af[2], this.getWidth() / 2 - 190 - dv[this.fx[0]] / 2, 640 - this.eI[1] - dv[this.fx[0]] / 2 + this.eZ, dv[this.fx[0]] + 381, dv[this.fx[0]] + 72, 3);
-                    textureRenderer.drawScaledImageI(this.uiTextures[21], this.getWidth() / 2 - 190 + 190 - 127 - dv[this.fx[0]] / 2, 640 - this.eI[1] + 36 - 27 - dv[this.fx[0]] / 2 + this.eZ, dv[this.fx[0]] + 254, dv[this.fx[0]] + 55, 1);
-                    textureRenderer.drawScaledImageI(this.uiTextures[4], 711 - dv[this.fx[10]] / 2 + this.excessWidth, 640 - this.eI[1] - dv[this.fx[10]] / 2 + this.eZ, dv[this.fx[10]] + 68, dv[this.fx[10]] + 68, 99);
+                    textureRenderer.drawScaledImageI(this.af[2], this.getWidth() / 2 - 190 - dv[this.fx[0]] / 2, 640 - this.eI[1] - dv[this.fx[0]] / 2 + this.yScreenOffset, dv[this.fx[0]] + 381, dv[this.fx[0]] + 72, 3);
+                    textureRenderer.drawScaledImageI(this.uiTextures[21], this.getWidth() / 2 - 190 + 190 - 127 - dv[this.fx[0]] / 2, 640 - this.eI[1] + 36 - 27 - dv[this.fx[0]] / 2 + this.yScreenOffset, dv[this.fx[0]] + 254, dv[this.fx[0]] + 55, 1);
+                    textureRenderer.drawScaledImageI(this.uiTextures[4], 711 - dv[this.fx[10]] / 2 + this.excessWidth, 640 - this.eI[1] - dv[this.fx[10]] / 2 + this.yScreenOffset, dv[this.fx[10]] + 68, dv[this.fx[10]] + 68, 99);
                     if (Twitter.getInstance().isEnabled()) {
-                        textureRenderer.drawScaledImageI(this.uiTextures[4], 809 - dv[this.fx[11]] / 2 + this.excessWidth, 640 - this.eI[1] - dv[this.fx[11]] / 2 + this.eZ, dv[this.fx[11]] + 68, dv[this.fx[11]] + 68, 100);
+                        textureRenderer.drawScaledImageI(this.uiTextures[4], 809 - dv[this.fx[11]] / 2 + this.excessWidth, 640 - this.eI[1] - dv[this.fx[11]] / 2 + this.yScreenOffset, dv[this.fx[11]] + 68, dv[this.fx[11]] + 68, 100);
                     }
                 }
 
                 if ((this.battleStats[14] == 1 || this.battleStats[14] == 4) && this.battleStats[15] == 7 && !this.eE[0] && this.ek[0] == 0 && !this.eE[1] && !this.eE[2] && !this.eE[3] && !this.eb && this.isPointerDown() && this.isTouching(this.buttonCoordinates1[4][0], this.buttonCoordinates1[4][1], this.buttonCoordinates1[4][2], this.buttonCoordinates1[4][3])) {
-                    textureRenderer.drawScaledImageI(this.af[2], this.getWidth() / 2 - 190, 640 - this.eI[1] + this.eZ, 381, 72, this.frameCounter[5] % 4 / 2 + 4);
+                    textureRenderer.drawScaledImageI(this.af[2], this.getWidth() / 2 - 190, 640 - this.eI[1] + this.yScreenOffset, 381, 72, this.frameCounter[5] % 4 / 2 + 4);
                 }
 
                 if (this.ct > 0 && this.battleStats[14] == 0) {
@@ -11166,7 +11164,7 @@ public class AppInstance extends Game {
                 if (this.isSettingsOpen) {
                     textureRenderer.setColor(0, 0, 0);
                     textureRenderer.setAlpha(178);
-                    textureRenderer.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
+                    textureRenderer.drawRectangle(0, -this.yScreenOffset, this.getWidth(), this.getHeight());
                     textureRenderer.drawScaledImageI(this.af[1], this.excessWidth / 2 + 248, 84, 0);
                     textureRenderer.drawScaledImageI(this.af[1], this.excessWidth / 2 + 248 + 131, 113, 16);
                     textureRenderer.drawScaledImageI(this.af[1], this.excessWidth / 2 + 248 + 404 - dv[this.buttonDelay[5]] / 2, 48 - dv[this.buttonDelay[5]] / 2, dv[this.buttonDelay[5]] + 96, dv[this.buttonDelay[5]] + 96, 21);
@@ -11237,7 +11235,7 @@ public class AppInstance extends Game {
                 this.a(textureRenderer, this.ed);
             case CF_ENERGY_SCREEN:
                 textureRenderer.setColor(0, 0, 0);
-                textureRenderer.drawRectangle(0, -this.yOffset, getWidth(), getHeight());
+                textureRenderer.drawRectangle(0, -this.yScreenOffset, getWidth(), getHeight());
                 break;
         }
 
@@ -12509,11 +12507,11 @@ public class AppInstance extends Game {
                                 }
 
                                 this.buttonCoordinates1[0][0] = this.excessWidth + 814;
-                                this.buttonCoordinates1[0][1] = this.eZ + 510;
+                                this.buttonCoordinates1[0][1] = this.yScreenOffset + 510;
                                 this.buttonCoordinates1[0][2] = 146;
                                 this.buttonCoordinates1[0][3] = 130;
                                 this.buttonCoordinates1[1][0] = 0;
-                                this.buttonCoordinates1[1][1] = this.eZ + 515;
+                                this.buttonCoordinates1[1][1] = this.yScreenOffset + 515;
                                 this.buttonCoordinates1[1][2] = 146;
                                 this.buttonCoordinates1[1][3] = 125;
 
@@ -12930,7 +12928,7 @@ public class AppInstance extends Game {
 
     void h(TextureRenderer var1) {
         var1.setColor(0, 0, 0, this.hc[0]);
-        var1.drawRectangle(0, -this.eZ - 100, this.getWidth(), this.getHeight() + 200);
+        var1.drawRectangle(0, -this.yScreenOffset - 100, this.getWidth(), this.getHeight() + 200);
         Texture var2;
         int var3;
         int var4;
@@ -13160,7 +13158,7 @@ public class AppInstance extends Game {
                 }
 
                 var1.setColor(0, 0, 0, this.hc[8] - this.hc[9]);
-                var1.drawRectangle(0, 0 - this.eZ, this.getWidth(), this.getHeight());
+                var1.drawRectangle(0, 0 - this.yScreenOffset, this.getWidth(), this.getHeight());
             } else if (this.hl == 2) {
                 if (this.hc[6] < this.aA[0][0].a()) {
                     this.az[0][0].a(this.aA[0][0], this.hc[6]);
@@ -13192,13 +13190,13 @@ public class AppInstance extends Game {
                 var4 = 2;
 
                 while (true) {
-                    var1.drawScaledImageI(this.uiTextures[4], this.eH[1], this.eH[2] - this.eZ, 24, 46, var3 % 10 + 83);
+                    var1.drawScaledImageI(this.uiTextures[4], this.eH[1], this.eH[2] - this.yScreenOffset, 24, 46, var3 % 10 + 83);
                     var3 /= 10;
                     --var4;
                     if (var4 <= 0) {
                         var6 = this.eH;
                         var6[1] += 48;
-                        var1.drawScaledImageI(this.uiTextures[4], this.eH[1], this.eH[2] - this.eZ, 27, 46, 93);
+                        var1.drawScaledImageI(this.uiTextures[4], this.eH[1], this.eH[2] - this.yScreenOffset, 27, 46, 93);
                         var6 = this.eH;
                         var6[1] += 27;
                         if (this.eH[3] % 6000 != 0) {
@@ -13210,13 +13208,13 @@ public class AppInstance extends Game {
                         var4 = 2;
 
                         while (true) {
-                            var1.drawScaledImageI(this.uiTextures[4], this.eH[1], this.eH[2] - this.eZ, 24, 46, var3 % 10 + 83);
+                            var1.drawScaledImageI(this.uiTextures[4], this.eH[1], this.eH[2] - this.yScreenOffset, 24, 46, var3 % 10 + 83);
                             var3 /= 10;
                             --var4;
                             if (var4 <= 0) {
                                 var6 = this.eH;
                                 var6[1] += 48;
-                                var1.drawScaledImage(this.uiTextures[4], (float) this.eH[1], (float) (this.eH[2] - this.eZ + 46) - 38.333332F, 22.5F, 38.333332F, 93);
+                                var1.drawScaledImage(this.uiTextures[4], (float) this.eH[1], (float) (this.eH[2] - this.yScreenOffset + 46) - 38.333332F, 22.5F, 38.333332F, 93);
                                 var6 = this.eH;
                                 var6[1] += 22;
                                 var3 = this.eH[3];
@@ -13225,7 +13223,7 @@ public class AppInstance extends Game {
                                 var6[1] += 20;
 
                                 do {
-                                    var1.drawScaledImage(this.uiTextures[4], (float) this.eH[1], (float) (this.eH[2] - this.eZ + 46) - 38.333332F, 20.0F, 38.333332F, var3 % 10 + 83);
+                                    var1.drawScaledImage(this.uiTextures[4], (float) this.eH[1], (float) (this.eH[2] - this.yScreenOffset + 46) - 38.333332F, 20.0F, 38.333332F, var3 % 10 + 83);
                                     var3 /= 10;
                                     var5 = var4 - 1;
                                     var6 = this.eH;
@@ -13487,7 +13485,7 @@ public class AppInstance extends Game {
                     this.battleStats[15] = 7;
                 }
 
-                this.buttonCoordinates1[4][1] = 640 - this.eI[1] - 8 + this.eZ;
+                this.buttonCoordinates1[4][1] = 640 - this.eI[1] - 8 + this.yScreenOffset;
             } else if (this.battleStats[15] == 7) {
                 if (this.isPointerDown()) {
                     if (this.eE[0] || this.eE[4]) {
@@ -13532,8 +13530,7 @@ public class AppInstance extends Game {
                         if (MyUtility.isConnected()) {
                             String var6 = aString.format(MyUtility.getString("twitter_txt1"), this.stageNamesText[cm[this.battleStats[0]]]);
                             Twitter.getInstance().tweet(aString.format("%s %s %s", var6, MyUtility.getString("url_abbr"), MyUtility.getString("twitter_hash")), null, null);
-                        }
-                        else {
+                        } else {
                             MyUtility.getInstance().addButton(MyUtility.getString("network_unavailable"));
                         }
                         this.zoom.reset();
@@ -14165,7 +14162,7 @@ public class AppInstance extends Game {
 
     void catBaseDraw(TextureRenderer var1) {
         var1.setColor(0, 0, 0);
-        var1.drawRectangle(0, 0 - this.eZ, this.getWidth(), this.getHeight());
+        var1.drawRectangle(0, 0 - this.yScreenOffset, this.getWidth(), this.getHeight());
         var1.drawScaledImageI(this.uiTextures[1], this.excessWidth / 2 + 490, 430, 100, 100, 0);
         var1.drawScaledImageI(this.uiTextures[1], this.excessWidth / 2 + 490, 360, 100, 100, 0);
         var1.setImageOrientation(1);
@@ -14506,7 +14503,7 @@ public class AppInstance extends Game {
                 this.battleStats[15] = 7;
             }
 
-            this.buttonCoordinates1[4][1] = 640 - this.eI[1] - 8 + this.eZ;
+            this.buttonCoordinates1[4][1] = 640 - this.eI[1] - 8 + this.yScreenOffset;
         } else if (this.battleStats[15] == 7) {
             if (this.isPointerDown()) {
                 if (this.eE[0] || this.eE[4]) {
@@ -15506,13 +15503,13 @@ public class AppInstance extends Game {
             if (this.gw == 0) {
                 var1.setColor(0, 0, 0);
                 var1.setAlpha(178);
-                var1.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
+                var1.drawRectangle(0, -this.yScreenOffset, this.getWidth(), this.getHeight());
                 var1.drawScaledImageI(this.al, this.getWidth() / 2 - eO[this.gv[0]] * 690 / 100 / 2, 320 - eO[this.gv[0]] * 179 / 100 / 2, eO[this.gv[0]] * 690 / 100, eO[this.gv[0]] * 179 / 100, 0);
             } else if (this.gw != 1 && this.gw != 99) {
                 if (this.gw == 2) {
                     var1.setColor(0, 0, 0);
                     var1.setAlpha(178);
-                    var1.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
+                    var1.drawRectangle(0, -this.yScreenOffset, this.getWidth(), this.getHeight());
                     var2 = this.al;
                     var3 = eO[this.gv[0]] * 690 / 100 / 2;
                     var1.drawScaledImageI(var2, this.excessWidth / 2 + (480 - var3), 364 - eO[this.gv[0]] * 229 / 100 / 2, eO[this.gv[0]] * 690 / 100, eO[this.gv[0]] * 229 / 100, 0);
@@ -15549,33 +15546,33 @@ public class AppInstance extends Game {
                         if (this.gw == 7) {
                             var1.setColor(0, 0, 0);
                             var1.setAlpha(178);
-                            var1.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
+                            var1.drawRectangle(0, -this.yScreenOffset, this.getWidth(), this.getHeight());
                             var2 = this.al;
                             var3 = eO[this.gv[0]] * 690 / 100 / 2;
                             var1.drawScaledImageI(var2, this.excessWidth / 2 + (480 - var3), 364 - eO[this.gv[0]] * 229 / 100 / 2, eO[this.gv[0]] * 690 / 100, eO[this.gv[0]] * 229 / 100, 0);
                         } else if (this.gw == 9999) {
                             var1.setColor(0, 0, 0);
                             var1.setAlpha(178);
-                            var1.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
+                            var1.drawRectangle(0, -this.yScreenOffset, this.getWidth(), this.getHeight());
                             var2 = this.al;
                             var3 = eO[this.gv[0]] * 690 / 100 / 2;
                             var1.drawScaledImageI(var2, this.excessWidth / 2 + (480 - var3), 363 - eO[this.gv[0]] * 179 / 100 / 2, eO[this.gv[0]] * 690 / 100, eO[this.gv[0]] * 179 / 100, 0);
                         } else if (this.gw == 10000) {
                             var1.setColor(0, 0, 0);
                             var1.setAlpha(178);
-                            var1.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
+                            var1.drawRectangle(0, -this.yScreenOffset, this.getWidth(), this.getHeight());
                             var1.drawScaledImageI(this.al, this.getWidth() / 2 - eO[this.gv[0]] * 690 / 100 / 2, 320 - eO[this.gv[0]] * 179 / 100 / 2, eO[this.gv[0]] * 690 / 100, eO[this.gv[0]] * 179 / 100, 0);
                         }
                     } else {
                         var1.setColor(0, 0, 0);
                         var1.setAlpha(178);
-                        var1.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
+                        var1.drawRectangle(0, -this.yScreenOffset, this.getWidth(), this.getHeight());
                         var1.drawScaledImageI(this.al, this.getWidth() / 2 - eO[this.gv[0]] * 690 / 100 / 2, 320 - eO[this.gv[0]] * 179 / 100 / 2, eO[this.gv[0]] * 690 / 100, eO[this.gv[0]] * 179 / 100, 0);
                     }
                 } else {
                     var1.setColor(0, 0, 0);
                     var1.setAlpha(178);
-                    var1.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
+                    var1.drawRectangle(0, -this.yScreenOffset, this.getWidth(), this.getHeight());
                     var2 = this.al;
                     var3 = eO[this.gv[0]] * 690 / 100 / 2;
                     var1.drawScaledImageI(var2, this.excessWidth / 2 + (480 - var3), 364 - eO[this.gv[0]] * 229 / 100 / 2, eO[this.gv[0]] * 690 / 100, eO[this.gv[0]] * 229 / 100, 0);
@@ -15604,7 +15601,7 @@ public class AppInstance extends Game {
             } else {
                 var1.setColor(0, 0, 0);
                 var1.setAlpha(178);
-                var1.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
+                var1.drawRectangle(0, -this.yScreenOffset, this.getWidth(), this.getHeight());
                 var2 = this.al;
                 var3 = eO[this.gv[0]] * 690 / 100 / 2;
                 var1.drawScaledImageI(var2, this.excessWidth / 2 + (480 - var3), 364 - eO[this.gv[0]] * 229 / 100 / 2, eO[this.gv[0]] * 690 / 100, eO[this.gv[0]] * 229 / 100, 0);
@@ -18304,7 +18301,7 @@ public class AppInstance extends Game {
     void titleDraw(TextureRenderer textureRenderer) {
         float var2 = (float) ((this.getWidth() / 960 * 720 - 640) / 2);
         textureRenderer.drawScaledImageI(this.uiTextures[0], 0, (int) (-var2), this.getWidth(), (int) (720.0F * ((float) this.getWidth() / 960.0F)), 0);
-        textureRenderer.drawScaledImageI(this.uiTextures[1], 0, 0 - this.eZ, 1);
+        textureRenderer.drawScaledImageI(this.uiTextures[1], 0, 0 - this.yScreenOffset, 1);
         textureRenderer.drawScaledImageI(this.uiTextures[1], this.excessWidth / 2 + 128, ds[this.frameCounter[0]] + 10, 0);
         textureRenderer.setColor(0, 0, 0);
         textureRenderer.setAlpha(this.frameCounter[1]);
@@ -18707,7 +18704,7 @@ public class AppInstance extends Game {
 
         if (this.eE[3]) {
             textureRenderer.setColor(0, 159, 214);
-            textureRenderer.drawRectangle(this.getWidth() / 2 - this.scrollOffset[4], 0 - this.eZ, this.scrollOffset[4] + this.scrollOffset[4], this.getHeight());
+            textureRenderer.drawRectangle(this.getWidth() / 2 - this.scrollOffset[4], 0 - this.yScreenOffset, this.scrollOffset[4] + this.scrollOffset[4], this.getHeight());
             var4 = 0;
             if (this.fR[0] == 0) {
                 var4 = cu[this.frameCounter[7]];
@@ -18856,16 +18853,16 @@ public class AppInstance extends Game {
                 }
             }
 
-            textureRenderer.drawScaledImageI(this.uiTextures[4], this.excessWidth + 659, this.eZ + var5 + 55, 355, 355, 0);
+            textureRenderer.drawScaledImageI(this.uiTextures[4], this.excessWidth + 659, this.yScreenOffset + var5 + 55, 355, 355, 0);
             if (!this.eE[1] && (this.frameCounter[1] == 1 || this.frameCounter[1] == 2 || this.frameCounter[1] == 4 || this.frameCounter[1] == 5)) {
-                textureRenderer.drawScaledImageI(this.uiTextures[4], 659, this.eZ + var5 + 55, 355, 191, 2);
+                textureRenderer.drawScaledImageI(this.uiTextures[4], 659, this.yScreenOffset + var5 + 55, 355, 191, 2);
             }
         }
 
         if (this.isSettingsOpen) {
             textureRenderer.setColor(0, 0, 0);
             textureRenderer.setAlpha(178);
-            textureRenderer.drawRectangle(0, -this.eZ, this.getWidth(), this.getHeight());
+            textureRenderer.drawRectangle(0, -this.yScreenOffset, this.getWidth(), this.getHeight());
             textureRenderer.drawScaledImageI(this.af[1], this.excessWidth / 2 + 248, 84, 0);
             textureRenderer.drawScaledImageI(this.af[1], this.excessWidth / 2 + 248 + 131, 113, 16);
             textureRenderer.drawScaledImageI(this.af[1], this.excessWidth / 2 + 248 + 404 - dv[this.buttonDelay[5]] / 2, 48 - dv[this.buttonDelay[5]] / 2, dv[this.buttonDelay[5]] + 96, dv[this.buttonDelay[5]] + 96, 21);
@@ -18946,7 +18943,7 @@ public class AppInstance extends Game {
     void treasureDraw(TextureRenderer var1) {
         int var2 = 0;
         var1.setColor(0, 0, 0);
-        var1.drawRectangle(0, 0 - this.eZ, this.getWidth(), this.getHeight());
+        var1.drawRectangle(0, 0 - this.yScreenOffset, this.getWidth(), this.getHeight());
         var1.drawScaledImageI(this.uiTextures[6], 0, 0, this.getWidth(), 640, 0);
 
         int var3;
@@ -19286,7 +19283,7 @@ public class AppInstance extends Game {
             case MAIN:
                 if (this.bB[6] == 1) {
                     var1.setColor(0, 0, 0, 204);
-                    var1.drawRectangle(0, 0 - this.eZ, this.getWidth(), this.getHeight());
+                    var1.drawRectangle(0, 0 - this.yScreenOffset, this.getWidth(), this.getHeight());
                     if (this.gV[1] >= 10) {
                         var12 = this.af[2];
                         var3 = dv[this.gZ[0]] / 2;
@@ -19325,7 +19322,7 @@ public class AppInstance extends Game {
                     }
                 } else if (this.bB[7] == 1) {
                     var1.setColor(0, 0, 0, 204);
-                    var1.drawRectangle(0, 0 - this.eZ, this.getWidth(), this.getHeight());
+                    var1.drawRectangle(0, 0 - this.yScreenOffset, this.getWidth(), this.getHeight());
                     if (this.gV[1] >= 10) {
                         var1.drawScaledImageI(this.an, this.getWidth() - 96, (int) (392.0F + 10.0F * aMath.sin((float) (this.gV[2] * 30))), 96, 96, 0);
                         var12 = this.af[2];
@@ -19398,7 +19395,7 @@ public class AppInstance extends Game {
                     }
                 } else if (this.bB[8] == 1) {
                     var1.setColor(0, 0, 0, 204);
-                    var1.drawRectangle(0, 0 - this.eZ, this.getWidth(), this.getHeight());
+                    var1.drawRectangle(0, 0 - this.yScreenOffset, this.getWidth(), this.getHeight());
                     var1.drawScaledImageI(this.al, this.getWidth() / 2 - eO[this.gV[0]] * 690 / 100 / 2, 320 - eO[this.gV[0]] * 179 / 100 / 2 - 30, eO[this.gV[0]] * 690 / 100, eO[this.gV[0]] * 179 / 100, 0);
                     if (this.gV[0] >= this.getLength(eO) - 1) {
                         var4 = 0;
@@ -19452,7 +19449,7 @@ public class AppInstance extends Game {
                 byte var13;
                 if (this.hH == 1) {
                     var1.setColor(0, 0, 0, 204);
-                    var1.drawRectangle(0, 0 - this.eZ, this.getWidth(), this.getHeight());
+                    var1.drawRectangle(0, 0 - this.yScreenOffset, this.getWidth(), this.getHeight());
                     if (this.gW == 1) {
                         this.eH[3] = 0;
                         if (this.battleStats[25] % 4 == 1 || this.battleStats[25] % 4 == 2) {
@@ -19462,25 +19459,25 @@ public class AppInstance extends Game {
                         this.eH[1] = this.getWidth() - 4;
                         var2 = this.eH;
                         var2[1] -= 30;
-                        var1.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.eZ, 30, 42, this.eH[3] + 11);
+                        var1.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.yScreenOffset, 30, 42, this.eH[3] + 11);
                         var2 = this.eH;
                         var2[1] -= 29;
                         var3 = this.battleStats[9] / 100;
 
                         do {
-                            var1.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.eZ, 30, 42, this.eH[3] + var3 % 10);
+                            var1.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.yScreenOffset, 30, 42, this.eH[3] + var3 % 10);
                             var3 /= 10;
                             var2 = this.eH;
                             var2[1] -= 29;
                         } while (var3 > 0);
 
-                        var1.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.eZ, 29, 42, this.eH[3] + 10);
+                        var1.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.yScreenOffset, 29, 42, this.eH[3] + 10);
                         var2 = this.eH;
                         var2[1] -= 28;
                         var3 = this.battleStats[10] / 100;
 
                         do {
-                            var1.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.eZ, 30, 42, this.eH[3] + var3 % 10);
+                            var1.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.yScreenOffset, 30, 42, this.eH[3] + var3 % 10);
                             var3 /= 10;
                             var2 = this.eH;
                             var2[1] -= 29;
@@ -19492,7 +19489,7 @@ public class AppInstance extends Game {
                             var12 = this.uiTextures[var3 + 5];
                             var4 = fb[var3];
                             var5 = dv[this.fy[var3]] / 2;
-                            var1.drawScaledImageI(var12, this.excessWidth / 2 + (var4 - var5), this.eI[0] + 544 + this.eZ - dv[this.fy[var3]] / 2, dv[this.fy[var3]] + 110, dv[this.fy[var3]] + 85, 0);
+                            var1.drawScaledImageI(var12, this.excessWidth / 2 + (var4 - var5), this.eI[0] + 544 + this.yScreenOffset - dv[this.fy[var3]] / 2, dv[this.fy[var3]] + 110, dv[this.fy[var3]] + 85, 0);
                             if (this.slotCatIDs[var3] != -1) {
                                 if (this.battleStats[10] >= this.unitStats[this.slotCatIDs[var3]][this.eV[var3]][6] + this.unitStats[this.slotCatIDs[var3]][this.eV[var3]][6] * this.eQ * 50 / 100) {
                                     var13 = 0;
@@ -19503,14 +19500,14 @@ public class AppInstance extends Game {
                                 if (var13 == 1 || this.rechargeTimes[var3] != 0) {
                                     var1.setColor(0, 0, 0);
                                     var1.setAlpha(100);
-                                    var1.drawRectangle(fb[var3] + this.excessWidth / 2, this.eI[0] + 544 + this.eZ, 110, 85);
+                                    var1.drawRectangle(fb[var3] + this.excessWidth / 2, this.eI[0] + 544 + this.yScreenOffset, 110, 85);
                                 }
 
                                 var1.setAlpha(255);
                                 if (this.rechargeTimes[var3] != 0) {
                                     this.a(var1, var3, 0, 0);
                                 } else if (this.slotCatIDs[var3] != -1) {
-                                    this.a(var1, this.unitStats[this.slotCatIDs[var3]][this.eV[var3]][6] / 100 + this.unitStats[this.slotCatIDs[var3]][this.eV[var3]][6] / 100 * this.eQ * 50 / 100, fb[var3] + 90 + this.excessWidth / 2, this.eI[0] + 544 + 50 + this.eZ, var13, 0, 0);
+                                    this.a(var1, this.unitStats[this.slotCatIDs[var3]][this.eV[var3]][6] / 100 + this.unitStats[this.slotCatIDs[var3]][this.eV[var3]][6] / 100 * this.eQ * 50 / 100, fb[var3] + 90 + this.excessWidth / 2, this.eI[0] + 544 + 50 + this.yScreenOffset, var13, 0, 0);
                                 }
                             }
                         }
@@ -19520,10 +19517,10 @@ public class AppInstance extends Game {
                         if (this.gW == 0) {
                             var12 = this.an;
                             var3 = fb[0];
-                            var1.drawScaledImageI(var12, this.excessWidth / 2 + (var3 + 55 - 48), (int) ((float) (this.eZ + 402) + 10.0F * aMath.sin((float) (this.gV[2] * 30))), 96, 96, 0);
+                            var1.drawScaledImageI(var12, this.excessWidth / 2 + (var3 + 55 - 48), (int) ((float) (this.yScreenOffset + 402) + 10.0F * aMath.sin((float) (this.gV[2] * 30))), 96, 96, 0);
                         } else {
                             var1.setImageOrientation(2);
-                            var1.drawScaledImageI(this.an, this.excessWidth + 831, (int) ((float) (58 - this.eZ) - 10.0F * aMath.sin((float) (this.gV[2] * 30))), 96, 96, 0);
+                            var1.drawScaledImageI(this.an, this.excessWidth + 831, (int) ((float) (58 - this.yScreenOffset) - 10.0F * aMath.sin((float) (this.gV[2] * 30))), 96, 96, 0);
                         }
 
                         var1.setImageOrientation(0);
@@ -19564,12 +19561,12 @@ public class AppInstance extends Game {
                     }
                 } else if (this.bB[0] == 1) {
                     var1.setColor(0, 0, 0, 204);
-                    var1.drawRectangle(0, 0 - this.eZ, this.getWidth(), this.getHeight());
+                    var1.drawRectangle(0, 0 - this.yScreenOffset, this.getWidth(), this.getHeight());
                     if (this.bN[0] == 7) {
                         var1.drawScaledImageI(this.uiTextures[15], this.buttonCoordinates1[1][0], this.buttonCoordinates1[1][1] + this.eI[0], 6);
                         var1.drawScaledImageI(this.uiTextures[4], this.buttonCoordinates1[1][0] + 4, this.eI[0] + this.buttonCoordinates1[1][1] + 96, 81);
-                        var1.drawScaledImageI(this.uiTextures[4], 4, this.eI[0] + 515 - 5 + this.eZ, 13);
-                        var1.drawScaledImageI(this.uiTextures[4], 73, this.eI[0] + 515 - 5 + this.eZ, this.bN[0] + 14 + 1);
+                        var1.drawScaledImageI(this.uiTextures[4], 4, this.eI[0] + 515 - 5 + this.yScreenOffset, 13);
+                        var1.drawScaledImageI(this.uiTextures[4], 73, this.eI[0] + 515 - 5 + this.yScreenOffset, this.bN[0] + 14 + 1);
                     } else if (this.battleStats[11] + 1 >= 8) {
                         if (this.battleStats[10] >= (this.battleStats[11] + 1 - 7) * 2000 + 10000 + ((this.battleStats[11] + 1 - 7) * 2000 + 10000) * this.bN[0]) {
                             if (this.gV[3] % 6 / 3 == 0) {
@@ -19579,13 +19576,13 @@ public class AppInstance extends Game {
                             }
 
                             this.a(var1, ((this.battleStats[11] + 1 - 7) * 2000 + 10000 + ((this.battleStats[11] + 1 - 7) * 2000 + 10000) * this.bN[0]) / 100, this.buttonCoordinates1[1][0] + 4, this.eI[0] + this.buttonCoordinates1[1][1] + 96, 2, 0, 0);
-                            var1.drawScaledImageI(this.uiTextures[4], 4, this.eI[0] + 515 - 5 + this.eZ, 13);
-                            var1.drawScaledImageI(this.uiTextures[4], 73, this.eI[0] + 515 - 5 + this.eZ, this.bN[0] + 14 + 1);
+                            var1.drawScaledImageI(this.uiTextures[4], 4, this.eI[0] + 515 - 5 + this.yScreenOffset, 13);
+                            var1.drawScaledImageI(this.uiTextures[4], 73, this.eI[0] + 515 - 5 + this.yScreenOffset, this.bN[0] + 14 + 1);
                         } else {
                             var1.drawScaledImageI(this.uiTextures[15], this.buttonCoordinates1[1][0], this.buttonCoordinates1[1][1] + this.eI[0], 5);
                             this.a(var1, ((this.battleStats[11] + 1 - 7) * 2000 + 10000 + ((this.battleStats[11] + 1 - 7) * 2000 + 10000) * this.bN[0]) / 100, this.buttonCoordinates1[1][0] + 4, this.eI[0] + this.buttonCoordinates1[1][1] + 96, 3, 0, 0);
-                            var1.drawScaledImageI(this.uiTextures[4], 4, this.eI[0] + 515 - 5 + this.eZ, 24);
-                            var1.drawScaledImageI(this.uiTextures[4], 73, this.eI[0] + 515 - 5 + this.eZ, this.bN[0] + 25 + 1);
+                            var1.drawScaledImageI(this.uiTextures[4], 4, this.eI[0] + 515 - 5 + this.yScreenOffset, 24);
+                            var1.drawScaledImageI(this.uiTextures[4], 73, this.eI[0] + 515 - 5 + this.yScreenOffset, this.bN[0] + 25 + 1);
                         }
                     } else if (this.battleStats[10] >= (this.battleStats[11] + 1) * 1000 + 3000 + ((this.battleStats[11] + 1) * 1000 + 3000) * this.bN[0]) {
                         if (this.gV[3] % 6 / 3 == 0) {
@@ -19595,13 +19592,13 @@ public class AppInstance extends Game {
                         }
 
                         this.a(var1, ((this.battleStats[11] + 1) * 1000 + 3000 + ((this.battleStats[11] + 1) * 1000 + 3000) * this.bN[0]) / 100, this.buttonCoordinates1[1][0] + 4, this.eI[0] + this.buttonCoordinates1[1][1] + 96, 2, 0, 0);
-                        var1.drawScaledImageI(this.uiTextures[4], 4, this.eI[0] + 515 - 5 + this.eZ, 13);
-                        var1.drawScaledImageI(this.uiTextures[4], 73, this.eI[0] + 515 - 5 + this.eZ, this.bN[0] + 14 + 1);
+                        var1.drawScaledImageI(this.uiTextures[4], 4, this.eI[0] + 515 - 5 + this.yScreenOffset, 13);
+                        var1.drawScaledImageI(this.uiTextures[4], 73, this.eI[0] + 515 - 5 + this.yScreenOffset, this.bN[0] + 14 + 1);
                     } else {
                         var1.drawScaledImageI(this.uiTextures[15], this.buttonCoordinates1[1][0], this.buttonCoordinates1[1][1] + this.eI[0], 5);
                         this.a(var1, ((this.battleStats[11] + 1) * 1000 + 3000 + ((this.battleStats[11] + 1) * 1000 + 3000) * this.bN[0]) / 100, this.buttonCoordinates1[1][0] + 4, this.eI[0] + this.buttonCoordinates1[1][1] + 96, 3, 0, 0);
-                        var1.drawScaledImageI(this.uiTextures[4], 4, this.eI[0] + 515 - 5 + this.eZ, 24);
-                        var1.drawScaledImageI(this.uiTextures[4], 73, this.eI[0] + 515 - 5 + this.eZ, this.bN[0] + 25 + 1);
+                        var1.drawScaledImageI(this.uiTextures[4], 4, this.eI[0] + 515 - 5 + this.yScreenOffset, 24);
+                        var1.drawScaledImageI(this.uiTextures[4], 73, this.eI[0] + 515 - 5 + this.yScreenOffset, this.bN[0] + 25 + 1);
                     }
 
                     this.eH[3] = 0;
@@ -19612,34 +19609,34 @@ public class AppInstance extends Game {
                     this.eH[1] = this.getWidth() - 4;
                     var2 = this.eH;
                     var2[1] -= 30;
-                    var1.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.eZ, 30, 42, this.eH[3] + 11);
+                    var1.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.yScreenOffset, 30, 42, this.eH[3] + 11);
                     var2 = this.eH;
                     var2[1] -= 29;
                     var3 = this.battleStats[9] / 100;
 
                     do {
-                        var1.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.eZ, 30, 42, this.eH[3] + var3 % 10);
+                        var1.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.yScreenOffset, 30, 42, this.eH[3] + var3 % 10);
                         var3 /= 10;
                         var2 = this.eH;
                         var2[1] -= 29;
                     } while (var3 > 0);
 
-                    var1.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.eZ, 29, 42, this.eH[3] + 10);
+                    var1.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.yScreenOffset, 29, 42, this.eH[3] + 10);
                     var2 = this.eH;
                     var2[1] -= 28;
                     var3 = this.battleStats[10] / 100;
 
                     do {
-                        var1.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.eZ, 30, 42, this.eH[3] + var3 % 10);
+                        var1.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.yScreenOffset, 30, 42, this.eH[3] + var3 % 10);
                         var3 /= 10;
                         var2 = this.eH;
                         var2[1] -= 29;
                     } while (var3 > 0);
 
                     if (this.gV[1] >= 10) {
-                        var1.drawScaledImageI(this.an, 30, (int) ((float) (this.eZ + 402) + 10.0F * aMath.sin((float) (this.gV[2] * 30))), 96, 96, 0);
+                        var1.drawScaledImageI(this.an, 30, (int) ((float) (this.yScreenOffset + 402) + 10.0F * aMath.sin((float) (this.gV[2] * 30))), 96, 96, 0);
                         var1.setImageOrientation(2);
-                        var1.drawScaledImageI(this.an, this.excessWidth + 831, (int) ((float) (58 - this.eZ) - 10.0F * aMath.sin((float) (this.gV[2] * 30))), 96, 96, 0);
+                        var1.drawScaledImageI(this.an, this.excessWidth + 831, (int) ((float) (58 - this.yScreenOffset) - 10.0F * aMath.sin((float) (this.gV[2] * 30))), 96, 96, 0);
                         var1.setImageOrientation(0);
                         var12 = this.af[2];
                         var3 = dv[this.gZ[0]] / 2;
@@ -19678,7 +19675,7 @@ public class AppInstance extends Game {
                     }
                 } else if (this.bB[1] == 1) {
                     var1.setColor(0, 0, 0, 204);
-                    var1.drawRectangle(0, 0 - this.eZ, this.getWidth(), this.getHeight());
+                    var1.drawRectangle(0, 0 - this.yScreenOffset, this.getWidth(), this.getHeight());
                     this.eH[3] = 0;
                     if (this.battleStats[25] % 4 == 1 || this.battleStats[25] % 4 == 2) {
                         this.eH[3] = 68;
@@ -19687,25 +19684,25 @@ public class AppInstance extends Game {
                     this.eH[1] = this.getWidth() - 4;
                     var2 = this.eH;
                     var2[1] -= 30;
-                    var1.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.eZ, 30, 42, this.eH[3] + 11);
+                    var1.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.yScreenOffset, 30, 42, this.eH[3] + 11);
                     var2 = this.eH;
                     var2[1] -= 29;
                     var3 = this.battleStats[9] / 100;
 
                     do {
-                        var1.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.eZ, 30, 42, this.eH[3] + var3 % 10);
+                        var1.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.yScreenOffset, 30, 42, this.eH[3] + var3 % 10);
                         var3 /= 10;
                         var2 = this.eH;
                         var2[1] -= 29;
                     } while (var3 > 0);
 
-                    var1.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.eZ, 29, 42, this.eH[3] + 10);
+                    var1.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.yScreenOffset, 29, 42, this.eH[3] + 10);
                     var2 = this.eH;
                     var2[1] -= 28;
                     var3 = this.battleStats[10] / 100;
 
                     do {
-                        var1.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.eZ, 30, 42, this.eH[3] + var3 % 10);
+                        var1.drawScaledImageI(this.uiTextures[4], this.eH[1], 10 - this.eI[0] - this.yScreenOffset, 30, 42, this.eH[3] + var3 % 10);
                         var3 /= 10;
                         var2 = this.eH;
                         var2[1] -= 29;
@@ -19715,7 +19712,7 @@ public class AppInstance extends Game {
                         var12 = this.uiTextures[var3 + 5];
                         var4 = fb[var3];
                         var5 = dv[this.fy[var3]] / 2;
-                        var1.drawScaledImageI(var12, this.excessWidth / 2 + (var4 - var5), this.eI[0] + 544 + this.eZ - dv[this.fy[var3]] / 2, dv[this.fy[var3]] + 110, dv[this.fy[var3]] + 85, 0);
+                        var1.drawScaledImageI(var12, this.excessWidth / 2 + (var4 - var5), this.eI[0] + 544 + this.yScreenOffset - dv[this.fy[var3]] / 2, dv[this.fy[var3]] + 110, dv[this.fy[var3]] + 85, 0);
                         if (this.slotCatIDs[var3] != -1) {
                             if (this.battleStats[10] >= this.unitStats[this.slotCatIDs[var3]][this.eV[var3]][6] + this.unitStats[this.slotCatIDs[var3]][this.eV[var3]][6] * this.eQ * 50 / 100) {
                                 var13 = 0;
@@ -19726,14 +19723,14 @@ public class AppInstance extends Game {
                             if (var13 == 1 || this.rechargeTimes[var3] != 0) {
                                 var1.setColor(0, 0, 0);
                                 var1.setAlpha(100);
-                                var1.drawRectangle(fb[var3] + this.excessWidth / 2, this.eI[0] + 544 + this.eZ, 110, 85);
+                                var1.drawRectangle(fb[var3] + this.excessWidth / 2, this.eI[0] + 544 + this.yScreenOffset, 110, 85);
                             }
 
                             var1.setAlpha(255);
                             if (this.rechargeTimes[var3] != 0) {
                                 this.a(var1, var3, 0, 0);
                             } else if (this.slotCatIDs[var3] != -1) {
-                                this.a(var1, this.unitStats[this.slotCatIDs[var3]][this.eV[var3]][6] / 100 + this.unitStats[this.slotCatIDs[var3]][this.eV[var3]][6] / 100 * this.eQ * 50 / 100, fb[var3] + 90 + this.excessWidth / 2, this.eI[0] + 544 + 50 + this.eZ, var13, 0, 0);
+                                this.a(var1, this.unitStats[this.slotCatIDs[var3]][this.eV[var3]][6] / 100 + this.unitStats[this.slotCatIDs[var3]][this.eV[var3]][6] / 100 * this.eQ * 50 / 100, fb[var3] + 90 + this.excessWidth / 2, this.eI[0] + 544 + 50 + this.yScreenOffset, var13, 0, 0);
                             }
                         }
                     }
@@ -19741,9 +19738,9 @@ public class AppInstance extends Game {
                     if (this.gV[1] >= 10) {
                         var12 = this.an;
                         var3 = fb[0];
-                        var1.drawScaledImageI(var12, this.excessWidth / 2 + (var3 + 55 - 48), (int) ((float) (this.eZ + 402) + 10.0F * aMath.sin((float) (this.gV[2] * 30))), 96, 96, 0);
+                        var1.drawScaledImageI(var12, this.excessWidth / 2 + (var3 + 55 - 48), (int) ((float) (this.yScreenOffset + 402) + 10.0F * aMath.sin((float) (this.gV[2] * 30))), 96, 96, 0);
                         var1.setImageOrientation(2);
-                        var1.drawScaledImageI(this.an, this.excessWidth + 831, (int) ((float) (58 - this.eZ) - 10.0F * aMath.sin((float) (this.gV[2] * 30))), 96, 96, 0);
+                        var1.drawScaledImageI(this.an, this.excessWidth + 831, (int) ((float) (58 - this.yScreenOffset) - 10.0F * aMath.sin((float) (this.gV[2] * 30))), 96, 96, 0);
                         var1.setImageOrientation(0);
                         var12 = this.af[2];
                         var3 = dv[this.gZ[0]] / 2;
@@ -19782,7 +19779,7 @@ public class AppInstance extends Game {
                     }
                 } else if (this.bB[2] == 1) {
                     var1.setColor(0, 0, 0, 204);
-                    var1.drawRectangle(0, 0 - this.eZ, this.getWidth(), this.getHeight());
+                    var1.drawRectangle(0, 0 - this.yScreenOffset, this.getWidth(), this.getHeight());
                     if (this.gV[3] % 6 / 3 == 0) {
                         var1.drawScaledImageI(this.uiTextures[15], this.buttonCoordinates1[0][0], this.buttonCoordinates1[0][1] + 22 + 96 + this.eI[0], 11);
                         var1.drawScaledImageI(this.uiTextures[15], this.buttonCoordinates1[0][0], this.buttonCoordinates1[0][1] + 22 + 84 + this.eI[0], 12);
@@ -19794,16 +19791,16 @@ public class AppInstance extends Game {
                         var1.drawScaledImageI(this.uiTextures[15], this.buttonCoordinates1[0][0], this.buttonCoordinates1[0][1] + 22 + 12 + this.eI[0], 18);
                         var1.drawScaledImageI(this.uiTextures[15], this.buttonCoordinates1[0][0], this.buttonCoordinates1[0][1] + 22 + 0 + this.eI[0], 19);
                         var1.drawScaledImageI(this.uiTextures[15], this.buttonCoordinates1[0][0], this.buttonCoordinates1[0][1] + this.eI[0], 20);
-                        var1.drawScaledImageI(this.uiTextures[15], this.getWidth() - 125 - 4, this.eI[0] + 581 + this.eZ, 9);
+                        var1.drawScaledImageI(this.uiTextures[15], this.getWidth() - 125 - 4, this.eI[0] + 581 + this.yScreenOffset, 9);
                     } else {
                         var1.drawScaledImageI(this.uiTextures[15], this.buttonCoordinates1[0][0], this.buttonCoordinates1[0][1] + this.eI[0], 7);
-                        var1.drawScaledImageI(this.uiTextures[15], this.getWidth() - 125 - 4, this.eI[0] + 581 + this.eZ, 10);
+                        var1.drawScaledImageI(this.uiTextures[15], this.getWidth() - 125 - 4, this.eI[0] + 581 + this.yScreenOffset, 10);
                     }
 
-                    var1.drawScaledImageI(this.uiTextures[15], this.getWidth() / 2 - 34, this.eZ + 529, 1);
+                    var1.drawScaledImageI(this.uiTextures[15], this.getWidth() / 2 - 34, this.yScreenOffset + 529, 1);
                     if (this.gV[1] >= 10 || this.gW >= 1) {
-                        var1.drawScaledImageI(this.an, this.buttonCoordinates1[0][0] + 30, (int) ((float) (this.eZ + 402) + 10.0F * aMath.sin((float) (this.gV[2] * 30))), 96, 96, 0);
-                        var1.drawScaledImageI(this.an, this.getWidth() / 2 - 48, (int) ((float) (this.eZ + 402) + 10.0F * aMath.sin((float) (this.gV[2] * 30))), 96, 96, 0);
+                        var1.drawScaledImageI(this.an, this.buttonCoordinates1[0][0] + 30, (int) ((float) (this.yScreenOffset + 402) + 10.0F * aMath.sin((float) (this.gV[2] * 30))), 96, 96, 0);
+                        var1.drawScaledImageI(this.an, this.getWidth() / 2 - 48, (int) ((float) (this.yScreenOffset + 402) + 10.0F * aMath.sin((float) (this.gV[2] * 30))), 96, 96, 0);
                     }
 
                     if (this.gV[1] >= 10) {
@@ -19844,7 +19841,7 @@ public class AppInstance extends Game {
                     }
                 } else if (this.bB[3] == 1) {
                     var1.setColor(0, 0, 0, 204);
-                    var1.drawRectangle(0, 0 - this.eZ, this.getWidth(), this.getHeight());
+                    var1.drawRectangle(0, 0 - this.yScreenOffset, this.getWidth(), this.getHeight());
                     if (this.eE[0]) {
                         int var7;
                         int var8;
@@ -19864,10 +19861,10 @@ public class AppInstance extends Game {
                                     var9 = this.eI[0];
                                     var10 = this.eD[2];
                                     var11 = (85 - var4) / 2;
-                                    var1.drawScaledImageI(var12, var8 + var6 + var7, this.eZ + var9 + 544 + var10 + var11, var5, var4, 0);
+                                    var1.drawScaledImageI(var12, var8 + var6 + var7, this.yScreenOffset + var9 + 544 + var10 + var11, var5, var4, 0);
                                     var1.setColor(0, 0, 0);
                                     var1.setAlpha(100);
-                                    var1.drawRectangle(fb[var3 + 5] + (110 - var5) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[2] + (85 - var4) / 2 + this.eZ, var5, var4);
+                                    var1.drawRectangle(fb[var3 + 5] + (110 - var5) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[2] + (85 - var4) / 2 + this.yScreenOffset, var5, var4);
                                     var1.setAlpha(255);
                                 }
 
@@ -19882,10 +19879,10 @@ public class AppInstance extends Game {
                                     var6 = this.eI[0];
                                     var11 = this.eD[1];
                                     var9 = (85 - var4) / 2;
-                                    var1.drawScaledImageI(var12, var8 + var7 + var10, this.eZ + var6 + 544 + var11 + var9, var5, var4, 0);
+                                    var1.drawScaledImageI(var12, var8 + var7 + var10, this.yScreenOffset + var6 + 544 + var11 + var9, var5, var4, 0);
                                     var1.setColor(0, 0, 0);
                                     var1.setAlpha(100);
-                                    var1.drawRectangle(fb[var3] + (110 - var5) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[1] + (85 - var4) / 2 + this.eZ, var5, var4);
+                                    var1.drawRectangle(fb[var3] + (110 - var5) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[1] + (85 - var4) / 2 + this.yScreenOffset, var5, var4);
                                     var1.setAlpha(255);
                                 }
                             } else {
@@ -19900,10 +19897,10 @@ public class AppInstance extends Game {
                                     var7 = this.eI[0];
                                     var9 = this.eD[1];
                                     var6 = (85 - var5) / 2;
-                                    var1.drawScaledImageI(var12, var11 + var8 + var10, this.eZ + var7 + 544 + var9 + var6, var4, var5, 0);
+                                    var1.drawScaledImageI(var12, var11 + var8 + var10, this.yScreenOffset + var7 + 544 + var9 + var6, var4, var5, 0);
                                     var1.setColor(0, 0, 0);
                                     var1.setAlpha(100);
-                                    var1.drawRectangle(fb[var3] + (110 - var4) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[1] + (85 - var5) / 2 + this.eZ, var4, var5);
+                                    var1.drawRectangle(fb[var3] + (110 - var4) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[1] + (85 - var5) / 2 + this.yScreenOffset, var4, var5);
                                     var1.setAlpha(255);
                                 }
 
@@ -19918,10 +19915,10 @@ public class AppInstance extends Game {
                                     var8 = this.eI[0];
                                     var10 = this.eD[2];
                                     var6 = (85 - var4) / 2;
-                                    var1.drawScaledImageI(var12, var11 + var7 + var9, this.eZ + var8 + 544 + var10 + var6, var5, var4, 0);
+                                    var1.drawScaledImageI(var12, var11 + var7 + var9, this.yScreenOffset + var8 + 544 + var10 + var6, var5, var4, 0);
                                     var1.setColor(0, 0, 0);
                                     var1.setAlpha(100);
-                                    var1.drawRectangle(fb[var3 + 5] + (110 - var5) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[2] + (85 - var4) / 2 + this.eZ, var5, var4);
+                                    var1.drawRectangle(fb[var3 + 5] + (110 - var5) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[2] + (85 - var4) / 2 + this.yScreenOffset, var5, var4);
                                     var1.setAlpha(255);
                                 }
                             }
@@ -19938,10 +19935,10 @@ public class AppInstance extends Game {
                                     var11 = this.eI[0];
                                     var9 = this.eD[2];
                                     var6 = (85 - var5) / 2;
-                                    var1.drawScaledImageI(var12, var7 + var8 + var10, this.eZ + var11 + 544 + var9 + var6, var4, var5, 0);
+                                    var1.drawScaledImageI(var12, var7 + var8 + var10, this.yScreenOffset + var11 + 544 + var9 + var6, var4, var5, 0);
                                     var1.setColor(0, 0, 0);
                                     var1.setAlpha(100);
-                                    var1.drawRectangle(fb[var3] + (110 - var4) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[2] + (85 - var5) / 2 + this.eZ, var4, var5);
+                                    var1.drawRectangle(fb[var3] + (110 - var4) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[2] + (85 - var5) / 2 + this.yScreenOffset, var4, var5);
                                     var1.setAlpha(255);
                                 }
 
@@ -19956,10 +19953,10 @@ public class AppInstance extends Game {
                                     var6 = this.eI[0];
                                     var7 = this.eD[1];
                                     var9 = (85 - var5) / 2;
-                                    var1.drawScaledImageI(var12, var10 + var11 + var8, this.eZ + var6 + 544 + var7 + var9, var4, var5, 0);
+                                    var1.drawScaledImageI(var12, var10 + var11 + var8, this.yScreenOffset + var6 + 544 + var7 + var9, var4, var5, 0);
                                     var1.setColor(0, 0, 0);
                                     var1.setAlpha(100);
-                                    var1.drawRectangle(fb[var3 + 5] + (110 - var4) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[1] + (85 - var5) / 2 + this.eZ, var4, var5);
+                                    var1.drawRectangle(fb[var3 + 5] + (110 - var4) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[1] + (85 - var5) / 2 + this.yScreenOffset, var4, var5);
                                     var1.setAlpha(255);
                                 }
                             } else {
@@ -19974,10 +19971,10 @@ public class AppInstance extends Game {
                                     var6 = this.eI[0];
                                     var11 = this.eD[1];
                                     var10 = (85 - var5) / 2;
-                                    var1.drawScaledImageI(var12, var8 + var9 + var7, this.eZ + var6 + 544 + var11 + var10, var4, var5, 0);
+                                    var1.drawScaledImageI(var12, var8 + var9 + var7, this.yScreenOffset + var6 + 544 + var11 + var10, var4, var5, 0);
                                     var1.setColor(0, 0, 0);
                                     var1.setAlpha(100);
-                                    var1.drawRectangle(fb[var3 + 5] + (110 - var4) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[1] + (85 - var5) / 2 + this.eZ, var4, var5);
+                                    var1.drawRectangle(fb[var3 + 5] + (110 - var4) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[1] + (85 - var5) / 2 + this.yScreenOffset, var4, var5);
                                     var1.setAlpha(255);
                                 }
 
@@ -19992,10 +19989,10 @@ public class AppInstance extends Game {
                                     var6 = this.eI[0];
                                     var7 = this.eD[2];
                                     var8 = (85 - var4) / 2;
-                                    var1.drawScaledImageI(var12, var10 + var11 + var9, this.eZ + var6 + 544 + var7 + var8, var5, var4, 0);
+                                    var1.drawScaledImageI(var12, var10 + var11 + var9, this.yScreenOffset + var6 + 544 + var7 + var8, var5, var4, 0);
                                     var1.setColor(0, 0, 0);
                                     var1.setAlpha(100);
-                                    var1.drawRectangle(fb[var3] + (110 - var5) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[2] + (85 - var4) / 2 + this.eZ, var5, var4);
+                                    var1.drawRectangle(fb[var3] + (110 - var5) / 2 + this.excessWidth / 2, this.eI[0] + 544 + this.eD[2] + (85 - var4) / 2 + this.yScreenOffset, var5, var4);
                                     var1.setAlpha(255);
                                 }
                             }
@@ -20007,10 +20004,10 @@ public class AppInstance extends Game {
                                 var5 = fb[var3 + 5];
                                 var4 = this.excessWidth / 2;
                                 var6 = this.eI[0];
-                                var1.drawScaledImageI(var12, var4 + var5, this.eZ + var6 + 544 + 12, 110, 85, 0);
+                                var1.drawScaledImageI(var12, var4 + var5, this.yScreenOffset + var6 + 544 + 12, 110, 85, 0);
                                 var1.setColor(0, 0, 0);
                                 var1.setAlpha(100);
-                                var1.drawRectangle(fb[var3 + 5] + this.excessWidth / 2, this.eI[0] + 544 + 12 + this.eZ, 110, 85);
+                                var1.drawRectangle(fb[var3 + 5] + this.excessWidth / 2, this.eI[0] + 544 + 12 + this.yScreenOffset, 110, 85);
                                 var1.setAlpha(255);
                             }
                         }
@@ -20019,7 +20016,7 @@ public class AppInstance extends Game {
                             var12 = this.uiTextures[var3 + 5];
                             var5 = fb[var3];
                             var4 = dv[this.fy[var3]] / 2;
-                            var1.drawScaledImageI(var12, this.excessWidth / 2 + (var5 - var4), this.eI[0] + 544 + this.eZ - dv[this.fy[var3]] / 2, dv[this.fy[var3]] + 110, dv[this.fy[var3]] + 85, 0);
+                            var1.drawScaledImageI(var12, this.excessWidth / 2 + (var5 - var4), this.eI[0] + 544 + this.yScreenOffset - dv[this.fy[var3]] / 2, dv[this.fy[var3]] + 110, dv[this.fy[var3]] + 85, 0);
                             if (this.battleStats[10] >= this.unitStats[this.slotCatIDs[var3]][this.eV[var3]][6] + this.unitStats[this.slotCatIDs[var3]][this.eV[var3]][6] * this.eQ * 50 / 100) {
                                 var13 = 0;
                             } else {
@@ -20029,14 +20026,14 @@ public class AppInstance extends Game {
                             if (var13 == 1 || this.rechargeTimes[var3] != 0) {
                                 var1.setColor(0, 0, 0);
                                 var1.setAlpha(100);
-                                var1.drawRectangle(fb[var3] + this.excessWidth / 2, this.eI[0] + 544 + this.eZ, 110, 85);
+                                var1.drawRectangle(fb[var3] + this.excessWidth / 2, this.eI[0] + 544 + this.yScreenOffset, 110, 85);
                             }
 
                             var1.setAlpha(255);
                             if (this.rechargeTimes[var3] != 0) {
                                 this.a(var1, var3, 0, 0);
                             } else if (this.slotCatIDs[var3] != -1) {
-                                this.a(var1, this.unitStats[this.slotCatIDs[var3]][this.eV[var3]][6] / 100 + this.unitStats[this.slotCatIDs[var3]][this.eV[var3]][6] / 100 * this.eQ * 50 / 100, fb[var3] + 90 + this.excessWidth / 2, this.eI[0] + 544 + 50 + this.eZ, var13, 0, 0);
+                                this.a(var1, this.unitStats[this.slotCatIDs[var3]][this.eV[var3]][6] / 100 + this.unitStats[this.slotCatIDs[var3]][this.eV[var3]][6] / 100 * this.eQ * 50 / 100, fb[var3] + 90 + this.excessWidth / 2, this.eI[0] + 544 + 50 + this.yScreenOffset, var13, 0, 0);
                             }
                         }
                     } else if (this.eD[0] == 1) {
@@ -20045,10 +20042,10 @@ public class AppInstance extends Game {
                             var6 = fb[var3];
                             var4 = this.excessWidth / 2;
                             var5 = this.eI[0];
-                            var1.drawScaledImageI(var12, var4 + var6, this.eZ + var5 + 544 + 12, 110, 85, 0);
+                            var1.drawScaledImageI(var12, var4 + var6, this.yScreenOffset + var5 + 544 + 12, 110, 85, 0);
                             var1.setColor(0, 0, 0);
                             var1.setAlpha(100);
-                            var1.drawRectangle(fb[var3] + this.excessWidth / 2, this.eI[0] + 544 + 12 + this.eZ, 110, 85);
+                            var1.drawRectangle(fb[var3] + this.excessWidth / 2, this.eI[0] + 544 + 12 + this.yScreenOffset, 110, 85);
                             var1.setAlpha(255);
                         }
 
@@ -20056,7 +20053,7 @@ public class AppInstance extends Game {
                             var12 = this.uiTextures[var3 + 10];
                             var4 = fb[var3 + 5];
                             var5 = dv[this.fy[var3]] / 2;
-                            var1.drawScaledImageI(var12, this.excessWidth / 2 + (var4 - var5), this.eI[0] + 544 + this.eZ - dv[this.fy[var3]] / 2, dv[this.fy[var3]] + 110, dv[this.fy[var3]] + 85, 0);
+                            var1.drawScaledImageI(var12, this.excessWidth / 2 + (var4 - var5), this.eI[0] + 544 + this.yScreenOffset - dv[this.fy[var3]] / 2, dv[this.fy[var3]] + 110, dv[this.fy[var3]] + 85, 0);
                             if (this.slotCatIDs[var3 + 5] != -1) {
                                 if (this.battleStats[10] >= this.unitStats[this.slotCatIDs[var3 + 5]][this.eV[var3 + 5]][6] + this.unitStats[this.slotCatIDs[var3 + 5]][this.eV[var3 + 5]][6] * this.eQ * 50 / 100) {
                                     var13 = 0;
@@ -20067,14 +20064,14 @@ public class AppInstance extends Game {
                                 if (var13 == 1 || this.rechargeTimes[var3 + 5] != 0) {
                                     var1.setColor(0, 0, 0);
                                     var1.setAlpha(100);
-                                    var1.drawRectangle(fb[var3 + 5] + this.excessWidth / 2, this.eI[0] + 544 + this.eZ, 110, 85);
+                                    var1.drawRectangle(fb[var3 + 5] + this.excessWidth / 2, this.eI[0] + 544 + this.yScreenOffset, 110, 85);
                                 }
 
                                 var1.setAlpha(255);
                                 if (this.rechargeTimes[var3 + 5] != 0) {
                                     this.a(var1, var3 + 5, 0, 0);
                                 } else if (this.slotCatIDs[var3 + 5] != -1) {
-                                    this.a(var1, this.unitStats[this.slotCatIDs[var3 + 5]][this.eV[var3 + 5]][6] / 100 + this.unitStats[this.slotCatIDs[var3 + 5]][this.eV[var3 + 5]][6] / 100 * this.eQ * 50 / 100, fb[var3 + 5] + 90 + this.excessWidth / 2, this.eI[0] + 544 + 50 + this.eZ, var13, 0, 0);
+                                    this.a(var1, this.unitStats[this.slotCatIDs[var3 + 5]][this.eV[var3 + 5]][6] / 100 + this.unitStats[this.slotCatIDs[var3 + 5]][this.eV[var3 + 5]][6] / 100 * this.eQ * 50 / 100, fb[var3 + 5] + 90 + this.excessWidth / 2, this.eI[0] + 544 + 50 + this.yScreenOffset, var13, 0, 0);
                                 }
                             }
                         }
@@ -20125,12 +20122,12 @@ public class AppInstance extends Game {
                     }
                 } else if (this.bB[4] == 1) {
                     var1.setColor(0, 0, 0, 204);
-                    var1.drawRectangle(0, 0 - this.eZ, this.getWidth(), this.getHeight());
-                    var1.drawScaledImageI(this.uiTextures[15], this.getWidth() / 2 - 65 - dv[this.hk[0]] / 2, -24 - this.eZ - this.he[0] - dv[this.hk[0]] / 2, dv[this.hk[0]] + 131, dv[this.hk[0]] + 131, 0, 0, 0, 5, this.hb[0], 40);
-                    var1.drawScaledImageI(this.uiTextures[15], this.getWidth() / 2 - 38 - dv[this.hk[0]] / 2, 1 - this.he[0] - this.eZ - dv[this.hk[0]] / 2, dv[this.hk[0]] + 76, dv[this.hk[0]] + 76, 41);
+                    var1.drawRectangle(0, 0 - this.yScreenOffset, this.getWidth(), this.getHeight());
+                    var1.drawScaledImageI(this.uiTextures[15], this.getWidth() / 2 - 65 - dv[this.hk[0]] / 2, -24 - this.yScreenOffset - this.he[0] - dv[this.hk[0]] / 2, dv[this.hk[0]] + 131, dv[this.hk[0]] + 131, 0, 0, 0, 5, this.hb[0], 40);
+                    var1.drawScaledImageI(this.uiTextures[15], this.getWidth() / 2 - 38 - dv[this.hk[0]] / 2, 1 - this.he[0] - this.yScreenOffset - dv[this.hk[0]] / 2, dv[this.hk[0]] + 76, dv[this.hk[0]] + 76, 41);
                     if (this.gV[1] >= 10) {
                         var1.setImageOrientation(2);
-                        var1.drawScaledImageI(this.an, this.getWidth() / 2 - 48, (int) ((float) (-24 - this.eZ + 131 - 10) - 10.0F * aMath.sin((float) (this.gV[2] * 30))), 96, 96, 0);
+                        var1.drawScaledImageI(this.an, this.getWidth() / 2 - 48, (int) ((float) (-24 - this.yScreenOffset + 131 - 10) - 10.0F * aMath.sin((float) (this.gV[2] * 30))), 96, 96, 0);
                         var1.setImageOrientation(0);
                         var12 = this.af[2];
                         var3 = dv[this.gZ[0]] / 2;
@@ -20169,7 +20166,7 @@ public class AppInstance extends Game {
                     }
                 } else if (this.bB[5] == 1) {
                     var1.setColor(0, 0, 0, 204);
-                    var1.drawRectangle(0, 0 - this.eZ, this.getWidth(), this.getHeight());
+                    var1.drawRectangle(0, 0 - this.yScreenOffset, this.getWidth(), this.getHeight());
                     if (this.gV[1] < 10) {
                         var4 = 0;
                     } else {
@@ -20182,7 +20179,7 @@ public class AppInstance extends Game {
                         }
 
                         var1.setImageOrientation(2);
-                        var1.drawScaledImageI(this.an, this.excessWidth + 868, (int) ((float) (136 - this.eZ) - 10.0F * aMath.sin((float) (this.gV[2] * 30))), 96, 96, 0);
+                        var1.drawScaledImageI(this.an, this.excessWidth + 868, (int) ((float) (136 - this.yScreenOffset) - 10.0F * aMath.sin((float) (this.gV[2] * 30))), 96, 96, 0);
                         var1.setImageOrientation(0);
                         var12 = this.af[2];
                         var4 = dv[this.gZ[0]] / 2;
@@ -20236,11 +20233,11 @@ public class AppInstance extends Game {
                             if (this.eL[var4] == 0) {
                                 var12 = this.uiTextures[15];
                                 var5 = dv[this.eK[var4]] / 2;
-                                var1.drawScaledImageI(var12, this.excessWidth + (var3 * 88 + 447 - var5), 58 - this.eZ - dv[this.eK[var4]] / 2, dv[this.eK[var4]] + 58, dv[this.eK[var4]] + 58, var4 + 33);
+                                var1.drawScaledImageI(var12, this.excessWidth + (var3 * 88 + 447 - var5), 58 - this.yScreenOffset - dv[this.eK[var4]] / 2, dv[this.eK[var4]] + 58, dv[this.eK[var4]] + 58, var4 + 33);
                             } else {
                                 var12 = this.uiTextures[15];
                                 var5 = dv[this.eK[var4]] / 2;
-                                var1.drawScaledImageI(var12, this.excessWidth + (var3 * 88 + 447 - var5), 58 - this.eZ - dv[this.eK[var4]] / 2, dv[this.eK[var4]] + 58, dv[this.eK[var4]] + 58, var4 + 27);
+                                var1.drawScaledImageI(var12, this.excessWidth + (var3 * 88 + 447 - var5), 58 - this.yScreenOffset - dv[this.eK[var4]] / 2, dv[this.eK[var4]] + 58, dv[this.eK[var4]] + 58, var4 + 27);
                             }
 
                             --var3;
@@ -20248,7 +20245,7 @@ public class AppInstance extends Game {
                     }
                 } else if (this.bB[8] == 1) {
                     var1.setColor(0, 0, 0, 204);
-                    var1.drawRectangle(0, 0 - this.eZ, this.getWidth(), this.getHeight());
+                    var1.drawRectangle(0, 0 - this.yScreenOffset, this.getWidth(), this.getHeight());
                     var1.drawScaledImageI(this.al, this.getWidth() / 2 - eO[this.gV[0]] * 690 / 100 / 2, 320 - eO[this.gV[0]] * 179 / 100 / 2 - 30, eO[this.gV[0]] * 690 / 100, eO[this.gV[0]] * 179 / 100, 0);
                     if (this.gV[0] >= this.getLength(eO) - 1) {
                         var4 = 0;
@@ -20291,7 +20288,7 @@ public class AppInstance extends Game {
                     var1.drawScaledImageI(this.uiTextures[21], 733 - dv[this.fx[14]] / 2, 610 - dv[this.fx[14]] / 2, dv[this.fx[14]] + 27, dv[this.fx[14]] + 26, 18);
                 } else if (this.bB[9] == 1) {
                     var1.setColor(0, 0, 0, 204);
-                    var1.drawRectangle(0, 0 - this.eZ, this.getWidth(), this.getHeight());
+                    var1.drawRectangle(0, 0 - this.yScreenOffset, this.getWidth(), this.getHeight());
                     if (this.gV[1] >= 10) {
                         var1.drawScaledImageI(this.an, this.excessWidth / 2 + 786, (int) (235.0F + 10.0F * aMath.sin((float) (this.gV[2] * 30))), 96, 96, 0);
                     }
