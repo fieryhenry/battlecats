@@ -10,7 +10,7 @@ project.
 Original 1.0.0 APK: <https://apkfree.com/download/battle-cats-1.0.0>. It is a
 999999 cat food APK, but all of that code has been removed
 
-Current Version: `JP 1.0.5`
+Current Version: `JP 1.0.6`
 
 APKs started from version 1.0.0 because it had the least amount of code and so
 it was the easiest version to get a compiling and functional app. Once each
