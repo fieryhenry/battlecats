@@ -2636,11 +2636,7 @@ public class Game extends MyApplicationBase {
             }
 
             this.loadEnemyStats();
-            this.ac();
-
             this.displayedError = false;
-
-
         }
 
     }
