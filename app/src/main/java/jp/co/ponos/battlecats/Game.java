@@ -2755,11 +2755,12 @@ public class Game extends MyApplicationBase {
         int gameVersion = stream.readInt();
         Sound.getInstance().muteBGM(stream.readBoolean());
         Sound.getInstance().muteSE(stream.readBoolean());
-        if (gameVersion == 0 || gameVersion == 1) {
+        int var5;
+        int var4;
+        if (gameVersion == 0 || gameVersion == 1 || gameVersion == 2) {
             this.catfood = stream.readInt();
             this.currentEnergy = stream.readInt();
 
-            int var4;
             for (var4 = 0; var4 < this.getLength(this.years); ++var4) {
                 this.years[var4] = stream.readInt();
             }
@@ -2819,88 +2820,86 @@ public class Game extends MyApplicationBase {
                 this.bq[var4] = stream.readInt();
             }
 
-            var4 = 0;
-
-            label193:
-            while (true) {
-                int var5;
-                if (var4 >= this.getLength(this.br)) {
-                    for (var4 = 0; var4 < this.getLength(this.bs); ++var4) {
-                        for (var5 = 0; var5 < this.getLength(this.bs[var4]); ++var5) {
-                            this.bs[var4][var5] = stream.readInt();
-                        }
-                    }
-
-                    for (var4 = 0; var4 < this.getLength(this.bt); ++var4) {
-                        this.bt[var4] = stream.readInt();
-                    }
-
-                    for (var4 = 0; var4 < this.getLength(this.bu); ++var4) {
-                        this.bu[var4] = stream.readInt();
-                    }
-
-                    for (var4 = 0; var4 < this.getLength(this.bv); ++var4) {
-                        this.bv[var4] = stream.readInt();
-                    }
-
-                    for (var4 = 0; var4 < this.getLength(this.bw); ++var4) {
-                        this.bw[var4] = stream.readInt();
-                    }
-
-                    for (var4 = 0; var4 < this.getLength(this.baseSpecialSkillLevels); ++var4) {
-                        this.baseSpecialSkillLevels[var4] = stream.readInt();
-                    }
-
-                    for (var4 = 0; var4 < this.getLength(this.by); ++var4) {
-                        this.by[var4] = stream.readInt();
-                    }
-
-                    for (var4 = 0; var4 < this.getLength(this.bz); ++var4) {
-                        this.bz[var4] = stream.readInt();
-                    }
-
-                    for (var4 = 0; var4 < this.getLength(this.battleItems); ++var4) {
-                        this.battleItems[var4] = stream.readInt();
-                    }
-
-                    for (var4 = 0; var4 < this.getLength(this.bB); ++var4) {
-                        this.bB[var4] = stream.readInt();
-                    }
-
-                    for (var4 = 0; var4 < this.getLength(this.bC); ++var4) {
-                        this.bC[var4] = stream.readInt();
-                    }
-
-                    for (var4 = 0; var4 < this.getLength(this.bD); ++var4) {
-                        this.bD[var4] = stream.readInt();
-                    }
-
-                    for (var4 = 0; var4 < this.getLength(this.bE); ++var4) {
-                        this.bE[var4] = stream.readInt();
-                    }
-
-                    if (gameVersion < 1) {
-                        break;
-                    }
-
-                    var4 = 0;
-
-                    while (true) {
-                        if (var4 >= this.getLength(this.bF)) {
-                            break label193;
-                        }
-
-                        this.bF[var4] = stream.readBoolean();
-                        ++var4;
-                    }
-                }
-
-                for (var5 = 0; var5 < this.getLength(this.br[var4]); ++var5) {
+            for(var4 = 0; var4 < this.getLength(this.br); ++var4) {
+                for(var5 = 0; var5 < this.getLength(this.br[var4]); ++var5) {
                     this.br[var4][var5] = stream.readInt();
                 }
-
-                ++var4;
             }
+
+            for(var4 = 0; var4 < this.getLength(this.bs); ++var4) {
+                for(var5 = 0; var5 < this.getLength(this.bs[var4]); ++var5) {
+                    this.bs[var4][var5] = stream.readInt();
+                }
+            }
+
+            for (var4 = 0; var4 < this.getLength(this.bt); ++var4) {
+                this.bt[var4] = stream.readInt();
+            }
+
+            for (var4 = 0; var4 < this.getLength(this.bu); ++var4) {
+                this.bu[var4] = stream.readInt();
+            }
+
+            for (var4 = 0; var4 < this.getLength(this.bv); ++var4) {
+                this.bv[var4] = stream.readInt();
+            }
+
+            for (var4 = 0; var4 < this.getLength(this.bw); ++var4) {
+                this.bw[var4] = stream.readInt();
+            }
+
+            for (var4 = 0; var4 < this.getLength(this.baseSpecialSkillLevels); ++var4) {
+                this.baseSpecialSkillLevels[var4] = stream.readInt();
+            }
+
+            for (var4 = 0; var4 < this.getLength(this.by); ++var4) {
+                this.by[var4] = stream.readInt();
+            }
+
+            for (var4 = 0; var4 < this.getLength(this.bz); ++var4) {
+                this.bz[var4] = stream.readInt();
+            }
+
+            for (var4 = 0; var4 < this.getLength(this.battleItems); ++var4) {
+                this.battleItems[var4] = stream.readInt();
+            }
+
+            for (var4 = 0; var4 < this.getLength(this.bB); ++var4) {
+                this.bB[var4] = stream.readInt();
+            }
+
+            for (var4 = 0; var4 < this.getLength(this.bC); ++var4) {
+                this.bC[var4] = stream.readInt();
+            }
+
+            for (var4 = 0; var4 < this.getLength(this.bD); ++var4) {
+                this.bD[var4] = stream.readInt();
+            }
+
+            for (var4 = 0; var4 < this.getLength(this.bE); ++var4) {
+                this.bE[var4] = stream.readInt();
+            }
+
+            if (gameVersion >= 1) {
+                for (var4 = 0; var4 < this.getLength(this.bF); ++var4) {
+                    this.bF[var4] = stream.readBoolean();
+                }
+            }
+        }
+        if (gameVersion == 0 || gameVersion == 1) {
+            this.calendar = Calendar.getInstance();
+            this.years[0] = this.calendar.get(1);
+            this.months[0] = this.calendar.get(2);
+            this.days[0] = this.calendar.get(5);
+            this.hour = this.calendar.get(11);
+            this.minute = this.calendar.get(12);
+            this.second = this.calendar.get(13);
+
+            int energy = 0;
+            for (int i = 0; i < 10; ++i) {
+                energy += initialTreasureBonuses[10] * this.treasureMultValues[i][10] / 100;
+            }
+            this.currentEnergy = initialSkillValues[10] + baseSpecialSkillLevels[10] * 10 + energy;
         }
     }
 
@@ -2910,7 +2909,7 @@ public class Game extends MyApplicationBase {
             SaveDataStream stream = new SaveDataStream();
             if (stream.openWrite("SAVE_DATA")) {
                 stream.enableMD5();
-                stream.writeInt(1);
+                stream.writeInt(2);
                 stream.writeBoolean(Sound.getInstance().isMutedBGM());
                 stream.writeBoolean(Sound.getInstance().isMutedSE());
                 stream.writeInt(this.catfood);
