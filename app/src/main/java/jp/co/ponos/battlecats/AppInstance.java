@@ -5306,7 +5306,7 @@ public class AppInstance extends Game {
     int getTimeStamp(int year, int month, int day, int hour, int minute, int second) {
         Calendar calendar = Calendar.getInstance();
         calendar.clear();
-        calendar.set(year, month, day, hour, minute, second);
+        calendar.set(year, month - 1, day, hour, minute, second);
         return (int)(calendar.getTime().getTime() / 1000L);
     }
 
